@@ -17,7 +17,7 @@
   - Avoid hardcoding static student IDs or user IDs in verification scripts.
   - Retrieve lists dynamically (e.g. fetching grades/courses first), select a valid student `user_id` from the active response data, and pass it dynamically to subsequent write/grading test cases.
 - **Dynamic Tool Usage**:
-  - Direct endpoint tools (e.g., `GET /api/v1/courses`) are no longer exposed. Instead, you must use `search_canvas_api` to look up the correct path and method, and `call_canvas_api` to execute the request. Note that reference guides may still refer to the old names (e.g., `GET /api/v1/courses`); use the search tool to find their corresponding API paths.
+  - The legacy individual endpoint tools (e.g., `get_courses`) are no longer exposed. Instead, you must use `search_canvas_api` to look up the correct path and method, and `call_canvas_api` to execute the request. Note that reference guides now directly document the REST API endpoints (e.g., `GET /api/v1/courses`); you can pass these directly to `call_canvas_api`.
   - Do not create manual tool implementations; any new Canvas API capabilities must be introduced by updating the API definition markdown files in `docs/services/canvas/resources/` and running the `generate_tools.py` script.
 - **Manual Pagination**:
   - The `call_canvas_api` tool does not auto-paginate. You must handle pagination manually by passing `page` and `per_page` in `query_params`. If the returned array length equals `per_page`, increment the `page` number and fetch again if more results are needed.

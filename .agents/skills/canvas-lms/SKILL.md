@@ -31,7 +31,7 @@ The `canvas-lms` skill no longer uses direct endpoint tools (like `GET /api/v1/c
 1. `search_canvas_api`: Use this to look up the exact HTTP method and API path based on keywords (e.g., query="courses").
 2. `call_canvas_api`: Use this to execute the API call, supplying the `method`, `path`, `query_params`, and `body_params`.
 
-**Note:** The detailed guides (e.g., `student_guide.md`, `teacher_guide.md`) may still refer to the deprecated tool names (e.g., "Use `GET /api/v1/courses`"). When you see these, you must use `search_canvas_api` to find the correct path, and then call it using `call_canvas_api`.
+**Note:** The detailed guides (e.g., `student_guide.md`, `teacher_guide.md`) document the REST API endpoints and methods (e.g., "Use `GET /api/v1/courses`"). When you see these, you must call them using the `call_canvas_api` tool. If an endpoint isn't listed or you are unsure, use `search_canvas_api` to look it up.
 
 ### Pagination
 Canvas API pagination must be handled manually by the agent. The `call_canvas_api` tool does NOT automatically fetch all pages.
