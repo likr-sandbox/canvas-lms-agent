@@ -60,3 +60,26 @@ When a Canvas LMS task is requested, perform operations in the following logical
 7. **Grade / Modify Submissions**:
    - **Grading and Feedback**: If you are a teacher/TA and need to grade or write a textual comment on a student's submission, call `grade_or_comment_submission` with `course_id`, `assignment_id`, `user_id` (student's user ID), and optional `posted_grade` (e.g. `A-`, `35`) or `text_comment`.
    - **Student Submissions**: If you are a student and want to submit a text entry or URL assignment, call `submit_assignment` with `course_id`, `assignment_id`, `submission_type` (e.g. `online_text_entry`, `online_url`), and the appropriate `body` or `url` content.
+
+---
+
+## Unimplemented APIs (Backlog)
+
+The following major resource areas from the Canvas LMS API documentation (`docs/services/canvas/resources/`) are currently unimplemented in the MCP server. Consider implementing these when new tasks require them:
+
+- **Analytics & Reporting**:
+  - Analytics (`analytics.md`)
+  - Account Reports (`account_reports.md`)
+  - Course Reports (`course_reports.md`)
+- **Developer & Authentication**:
+  - Access Tokens (`access_tokens.md`)
+  - Developer Keys (`developer_keys.md`)
+  - Authentication Providers (`authentication_providers.md`)
+- **Advanced Course Administration**:
+  - Blueprint Courses (`blueprint_courses.md`)
+  - Course Pace (`course_pace.md`)
+  - Content Migrations (`content_migrations.md`)
+- **Student Engagement & Customization**:
+  - Appointment Groups / Scheduling (`appointment_groups.md`)
+  - Feature Flags (`feature_flags.md`)
+  - Notification Preferences (`notification_preferences.md`)

@@ -11,6 +11,11 @@ const sections = require("./sections");
 const enrollments = require("./enrollments");
 const calendar = require("./calendar");
 const rubrics = require("./rubrics");
+const accounts = require("./accounts");
+const conversations = require("./conversations");
+const groups = require("./groups");
+const outcomes = require("./outcomes");
+const integrations = require("./integrations");
 
 const allDefinitions = [
   ...courses.definitions,
@@ -26,6 +31,11 @@ const allDefinitions = [
   ...enrollments.definitions,
   ...calendar.definitions,
   ...rubrics.definitions,
+  ...accounts.definitions,
+  ...conversations.definitions,
+  ...groups.definitions,
+  ...outcomes.definitions,
+  ...integrations.definitions,
 ];
 
 const allHandlers = {
@@ -42,6 +52,11 @@ const allHandlers = {
   ...enrollments.handlers,
   ...calendar.handlers,
   ...rubrics.handlers,
+  ...accounts.handlers,
+  ...conversations.handlers,
+  ...groups.handlers,
+  ...outcomes.handlers,
+  ...integrations.handlers,
 };
 
 module.exports = {
