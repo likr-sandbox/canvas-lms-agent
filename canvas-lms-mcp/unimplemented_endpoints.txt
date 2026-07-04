@@ -1,0 +1,1258 @@
+Implemented endpoints count: 129
+Total endpoints found in docs: 1088
+
+## Unimplemented Endpoints by Document:
+
+### access_tokens.md
+ - GET /api/v1/users/:user_id/user_generated_tokens
+
+### accessibility_course_scans.md
+ - POST /api/v1/users/:user_id/educator_accessibility_course_scan
+
+### accessibility_course_statistics.md
+ - GET /api/v1/users/:user_id/educator_accessibility_course_statistics
+
+### account_calendars.md
+ - GET /api/v1/account_calendars
+ - GET /api/v1/account_calendars/:account_id
+ - PUT /api/v1/account_calendars/:account_id
+ - PUT /api/v1/accounts/:account_id/account_calendars
+ - GET /api/v1/accounts/:account_id/account_calendars
+ - GET /api/v1/accounts/:account_id/visible_calendars_count
+
+### account_domain_lookups.md
+ - GET /api/v1/accounts/search
+
+### account_notifications.md
+ - GET /api/v1/accounts/:account_id/account_notifications
+ - GET /api/v1/accounts/:account_id/account_notifications/:id
+ - POST /api/v1/accounts/:account_id/account_notifications
+ - PUT /api/v1/accounts/:account_id/account_notifications/:id
+ - DELETE /api/v1/accounts/:account_id/account_notifications/:id
+
+### account_reports.md
+ - GET /api/v1/accounts/:account_id/reports/:report
+ - PUT /api/v1/accounts/:account_id/reports/:report/:id/abort
+
+### accounts.md
+ - GET /api/v1/horizon_accounts
+ - GET /api/v1/manageable_accounts
+ - GET /api/v1/course_creation_accounts
+ - GET /api/v1/course_accounts
+ - GET /api/v1/accounts/:account_id/settings
+ - GET /api/v1/settings/environment
+ - GET /api/v1/accounts/:account_id/permissions
+ - GET /api/v1/accounts/:account_id/sub_accounts
+ - GET /api/v1/accounts/:account_id/terms_of_service
+ - GET /api/v1/accounts/:account_id/help_links
+ - GET /api/v1/manually_created_courses_account
+ - GET /api/v1/accounts/:account_id/courses
+ - PUT /api/v1/accounts/:id
+ - DELETE /api/v1/accounts/:account_id/users/:user_id
+ - DELETE /api/v1/accounts/:account_id/users
+ - PUT /api/v1/accounts/:account_id/users/bulk_update
+ - PUT /api/v1/accounts/:account_id/users/:user_id/restore
+ - POST /api/v1/accounts/:account_id/sub_accounts
+ - DELETE /api/v1/accounts/:account_id/sub_accounts/:id
+
+### accounts_-lti.md
+ - GET /api/lti/accounts/:account_id
+
+### admins.md
+ - GET /api/v1/accounts/:account_id/admins/self
+
+### ai_conversations.md
+ - GET /api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id
+ - GET /api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations
+ - POST /api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations
+ - POST /api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/messages
+ - DELETE /api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id
+ - GET /api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/evaluation
+ - POST /api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/evaluation
+ - POST /api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/messages/:message_id/feedback
+ - DELETE /api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/messages/:message_id/feedback/:feedback_id
+
+### ai_experiences.md
+ - GET /api/v1/courses/:course_id/ai_experiences
+ - GET /api/v1/courses/:course_id/ai_experiences/:id
+ - GET /api/v1/courses/:course_id/ai_experiences/new
+ - GET /api/v1/courses/:course_id/ai_experiences/:id/edit
+ - POST /api/v1/courses/:course_id/ai_experiences
+ - PUT /api/v1/courses/:course_id/ai_experiences/:id
+ - DELETE /api/v1/courses/:course_id/ai_experiences/:id
+ - GET /api/v1/courses/:course_id/ai_experiences/:id/ai_conversations
+ - GET /api/v1/courses/:course_id/ai_experiences/:id/ai_conversations/:conversation_id
+
+### analytics.md
+ - GET /api/v1/accounts/:account_id/analytics/terms/:term_id/activity
+ - GET /api/v1/accounts/:account_id/analytics/current/activity
+ - GET /api/v1/accounts/:account_id/analytics/completed/activity
+ - GET /api/v1/accounts/:account_id/analytics/terms/:term_id/grades
+ - GET /api/v1/accounts/:account_id/analytics/current/grades
+ - GET /api/v1/accounts/:account_id/analytics/completed/grades
+ - GET /api/v1/accounts/:account_id/analytics/terms/:term_id/statistics
+ - GET /api/v1/accounts/:account_id/analytics/current/statistics
+ - GET /api/v1/accounts/:account_id/analytics/completed/statistics
+ - GET /api/v1/accounts/:account_id/analytics/terms/:term_id/statistics_by_subaccount
+ - GET /api/v1/accounts/:account_id/analytics/current/statistics_by_subaccount
+ - GET /api/v1/accounts/:account_id/analytics/completed/statistics_by_subaccount
+ - GET /api/v1/courses/:course_id/analytics/assignments
+ - GET /api/v1/courses/:course_id/analytics/student_summaries
+ - GET /api/v1/courses/:course_id/analytics/users/:student_id/communication
+
+### announcement_external_feeds.md
+ - GET /api/v1/courses/:course_id/external_feeds
+ - GET /api/v1/groups/:group_id/external_feeds
+ - POST /api/v1/courses/:course_id/external_feeds
+ - POST /api/v1/groups/:group_id/external_feeds
+ - DELETE /api/v1/courses/:course_id/external_feeds/:external_feed_id
+ - DELETE /api/v1/groups/:group_id/external_feeds/:external_feed_id
+
+### announcements.md
+ - GET /api/v1/announcements
+
+### api_token_scopes.md
+ - GET /api/v1/accounts/:account_id/scopes
+
+### appointment_groups.md
+ - GET /api/v1/appointment_groups/:id/users
+ - GET /api/v1/appointment_groups/:id/groups
+ - GET /api/v1/appointment_groups/next_appointment
+
+### assessment_question_banks.md
+ - GET /api/v1/question_banks
+ - GET /api/v1/question_banks/:id
+ - GET /api/v1/question_banks/:id/questions
+
+### asset_processor.md
+ - POST /api/lti/asset_processors/:asset_processor_id/reports
+ - PUT /api/lti/asset_processor_eulas/:context_external_tool_id/deployment
+ - POST /api/lti/asset_processor_eulas/:context_external_tool_id/user
+ - DELETE /api/lti/asset_processor_eulas/:context_external_tool_id/user
+
+### assignment_extensions.md
+ - POST /api/v1/courses/:course_id/assignments/:assignment_id/extensions
+
+### assignment_groups.md
+ - GET /api/v1/courses/:course_id/assignment_groups
+ - GET /api/v1/courses/:course_id/assignment_groups/:assignment_group_id
+ - POST /api/v1/courses/:course_id/assignment_groups
+ - PUT /api/v1/courses/:course_id/assignment_groups/:assignment_group_id
+ - DELETE /api/v1/courses/:course_id/assignment_groups/:assignment_group_id
+
+### assignments.md
+ - GET /api/v1/courses/:course_id/assignment_groups/:assignment_group_id/assignments
+ - GET /api/v1/users/:user_id/courses/:course_id/assignments
+ - POST /api/v1/courses/:course_id/assignments/:assignment_id/duplicate
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/users/:user_id/group_members
+ - PUT /api/v1/courses/:course_id/assignments/bulk_update
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/overrides
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id
+ - GET /api/v1/groups/:group_id/assignments/:assignment_id/override
+ - GET /api/v1/sections/:course_section_id/assignments/:assignment_id/override
+ - POST /api/v1/courses/:course_id/assignments/:assignment_id/overrides
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id
+ - DELETE /api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id
+ - GET /api/v1/courses/:course_id/assignments/overrides
+ - POST /api/v1/courses/:course_id/assignments/overrides
+ - PUT /api/v1/courses/:course_id/assignments/overrides
+
+### authentication_providers.md
+ - PUT /api/v1/accounts/:account_id/authentication_providers/:id/restore
+ - GET /api/v1/accounts/:account_id/sso_settings
+ - PUT /api/v1/accounts/:account_id/sso_settings
+ - POST /api/v1/accounts/:account_id/authentication_providers/force_password_reset
+
+### authentications_log.md
+ - GET /api/v1/audit/authentication/logins/:login_id
+ - GET /api/v1/audit/authentication/accounts/:account_id
+ - GET /api/v1/audit/authentication/users/:user_id
+
+### blackout_dates.md
+ - GET /api/v1/courses/:course_id/blackout_dates
+ - GET /api/v1/accounts/:account_id/blackout_dates
+ - GET /api/v1/courses/:course_id/blackout_dates/:id
+ - GET /api/v1/accounts/:account_id/blackout_dates/:id
+ - GET /api/v1/courses/:course_id/blackout_dates/new
+ - GET /api/v1/accounts/:account_id/blackout_dates/new
+ - POST /api/v1/courses/:course_id/blackout_dates
+ - POST /api/v1/accounts/:account_id/blackout_dates
+ - PUT /api/v1/courses/:course_id/blackout_dates/:id
+ - PUT /api/v1/accounts/:account_id/blackout_dates/:id
+ - DELETE /api/v1/courses/:course_id/blackout_dates/:id
+ - DELETE /api/v1/accounts/:account_id/blackout_dates/:id
+ - PUT /api/v1/courses/:course_id/blackout_dates
+
+### block_editor_template.md
+ - GET /api/v1/courses/:course_id/block_editor_templates
+
+### blueprint_courses.md
+ - GET /api/v1/courses/:course_id/blueprint_templates/:template_id
+ - PUT /api/v1/courses/:course_id/blueprint_templates/:template_id/update_associations
+ - PUT /api/v1/courses/:course_id/blueprint_templates/:template_id/restrict_item
+ - GET /api/v1/courses/:course_id/blueprint_templates/:template_id/unsynced_changes
+ - GET /api/v1/courses/:course_id/blueprint_templates/:template_id/migrations/:id/details
+ - GET /api/v1/courses/:course_id/blueprint_subscriptions
+ - GET /api/v1/courses/:course_id/blueprint_subscriptions/:subscription_id/migrations
+ - GET /api/v1/courses/:course_id/blueprint_subscriptions/:subscription_id/migrations/:id
+ - GET /api/v1/courses/:course_id/blueprint_subscriptions/:subscription_id/migrations/:id/details
+
+### bookmarks.md
+ - GET /api/v1/users/self/bookmarks
+ - POST /api/v1/users/self/bookmarks
+ - GET /api/v1/users/self/bookmarks/:id
+ - PUT /api/v1/users/self/bookmarks/:id
+ - DELETE /api/v1/users/self/bookmarks/:id
+
+### brand_configs.md
+ - GET /api/v1/brand_variables
+ - GET /api/v1/accounts/:account_id/brand_variables
+ - GET /api/v1/courses/:course_id/brand_variables
+
+### calendar_events.md
+ - GET /api/v1/users/:user_id/calendar_events
+ - POST /api/v1/calendar_events
+ - GET /api/v1/calendar_events/:id
+ - POST /api/v1/calendar_events/:id/reservations
+ - POST /api/v1/calendar_events/:id/reservations/:participant_id
+ - PUT /api/v1/calendar_events/:id
+ - DELETE /api/v1/calendar_events/:id
+ - POST /api/v1/calendar_events/save_enabled_account_calendars
+ - POST /api/v1/courses/:course_id/calendar_events/timetable
+ - GET /api/v1/courses/:course_id/calendar_events/timetable
+ - POST /api/v1/courses/:course_id/calendar_events/timetable_events
+
+### canvas_career_experiences.md
+ - GET /api/v1/career/enabled
+ - GET /api/v1/career/experience_summary
+ - POST /api/v1/career/switch_experience
+ - POST /api/v1/career/switch_role
+
+### collaborations.md
+ - GET /api/v1/groups/:group_id/collaborations
+ - GET /api/v1/collaborations/:id/members
+ - GET /api/v1/courses/:course_id/potential_collaborators
+ - GET /api/v1/groups/:group_id/potential_collaborators
+
+### comm_messages.md
+ - GET /api/v1/comm_messages
+
+### communication_channels.md
+ - POST /api/v1/users/:user_id/communication_channels
+ - DELETE /api/v1/users/:user_id/communication_channels/:id
+ - DELETE /api/v1/users/:user_id/communication_channels/:type/:address
+ - DELETE /api/v1/users/self/communication_channels/push
+
+### conferences.md
+ - GET /api/v1/courses/:course_id/conferences
+ - GET /api/v1/groups/:group_id/conferences
+ - GET /api/v1/conferences
+
+### content_exports.md
+ - GET /api/v1/courses/:course_id/content_exports
+ - GET /api/v1/groups/:group_id/content_exports
+ - GET /api/v1/users/:user_id/content_exports
+ - GET /api/v1/courses/:course_id/content_exports/:id
+ - GET /api/v1/groups/:group_id/content_exports/:id
+ - GET /api/v1/users/:user_id/content_exports/:id
+ - POST /api/v1/courses/:course_id/content_exports
+ - POST /api/v1/groups/:group_id/content_exports
+ - POST /api/v1/users/:user_id/content_exports
+
+### content_migrations.md
+ - GET /api/v1/accounts/:account_id/content_migrations/:content_migration_id/migration_issues
+ - GET /api/v1/courses/:course_id/content_migrations/:content_migration_id/migration_issues
+ - GET /api/v1/groups/:group_id/content_migrations/:content_migration_id/migration_issues
+ - GET /api/v1/users/:user_id/content_migrations/:content_migration_id/migration_issues
+ - GET /api/v1/accounts/:account_id/content_migrations/:content_migration_id/migration_issues/:id
+ - GET /api/v1/courses/:course_id/content_migrations/:content_migration_id/migration_issues/:id
+ - GET /api/v1/groups/:group_id/content_migrations/:content_migration_id/migration_issues/:id
+ - GET /api/v1/users/:user_id/content_migrations/:content_migration_id/migration_issues/:id
+ - PUT /api/v1/accounts/:account_id/content_migrations/:content_migration_id/migration_issues/:id
+ - PUT /api/v1/courses/:course_id/content_migrations/:content_migration_id/migration_issues/:id
+ - PUT /api/v1/groups/:group_id/content_migrations/:content_migration_id/migration_issues/:id
+ - PUT /api/v1/users/:user_id/content_migrations/:content_migration_id/migration_issues/:id
+ - GET /api/v1/accounts/:account_id/content_migrations
+ - GET /api/v1/groups/:group_id/content_migrations
+ - GET /api/v1/users/:user_id/content_migrations
+ - GET /api/v1/accounts/:account_id/content_migrations/:id
+ - GET /api/v1/groups/:group_id/content_migrations/:id
+ - GET /api/v1/users/:user_id/content_migrations/:id
+ - POST /api/v1/accounts/:account_id/content_migrations
+ - POST /api/v1/groups/:group_id/content_migrations
+ - POST /api/v1/users/:user_id/content_migrations
+ - PUT /api/v1/accounts/:account_id/content_migrations/:id
+ - PUT /api/v1/groups/:group_id/content_migrations/:id
+ - PUT /api/v1/users/:user_id/content_migrations/:id
+ - GET /api/v1/accounts/:account_id/content_migrations/migrators
+ - GET /api/v1/courses/:course_id/content_migrations/migrators
+ - GET /api/v1/groups/:group_id/content_migrations/migrators
+ - GET /api/v1/users/:user_id/content_migrations/migrators
+ - GET /api/v1/accounts/:account_id/content_migrations/:id/selective_data
+ - GET /api/v1/courses/:course_id/content_migrations/:id/selective_data
+ - GET /api/v1/groups/:group_id/content_migrations/:id/selective_data
+ - GET /api/v1/users/:user_id/content_migrations/:id/selective_data
+ - GET /api/v1/courses/:course_id/content_migrations/:id/asset_id_mapping
+
+### content_security_policy_settings.md
+ - GET /api/v1/courses/:course_id/csp_settings
+ - GET /api/v1/accounts/:account_id/csp_settings
+ - PUT /api/v1/courses/:course_id/csp_settings
+ - PUT /api/v1/accounts/:account_id/csp_settings
+ - PUT /api/v1/accounts/:account_id/csp_settings/lock
+ - POST /api/v1/accounts/:account_id/csp_settings/domains
+ - POST /api/v1/accounts/:account_id/csp_settings/domains/batch_create
+ - DELETE /api/v1/accounts/:account_id/csp_settings/domains
+
+### content_shares.md
+ - POST /api/v1/users/:user_id/content_shares
+ - GET /api/v1/users/:user_id/content_shares/sent
+ - GET /api/v1/users/:user_id/content_shares/received
+ - GET /api/v1/users/:user_id/content_shares/unread_count
+ - GET /api/v1/users/:user_id/content_shares/:id
+ - DELETE /api/v1/users/:user_id/content_shares/:id
+ - POST /api/v1/users/:user_id/content_shares/:id/add_users
+ - PUT /api/v1/users/:user_id/content_shares/:id
+
+### conversations.md
+ - GET /api/v1/conversations/batches
+ - PUT /api/v1/conversations/:id
+ - POST /api/v1/conversations/mark_all_as_read
+ - POST /api/v1/conversations/:id/add_recipients
+ - POST /api/v1/conversations/:id/add_message
+ - POST /api/v1/conversations/:id/remove_messages
+ - PUT /api/v1/conversations
+ - GET /api/v1/conversations/find_recipients
+ - GET /api/v1/conversations/unread_count
+
+### course_audit_log.md
+ - GET /api/v1/audit/course/courses/:course_id
+ - GET /api/v1/audit/course/accounts/:account_id
+
+### course_pace.md
+ - GET /api/v1/courses/:course_id/course_pacing/:id
+ - POST /api/v1/courses/:course_id/course_pacing
+ - PUT /api/v1/courses/:course_id/course_pacing/:id
+ - DELETE /api/v1/courses/:course_id/course_pacing/:id
+
+### course_quiz_extensions.md
+ - POST /api/v1/courses/:course_id/quiz_extensions
+
+### course_reports.md
+ - GET /api/v1/courses/:course_id/reports/:report_type
+
+### courses.md
+ - GET /api/v1/users/:user_id/courses
+ - GET /api/v1/courses/:course_id/users/:user_id/progress
+ - POST /api/v1/accounts/:account_id/courses
+ - POST /api/v1/courses/:course_id/files
+ - GET /api/v1/courses/:course_id/students
+ - GET /api/v1/courses/:course_id/search_users
+ - GET /api/v1/courses/:course_id/recent_students
+ - GET /api/v1/courses/:course_id/users/:id
+ - GET /api/v1/courses/:course_id/content_share_users
+ - POST /api/v1/courses/:course_id/preview_html
+ - GET /api/v1/courses/:course_id/activity_stream
+ - GET /api/v1/courses/:course_id/activity_stream/summary
+ - GET /api/v1/courses/:course_id/todo
+ - DELETE /api/v1/courses/:id
+ - GET /api/v1/courses/:course_id/settings
+ - PUT /api/v1/courses/:course_id/settings
+ - GET /api/v1/courses/:course_id/student_view_student
+ - GET /api/v1/accounts/:account_id/courses/:id
+ - PUT /api/v1/courses/:id
+ - PUT /api/v1/accounts/:account_id/courses
+ - POST /api/v1/courses/:course_id/reset_content
+ - GET /api/v1/courses/:course_id/effective_due_dates
+ - GET /api/v1/courses/:course_id/permissions
+ - GET /api/v1/courses/:course_id/bulk_user_progress
+ - POST /api/v1/courses/:id/dismiss_migration_limitation_message
+ - POST /api/v1/courses/:course_id/restore/:version_id
+ - GET /api/v1/courses/:course_id/course_copy/:id
+ - POST /api/v1/courses/:course_id/course_copy
+
+### custom_gradebook_columns.md
+ - PUT /api/v1/courses/:course_id/custom_gradebook_columns/:id
+ - DELETE /api/v1/courses/:course_id/custom_gradebook_columns/:id
+ - POST /api/v1/courses/:course_id/custom_gradebook_columns/reorder
+ - GET /api/v1/courses/:course_id/custom_gradebook_columns/:id/data
+ - PUT /api/v1/courses/:course_id/custom_gradebook_column_data
+
+### developer_key_account_bindings.md
+ - POST /api/v1/accounts/:account_id/developer_keys/:developer_key_id/developer_key_account_bindings
+
+### developer_keys.md
+ - POST /api/v1/developer_keys/:id/regenerate_secret
+
+### discovery_pages.md
+ - GET /api/v1/discovery_pages
+ - PUT /api/v1/discovery_pages
+ - POST /api/v1/discovery_pages/token
+
+### discussion_topics.md
+ - GET /api/v1/groups/:group_id/discussion_topics
+ - POST /api/v1/groups/:group_id/discussion_topics
+ - PUT /api/v1/courses/:course_id/discussion_topics/:topic_id
+ - PUT /api/v1/groups/:group_id/discussion_topics/:topic_id
+ - DELETE /api/v1/courses/:course_id/discussion_topics/:topic_id
+ - DELETE /api/v1/groups/:group_id/discussion_topics/:topic_id
+ - POST /api/v1/courses/:course_id/discussion_topics/reorder
+ - POST /api/v1/groups/:group_id/discussion_topics/reorder
+ - PUT /api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:id
+ - PUT /api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:id
+ - DELETE /api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:id
+ - DELETE /api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:id
+ - GET /api/v1/courses/:course_id/discussion_topics/:topic_id
+ - GET /api/v1/groups/:group_id/discussion_topics/:topic_id
+ - GET /api/v1/courses/:course_id/discussion_topics/:topic_id/summaries
+ - GET /api/v1/groups/:group_id/discussion_topics/:topic_id/summaries
+ - POST /api/v1/courses/:course_id/discussion_topics/:topic_id/summaries
+ - POST /api/v1/groups/:group_id/discussion_topics/:topic_id/summaries
+ - PUT /api/v1/courses/:course_id/discussion_topics/:topic_id/summaries/disable
+ - PUT /api/v1/groups/:group_id/discussion_topics/:topic_id/summaries/disable
+ - POST /api/v1/courses/:course_id/discussion_topics/:topic_id/summaries/:summary_id/feedback
+ - POST /api/v1/groups/:group_id/discussion_topics/:topic_id/summaries/:summary_id/feedback
+ - GET /api/v1/courses/:course_id/discussion_topics/:topic_id/view
+ - GET /api/v1/groups/:group_id/discussion_topics/:topic_id/view
+ - POST /api/v1/courses/:course_id/discussion_topics/:topic_id/entries
+ - POST /api/v1/groups/:group_id/discussion_topics/:topic_id/entries
+ - POST /api/v1/courses/:course_id/discussion_topics/:topic_id/duplicate
+ - POST /api/v1/groups/:group_id/discussion_topics/:topic_id/duplicate
+ - GET /api/v1/courses/:course_id/discussion_topics/:topic_id/entries
+ - GET /api/v1/groups/:group_id/discussion_topics/:topic_id/entries
+ - POST /api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/replies
+ - POST /api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/replies
+ - GET /api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/replies
+ - GET /api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/replies
+ - GET /api/v1/courses/:course_id/discussion_topics/:topic_id/entry_list
+ - GET /api/v1/groups/:group_id/discussion_topics/:topic_id/entry_list
+ - PUT /api/v1/courses/:course_id/discussion_topics/:topic_id/read
+ - PUT /api/v1/groups/:group_id/discussion_topics/:topic_id/read
+ - PUT /api/v1/courses/:course_id/discussion_topics/read_all
+ - PUT /api/v1/groups/:group_id/discussion_topics/read_all
+ - DELETE /api/v1/courses/:course_id/discussion_topics/:topic_id/read
+ - DELETE /api/v1/groups/:group_id/discussion_topics/:topic_id/read
+ - PUT /api/v1/courses/:course_id/discussion_topics/:topic_id/read_all
+ - PUT /api/v1/groups/:group_id/discussion_topics/:topic_id/read_all
+ - DELETE /api/v1/courses/:course_id/discussion_topics/:topic_id/read_all
+ - DELETE /api/v1/groups/:group_id/discussion_topics/:topic_id/read_all
+ - PUT /api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/read
+ - PUT /api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/read
+ - DELETE /api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/read
+ - DELETE /api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/read
+ - POST /api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/rating
+ - POST /api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/rating
+ - PUT /api/v1/courses/:course_id/discussion_topics/:topic_id/subscribed
+ - PUT /api/v1/groups/:group_id/discussion_topics/:topic_id/subscribed
+ - DELETE /api/v1/courses/:course_id/discussion_topics/:topic_id/subscribed
+ - DELETE /api/v1/groups/:group_id/discussion_topics/:topic_id/subscribed
+
+### e_portfolios.md
+ - GET /api/v1/users/:user_id/eportfolios
+ - GET /api/v1/eportfolios/:id
+ - DELETE /api/v1/eportfolios/:id
+ - GET /api/v1/eportfolios/:eportfolio_id/pages
+ - PUT /api/v1/eportfolios/:eportfolio_id/moderate
+ - PUT /api/v1/users/:user_id/eportfolios
+ - PUT /api/v1/eportfolios/:eportfolio_id/restore
+
+### e_pub_exports.md
+ - GET /api/v1/epub_exports
+ - POST /api/v1/courses/:course_id/epub_exports
+ - GET /api/v1/courses/:course_id/epub_exports/:id
+
+### enrollment_terms.md
+ - POST /api/v1/accounts/:account_id/terms
+ - PUT /api/v1/accounts/:account_id/terms/:id
+ - DELETE /api/v1/accounts/:account_id/terms/:id
+ - GET /api/v1/accounts/:account_id/terms
+ - GET /api/v1/accounts/:account_id/terms/:id
+
+### enrollments.md
+ - GET /api/v1/sections/:section_id/enrollments
+ - GET /api/v1/users/:user_id/enrollments
+ - GET /api/v1/accounts/:account_id/enrollments/:id
+ - POST /api/v1/courses/:course_id/enrollments
+ - POST /api/v1/sections/:section_id/enrollments
+ - POST /api/v1/accounts/:account_id/bulk_enrollment
+ - DELETE /api/v1/courses/:course_id/enrollments/:id
+ - POST /api/v1/courses/:course_id/enrollments/:id/accept
+ - POST /api/v1/courses/:course_id/enrollments/:id/reject
+ - PUT /api/v1/courses/:course_id/enrollments/:id/reactivate
+ - PUT /api/v1/courses/:course_id/users/:user_id/last_attended
+ - GET /api/v1/users/:user_id/temporary_enrollment_status
+ - GET /api/v1/temporary_enrollment_status
+
+### error_reports.md
+ - POST /api/v1/error_reports
+
+### external_tools.md
+ - GET /api/v1/accounts/:account_id/external_tools
+ - GET /api/v1/groups/:group_id/external_tools
+ - GET /api/v1/courses/:course_id/external_tools/sessionless_launch
+ - GET /api/v1/accounts/:account_id/external_tools/sessionless_launch
+ - GET /api/v1/accounts/:account_id/external_tools/:external_tool_id
+ - POST /api/v1/accounts/:account_id/external_tools
+ - PUT /api/v1/courses/:course_id/external_tools/:external_tool_id
+ - PUT /api/v1/accounts/:account_id/external_tools/:external_tool_id
+ - DELETE /api/v1/accounts/:account_id/external_tools/:external_tool_id
+ - POST /api/v1/accounts/:account_id/external_tools/rce_favorites/:id
+ - DELETE /api/v1/accounts/:account_id/external_tools/rce_favorites/:id
+ - POST /api/v1/accounts/:account_id/external_tools/top_nav_favorites/:id
+ - DELETE /api/v1/accounts/:account_id/external_tools/top_nav_favorites/:id
+ - GET /api/v1/external_tools/visible_course_nav_tools
+ - GET /api/v1/courses/:course_id/external_tools/visible_course_nav_tools
+
+### favorites.md
+ - GET /api/v1/users/self/favorites/courses
+ - GET /api/v1/users/self/favorites/groups
+ - POST /api/v1/users/self/favorites/courses/:id
+ - POST /api/v1/users/self/favorites/groups/:id
+ - DELETE /api/v1/users/self/favorites/courses/:id
+ - DELETE /api/v1/users/self/favorites/groups/:id
+ - DELETE /api/v1/users/self/favorites/courses
+ - DELETE /api/v1/users/self/favorites/groups
+
+### feature_flags.md
+ - GET /api/v1/courses/:course_id/features
+ - GET /api/v1/accounts/:account_id/features
+ - GET /api/v1/users/:user_id/features
+ - GET /api/v1/courses/:course_id/features/enabled
+ - GET /api/v1/accounts/:account_id/features/enabled
+ - GET /api/v1/users/:user_id/features/enabled
+ - GET /api/v1/features/environment
+ - GET /api/v1/courses/:course_id/features/flags/:feature
+ - GET /api/v1/accounts/:account_id/features/flags/:feature
+ - GET /api/v1/users/:user_id/features/flags/:feature
+ - PUT /api/v1/courses/:course_id/features/flags/:feature
+ - PUT /api/v1/accounts/:account_id/features/flags/:feature
+ - PUT /api/v1/users/:user_id/features/flags/:feature
+ - DELETE /api/v1/courses/:course_id/features/flags/:feature
+ - DELETE /api/v1/accounts/:account_id/features/flags/:feature
+ - DELETE /api/v1/users/:user_id/features/flags/:feature
+
+### files.md
+ - GET /api/v1/courses/:course_id/files/quota
+ - GET /api/v1/groups/:group_id/files/quota
+ - GET /api/v1/users/:user_id/files/quota
+ - GET /api/v1/users/:user_id/files
+ - GET /api/v1/groups/:group_id/files
+ - GET /api/v1/folders/:id/files
+ - GET /api/v1/files/:id/public_url
+ - GET /api/v1/files/:id
+ - POST /api/v1/files/:id
+ - GET /api/v1/courses/:course_id/files/:id
+ - GET /api/v1/groups/:group_id/files/:id
+ - GET /api/v1/users/:user_id/files/:id
+ - GET /api/v1/courses/:course_id/files/file_ref/:migration_id
+ - GET /accounts/:account_id/files/:file_id/download
+ - GET /assessment_questions/:assessment_question_id/files/:file_id/download
+ - GET /assignments/:assignment_id/files/:id/download
+ - GET /courses/:course_id/files/:file_id/download
+ - GET /files/:file_id/download
+ - GET /groups/:group_id/files/:file_id/download
+ - GET /quiz_statistics/:quiz_statistics_id/files/:file_id/download
+ - GET /quizzes/quiz_submissions/:quiz_submission_id/files/:file_id/download
+ - GET /users/:user_id/files/:file_id/download
+ - PUT /api/v1/files/:id
+ - DELETE /api/v1/files/:id
+ - GET /api/v1/files/:id/icon_metadata
+ - POST /api/v1/files/:id/reset_verifier
+ - GET /api/v1/folders/:id/folders
+ - GET /api/v1/courses/:course_id/folders
+ - GET /api/v1/users/:user_id/folders
+ - GET /api/v1/groups/:group_id/folders
+ - GET /api/v1/courses/:course_id/folders/by_path/*full_path
+ - GET /api/v1/courses/:course_id/folders/by_path
+ - GET /api/v1/users/:user_id/folders/by_path/*full_path
+ - GET /api/v1/users/:user_id/folders/by_path
+ - GET /api/v1/groups/:group_id/folders/by_path/*full_path
+ - GET /api/v1/groups/:group_id/folders/by_path
+ - GET /api/v1/courses/:course_id/folders/:id
+ - GET /api/v1/users/:user_id/folders/:id
+ - GET /api/v1/groups/:group_id/folders/:id
+ - GET /api/v1/folders/:id
+ - PUT /api/v1/folders/:id
+ - POST /api/v1/courses/:course_id/folders
+ - POST /api/v1/users/:user_id/folders
+ - POST /api/v1/groups/:group_id/folders
+ - POST /api/v1/folders/:folder_id/folders
+ - POST /api/v1/accounts/:account_id/folders
+ - DELETE /api/v1/folders/:id
+ - POST /api/v1/folders/:folder_id/files
+ - POST /api/v1/folders/:dest_folder_id/copy_file
+ - POST /api/v1/folders/:dest_folder_id/copy_folder
+ - GET /api/v1/courses/:course_id/folders/media
+ - GET /api/v1/groups/:group_id/folders/media
+ - PUT /api/v1/courses/:course_id/usage_rights
+ - PUT /api/v1/groups/:group_id/usage_rights
+ - PUT /api/v1/users/:user_id/usage_rights
+ - DELETE /api/v1/courses/:course_id/usage_rights
+ - DELETE /api/v1/groups/:group_id/usage_rights
+ - DELETE /api/v1/users/:user_id/usage_rights
+ - GET /api/v1/courses/:course_id/content_licenses
+ - GET /api/v1/groups/:group_id/content_licenses
+ - GET /api/v1/users/:user_id/content_licenses
+
+### grade_change_log.md
+ - GET /api/v1/audit/grade_change/assignments/:assignment_id
+ - GET /api/v1/audit/grade_change/courses/:course_id
+ - GET /api/v1/audit/grade_change/students/:student_id
+ - GET /api/v1/audit/grade_change/graders/:grader_id
+ - GET /api/v1/audit/grade_change
+
+### gradebook_history.md
+ - GET /api/v1/courses/:course_id/gradebook_history/days
+ - GET /api/v1/courses/:course_id/gradebook_history/:date
+ - GET /api/v1/courses/:course_id/gradebook_history/:date/graders/:grader_id/assignments/:assignment_id/submissions
+ - GET /api/v1/courses/:course_id/gradebook_history/feed
+
+### grading_period_sets.md
+ - GET /api/v1/accounts/:account_id/grading_period_sets
+ - POST /api/v1/accounts/:account_id/grading_period_sets
+ - DELETE /api/v1/accounts/:account_id/grading_period_sets/:id
+
+### grading_periods.md
+ - GET /api/v1/accounts/:account_id/grading_periods
+ - GET /api/v1/courses/:course_id/grading_periods
+ - GET /api/v1/courses/:course_id/grading_periods/:id
+ - PUT /api/v1/courses/:course_id/grading_periods/:id
+ - DELETE /api/v1/courses/:course_id/grading_periods/:id
+ - DELETE /api/v1/accounts/:account_id/grading_periods/:id
+
+### grading_standards.md
+ - POST /api/v1/accounts/:account_id/grading_standards
+ - POST /api/v1/courses/:course_id/grading_standards
+ - GET /api/v1/courses/:course_id/grading_standards
+ - GET /api/v1/accounts/:account_id/grading_standards
+ - GET /api/v1/courses/:course_id/grading_standards/:grading_standard_id
+ - GET /api/v1/accounts/:account_id/grading_standards/:grading_standard_id
+ - PUT /api/v1/courses/:course_id/grading_standards/:grading_standard_id
+ - PUT /api/v1/accounts/:account_id/grading_standards/:grading_standard_id
+ - DELETE /api/v1/courses/:course_id/grading_standards/:grading_standard_id
+ - DELETE /api/v1/accounts/:account_id/grading_standards/:grading_standard_id
+
+### group_categories.md
+ - GET /api/v1/accounts/:account_id/group_categories
+ - POST /api/v1/accounts/:account_id/group_categories
+ - POST /api/v1/courses/:course_id/group_categories/bulk_manage_differentiation_tag
+ - POST /api/v1/courses/:course_id/group_categories/import_tags
+ - POST /api/v1/group_categories/:group_category_id/import
+ - PUT /api/v1/group_categories/:group_category_id
+ - GET /api/v1/group_categories/:group_category_id/groups
+ - GET /api/v1/group_categories/:group_category_id/export
+ - GET /api/v1/courses/:course_id/group_categories/export_tags
+ - GET /api/v1/group_categories/:group_category_id/users
+ - POST /api/v1/group_categories/:group_category_id/assign_unassigned_members
+
+### groups.md
+ - GET /api/v1/users/self/groups
+ - GET /api/v1/accounts/:account_id/groups
+ - GET /api/v1/courses/:course_id/bulk_user_tags
+ - POST /api/v1/groups
+ - POST /api/v1/group_categories/:group_category_id/groups
+ - PUT /api/v1/groups/:group_id
+ - POST /api/v1/groups/:group_id/invite
+ - GET /api/v1/groups/:group_id/users
+ - POST /api/v1/groups/:group_id/files
+ - POST /api/v1/groups/:group_id/preview_html
+ - GET /api/v1/groups/:group_id/activity_stream
+ - GET /api/v1/groups/:group_id/activity_stream/summary
+ - GET /api/v1/groups/:group_id/permissions
+ - GET /api/v1/groups/:group_id/memberships
+ - GET /api/v1/groups/:group_id/memberships/:membership_id
+ - GET /api/v1/groups/:group_id/users/:user_id
+ - POST /api/v1/groups/:group_id/memberships
+ - PUT /api/v1/groups/:group_id/memberships/:membership_id
+ - PUT /api/v1/groups/:group_id/users/:user_id
+ - DELETE /api/v1/groups/:group_id/memberships/:membership_id
+ - DELETE /api/v1/groups/:group_id/users/:user_id
+ - DELETE /api/v1/groups/:group_id/users
+
+### history.md
+ - GET /api/v1/users/:user_id/history
+
+### inst_access_tokens.md
+ - POST /api/v1/inst_access_tokens
+
+### jw_ts.md
+ - POST /api/v1/jwts
+ - POST /api/v1/jwts/refresh
+
+### late_policy.md
+ - GET /api/v1/courses/:id/late_policy
+ - POST /api/v1/courses/:id/late_policy
+
+### learning_object_dates.md
+ - GET /api/v1/courses/:course_id/modules/:context_module_id/date_details
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/date_details
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/date_details
+ - GET /api/v1/courses/:course_id/discussion_topics/:discussion_topic_id/date_details
+ - GET /api/v1/courses/:course_id/pages/:url_or_id/date_details
+ - GET /api/v1/courses/:course_id/files/:attachment_id/date_details
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/date_details
+ - PUT /api/v1/courses/:course_id/quizzes/:quiz_id/date_details
+ - PUT /api/v1/courses/:course_id/discussion_topics/:discussion_topic_id/date_details
+ - PUT /api/v1/courses/:course_id/pages/:url_or_id/date_details
+ - PUT /api/v1/courses/:course_id/files/:attachment_id/date_details
+
+### line_items.md
+ - POST /api/lti/courses/:course_id/line_items
+ - PUT /api/lti/courses/:course_id/line_items/:id
+ - GET /api/lti/courses/:course_id/line_items/:id
+ - GET /api/lti/courses/:course_id/line_items
+ - DELETE /api/lti/courses/:course_id/line_items/:id
+
+### live_assessments.md
+ - POST /api/v1/courses/:course_id/live_assessments/:assessment_id/results
+ - GET /api/v1/courses/:course_id/live_assessments/:assessment_id/results
+ - POST /api/v1/courses/:course_id/live_assessments
+ - GET /api/v1/courses/:course_id/live_assessments
+
+### logins.md
+ - GET /api/v1/accounts/:account_id/logins
+ - GET /api/v1/users/:user_id/logins
+ - POST /api/v1/users/reset_password
+ - POST /api/v1/accounts/:account_id/logins
+ - PUT /api/v1/accounts/:account_id/logins/:id
+ - DELETE /api/v1/users/:user_id/logins/:id
+
+### lti_context_controls.md
+ - GET /api/v1/accounts/:account_id/lti_registrations/:registration_id/controls
+ - GET /api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/:id
+ - POST /api/v1/accounts/:current_account_id/lti_registrations/:registration_id/controls
+ - POST /api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/bulk
+ - PUT /api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/:id
+ - DELETE /api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/:id
+
+### lti_launch_definitions.md
+ - GET /api/v1/courses/:course_id/lti_apps/launch_definitions
+ - GET /api/v1/accounts/:account_id/lti_apps/launch_definitions
+
+### lti_registrations.md
+ - GET /api/v1/accounts/:account_id/lti_registrations/:id
+ - POST /api/v1/accounts/:account_id/lti_registrations
+ - GET /api/v1/accounts/:account_id/lti_registration_by_client_id/:client_id
+ - GET /api/v1/accounts/:account_id/lti_registrations/by_utid/:utid
+ - GET /api/v1/accounts/:account_id/lti_registrations/install_status/:client_id
+ - PUT /api/v1/accounts/:account_id/lti_registrations/:id
+ - PUT /api/v1/accounts/:account_id/lti_registrations/:id/reset
+ - DELETE /api/v1/accounts/:account_id/lti_registrations/:id
+ - POST /api/v1/accounts/:account_id/lti_registrations/:id/bind
+ - DELETE /api/v1/accounts/:account_id/lti_registrations/:id/bind
+ - POST /api/v1/accounts/:account_id/lti_registrations/:id/install_from_template
+ - GET /api/v1/accounts/:account_id/lti_registrations/:registration_id/deployments/:deployment_id/context_search
+ - GET /api/v1/accounts/:account_id/lti_registrations/:id/overlay_history
+ - GET /api/v1/accounts/:account_id/lti_registrations/:id/history
+ - GET /api/v1/accounts/:account_id/lti_registrations/:id/update_requests/:update_request_id
+ - GET /api/v1/accounts/:account_id/lti_registrations/:id/latest_update_request
+ - PUT /api/v1/accounts/:account_id/lti_registrations/:id/update_requests/:update_request_id/apply
+
+### lti_resource_links.md
+ - GET /api/v1/courses/:course_id/lti_resource_links
+ - GET /api/v1/courses/:course_id/lti_resource_links/:id
+ - POST /api/v1/courses/:course_id/lti_resource_links
+ - POST /api/v1/courses/:course_id/lti_resource_links/bulk
+ - PUT /api/v1/courses/:course_id/lti_resource_links/:id
+ - DELETE /api/v1/courses/:course_id/lti_resource_links/:id
+
+### media_objects.md
+ - GET /api/v1/media_objects/:media_object_id/media_tracks
+ - GET /api/v1/media_attachments/:attachment_id/media_tracks
+ - PUT /api/v1/media_objects/:media_object_id/media_tracks
+ - PUT /api/v1/media_attachments/:attachment_id/media_tracks
+ - GET /api/v1/media_objects
+ - GET /api/v1/courses/:course_id/media_objects
+ - GET /api/v1/groups/:group_id/media_objects
+ - GET /api/v1/media_attachments
+ - GET /api/v1/courses/:course_id/media_attachments
+ - GET /api/v1/groups/:group_id/media_attachments
+ - PUT /api/v1/media_objects/:media_object_id
+ - PUT /api/v1/media_attachments/:attachment_id
+
+### moderated_grading.md
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/moderated_students
+ - POST /api/v1/courses/:course_id/assignments/:assignment_id/moderated_students
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/bulk_select
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/status
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/:provisional_grade_id/select
+ - POST /api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/publish
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/anonymous_provisional_grades/status
+
+### modules.md
+ - PUT /api/v1/courses/:course_id/modules/:id/relock
+ - GET /api/v1/courses/:course_id/modules/:module_id/items
+ - GET /api/v1/courses/:course_id/modules/:module_id/items/:id
+ - POST /api/v1/courses/:course_id/modules/:module_id/items
+ - PUT /api/v1/courses/:course_id/modules/:module_id/items/:id
+ - POST /api/v1/courses/:course_id/modules/:module_id/items/:id/select_mastery_path
+ - DELETE /api/v1/courses/:course_id/modules/:module_id/items/:id
+ - PUT /api/v1/courses/:course_id/modules/:module_id/items/:id/done
+ - GET /api/v1/courses/:course_id/module_item_sequence
+ - POST /api/v1/courses/:course_id/modules/:module_id/items/:id/mark_read
+ - GET /api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides
+ - PUT /api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides
+
+### names_and_role.md
+ - GET /api/lti/courses/:course_id/names_and_roles
+ - GET /api/lti/groups/:group_id/names_and_roles
+
+### new_quiz_items.md
+ - GET /api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items/:item_id
+ - GET /api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items
+ - POST /api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items
+ - DELETE /api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items/:item_id
+ - GET /api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items/media_upload_url
+
+### new_quizzes.md
+ - GET /api/quiz/v1/courses/:course_id/quizzes/:assignment_id
+ - GET /api/quiz/v1/courses/:course_id/quizzes
+ - POST /api/quiz/v1/courses/:course_id/quizzes
+ - DELETE /api/quiz/v1/courses/:course_id/quizzes/:assignment_id
+
+### new_quizzes_accommodations.md
+ - POST /api/quiz/v1/courses/:course_id/quizzes/:assignment_id/accommodations
+ - POST /api/quiz/v1/courses/:course_id/accommodations
+
+### new_quizzes_reports.md
+ - POST /api/quiz/v1/courses/:course_id/quizzes/:assignment_id/reports
+
+### notice_handlers.md
+ - GET /api/lti/notice-handlers/:context_external_tool_id
+ - PUT /api/lti/notice-handlers/:context_external_tool_id
+
+### notification_preferences.md
+ - GET /api/v1/users/:user_id/communication_channels/:type/:address/notification_preferences
+ - GET /api/v1/users/:user_id/communication_channels/:communication_channel_id/notification_preference_categories
+ - GET /api/v1/users/:user_id/communication_channels/:type/:address/notification_preferences/:notification
+ - PUT /api/v1/users/self/communication_channels/:type/:address/notification_preferences/:notification
+ - PUT /api/v1/users/self/communication_channels/:communication_channel_id/notification_preference_categories/:category
+ - PUT /api/v1/users/self/communication_channels/:type/:address/notification_preferences
+
+### originality_reports.md
+ - POST /api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report
+ - PUT /api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report/:id
+ - PUT /api/lti/assignments/:assignment_id/files/:file_id/originality_report
+ - GET /api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report/:id
+ - GET /api/lti/assignments/:assignment_id/files/:file_id/originality_report
+
+### outcome_groups.md
+ - GET /api/v1/global/root_outcome_group
+ - GET /api/v1/accounts/:account_id/root_outcome_group
+ - GET /api/v1/courses/:course_id/root_outcome_group
+ - GET /api/v1/accounts/:account_id/outcome_groups
+ - GET /api/v1/accounts/:account_id/outcome_group_links
+ - GET /api/v1/courses/:course_id/outcome_group_links
+ - GET /api/v1/global/outcome_groups/:id
+ - GET /api/v1/accounts/:account_id/outcome_groups/:id
+ - PUT /api/v1/global/outcome_groups/:id
+ - PUT /api/v1/accounts/:account_id/outcome_groups/:id
+ - PUT /api/v1/courses/:course_id/outcome_groups/:id
+ - DELETE /api/v1/global/outcome_groups/:id
+ - DELETE /api/v1/accounts/:account_id/outcome_groups/:id
+ - DELETE /api/v1/courses/:course_id/outcome_groups/:id
+ - GET /api/v1/global/outcome_groups/:id/outcomes
+ - GET /api/v1/accounts/:account_id/outcome_groups/:id/outcomes
+ - GET /api/v1/courses/:course_id/outcome_groups/:id/outcomes
+ - POST /api/v1/global/outcome_groups/:id/outcomes
+ - PUT /api/v1/global/outcome_groups/:id/outcomes/:outcome_id
+ - POST /api/v1/accounts/:account_id/outcome_groups/:id/outcomes
+ - PUT /api/v1/accounts/:account_id/outcome_groups/:id/outcomes/:outcome_id
+ - POST /api/v1/courses/:course_id/outcome_groups/:id/outcomes
+ - PUT /api/v1/courses/:course_id/outcome_groups/:id/outcomes/:outcome_id
+ - DELETE /api/v1/global/outcome_groups/:id/outcomes/:outcome_id
+ - DELETE /api/v1/accounts/:account_id/outcome_groups/:id/outcomes/:outcome_id
+ - DELETE /api/v1/courses/:course_id/outcome_groups/:id/outcomes/:outcome_id
+ - GET /api/v1/global/outcome_groups/:id/subgroups
+ - GET /api/v1/accounts/:account_id/outcome_groups/:id/subgroups
+ - GET /api/v1/courses/:course_id/outcome_groups/:id/subgroups
+ - POST /api/v1/global/outcome_groups/:id/subgroups
+ - POST /api/v1/accounts/:account_id/outcome_groups/:id/subgroups
+ - POST /api/v1/courses/:course_id/outcome_groups/:id/subgroups
+ - POST /api/v1/global/outcome_groups/:id/import
+ - POST /api/v1/accounts/:account_id/outcome_groups/:id/import
+ - POST /api/v1/courses/:course_id/outcome_groups/:id/import
+
+### outcome_imports.md
+ - POST /api/v1/accounts/:account_id/outcome_imports(/group/:learning_outcome_group_id)
+ - POST /api/v1/courses/:course_id/outcome_imports(/group/:learning_outcome_group_id)
+ - GET /api/v1/accounts/:account_id/outcome_imports/:id
+ - GET /api/v1/courses/:course_id/outcome_imports/:id
+ - GET /api/v1/accounts/:account_id/outcome_imports/:id/created_group_ids
+ - GET /api/v1/courses/:course_id/outcome_imports/:id/created_group_ids
+
+### outcome_results.md
+ - POST /api/v1/courses/:course_id/assign_outcome_order
+ - GET /api/v1/courses/:course_id/outcomes/:outcome_id/contributing_scores
+ - GET /api/v1/courses/:course_id/outcome_mastery_distribution
+ - POST /api/v1/enqueue_outcome_rollup_calculation
+
+### outcomes.md
+ - GET /api/v1/courses/:course_id/outcome_alignments
+
+### pages.md
+ - GET /api/v1/courses/:course_id/front_page
+ - GET /api/v1/groups/:group_id/front_page
+ - POST /api/v1/courses/:course_id/pages/:url_or_id/duplicate
+ - PUT /api/v1/courses/:course_id/front_page
+ - PUT /api/v1/groups/:group_id/front_page
+ - GET /api/v1/groups/:group_id/pages
+ - POST /api/v1/groups/:group_id/pages
+ - GET /api/v1/groups/:group_id/pages/:url_or_id
+ - PUT /api/v1/groups/:group_id/pages/:url_or_id
+ - DELETE /api/v1/groups/:group_id/pages/:url_or_id
+ - GET /api/v1/courses/:course_id/pages/:url_or_id/revisions
+ - GET /api/v1/groups/:group_id/pages/:url_or_id/revisions
+ - GET /api/v1/courses/:course_id/pages/:url_or_id/revisions/latest
+ - GET /api/v1/groups/:group_id/pages/:url_or_id/revisions/latest
+ - GET /api/v1/courses/:course_id/pages/:url_or_id/revisions/:revision_id
+ - GET /api/v1/groups/:group_id/pages/:url_or_id/revisions/:revision_id
+ - POST /api/v1/courses/:course_id/pages/:url_or_id/revisions/:revision_id
+ - POST /api/v1/groups/:group_id/pages/:url_or_id/revisions/:revision_id
+
+### peer_reviews.md
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/peer_reviews
+ - GET /api/v1/sections/:section_id/assignments/:assignment_id/peer_reviews
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews
+ - GET /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews
+ - POST /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews
+ - POST /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews
+ - DELETE /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews
+ - DELETE /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews
+ - POST /api/v1/courses/:course_id/assignments/:assignment_id/allocate
+
+### planner.md
+ - GET /api/v1/planner/items
+ - GET /api/v1/users/:user_id/planner/items
+ - GET /api/v1/planner_notes
+ - GET /api/v1/planner_notes/:id
+ - PUT /api/v1/planner_notes/:id
+ - POST /api/v1/planner_notes
+ - DELETE /api/v1/planner_notes/:id
+ - GET /api/v1/planner/overrides
+ - GET /api/v1/planner/overrides/:id
+ - PUT /api/v1/planner/overrides/:id
+ - POST /api/v1/planner/overrides
+ - DELETE /api/v1/planner/overrides/:id
+
+### poll_choices.md
+ - GET /api/v1/polls/:poll_id/poll_choices
+ - GET /api/v1/polls/:poll_id/poll_choices/:id
+ - POST /api/v1/polls/:poll_id/poll_choices
+ - PUT /api/v1/polls/:poll_id/poll_choices/:id
+ - DELETE /api/v1/polls/:poll_id/poll_choices/:id
+
+### poll_sessions.md
+ - GET /api/v1/polls/:poll_id/poll_sessions
+ - GET /api/v1/polls/:poll_id/poll_sessions/:id
+ - POST /api/v1/polls/:poll_id/poll_sessions
+ - PUT /api/v1/polls/:poll_id/poll_sessions/:id
+ - DELETE /api/v1/polls/:poll_id/poll_sessions/:id
+ - GET /api/v1/polls/:poll_id/poll_sessions/:id/open
+ - GET /api/v1/polls/:poll_id/poll_sessions/:id/close
+ - GET /api/v1/poll_sessions/opened
+ - GET /api/v1/poll_sessions/closed
+
+### poll_submissions.md
+ - GET /api/v1/polls/:poll_id/poll_sessions/:poll_session_id/poll_submissions/:id
+ - POST /api/v1/polls/:poll_id/poll_sessions/:poll_session_id/poll_submissions
+
+### polls.md
+ - GET /api/v1/polls
+ - GET /api/v1/polls/:id
+ - POST /api/v1/polls
+ - PUT /api/v1/polls/:id
+ - DELETE /api/v1/polls/:id
+
+### proficiency_ratings.md
+ - POST /api/v1/accounts/:account_id/outcome_proficiency
+ - POST /api/v1/courses/:course_id/outcome_proficiency
+ - GET /api/v1/accounts/:account_id/outcome_proficiency
+ - GET /api/v1/courses/:course_id/outcome_proficiency
+
+### progress.md
+ - GET /api/v1/progress/:id
+ - POST /api/v1/progress/:id/cancel
+ - GET /api/lti/courses/:course_id/progress/:id
+
+### public_jwk.md
+ - PUT /api/lti/developer_key/update_public_jwk
+
+### quiz_assignment_overrides.md
+ - GET /api/v1/courses/:course_id/quizzes/assignment_overrides
+ - GET /api/v1/courses/:course_id/new_quizzes/assignment_overrides
+
+### quiz_extensions.md
+ - POST /api/v1/courses/:course_id/quizzes/:quiz_id/extensions
+
+### quiz_ip_filters.md
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/ip_filters
+
+### quiz_question_groups.md
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/groups
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id
+ - POST /api/v1/courses/:course_id/quizzes/:quiz_id/groups
+ - PUT /api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id
+ - DELETE /api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id
+ - POST /api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id/reorder
+
+### quiz_questions.md
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/questions
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id
+ - POST /api/v1/courses/:course_id/quizzes/:quiz_id/questions
+ - PUT /api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id
+ - DELETE /api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id
+
+### quiz_reports.md
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/reports
+ - POST /api/v1/courses/:course_id/quizzes/:quiz_id/reports
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/reports/:id
+ - DELETE /api/v1/courses/:course_id/quizzes/:quiz_id/reports/:id
+
+### quiz_statistics.md
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/statistics
+
+### quiz_submission_events.md
+ - POST /api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/events
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/events
+
+### quiz_submission_files.md
+ - POST /api/v1/courses/:course_id/quizzes/:quiz_id/submissions/self/files
+
+### quiz_submission_questions.md
+ - GET /api/v1/quiz_submissions/:quiz_submission_id/questions
+ - POST /api/v1/quiz_submissions/:quiz_submission_id/questions
+ - GET /api/v1/quiz_submissions/:quiz_submission_id/questions/:id/formatted_answer
+ - PUT /api/v1/quiz_submissions/:quiz_submission_id/questions/:id/flag
+ - PUT /api/v1/quiz_submissions/:quiz_submission_id/questions/:id/unflag
+
+### quiz_submission_user_list.md
+ - POST /api/v1/courses/:course_id/quizzes/:id/submission_users/message
+
+### quiz_submissions.md
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/submissions
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/submission
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id
+ - POST /api/v1/courses/:course_id/quizzes/:quiz_id/submissions
+ - PUT /api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id
+ - POST /api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/complete
+ - GET /api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/time
+
+### quizzes.md
+ - POST /api/v1/courses/:course_id/quizzes/:id/reorder
+ - POST /api/v1/courses/:course_id/quizzes/:id/validate_access_code
+
+### result.md
+ - GET /api/lti/courses/:course_id/line_items/:line_item_id/results
+ - GET /api/lti/courses/:course_id/line_items/:line_item_id/results/:id
+
+### roles.md
+ - POST /api/v1/accounts/:account_id/roles
+ - DELETE /api/v1/accounts/:account_id/roles/:id
+ - POST /api/v1/accounts/:account_id/roles/:id/activate
+ - PUT /api/v1/accounts/:account_id/roles/:id
+ - GET /api/v1/accounts/:account_id/roles/permissions
+ - GET /api/v1/permissions/:context_type/:permission/help
+ - GET /api/v1/permissions/groups
+
+### rubrics.md
+ - POST /api/v1/courses/:course_id/rubrics
+ - PUT /api/v1/courses/:course_id/rubrics/:id
+ - DELETE /api/v1/courses/:course_id/rubrics/:id
+ - GET /api/v1/accounts/:account_id/rubrics
+ - GET /api/v1/accounts/:account_id/rubrics/:id
+ - GET /api/v1/courses/:course_id/rubrics/:id
+ - GET /api/v1/courses/:course_id/rubrics/:id/used_locations
+ - GET /api/v1/accounts/:account_id/rubrics/:id/used_locations
+ - POST /api/v1/courses/:course_id/rubrics/upload
+ - POST /api/v1/accounts/:account_id/rubrics/upload
+ - GET /api/v1/rubrics/upload_template
+ - GET /api/v1/courses/:course_id/rubrics/upload/:id
+ - GET /api/v1/accounts/:account_id/rubrics/upload/:id
+ - POST /api/v1/courses/:course_id/rubric_associations/:rubric_association_id/rubric_assessments
+ - PUT /api/v1/courses/:course_id/rubric_associations/:rubric_association_id/rubric_assessments/:id
+ - DELETE /api/v1/courses/:course_id/rubric_associations/:rubric_association_id/rubric_assessments/:id
+ - POST /api/v1/courses/:course_id/rubric_associations
+ - PUT /api/v1/courses/:course_id/rubric_associations/:id
+ - DELETE /api/v1/courses/:course_id/rubric_associations/:id
+
+### sandboxes.md
+ - GET /api/lti/uuid_map
+
+### score.md
+ - POST /api/lti/courses/:course_id/line_items/:line_item_id/scores
+
+### search.md
+ - GET /api/v1/conversations/find_recipients
+ - GET /api/v1/search/recipients
+ - GET /api/v1/search/all_courses
+
+### sections.md
+ - POST /api/v1/courses/:course_id/sections
+ - POST /api/v1/sections/:id/crosslist/:new_course_id
+ - DELETE /api/v1/sections/:id/crosslist
+ - PUT /api/v1/sections/:id
+ - GET /api/v1/courses/:course_id/sections/:id
+ - GET /api/v1/sections/:id
+ - DELETE /api/v1/sections/:id
+ - GET /api/v1/sections/:id/users
+
+### services.md
+ - GET /api/v1/services/kaltura
+ - POST /api/v1/services/kaltura_session
+
+### shared_brand_configs.md
+ - POST /api/v1/accounts/:account_id/shared_brand_configs
+ - PUT /api/v1/accounts/:account_id/shared_brand_configs/:id
+ - DELETE /api/v1/shared_brand_configs/:id
+
+### sis_import_errors.md
+ - GET /api/v1/accounts/:account_id/sis_imports/:id/errors
+ - GET /api/v1/accounts/:account_id/sis_import_errors
+
+### sis_imports.md
+ - GET /api/v1/accounts/:account_id/sis_imports
+ - GET /api/v1/accounts/:account_id/sis_imports/importing
+ - PUT /api/v1/accounts/:account_id/sis_imports/:id/restore_states
+ - PUT /api/v1/accounts/:account_id/sis_imports/:id/abort
+ - PUT /api/v1/accounts/:account_id/sis_imports/abort_all_pending
+
+### sis_integration.md
+ - GET /api/sis/accounts/:account_id/assignments
+ - PUT /api/sis/courses/:course_id/disable_post_to_sis
+
+### smart_search.md
+ - GET /api/v1/courses/:course_id/smartsearch
+
+### study_assist.md
+ - POST /api/v1/courses/:course_id/study_assist
+
+### submission_comments.md
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/comments/:id
+ - DELETE /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/comments/:id
+ - POST /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/comments/files
+
+### submissions.md
+ - POST /api/v1/sections/:section_id/assignments/:assignment_id/submissions
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions
+ - GET /api/v1/sections/:section_id/assignments/:assignment_id/submissions
+ - GET /api/v1/sections/:section_id/students/submissions
+ - GET /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id
+ - GET /api/v1/sections/:section_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id
+ - POST /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/files
+ - POST /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/files
+ - PUT /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id
+ - PUT /api/v1/sections/:section_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/gradeable_students
+ - GET /api/v1/courses/:course_id/assignments/gradeable_students
+ - POST /api/v1/courses/:course_id/submissions/update_grades
+ - POST /api/v1/courses/:course_id/assignments/:assignment_id/submissions/update_grades
+ - POST /api/v1/sections/:section_id/submissions/update_grades
+ - POST /api/v1/sections/:section_id/assignments/:assignment_id/submissions/update_grades
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read
+ - PUT /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/read
+ - DELETE /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read
+ - DELETE /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/read
+ - PUT /api/v1/courses/:course_id/submissions/bulk_mark_read
+ - PUT /api/v1/sections/:section_id/submissions/bulk_mark_read
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read/:item
+ - PUT /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/read/:item
+ - PUT /api/v1/courses/:course_id/submissions/:user_id/clear_unread
+ - PUT /api/v1/sections/:section_id/submissions/:user_id/clear_unread
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read
+ - GET /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read
+ - GET /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read
+ - PUT /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read
+ - PUT /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read
+ - GET /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read
+ - PUT /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read
+ - PUT /api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read
+ - GET /api/v1/courses/:course_id/assignments/:assignment_id/submission_summary
+ - GET /api/v1/sections/:section_id/assignments/:assignment_id/submission_summary
+
+### tabs.md
+ - GET /api/v1/accounts/:account_id/tabs
+ - GET /api/v1/courses/:course_id/tabs
+ - GET /api/v1/groups/:group_id/tabs
+ - GET /api/v1/users/:user_id/tabs
+ - PUT /api/v1/courses/:course_id/tabs/:tab_id
+
+### temporary_enrollment_pairings.md
+ - GET /api/v1/accounts/:account_id/temporary_enrollment_pairings
+ - GET /api/v1/accounts/:account_id/temporary_enrollment_pairings/:id
+ - GET /api/v1/accounts/:account_id/temporary_enrollment_pairings/new
+ - POST /api/v1/accounts/:account_id/temporary_enrollment_pairings
+ - DELETE /api/v1/accounts/:account_id/temporary_enrollment_pairings/:id
+
+### user_observees.md
+ - GET /api/v1/users/:user_id/observees
+ - GET /api/v1/users/:user_id/observers
+ - POST /api/v1/users/:user_id/observees
+ - GET /api/v1/users/:user_id/observees/:observee_id
+ - GET /api/v1/users/:user_id/observers/:observer_id
+ - PUT /api/v1/users/:user_id/observees/:observee_id
+ - DELETE /api/v1/users/:user_id/observees/:observee_id
+ - POST /api/v1/users/:user_id/observer_pairing_codes
+
+### users.md
+ - GET /api/v1/accounts/:account_id/users
+ - GET /api/v1/users/self/activity_stream
+ - GET /api/v1/users/activity_stream
+ - GET /api/v1/users/self/activity_stream/summary
+ - GET /api/v1/users/self/todo
+ - GET /api/v1/users/self/todo_item_count
+ - GET /api/v1/users/self/upcoming_events
+ - GET /api/v1/users/:user_id/missing_submissions
+ - DELETE /api/v1/users/self/activity_stream/:id
+ - DELETE /api/v1/users/self/activity_stream
+ - POST /api/v1/users/:user_id/files
+ - GET /api/v1/users/:id
+ - POST /api/v1/accounts/:account_id/users
+ - POST /api/v1/accounts/:account_id/self_registration
+ - GET /api/v1/users/:id/settings
+ - PUT /api/v1/users/:id/settings
+ - GET /api/v1/users/:id/colors
+ - GET /api/v1/users/:id/colors/:asset_string
+ - PUT /api/v1/users/:id/colors/:asset_string
+ - PUT /api/v1/users/:id/text_editor_preference
+ - PUT /api/v1/users/:id/files_ui_version_preference
+ - GET /api/v1/users/:id/dashboard_positions
+ - PUT /api/v1/users/:id/dashboard_positions
+ - PUT /api/v1/users/:id
+ - DELETE /api/v1/users/:id/sessions
+ - DELETE /api/v1/users/mobile_sessions
+ - DELETE /api/v1/users/:id/mobile_sessions
+ - PUT /api/v1/users/:id/merge_into/:destination_user_id
+ - PUT /api/v1/users/:id/merge_into/accounts/:destination_account_id/users/:destination_user_id
+ - POST /api/v1/users/:id/split
+ - POST /api/v1/users/self/pandata_events_token
+ - GET /api/v1/users/:id/graded_submissions
+ - GET /api/v1/users/:user_id/profile
+ - GET /api/v1/users/:user_id/avatars
+ - GET /api/v1/users/:user_id/page_views
+ - POST /api/v1/users/:user_id/page_views/query
+ - GET /api/v1/users/:user_id/page_views/query/:query_id
+ - GET /api/v1/users/:user_id/page_views/query/:query_id/results
+ - POST /api/v1/users/page_views/query
+ - GET /api/v1/users/page_views/query/:query_id
+ - GET /api/v1/users/page_views/query/:query_id/results
+ - PUT /api/v1/users/:user_id/custom_data(/*scope)
+ - GET /api/v1/users/:user_id/custom_data(/*scope)
+ - DELETE /api/v1/users/:user_id/custom_data(/*scope)
+ - GET /api/v1/users/self/course_nicknames
+ - GET /api/v1/users/self/course_nicknames/:course_id
+ - PUT /api/v1/users/self/course_nicknames/:course_id
+ - DELETE /api/v1/users/self/course_nicknames/:course_id
+ - DELETE /api/v1/users/self/course_nicknames
+
+### what_if_grades.md
+ - PUT /api/v1/submissions/:id/what_if_grades
+ - PUT /api/v1/courses/:course_id/what_if_grades/reset
+
+Total unimplemented: 978
