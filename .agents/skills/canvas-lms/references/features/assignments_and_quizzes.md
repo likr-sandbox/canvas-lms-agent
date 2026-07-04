@@ -18,6 +18,21 @@ Assignments define due dates, grading schemes, and submission formats.
 ### 2. Manage Assignments (Teacher Only)
 - **`create_assignment`**: Creates a new assignment.
   - *Parameters*: `course_id`, `assignment[name]`, `assignment[points_possible]`, `assignment[due_at]`, `assignment[submission_types][]` (e.g. `online_text_entry`, `online_url`, `online_upload`, `none`), `assignment[published]` (boolean).
+
+  > [!IMPORTANT]
+  > **MCP Parameter Nesting Requirement**
+  > While the MCP schema uses flat parameter names like `assignment[name]`, you must structure the input argument as a nested `assignment` object when invoking this tool (and other POST/PUT tools) to avoid `400 Bad Request` errors:
+  > ```json
+  > {
+  >   "course_id": "12345",
+  >   "assignment": {
+  >     "name": "Assignment Name",
+  >     "points_possible": 100,
+  >     "submission_types": ["online_text_entry"],
+  >     "published": false
+  >   }
+  > }
+  > ```
 - **`update_assignment`**: Updates an existing assignment.
   - *Parameters*: `course_id`, `id`, `assignment[name]`, `assignment[published]`, etc.
 - **`delete_assignment`**: Deletes an assignment.

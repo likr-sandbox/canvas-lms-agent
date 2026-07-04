@@ -13,6 +13,42 @@ This reference guide covers searching user profiles, scheduling appointments, ma
 
 ---
 
+## Enrollments
+
+Enrollments link users (students, teachers, TAs) to courses or sections.
+
+### 1. Manage Enrollments
+- **`post_courses_course_id_enrollments`**: Enrolls a user in a course.
+
+  > [!IMPORTANT]
+  > **MCP Parameter Nesting Requirement**
+  > Structure the arguments as a nested `enrollment` object when invoking this tool. Passing flat keys like `enrollment[user_id]` will trigger a `400 No parameters given` error.
+  > ```json
+  > {
+  >   "course_id": "12345",
+  >   "enrollment": {
+  >     "user_id": "55118",
+  >     "type": "StudentEnrollment",
+  >     "enrollment_state": "active"
+  >   }
+  > }
+  > ```
+
+### 2. SIS ID / Email Registration Shortcut
+If you only have a student's email address or SIS ID and cannot lookup their numeric Canvas user ID (due to API permission constraints), you can resolve and register them directly by prepending the email with the `sis_user_id:` prefix in the `user_id` field:
+```json
+{
+  "course_id": "12345",
+  "enrollment": {
+    "user_id": "sis_user_id:student_email@example.com",
+    "type": "StudentEnrollment",
+    "enrollment_state": "active"
+  }
+}
+```
+
+---
+
 ## Appointments (Appointment Groups)
 
 Appointment groups allow instructors to create time slots that students can sign up for (e.g., office hours).
