@@ -8,7 +8,7 @@ const endpointsData = JSON.parse(fs.readFileSync(endpointsPath, "utf-8"));
 
 const allDefinitions = [
   {
-    name: "search_canvas_endpoints",
+    name: "search_canvas_api",
     description: "Search for Canvas LMS API endpoints and their schemas. Use this when you need to find the correct path, method, or parameters for a Canvas LMS API call.",
     inputSchema: {
       type: "object",
@@ -42,10 +42,6 @@ const allDefinitions = [
         body_params: {
           type: "object",
           description: "Body parameters for POST/PUT (optional)"
-        },
-        fetch_all_pages: {
-          type: "boolean",
-          description: "If true and method is GET, automatically paginate and return all results. Default is false."
         }
       },
       required: ["method", "path"]
@@ -54,7 +50,7 @@ const allDefinitions = [
 ];
 
 const allHandlers = {
-  search_canvas_endpoints: async (client, args) => {
+  search_canvas_api: async (client, args) => {
     const query = args.query.toLowerCase();
     const results = endpointsData.filter(ep => {
       return ep.path.toLowerCase().includes(query) || 
@@ -74,8 +70,7 @@ const allHandlers = {
       args.method,
       args.path,
       args.query_params || {},
-      args.body_params || {},
-      args.fetch_all_pages || false
+      args.body_params || {}
     );
   }
 };

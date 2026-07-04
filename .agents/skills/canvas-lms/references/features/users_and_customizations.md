@@ -7,7 +7,7 @@ This reference guide covers searching user profiles, scheduling appointments, ma
 ## Users
 
 ### 1. Roster Search
-- **`get_courses_course_id_users`**: Lists users enrolled in a course or section.
+- **`GET /api/v1/courses/:course_id/users`**: Lists users enrolled in a course or section.
   - *Parameters*: `course_id`, `search_term` (Optional string to match names or emails), `enrollment_type[]` (e.g. `student`, `teacher`).
   - *Usage*: Essential for teachers to lookup a student's canvas `user_id` when grading or commenting on submissions.
 
@@ -18,7 +18,7 @@ This reference guide covers searching user profiles, scheduling appointments, ma
 Enrollments link users (students, teachers, TAs) to courses or sections.
 
 ### 1. Manage Enrollments
-- **`post_courses_course_id_enrollments`**: Enrolls a user in a course.
+- **`POST /api/v1/courses/:course_id/enrollments`**: Enrolls a user in a course.
 
   > [!IMPORTANT]
   > **MCP Parameter Nesting Requirement**
@@ -56,7 +56,7 @@ Appointment groups allow instructors to create time slots that students can sign
 ### 1. View Appointment Slots
 - **`list_appointment_groups`**: Lists available appointment groups.
   - *Parameters*: `scope` (e.g., `current`, `past`).
-- **`get_appointment_group`**: Retrieves details of a specific appointment group including reserved slots.
+- **`GET /api/v1/appointment_groups/:id`**: Retrieves details of a specific appointment group including reserved slots.
 
 ### 2. Manage Appointments (Teacher Only)
 - **`create_appointment_group`**: Creates a new group of appointment slots.
@@ -70,7 +70,7 @@ Feature flags enable or disable experimental Canvas features at the course, acco
 
 - **`list_features`**: Lists all features available in the current context.
   - *Parameters*: `context_type` (e.g. `courses`, `accounts`, `users`), `context_id`.
-- **`get_feature_flag`**: Retrieves state of a feature flag.
+- **`GET /api/v1/courses/:course_id/features/flags/:feature`**: Retrieves state of a feature flag.
 - **`set_feature_flag`**: Sets a feature flag state.
   - *Parameters*: `context_type`, `context_id`, `feature`, `state` (e.g. `on`, `off`, `allowed`).
 - **`delete_feature_flag`**: Resets feature flag to default.

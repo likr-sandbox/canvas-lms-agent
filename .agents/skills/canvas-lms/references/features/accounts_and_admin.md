@@ -10,7 +10,7 @@ These tools are restricted to Canvas system administrators.
 
 ### 1. Accounts & Roles
 - **`list_accounts`**: Lists accounts accessible to the calling user.
-- **`get_account`**: Retrieves details for a specific account.
+- **`GET /api/v1/accounts/:id`**: Retrieves details for a specific account.
 - **`list_roles`**: Lists roles available to an account.
   - *Parameters*: `account_id`.
 
@@ -48,15 +48,15 @@ Used to extract audit data, participation statistics, and grade distributions.
 
 ### 1. Generating Reports
 Reports are processed asynchronously. First start the report, then poll the status until complete.
-- **`post_courses_course_id_reports_report_type`** / **`post_accounts_account_id_reports_report`**: Triggers a report run.
+- **`POST /api/v1/courses/:course_id/reports/:report_type`** / **`POST /api/v1/accounts/:account_id/reports/:report`**: Triggers a report run.
   - *Parameters*: `course_id`/`account_id`, `report_type` (e.g., `"student_guidelines"`, `"grade_export"`).
-- **`get_course_report_status`** / **`get_account_report_status`**: Poll this to check if the file is ready.
+- **`GET /api/v1/accounts/:account_id/reports/:report/:id`**: Poll this to check if the file is ready.
   - *Returns*: Report object with `status` (`completed`, `running`) and `file_url`.
 
 ### 2. Analytics
-- **`get_courses_course_id_analytics_activity`**: Returns daily page view hits and participation numbers.
-- **`get_courses_course_id_analytics_assignments`**: Returns distribution of grades for the course.
-- **`get_course_student_summaries`**: Summarizes grades and participation per student.
+- **`GET /api/v1/courses/:course_id/analytics/activity`**: Returns daily page view hits and participation numbers.
+- **`GET /api/v1/courses/:course_id/analytics/assignments`**: Returns distribution of grades for the course.
+- **`GET /api/v1/courses/:course_id/analytics/student_summaries`**: Summarizes grades and participation per student.
   - *Parameters*: `course_id`.
 
 ---
@@ -66,9 +66,9 @@ Reports are processed asynchronously. First start the report, then poll the stat
 Configures third-party integrations and batch imports.
 
 ### 1. SIS Imports
-- **`post_accounts_account_id_sis_imports`**: Uploads CSV files to provision users, courses, sections, and enrollments in bulk.
+- **`POST /api/v1/accounts/:account_id/sis_imports`**: Uploads CSV files to provision users, courses, sections, and enrollments in bulk.
   - *Parameters*: `account_id`, `import_type`, `attachment` (CSV file data).
-- **`get_sis_import`**: Retrieves status of a SIS import thread.
+- **`GET /api/v1/accounts/:account_id/sis_imports/:id`**: Retrieves status of a SIS import thread.
 
 ### 2. External Tools (LTI)
 - **`list_external_tools`**: Lists LTI tools installed in the course.
