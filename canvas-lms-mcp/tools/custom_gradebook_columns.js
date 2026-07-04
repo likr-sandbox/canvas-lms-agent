@@ -38,30 +38,30 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "column[title]": {
+        "column_title": {
           "type": "string",
           "description": "no description"
         },
-        "column[position]": {
+        "column_position": {
           "type": "number",
           "description": "The position of the column relative to other custom columns"
         },
-        "column[hidden]": {
+        "column_hidden": {
           "type": "boolean",
           "description": "Hidden columns are not displayed in the gradebook"
         },
-        "column[teacher_notes]": {
+        "column_teacher_notes": {
           "type": "boolean",
           "description": "<p>Set this if the column is created by a teacher. The gradebook only<br>supports one teacher\\_notes column.</p>"
         },
-        "column[read_only]": {
+        "column_read_only": {
           "type": "boolean",
           "description": "Set this to prevent the column from being editable in the gradebook ui"
         }
       },
       "required": [
         "course_id",
-        "column[title]"
+        "column_title"
       ]
     }
   },
@@ -117,14 +117,14 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "order[]": {
+        "order": {
           "type": "number",
           "description": "no description"
         }
       },
       "required": [
         "course_id",
-        "order[]"
+        "order"
       ]
     }
   },
@@ -175,7 +175,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "column_data[content]": {
+        "column_data_content": {
           "type": "string",
           "description": "Column content. Setting this to blank will delete the datum object."
         }
@@ -184,7 +184,7 @@ const definitions = [
         "course_id",
         "id",
         "user_id",
-        "column_data[content]"
+        "column_data_content"
       ]
     }
   },
@@ -198,14 +198,14 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "column_data[]": {
+        "column_data": {
           "type": "array",
           "description": "Column content. Setting this to an empty string will delete the data object."
         }
       },
       "required": [
         "course_id",
-        "column_data[]"
+        "column_data"
       ]
     }
   }
@@ -216,7 +216,28 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/custom_gradebook_columns", args);
   },
   post_cc_custom_gradebook_columns: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/custom_gradebook_columns", args);
+    const mappedArgs = { ...args };
+    if ("column_title" in mappedArgs) {
+      mappedArgs["column[title]"] = mappedArgs["column_title"];
+      delete mappedArgs["column_title"];
+    }
+    if ("column_position" in mappedArgs) {
+      mappedArgs["column[position]"] = mappedArgs["column_position"];
+      delete mappedArgs["column_position"];
+    }
+    if ("column_hidden" in mappedArgs) {
+      mappedArgs["column[hidden]"] = mappedArgs["column_hidden"];
+      delete mappedArgs["column_hidden"];
+    }
+    if ("column_teacher_notes" in mappedArgs) {
+      mappedArgs["column[teacher_notes]"] = mappedArgs["column_teacher_notes"];
+      delete mappedArgs["column_teacher_notes"];
+    }
+    if ("column_read_only" in mappedArgs) {
+      mappedArgs["column[read_only]"] = mappedArgs["column_read_only"];
+      delete mappedArgs["column_read_only"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/custom_gradebook_columns", mappedArgs);
   },
   put_cc_custom_gradebook_columns_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/custom_gradebook_columns/:id", args);
@@ -225,16 +246,31 @@ const handlers = {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/custom_gradebook_columns/:id", args);
   },
   post_cccgc_reorder: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/custom_gradebook_columns/reorder", args);
+    const mappedArgs = { ...args };
+    if ("order" in mappedArgs) {
+      mappedArgs["order[]"] = mappedArgs["order"];
+      delete mappedArgs["order"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/custom_gradebook_columns/reorder", mappedArgs);
   },
   get_cccgci_data: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/custom_gradebook_columns/:id/data", args);
   },
   put_cccgci_data_user_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/custom_gradebook_columns/:id/data/:user_id", args);
+    const mappedArgs = { ...args };
+    if ("column_data_content" in mappedArgs) {
+      mappedArgs["column_data[content]"] = mappedArgs["column_data_content"];
+      delete mappedArgs["column_data_content"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/custom_gradebook_columns/:id/data/:user_id", mappedArgs);
   },
   put_cc_custom_gradebook_column_data: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/custom_gradebook_column_data", args);
+    const mappedArgs = { ...args };
+    if ("column_data" in mappedArgs) {
+      mappedArgs["column_data[]"] = mappedArgs["column_data"];
+      delete mappedArgs["column_data"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/custom_gradebook_column_data", mappedArgs);
   }
 };
 

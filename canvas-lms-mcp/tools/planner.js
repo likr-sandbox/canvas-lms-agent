@@ -35,7 +35,7 @@ const definitions = [
           "type": "string",
           "description": "<p>Only return items up to the given date.<br>The value should be formatted as: yyyy-mm-dd or ISO 8601 YYYY-MM-DDTHH:MM:SSZ.</p>"
         },
-        "context_codes[]": {
+        "context_codes": {
           "type": "string",
           "description": "<p>List of context codes of courses and/or groups whose items you want to see.<br>If not specified, defaults to all contexts associated to the current user.<br>Note that concluded courses will be ignored unless specified in the includes\\[]<br>parameter. The format of this field is the context type, followed by an underscore,<br>followed by the context id. For example: course\\_42, group\\_123</p>"
         },
@@ -71,7 +71,7 @@ const definitions = [
           "type": "string",
           "description": "<p>Only return notes with todo dates before the end\\_date (inclusive).<br>No default. The value should be formatted as: yyyy-mm-dd or<br>ISO 8601 YYYY-MM-DDTHH:MM:SSZ.<br>If end\\_date and start\\_date are both specified and equivalent,<br>then only notes with todo dates on that day are returned.</p>"
         },
-        "context_codes[]": {
+        "context_codes": {
           "type": "string",
           "description": "<p>List of context codes of courses whose notes you want to see.<br>If not specified, defaults to all contexts that the user belongs to.<br>The format of this field is the context type, followed by an<br>underscore, followed by the context id. For example: course\\_42<br>Including a code matching the user's own context code (e.g. user\\_1)<br>will include notes that are not associated with any particular course.</p>"
         },
@@ -292,10 +292,20 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/planner/items", args);
   },
   get_uup_items: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/planner/items", args);
+    const mappedArgs = { ...args };
+    if ("context_codes" in mappedArgs) {
+      mappedArgs["context_codes[]"] = mappedArgs["context_codes"];
+      delete mappedArgs["context_codes"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/planner/items", mappedArgs);
   },
   get_planner_notes: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/planner_notes", args);
+    const mappedArgs = { ...args };
+    if ("context_codes" in mappedArgs) {
+      mappedArgs["context_codes[]"] = mappedArgs["context_codes"];
+      delete mappedArgs["context_codes"];
+    }
+    return genericHandler(client, "GET", "/api/v1/planner_notes", mappedArgs);
   },
   get_planner_notes_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/planner_notes/:id", args);

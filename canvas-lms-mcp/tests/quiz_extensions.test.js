@@ -15,7 +15,7 @@ test("post_ccqq_extensions calls correct endpoint", async () => {
   const handler = quiz_extensionsModule.handlers.post_ccqq_extensions;
   assert.ok(handler, "Handler post_ccqq_extensions should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "quiz_extensions[][user_id]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "quiz_extensions_user_id": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/test_quiz_id/extensions");

@@ -18,11 +18,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: assignment_id"
         },
-        "assignment_extensions[][user_id]": {
+        "assignment_extensions_user_id": {
           "type": "number",
           "description": "The ID of the user we want to add assignment extensions for."
         },
-        "assignment_extensions[][extra_attempts]": {
+        "assignment_extensions_extra_attempts": {
           "type": "number",
           "description": "<p>Number of times the student is allowed to re-take the assignment over the<br>limit.</p>"
         }
@@ -30,8 +30,8 @@ const definitions = [
       "required": [
         "course_id",
         "assignment_id",
-        "assignment_extensions[][user_id]",
-        "assignment_extensions[][extra_attempts]"
+        "assignment_extensions_user_id",
+        "assignment_extensions_extra_attempts"
       ]
     }
   }
@@ -39,7 +39,16 @@ const definitions = [
 
 const handlers = {
   post_ccaa_extensions: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/extensions", args);
+    const mappedArgs = { ...args };
+    if ("assignment_extensions_user_id" in mappedArgs) {
+      mappedArgs["assignment_extensions[][user_id]"] = mappedArgs["assignment_extensions_user_id"];
+      delete mappedArgs["assignment_extensions_user_id"];
+    }
+    if ("assignment_extensions_extra_attempts" in mappedArgs) {
+      mappedArgs["assignment_extensions[][extra_attempts]"] = mappedArgs["assignment_extensions_extra_attempts"];
+      delete mappedArgs["assignment_extensions_extra_attempts"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/extensions", mappedArgs);
   }
 };
 

@@ -18,27 +18,27 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: quiz_id"
         },
-        "quiz_extensions[][user_id]": {
+        "quiz_extensions_user_id": {
           "type": "number",
           "description": "The ID of the user we want to add quiz extensions for."
         },
-        "quiz_extensions[][extra_attempts]": {
+        "quiz_extensions_extra_attempts": {
           "type": "number",
           "description": "<p>Number of times the student is allowed to re-take the quiz over the<br>multiple-attempt limit. This is limited to 1000 attempts or less.</p>"
         },
-        "quiz_extensions[][extra_time]": {
+        "quiz_extensions_extra_time": {
           "type": "number",
           "description": "<p>The number of extra minutes to allow for all attempts. This will<br>add to the existing time limit on the submission. This is limited to<br>10080 minutes (1 week)</p>"
         },
-        "quiz_extensions[][manually_unlocked]": {
+        "quiz_extensions_manually_unlocked": {
           "type": "boolean",
           "description": "<p>Allow the student to take the quiz even if it's locked for<br>everyone else.</p>"
         },
-        "quiz_extensions[][extend_from_now]": {
+        "quiz_extensions_extend_from_now": {
           "type": "number",
           "description": "<p>The number of minutes to extend the quiz from the current time. This is<br>mutually exclusive to extend\\_from\\_end\\_at. This is limited to 1440<br>minutes (24 hours)</p>"
         },
-        "quiz_extensions[][extend_from_end_at]": {
+        "quiz_extensions_extend_from_end_at": {
           "type": "number",
           "description": "<p>The number of minutes to extend the quiz beyond the quiz's current<br>ending time. This is mutually exclusive to extend\\_from\\_now. This is<br>limited to 1440 minutes (24 hours)</p>"
         }
@@ -46,7 +46,7 @@ const definitions = [
       "required": [
         "course_id",
         "quiz_id",
-        "quiz_extensions[][user_id]"
+        "quiz_extensions_user_id"
       ]
     }
   }
@@ -54,7 +54,32 @@ const definitions = [
 
 const handlers = {
   post_ccqq_extensions: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/extensions", args);
+    const mappedArgs = { ...args };
+    if ("quiz_extensions_user_id" in mappedArgs) {
+      mappedArgs["quiz_extensions[][user_id]"] = mappedArgs["quiz_extensions_user_id"];
+      delete mappedArgs["quiz_extensions_user_id"];
+    }
+    if ("quiz_extensions_extra_attempts" in mappedArgs) {
+      mappedArgs["quiz_extensions[][extra_attempts]"] = mappedArgs["quiz_extensions_extra_attempts"];
+      delete mappedArgs["quiz_extensions_extra_attempts"];
+    }
+    if ("quiz_extensions_extra_time" in mappedArgs) {
+      mappedArgs["quiz_extensions[][extra_time]"] = mappedArgs["quiz_extensions_extra_time"];
+      delete mappedArgs["quiz_extensions_extra_time"];
+    }
+    if ("quiz_extensions_manually_unlocked" in mappedArgs) {
+      mappedArgs["quiz_extensions[][manually_unlocked]"] = mappedArgs["quiz_extensions_manually_unlocked"];
+      delete mappedArgs["quiz_extensions_manually_unlocked"];
+    }
+    if ("quiz_extensions_extend_from_now" in mappedArgs) {
+      mappedArgs["quiz_extensions[][extend_from_now]"] = mappedArgs["quiz_extensions_extend_from_now"];
+      delete mappedArgs["quiz_extensions_extend_from_now"];
+    }
+    if ("quiz_extensions_extend_from_end_at" in mappedArgs) {
+      mappedArgs["quiz_extensions[][extend_from_end_at]"] = mappedArgs["quiz_extensions_extend_from_end_at"];
+      delete mappedArgs["quiz_extensions_extend_from_end_at"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/extensions", mappedArgs);
   }
 };
 

@@ -33,7 +33,7 @@ test("post_uu_communication_channels calls correct endpoint", async () => {
   const handler = communication_channelsModule.handlers.post_uu_communication_channels;
   assert.ok(handler, "Handler post_uu_communication_channels should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "communication_channel[address]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "communication_channel_address": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/communication_channels");

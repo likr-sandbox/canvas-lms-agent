@@ -143,11 +143,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: attachment_id"
         },
-        "include[]": {
+        "include": {
           "type": "array",
           "description": "<p>Array of strings indicating what additional data to include in the response.<br>Valid values:<br>- \"peer\\_review\": includes peer review sub assignment information and overrides in the response.<br>If a peer review sub assignment exists, it is returned regardless of the Peer Review<br>Allocation and Grading feature state. If no peer review sub assignment exists,<br>the feature must be enabled to receive a null value; otherwise the key is omitted.<br>- \"child\\_peer\\_review\\_override\\_dates\": each assignment override will include a peer\\_review\\_dates<br>field containing the matched peer review override data (id, due\\_at, unlock\\_at, lock\\_at)<br>for that override. The field will be present as null if no matching peer review override exists.</p>"
         },
-        "exclude[]": {
+        "exclude": {
           "type": "array",
           "description": "<p>Array of strings indicating what data to exclude from the response.<br>Valid values:<br>- \"peer\\_review\\_overrides\": when include\\[]=peer\\_review is also specified, the<br>peer\\_review\\_sub\\_assignment object will not include the overrides array, reducing the<br>response payload size. This is useful when using include\\[]=child\\_peer\\_review\\_override\\_dates<br>since the peer review override data is already embedded in the parent assignment overrides.<br>- \"child\\_override\\_due\\_dates\": prevents the sub\\_assignment\\_due\\_dates field from being included<br>in assignment override responses, even when discussion checkpoints are enabled. This reduces<br>response payload size when checkpoint due date information is not needed.</p>"
         },
@@ -276,7 +276,7 @@ const definitions = [
           "type": "boolean",
           "description": "Whether the learning object is only assigned to students who are targeted by an override."
         },
-        "assignment_overrides[]": {
+        "assignment_overrides": {
           "type": "array",
           "description": "<p>List of overrides to apply to the learning object. Overrides that already exist should include<br>an ID and will be updated if needed. New overrides will be created for overrides in the list<br>without an ID. Overrides not included in the list will be deleted. Providing an empty list<br>will delete all of the object's overrides. Keys for each override object can include: 'id',<br>'title', 'due\\_at', 'unlock\\_at', 'lock\\_at', 'student\\_ids', and 'course\\_section\\_id', 'course\\_id',<br>'noop\\_id', and 'unassign\\_item'.</p>"
         },
@@ -284,19 +284,19 @@ const definitions = [
           "type": "string",
           "description": "<p>Optional peer review configuration for assignments with peer reviews enabled.<br>Requires the peer\\_review\\_allocation\\_and\\_grading feature flag.<br>Keys can include: 'due\\_at', 'unlock\\_at', 'lock\\_at', 'peer\\_review\\_overrides'</p>"
         },
-        "peer_review[due_at]": {
+        "peer_review_due_at": {
           "type": "string",
           "description": "The peer review due date"
         },
-        "peer_review[unlock_at]": {
+        "peer_review_unlock_at": {
           "type": "string",
           "description": "The peer review unlock date (when peer reviews become available)"
         },
-        "peer_review[lock_at]": {
+        "peer_review_lock_at": {
           "type": "string",
           "description": "The peer review lock date (when peer reviews are no longer available)"
         },
-        "peer_review[peer_review_overrides][]": {
+        "peer_review_peer_review_overrides": {
           "type": "array",
           "description": "<p>List of peer review overrides. Each override can include: 'id', 'due\\_at',<br>'unlock\\_at', 'lock\\_at', 'student\\_ids', 'course\\_section\\_id', 'course\\_id',<br>'group\\_id', 'unassign\\_item'</p>"
         }
@@ -326,7 +326,16 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/pages/:url_or_id/date_details", args);
   },
   get_ccfa_date_details: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/files/:attachment_id/date_details", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("exclude" in mappedArgs) {
+      mappedArgs["exclude[]"] = mappedArgs["exclude"];
+      delete mappedArgs["exclude"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/files/:attachment_id/date_details", mappedArgs);
   },
   put_ccaa_date_details: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/date_details", args);
@@ -341,7 +350,28 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/pages/:url_or_id/date_details", args);
   },
   put_ccfa_date_details: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/files/:attachment_id/date_details", args);
+    const mappedArgs = { ...args };
+    if ("assignment_overrides" in mappedArgs) {
+      mappedArgs["assignment_overrides[]"] = mappedArgs["assignment_overrides"];
+      delete mappedArgs["assignment_overrides"];
+    }
+    if ("peer_review_due_at" in mappedArgs) {
+      mappedArgs["peer_review[due_at]"] = mappedArgs["peer_review_due_at"];
+      delete mappedArgs["peer_review_due_at"];
+    }
+    if ("peer_review_unlock_at" in mappedArgs) {
+      mappedArgs["peer_review[unlock_at]"] = mappedArgs["peer_review_unlock_at"];
+      delete mappedArgs["peer_review_unlock_at"];
+    }
+    if ("peer_review_lock_at" in mappedArgs) {
+      mappedArgs["peer_review[lock_at]"] = mappedArgs["peer_review_lock_at"];
+      delete mappedArgs["peer_review_lock_at"];
+    }
+    if ("peer_review_peer_review_overrides" in mappedArgs) {
+      mappedArgs["peer_review[peer_review_overrides][]"] = mappedArgs["peer_review_peer_review_overrides"];
+      delete mappedArgs["peer_review_peer_review_overrides"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/files/:attachment_id/date_details", mappedArgs);
   }
 };
 

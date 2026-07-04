@@ -34,15 +34,15 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "communication_channel[address]": {
+        "communication_channel_address": {
           "type": "string",
           "description": "An email address or SMS number. Not required for \"push\" type channels."
         },
-        "communication_channel[type]": {
+        "communication_channel_type": {
           "type": "string",
           "description": "<p>The type of communication channel.<br>In order to enable push notification support, the server must be<br>properly configured (via <code>sns\\_creds</code> in Vault) to communicate with Amazon<br>Simple Notification Services, and the developer key used to create<br>the access token from this request must have an SNS ARN configured on<br>it. Allowed values: <code>email</code>, <code>sms</code>, <code>push</code></p>"
         },
-        "communication_channel[token]": {
+        "communication_channel_token": {
           "type": "string",
           "description": "<p>A registration id, device token, or equivalent token given to an app when<br>registering with a push notification provider. Only valid for \"push\" type channels.</p>"
         },
@@ -53,8 +53,8 @@ const definitions = [
       },
       "required": [
         "user_id",
-        "communication_channel[address]",
-        "communication_channel[type]"
+        "communication_channel_address",
+        "communication_channel_type"
       ]
     }
   },
@@ -120,7 +120,20 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/communication_channels", args);
   },
   post_uu_communication_channels: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/users/:user_id/communication_channels", args);
+    const mappedArgs = { ...args };
+    if ("communication_channel_address" in mappedArgs) {
+      mappedArgs["communication_channel[address]"] = mappedArgs["communication_channel_address"];
+      delete mappedArgs["communication_channel_address"];
+    }
+    if ("communication_channel_type" in mappedArgs) {
+      mappedArgs["communication_channel[type]"] = mappedArgs["communication_channel_type"];
+      delete mappedArgs["communication_channel_type"];
+    }
+    if ("communication_channel_token" in mappedArgs) {
+      mappedArgs["communication_channel[token]"] = mappedArgs["communication_channel_token"];
+      delete mappedArgs["communication_channel_token"];
+    }
+    return genericHandler(client, "POST", "/api/v1/users/:user_id/communication_channels", mappedArgs);
   },
   delete_uu_communication_channels_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/communication_channels/:id", args);

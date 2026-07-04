@@ -15,7 +15,7 @@ test("get_aa_admins calls correct endpoint", async () => {
   const handler = adminsModule.handlers.get_aa_admins;
   assert.ok(handler, "Handler get_aa_admins should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "user_id[]": 123});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "user_id": 123});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/admins");

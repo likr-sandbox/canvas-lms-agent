@@ -134,11 +134,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "content_types[]": {
+        "content_types": {
           "type": "string",
           "description": "<p>Filter results by content-type. You can specify type/subtype pairs (e.g.,<br>'image/jpeg'), or simply types (e.g., 'image', which will match<br>'image/gif', 'image/jpeg', etc.).</p>"
         },
-        "exclude_content_types[]": {
+        "exclude_content_types": {
           "type": "string",
           "description": "<p>Exclude given content-types from your results. You can specify type/subtype pairs (e.g.,<br>'image/jpeg'), or simply types (e.g., 'image', which will match<br>'image/gif', 'image/jpeg', etc.).</p>"
         },
@@ -146,11 +146,11 @@ const definitions = [
           "type": "string",
           "description": "The partial name of the files to match and return."
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"user\":: the user who uploaded the file or last edited its content<br>\"usage\\_rights\":: copyright and license information for the file (see UsageRights) Allowed values: <code>user</code></p>"
         },
-        "only[]": {
+        "only": {
           "type": "array",
           "description": "<p>Array of information to restrict to. Overrides include\\[]<br>\"names\":: only returns file name information</p>"
         },
@@ -296,7 +296,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"user\":: the user who uploaded the file or last edited its content<br>\"usage\\_rights\":: copyright and license information for the file (see UsageRights) Allowed values: <code>user</code></p>"
         },
@@ -1299,11 +1299,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "file_ids[]": {
+        "file_ids": {
           "type": "string",
           "description": "List of ids of files to set usage rights for."
         },
-        "folder_ids[]": {
+        "folder_ids": {
           "type": "string",
           "description": "<p>List of ids of folders to search for files to set usage rights for.<br>Note that new files uploaded to these folders do not automatically inherit these rights.</p>"
         },
@@ -1311,23 +1311,23 @@ const definitions = [
           "type": "boolean",
           "description": "Whether the file(s) or folder(s) should be published on save, provided that usage rights have been specified (set to `true` to publish on save)."
         },
-        "usage_rights[use_justification]": {
+        "usage_rights_use_justification": {
           "type": "string",
           "description": "The intellectual property justification for using the files in Canvas Allowed values: `own_copyright`, `used_by_permission`, `fair_use`, `public_domain`, `creative_commons`"
         },
-        "usage_rights[legal_copyright]": {
+        "usage_rights_legal_copyright": {
           "type": "string",
           "description": "The legal copyright line for the files"
         },
-        "usage_rights[license]": {
+        "usage_rights_license": {
           "type": "string",
           "description": "The license that applies to the files. See the [List licenses endpoint](#method.usage_rights.licenses) for the supported license types."
         }
       },
       "required": [
         "user_id",
-        "file_ids[]",
-        "usage_rights[use_justification]"
+        "file_ids",
+        "usage_rights_use_justification"
       ]
     }
   },
@@ -1373,18 +1373,18 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "file_ids[]": {
+        "file_ids": {
           "type": "string",
           "description": "List of ids of files to remove associated usage rights from."
         },
-        "folder_ids[]": {
+        "folder_ids": {
           "type": "string",
           "description": "List of ids of folders. Usage rights will be removed from all files in these folders."
         }
       },
       "required": [
         "user_id",
-        "file_ids[]"
+        "file_ids"
       ]
     }
   },
@@ -1470,7 +1470,24 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/files", args);
   },
   get_fi_files: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/folders/:id/files", args);
+    const mappedArgs = { ...args };
+    if ("content_types" in mappedArgs) {
+      mappedArgs["content_types[]"] = mappedArgs["content_types"];
+      delete mappedArgs["content_types"];
+    }
+    if ("exclude_content_types" in mappedArgs) {
+      mappedArgs["exclude_content_types[]"] = mappedArgs["exclude_content_types"];
+      delete mappedArgs["exclude_content_types"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("only" in mappedArgs) {
+      mappedArgs["only[]"] = mappedArgs["only"];
+      delete mappedArgs["only"];
+    }
+    return genericHandler(client, "GET", "/api/v1/folders/:id/files", mappedArgs);
   },
   get_fi_public_url: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/files/:id/public_url", args);
@@ -1488,7 +1505,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/files/:id", args);
   },
   get_uu_files_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/files/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/files/:id", mappedArgs);
   },
   get_ccf_file_ref_migration_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/files/file_ref/:migration_id", args);
@@ -1617,7 +1639,28 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/usage_rights", args);
   },
   put_uu_usage_rights: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/users/:user_id/usage_rights", args);
+    const mappedArgs = { ...args };
+    if ("file_ids" in mappedArgs) {
+      mappedArgs["file_ids[]"] = mappedArgs["file_ids"];
+      delete mappedArgs["file_ids"];
+    }
+    if ("folder_ids" in mappedArgs) {
+      mappedArgs["folder_ids[]"] = mappedArgs["folder_ids"];
+      delete mappedArgs["folder_ids"];
+    }
+    if ("usage_rights_use_justification" in mappedArgs) {
+      mappedArgs["usage_rights[use_justification]"] = mappedArgs["usage_rights_use_justification"];
+      delete mappedArgs["usage_rights_use_justification"];
+    }
+    if ("usage_rights_legal_copyright" in mappedArgs) {
+      mappedArgs["usage_rights[legal_copyright]"] = mappedArgs["usage_rights_legal_copyright"];
+      delete mappedArgs["usage_rights_legal_copyright"];
+    }
+    if ("usage_rights_license" in mappedArgs) {
+      mappedArgs["usage_rights[license]"] = mappedArgs["usage_rights_license"];
+      delete mappedArgs["usage_rights_license"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/users/:user_id/usage_rights", mappedArgs);
   },
   delete_cc_usage_rights: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/usage_rights", args);
@@ -1626,7 +1669,16 @@ const handlers = {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/usage_rights", args);
   },
   delete_uu_usage_rights: async (client, args) => {
-    return genericHandler(client, "DELETE", "/api/v1/users/:user_id/usage_rights", args);
+    const mappedArgs = { ...args };
+    if ("file_ids" in mappedArgs) {
+      mappedArgs["file_ids[]"] = mappedArgs["file_ids"];
+      delete mappedArgs["file_ids"];
+    }
+    if ("folder_ids" in mappedArgs) {
+      mappedArgs["folder_ids[]"] = mappedArgs["folder_ids"];
+      delete mappedArgs["folder_ids"];
+    }
+    return genericHandler(client, "DELETE", "/api/v1/users/:user_id/usage_rights", mappedArgs);
   },
   get_cc_content_licenses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_licenses", args);

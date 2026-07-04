@@ -50,19 +50,19 @@ const definitions = [
           "type": "object",
           "description": "Contains metadata about the submission attempt. Supported fields listed below."
         },
-        "submission[submittedAt]": {
+        "submission_submittedAt": {
           "type": "string",
           "description": "Date and time that the submission was originally created. Should use ISO8601-formatted date with subsecond precision. If the submittedAt time has not changed from its current value, the submission attempt number will not be incremented."
         },
-        "https://canvas.instructure.com/lti/submission": {
+        "https_canvas.instructure.com_lti_submission": {
           "type": "object",
           "description": "(EXTENSION) Optional submission type and data. Fields listed below."
         },
-        "https://canvas.instructure.com/lti/submission[new_submission]": {
+        "https_canvas.instructure.com_lti_submission_new_submission": {
           "type": "boolean",
           "description": "(EXTENSION field) flag to indicate that this is a new submission. Defaults to true unless submission\\_type is none."
         },
-        "https://canvas.instructure.com/lti/submission[preserve_score]": {
+        "https_canvas.instructure.com_lti_submission_preserve_score": {
           "type": "boolean",
           "description": "(EXTENSION field) flag to prevent a request from clearing an existing grade for a submission. Defaults to false."
         },
@@ -70,19 +70,19 @@ const definitions = [
           "type": "boolean",
           "description": "(EXTENSION field) flag to prevent a request from overwriting an existing grade for a submission. Defaults to false."
         },
-        "https://canvas.instructure.com/lti/submission[submission_type]": {
+        "https_canvas.instructure.com_lti_submission_submission_type": {
           "type": "string",
           "description": "(EXTENSION field) permissible values are: none, basic\\_lti\\_launch, online\\_text\\_entry, external\\_tool, online\\_upload, or online\\_url. Defaults to external\\_tool. Ignored if content\\_items are provided."
         },
-        "https://canvas.instructure.com/lti/submission[submission_data]": {
+        "https_canvas.instructure.com_lti_submission_submission_data": {
           "type": "string",
           "description": "(EXTENSION field) submission data (URL or body text). Only used for submission\\_types basic\\_lti\\_launch, online\\_text\\_entry, online\\_url. Ignored if content\\_items are provided."
         },
-        "https://canvas.instructure.com/lti/submission[submitted_at]": {
+        "https_canvas.instructure.com_lti_submission_submitted_at": {
           "type": "string",
           "description": "(EXTENSION field) Date and time that the submission was originally created. Should use ISO8601-formatted date with subsecond precision. This should match the date and time that the original submission happened in Canvas. Use of submission.submittedAt is preferred."
         },
-        "https://canvas.instructure.com/lti/submission[content_items]": {
+        "https_canvas.instructure.com_lti_submission_content_items": {
           "type": "array",
           "description": "(EXTENSION field) Files that should be included with the submission. Each item should contain `type: file`, and a url pointing to the file. It can also contain a title, and an explicit MIME type if needed (otherwise, MIME type will be inferred from the title or url). If any items are present, submission\\_type will be online\\_upload."
         }
@@ -102,9 +102,41 @@ const definitions = [
 const handlers = {
   post_cclil_scores: async (client, args) => {
     const mappedArgs = { ...args };
+    if ("submission_submittedAt" in mappedArgs) {
+      mappedArgs["submission[submittedAt]"] = mappedArgs["submission_submittedAt"];
+      delete mappedArgs["submission_submittedAt"];
+    }
+    if ("https_canvas.instructure.com_lti_submission" in mappedArgs) {
+      mappedArgs["https://canvas.instructure.com/lti/submission"] = mappedArgs["https_canvas.instructure.com_lti_submission"];
+      delete mappedArgs["https_canvas.instructure.com_lti_submission"];
+    }
+    if ("https_canvas.instructure.com_lti_submission_new_submission" in mappedArgs) {
+      mappedArgs["https://canvas.instructure.com/lti/submission[new_submission]"] = mappedArgs["https_canvas.instructure.com_lti_submission_new_submission"];
+      delete mappedArgs["https_canvas.instructure.com_lti_submission_new_submission"];
+    }
+    if ("https_canvas.instructure.com_lti_submission_preserve_score" in mappedArgs) {
+      mappedArgs["https://canvas.instructure.com/lti/submission[preserve_score]"] = mappedArgs["https_canvas.instructure.com_lti_submission_preserve_score"];
+      delete mappedArgs["https_canvas.instructure.com_lti_submission_preserve_score"];
+    }
     if ("h_prioritize_non_tool_grade" in mappedArgs) {
       mappedArgs["https://canvas.instructure.com/lti/submission[prioritize_non_tool_grade]"] = mappedArgs["h_prioritize_non_tool_grade"];
       delete mappedArgs["h_prioritize_non_tool_grade"];
+    }
+    if ("https_canvas.instructure.com_lti_submission_submission_type" in mappedArgs) {
+      mappedArgs["https://canvas.instructure.com/lti/submission[submission_type]"] = mappedArgs["https_canvas.instructure.com_lti_submission_submission_type"];
+      delete mappedArgs["https_canvas.instructure.com_lti_submission_submission_type"];
+    }
+    if ("https_canvas.instructure.com_lti_submission_submission_data" in mappedArgs) {
+      mappedArgs["https://canvas.instructure.com/lti/submission[submission_data]"] = mappedArgs["https_canvas.instructure.com_lti_submission_submission_data"];
+      delete mappedArgs["https_canvas.instructure.com_lti_submission_submission_data"];
+    }
+    if ("https_canvas.instructure.com_lti_submission_submitted_at" in mappedArgs) {
+      mappedArgs["https://canvas.instructure.com/lti/submission[submitted_at]"] = mappedArgs["https_canvas.instructure.com_lti_submission_submitted_at"];
+      delete mappedArgs["https_canvas.instructure.com_lti_submission_submitted_at"];
+    }
+    if ("https_canvas.instructure.com_lti_submission_content_items" in mappedArgs) {
+      mappedArgs["https://canvas.instructure.com/lti/submission[content_items]"] = mappedArgs["https_canvas.instructure.com_lti_submission_content_items"];
+      delete mappedArgs["https_canvas.instructure.com_lti_submission_content_items"];
     }
     return genericHandler(client, "POST", "/api/lti/courses/:course_id/line_items/:line_item_id/scores", mappedArgs);
   }

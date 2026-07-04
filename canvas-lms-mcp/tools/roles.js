@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "The id of the account to retrieve roles for."
         },
-        "state[]": {
+        "state": {
           "type": "string",
           "description": "<p>Filter by role state. If this argument is omitted, only 'active' roles are<br>returned. Allowed values: <code>active</code>, <code>inactive</code></p>"
         },
@@ -88,23 +88,23 @@ const definitions = [
           "type": "string",
           "description": "<p>Specifies the role type that will be used as a base<br>for the permissions granted to this role.<br>Defaults to 'AccountMembership' if absent Allowed values: <code>AccountMembership</code>, <code>StudentEnrollment</code>, <code>TeacherEnrollment</code>, <code>TaEnrollment</code>, <code>ObserverEnrollment</code>, <code>DesignerEnrollment</code></p>"
         },
-        "permissions[<X>][explicit]": {
+        "permissions_X_explicit": {
           "type": "boolean",
           "description": "no description"
         },
-        "permissions[<X>][enabled]": {
+        "permissions_X_enabled": {
           "type": "boolean",
           "description": "<p>If explicit is 1 and enabled is 1, permission \\<X> will be explicitly<br>granted to this role. If explicit is 1 and enabled has any other value<br>(typically 0), permission \\<X> will be explicitly denied to this role. If<br>explicit is any other value (typically 0) or absent, or if enabled is<br>absent, the value for permission \\<X> will be inherited from upstream.<br>Ignored if permission \\<X> is locked upstream (in an ancestor account).<br>May occur multiple times with unique values for \\<X>. Recognized<br>permission names for \\<X> can be found on the<br><a href=\"../permissions/file.permissions.md\">Permissions list page</a>.<br>Some of these permissions are applicable only for roles on the site admin<br>account, on a root account, or for course-level roles with a particular base role type;<br>if a specified permission is inapplicable, it will be ignored.<br>Additional permissions may exist based on installed plugins.<br>A comprehensive list of all permissions are available:<br>Course Permissions PDF: <http://bit.ly/cnvs-course-permissions><br>Account Permissions PDF: <http://bit.ly/cnvs-acct-permissions></p>"
         },
-        "permissions[<X>][locked]": {
+        "permissions_X_locked": {
           "type": "boolean",
           "description": "<p>If the value is 1, permission \\<X> will be locked downstream (new roles in<br>subaccounts cannot override the setting). For any other value, permission<br>\\<X> is left unlocked. Ignored if permission \\<X> is already locked<br>upstream. May occur multiple times with unique values for \\<X>.</p>"
         },
-        "permissions[<X>][applies_to_self]": {
+        "permissions_X_applies_to_self": {
           "type": "boolean",
           "description": "<p>If the value is 1, permission \\<X> applies to the account this role is in.<br>The default value is 1. Must be true if applies\\_to\\_descendants is false.<br>This value is only returned if enabled is true.</p>"
         },
-        "permissions[<X>][applies_to_descendants]": {
+        "permissions_X_applies_to_descendants": {
           "type": "boolean",
           "description": "<p>If the value is 1, permission \\<X> cascades down to sub accounts of the<br>account this role is in. The default value is 1. Must be true if<br>applies\\_to\\_self is false.This value is only returned if enabled is true.</p>"
         }
@@ -193,19 +193,19 @@ const definitions = [
           "type": "string",
           "description": "The label for the role. Can only change the label of a custom role that belongs directly to the account."
         },
-        "permissions[<X>][explicit]": {
+        "permissions_X_explicit": {
           "type": "boolean",
           "description": "no description"
         },
-        "permissions[<X>][enabled]": {
+        "permissions_X_enabled": {
           "type": "boolean",
           "description": "<p>These arguments are described in the documentation for the<br><a href=\"#method.role_overrides.add_role\">add\\_role method</a>.<br>The list of available permissions can be found on the<br><a href=\"../permissions/file.permissions.md\">Permissions list page</a>.</p>"
         },
-        "permissions[<X>][applies_to_self]": {
+        "permissions_X_applies_to_self": {
           "type": "boolean",
           "description": "<p>If the value is 1, permission \\<X> applies to the account this role is in.<br>The default value is 1. Must be true if applies\\_to\\_descendants is false.<br>This value is only returned if enabled is true.</p>"
         },
-        "permissions[<X>][applies_to_descendants]": {
+        "permissions_X_applies_to_descendants": {
           "type": "boolean",
           "description": "<p>If the value is 1, permission \\<X> cascades down to sub accounts of the<br>account this role is in. The default value is 1. Must be true if<br>applies\\_to\\_self is false.This value is only returned if enabled is true.</p>"
         }
@@ -282,13 +282,39 @@ const definitions = [
 
 const handlers = {
   get_aa_roles: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/roles", args);
+    const mappedArgs = { ...args };
+    if ("state" in mappedArgs) {
+      mappedArgs["state[]"] = mappedArgs["state"];
+      delete mappedArgs["state"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/roles", mappedArgs);
   },
   get_aa_roles_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/roles/:id", args);
   },
   post_aa_roles: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/roles", args);
+    const mappedArgs = { ...args };
+    if ("permissions_X_explicit" in mappedArgs) {
+      mappedArgs["permissions[<X>][explicit]"] = mappedArgs["permissions_X_explicit"];
+      delete mappedArgs["permissions_X_explicit"];
+    }
+    if ("permissions_X_enabled" in mappedArgs) {
+      mappedArgs["permissions[<X>][enabled]"] = mappedArgs["permissions_X_enabled"];
+      delete mappedArgs["permissions_X_enabled"];
+    }
+    if ("permissions_X_locked" in mappedArgs) {
+      mappedArgs["permissions[<X>][locked]"] = mappedArgs["permissions_X_locked"];
+      delete mappedArgs["permissions_X_locked"];
+    }
+    if ("permissions_X_applies_to_self" in mappedArgs) {
+      mappedArgs["permissions[<X>][applies_to_self]"] = mappedArgs["permissions_X_applies_to_self"];
+      delete mappedArgs["permissions_X_applies_to_self"];
+    }
+    if ("permissions_X_applies_to_descendants" in mappedArgs) {
+      mappedArgs["permissions[<X>][applies_to_descendants]"] = mappedArgs["permissions_X_applies_to_descendants"];
+      delete mappedArgs["permissions_X_applies_to_descendants"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/roles", mappedArgs);
   },
   delete_aa_roles_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/roles/:id", args);
@@ -297,7 +323,24 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/roles/:id/activate", args);
   },
   put_aa_roles_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/roles/:id", args);
+    const mappedArgs = { ...args };
+    if ("permissions_X_explicit" in mappedArgs) {
+      mappedArgs["permissions[<X>][explicit]"] = mappedArgs["permissions_X_explicit"];
+      delete mappedArgs["permissions_X_explicit"];
+    }
+    if ("permissions_X_enabled" in mappedArgs) {
+      mappedArgs["permissions[<X>][enabled]"] = mappedArgs["permissions_X_enabled"];
+      delete mappedArgs["permissions_X_enabled"];
+    }
+    if ("permissions_X_applies_to_self" in mappedArgs) {
+      mappedArgs["permissions[<X>][applies_to_self]"] = mappedArgs["permissions_X_applies_to_self"];
+      delete mappedArgs["permissions_X_applies_to_self"];
+    }
+    if ("permissions_X_applies_to_descendants" in mappedArgs) {
+      mappedArgs["permissions[<X>][applies_to_descendants]"] = mappedArgs["permissions_X_applies_to_descendants"];
+      delete mappedArgs["permissions_X_applies_to_descendants"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/roles/:id", mappedArgs);
   },
   get_aar_permissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/roles/permissions", args);

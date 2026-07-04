@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "user_id[]": {
+        "user_id": {
           "type": "number",
           "description": "Scope the results to those with user IDs equal to any of the IDs specified here."
         },
@@ -123,7 +123,12 @@ const definitions = [
 
 const handlers = {
   get_aa_admins: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/admins", args);
+    const mappedArgs = { ...args };
+    if ("user_id" in mappedArgs) {
+      mappedArgs["user_id[]"] = mappedArgs["user_id"];
+      delete mappedArgs["user_id"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/admins", mappedArgs);
   },
   post_aa_admins: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/admins", args);

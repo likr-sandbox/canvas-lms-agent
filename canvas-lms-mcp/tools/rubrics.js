@@ -22,35 +22,35 @@ const definitions = [
           "type": "number",
           "description": "<p>The id of the rubric association object (not the course/assignment itself, but the join table record id).<br>It can be used in place of +rubric\\_association\\[association\\_id]+ and +rubric\\_association\\[association\\_type]+ if desired.</p>"
         },
-        "rubric[title]": {
+        "rubric_title": {
           "type": "string",
           "description": "The title of the rubric"
         },
-        "rubric[free_form_criterion_comments]": {
+        "rubric_free_form_criterion_comments": {
           "type": "boolean",
           "description": "Whether or not you can write custom comments in the ratings field for a rubric"
         },
-        "rubric_association[association_id]": {
+        "rubric_association_association_id": {
           "type": "number",
           "description": "The id of the object with which this rubric is associated"
         },
-        "rubric_association[association_type]": {
+        "rubric_association_association_type": {
           "type": "string",
           "description": "The type of object this rubric is associated with Allowed values: `Assignment`, `Course`, `Account`"
         },
-        "rubric_association[use_for_grading]": {
+        "rubric_association_use_for_grading": {
           "type": "boolean",
           "description": "Whether or not the associated rubric is used for grade calculation"
         },
-        "rubric_association[hide_score_total]": {
+        "rubric_association_hide_score_total": {
           "type": "boolean",
           "description": "<p>Whether or not the score total is displayed within the rubric.<br>This option is only available if the rubric is not used for grading.</p>"
         },
-        "rubric_association[purpose]": {
+        "rubric_association_purpose": {
           "type": "string",
           "description": "<p>Whether or not the association is for grading (and thus linked to an assignment)<br>or if it's to indicate the rubric should appear in its context</p>"
         },
-        "rubric[criteria]": {
+        "rubric_criteria": {
           "type": "string",
           "description": "An indexed Hash of RubricCriteria objects where the keys are integer ids and the values are the RubricCriteria objects"
         }
@@ -78,39 +78,39 @@ const definitions = [
           "type": "number",
           "description": "<p>The id of the rubric association object (not the course/assignment itself, but the join table record id).<br>It can be used in place of +rubric\\_association\\[association\\_id]+ and +rubric\\_association\\[association\\_type]+ if desired.</p>"
         },
-        "rubric[title]": {
+        "rubric_title": {
           "type": "string",
           "description": "The title of the rubric"
         },
-        "rubric[free_form_criterion_comments]": {
+        "rubric_free_form_criterion_comments": {
           "type": "boolean",
           "description": "Whether or not you can write custom comments in the ratings field for a rubric"
         },
-        "rubric[skip_updating_points_possible]": {
+        "rubric_skip_updating_points_possible": {
           "type": "boolean",
           "description": "Whether or not to update the points possible"
         },
-        "rubric_association[association_id]": {
+        "rubric_association_association_id": {
           "type": "number",
           "description": "The id of the object with which this rubric is associated"
         },
-        "rubric_association[association_type]": {
+        "rubric_association_association_type": {
           "type": "string",
           "description": "The type of object this rubric is associated with Allowed values: `Assignment`, `Course`, `Account`"
         },
-        "rubric_association[use_for_grading]": {
+        "rubric_association_use_for_grading": {
           "type": "boolean",
           "description": "Whether or not the associated rubric is used for grade calculation"
         },
-        "rubric_association[hide_score_total]": {
+        "rubric_association_hide_score_total": {
           "type": "boolean",
           "description": "<p>Whether or not the score total is displayed within the rubric.<br>This option is only available if the rubric is not used for grading.</p>"
         },
-        "rubric_association[purpose]": {
+        "rubric_association_purpose": {
           "type": "string",
           "description": "<p>Whether or not the association is for grading (and thus linked to an assignment)<br>or if it's to indicate the rubric should appear in its context Allowed values: <code>grading</code>, <code>bookmark</code></p>"
         },
-        "rubric[criteria]": {
+        "rubric_criteria": {
           "type": "string",
           "description": "An indexed Hash of RubricCriteria objects where the keys are integer ids and the values are the RubricCriteria objects"
         }
@@ -221,7 +221,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "Related records to include in the response. Allowed values: `assessments`, `graded_assessments`, `peer_assessments`, `associations`, `assignment_associations`, `course_associations`, `account_associations`"
         },
@@ -500,35 +500,35 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "rubric_association[rubric_id]": {
+        "rubric_association_rubric_id": {
           "type": "number",
           "description": "The id of the Rubric"
         },
-        "rubric_association[association_id]": {
+        "rubric_association_association_id": {
           "type": "number",
           "description": "The id of the object with which this rubric is associated"
         },
-        "rubric_association[association_type]": {
+        "rubric_association_association_type": {
           "type": "string",
           "description": "The type of object this rubric is associated with Allowed values: `Assignment`, `Course`, `Account`"
         },
-        "rubric_association[title]": {
+        "rubric_association_title": {
           "type": "string",
           "description": "The name of the object this rubric is associated with"
         },
-        "rubric_association[use_for_grading]": {
+        "rubric_association_use_for_grading": {
           "type": "boolean",
           "description": "Whether or not the associated rubric is used for grade calculation"
         },
-        "rubric_association[hide_score_total]": {
+        "rubric_association_hide_score_total": {
           "type": "boolean",
           "description": "<p>Whether or not the score total is displayed within the rubric.<br>This option is only available if the rubric is not used for grading.</p>"
         },
-        "rubric_association[purpose]": {
+        "rubric_association_purpose": {
           "type": "string",
           "description": "<p>Whether or not the association is for grading (and thus linked to an assignment)<br>or if it's to indicate the rubric should appear in its context Allowed values: <code>grading</code>, <code>bookmark</code></p>"
         },
-        "rubric_association[bookmarked]": {
+        "rubric_association_bookmarked": {
           "type": "boolean",
           "description": "Whether or not the associated rubric appears in its context"
         }
@@ -552,35 +552,35 @@ const definitions = [
           "type": "number",
           "description": "The id of the RubricAssociation to update"
         },
-        "rubric_association[rubric_id]": {
+        "rubric_association_rubric_id": {
           "type": "number",
           "description": "The id of the Rubric"
         },
-        "rubric_association[association_id]": {
+        "rubric_association_association_id": {
           "type": "number",
           "description": "The id of the object with which this rubric is associated"
         },
-        "rubric_association[association_type]": {
+        "rubric_association_association_type": {
           "type": "string",
           "description": "The type of object this rubric is associated with Allowed values: `Assignment`, `Course`, `Account`"
         },
-        "rubric_association[title]": {
+        "rubric_association_title": {
           "type": "string",
           "description": "The name of the object this rubric is associated with"
         },
-        "rubric_association[use_for_grading]": {
+        "rubric_association_use_for_grading": {
           "type": "boolean",
           "description": "Whether or not the associated rubric is used for grade calculation"
         },
-        "rubric_association[hide_score_total]": {
+        "rubric_association_hide_score_total": {
           "type": "boolean",
           "description": "<p>Whether or not the score total is displayed within the rubric.<br>This option is only available if the rubric is not used for grading.</p>"
         },
-        "rubric_association[purpose]": {
+        "rubric_association_purpose": {
           "type": "string",
           "description": "<p>Whether or not the association is for grading (and thus linked to an assignment)<br>or if it's to indicate the rubric should appear in its context Allowed values: <code>grading</code>, <code>bookmark</code></p>"
         },
-        "rubric_association[bookmarked]": {
+        "rubric_association_bookmarked": {
           "type": "boolean",
           "description": "Whether or not the associated rubric appears in its context"
         }
@@ -616,10 +616,80 @@ const definitions = [
 
 const handlers = {
   post_cc_rubrics: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/rubrics", args);
+    const mappedArgs = { ...args };
+    if ("rubric_title" in mappedArgs) {
+      mappedArgs["rubric[title]"] = mappedArgs["rubric_title"];
+      delete mappedArgs["rubric_title"];
+    }
+    if ("rubric_free_form_criterion_comments" in mappedArgs) {
+      mappedArgs["rubric[free_form_criterion_comments]"] = mappedArgs["rubric_free_form_criterion_comments"];
+      delete mappedArgs["rubric_free_form_criterion_comments"];
+    }
+    if ("rubric_association_association_id" in mappedArgs) {
+      mappedArgs["rubric_association[association_id]"] = mappedArgs["rubric_association_association_id"];
+      delete mappedArgs["rubric_association_association_id"];
+    }
+    if ("rubric_association_association_type" in mappedArgs) {
+      mappedArgs["rubric_association[association_type]"] = mappedArgs["rubric_association_association_type"];
+      delete mappedArgs["rubric_association_association_type"];
+    }
+    if ("rubric_association_use_for_grading" in mappedArgs) {
+      mappedArgs["rubric_association[use_for_grading]"] = mappedArgs["rubric_association_use_for_grading"];
+      delete mappedArgs["rubric_association_use_for_grading"];
+    }
+    if ("rubric_association_hide_score_total" in mappedArgs) {
+      mappedArgs["rubric_association[hide_score_total]"] = mappedArgs["rubric_association_hide_score_total"];
+      delete mappedArgs["rubric_association_hide_score_total"];
+    }
+    if ("rubric_association_purpose" in mappedArgs) {
+      mappedArgs["rubric_association[purpose]"] = mappedArgs["rubric_association_purpose"];
+      delete mappedArgs["rubric_association_purpose"];
+    }
+    if ("rubric_criteria" in mappedArgs) {
+      mappedArgs["rubric[criteria]"] = mappedArgs["rubric_criteria"];
+      delete mappedArgs["rubric_criteria"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/rubrics", mappedArgs);
   },
   put_cc_rubrics_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/rubrics/:id", args);
+    const mappedArgs = { ...args };
+    if ("rubric_title" in mappedArgs) {
+      mappedArgs["rubric[title]"] = mappedArgs["rubric_title"];
+      delete mappedArgs["rubric_title"];
+    }
+    if ("rubric_free_form_criterion_comments" in mappedArgs) {
+      mappedArgs["rubric[free_form_criterion_comments]"] = mappedArgs["rubric_free_form_criterion_comments"];
+      delete mappedArgs["rubric_free_form_criterion_comments"];
+    }
+    if ("rubric_skip_updating_points_possible" in mappedArgs) {
+      mappedArgs["rubric[skip_updating_points_possible]"] = mappedArgs["rubric_skip_updating_points_possible"];
+      delete mappedArgs["rubric_skip_updating_points_possible"];
+    }
+    if ("rubric_association_association_id" in mappedArgs) {
+      mappedArgs["rubric_association[association_id]"] = mappedArgs["rubric_association_association_id"];
+      delete mappedArgs["rubric_association_association_id"];
+    }
+    if ("rubric_association_association_type" in mappedArgs) {
+      mappedArgs["rubric_association[association_type]"] = mappedArgs["rubric_association_association_type"];
+      delete mappedArgs["rubric_association_association_type"];
+    }
+    if ("rubric_association_use_for_grading" in mappedArgs) {
+      mappedArgs["rubric_association[use_for_grading]"] = mappedArgs["rubric_association_use_for_grading"];
+      delete mappedArgs["rubric_association_use_for_grading"];
+    }
+    if ("rubric_association_hide_score_total" in mappedArgs) {
+      mappedArgs["rubric_association[hide_score_total]"] = mappedArgs["rubric_association_hide_score_total"];
+      delete mappedArgs["rubric_association_hide_score_total"];
+    }
+    if ("rubric_association_purpose" in mappedArgs) {
+      mappedArgs["rubric_association[purpose]"] = mappedArgs["rubric_association_purpose"];
+      delete mappedArgs["rubric_association_purpose"];
+    }
+    if ("rubric_criteria" in mappedArgs) {
+      mappedArgs["rubric[criteria]"] = mappedArgs["rubric_criteria"];
+      delete mappedArgs["rubric_criteria"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/rubrics/:id", mappedArgs);
   },
   delete_cc_rubrics_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/rubrics/:id", args);
@@ -634,7 +704,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/rubrics/:id", args);
   },
   get_cc_rubrics_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/rubrics/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/rubrics/:id", mappedArgs);
   },
   get_ccri_used_locations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/rubrics/:id/used_locations", args);
@@ -667,10 +742,76 @@ const handlers = {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/rubric_associations/:rubric_association_id/rubric_assessments/:id", args);
   },
   post_cc_rubric_associations: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/rubric_associations", args);
+    const mappedArgs = { ...args };
+    if ("rubric_association_rubric_id" in mappedArgs) {
+      mappedArgs["rubric_association[rubric_id]"] = mappedArgs["rubric_association_rubric_id"];
+      delete mappedArgs["rubric_association_rubric_id"];
+    }
+    if ("rubric_association_association_id" in mappedArgs) {
+      mappedArgs["rubric_association[association_id]"] = mappedArgs["rubric_association_association_id"];
+      delete mappedArgs["rubric_association_association_id"];
+    }
+    if ("rubric_association_association_type" in mappedArgs) {
+      mappedArgs["rubric_association[association_type]"] = mappedArgs["rubric_association_association_type"];
+      delete mappedArgs["rubric_association_association_type"];
+    }
+    if ("rubric_association_title" in mappedArgs) {
+      mappedArgs["rubric_association[title]"] = mappedArgs["rubric_association_title"];
+      delete mappedArgs["rubric_association_title"];
+    }
+    if ("rubric_association_use_for_grading" in mappedArgs) {
+      mappedArgs["rubric_association[use_for_grading]"] = mappedArgs["rubric_association_use_for_grading"];
+      delete mappedArgs["rubric_association_use_for_grading"];
+    }
+    if ("rubric_association_hide_score_total" in mappedArgs) {
+      mappedArgs["rubric_association[hide_score_total]"] = mappedArgs["rubric_association_hide_score_total"];
+      delete mappedArgs["rubric_association_hide_score_total"];
+    }
+    if ("rubric_association_purpose" in mappedArgs) {
+      mappedArgs["rubric_association[purpose]"] = mappedArgs["rubric_association_purpose"];
+      delete mappedArgs["rubric_association_purpose"];
+    }
+    if ("rubric_association_bookmarked" in mappedArgs) {
+      mappedArgs["rubric_association[bookmarked]"] = mappedArgs["rubric_association_bookmarked"];
+      delete mappedArgs["rubric_association_bookmarked"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/rubric_associations", mappedArgs);
   },
   put_cc_rubric_associations_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/rubric_associations/:id", args);
+    const mappedArgs = { ...args };
+    if ("rubric_association_rubric_id" in mappedArgs) {
+      mappedArgs["rubric_association[rubric_id]"] = mappedArgs["rubric_association_rubric_id"];
+      delete mappedArgs["rubric_association_rubric_id"];
+    }
+    if ("rubric_association_association_id" in mappedArgs) {
+      mappedArgs["rubric_association[association_id]"] = mappedArgs["rubric_association_association_id"];
+      delete mappedArgs["rubric_association_association_id"];
+    }
+    if ("rubric_association_association_type" in mappedArgs) {
+      mappedArgs["rubric_association[association_type]"] = mappedArgs["rubric_association_association_type"];
+      delete mappedArgs["rubric_association_association_type"];
+    }
+    if ("rubric_association_title" in mappedArgs) {
+      mappedArgs["rubric_association[title]"] = mappedArgs["rubric_association_title"];
+      delete mappedArgs["rubric_association_title"];
+    }
+    if ("rubric_association_use_for_grading" in mappedArgs) {
+      mappedArgs["rubric_association[use_for_grading]"] = mappedArgs["rubric_association_use_for_grading"];
+      delete mappedArgs["rubric_association_use_for_grading"];
+    }
+    if ("rubric_association_hide_score_total" in mappedArgs) {
+      mappedArgs["rubric_association[hide_score_total]"] = mappedArgs["rubric_association_hide_score_total"];
+      delete mappedArgs["rubric_association_hide_score_total"];
+    }
+    if ("rubric_association_purpose" in mappedArgs) {
+      mappedArgs["rubric_association[purpose]"] = mappedArgs["rubric_association_purpose"];
+      delete mappedArgs["rubric_association_purpose"];
+    }
+    if ("rubric_association_bookmarked" in mappedArgs) {
+      mappedArgs["rubric_association[bookmarked]"] = mappedArgs["rubric_association_bookmarked"];
+      delete mappedArgs["rubric_association_bookmarked"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/rubric_associations/:id", mappedArgs);
   },
   delete_cc_rubric_associations_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/rubric_associations/:id", args);

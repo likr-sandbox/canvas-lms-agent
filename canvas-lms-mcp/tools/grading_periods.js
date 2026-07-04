@@ -83,15 +83,15 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "grading_periods[][start_date]": {
+        "grading_periods_start_date": {
           "type": "string",
           "description": "The date the grading period starts."
         },
-        "grading_periods[][end_date]": {
+        "grading_periods_end_date": {
           "type": "string",
           "description": "no description"
         },
-        "grading_periods[][weight]": {
+        "grading_periods_weight": {
           "type": "number",
           "description": "A weight value that contributes to the overall weight of a grading period set which is used to calculate how much assignments in this period contribute to the total grade"
         }
@@ -99,8 +99,8 @@ const definitions = [
       "required": [
         "course_id",
         "id",
-        "grading_periods[][start_date]",
-        "grading_periods[][end_date]"
+        "grading_periods_start_date",
+        "grading_periods_end_date"
       ]
     }
   },
@@ -143,27 +143,27 @@ const definitions = [
           "type": "string",
           "description": "The id of the grading period set."
         },
-        "grading_periods[][id]": {
+        "grading_periods_id": {
           "type": "string",
           "description": "The id of the grading period. If the id parameter does not exist, a new grading period will be created."
         },
-        "grading_periods[][title]": {
+        "grading_periods_title": {
           "type": "string",
           "description": "<p>The title of the grading period.<br>The title is required for creating a new grading period, but not for updating an existing grading period.</p>"
         },
-        "grading_periods[][start_date]": {
+        "grading_periods_start_date": {
           "type": "string",
           "description": "<p>The date the grading period starts.<br>The start\\_date is required for creating a new grading period, but not for updating an existing grading period.</p>"
         },
-        "grading_periods[][end_date]": {
+        "grading_periods_end_date": {
           "type": "string",
           "description": "<p>The date the grading period ends.<br>The end\\_date is required for creating a new grading period, but not for updating an existing grading period.</p>"
         },
-        "grading_periods[][close_date]": {
+        "grading_periods_close_date": {
           "type": "string",
           "description": "<p>The date after which grades can no longer be changed for a grading period.<br>The close\\_date is required for creating a new grading period, but not for updating an existing grading period.</p>"
         },
-        "grading_periods[][weight]": {
+        "grading_periods_weight": {
           "type": "number",
           "description": "A weight value that contributes to the overall weight of a grading period set which is used to calculate how much assignments in this period contribute to the total grade"
         }
@@ -172,10 +172,10 @@ const definitions = [
         "account_id",
         "id",
         "set_id",
-        "grading_periods[][title]",
-        "grading_periods[][start_date]",
-        "grading_periods[][end_date]",
-        "grading_periods[][close_date]"
+        "grading_periods_title",
+        "grading_periods_start_date",
+        "grading_periods_end_date",
+        "grading_periods_close_date"
       ]
     }
   }
@@ -192,13 +192,51 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/grading_periods/:id", args);
   },
   put_cc_grading_periods_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/grading_periods/:id", args);
+    const mappedArgs = { ...args };
+    if ("grading_periods_start_date" in mappedArgs) {
+      mappedArgs["grading_periods[][start_date]"] = mappedArgs["grading_periods_start_date"];
+      delete mappedArgs["grading_periods_start_date"];
+    }
+    if ("grading_periods_end_date" in mappedArgs) {
+      mappedArgs["grading_periods[][end_date]"] = mappedArgs["grading_periods_end_date"];
+      delete mappedArgs["grading_periods_end_date"];
+    }
+    if ("grading_periods_weight" in mappedArgs) {
+      mappedArgs["grading_periods[][weight]"] = mappedArgs["grading_periods_weight"];
+      delete mappedArgs["grading_periods_weight"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/grading_periods/:id", mappedArgs);
   },
   delete_cc_grading_periods_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/grading_periods/:id", args);
   },
   delete_aa_grading_periods_id: async (client, args) => {
-    return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/grading_periods/:id", args);
+    const mappedArgs = { ...args };
+    if ("grading_periods_id" in mappedArgs) {
+      mappedArgs["grading_periods[][id]"] = mappedArgs["grading_periods_id"];
+      delete mappedArgs["grading_periods_id"];
+    }
+    if ("grading_periods_title" in mappedArgs) {
+      mappedArgs["grading_periods[][title]"] = mappedArgs["grading_periods_title"];
+      delete mappedArgs["grading_periods_title"];
+    }
+    if ("grading_periods_start_date" in mappedArgs) {
+      mappedArgs["grading_periods[][start_date]"] = mappedArgs["grading_periods_start_date"];
+      delete mappedArgs["grading_periods_start_date"];
+    }
+    if ("grading_periods_end_date" in mappedArgs) {
+      mappedArgs["grading_periods[][end_date]"] = mappedArgs["grading_periods_end_date"];
+      delete mappedArgs["grading_periods_end_date"];
+    }
+    if ("grading_periods_close_date" in mappedArgs) {
+      mappedArgs["grading_periods[][close_date]"] = mappedArgs["grading_periods_close_date"];
+      delete mappedArgs["grading_periods_close_date"];
+    }
+    if ("grading_periods_weight" in mappedArgs) {
+      mappedArgs["grading_periods[][weight]"] = mappedArgs["grading_periods_weight"];
+      delete mappedArgs["grading_periods_weight"];
+    }
+    return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/grading_periods/:id", mappedArgs);
   }
 };
 

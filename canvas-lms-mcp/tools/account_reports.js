@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"description\\_html\":: an HTML description of the report, with example output<br>\"parameters\\_html\":: an HTML form for the report parameters Allowed values: <code>description\\_html</code>, <code>params\\_html</code></p>"
         },
@@ -42,19 +42,19 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: report"
         },
-        "parameters[]": {
+        "parameters": {
           "type": "string",
           "description": "<p>The parameters will vary for each report. To fetch a list<br>of available parameters for each report, see <a href=\"#method.account_reports.available_reports\">List Available Reports</a>.<br>A few example parameters have been provided below. Note that the example<br>parameters provided below may not be valid for every report.</p>"
         },
-        "parameters[skip_message]": {
+        "parameters_skip_message": {
           "type": "boolean",
           "description": "<p>If true, no message will be sent<br>to the user upon completion of the report.</p>"
         },
-        "parameters[course_id]": {
+        "parameters_course_id": {
           "type": "number",
           "description": "<p>The id of the course to report on.<br>Note: this parameter has been listed to serve as an example and may not be<br>valid for every report.</p>"
         },
-        "parameters[users]": {
+        "parameters_users": {
           "type": "boolean",
           "description": "<p>If true, user data will be included. If<br>false, user data will be omitted. Note: this parameter has been listed to<br>serve as an example and may not be valid for every report.</p>"
         }
@@ -176,10 +176,32 @@ const definitions = [
 
 const handlers = {
   get_aa_reports: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/reports", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/reports", mappedArgs);
   },
   post_aa_reports_report: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/reports/:report", args);
+    const mappedArgs = { ...args };
+    if ("parameters" in mappedArgs) {
+      mappedArgs["parameters[]"] = mappedArgs["parameters"];
+      delete mappedArgs["parameters"];
+    }
+    if ("parameters_skip_message" in mappedArgs) {
+      mappedArgs["parameters[skip_message]"] = mappedArgs["parameters_skip_message"];
+      delete mappedArgs["parameters_skip_message"];
+    }
+    if ("parameters_course_id" in mappedArgs) {
+      mappedArgs["parameters[course_id]"] = mappedArgs["parameters_course_id"];
+      delete mappedArgs["parameters_course_id"];
+    }
+    if ("parameters_users" in mappedArgs) {
+      mappedArgs["parameters[users]"] = mappedArgs["parameters_users"];
+      delete mappedArgs["parameters_users"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/reports/:report", mappedArgs);
   },
   get_aa_reports_report: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/reports/:report", args);

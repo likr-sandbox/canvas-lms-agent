@@ -33,7 +33,7 @@ test("post_cc_reports_report_type calls correct endpoint", async () => {
   const handler = course_reportsModule.handlers.post_cc_reports_report_type;
   assert.ok(handler, "Handler post_cc_reports_report_type should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "report_type": "test_report_type", "parameters[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "report_type": "test_report_type", "parameters": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/reports/test_report_type");

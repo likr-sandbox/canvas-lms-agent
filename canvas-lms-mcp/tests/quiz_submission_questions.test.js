@@ -15,7 +15,7 @@ test("get_qsq_questions calls correct endpoint", async () => {
   const handler = quiz_submission_questionsModule.handlers.get_qsq_questions;
   assert.ok(handler, "Handler get_qsq_questions should be defined");
 
-  const result = await handler(mockClient, {"quiz_submission_id": "test_quiz_submission_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"quiz_submission_id": "test_quiz_submission_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/quiz_submissions/test_quiz_submission_id/questions");

@@ -39,47 +39,47 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: assignment_id"
         },
-        "comment[text_comment]": {
+        "comment_text_comment": {
           "type": "string",
           "description": "Include a textual comment with the submission."
         },
-        "submission[group_comment]": {
+        "submission_group_comment": {
           "type": "boolean",
           "description": "<p>Whether or not this comment should be sent to the entire group (defaults<br>to false). Ignored if this is not a group assignment or if no text\\_comment<br>is provided.</p>"
         },
-        "submission[submission_type]": {
+        "submission_submission_type": {
           "type": "string",
           "description": "<p>The type of submission being made. The assignment submission\\_types must<br>include this submission type as an allowed option, or the submission will be rejected with a 400 error.<br>The submission\\_type given determines which of the following parameters is<br>used. For instance, to submit a URL, +submission\\[submission\\_type]+ must be<br>set to \"online\\_url\", otherwise the +submission\\[url]+ parameter will be<br>ignored.<br>\"basic\\_lti\\_launch\" requires the assignment submission\\_type \"online\" or \"external\\_tool\" Allowed values: <code>online\\_text\\_entry</code>, <code>online\\_url</code>, <code>online\\_upload</code>, <code>media\\_recording</code>, <code>basic\\_lti\\_launch</code>, <code>student\\_annotation</code></p>"
         },
-        "submission[body]": {
+        "submission_body": {
           "type": "string",
           "description": "<p>Submit the assignment as an HTML document snippet. Note this HTML snippet<br>will be sanitized using the same ruleset as a submission made from the<br>Canvas web UI. The sanitized HTML will be returned in the response as the<br>submission body. Requires a submission\\_type of \"online\\_text\\_entry\".</p>"
         },
-        "submission[url]": {
+        "submission_url": {
           "type": "string",
           "description": "<p>Submit the assignment as a URL. The URL scheme must be \"http\" or \"https\",<br>no \"ftp\" or other URL schemes are allowed. If no scheme is given (e.g.<br>\"[www.example.com](http://www.example.com)\") then \"http\" will be assumed. Requires a submission\\_type<br>of \"online\\_url\" or \"basic\\_lti\\_launch\".</p>"
         },
-        "submission[file_ids][]": {
+        "submission_file_ids": {
           "type": "number",
           "description": "<p>Submit the assignment as a set of one or more previously uploaded files<br>residing in the submitting user's files section (or the group's files<br>section, for group assignments).<br>To upload a new file to submit, see the submissions <a href=\"#method.submissions_api.create_file\">Upload a file API</a>.<br>Requires a submission\\_type of \"online\\_upload\".</p>"
         },
-        "submission[media_comment_id]": {
+        "submission_media_comment_id": {
           "type": "string",
           "description": "<p>The media comment id to submit. Media comment ids can be submitted via<br>this API, however, note that there is not yet an API to generate or list<br>existing media comments, so this functionality is currently of limited use.<br>Requires a submission\\_type of \"media\\_recording\".</p>"
         },
-        "submission[media_comment_type]": {
+        "submission_media_comment_type": {
           "type": "string",
           "description": "The type of media comment being submitted. Allowed values: `audio`, `video`"
         },
-        "submission[user_id]": {
+        "submission_user_id": {
           "type": "number",
           "description": "Submit on behalf of the given user. Requires grading permission."
         },
-        "submission[annotatable_attachment_id]": {
+        "submission_annotatable_attachment_id": {
           "type": "number",
           "description": "<p>The Attachment ID of the document being annotated. This should match<br>the annotatable\\_attachment\\_id on the assignment.<br>Requires a submission\\_type of \"student\\_annotation\".</p>"
         },
-        "submission[submitted_at]": {
+        "submission_submitted_at": {
           "type": "string",
           "description": "Choose the time the submission is listed as submitted at. Requires grading permission."
         }
@@ -87,7 +87,7 @@ const definitions = [
       "required": [
         "section_id",
         "assignment_id",
-        "submission[submission_type]"
+        "submission_submission_type"
       ]
     }
   },
@@ -130,7 +130,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: assignment_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "Associations to include with the group. \"group\" will add group\\_id and group\\_name. Allowed values: `submission_history`, `submission_comments`, `submission_html_comments`, `rubric_assessment`, `assignment`, `visibility`, `course`, `user`, `group`, `read_status`, `student_entered_score`"
         },
@@ -179,11 +179,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: section_id"
         },
-        "student_ids[]": {
+        "student_ids": {
           "type": "string",
           "description": "<p>List of student ids to return submissions for. If this argument is<br>omitted, return submissions for the calling user. Students may only list<br>their own submissions. Observers may only list those of associated<br>students. The special id \"all\" will return submissions for all students<br>in the course/section as appropriate.</p>"
         },
-        "assignment_ids[]": {
+        "assignment_ids": {
           "type": "string",
           "description": "<p>List of assignments to return submissions for. If none are given,<br>submissions for all assignments are returned.</p>"
         },
@@ -227,7 +227,7 @@ const definitions = [
           "type": "string",
           "description": "<p>Determines whether ordered results are returned in ascending or descending<br>order. Defaults to \"ascending\". Doesn't affect results for \"grouped\" mode. Allowed values: <code>ascending</code>, <code>descending</code></p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Associations to include with the group. <code>total\\_scores</code> requires the<br><code>grouped</code> argument. Allowed values: <code>submission\\_history</code>, <code>submission\\_comments</code>, <code>submission\\_html\\_comments</code>, <code>rubric\\_assessment</code>, <code>assignment</code>, <code>total\\_scores</code>, <code>visibility</code>, <code>course</code>, <code>user</code>, <code>sub\\_assignment\\_submissions</code>, <code>peer\\_review\\_submissions</code>, <code>student\\_entered\\_score</code></p>"
         },
@@ -289,7 +289,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "Associations to include with the group. Allowed values: `submission_history`, `submission_comments`, `submission_html_comments`, `rubric_assessment`, `full_rubric_assessment`, `visibility`, `course`, `user`, `read_status`, `student_entered_score`"
         },
@@ -353,7 +353,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: anonymous_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "Associations to include with the group. Allowed values: `submission_history`, `submission_comments`, `rubric_assessment`, `full_rubric_assessment`, `visibility`, `course`, `user`, `read_status`"
         },
@@ -465,31 +465,31 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "comment[text_comment]": {
+        "comment_text_comment": {
           "type": "string",
           "description": "Add a textual comment to the submission."
         },
-        "comment[attempt]": {
+        "comment_attempt": {
           "type": "number",
           "description": "The attempt number (starts at 1) to associate the comment with."
         },
-        "comment[group_comment]": {
+        "comment_group_comment": {
           "type": "boolean",
           "description": "<p>Whether or not this comment should be sent to the entire group (defaults<br>to false). Ignored if this is not a group assignment or if no text\\_comment<br>is provided.</p>"
         },
-        "comment[media_comment_id]": {
+        "comment_media_comment_id": {
           "type": "string",
           "description": "<p>Add an audio/video comment to the submission. Media comments can be added<br>via this API, however, note that there is not yet an API to generate or<br>list existing media comments, so this functionality is currently of<br>limited use.</p>"
         },
-        "comment[media_comment_type]": {
+        "comment_media_comment_type": {
           "type": "string",
           "description": "The type of media comment being added. Allowed values: `audio`, `video`"
         },
-        "comment[file_ids][]": {
+        "comment_file_ids": {
           "type": "number",
           "description": "<p>Attach files to this comment that were previously uploaded using the<br>Submission Comment API's files action</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Associations to include with the submission. \"submission\\_comments\" is always included by default.<br>- \"submission\\_comments\": Comments on the submission (always included)<br>- \"visibility\": Whether the assignment is visible to the owner of the submission<br>- \"sub\\_assignment\\_submissions\": Sub-assignment submissions for discussion checkpoints<br>- \"peer\\_review\\_submissions\": Peer review submission data when peer review allocation and grading is enabled<br>- \"provisional\\_grades\": Provisional grades (only available for moderated assignments)<br>- \"group\": Group information (id and name) for group assignments Allowed values: <code>submission\\_comments</code>, <code>visibility</code>, <code>sub\\_assignment\\_submissions</code>, <code>peer\\_review\\_submissions</code>, <code>provisional\\_grades</code>, <code>group</code></p>"
         },
@@ -497,27 +497,27 @@ const definitions = [
           "type": "boolean",
           "description": "Treat posted\\_grade as points if the value matches a grading scheme value"
         },
-        "submission[posted_grade]": {
+        "submission_posted_grade": {
           "type": "string",
           "description": "<p>Assign a score to the submission, updating both the \"score\" and \"grade\"<br>fields on the submission record. This parameter can be passed in a few<br>different formats:<br>points:: A floating point or integral value, such as \"13.5\". The grade<br>will be interpreted directly as the score of the assignment.<br>Values above assignment.points\\_possible are allowed, for awarding<br>extra credit.<br>percentage:: A floating point value appended with a percent sign, such as<br>\"40%\". The grade will be interpreted as a percentage score on the<br>assignment, where 100% == assignment.points\\_possible. Values above 100%<br>are allowed, for awarding extra credit.<br>letter grade:: A letter grade, following the assignment's defined letter<br>grading scheme. For example, \"A-\". The resulting score will be the high<br>end of the defined range for the letter grade. For instance, if \"B\" is<br>defined as 86% to 84%, a letter grade of \"B\" will be worth 86%. The<br>letter grade will be rejected if the assignment does not have a defined<br>letter grading scheme. For more fine-grained control of scores, pass in<br>points or percentage rather than the letter grade.<br>\"pass/complete/fail/incomplete\":: A string value of \"pass\" or \"complete\"<br>will give a score of 100%. \"fail\" or \"incomplete\" will give a score of<br>0.<br>Note that assignments with grading\\_type of \"pass\\_fail\" can only be<br>assigned a score of 0 or assignment.points\\_possible, nothing inbetween. If<br>a posted\\_grade in the \"points\" or \"percentage\" format is sent, the grade<br>will only be accepted if the grade equals one of those two values.</p>"
         },
-        "submission[excuse]": {
+        "submission_excuse": {
           "type": "boolean",
           "description": "Sets the \"excused\" status of an assignment."
         },
-        "submission[late_policy_status]": {
+        "submission_late_policy_status": {
           "type": "string",
           "description": "<p>Sets the late policy status to either \"late\", \"missing\", \"extended\", \"none\", or null.<br>NB: \"extended\" values can only be set in the UI when the \"UI features for 'extended' Submissions\" Account Feature is on</p>"
         },
-        "submission[sticker]": {
+        "submission_sticker": {
           "type": "string",
           "description": "Sets the sticker for the submission. Allowed values: `apple`, `basketball`, `bell`, `book`, `bookbag`, `briefcase`, `bus`, `calendar`, `chem`, `design`, `pencil`, `beaker`, `paintbrush`, `computer`, `column`, `pen`, `tablet`, `telescope`, `calculator`, `paperclip`, `composite_notebook`, `scissors`, `ruler`, `clock`, `globe`, `grad`, `gym`, `mail`, `microscope`, `mouse`, `music`, `notebook`, `page`, `panda1`, `panda2`, `panda3`, `panda4`, `panda5`, `panda6`, `panda7`, `panda8`, `panda9`, `presentation`, `science`, `science2`, `star`, `tag`, `tape`, `target`, `trophy`"
         },
-        "submission[seconds_late_override]": {
+        "submission_seconds_late_override": {
           "type": "number",
           "description": "Sets the seconds late if late policy status is \"late\""
         },
-        "submission[peer_review]": {
+        "submission_peer_review": {
           "type": "boolean",
           "description": "<p>When true, updates the peer review sub assignment submission instead of<br>the parent assignment submission. The parent assignment must have peer reviews<br>enabled, the peer\\_review\\_allocation\\_and\\_grading feature flag must be enabled<br>for the course, and the assignment must have an associated peer review<br>sub assignment. If any of these conditions are not met, the API will<br>return a 422 error.</p>"
         },
@@ -577,43 +577,43 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: anonymous_id"
         },
-        "comment[text_comment]": {
+        "comment_text_comment": {
           "type": "string",
           "description": "Add a textual comment to the submission."
         },
-        "comment[group_comment]": {
+        "comment_group_comment": {
           "type": "boolean",
           "description": "<p>Whether or not this comment should be sent to the entire group (defaults<br>to false). Ignored if this is not a group assignment or if no text\\_comment<br>is provided.</p>"
         },
-        "comment[media_comment_id]": {
+        "comment_media_comment_id": {
           "type": "string",
           "description": "<p>Add an audio/video comment to the submission. Media comments can be added<br>via this API, however, note that there is not yet an API to generate or<br>list existing media comments, so this functionality is currently of<br>limited use.</p>"
         },
-        "comment[media_comment_type]": {
+        "comment_media_comment_type": {
           "type": "string",
           "description": "The type of media comment being added. Allowed values: `audio`, `video`"
         },
-        "comment[file_ids][]": {
+        "comment_file_ids": {
           "type": "number",
           "description": "<p>Attach files to this comment that were previously uploaded using the<br>Submission Comment API's files action</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Associations to include with the submission. \"submission\\_comments\" is always included by default.<br>- \"submission\\_comments\": Comments on the submission (always included)<br>- \"visibility\": Whether the assignment is visible to the owner of the submission<br>- \"sub\\_assignment\\_submissions\": Sub-assignment submissions for discussion checkpoints<br>- \"peer\\_review\\_submissions\": Peer review submission data when peer review allocation and grading is enabled<br>- \"provisional\\_grades\": Provisional grades (only available for moderated assignments)<br>- \"group\": Group information (id and name) for group assignments Allowed values: <code>submission\\_comments</code>, <code>visibility</code>, <code>sub\\_assignment\\_submissions</code>, <code>peer\\_review\\_submissions</code>, <code>provisional\\_grades</code>, <code>group</code></p>"
         },
-        "submission[posted_grade]": {
+        "submission_posted_grade": {
           "type": "string",
           "description": "<p>Assign a score to the submission, updating both the \"score\" and \"grade\"<br>fields on the submission record. This parameter can be passed in a few<br>different formats:<br>points:: A floating point or integral value, such as \"13.5\". The grade<br>will be interpreted directly as the score of the assignment.<br>Values above assignment.points\\_possible are allowed, for awarding<br>extra credit.<br>percentage:: A floating point value appended with a percent sign, such as<br>\"40%\". The grade will be interpreted as a percentage score on the<br>assignment, where 100% == assignment.points\\_possible. Values above 100%<br>are allowed, for awarding extra credit.<br>letter grade:: A letter grade, following the assignment's defined letter<br>grading scheme. For example, \"A-\". The resulting score will be the high<br>end of the defined range for the letter grade. For instance, if \"B\" is<br>defined as 86% to 84%, a letter grade of \"B\" will be worth 86%. The<br>letter grade will be rejected if the assignment does not have a defined<br>letter grading scheme. For more fine-grained control of scores, pass in<br>points or percentage rather than the letter grade.<br>\"pass/complete/fail/incomplete\":: A string value of \"pass\" or \"complete\"<br>will give a score of 100%. \"fail\" or \"incomplete\" will give a score of<br>0.<br>Note that assignments with grading\\_type of \"pass\\_fail\" can only be<br>assigned a score of 0 or assignment.points\\_possible, nothing inbetween. If<br>a posted\\_grade in the \"points\" or \"percentage\" format is sent, the grade<br>will only be accepted if the grade equals one of those two values.</p>"
         },
-        "submission[excuse]": {
+        "submission_excuse": {
           "type": "boolean",
           "description": "Sets the \"excused\" status of an assignment."
         },
-        "submission[late_policy_status]": {
+        "submission_late_policy_status": {
           "type": "string",
           "description": "<p>Sets the late policy status to either \"late\", \"missing\", \"extended\", \"none\", or null.<br>NB: \"extended\" values can only be set in the UI when the \"UI features for 'extended' Submissions\" Account Feature is on</p>"
         },
-        "submission[seconds_late_override]": {
+        "submission_seconds_late_override": {
           "type": "number",
           "description": "Sets the seconds late if late policy status is \"late\""
         },
@@ -672,7 +672,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "assignment_ids[]": {
+        "assignment_ids": {
           "type": "string",
           "description": "Assignments being requested"
         },
@@ -753,39 +753,39 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: assignment_id"
         },
-        "grade_data[<student_id>][posted_grade]": {
+        "grade_data_student_id_posted_grade": {
           "type": "string",
           "description": "<p>See documentation for the posted\\_grade argument in the<br><a href=\"#method.submissions_api.update\">Submissions Update</a> documentation</p>"
         },
-        "grade_data[<student_id>][excuse]": {
+        "grade_data_student_id_excuse": {
           "type": "boolean",
           "description": "<p>See documentation for the excuse argument in the<br><a href=\"#method.submissions_api.update\">Submissions Update</a> documentation</p>"
         },
-        "grade_data[<student_id>][rubric_assessment]": {
+        "grade_data_student_id_rubric_assessment": {
           "type": "string",
           "description": "<p>See documentation for the rubric\\_assessment argument in the<br><a href=\"#method.submissions_api.update\">Submissions Update</a> documentation</p>"
         },
-        "grade_data[<student_id>][text_comment]": {
+        "grade_data_student_id_text_comment": {
           "type": "string",
           "description": "no description"
         },
-        "grade_data[<student_id>][group_comment]": {
+        "grade_data_student_id_group_comment": {
           "type": "boolean",
           "description": "no description"
         },
-        "grade_data[<student_id>][media_comment_id]": {
+        "grade_data_student_id_media_comment_id": {
           "type": "string",
           "description": "no description"
         },
-        "grade_data[<student_id>][media_comment_type]": {
+        "grade_data_student_id_media_comment_type": {
           "type": "string",
           "description": "no description Allowed values: `audio`, `video`"
         },
-        "grade_data[<student_id>][file_ids][]": {
+        "grade_data_student_id_file_ids": {
           "type": "number",
           "description": "<p>See documentation for the comment\\[] arguments in the<br><a href=\"#method.submissions_api.update\">Submissions Update</a> documentation</p>"
         },
-        "grade_data[<assignment_id>][<student_id>]": {
+        "grade_data_assignment_id_student_id": {
           "type": "number",
           "description": "<p>Specifies which assignment to grade. This argument is not necessary when<br>using the assignment-specific endpoints.</p>"
         }
@@ -926,7 +926,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: section_id"
         },
-        "submissionIds[]": {
+        "submissionIds": {
           "type": "string",
           "description": "no description"
         }
@@ -1441,31 +1441,104 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions", args);
   },
   post_ssaa_submissions: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions", args);
+    const mappedArgs = { ...args };
+    if ("comment_text_comment" in mappedArgs) {
+      mappedArgs["comment[text_comment]"] = mappedArgs["comment_text_comment"];
+      delete mappedArgs["comment_text_comment"];
+    }
+    if ("submission_group_comment" in mappedArgs) {
+      mappedArgs["submission[group_comment]"] = mappedArgs["submission_group_comment"];
+      delete mappedArgs["submission_group_comment"];
+    }
+    if ("submission_submission_type" in mappedArgs) {
+      mappedArgs["submission[submission_type]"] = mappedArgs["submission_submission_type"];
+      delete mappedArgs["submission_submission_type"];
+    }
+    if ("submission_body" in mappedArgs) {
+      mappedArgs["submission[body]"] = mappedArgs["submission_body"];
+      delete mappedArgs["submission_body"];
+    }
+    if ("submission_url" in mappedArgs) {
+      mappedArgs["submission[url]"] = mappedArgs["submission_url"];
+      delete mappedArgs["submission_url"];
+    }
+    if ("submission_file_ids" in mappedArgs) {
+      mappedArgs["submission[file_ids][]"] = mappedArgs["submission_file_ids"];
+      delete mappedArgs["submission_file_ids"];
+    }
+    if ("submission_media_comment_id" in mappedArgs) {
+      mappedArgs["submission[media_comment_id]"] = mappedArgs["submission_media_comment_id"];
+      delete mappedArgs["submission_media_comment_id"];
+    }
+    if ("submission_media_comment_type" in mappedArgs) {
+      mappedArgs["submission[media_comment_type]"] = mappedArgs["submission_media_comment_type"];
+      delete mappedArgs["submission_media_comment_type"];
+    }
+    if ("submission_user_id" in mappedArgs) {
+      mappedArgs["submission[user_id]"] = mappedArgs["submission_user_id"];
+      delete mappedArgs["submission_user_id"];
+    }
+    if ("submission_annotatable_attachment_id" in mappedArgs) {
+      mappedArgs["submission[annotatable_attachment_id]"] = mappedArgs["submission_annotatable_attachment_id"];
+      delete mappedArgs["submission_annotatable_attachment_id"];
+    }
+    if ("submission_submitted_at" in mappedArgs) {
+      mappedArgs["submission[submitted_at]"] = mappedArgs["submission_submitted_at"];
+      delete mappedArgs["submission_submitted_at"];
+    }
+    return genericHandler(client, "POST", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions", mappedArgs);
   },
   get_ccaa_submissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions", args);
   },
   get_ssaa_submissions: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions", mappedArgs);
   },
   get_ccs_submissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/students/submissions", args);
   },
   get_sss_submissions: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/sections/:section_id/students/submissions", args);
+    const mappedArgs = { ...args };
+    if ("student_ids" in mappedArgs) {
+      mappedArgs["student_ids[]"] = mappedArgs["student_ids"];
+      delete mappedArgs["student_ids"];
+    }
+    if ("assignment_ids" in mappedArgs) {
+      mappedArgs["assignment_ids[]"] = mappedArgs["assignment_ids"];
+      delete mappedArgs["assignment_ids"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/sections/:section_id/students/submissions", mappedArgs);
   },
   get_ccaa_submissions_user_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id", args);
   },
   get_ssaa_submissions_user_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id", mappedArgs);
   },
   get_ccaa_anonymous_submissions_anonymous_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id", args);
   },
   get_ssaa_anonymous_submissions_anonymous_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id", mappedArgs);
   },
   post_ccaasu_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/files", args);
@@ -1477,19 +1550,118 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id", args);
   },
   put_ssaa_submissions_user_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id", args);
+    const mappedArgs = { ...args };
+    if ("comment_text_comment" in mappedArgs) {
+      mappedArgs["comment[text_comment]"] = mappedArgs["comment_text_comment"];
+      delete mappedArgs["comment_text_comment"];
+    }
+    if ("comment_attempt" in mappedArgs) {
+      mappedArgs["comment[attempt]"] = mappedArgs["comment_attempt"];
+      delete mappedArgs["comment_attempt"];
+    }
+    if ("comment_group_comment" in mappedArgs) {
+      mappedArgs["comment[group_comment]"] = mappedArgs["comment_group_comment"];
+      delete mappedArgs["comment_group_comment"];
+    }
+    if ("comment_media_comment_id" in mappedArgs) {
+      mappedArgs["comment[media_comment_id]"] = mappedArgs["comment_media_comment_id"];
+      delete mappedArgs["comment_media_comment_id"];
+    }
+    if ("comment_media_comment_type" in mappedArgs) {
+      mappedArgs["comment[media_comment_type]"] = mappedArgs["comment_media_comment_type"];
+      delete mappedArgs["comment_media_comment_type"];
+    }
+    if ("comment_file_ids" in mappedArgs) {
+      mappedArgs["comment[file_ids][]"] = mappedArgs["comment_file_ids"];
+      delete mappedArgs["comment_file_ids"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("submission_posted_grade" in mappedArgs) {
+      mappedArgs["submission[posted_grade]"] = mappedArgs["submission_posted_grade"];
+      delete mappedArgs["submission_posted_grade"];
+    }
+    if ("submission_excuse" in mappedArgs) {
+      mappedArgs["submission[excuse]"] = mappedArgs["submission_excuse"];
+      delete mappedArgs["submission_excuse"];
+    }
+    if ("submission_late_policy_status" in mappedArgs) {
+      mappedArgs["submission[late_policy_status]"] = mappedArgs["submission_late_policy_status"];
+      delete mappedArgs["submission_late_policy_status"];
+    }
+    if ("submission_sticker" in mappedArgs) {
+      mappedArgs["submission[sticker]"] = mappedArgs["submission_sticker"];
+      delete mappedArgs["submission_sticker"];
+    }
+    if ("submission_seconds_late_override" in mappedArgs) {
+      mappedArgs["submission[seconds_late_override]"] = mappedArgs["submission_seconds_late_override"];
+      delete mappedArgs["submission_seconds_late_override"];
+    }
+    if ("submission_peer_review" in mappedArgs) {
+      mappedArgs["submission[peer_review]"] = mappedArgs["submission_peer_review"];
+      delete mappedArgs["submission_peer_review"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id", mappedArgs);
   },
   put_ccaa_anonymous_submissions_anonymous_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id", args);
   },
   put_ssaa_anonymous_submissions_anonymous_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id", args);
+    const mappedArgs = { ...args };
+    if ("comment_text_comment" in mappedArgs) {
+      mappedArgs["comment[text_comment]"] = mappedArgs["comment_text_comment"];
+      delete mappedArgs["comment_text_comment"];
+    }
+    if ("comment_group_comment" in mappedArgs) {
+      mappedArgs["comment[group_comment]"] = mappedArgs["comment_group_comment"];
+      delete mappedArgs["comment_group_comment"];
+    }
+    if ("comment_media_comment_id" in mappedArgs) {
+      mappedArgs["comment[media_comment_id]"] = mappedArgs["comment_media_comment_id"];
+      delete mappedArgs["comment_media_comment_id"];
+    }
+    if ("comment_media_comment_type" in mappedArgs) {
+      mappedArgs["comment[media_comment_type]"] = mappedArgs["comment_media_comment_type"];
+      delete mappedArgs["comment_media_comment_type"];
+    }
+    if ("comment_file_ids" in mappedArgs) {
+      mappedArgs["comment[file_ids][]"] = mappedArgs["comment_file_ids"];
+      delete mappedArgs["comment_file_ids"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("submission_posted_grade" in mappedArgs) {
+      mappedArgs["submission[posted_grade]"] = mappedArgs["submission_posted_grade"];
+      delete mappedArgs["submission_posted_grade"];
+    }
+    if ("submission_excuse" in mappedArgs) {
+      mappedArgs["submission[excuse]"] = mappedArgs["submission_excuse"];
+      delete mappedArgs["submission_excuse"];
+    }
+    if ("submission_late_policy_status" in mappedArgs) {
+      mappedArgs["submission[late_policy_status]"] = mappedArgs["submission_late_policy_status"];
+      delete mappedArgs["submission_late_policy_status"];
+    }
+    if ("submission_seconds_late_override" in mappedArgs) {
+      mappedArgs["submission[seconds_late_override]"] = mappedArgs["submission_seconds_late_override"];
+      delete mappedArgs["submission_seconds_late_override"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id", mappedArgs);
   },
   get_ccaa_gradeable_students: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/gradeable_students", args);
   },
   get_cca_gradeable_students: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/gradeable_students", args);
+    const mappedArgs = { ...args };
+    if ("assignment_ids" in mappedArgs) {
+      mappedArgs["assignment_ids[]"] = mappedArgs["assignment_ids"];
+      delete mappedArgs["assignment_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/gradeable_students", mappedArgs);
   },
   post_ccs_update_grades: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/submissions/update_grades", args);
@@ -1501,7 +1673,44 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/sections/:section_id/submissions/update_grades", args);
   },
   post_ssaas_update_grades: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/update_grades", args);
+    const mappedArgs = { ...args };
+    if ("grade_data_student_id_posted_grade" in mappedArgs) {
+      mappedArgs["grade_data[<student_id>][posted_grade]"] = mappedArgs["grade_data_student_id_posted_grade"];
+      delete mappedArgs["grade_data_student_id_posted_grade"];
+    }
+    if ("grade_data_student_id_excuse" in mappedArgs) {
+      mappedArgs["grade_data[<student_id>][excuse]"] = mappedArgs["grade_data_student_id_excuse"];
+      delete mappedArgs["grade_data_student_id_excuse"];
+    }
+    if ("grade_data_student_id_rubric_assessment" in mappedArgs) {
+      mappedArgs["grade_data[<student_id>][rubric_assessment]"] = mappedArgs["grade_data_student_id_rubric_assessment"];
+      delete mappedArgs["grade_data_student_id_rubric_assessment"];
+    }
+    if ("grade_data_student_id_text_comment" in mappedArgs) {
+      mappedArgs["grade_data[<student_id>][text_comment]"] = mappedArgs["grade_data_student_id_text_comment"];
+      delete mappedArgs["grade_data_student_id_text_comment"];
+    }
+    if ("grade_data_student_id_group_comment" in mappedArgs) {
+      mappedArgs["grade_data[<student_id>][group_comment]"] = mappedArgs["grade_data_student_id_group_comment"];
+      delete mappedArgs["grade_data_student_id_group_comment"];
+    }
+    if ("grade_data_student_id_media_comment_id" in mappedArgs) {
+      mappedArgs["grade_data[<student_id>][media_comment_id]"] = mappedArgs["grade_data_student_id_media_comment_id"];
+      delete mappedArgs["grade_data_student_id_media_comment_id"];
+    }
+    if ("grade_data_student_id_media_comment_type" in mappedArgs) {
+      mappedArgs["grade_data[<student_id>][media_comment_type]"] = mappedArgs["grade_data_student_id_media_comment_type"];
+      delete mappedArgs["grade_data_student_id_media_comment_type"];
+    }
+    if ("grade_data_student_id_file_ids" in mappedArgs) {
+      mappedArgs["grade_data[<student_id>][file_ids][]"] = mappedArgs["grade_data_student_id_file_ids"];
+      delete mappedArgs["grade_data_student_id_file_ids"];
+    }
+    if ("grade_data_assignment_id_student_id" in mappedArgs) {
+      mappedArgs["grade_data[<assignment_id>][<student_id>]"] = mappedArgs["grade_data_assignment_id_student_id"];
+      delete mappedArgs["grade_data_assignment_id_student_id"];
+    }
+    return genericHandler(client, "POST", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/update_grades", mappedArgs);
   },
   put_ccaasu_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read", args);
@@ -1519,7 +1728,12 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/submissions/bulk_mark_read", args);
   },
   put_sss_bulk_mark_read: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/sections/:section_id/submissions/bulk_mark_read", args);
+    const mappedArgs = { ...args };
+    if ("submissionIds" in mappedArgs) {
+      mappedArgs["submissionIds[]"] = mappedArgs["submissionIds"];
+      delete mappedArgs["submissionIds"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/sections/:section_id/submissions/bulk_mark_read", mappedArgs);
   },
   put_ccaasu_read_item: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read/:item", args);

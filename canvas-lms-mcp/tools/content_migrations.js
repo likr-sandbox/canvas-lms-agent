@@ -575,91 +575,91 @@ const definitions = [
           "type": "string",
           "description": "<p>The type of the migration. Use the<br><a href=\"#method.content_migrations.available_migrators\">Migrator</a> endpoint to<br>see all available migrators. Default allowed values:<br>canvas\\_cartridge\\_importer, common\\_cartridge\\_importer,<br>course\\_copy\\_importer, zip\\_file\\_importer, qti\\_converter, moodle\\_converter</p>"
         },
-        "pre_attachment[name]": {
+        "pre_attachment_name": {
           "type": "string",
           "description": "<p>Required if uploading a file. This is the first step in uploading a file<br>to the content migration. See the <a href=\"../basics/file.file_uploads.md\">File Upload Documentation</a> for details on the file upload workflow.</p>"
         },
-        "pre_attachment[*]": {
+        "pre_attachment": {
           "type": "string",
           "description": "Other file upload properties, See [File Upload Documentation](../basics/file.file_uploads.md)"
         },
-        "settings[file_url]": {
+        "settings_file_url": {
           "type": "string",
           "description": "A URL to download the file from. Must not require authentication."
         },
-        "settings[content_export_id]": {
+        "settings_content_export_id": {
           "type": "string",
           "description": "<p>The id of a ContentExport to import. This allows you to import content previously exported from Canvas<br>without needing to download and re-upload it.</p>"
         },
-        "settings[source_course_id]": {
+        "settings_source_course_id": {
           "type": "string",
           "description": "<p>The course to copy from for a course copy migration. (required if doing<br>course copy)</p>"
         },
-        "settings[folder_id]": {
+        "settings_folder_id": {
           "type": "string",
           "description": "The folder to unzip the .zip file into for a zip\\_file\\_import."
         },
-        "settings[overwrite_quizzes]": {
+        "settings_overwrite_quizzes": {
           "type": "boolean",
           "description": "<p>Whether to overwrite quizzes with the same identifiers between content<br>packages.</p>"
         },
-        "settings[question_bank_id]": {
+        "settings_question_bank_id": {
           "type": "number",
           "description": "<p>The existing question bank ID to import questions into if not specified in<br>the content package.</p>"
         },
-        "settings[question_bank_name]": {
+        "settings_question_bank_name": {
           "type": "string",
           "description": "<p>The question bank to import questions into if not specified in the content<br>package, if both bank id and name are set, id will take precedence.</p>"
         },
-        "settings[insert_into_module_id]": {
+        "settings_insert_into_module_id": {
           "type": "number",
           "description": "<p>The id of a module in the target course. This will add all imported items<br>(that can be added to a module) to the given module.</p>"
         },
-        "settings[insert_into_module_type]": {
+        "settings_insert_into_module_type": {
           "type": "string",
           "description": "<p>If provided (and +insert\\_into\\_module\\_id+ is supplied),<br>only add objects of the specified type to the module. Allowed values: <code>assignment</code>, <code>discussion\\_topic</code>, <code>file</code>, <code>page</code>, <code>quiz</code></p>"
         },
-        "settings[insert_into_module_position]": {
+        "settings_insert_into_module_position": {
           "type": "number",
           "description": "<p>The (1-based) position to insert the imported items into the course<br>(if +insert\\_into\\_module\\_id+ is supplied). If this parameter<br>is omitted, items will be added to the end of the module.</p>"
         },
-        "settings[move_to_assignment_group_id]": {
+        "settings_move_to_assignment_group_id": {
           "type": "number",
           "description": "<p>The id of an assignment group in the target course. If provided, all<br>imported assignments will be moved to the given assignment group.</p>"
         },
-        "settings[importer_skips]": {
+        "settings_importer_skips": {
           "type": "array",
           "description": "Set of importers to skip, even if otherwise selected by migration settings. Allowed values: `all_course_settings`, `visibility_settings`"
         },
-        "settings[import_blueprint_settings]": {
+        "settings_import_blueprint_settings": {
           "type": "boolean",
           "description": "<p>Import the \"use as blueprint course\" setting as well as the list of locked items<br>from the source course or package. The destination course must not be associated<br>with an existing blueprint course and cannot have any student or observer enrollments.</p>"
         },
-        "date_shift_options[shift_dates]": {
+        "date_shift_options_shift_dates": {
           "type": "boolean",
           "description": "Whether to shift dates in the copied course"
         },
-        "date_shift_options[old_start_date]": {
+        "date_shift_options_old_start_date": {
           "type": "string",
           "description": "The original start date of the source content/course"
         },
-        "date_shift_options[old_end_date]": {
+        "date_shift_options_old_end_date": {
           "type": "string",
           "description": "The original end date of the source content/course"
         },
-        "date_shift_options[new_start_date]": {
+        "date_shift_options_new_start_date": {
           "type": "string",
           "description": "The new start date for the content/course"
         },
-        "date_shift_options[new_end_date]": {
+        "date_shift_options_new_end_date": {
           "type": "string",
           "description": "The new end date for the source content/course"
         },
-        "date_shift_options[day_substitutions][X]": {
+        "date_shift_options_day_substitutions_X": {
           "type": "number",
           "description": "<p>Move anything scheduled for day 'X' to the specified day. (0-Sunday,<br>1-Monday, 2-Tuesday, 3-Wednesday, 4-Thursday, 5-Friday, 6-Saturday)</p>"
         },
-        "date_shift_options[remove_dates]": {
+        "date_shift_options_remove_dates": {
           "type": "boolean",
           "description": "<p>Whether to remove dates in the copied course. Cannot be used<br>in conjunction with <em>shift\\_dates</em>.</p>"
         },
@@ -1044,7 +1044,96 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/content_migrations", args);
   },
   post_uu_content_migrations: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/users/:user_id/content_migrations", args);
+    const mappedArgs = { ...args };
+    if ("pre_attachment_name" in mappedArgs) {
+      mappedArgs["pre_attachment[name]"] = mappedArgs["pre_attachment_name"];
+      delete mappedArgs["pre_attachment_name"];
+    }
+    if ("pre_attachment" in mappedArgs) {
+      mappedArgs["pre_attachment[*]"] = mappedArgs["pre_attachment"];
+      delete mappedArgs["pre_attachment"];
+    }
+    if ("settings_file_url" in mappedArgs) {
+      mappedArgs["settings[file_url]"] = mappedArgs["settings_file_url"];
+      delete mappedArgs["settings_file_url"];
+    }
+    if ("settings_content_export_id" in mappedArgs) {
+      mappedArgs["settings[content_export_id]"] = mappedArgs["settings_content_export_id"];
+      delete mappedArgs["settings_content_export_id"];
+    }
+    if ("settings_source_course_id" in mappedArgs) {
+      mappedArgs["settings[source_course_id]"] = mappedArgs["settings_source_course_id"];
+      delete mappedArgs["settings_source_course_id"];
+    }
+    if ("settings_folder_id" in mappedArgs) {
+      mappedArgs["settings[folder_id]"] = mappedArgs["settings_folder_id"];
+      delete mappedArgs["settings_folder_id"];
+    }
+    if ("settings_overwrite_quizzes" in mappedArgs) {
+      mappedArgs["settings[overwrite_quizzes]"] = mappedArgs["settings_overwrite_quizzes"];
+      delete mappedArgs["settings_overwrite_quizzes"];
+    }
+    if ("settings_question_bank_id" in mappedArgs) {
+      mappedArgs["settings[question_bank_id]"] = mappedArgs["settings_question_bank_id"];
+      delete mappedArgs["settings_question_bank_id"];
+    }
+    if ("settings_question_bank_name" in mappedArgs) {
+      mappedArgs["settings[question_bank_name]"] = mappedArgs["settings_question_bank_name"];
+      delete mappedArgs["settings_question_bank_name"];
+    }
+    if ("settings_insert_into_module_id" in mappedArgs) {
+      mappedArgs["settings[insert_into_module_id]"] = mappedArgs["settings_insert_into_module_id"];
+      delete mappedArgs["settings_insert_into_module_id"];
+    }
+    if ("settings_insert_into_module_type" in mappedArgs) {
+      mappedArgs["settings[insert_into_module_type]"] = mappedArgs["settings_insert_into_module_type"];
+      delete mappedArgs["settings_insert_into_module_type"];
+    }
+    if ("settings_insert_into_module_position" in mappedArgs) {
+      mappedArgs["settings[insert_into_module_position]"] = mappedArgs["settings_insert_into_module_position"];
+      delete mappedArgs["settings_insert_into_module_position"];
+    }
+    if ("settings_move_to_assignment_group_id" in mappedArgs) {
+      mappedArgs["settings[move_to_assignment_group_id]"] = mappedArgs["settings_move_to_assignment_group_id"];
+      delete mappedArgs["settings_move_to_assignment_group_id"];
+    }
+    if ("settings_importer_skips" in mappedArgs) {
+      mappedArgs["settings[importer_skips]"] = mappedArgs["settings_importer_skips"];
+      delete mappedArgs["settings_importer_skips"];
+    }
+    if ("settings_import_blueprint_settings" in mappedArgs) {
+      mappedArgs["settings[import_blueprint_settings]"] = mappedArgs["settings_import_blueprint_settings"];
+      delete mappedArgs["settings_import_blueprint_settings"];
+    }
+    if ("date_shift_options_shift_dates" in mappedArgs) {
+      mappedArgs["date_shift_options[shift_dates]"] = mappedArgs["date_shift_options_shift_dates"];
+      delete mappedArgs["date_shift_options_shift_dates"];
+    }
+    if ("date_shift_options_old_start_date" in mappedArgs) {
+      mappedArgs["date_shift_options[old_start_date]"] = mappedArgs["date_shift_options_old_start_date"];
+      delete mappedArgs["date_shift_options_old_start_date"];
+    }
+    if ("date_shift_options_old_end_date" in mappedArgs) {
+      mappedArgs["date_shift_options[old_end_date]"] = mappedArgs["date_shift_options_old_end_date"];
+      delete mappedArgs["date_shift_options_old_end_date"];
+    }
+    if ("date_shift_options_new_start_date" in mappedArgs) {
+      mappedArgs["date_shift_options[new_start_date]"] = mappedArgs["date_shift_options_new_start_date"];
+      delete mappedArgs["date_shift_options_new_start_date"];
+    }
+    if ("date_shift_options_new_end_date" in mappedArgs) {
+      mappedArgs["date_shift_options[new_end_date]"] = mappedArgs["date_shift_options_new_end_date"];
+      delete mappedArgs["date_shift_options_new_end_date"];
+    }
+    if ("date_shift_options_day_substitutions_X" in mappedArgs) {
+      mappedArgs["date_shift_options[day_substitutions][X]"] = mappedArgs["date_shift_options_day_substitutions_X"];
+      delete mappedArgs["date_shift_options_day_substitutions_X"];
+    }
+    if ("date_shift_options_remove_dates" in mappedArgs) {
+      mappedArgs["date_shift_options[remove_dates]"] = mappedArgs["date_shift_options_remove_dates"];
+      delete mappedArgs["date_shift_options_remove_dates"];
+    }
+    return genericHandler(client, "POST", "/api/v1/users/:user_id/content_migrations", mappedArgs);
   },
   put_aa_content_migrations_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/content_migrations/:id", args);

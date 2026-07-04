@@ -15,7 +15,7 @@ test("post_aa_terms calls correct endpoint", async () => {
   const handler = enrollment_termsModule.handlers.post_aa_terms;
   assert.ok(handler, "Handler post_aa_terms should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "enrollment_term[name]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "enrollment_term_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/terms");
@@ -33,7 +33,7 @@ test("put_aa_terms_id calls correct endpoint", async () => {
   const handler = enrollment_termsModule.handlers.put_aa_terms_id;
   assert.ok(handler, "Handler put_aa_terms_id should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "enrollment_term[name]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "enrollment_term_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/terms/test_id");
@@ -69,7 +69,7 @@ test("get_aa_terms calls correct endpoint", async () => {
   const handler = enrollment_termsModule.handlers.get_aa_terms;
   assert.ok(handler, "Handler get_aa_terms should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "workflow_state[]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "workflow_state": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/terms");

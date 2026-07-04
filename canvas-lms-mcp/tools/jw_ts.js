@@ -10,7 +10,7 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "workflows[]": {
+        "workflows": {
           "type": "string",
           "description": "Adds additional data to the JWT to be used by the consuming service workflow"
         },
@@ -53,7 +53,12 @@ const definitions = [
 
 const handlers = {
   post_jwts: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/jwts", args);
+    const mappedArgs = { ...args };
+    if ("workflows" in mappedArgs) {
+      mappedArgs["workflows[]"] = mappedArgs["workflows"];
+      delete mappedArgs["workflows"];
+    }
+    return genericHandler(client, "POST", "/api/v1/jwts", mappedArgs);
   },
   post_j_refresh: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/jwts/refresh", args);

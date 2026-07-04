@@ -284,7 +284,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "blackout_dates:": {
+        "blackout_dates": {
           "type": "string",
           "description": "<p>\\[blackout\\_date, ...]<br>An object containing the array of BlackoutDates we want to exist after this operation.<br>For array entries, if it has an id it will be updated, if not created, and if<br>an existing BlackoutDate id is missing from the array, it will be deleted.</p>"
         }
@@ -334,7 +334,12 @@ const handlers = {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/blackout_dates/:id", args);
   },
   put_cc_blackout_dates: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/blackout_dates", args);
+    const mappedArgs = { ...args };
+    if ("blackout_dates" in mappedArgs) {
+      mappedArgs["blackout_dates:"] = mappedArgs["blackout_dates"];
+      delete mappedArgs["blackout_dates"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/blackout_dates", mappedArgs);
   }
 };
 

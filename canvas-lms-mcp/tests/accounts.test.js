@@ -15,7 +15,7 @@ test("get_accounts calls correct endpoint", async () => {
   const handler = accountsModule.handlers.get_accounts;
   assert.ok(handler, "Handler get_accounts should be defined");
 
-  const result = await handler(mockClient, {"include[]": "test_val"});
+  const result = await handler(mockClient, {"include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts");
@@ -33,7 +33,7 @@ test("get_horizon_accounts calls correct endpoint", async () => {
   const handler = accountsModule.handlers.get_horizon_accounts;
   assert.ok(handler, "Handler get_horizon_accounts should be defined");
 
-  const result = await handler(mockClient, {"include[]": "test_val"});
+  const result = await handler(mockClient, {"include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/horizon_accounts");
@@ -159,7 +159,7 @@ test("get_aa_permissions calls correct endpoint", async () => {
   const handler = accountsModule.handlers.get_aa_permissions;
   assert.ok(handler, "Handler get_aa_permissions should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "permissions[]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "permissions": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/permissions");
@@ -267,7 +267,7 @@ test("put_accounts_id calls correct endpoint", async () => {
   const handler = accountsModule.handlers.put_accounts_id;
   assert.ok(handler, "Handler put_accounts_id should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "account[name]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "account_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_id");
@@ -357,7 +357,7 @@ test("post_aa_sub_accounts calls correct endpoint", async () => {
   const handler = accountsModule.handlers.post_aa_sub_accounts;
   assert.ok(handler, "Handler post_aa_sub_accounts should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "account[name]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "account_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/sub_accounts");

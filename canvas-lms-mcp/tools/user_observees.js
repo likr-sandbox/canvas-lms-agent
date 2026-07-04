@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "- \"avatar\\_url\": Optionally include avatar\\_url. Allowed values: `avatar_url`"
         },
@@ -38,7 +38,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "- \"avatar\\_url\": Optionally include avatar\\_url. Allowed values: `avatar_url`"
         },
@@ -62,11 +62,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "observee[unique_id]": {
+        "observee_unique_id": {
           "type": "string",
           "description": "The login id for the user to observe. Required if access\\_token is omitted."
         },
-        "observee[password]": {
+        "observee_password": {
           "type": "string",
           "description": "The password for the user to observe. Required if access\\_token is omitted."
         },
@@ -208,13 +208,32 @@ const definitions = [
 
 const handlers = {
   get_uu_observees: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/observees", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/observees", mappedArgs);
   },
   get_uu_observers: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/observers", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/observers", mappedArgs);
   },
   post_uu_observees: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/users/:user_id/observees", args);
+    const mappedArgs = { ...args };
+    if ("observee_unique_id" in mappedArgs) {
+      mappedArgs["observee[unique_id]"] = mappedArgs["observee_unique_id"];
+      delete mappedArgs["observee_unique_id"];
+    }
+    if ("observee_password" in mappedArgs) {
+      mappedArgs["observee[password]"] = mappedArgs["observee_password"];
+      delete mappedArgs["observee_password"];
+    }
+    return genericHandler(client, "POST", "/api/v1/users/:user_id/observees", mappedArgs);
   },
   get_uu_observees_observee_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/observees/:observee_id", args);

@@ -123,7 +123,7 @@ test("get_fi_files calls correct endpoint", async () => {
   const handler = filesModule.handlers.get_fi_files;
   assert.ok(handler, "Handler get_fi_files should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "content_types[]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "content_types": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/folders/test_id/files");
@@ -231,7 +231,7 @@ test("get_uu_files_id calls correct endpoint", async () => {
   const handler = filesModule.handlers.get_uu_files_id;
   assert.ok(handler, "Handler get_uu_files_id should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/files/test_id");
@@ -1005,7 +1005,7 @@ test("put_uu_usage_rights calls correct endpoint", async () => {
   const handler = filesModule.handlers.put_uu_usage_rights;
   assert.ok(handler, "Handler put_uu_usage_rights should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "file_ids[]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "file_ids": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/usage_rights");
@@ -1059,7 +1059,7 @@ test("delete_uu_usage_rights calls correct endpoint", async () => {
   const handler = filesModule.handlers.delete_uu_usage_rights;
   assert.ok(handler, "Handler delete_uu_usage_rights should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "file_ids[]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "file_ids": "test_val"});
 
   assert.strictEqual(calledConfig.method, "delete");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/usage_rights");

@@ -15,7 +15,7 @@ test("get_cc_sections calls correct endpoint", async () => {
   const handler = sectionsModule.handlers.get_cc_sections;
   assert.ok(handler, "Handler get_cc_sections should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/sections");
@@ -33,7 +33,7 @@ test("post_cc_sections calls correct endpoint", async () => {
   const handler = sectionsModule.handlers.post_cc_sections;
   assert.ok(handler, "Handler post_cc_sections should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "course_section[name]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "course_section_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/sections");
@@ -87,7 +87,7 @@ test("put_sections_id calls correct endpoint", async () => {
   const handler = sectionsModule.handlers.put_sections_id;
   assert.ok(handler, "Handler put_sections_id should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "course_section[name]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "course_section_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_id");
@@ -123,7 +123,7 @@ test("get_sections_id calls correct endpoint", async () => {
   const handler = sectionsModule.handlers.get_sections_id;
   assert.ok(handler, "Handler get_sections_id should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_id");

@@ -33,7 +33,7 @@ test("post_ci_late_policy calls correct endpoint", async () => {
   const handler = late_policyModule.handlers.post_ci_late_policy;
   assert.ok(handler, "Handler post_ci_late_policy should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "late_policy[missing_submission_deduction_enabled]": true});
+  const result = await handler(mockClient, {"id": "test_id", "late_policy_missing_submission_deduction_enabled": true});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_id/late_policy");

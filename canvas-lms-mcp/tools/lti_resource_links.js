@@ -104,22 +104,22 @@ const definitions = [
           "type": "string",
           "description": "body \\[Required, Array] The POST body should be a JSON array of objects containing the parameters for each link to create."
         },
-        "[]url": {
+        "url": {
           "type": "string",
           "description": "Each object must contain a launch URL."
         },
-        "[]title": {
+        "title": {
           "type": "string",
           "description": "Each object may contain a title."
         },
-        "[]custom": {
+        "custom": {
           "type": "string",
           "description": "Custom parameters to be sent to the tool when launching this link."
         }
       },
       "required": [
         "course_id",
-        "[]url"
+        "url"
       ]
     }
   },
@@ -194,7 +194,20 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/lti_resource_links", args);
   },
   post_cclrl_bulk: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/lti_resource_links/bulk", args);
+    const mappedArgs = { ...args };
+    if ("url" in mappedArgs) {
+      mappedArgs["[]url"] = mappedArgs["url"];
+      delete mappedArgs["url"];
+    }
+    if ("title" in mappedArgs) {
+      mappedArgs["[]title"] = mappedArgs["title"];
+      delete mappedArgs["title"];
+    }
+    if ("custom" in mappedArgs) {
+      mappedArgs["[]custom"] = mappedArgs["custom"];
+      delete mappedArgs["custom"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/lti_resource_links/bulk", mappedArgs);
   },
   put_cc_lti_resource_links_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/lti_resource_links/:id", args);

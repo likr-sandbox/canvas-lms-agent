@@ -15,7 +15,7 @@ test("post_aass_originality_report calls correct endpoint", async () => {
   const handler = originality_reportsModule.handlers.post_aass_originality_report;
   assert.ok(handler, "Handler post_aass_originality_report should be defined");
 
-  const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "submission_id": "test_submission_id", "originality_report[file_id]": 123});
+  const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "submission_id": "test_submission_id", "originality_report_file_id": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/lti/assignments/test_assignment_id/submissions/test_submission_id/originality_report");
@@ -51,7 +51,7 @@ test("put_aaff_originality_report calls correct endpoint", async () => {
   const handler = originality_reportsModule.handlers.put_aaff_originality_report;
   assert.ok(handler, "Handler put_aaff_originality_report should be defined");
 
-  const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "file_id": "test_file_id", "originality_report[originality_score]": 123});
+  const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "file_id": "test_file_id", "originality_report_originality_score": 123});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/lti/assignments/test_assignment_id/files/test_file_id/originality_report");

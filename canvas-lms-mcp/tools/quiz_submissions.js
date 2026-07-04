@@ -18,7 +18,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: quiz_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "Associations to include with the quiz submission. Allowed values: `submission`, `quiz`, `user`"
         },
@@ -47,7 +47,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: quiz_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "Associations to include with the quiz submission. Allowed values: `submission`, `quiz`, `user`"
         },
@@ -80,7 +80,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "Associations to include with the quiz submission. Allowed values: `submission`, `quiz`, `user`"
         },
@@ -143,15 +143,15 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "quiz_submissions[][attempt]": {
+        "quiz_submissions_attempt": {
           "type": "number",
           "description": "<p>The attempt number of the quiz submission that should be updated. This<br>attempt MUST be already completed.</p>"
         },
-        "quiz_submissions[][fudge_points]": {
+        "quiz_submissions_fudge_points": {
           "type": "number",
           "description": "Amount of positive or negative points to fudge the total score by."
         },
-        "quiz_submissions[][questions]": {
+        "quiz_submissions_questions": {
           "type": "string",
           "description": "<p>A set of scores and comments for each question answered by the student.<br>The keys are the question IDs, and the values are hashes of <code>score</code> and<br><code>comment</code> entries. See <a href=\"#Manual+Scoring-appendix\">Appendix: Manual Scoring</a> for more on this<br>parameter.</p>"
         }
@@ -160,7 +160,7 @@ const definitions = [
         "course_id",
         "quiz_id",
         "id",
-        "quiz_submissions[][attempt]"
+        "quiz_submissions_attempt"
       ]
     }
   },
@@ -238,19 +238,47 @@ const definitions = [
 
 const handlers = {
   get_ccqq_submissions: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions", mappedArgs);
   },
   get_ccqq_submission: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submission", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submission", mappedArgs);
   },
   get_ccqq_submissions_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id", mappedArgs);
   },
   post_ccqq_submissions: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions", args);
   },
   put_ccqq_submissions_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id", args);
+    const mappedArgs = { ...args };
+    if ("quiz_submissions_attempt" in mappedArgs) {
+      mappedArgs["quiz_submissions[][attempt]"] = mappedArgs["quiz_submissions_attempt"];
+      delete mappedArgs["quiz_submissions_attempt"];
+    }
+    if ("quiz_submissions_fudge_points" in mappedArgs) {
+      mappedArgs["quiz_submissions[][fudge_points]"] = mappedArgs["quiz_submissions_fudge_points"];
+      delete mappedArgs["quiz_submissions_fudge_points"];
+    }
+    if ("quiz_submissions_questions" in mappedArgs) {
+      mappedArgs["quiz_submissions[][questions]"] = mappedArgs["quiz_submissions_questions"];
+      delete mappedArgs["quiz_submissions_questions"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id", mappedArgs);
   },
   post_ccqqsi_complete: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/complete", args);

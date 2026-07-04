@@ -43,7 +43,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: assignment_id"
         },
-        "student_ids[]": {
+        "student_ids": {
           "type": "number",
           "description": "user ids for students to select for moderation"
         }
@@ -187,7 +187,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/moderated_students", args);
   },
   post_ccaa_moderated_students: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/moderated_students", args);
+    const mappedArgs = { ...args };
+    if ("student_ids" in mappedArgs) {
+      mappedArgs["student_ids[]"] = mappedArgs["student_ids"];
+      delete mappedArgs["student_ids"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/moderated_students", mappedArgs);
   },
   put_ccaapg_bulk_select: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/bulk_select", args);

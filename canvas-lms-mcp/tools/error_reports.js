@@ -10,29 +10,29 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "error[subject]": {
+        "error_subject": {
           "type": "string",
           "description": "The summary of the problem"
         },
-        "error[url]": {
+        "error_url": {
           "type": "string",
           "description": "URL from which the report was issued"
         },
-        "error[email]": {
+        "error_email": {
           "type": "string",
           "description": "Email address for the reporting user"
         },
-        "error[comments]": {
+        "error_comments": {
           "type": "string",
           "description": "The long version of the story from the user one what they experienced"
         },
-        "error[http_env]": {
+        "error_http_env": {
           "type": "string",
           "description": "<p>A collection of metadata about the users' environment. If not provided,<br>canvas will collect it based on information found in the request.<br>(Doesn't have to be HTTPENV info, could be anything JSON object that can be<br>serialized as a hash, a mobile app might include relevant metadata for<br>itself)</p>"
         }
       },
       "required": [
-        "error[subject]"
+        "error_subject"
       ]
     }
   }
@@ -40,7 +40,28 @@ const definitions = [
 
 const handlers = {
   post_error_reports: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/error_reports", args);
+    const mappedArgs = { ...args };
+    if ("error_subject" in mappedArgs) {
+      mappedArgs["error[subject]"] = mappedArgs["error_subject"];
+      delete mappedArgs["error_subject"];
+    }
+    if ("error_url" in mappedArgs) {
+      mappedArgs["error[url]"] = mappedArgs["error_url"];
+      delete mappedArgs["error_url"];
+    }
+    if ("error_email" in mappedArgs) {
+      mappedArgs["error[email]"] = mappedArgs["error_email"];
+      delete mappedArgs["error_email"];
+    }
+    if ("error_comments" in mappedArgs) {
+      mappedArgs["error[comments]"] = mappedArgs["error_comments"];
+      delete mappedArgs["error_comments"];
+    }
+    if ("error_http_env" in mappedArgs) {
+      mappedArgs["error[http_env]"] = mappedArgs["error_http_env"];
+      delete mappedArgs["error_http_env"];
+    }
+    return genericHandler(client, "POST", "/api/v1/error_reports", mappedArgs);
   }
 };
 

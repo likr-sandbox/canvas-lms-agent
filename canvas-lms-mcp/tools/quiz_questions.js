@@ -81,47 +81,47 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: quiz_id"
         },
-        "question[question_name]": {
+        "question_question_name": {
           "type": "string",
           "description": "The name of the question."
         },
-        "question[question_text]": {
+        "question_question_text": {
           "type": "string",
           "description": "The text of the question."
         },
-        "question[quiz_group_id]": {
+        "question_quiz_group_id": {
           "type": "number",
           "description": "The id of the quiz group to assign the question to."
         },
-        "question[question_type]": {
+        "question_question_type": {
           "type": "string",
           "description": "The type of question. Multiple optional fields depend upon the type of question to be used. Allowed values: `calculated_question`, `essay_question`, `file_upload_question`, `fill_in_multiple_blanks_question`, `matching_question`, `multiple_answers_question`, `multiple_choice_question`, `multiple_dropdowns_question`, `numerical_question`, `short_answer_question`, `text_only_question`, `true_false_question`"
         },
-        "question[position]": {
+        "question_position": {
           "type": "number",
           "description": "The order in which the question will be displayed in the quiz in relation to other questions."
         },
-        "question[points_possible]": {
+        "question_points_possible": {
           "type": "number",
           "description": "The maximum amount of points received for answering this question correctly."
         },
-        "question[correct_comments]": {
+        "question_correct_comments": {
           "type": "string",
           "description": "The comment to display if the student answers the question correctly."
         },
-        "question[incorrect_comments]": {
+        "question_incorrect_comments": {
           "type": "string",
           "description": "The comment to display if the student answers incorrectly."
         },
-        "question[neutral_comments]": {
+        "question_neutral_comments": {
           "type": "string",
           "description": "The comment to display regardless of how the student answered."
         },
-        "question[text_after_answers]": {
+        "question_text_after_answers": {
           "type": "string",
           "description": "no description"
         },
-        "question[answers]": {
+        "question_answers": {
           "type": "string",
           "description": "no description"
         }
@@ -150,47 +150,47 @@ const definitions = [
           "type": "number",
           "description": "The quiz question's unique identifier."
         },
-        "question[question_name]": {
+        "question_question_name": {
           "type": "string",
           "description": "The name of the question."
         },
-        "question[question_text]": {
+        "question_question_text": {
           "type": "string",
           "description": "The text of the question."
         },
-        "question[quiz_group_id]": {
+        "question_quiz_group_id": {
           "type": "number",
           "description": "The id of the quiz group to assign the question to."
         },
-        "question[question_type]": {
+        "question_question_type": {
           "type": "string",
           "description": "The type of question. Multiple optional fields depend upon the type of question to be used. Allowed values: `calculated_question`, `essay_question`, `file_upload_question`, `fill_in_multiple_blanks_question`, `matching_question`, `multiple_answers_question`, `multiple_choice_question`, `multiple_dropdowns_question`, `numerical_question`, `short_answer_question`, `text_only_question`, `true_false_question`"
         },
-        "question[position]": {
+        "question_position": {
           "type": "number",
           "description": "The order in which the question will be displayed in the quiz in relation to other questions."
         },
-        "question[points_possible]": {
+        "question_points_possible": {
           "type": "number",
           "description": "The maximum amount of points received for answering this question correctly."
         },
-        "question[correct_comments]": {
+        "question_correct_comments": {
           "type": "string",
           "description": "The comment to display if the student answers the question correctly."
         },
-        "question[incorrect_comments]": {
+        "question_incorrect_comments": {
           "type": "string",
           "description": "The comment to display if the student answers incorrectly."
         },
-        "question[neutral_comments]": {
+        "question_neutral_comments": {
           "type": "string",
           "description": "The comment to display regardless of how the student answered."
         },
-        "question[text_after_answers]": {
+        "question_text_after_answers": {
           "type": "string",
           "description": "no description"
         },
-        "question[answers]": {
+        "question_answers": {
           "type": "string",
           "description": "no description"
         }
@@ -238,10 +238,100 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id", args);
   },
   post_ccqq_questions: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions", args);
+    const mappedArgs = { ...args };
+    if ("question_question_name" in mappedArgs) {
+      mappedArgs["question[question_name]"] = mappedArgs["question_question_name"];
+      delete mappedArgs["question_question_name"];
+    }
+    if ("question_question_text" in mappedArgs) {
+      mappedArgs["question[question_text]"] = mappedArgs["question_question_text"];
+      delete mappedArgs["question_question_text"];
+    }
+    if ("question_quiz_group_id" in mappedArgs) {
+      mappedArgs["question[quiz_group_id]"] = mappedArgs["question_quiz_group_id"];
+      delete mappedArgs["question_quiz_group_id"];
+    }
+    if ("question_question_type" in mappedArgs) {
+      mappedArgs["question[question_type]"] = mappedArgs["question_question_type"];
+      delete mappedArgs["question_question_type"];
+    }
+    if ("question_position" in mappedArgs) {
+      mappedArgs["question[position]"] = mappedArgs["question_position"];
+      delete mappedArgs["question_position"];
+    }
+    if ("question_points_possible" in mappedArgs) {
+      mappedArgs["question[points_possible]"] = mappedArgs["question_points_possible"];
+      delete mappedArgs["question_points_possible"];
+    }
+    if ("question_correct_comments" in mappedArgs) {
+      mappedArgs["question[correct_comments]"] = mappedArgs["question_correct_comments"];
+      delete mappedArgs["question_correct_comments"];
+    }
+    if ("question_incorrect_comments" in mappedArgs) {
+      mappedArgs["question[incorrect_comments]"] = mappedArgs["question_incorrect_comments"];
+      delete mappedArgs["question_incorrect_comments"];
+    }
+    if ("question_neutral_comments" in mappedArgs) {
+      mappedArgs["question[neutral_comments]"] = mappedArgs["question_neutral_comments"];
+      delete mappedArgs["question_neutral_comments"];
+    }
+    if ("question_text_after_answers" in mappedArgs) {
+      mappedArgs["question[text_after_answers]"] = mappedArgs["question_text_after_answers"];
+      delete mappedArgs["question_text_after_answers"];
+    }
+    if ("question_answers" in mappedArgs) {
+      mappedArgs["question[answers]"] = mappedArgs["question_answers"];
+      delete mappedArgs["question_answers"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions", mappedArgs);
   },
   put_ccqq_questions_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id", args);
+    const mappedArgs = { ...args };
+    if ("question_question_name" in mappedArgs) {
+      mappedArgs["question[question_name]"] = mappedArgs["question_question_name"];
+      delete mappedArgs["question_question_name"];
+    }
+    if ("question_question_text" in mappedArgs) {
+      mappedArgs["question[question_text]"] = mappedArgs["question_question_text"];
+      delete mappedArgs["question_question_text"];
+    }
+    if ("question_quiz_group_id" in mappedArgs) {
+      mappedArgs["question[quiz_group_id]"] = mappedArgs["question_quiz_group_id"];
+      delete mappedArgs["question_quiz_group_id"];
+    }
+    if ("question_question_type" in mappedArgs) {
+      mappedArgs["question[question_type]"] = mappedArgs["question_question_type"];
+      delete mappedArgs["question_question_type"];
+    }
+    if ("question_position" in mappedArgs) {
+      mappedArgs["question[position]"] = mappedArgs["question_position"];
+      delete mappedArgs["question_position"];
+    }
+    if ("question_points_possible" in mappedArgs) {
+      mappedArgs["question[points_possible]"] = mappedArgs["question_points_possible"];
+      delete mappedArgs["question_points_possible"];
+    }
+    if ("question_correct_comments" in mappedArgs) {
+      mappedArgs["question[correct_comments]"] = mappedArgs["question_correct_comments"];
+      delete mappedArgs["question_correct_comments"];
+    }
+    if ("question_incorrect_comments" in mappedArgs) {
+      mappedArgs["question[incorrect_comments]"] = mappedArgs["question_incorrect_comments"];
+      delete mappedArgs["question_incorrect_comments"];
+    }
+    if ("question_neutral_comments" in mappedArgs) {
+      mappedArgs["question[neutral_comments]"] = mappedArgs["question_neutral_comments"];
+      delete mappedArgs["question_neutral_comments"];
+    }
+    if ("question_text_after_answers" in mappedArgs) {
+      mappedArgs["question[text_after_answers]"] = mappedArgs["question_text_after_answers"];
+      delete mappedArgs["question_text_after_answers"];
+    }
+    if ("question_answers" in mappedArgs) {
+      mappedArgs["question[answers]"] = mappedArgs["question_answers"];
+      delete mappedArgs["question_answers"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id", mappedArgs);
   },
   delete_ccqq_questions_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id", args);

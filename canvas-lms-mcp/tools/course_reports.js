@@ -48,11 +48,11 @@ const definitions = [
           "type": "string",
           "description": "The type of report to generate."
         },
-        "parameters[]": {
+        "parameters": {
           "type": "string",
           "description": "<p>The parameters will vary for each report.<br>A few example parameters have been provided below.<br>Note: the example parameters provided below may not be valid for every report.</p>"
         },
-        "parameters[section_ids[]]": {
+        "parameters_section_ids": {
           "type": "number",
           "description": "<p>The sections of the course to report on.<br>Note: this parameter has been listed to serve as an example and may not be<br>valid for every report.</p>"
         }
@@ -95,7 +95,16 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/reports/:report_type/:id", args);
   },
   post_cc_reports_report_type: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/reports/:report_type", args);
+    const mappedArgs = { ...args };
+    if ("parameters" in mappedArgs) {
+      mappedArgs["parameters[]"] = mappedArgs["parameters"];
+      delete mappedArgs["parameters"];
+    }
+    if ("parameters_section_ids" in mappedArgs) {
+      mappedArgs["parameters[section_ids[]]"] = mappedArgs["parameters_section_ids"];
+      delete mappedArgs["parameters_section_ids"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/reports/:report_type", mappedArgs);
   },
   get_cc_reports_report_type: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/reports/:report_type", args);

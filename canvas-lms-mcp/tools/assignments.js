@@ -59,7 +59,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: assignment_group_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Optional information to include with each assignment:<br>submission:: The current user's current +Submission+<br>assignment\\_visibility:: An array of ids of students who can see the assignment<br>all\\_dates:: An array of +AssignmentDate+ structures, one for each override, and also a +base+ if the assignment has an \"Everyone\" / \"Everyone Else\" date<br>overrides:: An array of +AssignmentOverride+ structures<br>observed\\_users:: An array of submissions for observed users<br>can\\_edit:: an extra Boolean value will be included with each +Assignment+ (and +AssignmentDate+ if +all\\_dates+ is supplied) to indicate whether the caller can edit the assignment or date. Moderated grading and closed grading periods may restrict a user's ability to edit an assignment.<br>score\\_statistics:: An object containing min, max, and mean score on this assignment. This will not be included for students if there are less than 5 graded assignments or if disabled by the instructor. Only valid if 'submission' is also included.<br>ab\\_guid:: An array of guid strings for academic benchmarks Allowed values: <code>submission</code>, <code>assignment\\_visibility</code>, <code>all\\_dates</code>, <code>overrides</code>, <code>observed\\_users</code>, <code>can\\_edit</code>, <code>score\\_statistics</code>, <code>ab\\_guid</code></p>"
         },
@@ -79,7 +79,7 @@ const definitions = [
           "type": "string",
           "description": "If included, only return certain assignments depending on due date and submission status. Allowed values: `past`, `overdue`, `undated`, `ungraded`, `unsubmitted`, `upcoming`, `future`"
         },
-        "assignment_ids[]": {
+        "assignment_ids": {
           "type": "string",
           "description": "if set, return only assignments specified"
         },
@@ -200,7 +200,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Associations to include with the assignment. The \"assignment\\_visibility\" option<br>requires that the Differentiated Assignments course feature be turned on. If<br>\"observed\\_users\" is passed, submissions for observed users will also be included.<br>For \"score\\_statistics\" to be included, the \"submission\" option must also be set.<br>The \"peer\\_review\" option returns peer review sub assignment data if it exists, regardless<br>of the Peer Review Allocation and Grading feature state. If no peer review sub assignment<br>exists, the feature must be enabled to receive a null value; otherwise the key is omitted. Allowed values: <code>submission</code>, <code>assignment\\_visibility</code>, <code>overrides</code>, <code>observed\\_users</code>, <code>can\\_edit</code>, <code>score\\_statistics</code>, <code>ab\\_guid</code>, <code>peer\\_review</code></p>"
         },
@@ -237,190 +237,190 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "assignment[name]": {
+        "assignment_name": {
           "type": "string",
           "description": "The assignment name."
         },
-        "assignment[position]": {
+        "assignment_position": {
           "type": "number",
           "description": "<p>The position of this assignment in the group when displaying<br>assignment lists.</p>"
         },
-        "assignment[submission_types][]": {
+        "assignment_submission_types": {
           "type": "string",
           "description": "<p>List of supported submission types for the assignment.<br>Unless the assignment is allowing online submissions, the array should<br>only have one element.<br>If not allowing online submissions, your options are:<br>\"online\\_quiz\"<br>\"none\"<br>\"on\\_paper\"<br>\"discussion\\_topic\"<br>\"external\\_tool\"<br>If you are allowing online submissions, you can have one or many<br>allowed submission types:<br>\"online\\_upload\"<br>\"online\\_text\\_entry\"<br>\"online\\_url\"<br>\"media\\_recording\" (Only valid when the Kaltura plugin is enabled)<br>\"student\\_annotation\" Allowed values: <code>online\\_quiz</code>, <code>none</code>, <code>on\\_paper</code>, <code>discussion\\_topic</code>, <code>external\\_tool</code>, <code>online\\_upload</code>, <code>online\\_text\\_entry</code>, <code>online\\_url</code>, <code>media\\_recording</code>, <code>student\\_annotation</code></p>"
         },
-        "assignment[allowed_extensions][]": {
+        "assignment_allowed_extensions": {
           "type": "string",
           "description": "<p>Allowed extensions if submission\\_types includes \"online\\_upload\"<br>Example:<br>allowed\\_extensions: \\[\"docx\",\"ppt\"]</p>"
         },
-        "assignment[turnitin_enabled]": {
+        "assignment_turnitin_enabled": {
           "type": "boolean",
           "description": "<p>Only applies when the Turnitin plugin is enabled for a course and<br>the submission\\_types array includes \"online\\_upload\".<br>Toggles Turnitin submissions for the assignment.<br>Will be ignored if Turnitin is not available for the course.</p>"
         },
-        "assignment[vericite_enabled]": {
+        "assignment_vericite_enabled": {
           "type": "boolean",
           "description": "<p>Only applies when the VeriCite plugin is enabled for a course and<br>the submission\\_types array includes \"online\\_upload\".<br>Toggles VeriCite submissions for the assignment.<br>Will be ignored if VeriCite is not available for the course.</p>"
         },
-        "assignment[turnitin_settings]": {
+        "assignment_turnitin_settings": {
           "type": "string",
           "description": "<p>Settings to send along to turnitin. See Assignment object definition for<br>format.</p>"
         },
-        "assignment[integration_data]": {
+        "assignment_integration_data": {
           "type": "string",
           "description": "Data used for SIS integrations. Requires admin-level token with the \"Manage SIS\" permission. JSON string required."
         },
-        "assignment[integration_id]": {
+        "assignment_integration_id": {
           "type": "string",
           "description": "Unique ID from third party integrations"
         },
-        "assignment[peer_reviews]": {
+        "assignment_peer_reviews": {
           "type": "boolean",
           "description": "<p>If submission\\_types does not include external\\_tool,discussion\\_topic,<br>online\\_quiz, or on\\_paper, determines whether or not peer reviews<br>will be turned on for the assignment.</p>"
         },
-        "assignment[automatic_peer_reviews]": {
+        "assignment_automatic_peer_reviews": {
           "type": "boolean",
           "description": "<p>Whether peer reviews will be assigned automatically by Canvas or if<br>teachers must manually assign peer reviews. Does not apply if peer reviews<br>are not enabled.</p>"
         },
-        "assignment[notify_of_update]": {
+        "assignment_notify_of_update": {
           "type": "boolean",
           "description": "<p>If true, Canvas will send a notification to students in the class<br>notifying them that the content has changed.</p>"
         },
-        "assignment[group_category_id]": {
+        "assignment_group_category_id": {
           "type": "number",
           "description": "<p>If present, the assignment will become a group assignment assigned<br>to the group.</p>"
         },
-        "assignment[grade_group_students_individually]": {
+        "assignment_grade_group_students_individually": {
           "type": "number",
           "description": "<p>If this is a group assignment, teachers have the options to grade<br>students individually. If false, Canvas will apply the assignment's<br>score to each member of the group. If true, the teacher can manually<br>assign scores to each member of the group.</p>"
         },
-        "assignment[external_tool_tag_attributes]": {
+        "assignment_external_tool_tag_attributes": {
           "type": "string",
           "description": "<p>Hash of external tool parameters if submission\\_types is \\[\"external\\_tool\"].<br>See Assignment object definition for format.</p>"
         },
-        "assignment[points_possible]": {
+        "assignment_points_possible": {
           "type": "number",
           "description": "The maximum points possible on the assignment."
         },
-        "assignment[grading_type]": {
+        "assignment_grading_type": {
           "type": "string",
           "description": "<p>The strategy used for grading the assignment.<br>The assignment defaults to \"points\" if this field is omitted. Allowed values: <code>pass\\_fail</code>, <code>percent</code>, <code>letter\\_grade</code>, <code>gpa\\_scale</code>, <code>points</code>, <code>not\\_graded</code></p>"
         },
-        "assignment[due_at]": {
+        "assignment_due_at": {
           "type": "string",
           "description": "<p>The day/time the assignment is due. Must be between the lock dates if there are lock dates.<br>Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z.</p>"
         },
-        "assignment[lock_at]": {
+        "assignment_lock_at": {
           "type": "string",
           "description": "<p>The day/time the assignment is locked after. Must be after the due date if there is a due date.<br>Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z.</p>"
         },
-        "assignment[unlock_at]": {
+        "assignment_unlock_at": {
           "type": "string",
           "description": "<p>The day/time the assignment is unlocked. Must be before the due date if there is a due date.<br>Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z.</p>"
         },
-        "assignment[description]": {
+        "assignment_description": {
           "type": "string",
           "description": "The assignment's description, supports HTML."
         },
-        "assignment[assignment_group_id]": {
+        "assignment_assignment_group_id": {
           "type": "number",
           "description": "<p>The assignment group id to put the assignment in.<br>Defaults to the top assignment group in the course.</p>"
         },
-        "assignment[assignment_overrides][]": {
+        "assignment_assignment_overrides": {
           "type": "string",
           "description": "List of overrides for the assignment."
         },
-        "assignment[only_visible_to_overrides]": {
+        "assignment_only_visible_to_overrides": {
           "type": "boolean",
           "description": "<p>Whether this assignment is only visible to overrides<br>(Only useful if 'differentiated assignments' account setting is on)</p>"
         },
-        "assignment[published]": {
+        "assignment_published": {
           "type": "boolean",
           "description": "<p>Whether this assignment is published.<br>(Only useful if 'draft state' account setting is on)<br>Unpublished assignments are not visible to students.</p>"
         },
-        "assignment[grading_standard_id]": {
+        "assignment_grading_standard_id": {
           "type": "number",
           "description": "<p>The grading standard id to set for the course. If no value is provided for this argument the current grading\\_standard will be un-set from this course.<br>This will update the grading\\_type for the course to 'letter\\_grade' unless it is already 'gpa\\_scale'.</p>"
         },
-        "assignment[omit_from_final_grade]": {
+        "assignment_omit_from_final_grade": {
           "type": "boolean",
           "description": "Whether this assignment is counted towards a student's final grade."
         },
-        "assignment[hide_in_gradebook]": {
+        "assignment_hide_in_gradebook": {
           "type": "boolean",
           "description": "Whether this assignment is shown in the gradebook."
         },
-        "assignment[quiz_lti]": {
+        "assignment_quiz_lti": {
           "type": "boolean",
           "description": "<p>Whether this assignment should use the Quizzes 2 LTI tool. Sets the<br>submission type to 'external\\_tool' and configures the external tool<br>attributes to use the Quizzes 2 LTI tool configured for this course.<br>Has no effect if no Quizzes 2 LTI tool is configured.</p>"
         },
-        "assignment[moderated_grading]": {
+        "assignment_moderated_grading": {
           "type": "boolean",
           "description": "Whether this assignment is moderated."
         },
-        "assignment[grader_count]": {
+        "assignment_grader_count": {
           "type": "number",
           "description": "<p>The maximum number of provisional graders who may issue grades for this<br>assignment. Only relevant for moderated assignments. Must be a positive<br>value, and must be set to 1 if the course has fewer than two active<br>instructors. Otherwise, the maximum value is the number of active<br>instructors in the course minus one, or 10 if the course has more than 11<br>active instructors.</p>"
         },
-        "assignment[final_grader_id]": {
+        "assignment_final_grader_id": {
           "type": "number",
           "description": "<p>The user ID of the grader responsible for choosing final grades for this<br>assignment. Only relevant for moderated assignments.</p>"
         },
-        "assignment[grader_comments_visible_to_graders]": {
+        "assignment_grader_comments_visible_to_graders": {
           "type": "boolean",
           "description": "<p>Boolean indicating if provisional graders' comments are visible to other<br>provisional graders. Only relevant for moderated assignments.</p>"
         },
-        "assignment[graders_anonymous_to_graders]": {
+        "assignment_graders_anonymous_to_graders": {
           "type": "boolean",
           "description": "<p>Boolean indicating if provisional graders' identities are hidden from<br>other provisional graders. Only relevant for moderated assignments.</p>"
         },
-        "assignment[graders_names_visible_to_final_grader]": {
+        "assignment_graders_names_visible_to_final_grader": {
           "type": "boolean",
           "description": "<p>Boolean indicating if provisional grader identities are visible to the<br>the final grader. Only relevant for moderated assignments.</p>"
         },
-        "assignment[anonymous_grading]": {
+        "assignment_anonymous_grading": {
           "type": "boolean",
           "description": "<p>Boolean indicating if the assignment is graded anonymously. If true,<br>graders cannot see student identities.</p>"
         },
-        "assignment[allowed_attempts]": {
+        "assignment_allowed_attempts": {
           "type": "number",
           "description": "The number of submission attempts allowed for this assignment. Set to -1 for unlimited attempts."
         },
-        "assignment[annotatable_attachment_id]": {
+        "assignment_annotatable_attachment_id": {
           "type": "number",
           "description": "<p>The Attachment ID of the document being annotated.<br>Only applies when submission\\_types includes \"student\\_annotation\".</p>"
         },
-        "assignment[asset_processors][]": {
+        "assignment_asset_processors": {
           "type": "array",
           "description": "<p>Document processors for this assignment. New document processors can only be added<br>via the interactive LTI Deep Linking flow (in a browser), not via API token or JWT authentication.<br>Deletion of document processors (passing an empty array) is allowed via API.</p>"
         },
-        "assignment[peer_review][points_possible]": {
+        "assignment_peer_review_points_possible": {
           "type": "number",
           "description": "The maximum points possible for peer reviews."
         },
-        "assignment[peer_review][grading_type]": {
+        "assignment_peer_review_grading_type": {
           "type": "string",
           "description": "<p>The strategy used for grading peer reviews.<br>Defaults to \"points\" if this field is omitted. Allowed values: <code>pass\\_fail</code>, <code>percent</code>, <code>letter\\_grade</code>, <code>gpa\\_scale</code>, <code>points</code></p>"
         },
-        "assignment[peer_review][due_at]": {
+        "assignment_peer_review_due_at": {
           "type": "string",
           "description": "<p>The day/time the peer reviews are due. Must be between the lock dates if there are lock dates.<br>Accepts times in ISO 8601 format, e.g. 2025-08-20T12:10:00Z.</p>"
         },
-        "assignment[peer_review][lock_at]": {
+        "assignment_peer_review_lock_at": {
           "type": "string",
           "description": "<p>The day/time the peer reviews are locked after. Must be after the due date if there is a due date.<br>Accepts times in ISO 8601 format, e.g. 2025-08-25T12:10:00Z.</p>"
         },
-        "assignment[peer_review][unlock_at]": {
+        "assignment_peer_review_unlock_at": {
           "type": "string",
           "description": "<p>The day/time the peer reviews are unlocked. Must be before the due date if there is a due date.<br>Accepts times in ISO 8601 format, e.g. 2025-08-15T12:10:00Z.</p>"
         },
-        "assignment[peer_review][peer_review_overrides][]": {
+        "assignment_peer_review_peer_review_overrides": {
           "type": "string",
           "description": "List of overrides for the peer reviews."
         }
       },
       "required": [
         "course_id",
-        "assignment[name]"
+        "assignment_name"
       ]
     }
   },
@@ -438,187 +438,187 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "assignment[name]": {
+        "assignment_name": {
           "type": "string",
           "description": "The assignment name."
         },
-        "assignment[position]": {
+        "assignment_position": {
           "type": "number",
           "description": "<p>The position of this assignment in the group when displaying<br>assignment lists.</p>"
         },
-        "assignment[submission_types][]": {
+        "assignment_submission_types": {
           "type": "string",
           "description": "**\\[DEPRECATED]** Effective 2021-05-26 (notice given 2021-02-18) Only applies if the assignment doesn't have student submissions."
         },
-        "assignment[allowed_extensions][]": {
+        "assignment_allowed_extensions": {
           "type": "string",
           "description": "<p>Allowed extensions if submission\\_types includes \"online\\_upload\"<br>Example:<br>allowed\\_extensions: \\[\"docx\",\"ppt\"]</p>"
         },
-        "assignment[turnitin_enabled]": {
+        "assignment_turnitin_enabled": {
           "type": "boolean",
           "description": "<p>Only applies when the Turnitin plugin is enabled for a course and<br>the submission\\_types array includes \"online\\_upload\".<br>Toggles Turnitin submissions for the assignment.<br>Will be ignored if Turnitin is not available for the course.</p>"
         },
-        "assignment[vericite_enabled]": {
+        "assignment_vericite_enabled": {
           "type": "boolean",
           "description": "<p>Only applies when the VeriCite plugin is enabled for a course and<br>the submission\\_types array includes \"online\\_upload\".<br>Toggles VeriCite submissions for the assignment.<br>Will be ignored if VeriCite is not available for the course.</p>"
         },
-        "assignment[turnitin_settings]": {
+        "assignment_turnitin_settings": {
           "type": "string",
           "description": "<p>Settings to send along to turnitin. See Assignment object definition for<br>format.</p>"
         },
-        "assignment[sis_assignment_id]": {
+        "assignment_sis_assignment_id": {
           "type": "string",
           "description": "The sis id of the Assignment"
         },
-        "assignment[integration_data]": {
+        "assignment_integration_data": {
           "type": "string",
           "description": "Data used for SIS integrations. Requires admin-level token with the \"Manage SIS\" permission. JSON string required."
         },
-        "assignment[integration_id]": {
+        "assignment_integration_id": {
           "type": "string",
           "description": "Unique ID from third party integrations"
         },
-        "assignment[peer_reviews]": {
+        "assignment_peer_reviews": {
           "type": "boolean",
           "description": "<p>If submission\\_types does not include external\\_tool,discussion\\_topic,<br>online\\_quiz, or on\\_paper, determines whether or not peer reviews<br>will be turned on for the assignment.</p>"
         },
-        "assignment[automatic_peer_reviews]": {
+        "assignment_automatic_peer_reviews": {
           "type": "boolean",
           "description": "<p>Whether peer reviews will be assigned automatically by Canvas or if<br>teachers must manually assign peer reviews. Does not apply if peer reviews<br>are not enabled.</p>"
         },
-        "assignment[notify_of_update]": {
+        "assignment_notify_of_update": {
           "type": "boolean",
           "description": "<p>If true, Canvas will send a notification to students in the class<br>notifying them that the content has changed.</p>"
         },
-        "assignment[group_category_id]": {
+        "assignment_group_category_id": {
           "type": "number",
           "description": "<p>If present, the assignment will become a group assignment assigned<br>to the group.</p>"
         },
-        "assignment[grade_group_students_individually]": {
+        "assignment_grade_group_students_individually": {
           "type": "number",
           "description": "<p>If this is a group assignment, teachers have the options to grade<br>students individually. If false, Canvas will apply the assignment's<br>score to each member of the group. If true, the teacher can manually<br>assign scores to each member of the group.</p>"
         },
-        "assignment[external_tool_tag_attributes]": {
+        "assignment_external_tool_tag_attributes": {
           "type": "string",
           "description": "<p>Hash of external tool parameters if submission\\_types is \\[\"external\\_tool\"].<br>See Assignment object definition for format.</p>"
         },
-        "assignment[points_possible]": {
+        "assignment_points_possible": {
           "type": "number",
           "description": "The maximum points possible on the assignment."
         },
-        "assignment[grading_type]": {
+        "assignment_grading_type": {
           "type": "string",
           "description": "<p>The strategy used for grading the assignment.<br>The assignment defaults to \"points\" if this field is omitted. Allowed values: <code>pass\\_fail</code>, <code>percent</code>, <code>letter\\_grade</code>, <code>gpa\\_scale</code>, <code>points</code>, <code>not\\_graded</code></p>"
         },
-        "assignment[due_at]": {
+        "assignment_due_at": {
           "type": "string",
           "description": "<p>The day/time the assignment is due.<br>Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z.</p>"
         },
-        "assignment[lock_at]": {
+        "assignment_lock_at": {
           "type": "string",
           "description": "<p>The day/time the assignment is locked after. Must be after the due date if there is a due date.<br>Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z.</p>"
         },
-        "assignment[unlock_at]": {
+        "assignment_unlock_at": {
           "type": "string",
           "description": "<p>The day/time the assignment is unlocked. Must be before the due date if there is a due date.<br>Accepts times in ISO 8601 format, e.g. 2014-10-21T18:48:00Z.</p>"
         },
-        "assignment[description]": {
+        "assignment_description": {
           "type": "string",
           "description": "The assignment's description, supports HTML."
         },
-        "assignment[assignment_group_id]": {
+        "assignment_assignment_group_id": {
           "type": "number",
           "description": "<p>The assignment group id to put the assignment in.<br>Defaults to the top assignment group in the course.</p>"
         },
-        "assignment[assignment_overrides][]": {
+        "assignment_assignment_overrides": {
           "type": "string",
           "description": "<p>List of overrides for the assignment.<br>If the +assignment\\[assignment\\_overrides]+ key is absent, any existing<br>overrides are kept as is. If the +assignment\\[assignment\\_overrides]+ key is<br>present, existing overrides are updated or deleted (and new ones created,<br>as necessary) to match the provided list.</p>"
         },
-        "assignment[only_visible_to_overrides]": {
+        "assignment_only_visible_to_overrides": {
           "type": "boolean",
           "description": "<p>Whether this assignment is only visible to overrides<br>(Only useful if 'differentiated assignments' account setting is on)</p>"
         },
-        "assignment[published]": {
+        "assignment_published": {
           "type": "boolean",
           "description": "<p>Whether this assignment is published.<br>(Only useful if 'draft state' account setting is on)<br>Unpublished assignments are not visible to students.</p>"
         },
-        "assignment[grading_standard_id]": {
+        "assignment_grading_standard_id": {
           "type": "number",
           "description": "<p>The grading standard id to set for the course. If no value is provided for this argument the current grading\\_standard will be un-set from this course.<br>This will update the grading\\_type for the course to 'letter\\_grade' unless it is already 'gpa\\_scale'.</p>"
         },
-        "assignment[omit_from_final_grade]": {
+        "assignment_omit_from_final_grade": {
           "type": "boolean",
           "description": "Whether this assignment is counted towards a student's final grade."
         },
-        "assignment[hide_in_gradebook]": {
+        "assignment_hide_in_gradebook": {
           "type": "boolean",
           "description": "Whether this assignment is shown in the gradebook."
         },
-        "assignment[moderated_grading]": {
+        "assignment_moderated_grading": {
           "type": "boolean",
           "description": "Whether this assignment is moderated."
         },
-        "assignment[grader_count]": {
+        "assignment_grader_count": {
           "type": "number",
           "description": "<p>The maximum number of provisional graders who may issue grades for this<br>assignment. Only relevant for moderated assignments. Must be a positive<br>value, and must be set to 1 if the course has fewer than two active<br>instructors. Otherwise, the maximum value is the number of active<br>instructors in the course minus one, or 10 if the course has more than 11<br>active instructors.</p>"
         },
-        "assignment[final_grader_id]": {
+        "assignment_final_grader_id": {
           "type": "number",
           "description": "<p>The user ID of the grader responsible for choosing final grades for this<br>assignment. Only relevant for moderated assignments.</p>"
         },
-        "assignment[grader_comments_visible_to_graders]": {
+        "assignment_grader_comments_visible_to_graders": {
           "type": "boolean",
           "description": "<p>Boolean indicating if provisional graders' comments are visible to other<br>provisional graders. Only relevant for moderated assignments.</p>"
         },
-        "assignment[graders_anonymous_to_graders]": {
+        "assignment_graders_anonymous_to_graders": {
           "type": "boolean",
           "description": "<p>Boolean indicating if provisional graders' identities are hidden from<br>other provisional graders. Only relevant for moderated assignments.</p>"
         },
-        "assignment[graders_names_visible_to_final_grader]": {
+        "assignment_graders_names_visible_to_final_grader": {
           "type": "boolean",
           "description": "<p>Boolean indicating if provisional grader identities are visible to the<br>the final grader. Only relevant for moderated assignments.</p>"
         },
-        "assignment[anonymous_grading]": {
+        "assignment_anonymous_grading": {
           "type": "boolean",
           "description": "<p>Boolean indicating if the assignment is graded anonymously. If true,<br>graders cannot see student identities.</p>"
         },
-        "assignment[allowed_attempts]": {
+        "assignment_allowed_attempts": {
           "type": "number",
           "description": "<p>The number of submission attempts allowed for this assignment. Set to -1 or null for<br>unlimited attempts.</p>"
         },
-        "assignment[annotatable_attachment_id]": {
+        "assignment_annotatable_attachment_id": {
           "type": "number",
           "description": "<p>The Attachment ID of the document being annotated.<br>Only applies when submission\\_types includes \"student\\_annotation\".</p>"
         },
-        "assignment[asset_processors][]": {
+        "assignment_asset_processors": {
           "type": "array",
           "description": "<p>Document processors for this assignment. New document processors can only be added<br>via the interactive LTI Deep Linking flow (in a browser), not via API token or JWT authentication.<br>Deletion of document processors (passing an empty array) is allowed via API.</p>"
         },
-        "assignment[force_updated_at]": {
+        "assignment_force_updated_at": {
           "type": "boolean",
           "description": "If true, updated\\_at will be set even if no changes were made."
         },
-        "assignment[peer_review][points_possible]": {
+        "assignment_peer_review_points_possible": {
           "type": "number",
           "description": "The maximum points possible for peer reviews."
         },
-        "assignment[peer_review][grading_type]": {
+        "assignment_peer_review_grading_type": {
           "type": "string",
           "description": "<p>The strategy used for grading peer reviews.<br>Defaults to \"points\" if this field is omitted. Allowed values: <code>pass\\_fail</code>, <code>percent</code>, <code>letter\\_grade</code>, <code>gpa\\_scale</code>, <code>points</code></p>"
         },
-        "assignment[peer_review][due_at]": {
+        "assignment_peer_review_due_at": {
           "type": "string",
           "description": "<p>The day/time the peer reviews are due. Must be between the lock dates if there are lock dates.<br>Accepts times in ISO 8601 format, e.g. 2025-08-20T12:10:00Z.</p>"
         },
-        "assignment[peer_review][lock_at]": {
+        "assignment_peer_review_lock_at": {
           "type": "string",
           "description": "<p>The day/time the peer reviews are locked after. Must be after the due date if there is a due date.<br>Accepts times in ISO 8601 format, e.g. 2025-08-25T12:10:00Z.</p>"
         },
-        "assignment[peer_review][unlock_at]": {
+        "assignment_peer_review_unlock_at": {
           "type": "string",
           "description": "<p>The day/time the peer reviews are unlocked. Must be before the due date if there is a due date.<br>Accepts times in ISO 8601 format, e.g. 2025-08-15T12:10:00Z.</p>"
         },
-        "assignment[peer_review][peer_review_overrides][]": {
+        "assignment_peer_review_peer_review_overrides": {
           "type": "string",
           "description": "<p>List of overrides for the peer reviews.<br>When updating overrides:<br>- Include \"id\" to update an existing override<br>- Omit \"id\" to create a new override<br>- Omit an override from the list to delete it</p>"
         }
@@ -764,31 +764,31 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: assignment_id"
         },
-        "assignment_override[student_ids][]": {
+        "assignment_override_student_ids": {
           "type": "number",
           "description": "<p>The IDs of<br>the override's target students. If present, the IDs must each identify a<br>user with an active student enrollment in the course that is not already<br>targetted by a different adhoc override.</p>"
         },
-        "assignment_override[title]": {
+        "assignment_override_title": {
           "type": "string",
           "description": "<p>The title of the adhoc<br>assignment override. Required if student\\_ids is present, ignored<br>otherwise (the title is set to the name of the targetted group or section<br>instead).</p>"
         },
-        "assignment_override[group_id]": {
+        "assignment_override_group_id": {
           "type": "number",
           "description": "<p>The ID of the<br>override's target group. If present, the following conditions must be met<br>for the override to be successful:<br>1. the assignment MUST be a group assignment (a group\\_category\\_id is assigned to it)<br>2. the ID must identify an active group in the group set the assignment is in<br>3. the ID must not be targetted by a different override<br>See <a href=\"#Group+assignments-appendix\">Appendix: Group assignments</a> for more info.</p>"
         },
-        "assignment_override[course_section_id]": {
+        "assignment_override_course_section_id": {
           "type": "number",
           "description": "<p>The ID<br>of the override's target section. If present, must identify an active<br>section of the assignment's course not already targetted by a different<br>override.</p>"
         },
-        "assignment_override[due_at]": {
+        "assignment_override_due_at": {
           "type": "string",
           "description": "<p>The day/time<br>the overridden assignment is due. Accepts times in ISO 8601 format, e.g.<br>2014-10-21T18:48:00Z. If absent, this override will not affect due date.<br>May be present but null to indicate the override removes any previous due<br>date.</p>"
         },
-        "assignment_override[unlock_at]": {
+        "assignment_override_unlock_at": {
           "type": "string",
           "description": "<p>The day/time<br>the overridden assignment becomes unlocked. Accepts times in ISO 8601<br>format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not<br>affect the unlock date. May be present but null to indicate the override<br>removes any previous unlock date.</p>"
         },
-        "assignment_override[lock_at]": {
+        "assignment_override_lock_at": {
           "type": "string",
           "description": "<p>The day/time<br>the overridden assignment becomes locked. Accepts times in ISO 8601<br>format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not<br>affect the lock date. May be present but null to indicate the override<br>removes any previous lock date.</p>"
         }
@@ -817,23 +817,23 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "assignment_override[student_ids][]": {
+        "assignment_override_student_ids": {
           "type": "number",
           "description": "<p>The IDs of the<br>override's target students. If present, the IDs must each identify a<br>user with an active student enrollment in the course that is not already<br>targetted by a different adhoc override. Ignored unless the override<br>being updated is adhoc.</p>"
         },
-        "assignment_override[title]": {
+        "assignment_override_title": {
           "type": "string",
           "description": "<p>The title of an adhoc<br>assignment override. Ignored unless the override being updated is adhoc.</p>"
         },
-        "assignment_override[due_at]": {
+        "assignment_override_due_at": {
           "type": "string",
           "description": "<p>The day/time<br>the overridden assignment is due. Accepts times in ISO 8601 format, e.g.<br>2014-10-21T18:48:00Z. If absent, this override will not affect due date.<br>May be present but null to indicate the override removes any previous due<br>date.</p>"
         },
-        "assignment_override[unlock_at]": {
+        "assignment_override_unlock_at": {
           "type": "string",
           "description": "<p>The day/time<br>the overridden assignment becomes unlocked. Accepts times in ISO 8601<br>format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not<br>affect the unlock date. May be present but null to indicate the override<br>removes any previous unlock date.</p>"
         },
-        "assignment_override[lock_at]": {
+        "assignment_override_lock_at": {
           "type": "string",
           "description": "<p>The day/time<br>the overridden assignment becomes locked. Accepts times in ISO 8601<br>format, e.g. 2014-10-21T18:48:00Z. If absent, this override will not<br>affect the lock date. May be present but null to indicate the override<br>removes any previous lock date.</p>"
         }
@@ -881,11 +881,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "assignment_overrides[][id]": {
+        "assignment_overrides_id": {
           "type": "string",
           "description": "Ids of overrides to retrieve"
         },
-        "assignment_overrides[][assignment_id]": {
+        "assignment_overrides_assignment_id": {
           "type": "string",
           "description": "Ids of assignments for each override"
         },
@@ -896,8 +896,8 @@ const definitions = [
       },
       "required": [
         "course_id",
-        "assignment_overrides[][id]",
-        "assignment_overrides[][assignment_id]"
+        "assignment_overrides_id",
+        "assignment_overrides_assignment_id"
       ]
     }
   },
@@ -911,14 +911,14 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "assignment_overrides[]": {
+        "assignment_overrides": {
           "type": "string",
           "description": "<p>Attributes for the new assignment overrides.<br>See <a href=\"#method.assignment_overrides.create\">Create an assignment override</a> for available<br>attributes</p>"
         }
       },
       "required": [
         "course_id",
-        "assignment_overrides[]"
+        "assignment_overrides"
       ]
     }
   },
@@ -932,14 +932,14 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "assignment_overrides[]": {
+        "assignment_overrides": {
           "type": "string",
           "description": "Attributes for the updated overrides."
         }
       },
       "required": [
         "course_id",
-        "assignment_overrides[]"
+        "assignment_overrides"
       ]
     }
   }
@@ -953,7 +953,16 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments", args);
   },
   get_ccaga_assignments: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignment_groups/:assignment_group_id/assignments", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("assignment_ids" in mappedArgs) {
+      mappedArgs["assignment_ids[]"] = mappedArgs["assignment_ids"];
+      delete mappedArgs["assignment_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignment_groups/:assignment_group_id/assignments", mappedArgs);
   },
   get_uucc_assignments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/courses/:course_id/assignments", args);
@@ -965,13 +974,384 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/users/:user_id/group_members", args);
   },
   get_cc_assignments_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:id", mappedArgs);
   },
   post_cc_assignments: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments", args);
+    const mappedArgs = { ...args };
+    if ("assignment_name" in mappedArgs) {
+      mappedArgs["assignment[name]"] = mappedArgs["assignment_name"];
+      delete mappedArgs["assignment_name"];
+    }
+    if ("assignment_position" in mappedArgs) {
+      mappedArgs["assignment[position]"] = mappedArgs["assignment_position"];
+      delete mappedArgs["assignment_position"];
+    }
+    if ("assignment_submission_types" in mappedArgs) {
+      mappedArgs["assignment[submission_types][]"] = mappedArgs["assignment_submission_types"];
+      delete mappedArgs["assignment_submission_types"];
+    }
+    if ("assignment_allowed_extensions" in mappedArgs) {
+      mappedArgs["assignment[allowed_extensions][]"] = mappedArgs["assignment_allowed_extensions"];
+      delete mappedArgs["assignment_allowed_extensions"];
+    }
+    if ("assignment_turnitin_enabled" in mappedArgs) {
+      mappedArgs["assignment[turnitin_enabled]"] = mappedArgs["assignment_turnitin_enabled"];
+      delete mappedArgs["assignment_turnitin_enabled"];
+    }
+    if ("assignment_vericite_enabled" in mappedArgs) {
+      mappedArgs["assignment[vericite_enabled]"] = mappedArgs["assignment_vericite_enabled"];
+      delete mappedArgs["assignment_vericite_enabled"];
+    }
+    if ("assignment_turnitin_settings" in mappedArgs) {
+      mappedArgs["assignment[turnitin_settings]"] = mappedArgs["assignment_turnitin_settings"];
+      delete mappedArgs["assignment_turnitin_settings"];
+    }
+    if ("assignment_integration_data" in mappedArgs) {
+      mappedArgs["assignment[integration_data]"] = mappedArgs["assignment_integration_data"];
+      delete mappedArgs["assignment_integration_data"];
+    }
+    if ("assignment_integration_id" in mappedArgs) {
+      mappedArgs["assignment[integration_id]"] = mappedArgs["assignment_integration_id"];
+      delete mappedArgs["assignment_integration_id"];
+    }
+    if ("assignment_peer_reviews" in mappedArgs) {
+      mappedArgs["assignment[peer_reviews]"] = mappedArgs["assignment_peer_reviews"];
+      delete mappedArgs["assignment_peer_reviews"];
+    }
+    if ("assignment_automatic_peer_reviews" in mappedArgs) {
+      mappedArgs["assignment[automatic_peer_reviews]"] = mappedArgs["assignment_automatic_peer_reviews"];
+      delete mappedArgs["assignment_automatic_peer_reviews"];
+    }
+    if ("assignment_notify_of_update" in mappedArgs) {
+      mappedArgs["assignment[notify_of_update]"] = mappedArgs["assignment_notify_of_update"];
+      delete mappedArgs["assignment_notify_of_update"];
+    }
+    if ("assignment_group_category_id" in mappedArgs) {
+      mappedArgs["assignment[group_category_id]"] = mappedArgs["assignment_group_category_id"];
+      delete mappedArgs["assignment_group_category_id"];
+    }
+    if ("assignment_grade_group_students_individually" in mappedArgs) {
+      mappedArgs["assignment[grade_group_students_individually]"] = mappedArgs["assignment_grade_group_students_individually"];
+      delete mappedArgs["assignment_grade_group_students_individually"];
+    }
+    if ("assignment_external_tool_tag_attributes" in mappedArgs) {
+      mappedArgs["assignment[external_tool_tag_attributes]"] = mappedArgs["assignment_external_tool_tag_attributes"];
+      delete mappedArgs["assignment_external_tool_tag_attributes"];
+    }
+    if ("assignment_points_possible" in mappedArgs) {
+      mappedArgs["assignment[points_possible]"] = mappedArgs["assignment_points_possible"];
+      delete mappedArgs["assignment_points_possible"];
+    }
+    if ("assignment_grading_type" in mappedArgs) {
+      mappedArgs["assignment[grading_type]"] = mappedArgs["assignment_grading_type"];
+      delete mappedArgs["assignment_grading_type"];
+    }
+    if ("assignment_due_at" in mappedArgs) {
+      mappedArgs["assignment[due_at]"] = mappedArgs["assignment_due_at"];
+      delete mappedArgs["assignment_due_at"];
+    }
+    if ("assignment_lock_at" in mappedArgs) {
+      mappedArgs["assignment[lock_at]"] = mappedArgs["assignment_lock_at"];
+      delete mappedArgs["assignment_lock_at"];
+    }
+    if ("assignment_unlock_at" in mappedArgs) {
+      mappedArgs["assignment[unlock_at]"] = mappedArgs["assignment_unlock_at"];
+      delete mappedArgs["assignment_unlock_at"];
+    }
+    if ("assignment_description" in mappedArgs) {
+      mappedArgs["assignment[description]"] = mappedArgs["assignment_description"];
+      delete mappedArgs["assignment_description"];
+    }
+    if ("assignment_assignment_group_id" in mappedArgs) {
+      mappedArgs["assignment[assignment_group_id]"] = mappedArgs["assignment_assignment_group_id"];
+      delete mappedArgs["assignment_assignment_group_id"];
+    }
+    if ("assignment_assignment_overrides" in mappedArgs) {
+      mappedArgs["assignment[assignment_overrides][]"] = mappedArgs["assignment_assignment_overrides"];
+      delete mappedArgs["assignment_assignment_overrides"];
+    }
+    if ("assignment_only_visible_to_overrides" in mappedArgs) {
+      mappedArgs["assignment[only_visible_to_overrides]"] = mappedArgs["assignment_only_visible_to_overrides"];
+      delete mappedArgs["assignment_only_visible_to_overrides"];
+    }
+    if ("assignment_published" in mappedArgs) {
+      mappedArgs["assignment[published]"] = mappedArgs["assignment_published"];
+      delete mappedArgs["assignment_published"];
+    }
+    if ("assignment_grading_standard_id" in mappedArgs) {
+      mappedArgs["assignment[grading_standard_id]"] = mappedArgs["assignment_grading_standard_id"];
+      delete mappedArgs["assignment_grading_standard_id"];
+    }
+    if ("assignment_omit_from_final_grade" in mappedArgs) {
+      mappedArgs["assignment[omit_from_final_grade]"] = mappedArgs["assignment_omit_from_final_grade"];
+      delete mappedArgs["assignment_omit_from_final_grade"];
+    }
+    if ("assignment_hide_in_gradebook" in mappedArgs) {
+      mappedArgs["assignment[hide_in_gradebook]"] = mappedArgs["assignment_hide_in_gradebook"];
+      delete mappedArgs["assignment_hide_in_gradebook"];
+    }
+    if ("assignment_quiz_lti" in mappedArgs) {
+      mappedArgs["assignment[quiz_lti]"] = mappedArgs["assignment_quiz_lti"];
+      delete mappedArgs["assignment_quiz_lti"];
+    }
+    if ("assignment_moderated_grading" in mappedArgs) {
+      mappedArgs["assignment[moderated_grading]"] = mappedArgs["assignment_moderated_grading"];
+      delete mappedArgs["assignment_moderated_grading"];
+    }
+    if ("assignment_grader_count" in mappedArgs) {
+      mappedArgs["assignment[grader_count]"] = mappedArgs["assignment_grader_count"];
+      delete mappedArgs["assignment_grader_count"];
+    }
+    if ("assignment_final_grader_id" in mappedArgs) {
+      mappedArgs["assignment[final_grader_id]"] = mappedArgs["assignment_final_grader_id"];
+      delete mappedArgs["assignment_final_grader_id"];
+    }
+    if ("assignment_grader_comments_visible_to_graders" in mappedArgs) {
+      mappedArgs["assignment[grader_comments_visible_to_graders]"] = mappedArgs["assignment_grader_comments_visible_to_graders"];
+      delete mappedArgs["assignment_grader_comments_visible_to_graders"];
+    }
+    if ("assignment_graders_anonymous_to_graders" in mappedArgs) {
+      mappedArgs["assignment[graders_anonymous_to_graders]"] = mappedArgs["assignment_graders_anonymous_to_graders"];
+      delete mappedArgs["assignment_graders_anonymous_to_graders"];
+    }
+    if ("assignment_graders_names_visible_to_final_grader" in mappedArgs) {
+      mappedArgs["assignment[graders_names_visible_to_final_grader]"] = mappedArgs["assignment_graders_names_visible_to_final_grader"];
+      delete mappedArgs["assignment_graders_names_visible_to_final_grader"];
+    }
+    if ("assignment_anonymous_grading" in mappedArgs) {
+      mappedArgs["assignment[anonymous_grading]"] = mappedArgs["assignment_anonymous_grading"];
+      delete mappedArgs["assignment_anonymous_grading"];
+    }
+    if ("assignment_allowed_attempts" in mappedArgs) {
+      mappedArgs["assignment[allowed_attempts]"] = mappedArgs["assignment_allowed_attempts"];
+      delete mappedArgs["assignment_allowed_attempts"];
+    }
+    if ("assignment_annotatable_attachment_id" in mappedArgs) {
+      mappedArgs["assignment[annotatable_attachment_id]"] = mappedArgs["assignment_annotatable_attachment_id"];
+      delete mappedArgs["assignment_annotatable_attachment_id"];
+    }
+    if ("assignment_asset_processors" in mappedArgs) {
+      mappedArgs["assignment[asset_processors][]"] = mappedArgs["assignment_asset_processors"];
+      delete mappedArgs["assignment_asset_processors"];
+    }
+    if ("assignment_peer_review_points_possible" in mappedArgs) {
+      mappedArgs["assignment[peer_review][points_possible]"] = mappedArgs["assignment_peer_review_points_possible"];
+      delete mappedArgs["assignment_peer_review_points_possible"];
+    }
+    if ("assignment_peer_review_grading_type" in mappedArgs) {
+      mappedArgs["assignment[peer_review][grading_type]"] = mappedArgs["assignment_peer_review_grading_type"];
+      delete mappedArgs["assignment_peer_review_grading_type"];
+    }
+    if ("assignment_peer_review_due_at" in mappedArgs) {
+      mappedArgs["assignment[peer_review][due_at]"] = mappedArgs["assignment_peer_review_due_at"];
+      delete mappedArgs["assignment_peer_review_due_at"];
+    }
+    if ("assignment_peer_review_lock_at" in mappedArgs) {
+      mappedArgs["assignment[peer_review][lock_at]"] = mappedArgs["assignment_peer_review_lock_at"];
+      delete mappedArgs["assignment_peer_review_lock_at"];
+    }
+    if ("assignment_peer_review_unlock_at" in mappedArgs) {
+      mappedArgs["assignment[peer_review][unlock_at]"] = mappedArgs["assignment_peer_review_unlock_at"];
+      delete mappedArgs["assignment_peer_review_unlock_at"];
+    }
+    if ("assignment_peer_review_peer_review_overrides" in mappedArgs) {
+      mappedArgs["assignment[peer_review][peer_review_overrides][]"] = mappedArgs["assignment_peer_review_peer_review_overrides"];
+      delete mappedArgs["assignment_peer_review_peer_review_overrides"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments", mappedArgs);
   },
   put_cc_assignments_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:id", args);
+    const mappedArgs = { ...args };
+    if ("assignment_name" in mappedArgs) {
+      mappedArgs["assignment[name]"] = mappedArgs["assignment_name"];
+      delete mappedArgs["assignment_name"];
+    }
+    if ("assignment_position" in mappedArgs) {
+      mappedArgs["assignment[position]"] = mappedArgs["assignment_position"];
+      delete mappedArgs["assignment_position"];
+    }
+    if ("assignment_submission_types" in mappedArgs) {
+      mappedArgs["assignment[submission_types][]"] = mappedArgs["assignment_submission_types"];
+      delete mappedArgs["assignment_submission_types"];
+    }
+    if ("assignment_allowed_extensions" in mappedArgs) {
+      mappedArgs["assignment[allowed_extensions][]"] = mappedArgs["assignment_allowed_extensions"];
+      delete mappedArgs["assignment_allowed_extensions"];
+    }
+    if ("assignment_turnitin_enabled" in mappedArgs) {
+      mappedArgs["assignment[turnitin_enabled]"] = mappedArgs["assignment_turnitin_enabled"];
+      delete mappedArgs["assignment_turnitin_enabled"];
+    }
+    if ("assignment_vericite_enabled" in mappedArgs) {
+      mappedArgs["assignment[vericite_enabled]"] = mappedArgs["assignment_vericite_enabled"];
+      delete mappedArgs["assignment_vericite_enabled"];
+    }
+    if ("assignment_turnitin_settings" in mappedArgs) {
+      mappedArgs["assignment[turnitin_settings]"] = mappedArgs["assignment_turnitin_settings"];
+      delete mappedArgs["assignment_turnitin_settings"];
+    }
+    if ("assignment_sis_assignment_id" in mappedArgs) {
+      mappedArgs["assignment[sis_assignment_id]"] = mappedArgs["assignment_sis_assignment_id"];
+      delete mappedArgs["assignment_sis_assignment_id"];
+    }
+    if ("assignment_integration_data" in mappedArgs) {
+      mappedArgs["assignment[integration_data]"] = mappedArgs["assignment_integration_data"];
+      delete mappedArgs["assignment_integration_data"];
+    }
+    if ("assignment_integration_id" in mappedArgs) {
+      mappedArgs["assignment[integration_id]"] = mappedArgs["assignment_integration_id"];
+      delete mappedArgs["assignment_integration_id"];
+    }
+    if ("assignment_peer_reviews" in mappedArgs) {
+      mappedArgs["assignment[peer_reviews]"] = mappedArgs["assignment_peer_reviews"];
+      delete mappedArgs["assignment_peer_reviews"];
+    }
+    if ("assignment_automatic_peer_reviews" in mappedArgs) {
+      mappedArgs["assignment[automatic_peer_reviews]"] = mappedArgs["assignment_automatic_peer_reviews"];
+      delete mappedArgs["assignment_automatic_peer_reviews"];
+    }
+    if ("assignment_notify_of_update" in mappedArgs) {
+      mappedArgs["assignment[notify_of_update]"] = mappedArgs["assignment_notify_of_update"];
+      delete mappedArgs["assignment_notify_of_update"];
+    }
+    if ("assignment_group_category_id" in mappedArgs) {
+      mappedArgs["assignment[group_category_id]"] = mappedArgs["assignment_group_category_id"];
+      delete mappedArgs["assignment_group_category_id"];
+    }
+    if ("assignment_grade_group_students_individually" in mappedArgs) {
+      mappedArgs["assignment[grade_group_students_individually]"] = mappedArgs["assignment_grade_group_students_individually"];
+      delete mappedArgs["assignment_grade_group_students_individually"];
+    }
+    if ("assignment_external_tool_tag_attributes" in mappedArgs) {
+      mappedArgs["assignment[external_tool_tag_attributes]"] = mappedArgs["assignment_external_tool_tag_attributes"];
+      delete mappedArgs["assignment_external_tool_tag_attributes"];
+    }
+    if ("assignment_points_possible" in mappedArgs) {
+      mappedArgs["assignment[points_possible]"] = mappedArgs["assignment_points_possible"];
+      delete mappedArgs["assignment_points_possible"];
+    }
+    if ("assignment_grading_type" in mappedArgs) {
+      mappedArgs["assignment[grading_type]"] = mappedArgs["assignment_grading_type"];
+      delete mappedArgs["assignment_grading_type"];
+    }
+    if ("assignment_due_at" in mappedArgs) {
+      mappedArgs["assignment[due_at]"] = mappedArgs["assignment_due_at"];
+      delete mappedArgs["assignment_due_at"];
+    }
+    if ("assignment_lock_at" in mappedArgs) {
+      mappedArgs["assignment[lock_at]"] = mappedArgs["assignment_lock_at"];
+      delete mappedArgs["assignment_lock_at"];
+    }
+    if ("assignment_unlock_at" in mappedArgs) {
+      mappedArgs["assignment[unlock_at]"] = mappedArgs["assignment_unlock_at"];
+      delete mappedArgs["assignment_unlock_at"];
+    }
+    if ("assignment_description" in mappedArgs) {
+      mappedArgs["assignment[description]"] = mappedArgs["assignment_description"];
+      delete mappedArgs["assignment_description"];
+    }
+    if ("assignment_assignment_group_id" in mappedArgs) {
+      mappedArgs["assignment[assignment_group_id]"] = mappedArgs["assignment_assignment_group_id"];
+      delete mappedArgs["assignment_assignment_group_id"];
+    }
+    if ("assignment_assignment_overrides" in mappedArgs) {
+      mappedArgs["assignment[assignment_overrides][]"] = mappedArgs["assignment_assignment_overrides"];
+      delete mappedArgs["assignment_assignment_overrides"];
+    }
+    if ("assignment_only_visible_to_overrides" in mappedArgs) {
+      mappedArgs["assignment[only_visible_to_overrides]"] = mappedArgs["assignment_only_visible_to_overrides"];
+      delete mappedArgs["assignment_only_visible_to_overrides"];
+    }
+    if ("assignment_published" in mappedArgs) {
+      mappedArgs["assignment[published]"] = mappedArgs["assignment_published"];
+      delete mappedArgs["assignment_published"];
+    }
+    if ("assignment_grading_standard_id" in mappedArgs) {
+      mappedArgs["assignment[grading_standard_id]"] = mappedArgs["assignment_grading_standard_id"];
+      delete mappedArgs["assignment_grading_standard_id"];
+    }
+    if ("assignment_omit_from_final_grade" in mappedArgs) {
+      mappedArgs["assignment[omit_from_final_grade]"] = mappedArgs["assignment_omit_from_final_grade"];
+      delete mappedArgs["assignment_omit_from_final_grade"];
+    }
+    if ("assignment_hide_in_gradebook" in mappedArgs) {
+      mappedArgs["assignment[hide_in_gradebook]"] = mappedArgs["assignment_hide_in_gradebook"];
+      delete mappedArgs["assignment_hide_in_gradebook"];
+    }
+    if ("assignment_moderated_grading" in mappedArgs) {
+      mappedArgs["assignment[moderated_grading]"] = mappedArgs["assignment_moderated_grading"];
+      delete mappedArgs["assignment_moderated_grading"];
+    }
+    if ("assignment_grader_count" in mappedArgs) {
+      mappedArgs["assignment[grader_count]"] = mappedArgs["assignment_grader_count"];
+      delete mappedArgs["assignment_grader_count"];
+    }
+    if ("assignment_final_grader_id" in mappedArgs) {
+      mappedArgs["assignment[final_grader_id]"] = mappedArgs["assignment_final_grader_id"];
+      delete mappedArgs["assignment_final_grader_id"];
+    }
+    if ("assignment_grader_comments_visible_to_graders" in mappedArgs) {
+      mappedArgs["assignment[grader_comments_visible_to_graders]"] = mappedArgs["assignment_grader_comments_visible_to_graders"];
+      delete mappedArgs["assignment_grader_comments_visible_to_graders"];
+    }
+    if ("assignment_graders_anonymous_to_graders" in mappedArgs) {
+      mappedArgs["assignment[graders_anonymous_to_graders]"] = mappedArgs["assignment_graders_anonymous_to_graders"];
+      delete mappedArgs["assignment_graders_anonymous_to_graders"];
+    }
+    if ("assignment_graders_names_visible_to_final_grader" in mappedArgs) {
+      mappedArgs["assignment[graders_names_visible_to_final_grader]"] = mappedArgs["assignment_graders_names_visible_to_final_grader"];
+      delete mappedArgs["assignment_graders_names_visible_to_final_grader"];
+    }
+    if ("assignment_anonymous_grading" in mappedArgs) {
+      mappedArgs["assignment[anonymous_grading]"] = mappedArgs["assignment_anonymous_grading"];
+      delete mappedArgs["assignment_anonymous_grading"];
+    }
+    if ("assignment_allowed_attempts" in mappedArgs) {
+      mappedArgs["assignment[allowed_attempts]"] = mappedArgs["assignment_allowed_attempts"];
+      delete mappedArgs["assignment_allowed_attempts"];
+    }
+    if ("assignment_annotatable_attachment_id" in mappedArgs) {
+      mappedArgs["assignment[annotatable_attachment_id]"] = mappedArgs["assignment_annotatable_attachment_id"];
+      delete mappedArgs["assignment_annotatable_attachment_id"];
+    }
+    if ("assignment_asset_processors" in mappedArgs) {
+      mappedArgs["assignment[asset_processors][]"] = mappedArgs["assignment_asset_processors"];
+      delete mappedArgs["assignment_asset_processors"];
+    }
+    if ("assignment_force_updated_at" in mappedArgs) {
+      mappedArgs["assignment[force_updated_at]"] = mappedArgs["assignment_force_updated_at"];
+      delete mappedArgs["assignment_force_updated_at"];
+    }
+    if ("assignment_peer_review_points_possible" in mappedArgs) {
+      mappedArgs["assignment[peer_review][points_possible]"] = mappedArgs["assignment_peer_review_points_possible"];
+      delete mappedArgs["assignment_peer_review_points_possible"];
+    }
+    if ("assignment_peer_review_grading_type" in mappedArgs) {
+      mappedArgs["assignment[peer_review][grading_type]"] = mappedArgs["assignment_peer_review_grading_type"];
+      delete mappedArgs["assignment_peer_review_grading_type"];
+    }
+    if ("assignment_peer_review_due_at" in mappedArgs) {
+      mappedArgs["assignment[peer_review][due_at]"] = mappedArgs["assignment_peer_review_due_at"];
+      delete mappedArgs["assignment_peer_review_due_at"];
+    }
+    if ("assignment_peer_review_lock_at" in mappedArgs) {
+      mappedArgs["assignment[peer_review][lock_at]"] = mappedArgs["assignment_peer_review_lock_at"];
+      delete mappedArgs["assignment_peer_review_lock_at"];
+    }
+    if ("assignment_peer_review_unlock_at" in mappedArgs) {
+      mappedArgs["assignment[peer_review][unlock_at]"] = mappedArgs["assignment_peer_review_unlock_at"];
+      delete mappedArgs["assignment_peer_review_unlock_at"];
+    }
+    if ("assignment_peer_review_peer_review_overrides" in mappedArgs) {
+      mappedArgs["assignment[peer_review][peer_review_overrides][]"] = mappedArgs["assignment_peer_review_peer_review_overrides"];
+      delete mappedArgs["assignment_peer_review_peer_review_overrides"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:id", mappedArgs);
   },
   put_cca_bulk_update: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/bulk_update", args);
@@ -989,22 +1369,91 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/sections/:course_section_id/assignments/:assignment_id/override", args);
   },
   post_ccaa_overrides: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/overrides", args);
+    const mappedArgs = { ...args };
+    if ("assignment_override_student_ids" in mappedArgs) {
+      mappedArgs["assignment_override[student_ids][]"] = mappedArgs["assignment_override_student_ids"];
+      delete mappedArgs["assignment_override_student_ids"];
+    }
+    if ("assignment_override_title" in mappedArgs) {
+      mappedArgs["assignment_override[title]"] = mappedArgs["assignment_override_title"];
+      delete mappedArgs["assignment_override_title"];
+    }
+    if ("assignment_override_group_id" in mappedArgs) {
+      mappedArgs["assignment_override[group_id]"] = mappedArgs["assignment_override_group_id"];
+      delete mappedArgs["assignment_override_group_id"];
+    }
+    if ("assignment_override_course_section_id" in mappedArgs) {
+      mappedArgs["assignment_override[course_section_id]"] = mappedArgs["assignment_override_course_section_id"];
+      delete mappedArgs["assignment_override_course_section_id"];
+    }
+    if ("assignment_override_due_at" in mappedArgs) {
+      mappedArgs["assignment_override[due_at]"] = mappedArgs["assignment_override_due_at"];
+      delete mappedArgs["assignment_override_due_at"];
+    }
+    if ("assignment_override_unlock_at" in mappedArgs) {
+      mappedArgs["assignment_override[unlock_at]"] = mappedArgs["assignment_override_unlock_at"];
+      delete mappedArgs["assignment_override_unlock_at"];
+    }
+    if ("assignment_override_lock_at" in mappedArgs) {
+      mappedArgs["assignment_override[lock_at]"] = mappedArgs["assignment_override_lock_at"];
+      delete mappedArgs["assignment_override_lock_at"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/overrides", mappedArgs);
   },
   put_ccaa_overrides_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id", args);
+    const mappedArgs = { ...args };
+    if ("assignment_override_student_ids" in mappedArgs) {
+      mappedArgs["assignment_override[student_ids][]"] = mappedArgs["assignment_override_student_ids"];
+      delete mappedArgs["assignment_override_student_ids"];
+    }
+    if ("assignment_override_title" in mappedArgs) {
+      mappedArgs["assignment_override[title]"] = mappedArgs["assignment_override_title"];
+      delete mappedArgs["assignment_override_title"];
+    }
+    if ("assignment_override_due_at" in mappedArgs) {
+      mappedArgs["assignment_override[due_at]"] = mappedArgs["assignment_override_due_at"];
+      delete mappedArgs["assignment_override_due_at"];
+    }
+    if ("assignment_override_unlock_at" in mappedArgs) {
+      mappedArgs["assignment_override[unlock_at]"] = mappedArgs["assignment_override_unlock_at"];
+      delete mappedArgs["assignment_override_unlock_at"];
+    }
+    if ("assignment_override_lock_at" in mappedArgs) {
+      mappedArgs["assignment_override[lock_at]"] = mappedArgs["assignment_override_lock_at"];
+      delete mappedArgs["assignment_override_lock_at"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id", mappedArgs);
   },
   delete_ccaa_overrides_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id", args);
   },
   get_cca_overrides: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/overrides", args);
+    const mappedArgs = { ...args };
+    if ("assignment_overrides_id" in mappedArgs) {
+      mappedArgs["assignment_overrides[][id]"] = mappedArgs["assignment_overrides_id"];
+      delete mappedArgs["assignment_overrides_id"];
+    }
+    if ("assignment_overrides_assignment_id" in mappedArgs) {
+      mappedArgs["assignment_overrides[][assignment_id]"] = mappedArgs["assignment_overrides_assignment_id"];
+      delete mappedArgs["assignment_overrides_assignment_id"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/overrides", mappedArgs);
   },
   post_cca_overrides: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/overrides", args);
+    const mappedArgs = { ...args };
+    if ("assignment_overrides" in mappedArgs) {
+      mappedArgs["assignment_overrides[]"] = mappedArgs["assignment_overrides"];
+      delete mappedArgs["assignment_overrides"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/overrides", mappedArgs);
   },
   put_cca_overrides: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/overrides", args);
+    const mappedArgs = { ...args };
+    if ("assignment_overrides" in mappedArgs) {
+      mappedArgs["assignment_overrides[]"] = mappedArgs["assignment_overrides"];
+      delete mappedArgs["assignment_overrides"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/overrides", mappedArgs);
   }
 };
 

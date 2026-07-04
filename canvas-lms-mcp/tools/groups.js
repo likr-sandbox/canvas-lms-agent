@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "Only include groups that are in this type of context. Allowed values: `Account`, `Course`"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"tabs\": Include the list of tabs configured for each group. See the<br><a href=\"tabs.md#method.tabs.index\">List available tabs API</a> for more information. Allowed values: <code>tabs</code></p>"
         },
@@ -59,7 +59,7 @@ const definitions = [
           "type": "boolean",
           "description": "Will only include groups that the user belongs to if this is set"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"tabs\": Include the list of tabs configured for each group. See the<br><a href=\"tabs.md#method.tabs.index\">List available tabs API</a> for more information. Allowed values: <code>tabs</code></p>"
         },
@@ -87,7 +87,7 @@ const definitions = [
           "type": "number",
           "description": "The ID of the course context (from the route)."
         },
-        "user_ids[]": {
+        "user_ids": {
           "type": "number",
           "description": "An array of user IDs to fetch tags for."
         },
@@ -111,7 +111,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: group_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"permissions\": Include permissions the current user has<br>for the group.<br>- \"tabs\": Include the list of tabs configured for each group. See the<br><a href=\"tabs.md#method.tabs.index\">List available tabs API</a> for more information. Allowed values: <code>permissions</code>, <code>tabs</code></p>"
         },
@@ -207,7 +207,7 @@ const definitions = [
           "type": "number",
           "description": "<p>The allowed file storage for the group, in megabytes. This parameter is<br>ignored if the caller does not have the manage\\_storage\\_quotas permission.</p>"
         },
-        "members[]": {
+        "members": {
           "type": "string",
           "description": "<p>An array of user ids for users you would like in the group.<br>Users not in the group will be sent invitations. Existing group<br>members who aren't in the list will be removed from the group.</p>"
         },
@@ -251,14 +251,14 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: group_id"
         },
-        "invitees[]": {
+        "invitees": {
           "type": "string",
           "description": "An array of email addresses to be sent invitations."
         }
       },
       "required": [
         "group_id",
-        "invitees[]"
+        "invitees"
       ]
     }
   },
@@ -276,7 +276,7 @@ const definitions = [
           "type": "string",
           "description": "<p>The partial name or full ID of the users to match and return in the<br>results list. Must be at least 2 characters.</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "\"avatar\\_url\": Include users' avatar\\_urls. Allowed values: `avatar_url`"
         },
@@ -380,7 +380,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: group_id"
         },
-        "permissions[]": {
+        "permissions": {
           "type": "string",
           "description": "<p>List of permissions to check against the authenticated user.<br>Permission names are documented in the <a href=\"roles.md#method.role_overrides.manageable_permissions\">List assignable permissions</a> endpoint.</p>"
         },
@@ -404,7 +404,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: group_id"
         },
-        "filter_states[]": {
+        "filter_states": {
           "type": "string",
           "description": "<p>Only list memberships with the given workflow\\_states. By default it will<br>return all memberships. Allowed values: <code>accepted</code>, <code>invited</code>, <code>requested</code></p>"
         },
@@ -482,7 +482,7 @@ const definitions = [
           "type": "string",
           "description": "- The ID of the user for individual membership creation."
         },
-        "members[]": {
+        "members": {
           "type": "number",
           "description": "- Bulk add multiple users to a differentiation tag."
         },
@@ -490,7 +490,7 @@ const definitions = [
           "type": "boolean",
           "description": "- If true, add all enrolled students from the course."
         },
-        "exclude_user_ids[]": {
+        "exclude_user_ids": {
           "type": "number",
           "description": "- An array of user IDs to exclude when using all\\_in\\_group\\_course."
         }
@@ -612,19 +612,39 @@ const definitions = [
 
 const handlers = {
   get_us_groups: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/self/groups", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/self/groups", mappedArgs);
   },
   get_aa_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/groups", args);
   },
   get_cc_groups: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/groups", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/groups", mappedArgs);
   },
   get_cc_bulk_user_tags: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/bulk_user_tags", args);
+    const mappedArgs = { ...args };
+    if ("user_ids" in mappedArgs) {
+      mappedArgs["user_ids[]"] = mappedArgs["user_ids"];
+      delete mappedArgs["user_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/bulk_user_tags", mappedArgs);
   },
   get_groups_group_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/groups/:group_id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/groups/:group_id", mappedArgs);
   },
   post_groups: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups", args);
@@ -633,16 +653,31 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/group_categories/:group_category_id/groups", args);
   },
   put_groups_group_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/groups/:group_id", args);
+    const mappedArgs = { ...args };
+    if ("members" in mappedArgs) {
+      mappedArgs["members[]"] = mappedArgs["members"];
+      delete mappedArgs["members"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/groups/:group_id", mappedArgs);
   },
   delete_groups_group_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id", args);
   },
   post_gg_invite: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/groups/:group_id/invite", args);
+    const mappedArgs = { ...args };
+    if ("invitees" in mappedArgs) {
+      mappedArgs["invitees[]"] = mappedArgs["invitees"];
+      delete mappedArgs["invitees"];
+    }
+    return genericHandler(client, "POST", "/api/v1/groups/:group_id/invite", mappedArgs);
   },
   get_gg_users: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/groups/:group_id/users", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/groups/:group_id/users", mappedArgs);
   },
   post_gg_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/files", args);
@@ -657,10 +692,20 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/activity_stream/summary", args);
   },
   get_gg_permissions: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/groups/:group_id/permissions", args);
+    const mappedArgs = { ...args };
+    if ("permissions" in mappedArgs) {
+      mappedArgs["permissions[]"] = mappedArgs["permissions"];
+      delete mappedArgs["permissions"];
+    }
+    return genericHandler(client, "GET", "/api/v1/groups/:group_id/permissions", mappedArgs);
   },
   get_gg_memberships: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/groups/:group_id/memberships", args);
+    const mappedArgs = { ...args };
+    if ("filter_states" in mappedArgs) {
+      mappedArgs["filter_states[]"] = mappedArgs["filter_states"];
+      delete mappedArgs["filter_states"];
+    }
+    return genericHandler(client, "GET", "/api/v1/groups/:group_id/memberships", mappedArgs);
   },
   get_gg_memberships_membership_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/memberships/:membership_id", args);
@@ -669,7 +714,16 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/users/:user_id", args);
   },
   post_gg_memberships: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/groups/:group_id/memberships", args);
+    const mappedArgs = { ...args };
+    if ("members" in mappedArgs) {
+      mappedArgs["members[]"] = mappedArgs["members"];
+      delete mappedArgs["members"];
+    }
+    if ("exclude_user_ids" in mappedArgs) {
+      mappedArgs["exclude_user_ids[]"] = mappedArgs["exclude_user_ids"];
+      delete mappedArgs["exclude_user_ids"];
+    }
+    return genericHandler(client, "POST", "/api/v1/groups/:group_id/memberships", mappedArgs);
   },
   put_gg_memberships_membership_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/memberships/:membership_id", args);

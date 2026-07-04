@@ -33,7 +33,7 @@ test("get_maa_media_tracks calls correct endpoint", async () => {
   const handler = media_objectsModule.handlers.get_maa_media_tracks;
   assert.ok(handler, "Handler get_maa_media_tracks should be defined");
 
-  const result = await handler(mockClient, {"attachment_id": "test_attachment_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"attachment_id": "test_attachment_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/media_attachments/test_attachment_id/media_tracks");
@@ -69,7 +69,7 @@ test("put_maa_media_tracks calls correct endpoint", async () => {
   const handler = media_objectsModule.handlers.put_maa_media_tracks;
   assert.ok(handler, "Handler put_maa_media_tracks should be defined");
 
-  const result = await handler(mockClient, {"attachment_id": "test_attachment_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"attachment_id": "test_attachment_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/media_attachments/test_attachment_id/media_tracks");

@@ -54,7 +54,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"collaborator\\_lti\\_id\": Optional information to include with each member.<br>Represents an identifier to be used for the member in an LTI context.<br>- \"avatar\\_image\\_url\": Optional information to include with each member.<br>The url for the avatar of a collaborator with type 'user'. Allowed values: <code>collaborator\\_lti\\_id</code>, <code>avatar\\_image\\_url</code></p>"
         },
@@ -118,7 +118,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/collaborations", args);
   },
   get_ci_members: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/collaborations/:id/members", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/collaborations/:id/members", mappedArgs);
   },
   get_cc_potential_collaborators: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/potential_collaborators", args);

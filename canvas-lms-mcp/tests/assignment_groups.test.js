@@ -15,7 +15,7 @@ test("get_cc_assignment_groups calls correct endpoint", async () => {
   const handler = assignment_groupsModule.handlers.get_cc_assignment_groups;
   assert.ok(handler, "Handler get_cc_assignment_groups should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignment_groups");
@@ -33,7 +33,7 @@ test("get_cc_assignment_groups_assignment_group_id calls correct endpoint", asyn
   const handler = assignment_groupsModule.handlers.get_cc_assignment_groups_assignment_group_id;
   assert.ok(handler, "Handler get_cc_assignment_groups_assignment_group_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_group_id": "test_assignment_group_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_group_id": "test_assignment_group_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignment_groups/test_assignment_group_id");

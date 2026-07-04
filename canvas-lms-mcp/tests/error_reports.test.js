@@ -15,7 +15,7 @@ test("post_error_reports calls correct endpoint", async () => {
   const handler = error_reportsModule.handlers.post_error_reports;
   assert.ok(handler, "Handler post_error_reports should be defined");
 
-  const result = await handler(mockClient, {"error[subject]": "test_val"});
+  const result = await handler(mockClient, {"error_subject": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/error_reports");

@@ -231,7 +231,7 @@ test("put_cc_blackout_dates calls correct endpoint", async () => {
   const handler = blackout_datesModule.handlers.put_cc_blackout_dates;
   assert.ok(handler, "Handler put_cc_blackout_dates should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "blackout_dates:": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "blackout_dates": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/blackout_dates");

@@ -30,19 +30,19 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "ratings[][description]": {
+        "ratings_description": {
           "type": "string",
           "description": "The description of the rating level."
         },
-        "ratings[][points]": {
+        "ratings_points": {
           "type": "number",
           "description": "The non-negative number of points of the rating level. Points across ratings should be strictly decreasing in value."
         },
-        "ratings[][mastery]": {
+        "ratings_mastery": {
           "type": "number",
           "description": "Indicates the rating level where mastery is first achieved. Only one rating in a proficiency should be marked for mastery."
         },
-        "ratings[][color]": {
+        "ratings_color": {
           "type": "number",
           "description": "The color associated with the rating level. Should be a hex color code like '00FFFF'."
         }
@@ -99,7 +99,24 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/outcome_proficiency", args);
   },
   post_cc_outcome_proficiency: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/outcome_proficiency", args);
+    const mappedArgs = { ...args };
+    if ("ratings_description" in mappedArgs) {
+      mappedArgs["ratings[][description]"] = mappedArgs["ratings_description"];
+      delete mappedArgs["ratings_description"];
+    }
+    if ("ratings_points" in mappedArgs) {
+      mappedArgs["ratings[][points]"] = mappedArgs["ratings_points"];
+      delete mappedArgs["ratings_points"];
+    }
+    if ("ratings_mastery" in mappedArgs) {
+      mappedArgs["ratings[][mastery]"] = mappedArgs["ratings_mastery"];
+      delete mappedArgs["ratings_mastery"];
+    }
+    if ("ratings_color" in mappedArgs) {
+      mappedArgs["ratings[][color]"] = mappedArgs["ratings_color"];
+      delete mappedArgs["ratings_color"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/outcome_proficiency", mappedArgs);
   },
   get_aa_outcome_proficiency: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/outcome_proficiency", args);

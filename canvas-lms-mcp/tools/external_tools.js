@@ -260,7 +260,7 @@ const definitions = [
           "type": "string",
           "description": "The default text to show for this tool"
         },
-        "custom_fields[field_name]": {
+        "custom_fields_field_name": {
           "type": "string",
           "description": "<p>Custom fields that will be sent to the tool consumer; can be used<br>multiple times</p>"
         },
@@ -268,7 +268,7 @@ const definitions = [
           "type": "boolean",
           "description": "<p>(Deprecated in favor of <a href=\"#method.external_tools.mark_rce_favorite\">Mark tool to RCE Favorites</a> and<br><a href=\"#method.external_tools.unmark_rce_favorite\">Unmark tool from RCE Favorites</a>)<br>Whether this tool should appear in a preferred location in the RCE.<br>This only applies to tools in root account contexts that have an editor<br>button placement.</p>"
         },
-        "<placement_name>[<placement_configuration_key>]": {
+        "placement_name_placement_configuration_key": {
           "type": "string",
           "description": "Set the \\<placement\\_configuration\\_key> value for a specific placement."
         },
@@ -481,7 +481,7 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "context_codes[]": {
+        "context_codes": {
           "type": "string",
           "description": "<p>List of context\\_codes to retrieve visible course nav tools for (for example, +course\\_123+). Only<br>courses are presently supported.</p>"
         },
@@ -491,7 +491,7 @@ const definitions = [
         }
       },
       "required": [
-        "context_codes[]"
+        "context_codes"
       ]
     }
   },
@@ -543,7 +543,16 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/external_tools", args);
   },
   post_aa_external_tools: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/external_tools", args);
+    const mappedArgs = { ...args };
+    if ("custom_fields_field_name" in mappedArgs) {
+      mappedArgs["custom_fields[field_name]"] = mappedArgs["custom_fields_field_name"];
+      delete mappedArgs["custom_fields_field_name"];
+    }
+    if ("placement_name_placement_configuration_key" in mappedArgs) {
+      mappedArgs["<placement_name>[<placement_configuration_key>]"] = mappedArgs["placement_name_placement_configuration_key"];
+      delete mappedArgs["placement_name_placement_configuration_key"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/external_tools", mappedArgs);
   },
   put_cc_external_tools_external_tool_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/external_tools/:external_tool_id", args);
@@ -570,7 +579,12 @@ const handlers = {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/external_tools/top_nav_favorites/:id", args);
   },
   get_et_visible_course_nav_tools: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/external_tools/visible_course_nav_tools", args);
+    const mappedArgs = { ...args };
+    if ("context_codes" in mappedArgs) {
+      mappedArgs["context_codes[]"] = mappedArgs["context_codes"];
+      delete mappedArgs["context_codes"];
+    }
+    return genericHandler(client, "GET", "/api/v1/external_tools/visible_course_nav_tools", mappedArgs);
   },
   get_ccet_visible_course_nav_tools: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/external_tools/visible_course_nav_tools", args);

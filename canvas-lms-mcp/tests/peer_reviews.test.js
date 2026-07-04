@@ -69,7 +69,7 @@ test("get_ssaass_peer_reviews calls correct endpoint", async () => {
   const handler = peer_reviewsModule.handlers.get_ssaass_peer_reviews;
   assert.ok(handler, "Handler get_ssaass_peer_reviews should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "submission_id": "test_submission_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "submission_id": "test_submission_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/assignments/test_assignment_id/submissions/test_submission_id/peer_reviews");

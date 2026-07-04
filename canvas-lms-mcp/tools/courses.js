@@ -30,11 +30,11 @@ const definitions = [
           "type": "boolean",
           "description": "When set, only return courses that are not configured as blueprint courses."
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"needs\\_grading\\_count\": Optional information to include with each Course.<br>When needs\\_grading\\_count is given, and the current user has grading<br>rights, the total number of submissions needing grading for all<br>assignments is returned.<br>- \"syllabus\\_body\": Optional information to include with each Course.<br>When syllabus\\_body is given the user-generated html for the course<br>syllabus is returned.<br>- \"public\\_description\": Optional information to include with each Course.<br>When public\\_description is given the user-generated text for the course<br>public description is returned.<br>- \"total\\_scores\": Optional information to include with each Course.<br>When total\\_scores is given, any student enrollments will also<br>include the fields 'computed\\_current\\_score', 'computed\\_final\\_score',<br>'computed\\_current\\_grade', and 'computed\\_final\\_grade', as well as (if<br>the user has permission) 'unposted\\_current\\_score',<br>'unposted\\_final\\_score', 'unposted\\_current\\_grade', and<br>'unposted\\_final\\_grade' (see Enrollment documentation for more<br>information on these fields). This argument is ignored if the course is<br>configured to hide final grades.<br>- \"current\\_grading\\_period\\_scores\": Optional information to include with<br>each Course. When current\\_grading\\_period\\_scores is given and total\\_scores<br>is given, any student enrollments will also include the fields<br>'has\\_grading\\_periods',<br>'totals\\_for\\_all\\_grading\\_periods\\_option', 'current\\_grading\\_period\\_title',<br>'current\\_grading\\_period\\_id', current\\_period\\_computed\\_current\\_score',<br>'current\\_period\\_computed\\_final\\_score',<br>'current\\_period\\_computed\\_current\\_grade', and<br>'current\\_period\\_computed\\_final\\_grade', as well as (if the user has permission)<br>'current\\_period\\_unposted\\_current\\_score',<br>'current\\_period\\_unposted\\_final\\_score',<br>'current\\_period\\_unposted\\_current\\_grade', and<br>'current\\_period\\_unposted\\_final\\_grade' (see Enrollment documentation for<br>more information on these fields). In addition, when this argument is<br>passed, the course will have a 'has\\_grading\\_periods' attribute<br>on it. This argument is ignored if the total\\_scores argument is not<br>included. If the course is configured to hide final grades, the<br>following fields are not returned:<br>'totals\\_for\\_all\\_grading\\_periods\\_option',<br>'current\\_period\\_computed\\_current\\_score',<br>'current\\_period\\_computed\\_final\\_score',<br>'current\\_period\\_computed\\_current\\_grade',<br>'current\\_period\\_computed\\_final\\_grade',<br>'current\\_period\\_unposted\\_current\\_score',<br>'current\\_period\\_unposted\\_final\\_score',<br>'current\\_period\\_unposted\\_current\\_grade', and<br>'current\\_period\\_unposted\\_final\\_grade'<br>- \"grading\\_periods\": Optional information to include with each Course. When<br>grading\\_periods is given, a list of the grading periods associated with<br>each course is returned.<br>- \"term\": Optional information to include with each Course. When<br>term is given, the information for the enrollment term for each course<br>is returned.<br>- \"account\": Optional information to include with each Course. When<br>account is given, the account json for each course is returned.<br>- \"course\\_progress\": Optional information to include with each Course.<br>When course\\_progress is given, each course will include a<br>'course\\_progress' object with the fields: 'requirement\\_count', an integer<br>specifying the total number of requirements in the course,<br>'requirement\\_completed\\_count', an integer specifying the total number of<br>requirements in this course that have been completed, and<br>'next\\_requirement\\_url', a string url to the next requirement item, and<br>'completed\\_at', the date the course was completed (null if incomplete).<br>'next\\_requirement\\_url' will be null if all requirements have been<br>completed or the current module does not require sequential progress.<br>\"course\\_progress\" will return an error message if the course is not<br>module based or the user is not enrolled as a student in the course.<br>- \"sections\": Section enrollment information to include with each Course.<br>Returns an array of hashes containing the section ID (id), section name<br>(name), start and end dates (start\\_at, end\\_at), as well as the enrollment<br>type (enrollment\\_role, e.g. 'StudentEnrollment').<br>- \"storage\\_quota\\_used\\_mb\": The amount of storage space used by the files in this course<br>- \"total\\_students\": Optional information to include with each Course.<br>Returns an integer for the total amount of active and invited students.<br>- \"passback\\_status\": Include the grade passback\\_status<br>- \"favorites\": Optional information to include with each Course.<br>Indicates if the user has marked the course as a favorite course.<br>- \"teachers\": Teacher information to include with each Course.<br>Returns an array of hashes containing the <a href=\"users.md#UserDisplay\">UserDisplay</a> information<br>for each teacher in the course.<br>- \"observed\\_users\": Optional information to include with each Course.<br>Will include data for observed users if the current user has an<br>observer enrollment.<br>- \"tabs\": Optional information to include with each Course.<br>Will include the list of tabs configured for each course. See the<br><a href=\"tabs.md#method.tabs.index\">List available tabs API</a> for more information.<br>- \"course\\_image\": Optional information to include with each Course. Returns course<br>image url if a course image has been set.<br>- \"banner\\_image\": Optional information to include with each Course. Returns course<br>banner image url if the course is a Canvas for Elementary subject and a banner<br>image has been set.<br>- \"concluded\": Optional information to include with each Course. Indicates whether<br>the course has been concluded, taking course and term dates into account.<br>- \"post\\_manually\": Optional information to include with each Course. Returns true if<br>the course post policy is set to Manually post grades. Returns false if the the course<br>post policy is set to Automatically post grades.<br>- \"syllabus\\_versions\": Optional information to include with each Course.<br>Returns recent saved versions of the syllabus body. Requires the<br>syllabus\\_versioning feature flag and permission to manage course<br>content. Version numbers can be passed to the Restore course<br>syllabus version API. Allowed values: <code>needs\\_grading\\_count</code>, <code>syllabus\\_body</code>, <code>syllabus\\_versions</code>, <code>public\\_description</code>, <code>total\\_scores</code>, <code>current\\_grading\\_period\\_scores</code>, <code>grading\\_periods</code>, <code>term</code>, <code>account</code>, <code>course\\_progress</code>, <code>sections</code>, <code>storage\\_quota\\_used\\_mb</code>, <code>total\\_students</code>, <code>passback\\_status</code>, <code>favorites</code>, <code>teachers</code>, <code>observed\\_users</code>, <code>course\\_image</code>, <code>banner\\_image</code>, <code>concluded</code>, <code>post\\_manually</code></p>"
         },
-        "state[]": {
+        "state": {
           "type": "string",
           "description": "<p>If set, only return courses that are in the given state(s).<br>By default, \"available\" is returned for students and observers, and<br>anything except \"deleted\", for all other enrollment types Allowed values: <code>unpublished</code>, <code>available</code>, <code>completed</code>, <code>deleted</code></p>"
         },
@@ -55,11 +55,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"needs\\_grading\\_count\": Optional information to include with each Course.<br>When needs\\_grading\\_count is given, and the current user has grading<br>rights, the total number of submissions needing grading for all<br>assignments is returned.<br>- \"syllabus\\_body\": Optional information to include with each Course.<br>When syllabus\\_body is given the user-generated html for the course<br>syllabus is returned.<br>- \"public\\_description\": Optional information to include with each Course.<br>When public\\_description is given the user-generated text for the course<br>public description is returned.<br>- \"total\\_scores\": Optional information to include with each Course.<br>When total\\_scores is given, any student enrollments will also<br>include the fields 'computed\\_current\\_score', 'computed\\_final\\_score',<br>'computed\\_current\\_grade', and 'computed\\_final\\_grade' (see Enrollment<br>documentation for more information on these fields). This argument<br>is ignored if the course is configured to hide final grades.<br>- \"current\\_grading\\_period\\_scores\": Optional information to include with<br>each Course. When current\\_grading\\_period\\_scores is given and total\\_scores<br>is given, any student enrollments will also include the fields<br>'has\\_grading\\_periods',<br>'totals\\_for\\_all\\_grading\\_periods\\_option', 'current\\_grading\\_period\\_title',<br>'current\\_grading\\_period\\_id', current\\_period\\_computed\\_current\\_score',<br>'current\\_period\\_computed\\_final\\_score',<br>'current\\_period\\_computed\\_current\\_grade', and<br>'current\\_period\\_computed\\_final\\_grade', as well as (if the user has permission)<br>'current\\_period\\_unposted\\_current\\_score',<br>'current\\_period\\_unposted\\_final\\_score',<br>'current\\_period\\_unposted\\_current\\_grade', and<br>'current\\_period\\_unposted\\_final\\_grade' (see Enrollment documentation for<br>more information on these fields). In addition, when this argument is<br>passed, the course will have a 'has\\_grading\\_periods' attribute<br>on it. This argument is ignored if the course is configured to hide final<br>grades or if the total\\_scores argument is not included.<br>- \"grading\\_periods\": Optional information to include with each Course. When<br>grading\\_periods is given, a list of the grading periods associated with<br>each course is returned.<br>- \"term\": Optional information to include with each Course. When<br>term is given, the information for the enrollment term for each course<br>is returned.<br>- \"account\": Optional information to include with each Course. When<br>account is given, the account json for each course is returned.<br>- \"course\\_progress\": Optional information to include with each Course.<br>When course\\_progress is given, each course will include a<br>'course\\_progress' object with the fields: 'requirement\\_count', an integer<br>specifying the total number of requirements in the course,<br>'requirement\\_completed\\_count', an integer specifying the total number of<br>requirements in this course that have been completed, and<br>'next\\_requirement\\_url', a string url to the next requirement item, and<br>'completed\\_at', the date the course was completed (null if incomplete).<br>'next\\_requirement\\_url' will be null if all requirements have been<br>completed or the current module does not require sequential progress.<br>\"course\\_progress\" will return an error message if the course is not<br>module based or the user is not enrolled as a student in the course.<br>- \"sections\": Section enrollment information to include with each Course.<br>Returns an array of hashes containing the section ID (id), section name<br>(name), start and end dates (start\\_at, end\\_at), as well as the enrollment<br>type (enrollment\\_role, e.g. 'StudentEnrollment').<br>- \"storage\\_quota\\_used\\_mb\": The amount of storage space used by the files in this course<br>- \"total\\_students\": Optional information to include with each Course.<br>Returns an integer for the total amount of active and invited students.<br>- \"passback\\_status\": Include the grade passback\\_status<br>- \"favorites\": Optional information to include with each Course.<br>Indicates if the user has marked the course as a favorite course.<br>- \"teachers\": Teacher information to include with each Course.<br>Returns an array of hashes containing the <a href=\"users.md#UserDisplay\">UserDisplay</a> information<br>for each teacher in the course.<br>- \"observed\\_users\": Optional information to include with each Course.<br>Will include data for observed users if the current user has an<br>observer enrollment.<br>- \"tabs\": Optional information to include with each Course.<br>Will include the list of tabs configured for each course. See the<br><a href=\"tabs.md#method.tabs.index\">List available tabs API</a> for more information.<br>- \"course\\_image\": Optional information to include with each Course. Returns course<br>image url if a course image has been set.<br>- \"banner\\_image\": Optional information to include with each Course. Returns course<br>banner image url if the course is a Canvas for Elementary subject and a banner<br>image has been set.<br>- \"concluded\": Optional information to include with each Course. Indicates whether<br>the course has been concluded, taking course and term dates into account.<br>- \"post\\_manually\": Optional information to include with each Course. Returns true if<br>the course post policy is set to \"Manually\". Returns false if the the course post<br>policy is set to \"Automatically\".<br>- \"syllabus\\_versions\": Optional information to include with each Course.<br>Returns recent saved versions of the syllabus body. Requires the<br>syllabus\\_versioning feature flag and permission to manage course<br>content. Version numbers can be passed to the Restore course<br>syllabus version API. Allowed values: <code>needs\\_grading\\_count</code>, <code>syllabus\\_body</code>, <code>syllabus\\_versions</code>, <code>public\\_description</code>, <code>total\\_scores</code>, <code>current\\_grading\\_period\\_scores</code>, <code>grading\\_periods</code>, <code>term</code>, <code>account</code>, <code>course\\_progress</code>, <code>sections</code>, <code>storage\\_quota\\_used\\_mb</code>, <code>total\\_students</code>, <code>passback\\_status</code>, <code>favorites</code>, <code>teachers</code>, <code>observed\\_users</code>, <code>course\\_image</code>, <code>banner\\_image</code>, <code>concluded</code>, <code>post\\_manually</code></p>"
         },
-        "state[]": {
+        "state": {
           "type": "string",
           "description": "<p>If set, only return courses that are in the given state(s).<br>By default, \"available\" is returned for students and observers, and<br>anything except \"deleted\", for all other enrollment types Allowed values: <code>unpublished</code>, <code>available</code>, <code>completed</code>, <code>deleted</code></p>"
         },
@@ -120,91 +120,91 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "course[name]": {
+        "course_name": {
           "type": "string",
           "description": "<p>The name of the course. If omitted, the course will be named \"Unnamed<br>Course.\"</p>"
         },
-        "course[course_code]": {
+        "course_course_code": {
           "type": "string",
           "description": "The course code for the course."
         },
-        "course[start_at]": {
+        "course_start_at": {
           "type": "string",
           "description": "<p>Course start date in ISO8601 format, e.g. 2011-01-01T01:00Z<br>This value is ignored unless 'restrict\\_enrollments\\_to\\_course\\_dates' is set to true.</p>"
         },
-        "course[end_at]": {
+        "course_end_at": {
           "type": "string",
           "description": "<p>Course end date in ISO8601 format. e.g. 2011-01-01T01:00Z<br>This value is ignored unless 'restrict\\_enrollments\\_to\\_course\\_dates' is set to true.</p>"
         },
-        "course[license]": {
+        "course_license": {
           "type": "string",
           "description": "<p>The name of the licensing. Should be one of the following abbreviations<br>(a descriptive name is included in parenthesis for reference):<br>- 'private' (Private Copyrighted)<br>- 'cc\\_by\\_nc\\_nd' (CC Attribution Non-Commercial No Derivatives)<br>- 'cc\\_by\\_nc\\_sa' (CC Attribution Non-Commercial Share Alike)<br>- 'cc\\_by\\_nc' (CC Attribution Non-Commercial)<br>- 'cc\\_by\\_nd' (CC Attribution No Derivatives)<br>- 'cc\\_by\\_sa' (CC Attribution Share Alike)<br>- 'cc\\_by' (CC Attribution)<br>- 'public\\_domain' (Public Domain).</p>"
         },
-        "course[is_public]": {
+        "course_is_public": {
           "type": "boolean",
           "description": "Set to true if course is public to both authenticated and unauthenticated users."
         },
-        "course[is_public_to_auth_users]": {
+        "course_is_public_to_auth_users": {
           "type": "boolean",
           "description": "Set to true if course is public only to authenticated users."
         },
-        "course[public_syllabus]": {
+        "course_public_syllabus": {
           "type": "boolean",
           "description": "Set to true to make the course syllabus public."
         },
-        "course[public_syllabus_to_auth]": {
+        "course_public_syllabus_to_auth": {
           "type": "boolean",
           "description": "Set to true to make the course syllabus public for authenticated users."
         },
-        "course[public_description]": {
+        "course_public_description": {
           "type": "string",
           "description": "A publicly visible description of the course."
         },
-        "course[allow_student_wiki_edits]": {
+        "course_allow_student_wiki_edits": {
           "type": "boolean",
           "description": "If true, students will be able to modify the course wiki."
         },
-        "course[allow_wiki_comments]": {
+        "course_allow_wiki_comments": {
           "type": "boolean",
           "description": "If true, course members will be able to comment on wiki pages."
         },
-        "course[allow_student_forum_attachments]": {
+        "course_allow_student_forum_attachments": {
           "type": "boolean",
           "description": "If true, students can attach files to forum posts."
         },
-        "course[open_enrollment]": {
+        "course_open_enrollment": {
           "type": "boolean",
           "description": "Set to true if the course is open enrollment."
         },
-        "course[self_enrollment]": {
+        "course_self_enrollment": {
           "type": "boolean",
           "description": "Set to true if the course is self enrollment."
         },
-        "course[restrict_enrollments_to_course_dates]": {
+        "course_restrict_enrollments_to_course_dates": {
           "type": "boolean",
           "description": "<p>Set to true to restrict user enrollments to the start and end dates of the<br>course. This value must be set to true<br>in order to specify a course start date and/or end date.</p>"
         },
-        "course[term_id]": {
+        "course_term_id": {
           "type": "string",
           "description": "The unique ID of the term to create to course in."
         },
-        "course[sis_course_id]": {
+        "course_sis_course_id": {
           "type": "string",
           "description": "The unique SIS identifier."
         },
-        "course[integration_id]": {
+        "course_integration_id": {
           "type": "string",
           "description": "The unique Integration identifier."
         },
-        "course[hide_final_grades]": {
+        "course_hide_final_grades": {
           "type": "boolean",
           "description": "<p>If this option is set to true, the totals in student grades summary will<br>be hidden.</p>"
         },
-        "course[apply_assignment_group_weights]": {
+        "course_apply_assignment_group_weights": {
           "type": "boolean",
           "description": "Set to true to weight final grade based on assignment groups percentages."
         },
-        "course[time_zone]": {
+        "course_time_zone": {
           "type": "string",
           "description": "<p>The time zone for the course. Allowed time zones are<br><a href=\"http://www.iana.org/time-zones\">IANA time zones</a> or friendlier<br><a href=\"http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html\">Ruby on Rails time zones</a>.</p>"
         },
@@ -220,27 +220,27 @@ const definitions = [
           "type": "boolean",
           "description": "<p>If this option is set to true, the template of the account will not be applied to this course<br>It means copy\\_from\\_course\\_template will not be executed. This option is thought for a course copy.</p>"
         },
-        "course[default_view]": {
+        "course_default_view": {
           "type": "string",
           "description": "<p>The type of page that users will see when they first visit the course<br>\\* 'feed' Recent Activity Dashboard<br>\\* 'modules' Course Modules/Sections Page<br>\\* 'assignments' Course Assignments List<br>\\* 'syllabus' Course Syllabus Page<br>other types may be added in the future Allowed values: <code>feed</code>, <code>wiki</code>, <code>modules</code>, <code>syllabus</code>, <code>assignments</code></p>"
         },
-        "course[syllabus_body]": {
+        "course_syllabus_body": {
           "type": "string",
           "description": "The syllabus body for the course"
         },
-        "course[grading_standard_id]": {
+        "course_grading_standard_id": {
           "type": "number",
           "description": "The grading standard id to set for the course. If no value is provided for this argument the current grading\\_standard will be un-set from this course."
         },
-        "course[grade_passback_setting]": {
+        "course_grade_passback_setting": {
           "type": "string",
           "description": "Optional. The grade\\_passback\\_setting for the course. Only 'nightly\\_sync', 'disabled', and '' are allowed"
         },
-        "course[course_format]": {
+        "course_course_format": {
           "type": "string",
           "description": "Optional. Specifies the format of the course. (Should be 'on\\_campus', 'online', or 'blended')"
         },
-        "course[post_manually]": {
+        "course_post_manually": {
           "type": "boolean",
           "description": "<p>Default is false.<br>When true, all grades in the course must be posted manually, and will not be automatically posted.<br>When false, all grades in the course will be automatically posted.</p>"
         },
@@ -328,7 +328,7 @@ const definitions = [
           "type": "string",
           "description": "When set, sort the results of the search based on the given field. Allowed values: `username`, `last_login`, `email`, `sis_id`"
         },
-        "enrollment_type[]": {
+        "enrollment_type": {
           "type": "string",
           "description": "<p>When set, only return users where the user is enrolled as this type.<br>\"student\\_view\" implies include\\[]=test\\_student.<br>This argument is ignored if enrollment\\_role is given. Allowed values: <code>teacher</code>, <code>student</code>, <code>student\\_view</code>, <code>ta</code>, <code>observer</code>, <code>designer</code></p>"
         },
@@ -340,11 +340,11 @@ const definitions = [
           "type": "number",
           "description": "<p>When set, only return courses where the user is enrolled with the specified<br>course-level role. This can be a role created with the<br><a href=\"roles.md#method.role_overrides.add_role\">Add Role API</a> or a built\\_in role id with type<br>'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment', 'ObserverEnrollment',<br>or 'DesignerEnrollment'.</p>"
         },
-        "section_ids[]": {
+        "section_ids": {
           "type": "number",
           "description": "When set, only return users who are enrolled in the given section(s)."
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"enrollments\":<br>Optionally include with each Course the user's current and invited<br>enrollments. If the user is enrolled as a student, and the account has<br>permission to manage or view all grades, each enrollment will include a<br>'grades' key with 'current\\_score', 'final\\_score', 'current\\_grade' and<br>'final\\_grade' values.<br>- \"locked\": Optionally include whether an enrollment is locked.<br>- \"avatar\\_url\": Optionally include avatar\\_url.<br>- \"bio\": Optionally include each user's bio.<br>- \"test\\_student\": Optionally include the course's Test Student,<br>if present. Default is to not include Test Student.<br>- \"custom\\_links\": Optionally include plugin-supplied custom links for each student,<br>such as analytics information<br>- \"current\\_grading\\_period\\_scores\": if enrollments is included as<br>well as this directive, the scores returned in the enrollment<br>will be for the current grading period if there is one. A<br>'grading\\_period\\_id' value will also be included with the<br>scores. if grading\\_period\\_id is nil there is no current grading<br>period and the score is a total score.<br>- \"uuid\": Optionally include the users uuid Allowed values: <code>enrollments</code>, <code>locked</code>, <code>avatar\\_url</code>, <code>test\\_student</code>, <code>bio</code>, <code>custom\\_links</code>, <code>current\\_grading\\_period\\_scores</code>, <code>uuid</code></p>"
         },
@@ -352,11 +352,11 @@ const definitions = [
           "type": "string",
           "description": "<p>If this parameter is given and it corresponds to a user in the course,<br>the +page+ parameter will be ignored and the page containing the specified user<br>will be returned instead.</p>"
         },
-        "user_ids[]": {
+        "user_ids": {
           "type": "number",
           "description": "<p>If included, the course users set will only include users with IDs<br>specified by the param. Note: this will not work in conjunction<br>with the \"user\\_id\" argument but multiple user\\_ids can be included.</p>"
         },
-        "enrollment_state[]": {
+        "enrollment_state": {
           "type": "string",
           "description": "<p>When set, only return users where the enrollment workflow state is of one of the given types.<br>\"active\" and \"invited\" enrollments are returned by default. Allowed values: <code>active</code>, <code>invited</code>, <code>rejected</code>, <code>completed</code>, <code>inactive</code></p>"
         },
@@ -711,7 +711,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"all\\_courses\": Also search recently deleted courses.<br>- \"permissions\": Include permissions the current user has<br>for the course.<br>- \"observed\\_users\": Include observed users in the enrollments<br>- \"course\\_image\": Include course image url if a course image has been set<br>- \"banner\\_image\": Include course banner image url if the course is a Canvas for<br>Elementary subject and a banner image has been set<br>- \"concluded\": Optional information to include with Course. Indicates whether<br>the course has been concluded, taking course and term dates into account.<br>- \"lti\\_context\\_id\": Include course LTI tool id.<br>- \"post\\_manually\": Include course post policy. If the post policy is manually post grades,<br>the value will be true. If the post policy is automatically post grades, the value will be false.<br>- \"syllabus\\_versions\": Optional information to include with each Course.<br>Returns recent saved versions of the syllabus body. Requires the<br>syllabus\\_versioning feature flag and permission to manage course<br>content. Version numbers can be passed to the Restore course<br>syllabus version API. Allowed values: <code>needs\\_grading\\_count</code>, <code>syllabus\\_body</code>, <code>syllabus\\_versions</code>, <code>public\\_description</code>, <code>total\\_scores</code>, <code>current\\_grading\\_period\\_scores</code>, <code>term</code>, <code>account</code>, <code>course\\_progress</code>, <code>sections</code>, <code>storage\\_quota\\_used\\_mb</code>, <code>total\\_students</code>, <code>passback\\_status</code>, <code>favorites</code>, <code>teachers</code>, <code>observed\\_users</code>, <code>all\\_courses</code>, <code>permissions</code>, <code>course\\_image</code>, <code>banner\\_image</code>, <code>concluded</code>, <code>lti\\_context\\_id</code>, <code>post\\_manually</code></p>"
         },
@@ -740,99 +740,99 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "course[account_id]": {
+        "course_account_id": {
           "type": "number",
           "description": "The unique ID of the account to move the course to."
         },
-        "course[name]": {
+        "course_name": {
           "type": "string",
           "description": "<p>The name of the course. If omitted, the course will be named \"Unnamed<br>Course.\"</p>"
         },
-        "course[course_code]": {
+        "course_course_code": {
           "type": "string",
           "description": "The course code for the course."
         },
-        "course[start_at]": {
+        "course_start_at": {
           "type": "string",
           "description": "<p>Course start date in ISO8601 format, e.g. 2011-01-01T01:00Z<br>This value is ignored unless 'restrict\\_enrollments\\_to\\_course\\_dates' is set to true,<br>or the course is already published.</p>"
         },
-        "course[end_at]": {
+        "course_end_at": {
           "type": "string",
           "description": "<p>Course end date in ISO8601 format. e.g. 2011-01-01T01:00Z<br>This value is ignored unless 'restrict\\_enrollments\\_to\\_course\\_dates' is set to true.</p>"
         },
-        "course[license]": {
+        "course_license": {
           "type": "string",
           "description": "<p>The name of the licensing. Should be one of the following abbreviations<br>(a descriptive name is included in parenthesis for reference):<br>- 'private' (Private Copyrighted)<br>- 'cc\\_by\\_nc\\_nd' (CC Attribution Non-Commercial No Derivatives)<br>- 'cc\\_by\\_nc\\_sa' (CC Attribution Non-Commercial Share Alike)<br>- 'cc\\_by\\_nc' (CC Attribution Non-Commercial)<br>- 'cc\\_by\\_nd' (CC Attribution No Derivatives)<br>- 'cc\\_by\\_sa' (CC Attribution Share Alike)<br>- 'cc\\_by' (CC Attribution)<br>- 'public\\_domain' (Public Domain).</p>"
         },
-        "course[is_public]": {
+        "course_is_public": {
           "type": "boolean",
           "description": "Set to true if course is public to both authenticated and unauthenticated users."
         },
-        "course[is_public_to_auth_users]": {
+        "course_is_public_to_auth_users": {
           "type": "boolean",
           "description": "Set to true if course is public only to authenticated users."
         },
-        "course[public_syllabus]": {
+        "course_public_syllabus": {
           "type": "boolean",
           "description": "Set to true to make the course syllabus public."
         },
-        "course[public_syllabus_to_auth]": {
+        "course_public_syllabus_to_auth": {
           "type": "boolean",
           "description": "Set to true to make the course syllabus to public for authenticated users."
         },
-        "course[public_description]": {
+        "course_public_description": {
           "type": "string",
           "description": "A publicly visible description of the course."
         },
-        "course[allow_student_wiki_edits]": {
+        "course_allow_student_wiki_edits": {
           "type": "boolean",
           "description": "If true, students will be able to modify the course wiki."
         },
-        "course[allow_wiki_comments]": {
+        "course_allow_wiki_comments": {
           "type": "boolean",
           "description": "If true, course members will be able to comment on wiki pages."
         },
-        "course[allow_student_forum_attachments]": {
+        "course_allow_student_forum_attachments": {
           "type": "boolean",
           "description": "If true, students can attach files to forum posts."
         },
-        "course[open_enrollment]": {
+        "course_open_enrollment": {
           "type": "boolean",
           "description": "Set to true if the course is open enrollment."
         },
-        "course[self_enrollment]": {
+        "course_self_enrollment": {
           "type": "boolean",
           "description": "Set to true if the course is self enrollment."
         },
-        "course[restrict_enrollments_to_course_dates]": {
+        "course_restrict_enrollments_to_course_dates": {
           "type": "boolean",
           "description": "<p>Set to true to restrict user enrollments to the start and end dates of the<br>course. Setting this value to false will<br>remove the course end date (if it exists), as well as the course start date<br>(if the course is unpublished).</p>"
         },
-        "course[term_id]": {
+        "course_term_id": {
           "type": "number",
           "description": "The unique ID of the term to create to course in."
         },
-        "course[sis_course_id]": {
+        "course_sis_course_id": {
           "type": "string",
           "description": "The unique SIS identifier."
         },
-        "course[integration_id]": {
+        "course_integration_id": {
           "type": "string",
           "description": "The unique Integration identifier."
         },
-        "course[hide_final_grades]": {
+        "course_hide_final_grades": {
           "type": "boolean",
           "description": "<p>If this option is set to true, the totals in student grades summary will<br>be hidden.</p>"
         },
-        "course[time_zone]": {
+        "course_time_zone": {
           "type": "string",
           "description": "<p>The time zone for the course. Allowed time zones are<br><a href=\"http://www.iana.org/time-zones\">IANA time zones</a> or friendlier<br><a href=\"http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html\">Ruby on Rails time zones</a>.</p>"
         },
-        "course[apply_assignment_group_weights]": {
+        "course_apply_assignment_group_weights": {
           "type": "boolean",
           "description": "Set to true to weight final grade based on assignment groups percentages."
         },
-        "course[storage_quota_mb]": {
+        "course_storage_quota_mb": {
           "type": "number",
           "description": "<p>Set the storage quota for the course, in megabytes. The caller must have<br>the \"Manage storage quotas\" account permission.</p>"
         },
@@ -840,99 +840,99 @@ const definitions = [
           "type": "boolean",
           "description": "<p>If this option is set to true, the course will be available to students<br>immediately.</p>"
         },
-        "course[event]": {
+        "course_event": {
           "type": "string",
           "description": "<p>The action to take on each course.<br>\\* 'claim' makes a course no longer visible to students. This action is also called \"unpublish\" on the web site.<br>A course cannot be unpublished if students have received graded submissions.<br>\\* 'offer' makes a course visible to students. This action is also called \"publish\" on the web site.<br>\\* 'conclude' prevents future enrollments and makes a course read-only for all participants. The course still appears<br>in prior-enrollment lists.<br>\\* 'delete' completely removes the course from the web site (including course menus and prior-enrollment lists).<br>All enrollments are deleted. Course content may be physically deleted at a future date.<br>\\* 'undelete' attempts to recover a course that has been deleted. This action requires account administrative rights.<br>(Recovery is not guaranteed; please conclude rather than delete a course if there is any possibility the course<br>will be used again.) The recovered course will be unpublished. Deleted enrollments will not be recovered. Allowed values: <code>claim</code>, <code>offer</code>, <code>conclude</code>, <code>delete</code>, <code>undelete</code></p>"
         },
-        "course[default_view]": {
+        "course_default_view": {
           "type": "string",
           "description": "<p>The type of page that users will see when they first visit the course<br>\\* 'feed' Recent Activity Dashboard<br>\\* 'wiki' Wiki Front Page<br>\\* 'modules' Course Modules/Sections Page<br>\\* 'assignments' Course Assignments List<br>\\* 'syllabus' Course Syllabus Page<br>other types may be added in the future Allowed values: <code>feed</code>, <code>wiki</code>, <code>modules</code>, <code>syllabus</code>, <code>assignments</code></p>"
         },
-        "course[syllabus_body]": {
+        "course_syllabus_body": {
           "type": "string",
           "description": "The syllabus body for the course"
         },
-        "course[syllabus_course_summary]": {
+        "course_syllabus_course_summary": {
           "type": "boolean",
           "description": "Optional. Indicates whether the Course Summary (consisting of the course's assignments and calendar events) is displayed on the syllabus page. Defaults to +true+."
         },
-        "course[grading_standard_id]": {
+        "course_grading_standard_id": {
           "type": "number",
           "description": "The grading standard id to set for the course. If no value is provided for this argument the current grading\\_standard will be un-set from this course."
         },
-        "course[grade_passback_setting]": {
+        "course_grade_passback_setting": {
           "type": "string",
           "description": "Optional. The grade\\_passback\\_setting for the course. Only 'nightly\\_sync' and '' are allowed"
         },
-        "course[course_format]": {
+        "course_course_format": {
           "type": "string",
           "description": "Optional. Specifies the format of the course. (Should be either 'on\\_campus' or 'online')"
         },
-        "course[image_id]": {
+        "course_image_id": {
           "type": "number",
           "description": "<p>This is a file ID corresponding to an image file in the course that will<br>be used as the course image.<br>This will clear the course's image\\_url setting if set. If you attempt<br>to provide image\\_url and image\\_id in a request it will fail.</p>"
         },
-        "course[image_url]": {
+        "course_image_url": {
           "type": "string",
           "description": "<p>This is a URL to an image to be used as the course image.<br>This will clear the course's image\\_id setting if set. If you attempt<br>to provide image\\_url and image\\_id in a request it will fail.</p>"
         },
-        "course[remove_image]": {
+        "course_remove_image": {
           "type": "boolean",
           "description": "<p>If this option is set to true, the course image url and course image<br>ID are both set to nil</p>"
         },
-        "course[remove_banner_image]": {
+        "course_remove_banner_image": {
           "type": "boolean",
           "description": "<p>If this option is set to true, the course banner image url and course<br>banner image ID are both set to nil</p>"
         },
-        "course[blueprint]": {
+        "course_blueprint": {
           "type": "boolean",
           "description": "Sets the course as a blueprint course."
         },
-        "course[blueprint_restrictions]": {
+        "course_blueprint_restrictions": {
           "type": "string",
           "description": "<p>Sets a default set to apply to blueprint course objects when restricted,<br>unless <em>use\\_blueprint\\_restrictions\\_by\\_object\\_type</em> is enabled.<br>See the <a href=\"blueprint_courses.md#BlueprintRestriction\">Blueprint Restriction</a> documentation</p>"
         },
-        "course[use_blueprint_restrictions_by_object_type]": {
+        "course_use_blueprint_restrictions_by_object_type": {
           "type": "boolean",
           "description": "<p>When enabled, the <em>blueprint\\_restrictions</em> parameter will be ignored in favor of<br>the <em>blueprint\\_restrictions\\_by\\_object\\_type</em> parameter</p>"
         },
-        "course[blueprint_restrictions_by_object_type]": {
+        "course_blueprint_restrictions_by_object_type": {
           "type": "string",
           "description": "<p>Allows setting multiple <a href=\"blueprint_courses.md#BlueprintRestriction\">Blueprint Restriction</a><br>to apply to blueprint course objects of the matching type when restricted.<br>The possible object types are \"assignment\", \"attachment\", \"discussion\\_topic\", \"quiz\" and \"wiki\\_page\".<br>Example usage:<br>course\\[blueprint\\_restrictions\\_by\\_object\\_type]\\[assignment]\\[content]=1</p>"
         },
-        "course[homeroom_course]": {
+        "course_homeroom_course": {
           "type": "boolean",
           "description": "<p>Sets the course as a homeroom course. The setting takes effect only when the course is associated<br>with a Canvas for Elementary-enabled account.</p>"
         },
-        "course[sync_enrollments_from_homeroom]": {
+        "course_sync_enrollments_from_homeroom": {
           "type": "string",
           "description": "<p>Syncs enrollments from the homeroom that is set in homeroom\\_course\\_id. The setting only takes effect when the<br>course is associated with a Canvas for Elementary-enabled account and sync\\_enrollments\\_from\\_homeroom is enabled.</p>"
         },
-        "course[homeroom_course_id]": {
+        "course_homeroom_course_id": {
           "type": "string",
           "description": "<p>Sets the Homeroom Course id to be used with sync\\_enrollments\\_from\\_homeroom. The setting only takes effect when the<br>course is associated with a Canvas for Elementary-enabled account and sync\\_enrollments\\_from\\_homeroom is enabled.</p>"
         },
-        "course[template]": {
+        "course_template": {
           "type": "boolean",
           "description": "Enable or disable the course as a template that can be selected by an account"
         },
-        "course[course_color]": {
+        "course_course_color": {
           "type": "string",
           "description": "<p>Sets a color in hex code format to be associated with the course. The setting takes effect only when the course<br>is associated with a Canvas for Elementary-enabled account.</p>"
         },
-        "course[friendly_name]": {
+        "course_friendly_name": {
           "type": "string",
           "description": "<p>Set a friendly name for the course. If this is provided and the course is associated with a Canvas for<br>Elementary account, it will be shown instead of the course name. This setting takes priority over<br>course nicknames defined by individual users.</p>"
         },
-        "course[enable_course_paces]": {
+        "course_enable_course_paces": {
           "type": "boolean",
           "description": "<p>Enable or disable Course Pacing for the course. This setting only has an effect when the Course Pacing feature flag is<br>enabled for the sub-account. Otherwise, Course Pacing are always disabled.</p>"
         },
-        "course[conditional_release]": {
+        "course_conditional_release": {
           "type": "boolean",
           "description": "Enable or disable individual learning paths for students based on assessment"
         },
-        "course[post_manually]": {
+        "course_post_manually": {
           "type": "boolean",
           "description": "<p>When true, all grades in the course will be posted manually.<br>When false, all grades in the course will be automatically posted.<br>Use with caution as this setting will override any assignment level post policy.</p>"
         },
@@ -956,7 +956,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "course_ids[]": {
+        "course_ids": {
           "type": "string",
           "description": "List of ids of courses to update. At most 500 courses may be updated in one call."
         },
@@ -967,7 +967,7 @@ const definitions = [
       },
       "required": [
         "account_id",
-        "course_ids[]",
+        "course_ids",
         "event"
       ]
     }
@@ -998,7 +998,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "assignment_ids[]": {
+        "assignment_ids": {
           "type": "string",
           "description": "no description"
         },
@@ -1022,7 +1022,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "permissions[]": {
+        "permissions": {
           "type": "string",
           "description": "<p>List of permissions to check against the authenticated user.<br>Permission names are documented in the <a href=\"roles.md#method.role_overrides.manageable_permissions\">List assignable permissions</a> endpoint.</p>"
         },
@@ -1132,11 +1132,11 @@ const definitions = [
           "type": "string",
           "description": "ID or SIS-ID of the course to copy the content from"
         },
-        "except[]": {
+        "except": {
           "type": "string",
           "description": "<p>A list of the course content types to exclude, all areas not listed will<br>be copied. Allowed values: <code>course\\_settings</code>, <code>assignments</code>, <code>external\\_tools</code>, <code>files</code>, <code>topics</code>, <code>calendar\\_events</code>, <code>quizzes</code>, <code>wiki\\_pages</code>, <code>modules</code>, <code>outcomes</code></p>"
         },
-        "only[]": {
+        "only": {
           "type": "string",
           "description": "<p>A list of the course content types to copy, all areas not listed will not<br>be copied. Allowed values: <code>course\\_settings</code>, <code>assignments</code>, <code>external\\_tools</code>, <code>files</code>, <code>topics</code>, <code>calendar\\_events</code>, <code>quizzes</code>, <code>wiki\\_pages</code>, <code>modules</code>, <code>outcomes</code></p>"
         }
@@ -1150,16 +1150,147 @@ const definitions = [
 
 const handlers = {
   get_courses: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("state" in mappedArgs) {
+      mappedArgs["state[]"] = mappedArgs["state"];
+      delete mappedArgs["state"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses", mappedArgs);
   },
   get_uu_courses: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/courses", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("state" in mappedArgs) {
+      mappedArgs["state[]"] = mappedArgs["state"];
+      delete mappedArgs["state"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/courses", mappedArgs);
   },
   get_ccuu_progress: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/users/:user_id/progress", args);
   },
   post_aa_courses: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/courses", args);
+    const mappedArgs = { ...args };
+    if ("course_name" in mappedArgs) {
+      mappedArgs["course[name]"] = mappedArgs["course_name"];
+      delete mappedArgs["course_name"];
+    }
+    if ("course_course_code" in mappedArgs) {
+      mappedArgs["course[course_code]"] = mappedArgs["course_course_code"];
+      delete mappedArgs["course_course_code"];
+    }
+    if ("course_start_at" in mappedArgs) {
+      mappedArgs["course[start_at]"] = mappedArgs["course_start_at"];
+      delete mappedArgs["course_start_at"];
+    }
+    if ("course_end_at" in mappedArgs) {
+      mappedArgs["course[end_at]"] = mappedArgs["course_end_at"];
+      delete mappedArgs["course_end_at"];
+    }
+    if ("course_license" in mappedArgs) {
+      mappedArgs["course[license]"] = mappedArgs["course_license"];
+      delete mappedArgs["course_license"];
+    }
+    if ("course_is_public" in mappedArgs) {
+      mappedArgs["course[is_public]"] = mappedArgs["course_is_public"];
+      delete mappedArgs["course_is_public"];
+    }
+    if ("course_is_public_to_auth_users" in mappedArgs) {
+      mappedArgs["course[is_public_to_auth_users]"] = mappedArgs["course_is_public_to_auth_users"];
+      delete mappedArgs["course_is_public_to_auth_users"];
+    }
+    if ("course_public_syllabus" in mappedArgs) {
+      mappedArgs["course[public_syllabus]"] = mappedArgs["course_public_syllabus"];
+      delete mappedArgs["course_public_syllabus"];
+    }
+    if ("course_public_syllabus_to_auth" in mappedArgs) {
+      mappedArgs["course[public_syllabus_to_auth]"] = mappedArgs["course_public_syllabus_to_auth"];
+      delete mappedArgs["course_public_syllabus_to_auth"];
+    }
+    if ("course_public_description" in mappedArgs) {
+      mappedArgs["course[public_description]"] = mappedArgs["course_public_description"];
+      delete mappedArgs["course_public_description"];
+    }
+    if ("course_allow_student_wiki_edits" in mappedArgs) {
+      mappedArgs["course[allow_student_wiki_edits]"] = mappedArgs["course_allow_student_wiki_edits"];
+      delete mappedArgs["course_allow_student_wiki_edits"];
+    }
+    if ("course_allow_wiki_comments" in mappedArgs) {
+      mappedArgs["course[allow_wiki_comments]"] = mappedArgs["course_allow_wiki_comments"];
+      delete mappedArgs["course_allow_wiki_comments"];
+    }
+    if ("course_allow_student_forum_attachments" in mappedArgs) {
+      mappedArgs["course[allow_student_forum_attachments]"] = mappedArgs["course_allow_student_forum_attachments"];
+      delete mappedArgs["course_allow_student_forum_attachments"];
+    }
+    if ("course_open_enrollment" in mappedArgs) {
+      mappedArgs["course[open_enrollment]"] = mappedArgs["course_open_enrollment"];
+      delete mappedArgs["course_open_enrollment"];
+    }
+    if ("course_self_enrollment" in mappedArgs) {
+      mappedArgs["course[self_enrollment]"] = mappedArgs["course_self_enrollment"];
+      delete mappedArgs["course_self_enrollment"];
+    }
+    if ("course_restrict_enrollments_to_course_dates" in mappedArgs) {
+      mappedArgs["course[restrict_enrollments_to_course_dates]"] = mappedArgs["course_restrict_enrollments_to_course_dates"];
+      delete mappedArgs["course_restrict_enrollments_to_course_dates"];
+    }
+    if ("course_term_id" in mappedArgs) {
+      mappedArgs["course[term_id]"] = mappedArgs["course_term_id"];
+      delete mappedArgs["course_term_id"];
+    }
+    if ("course_sis_course_id" in mappedArgs) {
+      mappedArgs["course[sis_course_id]"] = mappedArgs["course_sis_course_id"];
+      delete mappedArgs["course_sis_course_id"];
+    }
+    if ("course_integration_id" in mappedArgs) {
+      mappedArgs["course[integration_id]"] = mappedArgs["course_integration_id"];
+      delete mappedArgs["course_integration_id"];
+    }
+    if ("course_hide_final_grades" in mappedArgs) {
+      mappedArgs["course[hide_final_grades]"] = mappedArgs["course_hide_final_grades"];
+      delete mappedArgs["course_hide_final_grades"];
+    }
+    if ("course_apply_assignment_group_weights" in mappedArgs) {
+      mappedArgs["course[apply_assignment_group_weights]"] = mappedArgs["course_apply_assignment_group_weights"];
+      delete mappedArgs["course_apply_assignment_group_weights"];
+    }
+    if ("course_time_zone" in mappedArgs) {
+      mappedArgs["course[time_zone]"] = mappedArgs["course_time_zone"];
+      delete mappedArgs["course_time_zone"];
+    }
+    if ("course_default_view" in mappedArgs) {
+      mappedArgs["course[default_view]"] = mappedArgs["course_default_view"];
+      delete mappedArgs["course_default_view"];
+    }
+    if ("course_syllabus_body" in mappedArgs) {
+      mappedArgs["course[syllabus_body]"] = mappedArgs["course_syllabus_body"];
+      delete mappedArgs["course_syllabus_body"];
+    }
+    if ("course_grading_standard_id" in mappedArgs) {
+      mappedArgs["course[grading_standard_id]"] = mappedArgs["course_grading_standard_id"];
+      delete mappedArgs["course_grading_standard_id"];
+    }
+    if ("course_grade_passback_setting" in mappedArgs) {
+      mappedArgs["course[grade_passback_setting]"] = mappedArgs["course_grade_passback_setting"];
+      delete mappedArgs["course_grade_passback_setting"];
+    }
+    if ("course_course_format" in mappedArgs) {
+      mappedArgs["course[course_format]"] = mappedArgs["course_course_format"];
+      delete mappedArgs["course_course_format"];
+    }
+    if ("course_post_manually" in mappedArgs) {
+      mappedArgs["course[post_manually]"] = mappedArgs["course_post_manually"];
+      delete mappedArgs["course_post_manually"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/courses", mappedArgs);
   },
   post_cc_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/files", args);
@@ -1171,7 +1302,28 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/users", args);
   },
   get_cc_search_users: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/search_users", args);
+    const mappedArgs = { ...args };
+    if ("enrollment_type" in mappedArgs) {
+      mappedArgs["enrollment_type[]"] = mappedArgs["enrollment_type"];
+      delete mappedArgs["enrollment_type"];
+    }
+    if ("section_ids" in mappedArgs) {
+      mappedArgs["section_ids[]"] = mappedArgs["section_ids"];
+      delete mappedArgs["section_ids"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("user_ids" in mappedArgs) {
+      mappedArgs["user_ids[]"] = mappedArgs["user_ids"];
+      delete mappedArgs["user_ids"];
+    }
+    if ("enrollment_state" in mappedArgs) {
+      mappedArgs["enrollment_state[]"] = mappedArgs["enrollment_state"];
+      delete mappedArgs["enrollment_state"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/search_users", mappedArgs);
   },
   get_cc_recent_students: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/recent_students", args);
@@ -1210,22 +1362,235 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:id", args);
   },
   get_aa_courses_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/courses/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/courses/:id", mappedArgs);
   },
   put_courses_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:id", args);
+    const mappedArgs = { ...args };
+    if ("course_account_id" in mappedArgs) {
+      mappedArgs["course[account_id]"] = mappedArgs["course_account_id"];
+      delete mappedArgs["course_account_id"];
+    }
+    if ("course_name" in mappedArgs) {
+      mappedArgs["course[name]"] = mappedArgs["course_name"];
+      delete mappedArgs["course_name"];
+    }
+    if ("course_course_code" in mappedArgs) {
+      mappedArgs["course[course_code]"] = mappedArgs["course_course_code"];
+      delete mappedArgs["course_course_code"];
+    }
+    if ("course_start_at" in mappedArgs) {
+      mappedArgs["course[start_at]"] = mappedArgs["course_start_at"];
+      delete mappedArgs["course_start_at"];
+    }
+    if ("course_end_at" in mappedArgs) {
+      mappedArgs["course[end_at]"] = mappedArgs["course_end_at"];
+      delete mappedArgs["course_end_at"];
+    }
+    if ("course_license" in mappedArgs) {
+      mappedArgs["course[license]"] = mappedArgs["course_license"];
+      delete mappedArgs["course_license"];
+    }
+    if ("course_is_public" in mappedArgs) {
+      mappedArgs["course[is_public]"] = mappedArgs["course_is_public"];
+      delete mappedArgs["course_is_public"];
+    }
+    if ("course_is_public_to_auth_users" in mappedArgs) {
+      mappedArgs["course[is_public_to_auth_users]"] = mappedArgs["course_is_public_to_auth_users"];
+      delete mappedArgs["course_is_public_to_auth_users"];
+    }
+    if ("course_public_syllabus" in mappedArgs) {
+      mappedArgs["course[public_syllabus]"] = mappedArgs["course_public_syllabus"];
+      delete mappedArgs["course_public_syllabus"];
+    }
+    if ("course_public_syllabus_to_auth" in mappedArgs) {
+      mappedArgs["course[public_syllabus_to_auth]"] = mappedArgs["course_public_syllabus_to_auth"];
+      delete mappedArgs["course_public_syllabus_to_auth"];
+    }
+    if ("course_public_description" in mappedArgs) {
+      mappedArgs["course[public_description]"] = mappedArgs["course_public_description"];
+      delete mappedArgs["course_public_description"];
+    }
+    if ("course_allow_student_wiki_edits" in mappedArgs) {
+      mappedArgs["course[allow_student_wiki_edits]"] = mappedArgs["course_allow_student_wiki_edits"];
+      delete mappedArgs["course_allow_student_wiki_edits"];
+    }
+    if ("course_allow_wiki_comments" in mappedArgs) {
+      mappedArgs["course[allow_wiki_comments]"] = mappedArgs["course_allow_wiki_comments"];
+      delete mappedArgs["course_allow_wiki_comments"];
+    }
+    if ("course_allow_student_forum_attachments" in mappedArgs) {
+      mappedArgs["course[allow_student_forum_attachments]"] = mappedArgs["course_allow_student_forum_attachments"];
+      delete mappedArgs["course_allow_student_forum_attachments"];
+    }
+    if ("course_open_enrollment" in mappedArgs) {
+      mappedArgs["course[open_enrollment]"] = mappedArgs["course_open_enrollment"];
+      delete mappedArgs["course_open_enrollment"];
+    }
+    if ("course_self_enrollment" in mappedArgs) {
+      mappedArgs["course[self_enrollment]"] = mappedArgs["course_self_enrollment"];
+      delete mappedArgs["course_self_enrollment"];
+    }
+    if ("course_restrict_enrollments_to_course_dates" in mappedArgs) {
+      mappedArgs["course[restrict_enrollments_to_course_dates]"] = mappedArgs["course_restrict_enrollments_to_course_dates"];
+      delete mappedArgs["course_restrict_enrollments_to_course_dates"];
+    }
+    if ("course_term_id" in mappedArgs) {
+      mappedArgs["course[term_id]"] = mappedArgs["course_term_id"];
+      delete mappedArgs["course_term_id"];
+    }
+    if ("course_sis_course_id" in mappedArgs) {
+      mappedArgs["course[sis_course_id]"] = mappedArgs["course_sis_course_id"];
+      delete mappedArgs["course_sis_course_id"];
+    }
+    if ("course_integration_id" in mappedArgs) {
+      mappedArgs["course[integration_id]"] = mappedArgs["course_integration_id"];
+      delete mappedArgs["course_integration_id"];
+    }
+    if ("course_hide_final_grades" in mappedArgs) {
+      mappedArgs["course[hide_final_grades]"] = mappedArgs["course_hide_final_grades"];
+      delete mappedArgs["course_hide_final_grades"];
+    }
+    if ("course_time_zone" in mappedArgs) {
+      mappedArgs["course[time_zone]"] = mappedArgs["course_time_zone"];
+      delete mappedArgs["course_time_zone"];
+    }
+    if ("course_apply_assignment_group_weights" in mappedArgs) {
+      mappedArgs["course[apply_assignment_group_weights]"] = mappedArgs["course_apply_assignment_group_weights"];
+      delete mappedArgs["course_apply_assignment_group_weights"];
+    }
+    if ("course_storage_quota_mb" in mappedArgs) {
+      mappedArgs["course[storage_quota_mb]"] = mappedArgs["course_storage_quota_mb"];
+      delete mappedArgs["course_storage_quota_mb"];
+    }
+    if ("course_event" in mappedArgs) {
+      mappedArgs["course[event]"] = mappedArgs["course_event"];
+      delete mappedArgs["course_event"];
+    }
+    if ("course_default_view" in mappedArgs) {
+      mappedArgs["course[default_view]"] = mappedArgs["course_default_view"];
+      delete mappedArgs["course_default_view"];
+    }
+    if ("course_syllabus_body" in mappedArgs) {
+      mappedArgs["course[syllabus_body]"] = mappedArgs["course_syllabus_body"];
+      delete mappedArgs["course_syllabus_body"];
+    }
+    if ("course_syllabus_course_summary" in mappedArgs) {
+      mappedArgs["course[syllabus_course_summary]"] = mappedArgs["course_syllabus_course_summary"];
+      delete mappedArgs["course_syllabus_course_summary"];
+    }
+    if ("course_grading_standard_id" in mappedArgs) {
+      mappedArgs["course[grading_standard_id]"] = mappedArgs["course_grading_standard_id"];
+      delete mappedArgs["course_grading_standard_id"];
+    }
+    if ("course_grade_passback_setting" in mappedArgs) {
+      mappedArgs["course[grade_passback_setting]"] = mappedArgs["course_grade_passback_setting"];
+      delete mappedArgs["course_grade_passback_setting"];
+    }
+    if ("course_course_format" in mappedArgs) {
+      mappedArgs["course[course_format]"] = mappedArgs["course_course_format"];
+      delete mappedArgs["course_course_format"];
+    }
+    if ("course_image_id" in mappedArgs) {
+      mappedArgs["course[image_id]"] = mappedArgs["course_image_id"];
+      delete mappedArgs["course_image_id"];
+    }
+    if ("course_image_url" in mappedArgs) {
+      mappedArgs["course[image_url]"] = mappedArgs["course_image_url"];
+      delete mappedArgs["course_image_url"];
+    }
+    if ("course_remove_image" in mappedArgs) {
+      mappedArgs["course[remove_image]"] = mappedArgs["course_remove_image"];
+      delete mappedArgs["course_remove_image"];
+    }
+    if ("course_remove_banner_image" in mappedArgs) {
+      mappedArgs["course[remove_banner_image]"] = mappedArgs["course_remove_banner_image"];
+      delete mappedArgs["course_remove_banner_image"];
+    }
+    if ("course_blueprint" in mappedArgs) {
+      mappedArgs["course[blueprint]"] = mappedArgs["course_blueprint"];
+      delete mappedArgs["course_blueprint"];
+    }
+    if ("course_blueprint_restrictions" in mappedArgs) {
+      mappedArgs["course[blueprint_restrictions]"] = mappedArgs["course_blueprint_restrictions"];
+      delete mappedArgs["course_blueprint_restrictions"];
+    }
+    if ("course_use_blueprint_restrictions_by_object_type" in mappedArgs) {
+      mappedArgs["course[use_blueprint_restrictions_by_object_type]"] = mappedArgs["course_use_blueprint_restrictions_by_object_type"];
+      delete mappedArgs["course_use_blueprint_restrictions_by_object_type"];
+    }
+    if ("course_blueprint_restrictions_by_object_type" in mappedArgs) {
+      mappedArgs["course[blueprint_restrictions_by_object_type]"] = mappedArgs["course_blueprint_restrictions_by_object_type"];
+      delete mappedArgs["course_blueprint_restrictions_by_object_type"];
+    }
+    if ("course_homeroom_course" in mappedArgs) {
+      mappedArgs["course[homeroom_course]"] = mappedArgs["course_homeroom_course"];
+      delete mappedArgs["course_homeroom_course"];
+    }
+    if ("course_sync_enrollments_from_homeroom" in mappedArgs) {
+      mappedArgs["course[sync_enrollments_from_homeroom]"] = mappedArgs["course_sync_enrollments_from_homeroom"];
+      delete mappedArgs["course_sync_enrollments_from_homeroom"];
+    }
+    if ("course_homeroom_course_id" in mappedArgs) {
+      mappedArgs["course[homeroom_course_id]"] = mappedArgs["course_homeroom_course_id"];
+      delete mappedArgs["course_homeroom_course_id"];
+    }
+    if ("course_template" in mappedArgs) {
+      mappedArgs["course[template]"] = mappedArgs["course_template"];
+      delete mappedArgs["course_template"];
+    }
+    if ("course_course_color" in mappedArgs) {
+      mappedArgs["course[course_color]"] = mappedArgs["course_course_color"];
+      delete mappedArgs["course_course_color"];
+    }
+    if ("course_friendly_name" in mappedArgs) {
+      mappedArgs["course[friendly_name]"] = mappedArgs["course_friendly_name"];
+      delete mappedArgs["course_friendly_name"];
+    }
+    if ("course_enable_course_paces" in mappedArgs) {
+      mappedArgs["course[enable_course_paces]"] = mappedArgs["course_enable_course_paces"];
+      delete mappedArgs["course_enable_course_paces"];
+    }
+    if ("course_conditional_release" in mappedArgs) {
+      mappedArgs["course[conditional_release]"] = mappedArgs["course_conditional_release"];
+      delete mappedArgs["course_conditional_release"];
+    }
+    if ("course_post_manually" in mappedArgs) {
+      mappedArgs["course[post_manually]"] = mappedArgs["course_post_manually"];
+      delete mappedArgs["course_post_manually"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:id", mappedArgs);
   },
   put_aa_courses: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/courses", args);
+    const mappedArgs = { ...args };
+    if ("course_ids" in mappedArgs) {
+      mappedArgs["course_ids[]"] = mappedArgs["course_ids"];
+      delete mappedArgs["course_ids"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/courses", mappedArgs);
   },
   post_cc_reset_content: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/reset_content", args);
   },
   get_cc_effective_due_dates: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/effective_due_dates", args);
+    const mappedArgs = { ...args };
+    if ("assignment_ids" in mappedArgs) {
+      mappedArgs["assignment_ids[]"] = mappedArgs["assignment_ids"];
+      delete mappedArgs["assignment_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/effective_due_dates", mappedArgs);
   },
   get_cc_permissions: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/permissions", args);
+    const mappedArgs = { ...args };
+    if ("permissions" in mappedArgs) {
+      mappedArgs["permissions[]"] = mappedArgs["permissions"];
+      delete mappedArgs["permissions"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/permissions", mappedArgs);
   },
   get_cc_bulk_user_progress: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/bulk_user_progress", args);
@@ -1240,7 +1605,16 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/course_copy/:id", args);
   },
   post_cc_course_copy: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/course_copy", args);
+    const mappedArgs = { ...args };
+    if ("except" in mappedArgs) {
+      mappedArgs["except[]"] = mappedArgs["except"];
+      delete mappedArgs["except"];
+    }
+    if ("only" in mappedArgs) {
+      mappedArgs["only[]"] = mappedArgs["only"];
+      delete mappedArgs["only"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/course_copy", mappedArgs);
   }
 };
 

@@ -568,11 +568,11 @@ const definitions = [
           "type": "number",
           "description": "The mastery threshold for the embedded rubric criterion."
         },
-        "ratings[][description]": {
+        "ratings_description": {
           "type": "string",
           "description": "The description of a rating level for the embedded rubric criterion."
         },
-        "ratings[][points]": {
+        "ratings_points": {
           "type": "number",
           "description": "The points corresponding to a rating level for the embedded rubric criterion."
         },
@@ -949,7 +949,16 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/outcome_groups/:id/outcomes", args);
   },
   put_ccogi_outcomes_outcome_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/outcome_groups/:id/outcomes/:outcome_id", args);
+    const mappedArgs = { ...args };
+    if ("ratings_description" in mappedArgs) {
+      mappedArgs["ratings[][description]"] = mappedArgs["ratings_description"];
+      delete mappedArgs["ratings_description"];
+    }
+    if ("ratings_points" in mappedArgs) {
+      mappedArgs["ratings[][points]"] = mappedArgs["ratings_points"];
+      delete mappedArgs["ratings_points"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/outcome_groups/:id/outcomes/:outcome_id", mappedArgs);
   },
   delete_gogi_outcomes_outcome_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/global/outcome_groups/:id/outcomes/:outcome_id", args);

@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"students\": Associations to include with the group. Note: this is only<br>available if you have permission to view users or grades in the course<br>- \"avatar\\_url\": Include the avatar URLs for students returned.<br>- \"enrollments\": If 'students' is also included, return the section<br>enrollment for each student<br>- \"total\\_students\": Returns the total amount of active and invited students<br>for the course section<br>- \"passback\\_status\": Include the grade passback status.<br>- \"permissions\": Include whether section grants :manage\\_calendar permission<br>to the caller Allowed values: <code>students</code>, <code>avatar\\_url</code>, <code>enrollments</code>, <code>total\\_students</code>, <code>passback\\_status</code>, <code>permissions</code></p>"
         },
@@ -42,27 +42,27 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "course_section[name]": {
+        "course_section_name": {
           "type": "string",
           "description": "The name of the section"
         },
-        "course_section[sis_section_id]": {
+        "course_section_sis_section_id": {
           "type": "string",
           "description": "The sis ID of the section. Must have manage\\_sis permission to set. This is ignored if caller does not have permission to set."
         },
-        "course_section[integration_id]": {
+        "course_section_integration_id": {
           "type": "string",
           "description": "The integration\\_id of the section. Must have manage\\_sis permission to set. This is ignored if caller does not have permission to set."
         },
-        "course_section[start_at]": {
+        "course_section_start_at": {
           "type": "string",
           "description": "Section start date in ISO8601 format, e.g. 2011-01-01T01:00Z"
         },
-        "course_section[end_at]": {
+        "course_section_end_at": {
           "type": "string",
           "description": "Section end date in ISO8601 format. e.g. 2011-01-01T01:00Z"
         },
-        "course_section[restrict_enrollments_to_section_dates]": {
+        "course_section_restrict_enrollments_to_section_dates": {
           "type": "boolean",
           "description": "Set to true to restrict user enrollments to the start and end dates of the section."
         },
@@ -131,27 +131,27 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "course_section[name]": {
+        "course_section_name": {
           "type": "string",
           "description": "The name of the section"
         },
-        "course_section[sis_section_id]": {
+        "course_section_sis_section_id": {
           "type": "string",
           "description": "The sis ID of the section. Must have manage\\_sis permission to set."
         },
-        "course_section[integration_id]": {
+        "course_section_integration_id": {
           "type": "string",
           "description": "The integration\\_id of the section. Must have manage\\_sis permission to set."
         },
-        "course_section[start_at]": {
+        "course_section_start_at": {
           "type": "string",
           "description": "Section start date in ISO8601 format, e.g. 2011-01-01T01:00Z"
         },
-        "course_section[end_at]": {
+        "course_section_end_at": {
           "type": "string",
           "description": "Section end date in ISO8601 format. e.g. 2011-01-01T01:00Z"
         },
-        "course_section[restrict_enrollments_to_section_dates]": {
+        "course_section_restrict_enrollments_to_section_dates": {
           "type": "boolean",
           "description": "Set to true to restrict user enrollments to the start and end dates of the section."
         },
@@ -200,7 +200,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"students\": Associations to include with the group. Note: this is only<br>available if you have permission to view users or grades in the course<br>- \"avatar\\_url\": Include the avatar URLs for students returned.<br>- \"enrollments\": If 'students' is also included, return the section<br>enrollment for each student<br>- \"total\\_students\": Returns the total amount of active and invited students<br>for the course section<br>- \"passback\\_status\": Include the grade passback status.<br>- \"permissions\": Include whether section grants :manage\\_calendar permission<br>to the caller Allowed values: <code>students</code>, <code>avatar\\_url</code>, <code>enrollments</code>, <code>total\\_students</code>, <code>passback\\_status</code>, <code>permissions</code></p>"
         },
@@ -244,7 +244,7 @@ const definitions = [
           "type": "string",
           "description": "<p>The partial name or full ID of the users to match and return in the<br>results list. Must be at least 2 characters.</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "\"avatar\\_url\": Include users' avatar\\_urls. Allowed values: `avatar_url`"
         },
@@ -270,10 +270,40 @@ const definitions = [
 
 const handlers = {
   get_cc_sections: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/sections", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/sections", mappedArgs);
   },
   post_cc_sections: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/sections", args);
+    const mappedArgs = { ...args };
+    if ("course_section_name" in mappedArgs) {
+      mappedArgs["course_section[name]"] = mappedArgs["course_section_name"];
+      delete mappedArgs["course_section_name"];
+    }
+    if ("course_section_sis_section_id" in mappedArgs) {
+      mappedArgs["course_section[sis_section_id]"] = mappedArgs["course_section_sis_section_id"];
+      delete mappedArgs["course_section_sis_section_id"];
+    }
+    if ("course_section_integration_id" in mappedArgs) {
+      mappedArgs["course_section[integration_id]"] = mappedArgs["course_section_integration_id"];
+      delete mappedArgs["course_section_integration_id"];
+    }
+    if ("course_section_start_at" in mappedArgs) {
+      mappedArgs["course_section[start_at]"] = mappedArgs["course_section_start_at"];
+      delete mappedArgs["course_section_start_at"];
+    }
+    if ("course_section_end_at" in mappedArgs) {
+      mappedArgs["course_section[end_at]"] = mappedArgs["course_section_end_at"];
+      delete mappedArgs["course_section_end_at"];
+    }
+    if ("course_section_restrict_enrollments_to_section_dates" in mappedArgs) {
+      mappedArgs["course_section[restrict_enrollments_to_section_dates]"] = mappedArgs["course_section_restrict_enrollments_to_section_dates"];
+      delete mappedArgs["course_section_restrict_enrollments_to_section_dates"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/sections", mappedArgs);
   },
   post_si_crosslist_new_course_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/sections/:id/crosslist/:new_course_id", args);
@@ -282,19 +312,54 @@ const handlers = {
     return genericHandler(client, "DELETE", "/api/v1/sections/:id/crosslist", args);
   },
   put_sections_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/sections/:id", args);
+    const mappedArgs = { ...args };
+    if ("course_section_name" in mappedArgs) {
+      mappedArgs["course_section[name]"] = mappedArgs["course_section_name"];
+      delete mappedArgs["course_section_name"];
+    }
+    if ("course_section_sis_section_id" in mappedArgs) {
+      mappedArgs["course_section[sis_section_id]"] = mappedArgs["course_section_sis_section_id"];
+      delete mappedArgs["course_section_sis_section_id"];
+    }
+    if ("course_section_integration_id" in mappedArgs) {
+      mappedArgs["course_section[integration_id]"] = mappedArgs["course_section_integration_id"];
+      delete mappedArgs["course_section_integration_id"];
+    }
+    if ("course_section_start_at" in mappedArgs) {
+      mappedArgs["course_section[start_at]"] = mappedArgs["course_section_start_at"];
+      delete mappedArgs["course_section_start_at"];
+    }
+    if ("course_section_end_at" in mappedArgs) {
+      mappedArgs["course_section[end_at]"] = mappedArgs["course_section_end_at"];
+      delete mappedArgs["course_section_end_at"];
+    }
+    if ("course_section_restrict_enrollments_to_section_dates" in mappedArgs) {
+      mappedArgs["course_section[restrict_enrollments_to_section_dates]"] = mappedArgs["course_section_restrict_enrollments_to_section_dates"];
+      delete mappedArgs["course_section_restrict_enrollments_to_section_dates"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/sections/:id", mappedArgs);
   },
   get_cc_sections_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/sections/:id", args);
   },
   get_sections_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/sections/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/sections/:id", mappedArgs);
   },
   delete_sections_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/sections/:id", args);
   },
   get_si_users: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/sections/:id/users", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/sections/:id/users", mappedArgs);
   }
 };
 

@@ -74,7 +74,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"course\\_subject\\_tabs\": Optional flag to return the tabs associated with a canvas\\_for\\_elementary subject course's<br>home page instead of the typical sidebar navigation. Only takes effect if this request is for a course context<br>in a canvas\\_for\\_elementary-enabled account or sub-account. Allowed values: <code>course\\_subject\\_tabs</code></p>"
         },
@@ -130,7 +130,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/tabs", args);
   },
   get_uu_tabs: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/tabs", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/tabs", mappedArgs);
   },
   put_cc_tabs_tab_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/tabs/:tab_id", args);

@@ -59,22 +59,22 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: poll_id"
         },
-        "poll_choices[][text]": {
+        "poll_choices_text": {
           "type": "string",
           "description": "The descriptive text of the poll choice."
         },
-        "poll_choices[][is_correct]": {
+        "poll_choices_is_correct": {
           "type": "boolean",
           "description": "Whether this poll choice is considered correct or not. Defaults to false."
         },
-        "poll_choices[][position]": {
+        "poll_choices_position": {
           "type": "number",
           "description": "The order this poll choice should be returned in the context it's sibling poll choices."
         }
       },
       "required": [
         "poll_id",
-        "poll_choices[][text]"
+        "poll_choices_text"
       ]
     }
   },
@@ -92,15 +92,15 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "poll_choices[][text]": {
+        "poll_choices_text": {
           "type": "string",
           "description": "The descriptive text of the poll choice."
         },
-        "poll_choices[][is_correct]": {
+        "poll_choices_is_correct": {
           "type": "boolean",
           "description": "Whether this poll choice is considered correct or not. Defaults to false."
         },
-        "poll_choices[][position]": {
+        "poll_choices_position": {
           "type": "number",
           "description": "The order this poll choice should be returned in the context it's sibling poll choices."
         }
@@ -108,7 +108,7 @@ const definitions = [
       "required": [
         "poll_id",
         "id",
-        "poll_choices[][text]"
+        "poll_choices_text"
       ]
     }
   },
@@ -143,10 +143,36 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/polls/:poll_id/poll_choices/:id", args);
   },
   post_pp_poll_choices: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/polls/:poll_id/poll_choices", args);
+    const mappedArgs = { ...args };
+    if ("poll_choices_text" in mappedArgs) {
+      mappedArgs["poll_choices[][text]"] = mappedArgs["poll_choices_text"];
+      delete mappedArgs["poll_choices_text"];
+    }
+    if ("poll_choices_is_correct" in mappedArgs) {
+      mappedArgs["poll_choices[][is_correct]"] = mappedArgs["poll_choices_is_correct"];
+      delete mappedArgs["poll_choices_is_correct"];
+    }
+    if ("poll_choices_position" in mappedArgs) {
+      mappedArgs["poll_choices[][position]"] = mappedArgs["poll_choices_position"];
+      delete mappedArgs["poll_choices_position"];
+    }
+    return genericHandler(client, "POST", "/api/v1/polls/:poll_id/poll_choices", mappedArgs);
   },
   put_pp_poll_choices_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/polls/:poll_id/poll_choices/:id", args);
+    const mappedArgs = { ...args };
+    if ("poll_choices_text" in mappedArgs) {
+      mappedArgs["poll_choices[][text]"] = mappedArgs["poll_choices_text"];
+      delete mappedArgs["poll_choices_text"];
+    }
+    if ("poll_choices_is_correct" in mappedArgs) {
+      mappedArgs["poll_choices[][is_correct]"] = mappedArgs["poll_choices_is_correct"];
+      delete mappedArgs["poll_choices_is_correct"];
+    }
+    if ("poll_choices_position" in mappedArgs) {
+      mappedArgs["poll_choices[][position]"] = mappedArgs["poll_choices_position"];
+      delete mappedArgs["poll_choices_position"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/polls/:poll_id/poll_choices/:id", mappedArgs);
   },
   delete_pp_poll_choices_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/polls/:poll_id/poll_choices/:id", args);

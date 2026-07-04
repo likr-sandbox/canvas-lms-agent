@@ -15,7 +15,7 @@ test("post_jwts calls correct endpoint", async () => {
   const handler = jw_tsModule.handlers.post_jwts;
   assert.ok(handler, "Handler post_jwts should be defined");
 
-  const result = await handler(mockClient, {"workflows[]": "test_val"});
+  const result = await handler(mockClient, {"workflows": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/jwts");

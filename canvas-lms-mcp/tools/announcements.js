@@ -10,7 +10,7 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "context_codes[]": {
+        "context_codes": {
           "type": "string",
           "description": "<p>List of context\\_codes to retrieve announcements for (for example, +course\\_123+). Only courses<br>are presently supported. The call will fail unless the caller has View Announcements permission<br>in all listed courses.</p>"
         },
@@ -44,7 +44,7 @@ const definitions = [
         }
       },
       "required": [
-        "context_codes[]"
+        "context_codes"
       ]
     }
   }
@@ -52,7 +52,12 @@ const definitions = [
 
 const handlers = {
   get_announcements: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/announcements", args);
+    const mappedArgs = { ...args };
+    if ("context_codes" in mappedArgs) {
+      mappedArgs["context_codes[]"] = mappedArgs["context_codes"];
+      delete mappedArgs["context_codes"];
+    }
+    return genericHandler(client, "GET", "/api/v1/announcements", mappedArgs);
   }
 };
 

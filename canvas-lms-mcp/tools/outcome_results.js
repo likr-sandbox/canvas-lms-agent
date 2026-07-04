@@ -14,15 +14,15 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "user_ids[]": {
+        "user_ids": {
           "type": "number",
           "description": "<p>If specified, only the users whose ids are given will be included in the<br>results. SIS ids can be used, prefixed by \"sis\\_user\\_id:\".<br>It is an error to specify an id for a user who is not a student in<br>the context.</p>"
         },
-        "outcome_ids[]": {
+        "outcome_ids": {
           "type": "number",
           "description": "<p>If specified, only the outcomes whose ids are given will be included in the<br>results. it is an error to specify an id for an outcome which is not linked<br>to the context.</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "\\[String, \"alignments\""
         },
@@ -74,19 +74,19 @@ const definitions = [
           "type": "string",
           "description": "<p>If aggregate rollups requested, then this value determines what<br>statistic is used for the aggregate. Defaults to \"mean\" if this value<br>is not specified. Allowed values: <code>mean</code>, <code>median</code></p>"
         },
-        "user_ids[]": {
+        "user_ids": {
           "type": "number",
           "description": "<p>If specified, only the users whose ids are given will be included in the<br>results or used in an aggregate result. it is an error to specify an id<br>for a user who is not a student in the context</p>"
         },
-        "outcome_ids[]": {
+        "outcome_ids": {
           "type": "number",
           "description": "<p>If specified, only the outcomes whose ids are given will be included in the<br>results. it is an error to specify an id for an outcome which is not linked<br>to the context.</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "\\[String, \"courses\""
         },
-        "exclude[]": {
+        "exclude": {
           "type": "string",
           "description": "<p>Specify additional values to exclude.<br>\"missing\\_user\\_rollups\" excludes rollups for users without results.<br>\"missing\\_outcome\\_results\" excludes outcomes without results. Allowed values: <code>missing\\_user\\_rollups</code>, <code>missing\\_outcome\\_results</code>, \\`\\`</p>"
         },
@@ -134,7 +134,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: outcome_id"
         },
-        "user_ids[]": {
+        "user_ids": {
           "type": "number",
           "description": "<p>If specified, only the users whose ids are given will be included in the<br>results. It is an error to specify an id for a user who is not a student in<br>the context.</p>"
         },
@@ -167,19 +167,19 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "exclude[]": {
+        "exclude": {
           "type": "string",
           "description": "<p>Optionally restrict which results are included:<br>- \"missing\\_user\\_rollups\": exclude students without any scores<br>- \"missing\\_outcome\\_results\": exclude outcomes without any results</p>"
         },
-        "outcome_ids[]": {
+        "outcome_ids": {
           "type": "string",
           "description": "Optionally restrict to specific outcome IDs"
         },
-        "student_ids[]": {
+        "student_ids": {
           "type": "string",
           "description": "Optionally restrict to specific student IDs. If not provided, all students will be included."
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Optionally include additional data:<br>- \"alignment\\_distributions\": include contributing score distributions for alignments</p>"
         },
@@ -217,19 +217,71 @@ const definitions = [
 
 const handlers = {
   get_cc_outcome_results: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_results", args);
+    const mappedArgs = { ...args };
+    if ("user_ids" in mappedArgs) {
+      mappedArgs["user_ids[]"] = mappedArgs["user_ids"];
+      delete mappedArgs["user_ids"];
+    }
+    if ("outcome_ids" in mappedArgs) {
+      mappedArgs["outcome_ids[]"] = mappedArgs["outcome_ids"];
+      delete mappedArgs["outcome_ids"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_results", mappedArgs);
   },
   post_cc_assign_outcome_order: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assign_outcome_order", args);
   },
   get_cc_outcome_rollups: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_rollups", args);
+    const mappedArgs = { ...args };
+    if ("user_ids" in mappedArgs) {
+      mappedArgs["user_ids[]"] = mappedArgs["user_ids"];
+      delete mappedArgs["user_ids"];
+    }
+    if ("outcome_ids" in mappedArgs) {
+      mappedArgs["outcome_ids[]"] = mappedArgs["outcome_ids"];
+      delete mappedArgs["outcome_ids"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("exclude" in mappedArgs) {
+      mappedArgs["exclude[]"] = mappedArgs["exclude"];
+      delete mappedArgs["exclude"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_rollups", mappedArgs);
   },
   get_ccoo_contributing_scores: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcomes/:outcome_id/contributing_scores", args);
+    const mappedArgs = { ...args };
+    if ("user_ids" in mappedArgs) {
+      mappedArgs["user_ids[]"] = mappedArgs["user_ids"];
+      delete mappedArgs["user_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcomes/:outcome_id/contributing_scores", mappedArgs);
   },
   get_cc_outcome_mastery_distribution: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_mastery_distribution", args);
+    const mappedArgs = { ...args };
+    if ("exclude" in mappedArgs) {
+      mappedArgs["exclude[]"] = mappedArgs["exclude"];
+      delete mappedArgs["exclude"];
+    }
+    if ("outcome_ids" in mappedArgs) {
+      mappedArgs["outcome_ids[]"] = mappedArgs["outcome_ids"];
+      delete mappedArgs["outcome_ids"];
+    }
+    if ("student_ids" in mappedArgs) {
+      mappedArgs["student_ids[]"] = mappedArgs["student_ids"];
+      delete mappedArgs["student_ids"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_mastery_distribution", mappedArgs);
   },
   post_enqueue_outcome_rollup_calculation: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/enqueue_outcome_rollup_calculation", args);

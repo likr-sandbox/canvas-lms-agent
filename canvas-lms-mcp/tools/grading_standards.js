@@ -42,11 +42,11 @@ const definitions = [
           "type": "number",
           "description": "<p>The factor by which to scale a percentage into a points based scheme grade.<br>This is the maximum number of points possible in the grading scheme.<br>Defaults to 1. Not required for percentage based grading schemes.</p>"
         },
-        "grading_scheme_entry[][name]": {
+        "grading_scheme_entry_name": {
           "type": "string",
           "description": "<p>The name for an entry value within a GradingStandard that describes the range of the value<br>e.g. A-</p>"
         },
-        "grading_scheme_entry[][value]": {
+        "grading_scheme_entry_value": {
           "type": "number",
           "description": "<p>The value for the name of the entry within a GradingStandard.<br>The entry represents the lower bound of the range for the entry.<br>This range includes the value up to the next entry in the GradingStandard,<br>or 100 if there is no upper bound. The lowest value will have a lower bound range of 0.<br>e.g. 93</p>"
         }
@@ -54,8 +54,8 @@ const definitions = [
       "required": [
         "course_id",
         "title",
-        "grading_scheme_entry[][name]",
-        "grading_scheme_entry[][value]"
+        "grading_scheme_entry_name",
+        "grading_scheme_entry_value"
       ]
     }
   },
@@ -196,11 +196,11 @@ const definitions = [
           "type": "number",
           "description": "<p>The factor by which to scale a percentage into a points based scheme grade.<br>This is the maximum number of points possible in the grading scheme.<br>Defaults to 1. Not required for percentage based grading schemes.</p>"
         },
-        "grading_scheme_entry[][name]": {
+        "grading_scheme_entry_name": {
           "type": "string",
           "description": "<p>The name for an entry value within a GradingStandard that describes the range of the value<br>e.g. A-</p>"
         },
-        "grading_scheme_entry[][value]": {
+        "grading_scheme_entry_value": {
           "type": "number",
           "description": "<p>The value for the name of the entry within a GradingStandard.<br>The entry represents the lower bound of the range for the entry.<br>This range includes the value up to the next entry in the GradingStandard,<br>or 100 if there is no upper bound. The lowest value will have a lower bound range of 0.<br>e.g. 93</p>"
         }
@@ -208,7 +208,7 @@ const definitions = [
       "required": [
         "account_id",
         "grading_standard_id",
-        "grading_scheme_entry[][value]"
+        "grading_scheme_entry_value"
       ]
     }
   },
@@ -261,7 +261,16 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/grading_standards", args);
   },
   post_cc_grading_standards: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/grading_standards", args);
+    const mappedArgs = { ...args };
+    if ("grading_scheme_entry_name" in mappedArgs) {
+      mappedArgs["grading_scheme_entry[][name]"] = mappedArgs["grading_scheme_entry_name"];
+      delete mappedArgs["grading_scheme_entry_name"];
+    }
+    if ("grading_scheme_entry_value" in mappedArgs) {
+      mappedArgs["grading_scheme_entry[][value]"] = mappedArgs["grading_scheme_entry_value"];
+      delete mappedArgs["grading_scheme_entry_value"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/grading_standards", mappedArgs);
   },
   get_cc_grading_standards: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/grading_standards", args);
@@ -279,7 +288,16 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/grading_standards/:grading_standard_id", args);
   },
   put_aa_grading_standards_grading_standard_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/grading_standards/:grading_standard_id", args);
+    const mappedArgs = { ...args };
+    if ("grading_scheme_entry_name" in mappedArgs) {
+      mappedArgs["grading_scheme_entry[][name]"] = mappedArgs["grading_scheme_entry_name"];
+      delete mappedArgs["grading_scheme_entry_name"];
+    }
+    if ("grading_scheme_entry_value" in mappedArgs) {
+      mappedArgs["grading_scheme_entry[][value]"] = mappedArgs["grading_scheme_entry_value"];
+      delete mappedArgs["grading_scheme_entry_value"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/grading_standards/:grading_standard_id", mappedArgs);
   },
   delete_cc_grading_standards_grading_standard_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/grading_standards/:grading_standard_id", args);

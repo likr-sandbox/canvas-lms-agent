@@ -51,7 +51,7 @@ test("post_aa_account_notifications calls correct endpoint", async () => {
   const handler = account_notificationsModule.handlers.post_aa_account_notifications;
   assert.ok(handler, "Handler post_aa_account_notifications should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "account_notification[subject]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "account_notification_subject": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/account_notifications");
@@ -69,7 +69,7 @@ test("put_aa_account_notifications_id calls correct endpoint", async () => {
   const handler = account_notificationsModule.handlers.put_aa_account_notifications_id;
   assert.ok(handler, "Handler put_aa_account_notifications_id should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "account_notification[subject]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "account_notification_subject": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/account_notifications/test_id");

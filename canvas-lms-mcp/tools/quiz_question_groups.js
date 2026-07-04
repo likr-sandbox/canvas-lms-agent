@@ -73,19 +73,19 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: quiz_id"
         },
-        "quiz_groups[][name]": {
+        "quiz_groups_name": {
           "type": "string",
           "description": "The name of the question group."
         },
-        "quiz_groups[][pick_count]": {
+        "quiz_groups_pick_count": {
           "type": "number",
           "description": "The number of questions to randomly select for this group."
         },
-        "quiz_groups[][question_points]": {
+        "quiz_groups_question_points": {
           "type": "number",
           "description": "The number of points to assign to each question in the group."
         },
-        "quiz_groups[][assessment_question_bank_id]": {
+        "quiz_groups_assessment_question_bank_id": {
           "type": "number",
           "description": "The id of the assessment question bank to pull questions from."
         }
@@ -114,15 +114,15 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "quiz_groups[][name]": {
+        "quiz_groups_name": {
           "type": "string",
           "description": "The name of the question group."
         },
-        "quiz_groups[][pick_count]": {
+        "quiz_groups_pick_count": {
           "type": "number",
           "description": "The number of questions to randomly select for this group."
         },
-        "quiz_groups[][question_points]": {
+        "quiz_groups_question_points": {
           "type": "number",
           "description": "The number of points to assign to each question in the group."
         }
@@ -178,11 +178,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "order[][id]": {
+        "order_id": {
           "type": "number",
           "description": "The associated item's unique identifier"
         },
-        "order[][type]": {
+        "order_type": {
           "type": "string",
           "description": "The type of item is always 'question' for a group Allowed values: `question`"
         }
@@ -191,7 +191,7 @@ const definitions = [
         "course_id",
         "quiz_id",
         "id",
-        "order[][id]"
+        "order_id"
       ]
     }
   }
@@ -205,16 +205,55 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id", args);
   },
   post_ccqq_groups: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups", args);
+    const mappedArgs = { ...args };
+    if ("quiz_groups_name" in mappedArgs) {
+      mappedArgs["quiz_groups[][name]"] = mappedArgs["quiz_groups_name"];
+      delete mappedArgs["quiz_groups_name"];
+    }
+    if ("quiz_groups_pick_count" in mappedArgs) {
+      mappedArgs["quiz_groups[][pick_count]"] = mappedArgs["quiz_groups_pick_count"];
+      delete mappedArgs["quiz_groups_pick_count"];
+    }
+    if ("quiz_groups_question_points" in mappedArgs) {
+      mappedArgs["quiz_groups[][question_points]"] = mappedArgs["quiz_groups_question_points"];
+      delete mappedArgs["quiz_groups_question_points"];
+    }
+    if ("quiz_groups_assessment_question_bank_id" in mappedArgs) {
+      mappedArgs["quiz_groups[][assessment_question_bank_id]"] = mappedArgs["quiz_groups_assessment_question_bank_id"];
+      delete mappedArgs["quiz_groups_assessment_question_bank_id"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups", mappedArgs);
   },
   put_ccqq_groups_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id", args);
+    const mappedArgs = { ...args };
+    if ("quiz_groups_name" in mappedArgs) {
+      mappedArgs["quiz_groups[][name]"] = mappedArgs["quiz_groups_name"];
+      delete mappedArgs["quiz_groups_name"];
+    }
+    if ("quiz_groups_pick_count" in mappedArgs) {
+      mappedArgs["quiz_groups[][pick_count]"] = mappedArgs["quiz_groups_pick_count"];
+      delete mappedArgs["quiz_groups_pick_count"];
+    }
+    if ("quiz_groups_question_points" in mappedArgs) {
+      mappedArgs["quiz_groups[][question_points]"] = mappedArgs["quiz_groups_question_points"];
+      delete mappedArgs["quiz_groups_question_points"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id", mappedArgs);
   },
   delete_ccqq_groups_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id", args);
   },
   post_ccqqgi_reorder: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id/reorder", args);
+    const mappedArgs = { ...args };
+    if ("order_id" in mappedArgs) {
+      mappedArgs["order[][id]"] = mappedArgs["order_id"];
+      delete mappedArgs["order_id"];
+    }
+    if ("order_type" in mappedArgs) {
+      mappedArgs["order[][type]"] = mappedArgs["order_type"];
+      delete mappedArgs["order_type"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id/reorder", mappedArgs);
   }
 };
 

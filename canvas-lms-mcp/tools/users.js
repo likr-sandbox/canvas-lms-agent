@@ -101,11 +101,11 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>\"ungraded\\_quizzes\":: Optionally include ungraded quizzes (such as practice quizzes and surveys) in the list.<br>These will be returned under a +quiz+ key instead of an +assignment+ key in response elements.<br>\"grading\\_counts\":: Optionally include segmented submission counts on grading-type items:<br>+on\\_time\\_needs\\_grading\\_count+, +late\\_needs\\_grading\\_count+,<br>+resubmitted\\_needs\\_grading\\_count+, +submitted\\_submissions\\_count+, and<br>+total\\_submissions\\_count+. Only honored when the account has the<br>+educator\\_dashboard+ feature enabled; otherwise silently ignored. Allowed values: <code>ungraded\\_quizzes</code>, <code>grading\\_counts</code></p>"
         },
-        "course_ids[]": {
+        "course_ids": {
           "type": "string",
           "description": "<p>Restrict results to todo items in the given courses. Accepts numeric IDs<br>and SIS IDs of the form +sis\\_course\\_id:foo+. Applies to grading, submitting,<br>checkpoint, and ungraded quiz items alike. Courses the user is not enrolled<br>in (or that cannot be resolved) are silently dropped. When the parameter is<br>present but no valid courses resolve, an empty list is returned rather than<br>the unfiltered list.</p>"
         },
@@ -122,7 +122,7 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>\"ungraded\\_quizzes\":: Optionally include ungraded quizzes (such as practice quizzes and surveys) in the list.<br>These will be returned under a +quiz+ key instead of an +assignment+ key in response elements. Allowed values: <code>ungraded\\_quizzes</code></p>"
         },
@@ -160,15 +160,15 @@ const definitions = [
           "type": "string",
           "description": "<p>Return missing submissions for the given observed user. Must be accompanied by course\\_ids\\[].<br>The user making the request must be observing the observed user in all the courses specified by<br>course\\_ids\\[].</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>\"planner\\_overrides\":: Optionally include the assignment's associated planner override, if it exists, for the current user.<br>These will be returned under a +planner\\_override+ key<br>\"course\":: Optionally include the assignments' courses Allowed values: <code>planner\\_overrides</code>, <code>course</code></p>"
         },
-        "filter[]": {
+        "filter": {
           "type": "string",
           "description": "<p>\"submittable\":: Only return assignments that the current user can submit (i.e. filter out locked assignments)<br>\"current\\_grading\\_period\":: Only return missing assignments that are in the current grading period Allowed values: <code>submittable</code>, <code>current\\_grading\\_period</code></p>"
         },
-        "course_ids[]": {
+        "course_ids": {
           "type": "string",
           "description": "<p>Optionally restricts the list of past-due assignments to only those associated with the specified<br>course IDs. Required if observed\\_user\\_id is passed.</p>"
         },
@@ -232,7 +232,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include on the user record.<br>\"locale\", \"avatar\\_url\", \"permissions\", \"email\", and \"effective\\_locale\"<br>will always be returned Allowed values: <code>uuid</code>, <code>last\\_login</code></p>"
         },
@@ -256,75 +256,75 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "user[name]": {
+        "user_name": {
           "type": "string",
           "description": "<p>The full name of the user. This name will be used by teacher for grading.<br>Required if this is a self-registration.</p>"
         },
-        "user[short_name]": {
+        "user_short_name": {
           "type": "string",
           "description": "User's name as it will be displayed in discussions, messages, and comments."
         },
-        "user[sortable_name]": {
+        "user_sortable_name": {
           "type": "string",
           "description": "User's name as used to sort alphabetically in lists."
         },
-        "user[time_zone]": {
+        "user_time_zone": {
           "type": "string",
           "description": "<p>The time zone for the user. Allowed time zones are<br><a href=\"http://www.iana.org/time-zones\">IANA time zones</a> or friendlier<br><a href=\"http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html\">Ruby on Rails time zones</a>.</p>"
         },
-        "user[locale]": {
+        "user_locale": {
           "type": "string",
           "description": "<p>The user's preferred language, from the list of languages Canvas supports.<br>This is in RFC-5646 format.</p>"
         },
-        "user[terms_of_use]": {
+        "user_terms_of_use": {
           "type": "boolean",
           "description": "<p>Whether the user accepts the terms of use. Required if this is a<br>self-registration and this canvas instance requires users to accept<br>the terms (on by default).<br>If this is true, it will mark the user as having accepted the terms of use.</p>"
         },
-        "user[skip_registration]": {
+        "user_skip_registration": {
           "type": "boolean",
           "description": "<p>Automatically mark the user as registered.<br>If this is true, it is recommended to set \\<tt>\"pseudonym\\[send\\_confirmation]\"\\</tt> to true as well.<br>Otherwise, the user will not receive any messages about their account creation.<br>The users communication channel confirmation can be skipped by setting<br>\\<tt>\"communication\\_channel\\[skip\\_confirmation]\"\\</tt> to true as well.</p>"
         },
-        "pseudonym[unique_id]": {
+        "pseudonym_unique_id": {
           "type": "string",
           "description": "<p>User's login ID. If this is a self-registration, it must be a valid<br>email address.</p>"
         },
-        "pseudonym[password]": {
+        "pseudonym_password": {
           "type": "string",
           "description": "User's password. Cannot be set during self-registration."
         },
-        "pseudonym[sis_user_id]": {
+        "pseudonym_sis_user_id": {
           "type": "string",
           "description": "<p>SIS ID for the user's account. To set this parameter, the caller must be<br>able to manage SIS permissions.</p>"
         },
-        "pseudonym[integration_id]": {
+        "pseudonym_integration_id": {
           "type": "string",
           "description": "<p>Integration ID for the login. To set this parameter, the caller must be able to<br>manage SIS permissions. The Integration ID is a secondary<br>identifier useful for more complex SIS integrations.</p>"
         },
-        "pseudonym[send_confirmation]": {
+        "pseudonym_send_confirmation": {
           "type": "boolean",
           "description": "<p>Send user notification of account creation if true.<br>Automatically set to true during self-registration.</p>"
         },
-        "pseudonym[force_self_registration]": {
+        "pseudonym_force_self_registration": {
           "type": "boolean",
           "description": "<p>Send user a self-registration style email if true.<br>Setting it means the users will get a notification asking them<br>to \"complete the registration process\" by clicking it, setting<br>a password, and letting them in. Will only be executed on<br>if the user does not need admin approval.<br>Defaults to false unless explicitly provided.</p>"
         },
-        "pseudonym[authentication_provider_id]": {
+        "pseudonym_authentication_provider_id": {
           "type": "string",
           "description": "<p>The authentication provider this login is associated with. Logins<br>associated with a specific provider can only be used with that provider.<br>Legacy providers (LDAP, CAS, SAML) will search for logins associated with<br>them, or unassociated logins. New providers will only search for logins<br>explicitly associated with them. This can be the integer ID of the<br>provider, or the type of the provider (in which case, it will find the<br>first matching provider).</p>"
         },
-        "communication_channel[type]": {
+        "communication_channel_type": {
           "type": "string",
           "description": "The communication channel type, e.g. 'email' or 'sms'."
         },
-        "communication_channel[address]": {
+        "communication_channel_address": {
           "type": "string",
           "description": "The communication channel address, e.g. the user's email address."
         },
-        "communication_channel[confirmation_url]": {
+        "communication_channel_confirmation_url": {
           "type": "boolean",
           "description": "<p>Only valid for account admins. If true, returns the new user account<br>confirmation URL in the response.</p>"
         },
-        "communication_channel[skip_confirmation]": {
+        "communication_channel_skip_confirmation": {
           "type": "boolean",
           "description": "<p>Only valid for site admins and account admins making requests; If true, the channel is<br>automatically validated and no confirmation email or SMS is sent.<br>Otherwise, the user must respond to a confirmation message to confirm the<br>channel.<br>If this is true, it is recommended to set \\<tt>\"pseudonym\\[send\\_confirmation]\"\\</tt> to true as well.<br>Otherwise, the user will not receive any messages about their account creation.</p>"
         },
@@ -344,14 +344,14 @@ const definitions = [
           "type": "string",
           "description": "<p><code>observer</code> if doing a self-registration with a pairing code. This allows setting the<br>password during user creation.</p>"
         },
-        "pairing_code[code]": {
+        "pairing_code_code": {
           "type": "string",
           "description": "<p>If provided and valid, will link the new user as an observer to the student's whose<br>pairing code is given.</p>"
         }
       },
       "required": [
         "account_id",
-        "pseudonym[unique_id]"
+        "pseudonym_unique_id"
       ]
     }
   },
@@ -365,48 +365,48 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "user[name]": {
+        "user_name": {
           "type": "string",
           "description": "The full name of the user. This name will be used by teacher for grading."
         },
-        "user[short_name]": {
+        "user_short_name": {
           "type": "string",
           "description": "User's name as it will be displayed in discussions, messages, and comments."
         },
-        "user[sortable_name]": {
+        "user_sortable_name": {
           "type": "string",
           "description": "User's name as used to sort alphabetically in lists."
         },
-        "user[time_zone]": {
+        "user_time_zone": {
           "type": "string",
           "description": "<p>The time zone for the user. Allowed time zones are<br><a href=\"http://www.iana.org/time-zones\">IANA time zones</a> or friendlier<br><a href=\"http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html\">Ruby on Rails time zones</a>.</p>"
         },
-        "user[locale]": {
+        "user_locale": {
           "type": "string",
           "description": "<p>The user's preferred language, from the list of languages Canvas supports.<br>This is in RFC-5646 format.</p>"
         },
-        "user[terms_of_use]": {
+        "user_terms_of_use": {
           "type": "boolean",
           "description": "Whether the user accepts the terms of use."
         },
-        "pseudonym[unique_id]": {
+        "pseudonym_unique_id": {
           "type": "string",
           "description": "User's login ID. Must be a valid email address."
         },
-        "communication_channel[type]": {
+        "communication_channel_type": {
           "type": "string",
           "description": "The communication channel type, e.g. 'email' or 'sms'."
         },
-        "communication_channel[address]": {
+        "communication_channel_address": {
           "type": "string",
           "description": "The communication channel address, e.g. the user's email address."
         }
       },
       "required": [
         "account_id",
-        "user[name]",
-        "user[terms_of_use]",
-        "pseudonym[unique_id]"
+        "user_name",
+        "user_terms_of_use",
+        "pseudonym_unique_id"
       ]
     }
   },
@@ -638,59 +638,59 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "user[name]": {
+        "user_name": {
           "type": "string",
           "description": "The full name of the user. This name will be used by teacher for grading."
         },
-        "user[short_name]": {
+        "user_short_name": {
           "type": "string",
           "description": "User's name as it will be displayed in discussions, messages, and comments."
         },
-        "user[sortable_name]": {
+        "user_sortable_name": {
           "type": "string",
           "description": "User's name as used to sort alphabetically in lists."
         },
-        "user[time_zone]": {
+        "user_time_zone": {
           "type": "string",
           "description": "<p>The time zone for the user. Allowed time zones are<br><a href=\"http://www.iana.org/time-zones\">IANA time zones</a> or friendlier<br><a href=\"http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html\">Ruby on Rails time zones</a>.</p>"
         },
-        "user[email]": {
+        "user_email": {
           "type": "string",
           "description": "The default email address of the user."
         },
-        "user[locale]": {
+        "user_locale": {
           "type": "string",
           "description": "<p>The user's preferred language, from the list of languages Canvas supports.<br>This is in RFC-5646 format.</p>"
         },
-        "user[avatar][token]": {
+        "user_avatar_token": {
           "type": "string",
           "description": "<p>A unique representation of the avatar record to assign as the user's<br>current avatar. This token can be obtained from the user avatars endpoint.<br>This supersedes the +user\\[avatar]\\[url]+ argument, and if both are included<br>the url will be ignored. Note: this is an internal representation and is<br>subject to change without notice. It should be consumed with this api<br>endpoint and used in the user update endpoint, and should not be<br>constructed by the client.</p>"
         },
-        "user[avatar][url]": {
+        "user_avatar_url": {
           "type": "string",
           "description": "<p>To set the user's avatar to point to an external url, do not include a<br>token and instead pass the url here. Warning: For maximum compatibility,<br>please use 128 px square images.</p>"
         },
-        "user[avatar][state]": {
+        "user_avatar_state": {
           "type": "string",
           "description": "To set the state of user's avatar. Only valid for account administrator. Allowed values: `none`, `submitted`, `approved`, `locked`, `reported`, `re_reported`"
         },
-        "user[title]": {
+        "user_title": {
           "type": "string",
           "description": "<p>Sets a title on the user profile. (See <a href=\"#method.profile.settings\">Get user profile</a>.)<br>Profiles must be enabled on the root account.</p>"
         },
-        "user[bio]": {
+        "user_bio": {
           "type": "string",
           "description": "<p>Sets a bio on the user profile. (See <a href=\"#method.profile.settings\">Get user profile</a>.)<br>Profiles must be enabled on the root account.</p>"
         },
-        "user[pronunciation]": {
+        "user_pronunciation": {
           "type": "string",
           "description": "<p>Sets name pronunciation on the user profile. (See <a href=\"#method.profile.settings\">Get user profile</a>.)<br>Profiles and name pronunciation must be enabled on the root account.</p>"
         },
-        "user[pronouns]": {
+        "user_pronouns": {
           "type": "string",
           "description": "<p>Sets pronouns on the user profile.<br>Passing an empty string will empty the user's pronouns<br>Only Available Pronouns set on the root account are allowed<br>Adding and changing pronouns must be enabled on the root account.</p>"
         },
-        "user[event]": {
+        "user_event": {
           "type": "string",
           "description": "<p>Suspends or unsuspends all logins for this user that the calling user<br>has permission to Allowed values: <code>suspend</code>, <code>unsuspend</code></p>"
         },
@@ -834,7 +834,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "Associations to include with the group Allowed values: `assignment`"
         },
@@ -866,7 +866,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"links\":: include the user's profile links in the response<br>as an array of objects with +url+ and +title+ fields<br>\"user\\_services\":: include names and links for the user's connected services<br>\"uuid\":: include the user's uuid in the response Allowed values: <code>links</code>, <code>user\\_services</code>, <code>uuid</code></p>"
         },
@@ -1252,16 +1252,43 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/users/self/activity_stream/summary", args);
   },
   get_us_todo: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/self/todo", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("course_ids" in mappedArgs) {
+      mappedArgs["course_ids[]"] = mappedArgs["course_ids"];
+      delete mappedArgs["course_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/self/todo", mappedArgs);
   },
   get_us_todo_item_count: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/self/todo_item_count", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/self/todo_item_count", mappedArgs);
   },
   get_us_upcoming_events: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/upcoming_events", args);
   },
   get_uu_missing_submissions: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/missing_submissions", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("filter" in mappedArgs) {
+      mappedArgs["filter[]"] = mappedArgs["filter"];
+      delete mappedArgs["filter"];
+    }
+    if ("course_ids" in mappedArgs) {
+      mappedArgs["course_ids[]"] = mappedArgs["course_ids"];
+      delete mappedArgs["course_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/missing_submissions", mappedArgs);
   },
   delete_us_activity_stream_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/activity_stream/:id", args);
@@ -1273,13 +1300,132 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/files", args);
   },
   get_users_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:id", mappedArgs);
   },
   post_aa_users: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/users", args);
+    const mappedArgs = { ...args };
+    if ("user_name" in mappedArgs) {
+      mappedArgs["user[name]"] = mappedArgs["user_name"];
+      delete mappedArgs["user_name"];
+    }
+    if ("user_short_name" in mappedArgs) {
+      mappedArgs["user[short_name]"] = mappedArgs["user_short_name"];
+      delete mappedArgs["user_short_name"];
+    }
+    if ("user_sortable_name" in mappedArgs) {
+      mappedArgs["user[sortable_name]"] = mappedArgs["user_sortable_name"];
+      delete mappedArgs["user_sortable_name"];
+    }
+    if ("user_time_zone" in mappedArgs) {
+      mappedArgs["user[time_zone]"] = mappedArgs["user_time_zone"];
+      delete mappedArgs["user_time_zone"];
+    }
+    if ("user_locale" in mappedArgs) {
+      mappedArgs["user[locale]"] = mappedArgs["user_locale"];
+      delete mappedArgs["user_locale"];
+    }
+    if ("user_terms_of_use" in mappedArgs) {
+      mappedArgs["user[terms_of_use]"] = mappedArgs["user_terms_of_use"];
+      delete mappedArgs["user_terms_of_use"];
+    }
+    if ("user_skip_registration" in mappedArgs) {
+      mappedArgs["user[skip_registration]"] = mappedArgs["user_skip_registration"];
+      delete mappedArgs["user_skip_registration"];
+    }
+    if ("pseudonym_unique_id" in mappedArgs) {
+      mappedArgs["pseudonym[unique_id]"] = mappedArgs["pseudonym_unique_id"];
+      delete mappedArgs["pseudonym_unique_id"];
+    }
+    if ("pseudonym_password" in mappedArgs) {
+      mappedArgs["pseudonym[password]"] = mappedArgs["pseudonym_password"];
+      delete mappedArgs["pseudonym_password"];
+    }
+    if ("pseudonym_sis_user_id" in mappedArgs) {
+      mappedArgs["pseudonym[sis_user_id]"] = mappedArgs["pseudonym_sis_user_id"];
+      delete mappedArgs["pseudonym_sis_user_id"];
+    }
+    if ("pseudonym_integration_id" in mappedArgs) {
+      mappedArgs["pseudonym[integration_id]"] = mappedArgs["pseudonym_integration_id"];
+      delete mappedArgs["pseudonym_integration_id"];
+    }
+    if ("pseudonym_send_confirmation" in mappedArgs) {
+      mappedArgs["pseudonym[send_confirmation]"] = mappedArgs["pseudonym_send_confirmation"];
+      delete mappedArgs["pseudonym_send_confirmation"];
+    }
+    if ("pseudonym_force_self_registration" in mappedArgs) {
+      mappedArgs["pseudonym[force_self_registration]"] = mappedArgs["pseudonym_force_self_registration"];
+      delete mappedArgs["pseudonym_force_self_registration"];
+    }
+    if ("pseudonym_authentication_provider_id" in mappedArgs) {
+      mappedArgs["pseudonym[authentication_provider_id]"] = mappedArgs["pseudonym_authentication_provider_id"];
+      delete mappedArgs["pseudonym_authentication_provider_id"];
+    }
+    if ("communication_channel_type" in mappedArgs) {
+      mappedArgs["communication_channel[type]"] = mappedArgs["communication_channel_type"];
+      delete mappedArgs["communication_channel_type"];
+    }
+    if ("communication_channel_address" in mappedArgs) {
+      mappedArgs["communication_channel[address]"] = mappedArgs["communication_channel_address"];
+      delete mappedArgs["communication_channel_address"];
+    }
+    if ("communication_channel_confirmation_url" in mappedArgs) {
+      mappedArgs["communication_channel[confirmation_url]"] = mappedArgs["communication_channel_confirmation_url"];
+      delete mappedArgs["communication_channel_confirmation_url"];
+    }
+    if ("communication_channel_skip_confirmation" in mappedArgs) {
+      mappedArgs["communication_channel[skip_confirmation]"] = mappedArgs["communication_channel_skip_confirmation"];
+      delete mappedArgs["communication_channel_skip_confirmation"];
+    }
+    if ("pairing_code_code" in mappedArgs) {
+      mappedArgs["pairing_code[code]"] = mappedArgs["pairing_code_code"];
+      delete mappedArgs["pairing_code_code"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/users", mappedArgs);
   },
   post_aa_self_registration: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/self_registration", args);
+    const mappedArgs = { ...args };
+    if ("user_name" in mappedArgs) {
+      mappedArgs["user[name]"] = mappedArgs["user_name"];
+      delete mappedArgs["user_name"];
+    }
+    if ("user_short_name" in mappedArgs) {
+      mappedArgs["user[short_name]"] = mappedArgs["user_short_name"];
+      delete mappedArgs["user_short_name"];
+    }
+    if ("user_sortable_name" in mappedArgs) {
+      mappedArgs["user[sortable_name]"] = mappedArgs["user_sortable_name"];
+      delete mappedArgs["user_sortable_name"];
+    }
+    if ("user_time_zone" in mappedArgs) {
+      mappedArgs["user[time_zone]"] = mappedArgs["user_time_zone"];
+      delete mappedArgs["user_time_zone"];
+    }
+    if ("user_locale" in mappedArgs) {
+      mappedArgs["user[locale]"] = mappedArgs["user_locale"];
+      delete mappedArgs["user_locale"];
+    }
+    if ("user_terms_of_use" in mappedArgs) {
+      mappedArgs["user[terms_of_use]"] = mappedArgs["user_terms_of_use"];
+      delete mappedArgs["user_terms_of_use"];
+    }
+    if ("pseudonym_unique_id" in mappedArgs) {
+      mappedArgs["pseudonym[unique_id]"] = mappedArgs["pseudonym_unique_id"];
+      delete mappedArgs["pseudonym_unique_id"];
+    }
+    if ("communication_channel_type" in mappedArgs) {
+      mappedArgs["communication_channel[type]"] = mappedArgs["communication_channel_type"];
+      delete mappedArgs["communication_channel_type"];
+    }
+    if ("communication_channel_address" in mappedArgs) {
+      mappedArgs["communication_channel[address]"] = mappedArgs["communication_channel_address"];
+      delete mappedArgs["communication_channel_address"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/self_registration", mappedArgs);
   },
   get_ui_settings: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:id/settings", args);
@@ -1309,7 +1455,64 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/users/:id/dashboard_positions", args);
   },
   put_users_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/users/:id", args);
+    const mappedArgs = { ...args };
+    if ("user_name" in mappedArgs) {
+      mappedArgs["user[name]"] = mappedArgs["user_name"];
+      delete mappedArgs["user_name"];
+    }
+    if ("user_short_name" in mappedArgs) {
+      mappedArgs["user[short_name]"] = mappedArgs["user_short_name"];
+      delete mappedArgs["user_short_name"];
+    }
+    if ("user_sortable_name" in mappedArgs) {
+      mappedArgs["user[sortable_name]"] = mappedArgs["user_sortable_name"];
+      delete mappedArgs["user_sortable_name"];
+    }
+    if ("user_time_zone" in mappedArgs) {
+      mappedArgs["user[time_zone]"] = mappedArgs["user_time_zone"];
+      delete mappedArgs["user_time_zone"];
+    }
+    if ("user_email" in mappedArgs) {
+      mappedArgs["user[email]"] = mappedArgs["user_email"];
+      delete mappedArgs["user_email"];
+    }
+    if ("user_locale" in mappedArgs) {
+      mappedArgs["user[locale]"] = mappedArgs["user_locale"];
+      delete mappedArgs["user_locale"];
+    }
+    if ("user_avatar_token" in mappedArgs) {
+      mappedArgs["user[avatar][token]"] = mappedArgs["user_avatar_token"];
+      delete mappedArgs["user_avatar_token"];
+    }
+    if ("user_avatar_url" in mappedArgs) {
+      mappedArgs["user[avatar][url]"] = mappedArgs["user_avatar_url"];
+      delete mappedArgs["user_avatar_url"];
+    }
+    if ("user_avatar_state" in mappedArgs) {
+      mappedArgs["user[avatar][state]"] = mappedArgs["user_avatar_state"];
+      delete mappedArgs["user_avatar_state"];
+    }
+    if ("user_title" in mappedArgs) {
+      mappedArgs["user[title]"] = mappedArgs["user_title"];
+      delete mappedArgs["user_title"];
+    }
+    if ("user_bio" in mappedArgs) {
+      mappedArgs["user[bio]"] = mappedArgs["user_bio"];
+      delete mappedArgs["user_bio"];
+    }
+    if ("user_pronunciation" in mappedArgs) {
+      mappedArgs["user[pronunciation]"] = mappedArgs["user_pronunciation"];
+      delete mappedArgs["user_pronunciation"];
+    }
+    if ("user_pronouns" in mappedArgs) {
+      mappedArgs["user[pronouns]"] = mappedArgs["user_pronouns"];
+      delete mappedArgs["user_pronouns"];
+    }
+    if ("user_event" in mappedArgs) {
+      mappedArgs["user[event]"] = mappedArgs["user_event"];
+      delete mappedArgs["user_event"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/users/:id", mappedArgs);
   },
   delete_ui_sessions: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:id/sessions", args);
@@ -1333,10 +1536,20 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/users/self/pandata_events_token", args);
   },
   get_ui_graded_submissions: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:id/graded_submissions", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:id/graded_submissions", mappedArgs);
   },
   get_uu_profile: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/profile", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/profile", mappedArgs);
   },
   get_uu_avatars: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/avatars", args);

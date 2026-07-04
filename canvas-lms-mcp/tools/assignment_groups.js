@@ -14,15 +14,15 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Associations to include with the group. \"discussion\\_topic\", \"all\\_dates\", \"can\\_edit\",<br>\"assignment\\_visibility\" & \"submission\" are only valid if \"assignments\" is also included.<br>\"score\\_statistics\" requires that the \"assignments\" and \"submission\" options are included.<br>The \"assignment\\_visibility\" option additionally requires that the Differentiated Assignments course feature be turned on.<br>If \"observed\\_users\" is passed along with \"assignments\" and \"submission\", submissions for observed users will also be included as an array.<br>The \"peer\\_review\" option requires that the Peer Review Grading course feature be turned on and that \"assignments\" is included. Allowed values: <code>assignments</code>, <code>discussion\\_topic</code>, <code>all\\_dates</code>, <code>assignment\\_visibility</code>, <code>overrides</code>, <code>submission</code>, <code>observed\\_users</code>, <code>can\\_edit</code>, <code>score\\_statistics</code>, <code>peer\\_review</code></p>"
         },
-        "assignment_ids[]": {
+        "assignment_ids": {
           "type": "string",
           "description": "<p>If \"assignments\" are included, optionally return only assignments having their ID in this array. This argument may also be passed as<br>a comma separated string.</p>"
         },
-        "exclude_assignment_submission_types[]": {
+        "exclude_assignment_submission_types": {
           "type": "string",
           "description": "<p>If \"assignments\" are included, those with the specified submission types<br>will be excluded from the assignment groups. Allowed values: <code>online\\_quiz</code>, <code>discussion\\_topic</code>, <code>wiki\\_page</code>, <code>external\\_tool</code></p>"
         },
@@ -62,7 +62,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: assignment_group_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Associations to include with the group. \"discussion\\_topic\" and \"assignment\\_visibility\" and \"submission\"<br>are only valid if \"assignments\" is also included. \"score\\_statistics\" is only valid if \"submission\" and<br>\"assignments\" are also included. The \"assignment\\_visibility\" option additionally requires that the Differentiated Assignments<br>course feature be turned on. Allowed values: <code>assignments</code>, <code>discussion\\_topic</code>, <code>assignment\\_visibility</code>, <code>submission</code>, <code>score\\_statistics</code></p>"
         },
@@ -195,10 +195,28 @@ const definitions = [
 
 const handlers = {
   get_cc_assignment_groups: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignment_groups", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("assignment_ids" in mappedArgs) {
+      mappedArgs["assignment_ids[]"] = mappedArgs["assignment_ids"];
+      delete mappedArgs["assignment_ids"];
+    }
+    if ("exclude_assignment_submission_types" in mappedArgs) {
+      mappedArgs["exclude_assignment_submission_types[]"] = mappedArgs["exclude_assignment_submission_types"];
+      delete mappedArgs["exclude_assignment_submission_types"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignment_groups", mappedArgs);
   },
   get_cc_assignment_groups_assignment_group_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignment_groups/:assignment_group_id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignment_groups/:assignment_group_id", mappedArgs);
   },
   post_cc_assignment_groups: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignment_groups", args);

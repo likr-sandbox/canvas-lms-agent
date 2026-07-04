@@ -15,7 +15,7 @@ test("get_ccq_assignment_overrides calls correct endpoint", async () => {
   const handler = quiz_assignment_overridesModule.handlers.get_ccq_assignment_overrides;
   assert.ok(handler, "Handler get_ccq_assignment_overrides should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_assignment_overrides[][quiz_ids][]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_assignment_overrides_quiz_ids": 123});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/assignment_overrides");
@@ -33,7 +33,7 @@ test("get_ccnq_assignment_overrides calls correct endpoint", async () => {
   const handler = quiz_assignment_overridesModule.handlers.get_ccnq_assignment_overrides;
   assert.ok(handler, "Handler get_ccnq_assignment_overrides should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_assignment_overrides[][quiz_ids][]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_assignment_overrides_quiz_ids": 123});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/new_quizzes/assignment_overrides");

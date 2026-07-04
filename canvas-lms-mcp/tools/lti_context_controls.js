@@ -118,19 +118,19 @@ const definitions = [
           "type": "string",
           "description": "A comment to add the to the change-log entry explaining why the changes were made."
         },
-        "[]account_id": {
+        "account_id_1": {
           "type": "number",
           "description": "The Canvas ID of the Account that owns this. One of account\\_id or course\\_id must be present. Can also be a string."
         },
-        "[]course_id": {
+        "course_id": {
           "type": "number",
           "description": "The Canvas ID of the Course that owns this. One of account\\_id or course\\_id must be present. Can also be a string."
         },
-        "[]deployment_id": {
+        "deployment_id": {
           "type": "number",
           "description": "<p>The Canvas ID of the ContextExternalTool that owns this, representing an LTI deployment.<br>If absent, this ContextControl will be associated with the Deployment of this Registration at the Root Account level.<br>If that is not present, this request will fail.</p>"
         },
-        "[]available": {
+        "available": {
           "type": "boolean",
           "description": "<p>The state of this tool in this context. <code>true</code> shows the tool in this context and all contexts<br>below it. <code>false</code> disables the tool for this context and all contexts below it. Defaults to true.</p>"
         }
@@ -215,7 +215,24 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/accounts/:current_account_id/lti_registrations/:registration_id/controls", args);
   },
   post_aalrrc_bulk: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/bulk", args);
+    const mappedArgs = { ...args };
+    if ("account_id_1" in mappedArgs) {
+      mappedArgs["[]account_id"] = mappedArgs["account_id_1"];
+      delete mappedArgs["account_id_1"];
+    }
+    if ("course_id" in mappedArgs) {
+      mappedArgs["[]course_id"] = mappedArgs["course_id"];
+      delete mappedArgs["course_id"];
+    }
+    if ("deployment_id" in mappedArgs) {
+      mappedArgs["[]deployment_id"] = mappedArgs["deployment_id"];
+      delete mappedArgs["deployment_id"];
+    }
+    if ("available" in mappedArgs) {
+      mappedArgs["[]available"] = mappedArgs["available"];
+      delete mappedArgs["available"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/bulk", mappedArgs);
   },
   put_aalrr_controls_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/:id", args);

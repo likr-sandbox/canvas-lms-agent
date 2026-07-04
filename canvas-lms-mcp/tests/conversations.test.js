@@ -33,7 +33,7 @@ test("post_conversations calls correct endpoint", async () => {
   const handler = conversationsModule.handlers.post_conversations;
   assert.ok(handler, "Handler post_conversations should be defined");
 
-  const result = await handler(mockClient, {"recipients[]": "test_val"});
+  const result = await handler(mockClient, {"recipients": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/conversations");
@@ -87,7 +87,7 @@ test("put_conversations_id calls correct endpoint", async () => {
   const handler = conversationsModule.handlers.put_conversations_id;
   assert.ok(handler, "Handler put_conversations_id should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "conversation[workflow_state]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "conversation_workflow_state": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/conversations/test_id");
@@ -141,7 +141,7 @@ test("post_ci_add_recipients calls correct endpoint", async () => {
   const handler = conversationsModule.handlers.post_ci_add_recipients;
   assert.ok(handler, "Handler post_ci_add_recipients should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "recipients[]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "recipients": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/conversations/test_id/add_recipients");
@@ -177,7 +177,7 @@ test("post_ci_remove_messages calls correct endpoint", async () => {
   const handler = conversationsModule.handlers.post_ci_remove_messages;
   assert.ok(handler, "Handler post_ci_remove_messages should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "remove[]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "remove": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/conversations/test_id/remove_messages");
@@ -195,7 +195,7 @@ test("put_conversations calls correct endpoint", async () => {
   const handler = conversationsModule.handlers.put_conversations;
   assert.ok(handler, "Handler put_conversations should be defined");
 
-  const result = await handler(mockClient, {"conversation_ids[]": "test_val"});
+  const result = await handler(mockClient, {"conversation_ids": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/conversations");

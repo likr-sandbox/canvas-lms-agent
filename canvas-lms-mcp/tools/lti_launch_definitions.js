@@ -34,15 +34,15 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "placements[Array]": {
+        "placements_Array": {
           "type": "string",
           "description": "The placements to return launch definitions for. If not provided, an empty list will be returned."
         },
-        "only_visible[Boolean]": {
+        "only_visible_Boolean": {
           "type": "string",
           "description": "If true, only return launch definitions that are visible to the current user. Defaults to true."
         },
-        "include_context_name[Boolean]": {
+        "include_context_name_Boolean": {
           "type": "string",
           "description": "If true, includes the deployment context name (account or course) of the tool definition in the response. This helps distinguish between tools with identical names deployed at different levels of the context hierarchy. Defaults to false."
         },
@@ -63,7 +63,20 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/lti_apps/launch_definitions", args);
   },
   get_aala_launch_definitions: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_apps/launch_definitions", args);
+    const mappedArgs = { ...args };
+    if ("placements_Array" in mappedArgs) {
+      mappedArgs["placements[Array]"] = mappedArgs["placements_Array"];
+      delete mappedArgs["placements_Array"];
+    }
+    if ("only_visible_Boolean" in mappedArgs) {
+      mappedArgs["only_visible[Boolean]"] = mappedArgs["only_visible_Boolean"];
+      delete mappedArgs["only_visible_Boolean"];
+    }
+    if ("include_context_name_Boolean" in mappedArgs) {
+      mappedArgs["include_context_name[Boolean]"] = mappedArgs["include_context_name_Boolean"];
+      delete mappedArgs["include_context_name_Boolean"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_apps/launch_definitions", mappedArgs);
   }
 };
 

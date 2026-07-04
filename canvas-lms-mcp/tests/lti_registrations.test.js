@@ -33,7 +33,7 @@ test("get_aa_lti_registrations_id calls correct endpoint", async () => {
   const handler = lti_registrationsModule.handlers.get_aa_lti_registrations_id;
   assert.ok(handler, "Handler get_aa_lti_registrations_id should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/lti_registrations/test_id");

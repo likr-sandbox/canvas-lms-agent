@@ -71,37 +71,37 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "account_notification[subject]": {
+        "account_notification_subject": {
           "type": "string",
           "description": "The subject of the notification."
         },
-        "account_notification[message]": {
+        "account_notification_message": {
           "type": "string",
           "description": "The message body of the notification."
         },
-        "account_notification[start_at]": {
+        "account_notification_start_at": {
           "type": "string",
           "description": "<p>The start date and time of the notification in ISO8601 format.<br>e.g. 2014-01-01T01:00Z</p>"
         },
-        "account_notification[end_at]": {
+        "account_notification_end_at": {
           "type": "string",
           "description": "<p>The end date and time of the notification in ISO8601 format.<br>e.g. 2014-01-01T01:00Z</p>"
         },
-        "account_notification[icon]": {
+        "account_notification_icon": {
           "type": "string",
           "description": "<p>The icon to display with the notification.<br>Note: Defaults to warning. Allowed values: <code>warning</code>, <code>information</code>, <code>question</code>, <code>error</code>, <code>calendar</code></p>"
         },
-        "account_notification_roles[]": {
+        "account_notification_roles": {
           "type": "string",
           "description": "<p>The role(s) to send global notification to. Note: ommitting this field will send to everyone<br>Example:<br>account\\_notification\\_roles: \\[\"StudentEnrollment\", \"TeacherEnrollment\"]</p>"
         }
       },
       "required": [
         "account_id",
-        "account_notification[subject]",
-        "account_notification[message]",
-        "account_notification[start_at]",
-        "account_notification[end_at]"
+        "account_notification_subject",
+        "account_notification_message",
+        "account_notification_start_at",
+        "account_notification_end_at"
       ]
     }
   },
@@ -119,27 +119,27 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "account_notification[subject]": {
+        "account_notification_subject": {
           "type": "string",
           "description": "The subject of the notification."
         },
-        "account_notification[message]": {
+        "account_notification_message": {
           "type": "string",
           "description": "The message body of the notification."
         },
-        "account_notification[start_at]": {
+        "account_notification_start_at": {
           "type": "string",
           "description": "<p>The start date and time of the notification in ISO8601 format.<br>e.g. 2014-01-01T01:00Z</p>"
         },
-        "account_notification[end_at]": {
+        "account_notification_end_at": {
           "type": "string",
           "description": "<p>The end date and time of the notification in ISO8601 format.<br>e.g. 2014-01-01T01:00Z</p>"
         },
-        "account_notification[icon]": {
+        "account_notification_icon": {
           "type": "string",
           "description": "The icon to display with the notification. Allowed values: `warning`, `information`, `question`, `error`, `calendar`"
         },
-        "account_notification_roles[]": {
+        "account_notification_roles": {
           "type": "string",
           "description": "<p>The role(s) to send global notification to. Note: ommitting this field will send to everyone<br>Example:<br>account\\_notification\\_roles: \\[\"StudentEnrollment\", \"TeacherEnrollment\"]</p>"
         }
@@ -185,10 +185,60 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/account_notifications/:id", args);
   },
   post_aa_account_notifications: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/account_notifications", args);
+    const mappedArgs = { ...args };
+    if ("account_notification_subject" in mappedArgs) {
+      mappedArgs["account_notification[subject]"] = mappedArgs["account_notification_subject"];
+      delete mappedArgs["account_notification_subject"];
+    }
+    if ("account_notification_message" in mappedArgs) {
+      mappedArgs["account_notification[message]"] = mappedArgs["account_notification_message"];
+      delete mappedArgs["account_notification_message"];
+    }
+    if ("account_notification_start_at" in mappedArgs) {
+      mappedArgs["account_notification[start_at]"] = mappedArgs["account_notification_start_at"];
+      delete mappedArgs["account_notification_start_at"];
+    }
+    if ("account_notification_end_at" in mappedArgs) {
+      mappedArgs["account_notification[end_at]"] = mappedArgs["account_notification_end_at"];
+      delete mappedArgs["account_notification_end_at"];
+    }
+    if ("account_notification_icon" in mappedArgs) {
+      mappedArgs["account_notification[icon]"] = mappedArgs["account_notification_icon"];
+      delete mappedArgs["account_notification_icon"];
+    }
+    if ("account_notification_roles" in mappedArgs) {
+      mappedArgs["account_notification_roles[]"] = mappedArgs["account_notification_roles"];
+      delete mappedArgs["account_notification_roles"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/account_notifications", mappedArgs);
   },
   put_aa_account_notifications_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/account_notifications/:id", args);
+    const mappedArgs = { ...args };
+    if ("account_notification_subject" in mappedArgs) {
+      mappedArgs["account_notification[subject]"] = mappedArgs["account_notification_subject"];
+      delete mappedArgs["account_notification_subject"];
+    }
+    if ("account_notification_message" in mappedArgs) {
+      mappedArgs["account_notification[message]"] = mappedArgs["account_notification_message"];
+      delete mappedArgs["account_notification_message"];
+    }
+    if ("account_notification_start_at" in mappedArgs) {
+      mappedArgs["account_notification[start_at]"] = mappedArgs["account_notification_start_at"];
+      delete mappedArgs["account_notification_start_at"];
+    }
+    if ("account_notification_end_at" in mappedArgs) {
+      mappedArgs["account_notification[end_at]"] = mappedArgs["account_notification_end_at"];
+      delete mappedArgs["account_notification_end_at"];
+    }
+    if ("account_notification_icon" in mappedArgs) {
+      mappedArgs["account_notification[icon]"] = mappedArgs["account_notification_icon"];
+      delete mappedArgs["account_notification_icon"];
+    }
+    if ("account_notification_roles" in mappedArgs) {
+      mappedArgs["account_notification_roles[]"] = mappedArgs["account_notification_roles"];
+      delete mappedArgs["account_notification_roles"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/account_notifications/:id", mappedArgs);
   },
   delete_aa_account_notifications_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/account_notifications/:id", args);

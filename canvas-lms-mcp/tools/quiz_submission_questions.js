@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: quiz_submission_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "Associations to include with the quiz submission question. Allowed values: `quiz_question`"
         },
@@ -50,7 +50,7 @@ const definitions = [
           "type": "string",
           "description": "Access code for the Quiz, if any."
         },
-        "quiz_questions[]": {
+        "quiz_questions": {
           "type": "string",
           "description": "<p>Set of question IDs and the answer value.<br>See <a href=\"#Question+Answer+Formats-appendix\">Appendix: Question Answer Formats</a> for the accepted answer formats<br>for each question type.</p>"
         }
@@ -166,10 +166,20 @@ const definitions = [
 
 const handlers = {
   get_qsq_questions: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/quiz_submissions/:quiz_submission_id/questions", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/quiz_submissions/:quiz_submission_id/questions", mappedArgs);
   },
   post_qsq_questions: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/quiz_submissions/:quiz_submission_id/questions", args);
+    const mappedArgs = { ...args };
+    if ("quiz_questions" in mappedArgs) {
+      mappedArgs["quiz_questions[]"] = mappedArgs["quiz_questions"];
+      delete mappedArgs["quiz_questions"];
+    }
+    return genericHandler(client, "POST", "/api/v1/quiz_submissions/:quiz_submission_id/questions", mappedArgs);
   },
   get_qsqqi_formatted_answer: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/quiz_submissions/:quiz_submission_id/questions/:id/formatted_answer", args);

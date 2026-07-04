@@ -102,7 +102,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: submission_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "Associations to include with the peer review. Allowed values: `submission_comments`, `user`"
         },
@@ -266,7 +266,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews", args);
   },
   get_ssaass_peer_reviews: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews", mappedArgs);
   },
   post_ccaass_peer_reviews: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews", args);

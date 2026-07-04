@@ -15,7 +15,7 @@ test("get_aa_reports calls correct endpoint", async () => {
   const handler = account_reportsModule.handlers.get_aa_reports;
   assert.ok(handler, "Handler get_aa_reports should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/reports");
@@ -33,7 +33,7 @@ test("post_aa_reports_report calls correct endpoint", async () => {
   const handler = account_reportsModule.handlers.post_aa_reports_report;
   assert.ok(handler, "Handler post_aa_reports_report should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "report": "test_report", "parameters[]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "report": "test_report", "parameters": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/reports/test_report");

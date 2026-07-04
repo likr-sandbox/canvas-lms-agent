@@ -15,7 +15,7 @@ test("get_announcements calls correct endpoint", async () => {
   const handler = announcementsModule.handlers.get_announcements;
   assert.ok(handler, "Handler get_announcements should be defined");
 
-  const result = await handler(mockClient, {"context_codes[]": "test_val"});
+  const result = await handler(mockClient, {"context_codes": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/announcements");

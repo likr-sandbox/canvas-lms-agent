@@ -69,7 +69,7 @@ test("get_uu_tabs calls correct endpoint", async () => {
   const handler = tabsModule.handlers.get_uu_tabs;
   assert.ok(handler, "Handler get_uu_tabs should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/tabs");

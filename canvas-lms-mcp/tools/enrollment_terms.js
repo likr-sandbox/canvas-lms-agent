@@ -14,27 +14,27 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "enrollment_term[name]": {
+        "enrollment_term_name": {
           "type": "string",
           "description": "The name of the term."
         },
-        "enrollment_term[start_at]": {
+        "enrollment_term_start_at": {
           "type": "string",
           "description": "<p>The day/time the term starts.<br>Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.</p>"
         },
-        "enrollment_term[end_at]": {
+        "enrollment_term_end_at": {
           "type": "string",
           "description": "<p>The day/time the term ends.<br>Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.</p>"
         },
-        "enrollment_term[sis_term_id]": {
+        "enrollment_term_sis_term_id": {
           "type": "string",
           "description": "The unique SIS identifier for the term."
         },
-        "enrollment_term[overrides][enrollment_type][start_at]": {
+        "enrollment_term_overrides_enrollment_type_start_at": {
           "type": "string",
           "description": "<p>The day/time the term starts, overridden for the given enrollment type.<br><em>enrollment\\_type</em> can be one of StudentEnrollment, TeacherEnrollment, TaEnrollment, or DesignerEnrollment</p>"
         },
-        "enrollment_term[overrides][enrollment_type][end_at]": {
+        "enrollment_term_overrides_enrollment_type_end_at": {
           "type": "string",
           "description": "<p>The day/time the term ends, overridden for the given enrollment type.<br><em>enrollment\\_type</em> can be one of StudentEnrollment, TeacherEnrollment, TaEnrollment, or DesignerEnrollment</p>"
         }
@@ -58,27 +58,27 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "enrollment_term[name]": {
+        "enrollment_term_name": {
           "type": "string",
           "description": "The name of the term."
         },
-        "enrollment_term[start_at]": {
+        "enrollment_term_start_at": {
           "type": "string",
           "description": "<p>The day/time the term starts.<br>Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.</p>"
         },
-        "enrollment_term[end_at]": {
+        "enrollment_term_end_at": {
           "type": "string",
           "description": "<p>The day/time the term ends.<br>Accepts times in ISO 8601 format, e.g. 2015-01-10T18:48:00Z.</p>"
         },
-        "enrollment_term[sis_term_id]": {
+        "enrollment_term_sis_term_id": {
           "type": "string",
           "description": "The unique SIS identifier for the term."
         },
-        "enrollment_term[overrides][enrollment_type][start_at]": {
+        "enrollment_term_overrides_enrollment_type_start_at": {
           "type": "string",
           "description": "<p>The day/time the term starts, overridden for the given enrollment type.<br><em>enrollment\\_type</em> can be one of StudentEnrollment, TeacherEnrollment, TaEnrollment, or DesignerEnrollment</p>"
         },
-        "enrollment_term[overrides][enrollment_type][end_at]": {
+        "enrollment_term_overrides_enrollment_type_end_at": {
           "type": "string",
           "description": "<p>The day/time the term ends, overridden for the given enrollment type.<br><em>enrollment\\_type</em> can be one of StudentEnrollment, TeacherEnrollment, TaEnrollment, or DesignerEnrollment</p>"
         },
@@ -124,11 +124,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "workflow_state[]": {
+        "workflow_state": {
           "type": "string",
           "description": "<p>If set, only returns terms that are in the given state.<br>Defaults to 'active'. Allowed values: <code>active</code>, <code>deleted</code>, <code>all</code></p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"overrides\":: term start/end dates overridden for different enrollment types<br>\"course\\_count\":: the number of courses in each term Allowed values: <code>overrides</code></p>"
         },
@@ -175,16 +175,75 @@ const definitions = [
 
 const handlers = {
   post_aa_terms: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/terms", args);
+    const mappedArgs = { ...args };
+    if ("enrollment_term_name" in mappedArgs) {
+      mappedArgs["enrollment_term[name]"] = mappedArgs["enrollment_term_name"];
+      delete mappedArgs["enrollment_term_name"];
+    }
+    if ("enrollment_term_start_at" in mappedArgs) {
+      mappedArgs["enrollment_term[start_at]"] = mappedArgs["enrollment_term_start_at"];
+      delete mappedArgs["enrollment_term_start_at"];
+    }
+    if ("enrollment_term_end_at" in mappedArgs) {
+      mappedArgs["enrollment_term[end_at]"] = mappedArgs["enrollment_term_end_at"];
+      delete mappedArgs["enrollment_term_end_at"];
+    }
+    if ("enrollment_term_sis_term_id" in mappedArgs) {
+      mappedArgs["enrollment_term[sis_term_id]"] = mappedArgs["enrollment_term_sis_term_id"];
+      delete mappedArgs["enrollment_term_sis_term_id"];
+    }
+    if ("enrollment_term_overrides_enrollment_type_start_at" in mappedArgs) {
+      mappedArgs["enrollment_term[overrides][enrollment_type][start_at]"] = mappedArgs["enrollment_term_overrides_enrollment_type_start_at"];
+      delete mappedArgs["enrollment_term_overrides_enrollment_type_start_at"];
+    }
+    if ("enrollment_term_overrides_enrollment_type_end_at" in mappedArgs) {
+      mappedArgs["enrollment_term[overrides][enrollment_type][end_at]"] = mappedArgs["enrollment_term_overrides_enrollment_type_end_at"];
+      delete mappedArgs["enrollment_term_overrides_enrollment_type_end_at"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/terms", mappedArgs);
   },
   put_aa_terms_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/terms/:id", args);
+    const mappedArgs = { ...args };
+    if ("enrollment_term_name" in mappedArgs) {
+      mappedArgs["enrollment_term[name]"] = mappedArgs["enrollment_term_name"];
+      delete mappedArgs["enrollment_term_name"];
+    }
+    if ("enrollment_term_start_at" in mappedArgs) {
+      mappedArgs["enrollment_term[start_at]"] = mappedArgs["enrollment_term_start_at"];
+      delete mappedArgs["enrollment_term_start_at"];
+    }
+    if ("enrollment_term_end_at" in mappedArgs) {
+      mappedArgs["enrollment_term[end_at]"] = mappedArgs["enrollment_term_end_at"];
+      delete mappedArgs["enrollment_term_end_at"];
+    }
+    if ("enrollment_term_sis_term_id" in mappedArgs) {
+      mappedArgs["enrollment_term[sis_term_id]"] = mappedArgs["enrollment_term_sis_term_id"];
+      delete mappedArgs["enrollment_term_sis_term_id"];
+    }
+    if ("enrollment_term_overrides_enrollment_type_start_at" in mappedArgs) {
+      mappedArgs["enrollment_term[overrides][enrollment_type][start_at]"] = mappedArgs["enrollment_term_overrides_enrollment_type_start_at"];
+      delete mappedArgs["enrollment_term_overrides_enrollment_type_start_at"];
+    }
+    if ("enrollment_term_overrides_enrollment_type_end_at" in mappedArgs) {
+      mappedArgs["enrollment_term[overrides][enrollment_type][end_at]"] = mappedArgs["enrollment_term_overrides_enrollment_type_end_at"];
+      delete mappedArgs["enrollment_term_overrides_enrollment_type_end_at"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/terms/:id", mappedArgs);
   },
   delete_aa_terms_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/terms/:id", args);
   },
   get_aa_terms: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/terms", args);
+    const mappedArgs = { ...args };
+    if ("workflow_state" in mappedArgs) {
+      mappedArgs["workflow_state[]"] = mappedArgs["workflow_state"];
+      delete mappedArgs["workflow_state"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/terms", mappedArgs);
   },
   get_aa_terms_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/terms/:id", args);

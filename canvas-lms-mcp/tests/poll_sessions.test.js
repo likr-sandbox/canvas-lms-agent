@@ -51,7 +51,7 @@ test("post_pp_poll_sessions calls correct endpoint", async () => {
   const handler = poll_sessionsModule.handlers.post_pp_poll_sessions;
   assert.ok(handler, "Handler post_pp_poll_sessions should be defined");
 
-  const result = await handler(mockClient, {"poll_id": "test_poll_id", "poll_sessions[][course_id]": 123});
+  const result = await handler(mockClient, {"poll_id": "test_poll_id", "poll_sessions_course_id": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/polls/test_poll_id/poll_sessions");
@@ -69,7 +69,7 @@ test("put_pp_poll_sessions_id calls correct endpoint", async () => {
   const handler = poll_sessionsModule.handlers.put_pp_poll_sessions_id;
   assert.ok(handler, "Handler put_pp_poll_sessions_id should be defined");
 
-  const result = await handler(mockClient, {"poll_id": "test_poll_id", "id": "test_id", "poll_sessions[][course_id]": 123});
+  const result = await handler(mockClient, {"poll_id": "test_poll_id", "id": "test_id", "poll_sessions_course_id": 123});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/polls/test_poll_id/poll_sessions/test_id");

@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>deleted:: Include deleted ePortfolios. Only available to admins who can<br>moderate\\_user\\_content. Allowed values: <code>deleted</code></p>"
         },
@@ -144,7 +144,12 @@ const definitions = [
 
 const handlers = {
   get_uu_eportfolios: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/eportfolios", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/eportfolios", mappedArgs);
   },
   get_eportfolios_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/eportfolios/:id", args);

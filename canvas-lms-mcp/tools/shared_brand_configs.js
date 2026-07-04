@@ -14,19 +14,19 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "shared_brand_config[name]": {
+        "shared_brand_config_name": {
           "type": "string",
           "description": "Name to share this BrandConfig (theme) as."
         },
-        "shared_brand_config[brand_config_md5]": {
+        "shared_brand_config_brand_config_md5": {
           "type": "string",
           "description": "MD5 of brand\\_config to share"
         }
       },
       "required": [
         "account_id",
-        "shared_brand_config[name]",
-        "shared_brand_config[brand_config_md5]"
+        "shared_brand_config_name",
+        "shared_brand_config_brand_config_md5"
       ]
     }
   },
@@ -71,7 +71,16 @@ const definitions = [
 
 const handlers = {
   post_aa_shared_brand_configs: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/shared_brand_configs", args);
+    const mappedArgs = { ...args };
+    if ("shared_brand_config_name" in mappedArgs) {
+      mappedArgs["shared_brand_config[name]"] = mappedArgs["shared_brand_config_name"];
+      delete mappedArgs["shared_brand_config_name"];
+    }
+    if ("shared_brand_config_brand_config_md5" in mappedArgs) {
+      mappedArgs["shared_brand_config[brand_config_md5]"] = mappedArgs["shared_brand_config_brand_config_md5"];
+      delete mappedArgs["shared_brand_config_brand_config_md5"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/shared_brand_configs", mappedArgs);
   },
   put_aa_shared_brand_configs_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/shared_brand_configs/:id", args);

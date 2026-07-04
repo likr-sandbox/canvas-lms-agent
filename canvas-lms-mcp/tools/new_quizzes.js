@@ -59,99 +59,99 @@ const definitions = [
           "type": "number",
           "description": "no description"
         },
-        "quiz[title]": {
+        "quiz_title": {
           "type": "string",
           "description": "The title of the quiz."
         },
-        "quiz[assignment_group_id]": {
+        "quiz_assignment_group_id": {
           "type": "number",
           "description": "The ID of the quiz's assignment group."
         },
-        "quiz[points_possible]": {
+        "quiz_points_possible": {
           "type": "number",
           "description": "The total point value given to the quiz. Must be positive."
         },
-        "quiz[due_at]": {
+        "quiz_due_at": {
           "type": "string",
           "description": "When the quiz is due."
         },
-        "quiz[lock_at]": {
+        "quiz_lock_at": {
           "type": "string",
           "description": "When to lock the quiz."
         },
-        "quiz[unlock_at]": {
+        "quiz_unlock_at": {
           "type": "string",
           "description": "When to unlock the quiz."
         },
-        "quiz[grading_type]": {
+        "quiz_grading_type": {
           "type": "string",
           "description": "The type of grading the assignment receives. Allowed values: `pass_fail`, `percent`, `letter_grade`, `gpa_scale`, `points`"
         },
-        "quiz[instructions]": {
+        "quiz_instructions": {
           "type": "string",
           "description": "Instructions for the quiz."
         },
-        "quiz[quiz_settings][calculator_type]": {
+        "quiz_quiz_settings_calculator_type": {
           "type": "string",
           "description": "<p>Specifies which type of Calculator a student can use during Quiz taking.<br>Should be null if no calculator is allowed. Allowed values: <code>none</code>, <code>basic</code>, <code>scientific</code></p>"
         },
-        "quiz[quiz_settings][filter_ip_address]": {
+        "quiz_quiz_settings_filter_ip_address": {
           "type": "boolean",
           "description": "Whether IP filtering is needed. Must be true for filters to take effect."
         },
-        "quiz[quiz_settings][filters][ips][]": {
+        "quiz_quiz_settings_filters_ips": {
           "type": "string",
           "description": "<p>Specifies ranges of IP addresses where the quiz can be taken from. Each range is an array like<br>\\[start address, end address], or null if there's no restriction.</p>"
         },
-        "qqsma_multiple_attempts_enabled": {
+        "quiz_quiz_settings_multiple_attempts_multiple_attempts_enabled": {
           "type": "boolean",
           "description": "Whether multiple attempts for this quiz is true."
         },
-        "quiz[quiz_settings][multiple_attempts][attempt_limit]": {
+        "quiz_quiz_settings_multiple_attempts_attempt_limit": {
           "type": "boolean",
           "description": "Whether there is an attempt limit. Only set if multiple\\_attempts\\_enabled is true."
         },
-        "quiz[quiz_settings][multiple_attempts][max_attempts]": {
+        "quiz_quiz_settings_multiple_attempts_max_attempts": {
           "type": "number",
           "description": "<p>The allowed attempts a student can take. If null, the allowed attempts are unlimited. Only used if<br>attempt\\_limit is true.</p>"
         },
-        "quiz[quiz_settings][multiple_attempts][score_to_keep]": {
+        "quiz_quiz_settings_multiple_attempts_score_to_keep": {
           "type": "string",
           "description": "Whichever score to keep for the attempts. Only used if multiple\\_attempts\\_enabled is true. Allowed values: `average`, `first`, `highest`, `latest`"
         },
-        "quiz[quiz_settings][multiple_attempts][cooling_period]": {
+        "quiz_quiz_settings_multiple_attempts_cooling_period": {
           "type": "boolean",
           "description": "Whether there is a cooling (waiting) period. Only used if multiple\\_attempts\\_enabled is true."
         },
-        "quiz[quiz_settings][multiple_attempts][cooling_period_seconds]": {
+        "quiz_quiz_settings_multiple_attempts_cooling_period_seconds": {
           "type": "number",
           "description": "<p>Required waiting period in seconds between attempts. If null, there is no required time. Only used if<br>cooling\\_period is true</p>"
         },
-        "quiz[quiz_settings][one_at_a_time_type]": {
+        "quiz_quiz_settings_one_at_a_time_type": {
           "type": "string",
           "description": "Specifies the settings for questions to display when quiz taking. Allowed values: `none`, `question`"
         },
-        "quiz[quiz_settings][allow_backtracking]": {
+        "quiz_quiz_settings_allow_backtracking": {
           "type": "boolean",
           "description": "Whether to allow user to return to previous questions when 'one\\_at\\_a\\_time\\_type' is set to 'question'."
         },
-        "qqsrvs_result_view_restricted": {
+        "quiz_quiz_settings_result_view_settings_result_view_restricted": {
           "type": "boolean",
           "description": "Whether the results view is restricted for students. Must be true for any student restrictions to be set."
         },
-        "qqsrvs_display_points_awarded": {
+        "quiz_quiz_settings_result_view_settings_display_points_awarded": {
           "type": "boolean",
           "description": "Whether points are shown. Must set result\\_view\\_restricted to true to use this parameter."
         },
-        "qqsrvs_display_points_possible": {
+        "quiz_quiz_settings_result_view_settings_display_points_possible": {
           "type": "boolean",
           "description": "Whether points possible is shown. Must set result\\_view\\_restricted to true to use this parameter."
         },
-        "quiz[quiz_settings][result_view_settings][display_items]": {
+        "quiz_quiz_settings_result_view_settings_display_items": {
           "type": "boolean",
           "description": "Whether to show items in the results view. Must be true for any items restrictions to be set."
         },
-        "quiz[quiz_settings][result_view_settings][display_item_response]": {
+        "quiz_quiz_settings_result_view_settings_display_item_response": {
           "type": "boolean",
           "description": "<p>Whether item response is shown. Only set if display\\_items is true. Must be true for<br>display\\_item\\_response\\_qualifier, show\\_item\\_responses\\_at, hide\\_item\\_responses\\_at, and<br>display\\_item\\_response\\_correctness to be set.</p>"
         },
@@ -159,11 +159,11 @@ const definitions = [
           "type": "string",
           "description": "Specifies after which attempts student responses should be shown to them. Only used if display\\_item\\_response is true. Allowed values: `always`, `once_per_attempt`, `after_last_attempt`, `once_after_last_attempt`"
         },
-        "qqsrvs_show_item_responses_at": {
+        "quiz_quiz_settings_result_view_settings_show_item_responses_at": {
           "type": "string",
           "description": "When student responses should be shown to them. Only used if display\\_item\\_response is true."
         },
-        "qqsrvs_hide_item_responses_at": {
+        "quiz_quiz_settings_result_view_settings_hide_item_responses_at": {
           "type": "string",
           "description": "When student responses should be hidden from them. Only used if display\\_item\\_response is true."
         },
@@ -187,31 +187,31 @@ const definitions = [
           "type": "boolean",
           "description": "Whether correct answer is shown. Only set if display\\_item\\_response\\_correctness is true."
         },
-        "quiz[quiz_settings][result_view_settings][display_item_feedback]": {
+        "quiz_quiz_settings_result_view_settings_display_item_feedback": {
           "type": "boolean",
           "description": "Whether Item feedback is shown. Only set if display\\_items is true."
         },
-        "quiz[quiz_settings][shuffle_answers]": {
+        "quiz_quiz_settings_shuffle_answers": {
           "type": "boolean",
           "description": "Whether answers should be shuffled for students."
         },
-        "quiz[quiz_settings][shuffle_questions]": {
+        "quiz_quiz_settings_shuffle_questions": {
           "type": "boolean",
           "description": "Whether questions should be shuffled for students."
         },
-        "quiz[quiz_settings][require_student_access_code]": {
+        "quiz_quiz_settings_require_student_access_code": {
           "type": "boolean",
           "description": "Whether an access code is needed to take the quiz."
         },
-        "quiz[quiz_settings][student_access_code]": {
+        "quiz_quiz_settings_student_access_code": {
           "type": "string",
           "description": "Access code to restrict quiz access. Should be null if no restriction."
         },
-        "quiz[quiz_settings][has_time_limit]": {
+        "quiz_quiz_settings_has_time_limit": {
           "type": "boolean",
           "description": "Whether there is a time limit for the quiz."
         },
-        "quiz[quiz_settings][session_time_limit_in_seconds]": {
+        "quiz_quiz_settings_session_time_limit_in_seconds": {
           "type": "number",
           "description": "Limit the time a student can work on the quiz. Should be null if no restriction."
         }
@@ -253,33 +253,113 @@ const handlers = {
   },
   post_qvcc_quizzes: async (client, args) => {
     const mappedArgs = { ...args };
-    if ("qqsma_multiple_attempts_enabled" in mappedArgs) {
-      mappedArgs["quiz[quiz_settings][multiple_attempts][multiple_attempts_enabled]"] = mappedArgs["qqsma_multiple_attempts_enabled"];
-      delete mappedArgs["qqsma_multiple_attempts_enabled"];
+    if ("quiz_title" in mappedArgs) {
+      mappedArgs["quiz[title]"] = mappedArgs["quiz_title"];
+      delete mappedArgs["quiz_title"];
     }
-    if ("qqsrvs_result_view_restricted" in mappedArgs) {
-      mappedArgs["quiz[quiz_settings][result_view_settings][result_view_restricted]"] = mappedArgs["qqsrvs_result_view_restricted"];
-      delete mappedArgs["qqsrvs_result_view_restricted"];
+    if ("quiz_assignment_group_id" in mappedArgs) {
+      mappedArgs["quiz[assignment_group_id]"] = mappedArgs["quiz_assignment_group_id"];
+      delete mappedArgs["quiz_assignment_group_id"];
     }
-    if ("qqsrvs_display_points_awarded" in mappedArgs) {
-      mappedArgs["quiz[quiz_settings][result_view_settings][display_points_awarded]"] = mappedArgs["qqsrvs_display_points_awarded"];
-      delete mappedArgs["qqsrvs_display_points_awarded"];
+    if ("quiz_points_possible" in mappedArgs) {
+      mappedArgs["quiz[points_possible]"] = mappedArgs["quiz_points_possible"];
+      delete mappedArgs["quiz_points_possible"];
     }
-    if ("qqsrvs_display_points_possible" in mappedArgs) {
-      mappedArgs["quiz[quiz_settings][result_view_settings][display_points_possible]"] = mappedArgs["qqsrvs_display_points_possible"];
-      delete mappedArgs["qqsrvs_display_points_possible"];
+    if ("quiz_due_at" in mappedArgs) {
+      mappedArgs["quiz[due_at]"] = mappedArgs["quiz_due_at"];
+      delete mappedArgs["quiz_due_at"];
+    }
+    if ("quiz_lock_at" in mappedArgs) {
+      mappedArgs["quiz[lock_at]"] = mappedArgs["quiz_lock_at"];
+      delete mappedArgs["quiz_lock_at"];
+    }
+    if ("quiz_unlock_at" in mappedArgs) {
+      mappedArgs["quiz[unlock_at]"] = mappedArgs["quiz_unlock_at"];
+      delete mappedArgs["quiz_unlock_at"];
+    }
+    if ("quiz_grading_type" in mappedArgs) {
+      mappedArgs["quiz[grading_type]"] = mappedArgs["quiz_grading_type"];
+      delete mappedArgs["quiz_grading_type"];
+    }
+    if ("quiz_instructions" in mappedArgs) {
+      mappedArgs["quiz[instructions]"] = mappedArgs["quiz_instructions"];
+      delete mappedArgs["quiz_instructions"];
+    }
+    if ("quiz_quiz_settings_calculator_type" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][calculator_type]"] = mappedArgs["quiz_quiz_settings_calculator_type"];
+      delete mappedArgs["quiz_quiz_settings_calculator_type"];
+    }
+    if ("quiz_quiz_settings_filter_ip_address" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][filter_ip_address]"] = mappedArgs["quiz_quiz_settings_filter_ip_address"];
+      delete mappedArgs["quiz_quiz_settings_filter_ip_address"];
+    }
+    if ("quiz_quiz_settings_filters_ips" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][filters][ips][]"] = mappedArgs["quiz_quiz_settings_filters_ips"];
+      delete mappedArgs["quiz_quiz_settings_filters_ips"];
+    }
+    if ("quiz_quiz_settings_multiple_attempts_multiple_attempts_enabled" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][multiple_attempts][multiple_attempts_enabled]"] = mappedArgs["quiz_quiz_settings_multiple_attempts_multiple_attempts_enabled"];
+      delete mappedArgs["quiz_quiz_settings_multiple_attempts_multiple_attempts_enabled"];
+    }
+    if ("quiz_quiz_settings_multiple_attempts_attempt_limit" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][multiple_attempts][attempt_limit]"] = mappedArgs["quiz_quiz_settings_multiple_attempts_attempt_limit"];
+      delete mappedArgs["quiz_quiz_settings_multiple_attempts_attempt_limit"];
+    }
+    if ("quiz_quiz_settings_multiple_attempts_max_attempts" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][multiple_attempts][max_attempts]"] = mappedArgs["quiz_quiz_settings_multiple_attempts_max_attempts"];
+      delete mappedArgs["quiz_quiz_settings_multiple_attempts_max_attempts"];
+    }
+    if ("quiz_quiz_settings_multiple_attempts_score_to_keep" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][multiple_attempts][score_to_keep]"] = mappedArgs["quiz_quiz_settings_multiple_attempts_score_to_keep"];
+      delete mappedArgs["quiz_quiz_settings_multiple_attempts_score_to_keep"];
+    }
+    if ("quiz_quiz_settings_multiple_attempts_cooling_period" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][multiple_attempts][cooling_period]"] = mappedArgs["quiz_quiz_settings_multiple_attempts_cooling_period"];
+      delete mappedArgs["quiz_quiz_settings_multiple_attempts_cooling_period"];
+    }
+    if ("quiz_quiz_settings_multiple_attempts_cooling_period_seconds" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][multiple_attempts][cooling_period_seconds]"] = mappedArgs["quiz_quiz_settings_multiple_attempts_cooling_period_seconds"];
+      delete mappedArgs["quiz_quiz_settings_multiple_attempts_cooling_period_seconds"];
+    }
+    if ("quiz_quiz_settings_one_at_a_time_type" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][one_at_a_time_type]"] = mappedArgs["quiz_quiz_settings_one_at_a_time_type"];
+      delete mappedArgs["quiz_quiz_settings_one_at_a_time_type"];
+    }
+    if ("quiz_quiz_settings_allow_backtracking" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][allow_backtracking]"] = mappedArgs["quiz_quiz_settings_allow_backtracking"];
+      delete mappedArgs["quiz_quiz_settings_allow_backtracking"];
+    }
+    if ("quiz_quiz_settings_result_view_settings_result_view_restricted" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][result_view_restricted]"] = mappedArgs["quiz_quiz_settings_result_view_settings_result_view_restricted"];
+      delete mappedArgs["quiz_quiz_settings_result_view_settings_result_view_restricted"];
+    }
+    if ("quiz_quiz_settings_result_view_settings_display_points_awarded" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_points_awarded]"] = mappedArgs["quiz_quiz_settings_result_view_settings_display_points_awarded"];
+      delete mappedArgs["quiz_quiz_settings_result_view_settings_display_points_awarded"];
+    }
+    if ("quiz_quiz_settings_result_view_settings_display_points_possible" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_points_possible]"] = mappedArgs["quiz_quiz_settings_result_view_settings_display_points_possible"];
+      delete mappedArgs["quiz_quiz_settings_result_view_settings_display_points_possible"];
+    }
+    if ("quiz_quiz_settings_result_view_settings_display_items" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_items]"] = mappedArgs["quiz_quiz_settings_result_view_settings_display_items"];
+      delete mappedArgs["quiz_quiz_settings_result_view_settings_display_items"];
+    }
+    if ("quiz_quiz_settings_result_view_settings_display_item_response" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_item_response]"] = mappedArgs["quiz_quiz_settings_result_view_settings_display_item_response"];
+      delete mappedArgs["quiz_quiz_settings_result_view_settings_display_item_response"];
     }
     if ("qqsrvs_display_item_response_qualifier" in mappedArgs) {
       mappedArgs["quiz[quiz_settings][result_view_settings][display_item_response_qualifier]"] = mappedArgs["qqsrvs_display_item_response_qualifier"];
       delete mappedArgs["qqsrvs_display_item_response_qualifier"];
     }
-    if ("qqsrvs_show_item_responses_at" in mappedArgs) {
-      mappedArgs["quiz[quiz_settings][result_view_settings][show_item_responses_at]"] = mappedArgs["qqsrvs_show_item_responses_at"];
-      delete mappedArgs["qqsrvs_show_item_responses_at"];
+    if ("quiz_quiz_settings_result_view_settings_show_item_responses_at" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][show_item_responses_at]"] = mappedArgs["quiz_quiz_settings_result_view_settings_show_item_responses_at"];
+      delete mappedArgs["quiz_quiz_settings_result_view_settings_show_item_responses_at"];
     }
-    if ("qqsrvs_hide_item_responses_at" in mappedArgs) {
-      mappedArgs["quiz[quiz_settings][result_view_settings][hide_item_responses_at]"] = mappedArgs["qqsrvs_hide_item_responses_at"];
-      delete mappedArgs["qqsrvs_hide_item_responses_at"];
+    if ("quiz_quiz_settings_result_view_settings_hide_item_responses_at" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][hide_item_responses_at]"] = mappedArgs["quiz_quiz_settings_result_view_settings_hide_item_responses_at"];
+      delete mappedArgs["quiz_quiz_settings_result_view_settings_hide_item_responses_at"];
     }
     if ("qqsrvs_display_item_response_correctness" in mappedArgs) {
       mappedArgs["quiz[quiz_settings][result_view_settings][display_item_response_correctness]"] = mappedArgs["qqsrvs_display_item_response_correctness"];
@@ -300,6 +380,34 @@ const handlers = {
     if ("qqsrvs_display_item_correct_answer" in mappedArgs) {
       mappedArgs["quiz[quiz_settings][result_view_settings][display_item_correct_answer]"] = mappedArgs["qqsrvs_display_item_correct_answer"];
       delete mappedArgs["qqsrvs_display_item_correct_answer"];
+    }
+    if ("quiz_quiz_settings_result_view_settings_display_item_feedback" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_item_feedback]"] = mappedArgs["quiz_quiz_settings_result_view_settings_display_item_feedback"];
+      delete mappedArgs["quiz_quiz_settings_result_view_settings_display_item_feedback"];
+    }
+    if ("quiz_quiz_settings_shuffle_answers" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][shuffle_answers]"] = mappedArgs["quiz_quiz_settings_shuffle_answers"];
+      delete mappedArgs["quiz_quiz_settings_shuffle_answers"];
+    }
+    if ("quiz_quiz_settings_shuffle_questions" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][shuffle_questions]"] = mappedArgs["quiz_quiz_settings_shuffle_questions"];
+      delete mappedArgs["quiz_quiz_settings_shuffle_questions"];
+    }
+    if ("quiz_quiz_settings_require_student_access_code" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][require_student_access_code]"] = mappedArgs["quiz_quiz_settings_require_student_access_code"];
+      delete mappedArgs["quiz_quiz_settings_require_student_access_code"];
+    }
+    if ("quiz_quiz_settings_student_access_code" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][student_access_code]"] = mappedArgs["quiz_quiz_settings_student_access_code"];
+      delete mappedArgs["quiz_quiz_settings_student_access_code"];
+    }
+    if ("quiz_quiz_settings_has_time_limit" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][has_time_limit]"] = mappedArgs["quiz_quiz_settings_has_time_limit"];
+      delete mappedArgs["quiz_quiz_settings_has_time_limit"];
+    }
+    if ("quiz_quiz_settings_session_time_limit_in_seconds" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][session_time_limit_in_seconds]"] = mappedArgs["quiz_quiz_settings_session_time_limit_in_seconds"];
+      delete mappedArgs["quiz_quiz_settings_session_time_limit_in_seconds"];
     }
     return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/quizzes", mappedArgs);
   },

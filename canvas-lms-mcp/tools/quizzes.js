@@ -63,102 +63,102 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "quiz[title]": {
+        "quiz_title": {
           "type": "string",
           "description": "The quiz title."
         },
-        "quiz[description]": {
+        "quiz_description": {
           "type": "string",
           "description": "A description of the quiz."
         },
-        "quiz[quiz_type]": {
+        "quiz_quiz_type": {
           "type": "string",
           "description": "The type of quiz. Allowed values: `practice_quiz`, `assignment`, `graded_survey`, `survey`"
         },
-        "quiz[assignment_group_id]": {
+        "quiz_assignment_group_id": {
           "type": "number",
           "description": "<p>The assignment group id to put the assignment in. Defaults to the top<br>assignment group in the course. Only valid if the quiz is graded, i.e. if<br>quiz\\_type is \"assignment\" or \"graded\\_survey\".</p>"
         },
-        "quiz[time_limit]": {
+        "quiz_time_limit": {
           "type": "number",
           "description": "<p>Time limit to take this quiz, in minutes. Set to null for no time limit.<br>Defaults to null.</p>"
         },
-        "quiz[shuffle_answers]": {
+        "quiz_shuffle_answers": {
           "type": "boolean",
           "description": "<p>If true, quiz answers for multiple choice questions will be randomized for<br>each student. Defaults to false.</p>"
         },
-        "quiz[hide_results]": {
+        "quiz_hide_results": {
           "type": "string",
           "description": "<p>Dictates whether or not quiz results are hidden from students.<br>If null, students can see their results after any attempt.<br>If \"always\", students can never see their results.<br>If \"until\\_after\\_last\\_attempt\", students can only see results after their<br>last attempt. (Only valid if allowed\\_attempts > 1). Defaults to null. Allowed values: <code>always</code>, <code>until\\_after\\_last\\_attempt</code></p>"
         },
-        "quiz[show_correct_answers]": {
+        "quiz_show_correct_answers": {
           "type": "boolean",
           "description": "<p>Only valid if hide\\_results=null<br>If false, hides correct answers from students when quiz results are viewed.<br>Defaults to true.</p>"
         },
-        "quiz[show_correct_answers_last_attempt]": {
+        "quiz_show_correct_answers_last_attempt": {
           "type": "boolean",
           "description": "<p>Only valid if show\\_correct\\_answers=true and allowed\\_attempts > 1<br>If true, hides correct answers from students when quiz results are viewed<br>until they submit the last attempt for the quiz.<br>Defaults to false.</p>"
         },
-        "quiz[show_correct_answers_at]": {
+        "quiz_show_correct_answers_at": {
           "type": "string",
           "description": "<p>Only valid if show\\_correct\\_answers=true<br>If set, the correct answers will be visible by students only after this<br>date, otherwise the correct answers are visible once the student hands in<br>their quiz submission.</p>"
         },
-        "quiz[hide_correct_answers_at]": {
+        "quiz_hide_correct_answers_at": {
           "type": "string",
           "description": "<p>Only valid if show\\_correct\\_answers=true<br>If set, the correct answers will stop being visible once this date has<br>passed. Otherwise, the correct answers will be visible indefinitely.</p>"
         },
-        "quiz[allowed_attempts]": {
+        "quiz_allowed_attempts": {
           "type": "number",
           "description": "<p>Number of times a student is allowed to take a quiz.<br>Set to -1 for unlimited attempts.<br>Defaults to 1.</p>"
         },
-        "quiz[scoring_policy]": {
+        "quiz_scoring_policy": {
           "type": "string",
           "description": "<p>Required and only valid if allowed\\_attempts > 1.<br>Scoring policy for a quiz that students can take multiple times.<br>Defaults to \"keep\\_highest\". Allowed values: <code>keep\\_highest</code>, <code>keep\\_latest</code></p>"
         },
-        "quiz[one_question_at_a_time]": {
+        "quiz_one_question_at_a_time": {
           "type": "boolean",
           "description": "<p>If true, shows quiz to student one question at a time.<br>Defaults to false.</p>"
         },
-        "quiz[cant_go_back]": {
+        "quiz_cant_go_back": {
           "type": "boolean",
           "description": "<p>Only valid if one\\_question\\_at\\_a\\_time=true<br>If true, questions are locked after answering.<br>Defaults to false.</p>"
         },
-        "quiz[access_code]": {
+        "quiz_access_code": {
           "type": "string",
           "description": "<p>Restricts access to the quiz with a password.<br>For no access code restriction, set to null.<br>Defaults to null.</p>"
         },
-        "quiz[ip_filter]": {
+        "quiz_ip_filter": {
           "type": "string",
           "description": "<p>Restricts access to the quiz to computers in a specified IP range.<br>Filters can be a comma-separated list of addresses, or an address followed by a mask<br>Examples:<br>\"192.168.217.1\"<br>\"192.168.217.1/24\"<br>\"192.168.217.1/255.255.255.0\"<br>For no IP filter restriction, set to null.<br>Defaults to null.</p>"
         },
-        "quiz[due_at]": {
+        "quiz_due_at": {
           "type": "string",
           "description": "<p>The day/time the quiz is due.<br>Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.</p>"
         },
-        "quiz[lock_at]": {
+        "quiz_lock_at": {
           "type": "string",
           "description": "<p>The day/time the quiz is locked for students.<br>Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.</p>"
         },
-        "quiz[unlock_at]": {
+        "quiz_unlock_at": {
           "type": "string",
           "description": "<p>The day/time the quiz is unlocked for students.<br>Accepts times in ISO 8601 format, e.g. 2011-10-21T18:48Z.</p>"
         },
-        "quiz[published]": {
+        "quiz_published": {
           "type": "boolean",
           "description": "<p>Whether the quiz should have a draft state of published or unpublished.<br>NOTE: If students have started taking the quiz, or there are any<br>submissions for the quiz, you may not unpublish a quiz and will recieve<br>an error.</p>"
         },
-        "quiz[one_time_results]": {
+        "quiz_one_time_results": {
           "type": "boolean",
           "description": "<p>Whether students should be prevented from viewing their quiz results past<br>the first time (right after they turn the quiz in.)<br>Only valid if \"hide\\_results\" is not set to \"always\".<br>Defaults to false.</p>"
         },
-        "quiz[only_visible_to_overrides]": {
+        "quiz_only_visible_to_overrides": {
           "type": "boolean",
           "description": "<p>Whether this quiz is only visible to overrides (Only useful if<br>'differentiated assignments' account setting is on)<br>Defaults to false.</p>"
         }
       },
       "required": [
         "course_id",
-        "quiz[title]"
+        "quiz_title"
       ]
     }
   },
@@ -176,7 +176,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "quiz[notify_of_update]": {
+        "quiz_notify_of_update": {
           "type": "boolean",
           "description": "<p>If true, notifies users that the quiz has changed.<br>Defaults to true</p>"
         }
@@ -222,11 +222,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "order[][id]": {
+        "order_id": {
           "type": "number",
           "description": "The associated item's unique identifier"
         },
-        "order[][type]": {
+        "order_type": {
           "type": "string",
           "description": "The type of item is either 'question' or 'group' Allowed values: `question`, `group`"
         }
@@ -234,7 +234,7 @@ const definitions = [
       "required": [
         "course_id",
         "id",
-        "order[][id]"
+        "order_id"
       ]
     }
   },
@@ -274,16 +274,123 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:id", args);
   },
   post_cc_quizzes: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes", args);
+    const mappedArgs = { ...args };
+    if ("quiz_title" in mappedArgs) {
+      mappedArgs["quiz[title]"] = mappedArgs["quiz_title"];
+      delete mappedArgs["quiz_title"];
+    }
+    if ("quiz_description" in mappedArgs) {
+      mappedArgs["quiz[description]"] = mappedArgs["quiz_description"];
+      delete mappedArgs["quiz_description"];
+    }
+    if ("quiz_quiz_type" in mappedArgs) {
+      mappedArgs["quiz[quiz_type]"] = mappedArgs["quiz_quiz_type"];
+      delete mappedArgs["quiz_quiz_type"];
+    }
+    if ("quiz_assignment_group_id" in mappedArgs) {
+      mappedArgs["quiz[assignment_group_id]"] = mappedArgs["quiz_assignment_group_id"];
+      delete mappedArgs["quiz_assignment_group_id"];
+    }
+    if ("quiz_time_limit" in mappedArgs) {
+      mappedArgs["quiz[time_limit]"] = mappedArgs["quiz_time_limit"];
+      delete mappedArgs["quiz_time_limit"];
+    }
+    if ("quiz_shuffle_answers" in mappedArgs) {
+      mappedArgs["quiz[shuffle_answers]"] = mappedArgs["quiz_shuffle_answers"];
+      delete mappedArgs["quiz_shuffle_answers"];
+    }
+    if ("quiz_hide_results" in mappedArgs) {
+      mappedArgs["quiz[hide_results]"] = mappedArgs["quiz_hide_results"];
+      delete mappedArgs["quiz_hide_results"];
+    }
+    if ("quiz_show_correct_answers" in mappedArgs) {
+      mappedArgs["quiz[show_correct_answers]"] = mappedArgs["quiz_show_correct_answers"];
+      delete mappedArgs["quiz_show_correct_answers"];
+    }
+    if ("quiz_show_correct_answers_last_attempt" in mappedArgs) {
+      mappedArgs["quiz[show_correct_answers_last_attempt]"] = mappedArgs["quiz_show_correct_answers_last_attempt"];
+      delete mappedArgs["quiz_show_correct_answers_last_attempt"];
+    }
+    if ("quiz_show_correct_answers_at" in mappedArgs) {
+      mappedArgs["quiz[show_correct_answers_at]"] = mappedArgs["quiz_show_correct_answers_at"];
+      delete mappedArgs["quiz_show_correct_answers_at"];
+    }
+    if ("quiz_hide_correct_answers_at" in mappedArgs) {
+      mappedArgs["quiz[hide_correct_answers_at]"] = mappedArgs["quiz_hide_correct_answers_at"];
+      delete mappedArgs["quiz_hide_correct_answers_at"];
+    }
+    if ("quiz_allowed_attempts" in mappedArgs) {
+      mappedArgs["quiz[allowed_attempts]"] = mappedArgs["quiz_allowed_attempts"];
+      delete mappedArgs["quiz_allowed_attempts"];
+    }
+    if ("quiz_scoring_policy" in mappedArgs) {
+      mappedArgs["quiz[scoring_policy]"] = mappedArgs["quiz_scoring_policy"];
+      delete mappedArgs["quiz_scoring_policy"];
+    }
+    if ("quiz_one_question_at_a_time" in mappedArgs) {
+      mappedArgs["quiz[one_question_at_a_time]"] = mappedArgs["quiz_one_question_at_a_time"];
+      delete mappedArgs["quiz_one_question_at_a_time"];
+    }
+    if ("quiz_cant_go_back" in mappedArgs) {
+      mappedArgs["quiz[cant_go_back]"] = mappedArgs["quiz_cant_go_back"];
+      delete mappedArgs["quiz_cant_go_back"];
+    }
+    if ("quiz_access_code" in mappedArgs) {
+      mappedArgs["quiz[access_code]"] = mappedArgs["quiz_access_code"];
+      delete mappedArgs["quiz_access_code"];
+    }
+    if ("quiz_ip_filter" in mappedArgs) {
+      mappedArgs["quiz[ip_filter]"] = mappedArgs["quiz_ip_filter"];
+      delete mappedArgs["quiz_ip_filter"];
+    }
+    if ("quiz_due_at" in mappedArgs) {
+      mappedArgs["quiz[due_at]"] = mappedArgs["quiz_due_at"];
+      delete mappedArgs["quiz_due_at"];
+    }
+    if ("quiz_lock_at" in mappedArgs) {
+      mappedArgs["quiz[lock_at]"] = mappedArgs["quiz_lock_at"];
+      delete mappedArgs["quiz_lock_at"];
+    }
+    if ("quiz_unlock_at" in mappedArgs) {
+      mappedArgs["quiz[unlock_at]"] = mappedArgs["quiz_unlock_at"];
+      delete mappedArgs["quiz_unlock_at"];
+    }
+    if ("quiz_published" in mappedArgs) {
+      mappedArgs["quiz[published]"] = mappedArgs["quiz_published"];
+      delete mappedArgs["quiz_published"];
+    }
+    if ("quiz_one_time_results" in mappedArgs) {
+      mappedArgs["quiz[one_time_results]"] = mappedArgs["quiz_one_time_results"];
+      delete mappedArgs["quiz_one_time_results"];
+    }
+    if ("quiz_only_visible_to_overrides" in mappedArgs) {
+      mappedArgs["quiz[only_visible_to_overrides]"] = mappedArgs["quiz_only_visible_to_overrides"];
+      delete mappedArgs["quiz_only_visible_to_overrides"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes", mappedArgs);
   },
   put_cc_quizzes_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:id", args);
+    const mappedArgs = { ...args };
+    if ("quiz_notify_of_update" in mappedArgs) {
+      mappedArgs["quiz[notify_of_update]"] = mappedArgs["quiz_notify_of_update"];
+      delete mappedArgs["quiz_notify_of_update"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:id", mappedArgs);
   },
   delete_cc_quizzes_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/quizzes/:id", args);
   },
   post_ccqi_reorder: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:id/reorder", args);
+    const mappedArgs = { ...args };
+    if ("order_id" in mappedArgs) {
+      mappedArgs["order[][id]"] = mappedArgs["order_id"];
+      delete mappedArgs["order_id"];
+    }
+    if ("order_type" in mappedArgs) {
+      mappedArgs["order[][type]"] = mappedArgs["order_type"];
+      delete mappedArgs["order_type"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:id/reorder", mappedArgs);
   },
   post_ccqi_validate_access_code: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:id/validate_access_code", args);

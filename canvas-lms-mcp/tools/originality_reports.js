@@ -18,39 +18,39 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: submission_id"
         },
-        "originality_report[file_id]": {
+        "originality_report_file_id": {
           "type": "number",
           "description": "<p>The id of the file being given an originality score. Required<br>if creating a report associated with a file.</p>"
         },
-        "originality_report[originality_score]": {
+        "originality_report_originality_score": {
           "type": "number",
           "description": "<p>A number between 0 and 100 representing the measure of the<br>specified file's originality.</p>"
         },
-        "originality_report[originality_report_url]": {
+        "originality_report_originality_report_url": {
           "type": "string",
           "description": "<p>The URL where the originality report for the specified<br>file may be found.</p>"
         },
-        "originality_report[originality_report_file_id]": {
+        "originality_report_originality_report_file_id": {
           "type": "number",
           "description": "<p>The ID of the file within Canvas that contains the originality<br>report for the submitted file provided in the request URL.</p>"
         },
-        "originality_report[tool_setting][resource_type_code]": {
+        "originality_report_tool_setting_resource_type_code": {
           "type": "string",
           "description": "<p>The resource type code of the resource handler Canvas should use for the<br>LTI launch for viewing originality reports. If set Canvas will launch<br>to the message with type 'basic-lti-launch-request' in the specified<br>resource handler rather than using the originality\\_report\\_url.</p>"
         },
-        "originality_report[tool_setting][resource_url]": {
+        "originality_report_tool_setting_resource_url": {
           "type": "string",
           "description": "<p>The URL Canvas should launch to when showing an LTI originality report.<br>Note that this value is inferred from the specified resource handler's<br>message \"path\" value (See <code>resource\\_type\\_code</code>) unless<br>it is specified. If this parameter is used a <code>resource\\_type\\_code</code><br>must also be specified.</p>"
         },
-        "originality_report[workflow_state]": {
+        "originality_report_workflow_state": {
           "type": "string",
           "description": "<p>May be set to \"pending\", \"error\", or \"scored\". If an originality score<br>is provided a workflow state of \"scored\" will be inferred.</p>"
         },
-        "originality_report[error_message]": {
+        "originality_report_error_message": {
           "type": "string",
           "description": "<p>A message describing the error. If set, the \"workflow\\_state\"<br>will be set to \"error.\"</p>"
         },
-        "originality_report[attempt]": {
+        "originality_report_attempt": {
           "type": "number",
           "description": "<p>If no <code>file\\_id</code> is given, and no file is required for the assignment<br>(that is, the assignment allows an online text entry), this parameter<br>may be given to clarify which attempt number the report is for (in the<br>case of resubmissions). If this field is omitted and no <code>file\\_id</code> is<br>given, the report will be created (or updated, if it exists) for the<br>first submission attempt with no associated file.</p>"
         }
@@ -58,7 +58,7 @@ const definitions = [
       "required": [
         "assignment_id",
         "submission_id",
-        "originality_report[originality_score]"
+        "originality_report_originality_score"
       ]
     }
   },
@@ -102,31 +102,31 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: file_id"
         },
-        "originality_report[originality_score]": {
+        "originality_report_originality_score": {
           "type": "number",
           "description": "<p>A number between 0 and 100 representing the measure of the<br>specified file's originality.</p>"
         },
-        "originality_report[originality_report_url]": {
+        "originality_report_originality_report_url": {
           "type": "string",
           "description": "<p>The URL where the originality report for the specified<br>file may be found.</p>"
         },
-        "originality_report[originality_report_file_id]": {
+        "originality_report_originality_report_file_id": {
           "type": "number",
           "description": "<p>The ID of the file within Canvas that contains the originality<br>report for the submitted file provided in the request URL.</p>"
         },
-        "originality_report[tool_setting][resource_type_code]": {
+        "originality_report_tool_setting_resource_type_code": {
           "type": "string",
           "description": "<p>The resource type code of the resource handler Canvas should use for the<br>LTI launch for viewing originality reports. If set Canvas will launch<br>to the message with type 'basic-lti-launch-request' in the specified<br>resource handler rather than using the originality\\_report\\_url.</p>"
         },
-        "originality_report[tool_setting][resource_url]": {
+        "originality_report_tool_setting_resource_url": {
           "type": "string",
           "description": "<p>The URL Canvas should launch to when showing an LTI originality report.<br>Note that this value is inferred from the specified resource handler's<br>message \"path\" value (See <code>resource\\_type\\_code</code>) unless<br>it is specified. If this parameter is used a <code>resource\\_type\\_code</code><br>must also be specified.</p>"
         },
-        "originality_report[workflow_state]": {
+        "originality_report_workflow_state": {
           "type": "string",
           "description": "<p>May be set to \"pending\", \"error\", or \"scored\". If an originality score<br>is provided a workflow state of \"scored\" will be inferred.</p>"
         },
-        "originality_report[error_message]": {
+        "originality_report_error_message": {
           "type": "string",
           "description": "<p>A message describing the error. If set, the \"workflow\\_state\"<br>will be set to \"error.\"</p>"
         }
@@ -196,13 +196,79 @@ const definitions = [
 
 const handlers = {
   post_aass_originality_report: async (client, args) => {
-    return genericHandler(client, "POST", "/api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report", args);
+    const mappedArgs = { ...args };
+    if ("originality_report_file_id" in mappedArgs) {
+      mappedArgs["originality_report[file_id]"] = mappedArgs["originality_report_file_id"];
+      delete mappedArgs["originality_report_file_id"];
+    }
+    if ("originality_report_originality_score" in mappedArgs) {
+      mappedArgs["originality_report[originality_score]"] = mappedArgs["originality_report_originality_score"];
+      delete mappedArgs["originality_report_originality_score"];
+    }
+    if ("originality_report_originality_report_url" in mappedArgs) {
+      mappedArgs["originality_report[originality_report_url]"] = mappedArgs["originality_report_originality_report_url"];
+      delete mappedArgs["originality_report_originality_report_url"];
+    }
+    if ("originality_report_originality_report_file_id" in mappedArgs) {
+      mappedArgs["originality_report[originality_report_file_id]"] = mappedArgs["originality_report_originality_report_file_id"];
+      delete mappedArgs["originality_report_originality_report_file_id"];
+    }
+    if ("originality_report_tool_setting_resource_type_code" in mappedArgs) {
+      mappedArgs["originality_report[tool_setting][resource_type_code]"] = mappedArgs["originality_report_tool_setting_resource_type_code"];
+      delete mappedArgs["originality_report_tool_setting_resource_type_code"];
+    }
+    if ("originality_report_tool_setting_resource_url" in mappedArgs) {
+      mappedArgs["originality_report[tool_setting][resource_url]"] = mappedArgs["originality_report_tool_setting_resource_url"];
+      delete mappedArgs["originality_report_tool_setting_resource_url"];
+    }
+    if ("originality_report_workflow_state" in mappedArgs) {
+      mappedArgs["originality_report[workflow_state]"] = mappedArgs["originality_report_workflow_state"];
+      delete mappedArgs["originality_report_workflow_state"];
+    }
+    if ("originality_report_error_message" in mappedArgs) {
+      mappedArgs["originality_report[error_message]"] = mappedArgs["originality_report_error_message"];
+      delete mappedArgs["originality_report_error_message"];
+    }
+    if ("originality_report_attempt" in mappedArgs) {
+      mappedArgs["originality_report[attempt]"] = mappedArgs["originality_report_attempt"];
+      delete mappedArgs["originality_report_attempt"];
+    }
+    return genericHandler(client, "POST", "/api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report", mappedArgs);
   },
   put_aass_originality_report_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report/:id", args);
   },
   put_aaff_originality_report: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/lti/assignments/:assignment_id/files/:file_id/originality_report", args);
+    const mappedArgs = { ...args };
+    if ("originality_report_originality_score" in mappedArgs) {
+      mappedArgs["originality_report[originality_score]"] = mappedArgs["originality_report_originality_score"];
+      delete mappedArgs["originality_report_originality_score"];
+    }
+    if ("originality_report_originality_report_url" in mappedArgs) {
+      mappedArgs["originality_report[originality_report_url]"] = mappedArgs["originality_report_originality_report_url"];
+      delete mappedArgs["originality_report_originality_report_url"];
+    }
+    if ("originality_report_originality_report_file_id" in mappedArgs) {
+      mappedArgs["originality_report[originality_report_file_id]"] = mappedArgs["originality_report_originality_report_file_id"];
+      delete mappedArgs["originality_report_originality_report_file_id"];
+    }
+    if ("originality_report_tool_setting_resource_type_code" in mappedArgs) {
+      mappedArgs["originality_report[tool_setting][resource_type_code]"] = mappedArgs["originality_report_tool_setting_resource_type_code"];
+      delete mappedArgs["originality_report_tool_setting_resource_type_code"];
+    }
+    if ("originality_report_tool_setting_resource_url" in mappedArgs) {
+      mappedArgs["originality_report[tool_setting][resource_url]"] = mappedArgs["originality_report_tool_setting_resource_url"];
+      delete mappedArgs["originality_report_tool_setting_resource_url"];
+    }
+    if ("originality_report_workflow_state" in mappedArgs) {
+      mappedArgs["originality_report[workflow_state]"] = mappedArgs["originality_report_workflow_state"];
+      delete mappedArgs["originality_report_workflow_state"];
+    }
+    if ("originality_report_error_message" in mappedArgs) {
+      mappedArgs["originality_report[error_message]"] = mappedArgs["originality_report_error_message"];
+      delete mappedArgs["originality_report_error_message"];
+    }
+    return genericHandler(client, "PUT", "/api/lti/assignments/:assignment_id/files/:file_id/originality_report", mappedArgs);
   },
   get_aass_originality_report_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report/:id", args);

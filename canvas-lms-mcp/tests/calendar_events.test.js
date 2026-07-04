@@ -51,7 +51,7 @@ test("post_calendar_events calls correct endpoint", async () => {
   const handler = calendar_eventsModule.handlers.post_calendar_events;
   assert.ok(handler, "Handler post_calendar_events should be defined");
 
-  const result = await handler(mockClient, {"calendar_event[context_code]": "test_val"});
+  const result = await handler(mockClient, {"calendar_event_context_code": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/calendar_events");
@@ -123,7 +123,7 @@ test("put_calendar_events_id calls correct endpoint", async () => {
   const handler = calendar_eventsModule.handlers.put_calendar_events_id;
   assert.ok(handler, "Handler put_calendar_events_id should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "calendar_event[context_code]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "calendar_event_context_code": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/calendar_events/test_id");
@@ -177,7 +177,7 @@ test("post_ccce_timetable calls correct endpoint", async () => {
   const handler = calendar_eventsModule.handlers.post_ccce_timetable;
   assert.ok(handler, "Handler post_ccce_timetable should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "timetables[course_section_id][]": ["test_val"]});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "timetables_course_section_id": ["test_val"]});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/calendar_events/timetable");

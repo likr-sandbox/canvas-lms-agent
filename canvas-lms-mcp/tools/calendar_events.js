@@ -30,15 +30,15 @@ const definitions = [
           "type": "boolean",
           "description": "<p>Defaults to false (uses start\\_date, end\\_date, and undated criteria).<br>If true, all events are returned, ignoring start\\_date, end\\_date, and undated criteria.</p>"
         },
-        "context_codes[]": {
+        "context_codes": {
           "type": "string",
           "description": "<p>List of context codes of courses, groups, users, or accounts whose events you want to see.<br>If not specified, defaults to the current user (i.e personal calendar,<br>no course/group events). Limited to 10 context codes, additional ones are<br>ignored. The format of this field is the context type, followed by an<br>underscore, followed by the context id. For example: course\\_42</p>"
         },
-        "excludes[]": {
+        "excludes": {
           "type": "array",
           "description": "Array of attributes to exclude. Possible values are \"description\", \"child\\_events\" and \"assignment\""
         },
-        "includes[]": {
+        "includes": {
           "type": "array",
           "description": "Array of optional attributes to include. Possible values are \"web\\_conference\" and \"series\\_natural\\_language\""
         },
@@ -87,23 +87,23 @@ const definitions = [
           "type": "boolean",
           "description": "<p>Defaults to false (uses start\\_date, end\\_date, and undated criteria).<br>If true, all events are returned, ignoring start\\_date, end\\_date, and undated criteria.</p>"
         },
-        "context_codes[]": {
+        "context_codes": {
           "type": "string",
           "description": "<p>List of context codes of courses, groups, users, or accounts whose events you want to see.<br>If not specified, defaults to the current user (i.e personal calendar,<br>no course/group events). Limited to 10 context codes, additional ones are<br>ignored. The format of this field is the context type, followed by an<br>underscore, followed by the context id. For example: course\\_42</p>"
         },
-        "excludes[]": {
+        "excludes": {
           "type": "array",
           "description": "Array of attributes to exclude. Possible values are \"description\", \"child\\_events\" and \"assignment\""
         },
-        "submission_types[]": {
+        "submission_types": {
           "type": "array",
           "description": "<p>When type is \"assignment\", specifies the allowable submission types for returned assignments.<br>Ignored if type is not \"assignment\" or if exclude\\_submission\\_types is provided.</p>"
         },
-        "exclude_submission_types[]": {
+        "exclude_submission_types": {
           "type": "array",
           "description": "<p>When type is \"assignment\", specifies the submission types to be excluded from the returned<br>assignments. Ignored if type is not \"assignment\".</p>"
         },
-        "includes[]": {
+        "includes": {
           "type": "array",
           "description": "Array of optional attributes to include. Possible values are \"web\\_conference\" and \"series\\_natural\\_language\""
         },
@@ -131,81 +131,81 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "calendar_event[context_code]": {
+        "calendar_event_context_code": {
           "type": "string",
           "description": "<p>Context code of the course, group, user, or account whose calendar<br>this event should be added to.</p>"
         },
-        "calendar_event[title]": {
+        "calendar_event_title": {
           "type": "string",
           "description": "Short title for the calendar event."
         },
-        "calendar_event[description]": {
+        "calendar_event_description": {
           "type": "string",
           "description": "Longer HTML description of the event."
         },
-        "calendar_event[start_at]": {
+        "calendar_event_start_at": {
           "type": "string",
           "description": "Start date/time of the event."
         },
-        "calendar_event[end_at]": {
+        "calendar_event_end_at": {
           "type": "string",
           "description": "End date/time of the event."
         },
-        "calendar_event[location_name]": {
+        "calendar_event_location_name": {
           "type": "string",
           "description": "Location name of the event."
         },
-        "calendar_event[location_address]": {
+        "calendar_event_location_address": {
           "type": "string",
           "description": "Location address"
         },
-        "calendar_event[time_zone_edited]": {
+        "calendar_event_time_zone_edited": {
           "type": "string",
           "description": "<p>Time zone of the user editing the event. Allowed time zones are<br><a href=\"http://www.iana.org/time-zones\">IANA time zones</a> or friendlier<br><a href=\"http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html\">Ruby on Rails time zones</a>.</p>"
         },
-        "calendar_event[all_day]": {
+        "calendar_event_all_day": {
           "type": "boolean",
           "description": "When true event is considered to span the whole day and times are ignored."
         },
-        "calendar_event[child_event_data][X][start_at]": {
+        "calendar_event_child_event_data_X_start_at": {
           "type": "string",
           "description": "<p>Section-level start time(s) if this is a course event. X can be any<br>identifier, provided that it is consistent across the start\\_at, end\\_at<br>and context\\_code</p>"
         },
-        "calendar_event[child_event_data][X][end_at]": {
+        "calendar_event_child_event_data_X_end_at": {
           "type": "string",
           "description": "Section-level end time(s) if this is a course event."
         },
-        "calendar_event[child_event_data][X][context_code]": {
+        "calendar_event_child_event_data_X_context_code": {
           "type": "string",
           "description": "Context code(s) corresponding to the section-level start and end time(s)."
         },
-        "calendar_event[duplicate][count]": {
+        "calendar_event_duplicate_count": {
           "type": "number",
           "description": "Number of times to copy/duplicate the event. Count cannot exceed 200."
         },
-        "calendar_event[duplicate][interval]": {
+        "calendar_event_duplicate_interval": {
           "type": "number",
           "description": "Defaults to 1 if duplicate `count` is set. The interval between the duplicated events."
         },
-        "calendar_event[duplicate][frequency]": {
+        "calendar_event_duplicate_frequency": {
           "type": "string",
           "description": "Defaults to \"weekly\". The frequency at which to duplicate the event Allowed values: `daily`, `weekly`, `monthly`"
         },
-        "calendar_event[duplicate][append_iterator]": {
+        "calendar_event_duplicate_append_iterator": {
           "type": "boolean",
           "description": "<p>Defaults to false. If set to <code>true</code>, an increasing counter number will be appended to the event title<br>when the event is duplicated. (e.g. Event 1, Event 2, Event 3, etc)</p>"
         },
-        "calendar_event[rrule]": {
+        "calendar_event_rrule": {
           "type": "string",
           "description": "<p>The recurrence rule to create a series of recurring events.<br>Its value is the <a href=\"https://icalendar.org/iCalendar-RFC-5545/3-8-5-3-recurrence-rule.html\">iCalendar RRULE</a><br>defining how the event repeats. Unending series not supported.</p>"
         },
-        "calendar_event[blackout_date]": {
+        "calendar_event_blackout_date": {
           "type": "boolean",
           "description": "<p>If the blackout\\_date is true, this event represents a holiday or some<br>other special day that does not count in course pacing.</p>"
         }
       },
       "required": [
-        "calendar_event[context_code]"
+        "calendar_event_context_code"
       ]
     }
   },
@@ -284,55 +284,55 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "calendar_event[context_code]": {
+        "calendar_event_context_code": {
           "type": "string",
           "description": "<p>Context code of the course, group, user, or account to move this event to.<br>Scheduler appointments and events with section-specific times cannot be moved between calendars.</p>"
         },
-        "calendar_event[title]": {
+        "calendar_event_title": {
           "type": "string",
           "description": "Short title for the calendar event."
         },
-        "calendar_event[description]": {
+        "calendar_event_description": {
           "type": "string",
           "description": "Longer HTML description of the event."
         },
-        "calendar_event[start_at]": {
+        "calendar_event_start_at": {
           "type": "string",
           "description": "Start date/time of the event."
         },
-        "calendar_event[end_at]": {
+        "calendar_event_end_at": {
           "type": "string",
           "description": "End date/time of the event."
         },
-        "calendar_event[location_name]": {
+        "calendar_event_location_name": {
           "type": "string",
           "description": "Location name of the event."
         },
-        "calendar_event[location_address]": {
+        "calendar_event_location_address": {
           "type": "string",
           "description": "Location address"
         },
-        "calendar_event[time_zone_edited]": {
+        "calendar_event_time_zone_edited": {
           "type": "string",
           "description": "<p>Time zone of the user editing the event. Allowed time zones are<br><a href=\"http://www.iana.org/time-zones\">IANA time zones</a> or friendlier<br><a href=\"http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html\">Ruby on Rails time zones</a>.</p>"
         },
-        "calendar_event[all_day]": {
+        "calendar_event_all_day": {
           "type": "boolean",
           "description": "When true event is considered to span the whole day and times are ignored."
         },
-        "calendar_event[child_event_data][X][start_at]": {
+        "calendar_event_child_event_data_X_start_at": {
           "type": "string",
           "description": "<p>Section-level start time(s) if this is a course event. X can be any<br>identifier, provided that it is consistent across the start\\_at, end\\_at<br>and context\\_code</p>"
         },
-        "calendar_event[child_event_data][X][end_at]": {
+        "calendar_event_child_event_data_X_end_at": {
           "type": "string",
           "description": "Section-level end time(s) if this is a course event."
         },
-        "calendar_event[child_event_data][X][context_code]": {
+        "calendar_event_child_event_data_X_context_code": {
           "type": "string",
           "description": "Context code(s) corresponding to the section-level start and end time(s)."
         },
-        "calendar_event[rrule]": {
+        "calendar_event_rrule": {
           "type": "string",
           "description": "<p>Valid if the event whose ID is in the URL is part of a series.<br>This defines the shape of the recurring event series after it's updated.<br>Its value is the iCalendar RRULE. Unending series are not supported.</p>"
         },
@@ -340,7 +340,7 @@ const definitions = [
           "type": "string",
           "description": "<p>Valid if the event whose ID is in the URL is part of a series.<br>Update just the event whose ID is in in the URL, all events<br>in the series, or the given event and all those following.<br>Some updates may create a new series. For example, changing the start time<br>of this and all following events from the middle of a series. Allowed values: <code>one</code>, <code>all</code>, <code>following</code></p>"
         },
-        "calendar_event[blackout_date]": {
+        "calendar_event_blackout_date": {
           "type": "boolean",
           "description": "<p>If the blackout\\_date is true, this event represents a holiday or some<br>other special day that does not count in course pacing.</p>"
         }
@@ -384,7 +384,7 @@ const definitions = [
           "type": "boolean",
           "description": "Flag to mark account calendars feature as seen"
         },
-        "enabled_account_calendars[]": {
+        "enabled_account_calendars": {
           "type": "array",
           "description": "An array of account Ids to remember in the calendars list of the user"
         }
@@ -401,23 +401,23 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "timetables[course_section_id][]": {
+        "timetables_course_section_id": {
           "type": "array",
           "description": "<p>An array of timetable objects for the course section specified by course\\_section\\_id.<br>If course\\_section\\_id is set to \"all\", events will be created for the entire course.</p>"
         },
-        "timetables[course_section_id][][weekdays]": {
+        "timetables_course_section_id_weekdays": {
           "type": "string",
           "description": "<p>A comma-separated list of abbreviated weekdays<br>(Mon-Monday, Tue-Tuesday, Wed-Wednesday, Thu-Thursday, Fri-Friday, Sat-Saturday, Sun-Sunday)</p>"
         },
-        "timetables[course_section_id][][start_time]": {
+        "timetables_course_section_id_start_time": {
           "type": "string",
           "description": "Time to start each event at (e.g. \"9:00 am\")"
         },
-        "timetables[course_section_id][][end_time]": {
+        "timetables_course_section_id_end_time": {
           "type": "string",
           "description": "Time to end each event at (e.g. \"9:00 am\")"
         },
-        "timetables[course_section_id][][location_name]": {
+        "timetables_course_section_id_location_name": {
           "type": "string",
           "description": "A location name to set for each event"
         }
@@ -461,27 +461,27 @@ const definitions = [
           "type": "string",
           "description": "<p>Events will be created for the course section specified by course\\_section\\_id.<br>If not present, events will be created for the entire course.</p>"
         },
-        "events[]": {
+        "events": {
           "type": "array",
           "description": "An array of event objects to use."
         },
-        "events[][start_at]": {
+        "events_start_at": {
           "type": "string",
           "description": "Start time for the event"
         },
-        "events[][end_at]": {
+        "events_end_at": {
           "type": "string",
           "description": "End time for the event"
         },
-        "events[][location_name]": {
+        "events_location_name": {
           "type": "string",
           "description": "Location name for the event"
         },
-        "events[][code]": {
+        "events_code": {
           "type": "string",
           "description": "<p>A unique identifier that can be used to update the event at a later time<br>If one is not specified, an identifier will be generated based on the start and end times</p>"
         },
-        "events[][title]": {
+        "events_title": {
           "type": "string",
           "description": "Title for the meeting. If not present, will default to the associated course's name"
         }
@@ -495,13 +495,120 @@ const definitions = [
 
 const handlers = {
   get_calendar_events: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/calendar_events", args);
+    const mappedArgs = { ...args };
+    if ("context_codes" in mappedArgs) {
+      mappedArgs["context_codes[]"] = mappedArgs["context_codes"];
+      delete mappedArgs["context_codes"];
+    }
+    if ("excludes" in mappedArgs) {
+      mappedArgs["excludes[]"] = mappedArgs["excludes"];
+      delete mappedArgs["excludes"];
+    }
+    if ("includes" in mappedArgs) {
+      mappedArgs["includes[]"] = mappedArgs["includes"];
+      delete mappedArgs["includes"];
+    }
+    return genericHandler(client, "GET", "/api/v1/calendar_events", mappedArgs);
   },
   get_uu_calendar_events: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/calendar_events", args);
+    const mappedArgs = { ...args };
+    if ("context_codes" in mappedArgs) {
+      mappedArgs["context_codes[]"] = mappedArgs["context_codes"];
+      delete mappedArgs["context_codes"];
+    }
+    if ("excludes" in mappedArgs) {
+      mappedArgs["excludes[]"] = mappedArgs["excludes"];
+      delete mappedArgs["excludes"];
+    }
+    if ("submission_types" in mappedArgs) {
+      mappedArgs["submission_types[]"] = mappedArgs["submission_types"];
+      delete mappedArgs["submission_types"];
+    }
+    if ("exclude_submission_types" in mappedArgs) {
+      mappedArgs["exclude_submission_types[]"] = mappedArgs["exclude_submission_types"];
+      delete mappedArgs["exclude_submission_types"];
+    }
+    if ("includes" in mappedArgs) {
+      mappedArgs["includes[]"] = mappedArgs["includes"];
+      delete mappedArgs["includes"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/calendar_events", mappedArgs);
   },
   post_calendar_events: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/calendar_events", args);
+    const mappedArgs = { ...args };
+    if ("calendar_event_context_code" in mappedArgs) {
+      mappedArgs["calendar_event[context_code]"] = mappedArgs["calendar_event_context_code"];
+      delete mappedArgs["calendar_event_context_code"];
+    }
+    if ("calendar_event_title" in mappedArgs) {
+      mappedArgs["calendar_event[title]"] = mappedArgs["calendar_event_title"];
+      delete mappedArgs["calendar_event_title"];
+    }
+    if ("calendar_event_description" in mappedArgs) {
+      mappedArgs["calendar_event[description]"] = mappedArgs["calendar_event_description"];
+      delete mappedArgs["calendar_event_description"];
+    }
+    if ("calendar_event_start_at" in mappedArgs) {
+      mappedArgs["calendar_event[start_at]"] = mappedArgs["calendar_event_start_at"];
+      delete mappedArgs["calendar_event_start_at"];
+    }
+    if ("calendar_event_end_at" in mappedArgs) {
+      mappedArgs["calendar_event[end_at]"] = mappedArgs["calendar_event_end_at"];
+      delete mappedArgs["calendar_event_end_at"];
+    }
+    if ("calendar_event_location_name" in mappedArgs) {
+      mappedArgs["calendar_event[location_name]"] = mappedArgs["calendar_event_location_name"];
+      delete mappedArgs["calendar_event_location_name"];
+    }
+    if ("calendar_event_location_address" in mappedArgs) {
+      mappedArgs["calendar_event[location_address]"] = mappedArgs["calendar_event_location_address"];
+      delete mappedArgs["calendar_event_location_address"];
+    }
+    if ("calendar_event_time_zone_edited" in mappedArgs) {
+      mappedArgs["calendar_event[time_zone_edited]"] = mappedArgs["calendar_event_time_zone_edited"];
+      delete mappedArgs["calendar_event_time_zone_edited"];
+    }
+    if ("calendar_event_all_day" in mappedArgs) {
+      mappedArgs["calendar_event[all_day]"] = mappedArgs["calendar_event_all_day"];
+      delete mappedArgs["calendar_event_all_day"];
+    }
+    if ("calendar_event_child_event_data_X_start_at" in mappedArgs) {
+      mappedArgs["calendar_event[child_event_data][X][start_at]"] = mappedArgs["calendar_event_child_event_data_X_start_at"];
+      delete mappedArgs["calendar_event_child_event_data_X_start_at"];
+    }
+    if ("calendar_event_child_event_data_X_end_at" in mappedArgs) {
+      mappedArgs["calendar_event[child_event_data][X][end_at]"] = mappedArgs["calendar_event_child_event_data_X_end_at"];
+      delete mappedArgs["calendar_event_child_event_data_X_end_at"];
+    }
+    if ("calendar_event_child_event_data_X_context_code" in mappedArgs) {
+      mappedArgs["calendar_event[child_event_data][X][context_code]"] = mappedArgs["calendar_event_child_event_data_X_context_code"];
+      delete mappedArgs["calendar_event_child_event_data_X_context_code"];
+    }
+    if ("calendar_event_duplicate_count" in mappedArgs) {
+      mappedArgs["calendar_event[duplicate][count]"] = mappedArgs["calendar_event_duplicate_count"];
+      delete mappedArgs["calendar_event_duplicate_count"];
+    }
+    if ("calendar_event_duplicate_interval" in mappedArgs) {
+      mappedArgs["calendar_event[duplicate][interval]"] = mappedArgs["calendar_event_duplicate_interval"];
+      delete mappedArgs["calendar_event_duplicate_interval"];
+    }
+    if ("calendar_event_duplicate_frequency" in mappedArgs) {
+      mappedArgs["calendar_event[duplicate][frequency]"] = mappedArgs["calendar_event_duplicate_frequency"];
+      delete mappedArgs["calendar_event_duplicate_frequency"];
+    }
+    if ("calendar_event_duplicate_append_iterator" in mappedArgs) {
+      mappedArgs["calendar_event[duplicate][append_iterator]"] = mappedArgs["calendar_event_duplicate_append_iterator"];
+      delete mappedArgs["calendar_event_duplicate_append_iterator"];
+    }
+    if ("calendar_event_rrule" in mappedArgs) {
+      mappedArgs["calendar_event[rrule]"] = mappedArgs["calendar_event_rrule"];
+      delete mappedArgs["calendar_event_rrule"];
+    }
+    if ("calendar_event_blackout_date" in mappedArgs) {
+      mappedArgs["calendar_event[blackout_date]"] = mappedArgs["calendar_event_blackout_date"];
+      delete mappedArgs["calendar_event_blackout_date"];
+    }
+    return genericHandler(client, "POST", "/api/v1/calendar_events", mappedArgs);
   },
   get_calendar_events_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/calendar_events/:id", args);
@@ -513,22 +620,130 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/calendar_events/:id/reservations/:participant_id", args);
   },
   put_calendar_events_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/calendar_events/:id", args);
+    const mappedArgs = { ...args };
+    if ("calendar_event_context_code" in mappedArgs) {
+      mappedArgs["calendar_event[context_code]"] = mappedArgs["calendar_event_context_code"];
+      delete mappedArgs["calendar_event_context_code"];
+    }
+    if ("calendar_event_title" in mappedArgs) {
+      mappedArgs["calendar_event[title]"] = mappedArgs["calendar_event_title"];
+      delete mappedArgs["calendar_event_title"];
+    }
+    if ("calendar_event_description" in mappedArgs) {
+      mappedArgs["calendar_event[description]"] = mappedArgs["calendar_event_description"];
+      delete mappedArgs["calendar_event_description"];
+    }
+    if ("calendar_event_start_at" in mappedArgs) {
+      mappedArgs["calendar_event[start_at]"] = mappedArgs["calendar_event_start_at"];
+      delete mappedArgs["calendar_event_start_at"];
+    }
+    if ("calendar_event_end_at" in mappedArgs) {
+      mappedArgs["calendar_event[end_at]"] = mappedArgs["calendar_event_end_at"];
+      delete mappedArgs["calendar_event_end_at"];
+    }
+    if ("calendar_event_location_name" in mappedArgs) {
+      mappedArgs["calendar_event[location_name]"] = mappedArgs["calendar_event_location_name"];
+      delete mappedArgs["calendar_event_location_name"];
+    }
+    if ("calendar_event_location_address" in mappedArgs) {
+      mappedArgs["calendar_event[location_address]"] = mappedArgs["calendar_event_location_address"];
+      delete mappedArgs["calendar_event_location_address"];
+    }
+    if ("calendar_event_time_zone_edited" in mappedArgs) {
+      mappedArgs["calendar_event[time_zone_edited]"] = mappedArgs["calendar_event_time_zone_edited"];
+      delete mappedArgs["calendar_event_time_zone_edited"];
+    }
+    if ("calendar_event_all_day" in mappedArgs) {
+      mappedArgs["calendar_event[all_day]"] = mappedArgs["calendar_event_all_day"];
+      delete mappedArgs["calendar_event_all_day"];
+    }
+    if ("calendar_event_child_event_data_X_start_at" in mappedArgs) {
+      mappedArgs["calendar_event[child_event_data][X][start_at]"] = mappedArgs["calendar_event_child_event_data_X_start_at"];
+      delete mappedArgs["calendar_event_child_event_data_X_start_at"];
+    }
+    if ("calendar_event_child_event_data_X_end_at" in mappedArgs) {
+      mappedArgs["calendar_event[child_event_data][X][end_at]"] = mappedArgs["calendar_event_child_event_data_X_end_at"];
+      delete mappedArgs["calendar_event_child_event_data_X_end_at"];
+    }
+    if ("calendar_event_child_event_data_X_context_code" in mappedArgs) {
+      mappedArgs["calendar_event[child_event_data][X][context_code]"] = mappedArgs["calendar_event_child_event_data_X_context_code"];
+      delete mappedArgs["calendar_event_child_event_data_X_context_code"];
+    }
+    if ("calendar_event_rrule" in mappedArgs) {
+      mappedArgs["calendar_event[rrule]"] = mappedArgs["calendar_event_rrule"];
+      delete mappedArgs["calendar_event_rrule"];
+    }
+    if ("calendar_event_blackout_date" in mappedArgs) {
+      mappedArgs["calendar_event[blackout_date]"] = mappedArgs["calendar_event_blackout_date"];
+      delete mappedArgs["calendar_event_blackout_date"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/calendar_events/:id", mappedArgs);
   },
   delete_calendar_events_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/calendar_events/:id", args);
   },
   post_ce_save_enabled_account_calendars: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/calendar_events/save_enabled_account_calendars", args);
+    const mappedArgs = { ...args };
+    if ("enabled_account_calendars" in mappedArgs) {
+      mappedArgs["enabled_account_calendars[]"] = mappedArgs["enabled_account_calendars"];
+      delete mappedArgs["enabled_account_calendars"];
+    }
+    return genericHandler(client, "POST", "/api/v1/calendar_events/save_enabled_account_calendars", mappedArgs);
   },
   post_ccce_timetable: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/calendar_events/timetable", args);
+    const mappedArgs = { ...args };
+    if ("timetables_course_section_id" in mappedArgs) {
+      mappedArgs["timetables[course_section_id][]"] = mappedArgs["timetables_course_section_id"];
+      delete mappedArgs["timetables_course_section_id"];
+    }
+    if ("timetables_course_section_id_weekdays" in mappedArgs) {
+      mappedArgs["timetables[course_section_id][][weekdays]"] = mappedArgs["timetables_course_section_id_weekdays"];
+      delete mappedArgs["timetables_course_section_id_weekdays"];
+    }
+    if ("timetables_course_section_id_start_time" in mappedArgs) {
+      mappedArgs["timetables[course_section_id][][start_time]"] = mappedArgs["timetables_course_section_id_start_time"];
+      delete mappedArgs["timetables_course_section_id_start_time"];
+    }
+    if ("timetables_course_section_id_end_time" in mappedArgs) {
+      mappedArgs["timetables[course_section_id][][end_time]"] = mappedArgs["timetables_course_section_id_end_time"];
+      delete mappedArgs["timetables_course_section_id_end_time"];
+    }
+    if ("timetables_course_section_id_location_name" in mappedArgs) {
+      mappedArgs["timetables[course_section_id][][location_name]"] = mappedArgs["timetables_course_section_id_location_name"];
+      delete mappedArgs["timetables_course_section_id_location_name"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/calendar_events/timetable", mappedArgs);
   },
   get_ccce_timetable: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/calendar_events/timetable", args);
   },
   post_ccce_timetable_events: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/calendar_events/timetable_events", args);
+    const mappedArgs = { ...args };
+    if ("events" in mappedArgs) {
+      mappedArgs["events[]"] = mappedArgs["events"];
+      delete mappedArgs["events"];
+    }
+    if ("events_start_at" in mappedArgs) {
+      mappedArgs["events[][start_at]"] = mappedArgs["events_start_at"];
+      delete mappedArgs["events_start_at"];
+    }
+    if ("events_end_at" in mappedArgs) {
+      mappedArgs["events[][end_at]"] = mappedArgs["events_end_at"];
+      delete mappedArgs["events_end_at"];
+    }
+    if ("events_location_name" in mappedArgs) {
+      mappedArgs["events[][location_name]"] = mappedArgs["events_location_name"];
+      delete mappedArgs["events_location_name"];
+    }
+    if ("events_code" in mappedArgs) {
+      mappedArgs["events[][code]"] = mappedArgs["events_code"];
+      delete mappedArgs["events_code"];
+    }
+    if ("events_title" in mappedArgs) {
+      mappedArgs["events[][title]"] = mappedArgs["events_title"];
+      delete mappedArgs["events_title"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/calendar_events/timetable_events", mappedArgs);
   }
 };
 

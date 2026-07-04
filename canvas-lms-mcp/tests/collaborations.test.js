@@ -51,7 +51,7 @@ test("get_ci_members calls correct endpoint", async () => {
   const handler = collaborationsModule.handlers.get_ci_members;
   assert.ok(handler, "Handler get_ci_members should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/collaborations/test_id/members");

@@ -48,7 +48,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: poll_session_id"
         },
-        "poll_submissions[][poll_choice_id]": {
+        "poll_submissions_poll_choice_id": {
           "type": "number",
           "description": "The chosen poll choice for this submission."
         }
@@ -56,7 +56,7 @@ const definitions = [
       "required": [
         "poll_id",
         "poll_session_id",
-        "poll_submissions[][poll_choice_id]"
+        "poll_submissions_poll_choice_id"
       ]
     }
   }
@@ -67,7 +67,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/polls/:poll_id/poll_sessions/:poll_session_id/poll_submissions/:id", args);
   },
   post_pppsp_poll_submissions: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/polls/:poll_id/poll_sessions/:poll_session_id/poll_submissions", args);
+    const mappedArgs = { ...args };
+    if ("poll_submissions_poll_choice_id" in mappedArgs) {
+      mappedArgs["poll_submissions[][poll_choice_id]"] = mappedArgs["poll_submissions_poll_choice_id"];
+      delete mappedArgs["poll_submissions_poll_choice_id"];
+    }
+    return genericHandler(client, "POST", "/api/v1/polls/:poll_id/poll_sessions/:poll_session_id/poll_submissions", mappedArgs);
   }
 };
 

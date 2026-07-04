@@ -105,7 +105,7 @@ test("get_ccfa_date_details calls correct endpoint", async () => {
   const handler = learning_object_datesModule.handlers.get_ccfa_date_details;
   assert.ok(handler, "Handler get_ccfa_date_details should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "attachment_id": "test_attachment_id", "include[]": ["test_val"]});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "attachment_id": "test_attachment_id", "include": ["test_val"]});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/files/test_attachment_id/date_details");

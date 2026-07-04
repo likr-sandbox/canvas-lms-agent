@@ -34,31 +34,31 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "late_policy[missing_submission_deduction_enabled]": {
+        "late_policy_missing_submission_deduction_enabled": {
           "type": "boolean",
           "description": "Whether to enable the missing submission deduction late policy."
         },
-        "late_policy[missing_submission_deduction]": {
+        "late_policy_missing_submission_deduction": {
           "type": "number",
           "description": "How many percentage points to deduct from a missing submission."
         },
-        "late_policy[late_submission_deduction_enabled]": {
+        "late_policy_late_submission_deduction_enabled": {
           "type": "boolean",
           "description": "Whether to enable the late submission deduction late policy."
         },
-        "late_policy[late_submission_deduction]": {
+        "late_policy_late_submission_deduction": {
           "type": "number",
           "description": "How many percentage points to deduct per the late submission interval."
         },
-        "late_policy[late_submission_interval]": {
+        "late_policy_late_submission_interval": {
           "type": "string",
           "description": "The interval for late policies."
         },
-        "late_policy[late_submission_minimum_percent_enabled]": {
+        "late_policy_late_submission_minimum_percent_enabled": {
           "type": "boolean",
           "description": "Whether to enable the late submission minimum percent for a late policy."
         },
-        "late_policy[late_submission_minimum_percent]": {
+        "late_policy_late_submission_minimum_percent": {
           "type": "number",
           "description": "The minimum grade a submissions can have in percentage points."
         }
@@ -75,7 +75,36 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:id/late_policy", args);
   },
   post_ci_late_policy: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:id/late_policy", args);
+    const mappedArgs = { ...args };
+    if ("late_policy_missing_submission_deduction_enabled" in mappedArgs) {
+      mappedArgs["late_policy[missing_submission_deduction_enabled]"] = mappedArgs["late_policy_missing_submission_deduction_enabled"];
+      delete mappedArgs["late_policy_missing_submission_deduction_enabled"];
+    }
+    if ("late_policy_missing_submission_deduction" in mappedArgs) {
+      mappedArgs["late_policy[missing_submission_deduction]"] = mappedArgs["late_policy_missing_submission_deduction"];
+      delete mappedArgs["late_policy_missing_submission_deduction"];
+    }
+    if ("late_policy_late_submission_deduction_enabled" in mappedArgs) {
+      mappedArgs["late_policy[late_submission_deduction_enabled]"] = mappedArgs["late_policy_late_submission_deduction_enabled"];
+      delete mappedArgs["late_policy_late_submission_deduction_enabled"];
+    }
+    if ("late_policy_late_submission_deduction" in mappedArgs) {
+      mappedArgs["late_policy[late_submission_deduction]"] = mappedArgs["late_policy_late_submission_deduction"];
+      delete mappedArgs["late_policy_late_submission_deduction"];
+    }
+    if ("late_policy_late_submission_interval" in mappedArgs) {
+      mappedArgs["late_policy[late_submission_interval]"] = mappedArgs["late_policy_late_submission_interval"];
+      delete mappedArgs["late_policy_late_submission_interval"];
+    }
+    if ("late_policy_late_submission_minimum_percent_enabled" in mappedArgs) {
+      mappedArgs["late_policy[late_submission_minimum_percent_enabled]"] = mappedArgs["late_policy_late_submission_minimum_percent_enabled"];
+      delete mappedArgs["late_policy_late_submission_minimum_percent_enabled"];
+    }
+    if ("late_policy_late_submission_minimum_percent" in mappedArgs) {
+      mappedArgs["late_policy[late_submission_minimum_percent]"] = mappedArgs["late_policy_late_submission_minimum_percent"];
+      delete mappedArgs["late_policy_late_submission_minimum_percent"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:id/late_policy", mappedArgs);
   }
 };
 

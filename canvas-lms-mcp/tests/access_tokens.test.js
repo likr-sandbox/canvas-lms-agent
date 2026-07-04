@@ -51,7 +51,7 @@ test("post_uu_tokens calls correct endpoint", async () => {
   const handler = access_tokensModule.handlers.post_uu_tokens;
   assert.ok(handler, "Handler post_uu_tokens should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "token[purpose]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "token_purpose": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/tokens");
@@ -69,7 +69,7 @@ test("put_uu_tokens_id calls correct endpoint", async () => {
   const handler = access_tokensModule.handlers.put_uu_tokens_id;
   assert.ok(handler, "Handler put_uu_tokens_id should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id", "token[purpose]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id", "token_purpose": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/tokens/test_id");

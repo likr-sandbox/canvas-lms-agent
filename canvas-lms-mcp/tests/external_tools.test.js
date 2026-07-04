@@ -321,7 +321,7 @@ test("get_et_visible_course_nav_tools calls correct endpoint", async () => {
   const handler = external_toolsModule.handlers.get_et_visible_course_nav_tools;
   assert.ok(handler, "Handler get_et_visible_course_nav_tools should be defined");
 
-  const result = await handler(mockClient, {"context_codes[]": "test_val"});
+  const result = await handler(mockClient, {"context_codes": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/external_tools/visible_course_nav_tools");

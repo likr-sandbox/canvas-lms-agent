@@ -188,7 +188,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: notification"
         },
-        "notification_preferences[frequency]": {
+        "notification_preferences_frequency": {
           "type": "string",
           "description": "The desired frequency for this notification"
         }
@@ -197,7 +197,7 @@ const definitions = [
         "type",
         "address",
         "notification",
-        "notification_preferences[frequency]"
+        "notification_preferences_frequency"
       ]
     }
   },
@@ -215,7 +215,7 @@ const definitions = [
           "type": "string",
           "description": "The name of the category. Must be parameterized (e.g. The category \"Course Content\" should be \"course\\_content\")"
         },
-        "notification_preferences[frequency]": {
+        "notification_preferences_frequency": {
           "type": "string",
           "description": "The desired frequency for each notification in the category"
         }
@@ -223,7 +223,7 @@ const definitions = [
       "required": [
         "communication_channel_id",
         "category",
-        "notification_preferences[frequency]"
+        "notification_preferences_frequency"
       ]
     }
   },
@@ -257,7 +257,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: address"
         },
-        "notification_preferences[<X>][frequency]": {
+        "notification_preferences_X_frequency": {
           "type": "string",
           "description": "The desired frequency for \\<X> notification"
         }
@@ -265,7 +265,7 @@ const definitions = [
       "required": [
         "type",
         "address",
-        "notification_preferences[<X>][frequency]"
+        "notification_preferences_X_frequency"
       ]
     }
   }
@@ -291,16 +291,31 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:communication_channel_id/notification_preferences/:notification", args);
   },
   put_usccta_notification_preferences_notification: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:type/:address/notification_preferences/:notification", args);
+    const mappedArgs = { ...args };
+    if ("notification_preferences_frequency" in mappedArgs) {
+      mappedArgs["notification_preferences[frequency]"] = mappedArgs["notification_preferences_frequency"];
+      delete mappedArgs["notification_preferences_frequency"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:type/:address/notification_preferences/:notification", mappedArgs);
   },
   put_usccc_notification_preference_categories_category: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:communication_channel_id/notification_preference_categories/:category", args);
+    const mappedArgs = { ...args };
+    if ("notification_preferences_frequency" in mappedArgs) {
+      mappedArgs["notification_preferences[frequency]"] = mappedArgs["notification_preferences_frequency"];
+      delete mappedArgs["notification_preferences_frequency"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:communication_channel_id/notification_preference_categories/:category", mappedArgs);
   },
   put_usccc_notification_preferences: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:communication_channel_id/notification_preferences", args);
   },
   put_usccta_notification_preferences: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:type/:address/notification_preferences", args);
+    const mappedArgs = { ...args };
+    if ("notification_preferences_X_frequency" in mappedArgs) {
+      mappedArgs["notification_preferences[<X>][frequency]"] = mappedArgs["notification_preferences_X_frequency"];
+      delete mappedArgs["notification_preferences_X_frequency"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:type/:address/notification_preferences", mappedArgs);
   }
 };
 

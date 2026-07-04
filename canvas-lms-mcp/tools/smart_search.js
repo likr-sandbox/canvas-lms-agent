@@ -18,11 +18,11 @@ const definitions = [
           "type": "string",
           "description": "The search query"
         },
-        "filter[]": {
+        "filter": {
           "type": "string",
           "description": "<p>Types of objects to search. By default, all supported types are searched. Supported types<br>include +pages+, +assignments+, +announcements+, and +discussion\\_topics+.</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Optional information to include with each search result:<br>modules:: An array of module objects that the search result belongs to.<br>status:: The published status for all results and the due\\_date for all assignments. Allowed values: <code>status</code>, <code>modules</code></p>"
         },
@@ -41,7 +41,16 @@ const definitions = [
 
 const handlers = {
   get_cc_smartsearch: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/smartsearch", args);
+    const mappedArgs = { ...args };
+    if ("filter" in mappedArgs) {
+      mappedArgs["filter[]"] = mappedArgs["filter"];
+      delete mappedArgs["filter"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/smartsearch", mappedArgs);
   }
 };
 

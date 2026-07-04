@@ -33,7 +33,7 @@ test("post_ccaa_moderated_students calls correct endpoint", async () => {
   const handler = moderated_gradingModule.handlers.post_ccaa_moderated_students;
   assert.ok(handler, "Handler post_ccaa_moderated_students should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "student_ids[]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "student_ids": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignments/test_assignment_id/moderated_students");

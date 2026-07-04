@@ -33,7 +33,7 @@ test("post_cc_outcome_proficiency calls correct endpoint", async () => {
   const handler = proficiency_ratingsModule.handlers.post_cc_outcome_proficiency;
   assert.ok(handler, "Handler post_cc_outcome_proficiency should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "ratings[][description]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "ratings_description": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/outcome_proficiency");

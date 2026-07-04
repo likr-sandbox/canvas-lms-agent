@@ -54,19 +54,19 @@ const definitions = [
           "type": "string",
           "description": "<p>Filter by user\\_id (only valid for course or section enrollment<br>queries). If set to the current user's id, this is a way to<br>determine if the user has any enrollments in the course or section,<br>independent of whether the user has permission to view other people<br>on the roster.</p>"
         },
-        "type[]": {
+        "type": {
           "type": "string",
           "description": "<p>A list of enrollment types to return. Accepted values are<br>'StudentEnrollment', 'TeacherEnrollment', 'TaEnrollment',<br>'DesignerEnrollment', and 'ObserverEnrollment.' If omitted, all enrollment<br>types are returned. This argument is ignored if <code>role</code> is given.</p>"
         },
-        "role[]": {
+        "role": {
           "type": "string",
           "description": "<p>A list of enrollment roles to return. Accepted values include course-level<br>roles created by the <a href=\"roles.md#method.role_overrides.add_role\">Add Role API</a><br>as well as the base enrollment types accepted by the <code>type</code> argument above.</p>"
         },
-        "state[]": {
+        "state": {
           "type": "string",
           "description": "<p>Filter by enrollment state. If omitted, 'active' and 'invited' enrollments<br>are returned. The following synthetic states are supported only when<br>querying a user's enrollments (either via user\\_id argument or via user<br>enrollments endpoint): +current\\_and\\_invited+, +current\\_and\\_future+, +current\\_future\\_and\\_restricted+, +current\\_and\\_concluded+ Allowed values: <code>active</code>, <code>invited</code>, <code>creation\\_pending</code>, <code>deleted</code>, <code>rejected</code>, <code>completed</code>, <code>inactive</code>, <code>current\\_and\\_invited</code>, <code>current\\_and\\_future</code>, <code>current\\_future\\_and\\_restricted</code>, <code>current\\_and\\_concluded</code></p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include on the enrollment or user records.<br>\"avatar\\_url\" and \"group\\_ids\" will be returned on the user record. If \"current\\_points\"<br>is specified, the fields \"current\\_points\" and (if the caller has<br>permissions to manage grades) \"unposted\\_current\\_points\" will be included<br>in the \"grades\" hash for student enrollments. Allowed values: <code>avatar\\_url</code>, <code>group\\_ids</code>, <code>locked</code>, <code>observed\\_users</code>, <code>can\\_be\\_removed</code>, <code>uuid</code>, <code>current\\_points</code></p>"
         },
@@ -78,23 +78,23 @@ const definitions = [
           "type": "number",
           "description": "<p>Returns only enrollments for the specified enrollment term. This parameter<br>only applies to the user enrollments path. May pass the ID from the<br>enrollment terms api or the SIS id prepended with 'sis\\_term\\_id:'.</p>"
         },
-        "sis_account_id[]": {
+        "sis_account_id": {
           "type": "string",
           "description": "<p>Returns only enrollments for the specified SIS account ID(s). Does not<br>look into sub\\_accounts. May pass in array or string.</p>"
         },
-        "sis_course_id[]": {
+        "sis_course_id": {
           "type": "string",
           "description": "<p>Returns only enrollments matching the specified SIS course ID(s).<br>May pass in array or string.</p>"
         },
-        "sis_section_id[]": {
+        "sis_section_id": {
           "type": "string",
           "description": "<p>Returns only section enrollments matching the specified SIS section ID(s).<br>May pass in array or string.</p>"
         },
-        "sis_user_id[]": {
+        "sis_user_id": {
           "type": "string",
           "description": "<p>Returns only enrollments for the specified SIS user ID(s). May pass in<br>array or string.</p>"
         },
-        "created_for_sis_id[]": {
+        "created_for_sis_id": {
           "type": "boolean",
           "description": "<p>If sis\\_user\\_id is present and created\\_for\\_sis\\_id is true, Returns only<br>enrollments for the specified SIS ID(s).<br>If a user has two sis\\_id's, one enrollment may be created using one of the<br>two ids. This would limit the enrollments returned from the endpoint to<br>enrollments that were created from a sis\\_import with that sis\\_user\\_id</p>"
         },
@@ -159,63 +159,63 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: section_id"
         },
-        "enrollment[start_at]": {
+        "enrollment_start_at": {
           "type": "string",
           "description": "The start time of the enrollment, in ISO8601 format. e.g. 2012-04-18T23:08:51Z"
         },
-        "enrollment[end_at]": {
+        "enrollment_end_at": {
           "type": "string",
           "description": "The end time of the enrollment, in ISO8601 format. e.g. 2012-04-18T23:08:51Z"
         },
-        "enrollment[user_id]": {
+        "enrollment_user_id": {
           "type": "string",
           "description": "The ID of the user to be enrolled in the course."
         },
-        "enrollment[type]": {
+        "enrollment_type": {
           "type": "string",
           "description": "<p>Enroll the user as a student, teacher, TA, observer, or designer. If no<br>value is given, the type will be inferred by +enrollment\\[role]+ if supplied,<br>otherwise 'StudentEnrollment' will be used. Allowed values: <code>StudentEnrollment</code>, <code>TeacherEnrollment</code>, <code>TaEnrollment</code>, <code>ObserverEnrollment</code>, <code>DesignerEnrollment</code></p>"
         },
-        "enrollment[role]": {
+        "enrollment_role": {
           "type": "string",
           "description": "Assigns a custom course-level role to the user."
         },
-        "enrollment[role_id]": {
+        "enrollment_role_id": {
           "type": "number",
           "description": "Assigns a custom course-level role to the user."
         },
-        "enrollment[enrollment_state]": {
+        "enrollment_enrollment_state": {
           "type": "string",
           "description": "<p>If set to 'active,' student will be immediately enrolled in the course.<br>Otherwise they will be required to accept a course invitation. Default is<br>'invited.'.<br>If set to 'inactive', student will be listed in the course roster for<br>teachers, but will not be able to participate in the course until<br>their enrollment is activated. Allowed values: <code>active</code>, <code>invited</code>, <code>inactive</code></p>"
         },
-        "enrollment[course_section_id]": {
+        "enrollment_course_section_id": {
           "type": "number",
           "description": "<p>The ID of the course section to enroll the student in. If the<br>section-specific URL is used, this argument is redundant and will be<br>ignored.</p>"
         },
-        "enrollment[limit_privileges_to_course_section]": {
+        "enrollment_limit_privileges_to_course_section": {
           "type": "boolean",
           "description": "<p>If set, the enrollment will only allow the user to see and interact with<br>users enrolled in the section given by course\\_section\\_id.<br>\\* For teachers and TAs, this includes grading privileges.<br>\\* Section-limited students will not see any users (including teachers<br>and TAs) not enrolled in their sections.<br>\\* Users may have other enrollments that grant privileges to<br>multiple sections in the same course.</p>"
         },
-        "enrollment[notify]": {
+        "enrollment_notify": {
           "type": "boolean",
           "description": "<p>If true, a notification will be sent to the enrolled user.<br>Notifications are not sent by default.</p>"
         },
-        "enrollment[self_enrollment_code]": {
+        "enrollment_self_enrollment_code": {
           "type": "string",
           "description": "<p>If the current user is not allowed to manage enrollments in this<br>course, but the course allows self-enrollment, the user can self-<br>enroll as a student in the default section by passing in a valid<br>code. When self-enrolling, the user\\_id must be 'self'. The<br>enrollment\\_state will be set to 'active' and all other arguments<br>will be ignored.</p>"
         },
-        "enrollment[self_enrolled]": {
+        "enrollment_self_enrolled": {
           "type": "boolean",
           "description": "<p>If true, marks the enrollment as a self-enrollment, which gives<br>students the ability to drop the course if desired. Defaults to false.</p>"
         },
-        "enrollment[associated_user_id]": {
+        "enrollment_associated_user_id": {
           "type": "number",
           "description": "<p>For an observer enrollment, the ID of a student to observe.<br>This is a one-off operation; to automatically observe all a<br>student's enrollments (for example, as a parent), please use<br>the <a href=\"user_observees.md#method.user_observees.create\">User Observees API</a>.</p>"
         },
-        "enrollment[sis_user_id]": {
+        "enrollment_sis_user_id": {
           "type": "string",
           "description": "<p>Required if the user is being enrolled from another trusted account.<br>The unique identifier for the user (sis\\_user\\_id) must also be<br>accompanied by the root\\_account parameter. The user\\_id will be ignored.</p>"
         },
-        "enrollment[integration_id]": {
+        "enrollment_integration_id": {
           "type": "string",
           "description": "<p>Required if the user is being enrolled from another trusted account.<br>The unique identifier for the user (integration\\_id) must also be<br>accompanied by the root\\_account parameter. The user\\_id will be ignored.</p>"
         },
@@ -226,8 +226,8 @@ const definitions = [
       },
       "required": [
         "section_id",
-        "enrollment[user_id]",
-        "enrollment[type]"
+        "enrollment_user_id",
+        "enrollment_type"
       ]
     }
   },
@@ -241,11 +241,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "user_ids[]": {
+        "user_ids": {
           "type": "number",
           "description": "The user IDs to enroll in the courses."
         },
-        "course_ids[]": {
+        "course_ids": {
           "type": "number",
           "description": "The course IDs to enroll each user in."
         },
@@ -268,8 +268,8 @@ const definitions = [
       },
       "required": [
         "account_id",
-        "user_ids[]",
-        "course_ids[]"
+        "user_ids",
+        "course_ids"
       ]
     }
   },
@@ -416,7 +416,7 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "user_ids[]": {
+        "user_ids": {
           "type": "string",
           "description": "The IDs of the users to check temporary enrollment status for."
         },
@@ -434,7 +434,7 @@ const definitions = [
         }
       },
       "required": [
-        "user_ids[]"
+        "user_ids"
       ]
     }
   }
@@ -448,7 +448,44 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/enrollments", args);
   },
   get_uu_enrollments: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/users/:user_id/enrollments", args);
+    const mappedArgs = { ...args };
+    if ("type" in mappedArgs) {
+      mappedArgs["type[]"] = mappedArgs["type"];
+      delete mappedArgs["type"];
+    }
+    if ("role" in mappedArgs) {
+      mappedArgs["role[]"] = mappedArgs["role"];
+      delete mappedArgs["role"];
+    }
+    if ("state" in mappedArgs) {
+      mappedArgs["state[]"] = mappedArgs["state"];
+      delete mappedArgs["state"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    if ("sis_account_id" in mappedArgs) {
+      mappedArgs["sis_account_id[]"] = mappedArgs["sis_account_id"];
+      delete mappedArgs["sis_account_id"];
+    }
+    if ("sis_course_id" in mappedArgs) {
+      mappedArgs["sis_course_id[]"] = mappedArgs["sis_course_id"];
+      delete mappedArgs["sis_course_id"];
+    }
+    if ("sis_section_id" in mappedArgs) {
+      mappedArgs["sis_section_id[]"] = mappedArgs["sis_section_id"];
+      delete mappedArgs["sis_section_id"];
+    }
+    if ("sis_user_id" in mappedArgs) {
+      mappedArgs["sis_user_id[]"] = mappedArgs["sis_user_id"];
+      delete mappedArgs["sis_user_id"];
+    }
+    if ("created_for_sis_id" in mappedArgs) {
+      mappedArgs["created_for_sis_id[]"] = mappedArgs["created_for_sis_id"];
+      delete mappedArgs["created_for_sis_id"];
+    }
+    return genericHandler(client, "GET", "/api/v1/users/:user_id/enrollments", mappedArgs);
   },
   get_aa_enrollments_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/enrollments/:id", args);
@@ -457,10 +494,80 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/enrollments", args);
   },
   post_ss_enrollments: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/sections/:section_id/enrollments", args);
+    const mappedArgs = { ...args };
+    if ("enrollment_start_at" in mappedArgs) {
+      mappedArgs["enrollment[start_at]"] = mappedArgs["enrollment_start_at"];
+      delete mappedArgs["enrollment_start_at"];
+    }
+    if ("enrollment_end_at" in mappedArgs) {
+      mappedArgs["enrollment[end_at]"] = mappedArgs["enrollment_end_at"];
+      delete mappedArgs["enrollment_end_at"];
+    }
+    if ("enrollment_user_id" in mappedArgs) {
+      mappedArgs["enrollment[user_id]"] = mappedArgs["enrollment_user_id"];
+      delete mappedArgs["enrollment_user_id"];
+    }
+    if ("enrollment_type" in mappedArgs) {
+      mappedArgs["enrollment[type]"] = mappedArgs["enrollment_type"];
+      delete mappedArgs["enrollment_type"];
+    }
+    if ("enrollment_role" in mappedArgs) {
+      mappedArgs["enrollment[role]"] = mappedArgs["enrollment_role"];
+      delete mappedArgs["enrollment_role"];
+    }
+    if ("enrollment_role_id" in mappedArgs) {
+      mappedArgs["enrollment[role_id]"] = mappedArgs["enrollment_role_id"];
+      delete mappedArgs["enrollment_role_id"];
+    }
+    if ("enrollment_enrollment_state" in mappedArgs) {
+      mappedArgs["enrollment[enrollment_state]"] = mappedArgs["enrollment_enrollment_state"];
+      delete mappedArgs["enrollment_enrollment_state"];
+    }
+    if ("enrollment_course_section_id" in mappedArgs) {
+      mappedArgs["enrollment[course_section_id]"] = mappedArgs["enrollment_course_section_id"];
+      delete mappedArgs["enrollment_course_section_id"];
+    }
+    if ("enrollment_limit_privileges_to_course_section" in mappedArgs) {
+      mappedArgs["enrollment[limit_privileges_to_course_section]"] = mappedArgs["enrollment_limit_privileges_to_course_section"];
+      delete mappedArgs["enrollment_limit_privileges_to_course_section"];
+    }
+    if ("enrollment_notify" in mappedArgs) {
+      mappedArgs["enrollment[notify]"] = mappedArgs["enrollment_notify"];
+      delete mappedArgs["enrollment_notify"];
+    }
+    if ("enrollment_self_enrollment_code" in mappedArgs) {
+      mappedArgs["enrollment[self_enrollment_code]"] = mappedArgs["enrollment_self_enrollment_code"];
+      delete mappedArgs["enrollment_self_enrollment_code"];
+    }
+    if ("enrollment_self_enrolled" in mappedArgs) {
+      mappedArgs["enrollment[self_enrolled]"] = mappedArgs["enrollment_self_enrolled"];
+      delete mappedArgs["enrollment_self_enrolled"];
+    }
+    if ("enrollment_associated_user_id" in mappedArgs) {
+      mappedArgs["enrollment[associated_user_id]"] = mappedArgs["enrollment_associated_user_id"];
+      delete mappedArgs["enrollment_associated_user_id"];
+    }
+    if ("enrollment_sis_user_id" in mappedArgs) {
+      mappedArgs["enrollment[sis_user_id]"] = mappedArgs["enrollment_sis_user_id"];
+      delete mappedArgs["enrollment_sis_user_id"];
+    }
+    if ("enrollment_integration_id" in mappedArgs) {
+      mappedArgs["enrollment[integration_id]"] = mappedArgs["enrollment_integration_id"];
+      delete mappedArgs["enrollment_integration_id"];
+    }
+    return genericHandler(client, "POST", "/api/v1/sections/:section_id/enrollments", mappedArgs);
   },
   post_aa_bulk_enrollment: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/bulk_enrollment", args);
+    const mappedArgs = { ...args };
+    if ("user_ids" in mappedArgs) {
+      mappedArgs["user_ids[]"] = mappedArgs["user_ids"];
+      delete mappedArgs["user_ids"];
+    }
+    if ("course_ids" in mappedArgs) {
+      mappedArgs["course_ids[]"] = mappedArgs["course_ids"];
+      delete mappedArgs["course_ids"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/bulk_enrollment", mappedArgs);
   },
   delete_cc_enrollments_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/enrollments/:id", args);
@@ -481,7 +588,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/temporary_enrollment_status", args);
   },
   get_temporary_enrollment_status: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/temporary_enrollment_status", args);
+    const mappedArgs = { ...args };
+    if ("user_ids" in mappedArgs) {
+      mappedArgs["user_ids[]"] = mappedArgs["user_ids"];
+      delete mappedArgs["user_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/temporary_enrollment_status", mappedArgs);
   }
 };
 

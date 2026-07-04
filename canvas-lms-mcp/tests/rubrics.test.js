@@ -123,7 +123,7 @@ test("get_cc_rubrics_id calls correct endpoint", async () => {
   const handler = rubricsModule.handlers.get_cc_rubrics_id;
   assert.ok(handler, "Handler get_cc_rubrics_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/rubrics/test_id");
@@ -321,7 +321,7 @@ test("post_cc_rubric_associations calls correct endpoint", async () => {
   const handler = rubricsModule.handlers.post_cc_rubric_associations;
   assert.ok(handler, "Handler post_cc_rubric_associations should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "rubric_association[rubric_id]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "rubric_association_rubric_id": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/rubric_associations");
@@ -339,7 +339,7 @@ test("put_cc_rubric_associations_id calls correct endpoint", async () => {
   const handler = rubricsModule.handlers.put_cc_rubric_associations_id;
   assert.ok(handler, "Handler put_cc_rubric_associations_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "rubric_association[rubric_id]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "rubric_association_rubric_id": 123});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/rubric_associations/test_id");

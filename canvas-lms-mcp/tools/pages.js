@@ -91,23 +91,23 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: group_id"
         },
-        "wiki_page[title]": {
+        "wiki_page_title": {
           "type": "string",
           "description": "<p>The title for the new page. NOTE: changing a page's title will change its<br>url. The updated url will be returned in the result.</p>"
         },
-        "wiki_page[body]": {
+        "wiki_page_body": {
           "type": "string",
           "description": "The content for the new page."
         },
-        "wiki_page[editing_roles]": {
+        "wiki_page_editing_roles": {
           "type": "string",
           "description": "<p>Which user roles are allowed to edit this page. Any combination<br>of these roles is allowed (separated by commas).<br>\"teachers\":: Allows editing by teachers in the course.<br>\"students\":: Allows editing by students in the course.<br>\"members\":: For group wikis, allows editing by members of the group.<br>\"public\":: Allows editing by any user. Allowed values: <code>teachers</code>, <code>students</code>, <code>members</code>, <code>public</code></p>"
         },
-        "wiki_page[notify_of_update]": {
+        "wiki_page_notify_of_update": {
           "type": "boolean",
           "description": "Whether participants should be notified when this page changes."
         },
-        "wiki_page[published]": {
+        "wiki_page_published": {
           "type": "boolean",
           "description": "Whether the page is published (true) or draft state (false)."
         }
@@ -163,7 +163,7 @@ const definitions = [
           "type": "boolean",
           "description": "<p>If true, include only published paqes. If false, exclude published<br>pages. If not present, do not filter on published status.</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"body\": Optionally include the page body with each Page.<br>If this is a block\\_editor page, returns the block\\_editor\\_attributes. Allowed values: <code>body</code></p>"
         },
@@ -203,38 +203,38 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: group_id"
         },
-        "wiki_page[title]": {
+        "wiki_page_title": {
           "type": "string",
           "description": "The title for the new page."
         },
-        "wiki_page[body]": {
+        "wiki_page_body": {
           "type": "string",
           "description": "The content for the new page."
         },
-        "wiki_page[editing_roles]": {
+        "wiki_page_editing_roles": {
           "type": "string",
           "description": "<p>Which user roles are allowed to edit this page. Any combination<br>of these roles is allowed (separated by commas).<br>\"teachers\":: Allows editing by teachers in the course.<br>\"students\":: Allows editing by students in the course.<br>\"members\":: For group wikis, allows editing by members of the group.<br>\"public\":: Allows editing by any user. Allowed values: <code>teachers</code>, <code>students</code>, <code>members</code>, <code>public</code></p>"
         },
-        "wiki_page[notify_of_update]": {
+        "wiki_page_notify_of_update": {
           "type": "boolean",
           "description": "Whether participants should be notified when this page changes."
         },
-        "wiki_page[published]": {
+        "wiki_page_published": {
           "type": "boolean",
           "description": "Whether the page is published (true) or draft state (false)."
         },
-        "wiki_page[front_page]": {
+        "wiki_page_front_page": {
           "type": "boolean",
           "description": "Set an unhidden page as the front page (if true)"
         },
-        "wiki_page[publish_at]": {
+        "wiki_page_publish_at": {
           "type": "string",
           "description": "<p>Schedule a future date/time to publish the page. This will have no effect unless the<br>\"Scheduled Page Publication\" feature is enabled in the account. If a future date is<br>supplied, the page will be unpublished and +wiki\\_page\\[published]+ will be ignored.</p>"
         }
       },
       "required": [
         "group_id",
-        "wiki_page[title]"
+        "wiki_page_title"
       ]
     }
   },
@@ -323,31 +323,31 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: url_or_id"
         },
-        "wiki_page[title]": {
+        "wiki_page_title": {
           "type": "string",
           "description": "<p>The title for the new page. NOTE: changing a page's title will change its<br>url. The updated url will be returned in the result.</p>"
         },
-        "wiki_page[body]": {
+        "wiki_page_body": {
           "type": "string",
           "description": "The content for the new page."
         },
-        "wiki_page[editing_roles]": {
+        "wiki_page_editing_roles": {
           "type": "string",
           "description": "<p>Which user roles are allowed to edit this page. Any combination<br>of these roles is allowed (separated by commas).<br>\"teachers\":: Allows editing by teachers in the course.<br>\"students\":: Allows editing by students in the course.<br>\"members\":: For group wikis, allows editing by members of the group.<br>\"public\":: Allows editing by any user. Allowed values: <code>teachers</code>, <code>students</code>, <code>members</code>, <code>public</code></p>"
         },
-        "wiki_page[notify_of_update]": {
+        "wiki_page_notify_of_update": {
           "type": "boolean",
           "description": "Whether participants should be notified when this page changes."
         },
-        "wiki_page[published]": {
+        "wiki_page_published": {
           "type": "boolean",
           "description": "Whether the page is published (true) or draft state (false)."
         },
-        "wiki_page[publish_at]": {
+        "wiki_page_publish_at": {
           "type": "string",
           "description": "<p>Schedule a future date/time to publish the page. This will have no effect unless the<br>\"Scheduled Page Publication\" feature is enabled in the account. If a future date is<br>set and the page is already published, it will be unpublished.</p>"
         },
-        "wiki_page[front_page]": {
+        "wiki_page_front_page": {
           "type": "boolean",
           "description": "Set an unhidden page as the front page (if true)"
         }
@@ -632,19 +632,74 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/front_page", args);
   },
   put_gg_front_page: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/groups/:group_id/front_page", args);
+    const mappedArgs = { ...args };
+    if ("wiki_page_title" in mappedArgs) {
+      mappedArgs["wiki_page[title]"] = mappedArgs["wiki_page_title"];
+      delete mappedArgs["wiki_page_title"];
+    }
+    if ("wiki_page_body" in mappedArgs) {
+      mappedArgs["wiki_page[body]"] = mappedArgs["wiki_page_body"];
+      delete mappedArgs["wiki_page_body"];
+    }
+    if ("wiki_page_editing_roles" in mappedArgs) {
+      mappedArgs["wiki_page[editing_roles]"] = mappedArgs["wiki_page_editing_roles"];
+      delete mappedArgs["wiki_page_editing_roles"];
+    }
+    if ("wiki_page_notify_of_update" in mappedArgs) {
+      mappedArgs["wiki_page[notify_of_update]"] = mappedArgs["wiki_page_notify_of_update"];
+      delete mappedArgs["wiki_page_notify_of_update"];
+    }
+    if ("wiki_page_published" in mappedArgs) {
+      mappedArgs["wiki_page[published]"] = mappedArgs["wiki_page_published"];
+      delete mappedArgs["wiki_page_published"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/groups/:group_id/front_page", mappedArgs);
   },
   get_cc_pages: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/pages", args);
   },
   get_gg_pages: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/groups/:group_id/pages", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/groups/:group_id/pages", mappedArgs);
   },
   post_cc_pages: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/pages", args);
   },
   post_gg_pages: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/groups/:group_id/pages", args);
+    const mappedArgs = { ...args };
+    if ("wiki_page_title" in mappedArgs) {
+      mappedArgs["wiki_page[title]"] = mappedArgs["wiki_page_title"];
+      delete mappedArgs["wiki_page_title"];
+    }
+    if ("wiki_page_body" in mappedArgs) {
+      mappedArgs["wiki_page[body]"] = mappedArgs["wiki_page_body"];
+      delete mappedArgs["wiki_page_body"];
+    }
+    if ("wiki_page_editing_roles" in mappedArgs) {
+      mappedArgs["wiki_page[editing_roles]"] = mappedArgs["wiki_page_editing_roles"];
+      delete mappedArgs["wiki_page_editing_roles"];
+    }
+    if ("wiki_page_notify_of_update" in mappedArgs) {
+      mappedArgs["wiki_page[notify_of_update]"] = mappedArgs["wiki_page_notify_of_update"];
+      delete mappedArgs["wiki_page_notify_of_update"];
+    }
+    if ("wiki_page_published" in mappedArgs) {
+      mappedArgs["wiki_page[published]"] = mappedArgs["wiki_page_published"];
+      delete mappedArgs["wiki_page_published"];
+    }
+    if ("wiki_page_front_page" in mappedArgs) {
+      mappedArgs["wiki_page[front_page]"] = mappedArgs["wiki_page_front_page"];
+      delete mappedArgs["wiki_page_front_page"];
+    }
+    if ("wiki_page_publish_at" in mappedArgs) {
+      mappedArgs["wiki_page[publish_at]"] = mappedArgs["wiki_page_publish_at"];
+      delete mappedArgs["wiki_page_publish_at"];
+    }
+    return genericHandler(client, "POST", "/api/v1/groups/:group_id/pages", mappedArgs);
   },
   get_cc_pages_url_or_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/pages/:url_or_id", args);
@@ -656,7 +711,36 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/pages/:url_or_id", args);
   },
   put_gg_pages_url_or_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/groups/:group_id/pages/:url_or_id", args);
+    const mappedArgs = { ...args };
+    if ("wiki_page_title" in mappedArgs) {
+      mappedArgs["wiki_page[title]"] = mappedArgs["wiki_page_title"];
+      delete mappedArgs["wiki_page_title"];
+    }
+    if ("wiki_page_body" in mappedArgs) {
+      mappedArgs["wiki_page[body]"] = mappedArgs["wiki_page_body"];
+      delete mappedArgs["wiki_page_body"];
+    }
+    if ("wiki_page_editing_roles" in mappedArgs) {
+      mappedArgs["wiki_page[editing_roles]"] = mappedArgs["wiki_page_editing_roles"];
+      delete mappedArgs["wiki_page_editing_roles"];
+    }
+    if ("wiki_page_notify_of_update" in mappedArgs) {
+      mappedArgs["wiki_page[notify_of_update]"] = mappedArgs["wiki_page_notify_of_update"];
+      delete mappedArgs["wiki_page_notify_of_update"];
+    }
+    if ("wiki_page_published" in mappedArgs) {
+      mappedArgs["wiki_page[published]"] = mappedArgs["wiki_page_published"];
+      delete mappedArgs["wiki_page_published"];
+    }
+    if ("wiki_page_publish_at" in mappedArgs) {
+      mappedArgs["wiki_page[publish_at]"] = mappedArgs["wiki_page_publish_at"];
+      delete mappedArgs["wiki_page_publish_at"];
+    }
+    if ("wiki_page_front_page" in mappedArgs) {
+      mappedArgs["wiki_page[front_page]"] = mappedArgs["wiki_page_front_page"];
+      delete mappedArgs["wiki_page_front_page"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/groups/:group_id/pages/:url_or_id", mappedArgs);
   },
   delete_cc_pages_url_or_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/pages/:url_or_id", args);

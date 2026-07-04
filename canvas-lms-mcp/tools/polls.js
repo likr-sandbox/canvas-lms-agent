@@ -43,17 +43,17 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "polls[][question]": {
+        "polls_question": {
           "type": "string",
           "description": "The title of the poll."
         },
-        "polls[][description]": {
+        "polls_description": {
           "type": "string",
           "description": "A brief description or instructions for the poll."
         }
       },
       "required": [
-        "polls[][question]"
+        "polls_question"
       ]
     }
   },
@@ -67,18 +67,18 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "polls[][question]": {
+        "polls_question": {
           "type": "string",
           "description": "The title of the poll."
         },
-        "polls[][description]": {
+        "polls_description": {
           "type": "string",
           "description": "A brief description or instructions for the poll."
         }
       },
       "required": [
         "id",
-        "polls[][question]"
+        "polls_question"
       ]
     }
   },
@@ -108,10 +108,28 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/polls/:id", args);
   },
   post_polls: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/polls", args);
+    const mappedArgs = { ...args };
+    if ("polls_question" in mappedArgs) {
+      mappedArgs["polls[][question]"] = mappedArgs["polls_question"];
+      delete mappedArgs["polls_question"];
+    }
+    if ("polls_description" in mappedArgs) {
+      mappedArgs["polls[][description]"] = mappedArgs["polls_description"];
+      delete mappedArgs["polls_description"];
+    }
+    return genericHandler(client, "POST", "/api/v1/polls", mappedArgs);
   },
   put_polls_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/polls/:id", args);
+    const mappedArgs = { ...args };
+    if ("polls_question" in mappedArgs) {
+      mappedArgs["polls[][question]"] = mappedArgs["polls_question"];
+      delete mappedArgs["polls_question"];
+    }
+    if ("polls_description" in mappedArgs) {
+      mappedArgs["polls[][description]"] = mappedArgs["polls_description"];
+      delete mappedArgs["polls_description"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/polls/:id", mappedArgs);
   },
   delete_polls_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/polls/:id", args);

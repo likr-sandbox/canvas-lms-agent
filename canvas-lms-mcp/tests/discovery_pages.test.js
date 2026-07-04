@@ -33,7 +33,7 @@ test("put_discovery_pages calls correct endpoint", async () => {
   const handler = discovery_pagesModule.handlers.put_discovery_pages;
   assert.ok(handler, "Handler put_discovery_pages should be defined");
 
-  const result = await handler(mockClient, {"discovery_page[primary][][authentication_provider_id]": 123});
+  const result = await handler(mockClient, {"discovery_page_primary_authentication_provider_id": 123});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/discovery_pages");
@@ -51,7 +51,7 @@ test("post_dp_token calls correct endpoint", async () => {
   const handler = discovery_pagesModule.handlers.post_dp_token;
   assert.ok(handler, "Handler post_dp_token should be defined");
 
-  const result = await handler(mockClient, {"discovery_page[primary][][authentication_provider_id]": 123});
+  const result = await handler(mockClient, {"discovery_page_primary_authentication_provider_id": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/discovery_pages/token");

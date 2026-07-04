@@ -15,7 +15,7 @@ test("get_cc_outcome_results calls correct endpoint", async () => {
   const handler = outcome_resultsModule.handlers.get_cc_outcome_results;
   assert.ok(handler, "Handler get_cc_outcome_results should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "user_ids[]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "user_ids": 123});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/outcome_results");
@@ -69,7 +69,7 @@ test("get_ccoo_contributing_scores calls correct endpoint", async () => {
   const handler = outcome_resultsModule.handlers.get_ccoo_contributing_scores;
   assert.ok(handler, "Handler get_ccoo_contributing_scores should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "outcome_id": "test_outcome_id", "user_ids[]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "outcome_id": "test_outcome_id", "user_ids": 123});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/outcomes/test_outcome_id/contributing_scores");
@@ -87,7 +87,7 @@ test("get_cc_outcome_mastery_distribution calls correct endpoint", async () => {
   const handler = outcome_resultsModule.handlers.get_cc_outcome_mastery_distribution;
   assert.ok(handler, "Handler get_cc_outcome_mastery_distribution should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "exclude[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "exclude": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/outcome_mastery_distribution");

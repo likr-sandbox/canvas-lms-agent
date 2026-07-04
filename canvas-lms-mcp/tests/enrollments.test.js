@@ -51,7 +51,7 @@ test("get_uu_enrollments calls correct endpoint", async () => {
   const handler = enrollmentsModule.handlers.get_uu_enrollments;
   assert.ok(handler, "Handler get_uu_enrollments should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "type[]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "type": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/enrollments");
@@ -105,7 +105,7 @@ test("post_ss_enrollments calls correct endpoint", async () => {
   const handler = enrollmentsModule.handlers.post_ss_enrollments;
   assert.ok(handler, "Handler post_ss_enrollments should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "enrollment[start_at]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "enrollment_start_at": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/enrollments");
@@ -123,7 +123,7 @@ test("post_aa_bulk_enrollment calls correct endpoint", async () => {
   const handler = enrollmentsModule.handlers.post_aa_bulk_enrollment;
   assert.ok(handler, "Handler post_aa_bulk_enrollment should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "user_ids[]": 123});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "user_ids": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/bulk_enrollment");
@@ -249,7 +249,7 @@ test("get_temporary_enrollment_status calls correct endpoint", async () => {
   const handler = enrollmentsModule.handlers.get_temporary_enrollment_status;
   assert.ok(handler, "Handler get_temporary_enrollment_status should be defined");
 
-  const result = await handler(mockClient, {"user_ids[]": "test_val"});
+  const result = await handler(mockClient, {"user_ids": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/temporary_enrollment_status");

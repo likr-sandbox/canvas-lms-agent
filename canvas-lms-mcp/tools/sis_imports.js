@@ -22,7 +22,7 @@ const definitions = [
           "type": "string",
           "description": "If set, only shows imports created before the specified date (use ISO8601 format)"
         },
-        "workflow_state[]": {
+        "workflow_state": {
           "type": "string",
           "description": "If set, only returns imports that are in the given state. Allowed values: `initializing`, `created`, `importing`, `cleanup_batch`, `imported`, `imported_with_messages`, `aborted`, `failed`, `failed_with_messages`, `restoring`, `partially_restored`, `restored`"
         },
@@ -74,11 +74,11 @@ const definitions = [
           "type": "string",
           "description": "<p>There are three ways to post SIS import data:<br>1. As a multipart/form-data form field named +attachment+<br>2. As a raw post with a Content-Type of application/zip or application/octet-stream<br>3. Using the <a href=\"../basics/file.file_uploads.md\">File Upload</a> process, which can be more reliable<br>for large files. Use the +pre\\_attachment\\[name]+ argument to start that flow. See that<br>parameter below for more information.<br>+attachment+ is required for multipart/form-data style posts. Assumed to<br>be SIS data from a file upload form field named +attachment+.<br>Examples:<br>curl -F attachment=@\\<filename> -H \"Authorization: Bearer \\<token>\" \\<br> https\\://\\<canvas>/api/v1/accounts/\\<account\\_id>/sis\\_imports.json?import\\_type=instructure\\_csv<br>If you decide to do a raw post, you can skip the 'attachment' argument,<br>but you will then be required to provide a suitable Content-Type header.<br>You are encouraged to also provide the 'extension' argument.<br>Examples:<br>curl -H 'Content-Type: application/octet-stream' --data-binary @\\<filename>.zip \\<br> -H \"Authorization: Bearer \\<token>\" \\<br> https\\://\\<canvas>/api/v1/accounts/\\<account\\_id>/sis\\_imports.json?import\\_type=instructure\\_csv\\&extension=zip<br>curl -H 'Content-Type: application/zip' --data-binary @\\<filename>.zip \\<br> -H \"Authorization: Bearer \\<token>\" \\<br> https\\://\\<canvas>/api/v1/accounts/\\<account\\_id>/sis\\_imports.json?import\\_type=instructure\\_csv<br>curl -H 'Content-Type: text/csv' --data-binary @\\<filename>.csv \\<br> -H \"Authorization: Bearer \\<token>\" \\<br> https\\://\\<canvas>/api/v1/accounts/\\<account\\_id>/sis\\_imports.json?import\\_type=instructure\\_csv<br>curl -H 'Content-Type: text/csv' --data-binary @\\<filename>.csv \\<br> -H \"Authorization: Bearer \\<token>\" \\<br> https\\://\\<canvas>/api/v1/accounts/\\<account\\_id>/sis\\_imports.json?import\\_type=instructure\\_csv\\&batch\\_mode=1\\&batch\\_mode\\_term\\_id=15<br>If the attachment is a zip file, the uncompressed file(s) cannot be 100x larger than the zip, or the import will fail.<br>For example, if the zip file is 1KB but the total size of the uncompressed file(s) is 100KB or greater the import will<br>fail. There is a hard cap of 50 GB.</p>"
         },
-        "pre_attachment[name]": {
+        "pre_attachment_name": {
           "type": "string",
           "description": "<p>The name of the file to be uploaded (in a separate request) via the<br><a href=\"../basics/file.file_uploads.md\">File Upload</a> workflow. This is the recommended<br>way to upload larger batches, since the upload itself no longer has to finish<br>within the 1-minute Canvas request timeout period. This argument cannot be combined<br>with the +attachment+ argument; use one or the other.<br>To use this flow:<br>1. Perform a POST to this endpoint with file information in +pre\\_attachment+<br>2. <a href=\"../basics/file.file_uploads.md\">Upload the file</a> using the data in the response's +pre\\_attachment+<br>3. Once the file has been uploaded, the SIS import will begin.<br>4. <a href=\"#method.sis_imports_api.show\">Check the progress</a> of the import as usual.<br>NOTE: this option must be sent as either a query parameter or as a JSON<br>body parameter; +application/x-www-form-urlencoded+ is not supported due to<br>conflicts with raw post body data.</p>"
         },
-        "pre_attachment[*]": {
+        "pre_attachment": {
           "type": "string",
           "description": "Other file upload properties; see [File Upload Documentation](../basics/file.file_uploads.md)"
         },
@@ -251,13 +251,27 @@ const definitions = [
 
 const handlers = {
   get_aa_sis_imports: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sis_imports", args);
+    const mappedArgs = { ...args };
+    if ("workflow_state" in mappedArgs) {
+      mappedArgs["workflow_state[]"] = mappedArgs["workflow_state"];
+      delete mappedArgs["workflow_state"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sis_imports", mappedArgs);
   },
   get_aasi_importing: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sis_imports/importing", args);
   },
   post_aa_sis_imports: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/sis_imports", args);
+    const mappedArgs = { ...args };
+    if ("pre_attachment_name" in mappedArgs) {
+      mappedArgs["pre_attachment[name]"] = mappedArgs["pre_attachment_name"];
+      delete mappedArgs["pre_attachment_name"];
+    }
+    if ("pre_attachment" in mappedArgs) {
+      mappedArgs["pre_attachment[*]"] = mappedArgs["pre_attachment"];
+      delete mappedArgs["pre_attachment"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/sis_imports", mappedArgs);
   },
   get_aa_sis_imports_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sis_imports/:id", args);

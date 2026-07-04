@@ -33,7 +33,7 @@ test("post_aa_grading_period_sets calls correct endpoint", async () => {
   const handler = grading_period_setsModule.handlers.post_aa_grading_period_sets;
   assert.ok(handler, "Handler post_aa_grading_period_sets should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "enrollment_term_ids[]": ["test_val"]});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "enrollment_term_ids": ["test_val"]});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/grading_period_sets");

@@ -69,7 +69,7 @@ test("post_aa_logins calls correct endpoint", async () => {
   const handler = loginsModule.handlers.post_aa_logins;
   assert.ok(handler, "Handler post_aa_logins should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "user[id]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "user_id": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/logins");
@@ -87,7 +87,7 @@ test("put_aa_logins_id calls correct endpoint", async () => {
   const handler = loginsModule.handlers.put_aa_logins_id;
   assert.ok(handler, "Handler put_aa_logins_id should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "login[unique_id]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "login_unique_id": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/logins/test_id");

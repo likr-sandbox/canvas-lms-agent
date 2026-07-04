@@ -15,7 +15,7 @@ test("post_aa_shared_brand_configs calls correct endpoint", async () => {
   const handler = shared_brand_configsModule.handlers.post_aa_shared_brand_configs;
   assert.ok(handler, "Handler post_aa_shared_brand_configs should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "shared_brand_config[name]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "shared_brand_config_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/shared_brand_configs");

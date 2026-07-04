@@ -51,7 +51,7 @@ test("post_cc_quizzes calls correct endpoint", async () => {
   const handler = quizzesModule.handlers.post_cc_quizzes;
   assert.ok(handler, "Handler post_cc_quizzes should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz[title]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_title": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes");
@@ -69,7 +69,7 @@ test("put_cc_quizzes_id calls correct endpoint", async () => {
   const handler = quizzesModule.handlers.put_cc_quizzes_id;
   assert.ok(handler, "Handler put_cc_quizzes_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "quiz[notify_of_update]": true});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "quiz_notify_of_update": true});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/test_id");
@@ -105,7 +105,7 @@ test("post_ccqi_reorder calls correct endpoint", async () => {
   const handler = quizzesModule.handlers.post_ccqi_reorder;
   assert.ok(handler, "Handler post_ccqi_reorder should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "order[][id]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "order_id": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/test_id/reorder");

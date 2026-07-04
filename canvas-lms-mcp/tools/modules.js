@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"items\": Return module items inline if possible.<br>This parameter suggests that Canvas return module items directly<br>in the Module object JSON, to avoid having to make separate API<br>requests for each module when enumerating modules and items. Canvas<br>is free to omit 'items' for any particular module if it deems them<br>too numerous to return inline. Callers must be prepared to use the<br><a href=\"#method.context_module_items_api.index\">List Module Items API</a><br>if items are not returned.<br>- \"content\\_details\": Requires 'items'. Returns additional<br>details with module items specific to their associated content items.<br>Includes standard lock information for each item. Allowed values: <code>items</code>, <code>content\\_details</code></p>"
         },
@@ -50,7 +50,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- \"items\": Return module items inline if possible.<br>This parameter suggests that Canvas return module items directly<br>in the Module object JSON, to avoid having to make separate API<br>requests for each module when enumerating modules and items. Canvas<br>is free to omit 'items' for any particular module if it deems them<br>too numerous to return inline. Callers must be prepared to use the<br><a href=\"#method.context_module_items_api.index\">List Module Items API</a><br>if items are not returned.<br>- \"content\\_details\": Requires 'items'. Returns additional<br>details with module items specific to their associated content items.<br>Includes standard lock information for each item. Allowed values: <code>items</code>, <code>content\\_details</code></p>"
         },
@@ -79,34 +79,34 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "module[name]": {
+        "module_name": {
           "type": "string",
           "description": "The name of the module"
         },
-        "module[unlock_at]": {
+        "module_unlock_at": {
           "type": "string",
           "description": "The date the module will unlock"
         },
-        "module[position]": {
+        "module_position": {
           "type": "number",
           "description": "The position of this module in the course (1-based)"
         },
-        "module[require_sequential_progress]": {
+        "module_require_sequential_progress": {
           "type": "boolean",
           "description": "Whether module items must be unlocked in order"
         },
-        "module[prerequisite_module_ids][]": {
+        "module_prerequisite_module_ids": {
           "type": "string",
           "description": "<p>IDs of Modules that must be completed before this one is unlocked.<br>Prerequisite modules must precede this module (i.e. have a lower position<br>value), otherwise they will be ignored</p>"
         },
-        "module[publish_final_grade]": {
+        "module_publish_final_grade": {
           "type": "boolean",
           "description": "<p>Whether to publish the student's final grade for the course upon<br>completion of this module.</p>"
         }
       },
       "required": [
         "course_id",
-        "module[name]"
+        "module_name"
       ]
     }
   },
@@ -124,31 +124,31 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "module[name]": {
+        "module_name": {
           "type": "string",
           "description": "The name of the module"
         },
-        "module[unlock_at]": {
+        "module_unlock_at": {
           "type": "string",
           "description": "The date the module will unlock"
         },
-        "module[position]": {
+        "module_position": {
           "type": "number",
           "description": "The position of the module in the course (1-based)"
         },
-        "module[require_sequential_progress]": {
+        "module_require_sequential_progress": {
           "type": "boolean",
           "description": "Whether module items must be unlocked in order"
         },
-        "module[prerequisite_module_ids][]": {
+        "module_prerequisite_module_ids": {
           "type": "string",
           "description": "<p>IDs of Modules that must be completed before this one is unlocked<br>Prerequisite modules must precede this module (i.e. have a lower position<br>value), otherwise they will be ignored</p>"
         },
-        "module[publish_final_grade]": {
+        "module_publish_final_grade": {
           "type": "boolean",
           "description": "<p>Whether to publish the student's final grade for the course upon<br>completion of this module.</p>"
         },
-        "module[published]": {
+        "module_published": {
           "type": "boolean",
           "description": "Whether the module is published and visible to students"
         }
@@ -215,7 +215,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: module_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>If included, will return additional details specific to the content<br>associated with each item. Refer to the <a href=\"#Module Item\">Module Item specification</a> for more details.<br>Includes standard lock information for each item. Allowed values: <code>content\\_details</code></p>"
         },
@@ -256,7 +256,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>If included, will return additional details specific to the content<br>associated with this item. Refer to the <a href=\"#Module Item\">Module Item specification</a> for more details.<br>Includes standard lock information for each item. Allowed values: <code>content\\_details</code></p>"
         },
@@ -290,51 +290,51 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: module_id"
         },
-        "module_item[title]": {
+        "module_item_title": {
           "type": "string",
           "description": "The name of the module item and associated content"
         },
-        "module_item[type]": {
+        "module_item_type": {
           "type": "string",
           "description": "The type of content linked to the item Allowed values: `File`, `Page`, `Discussion`, `Assignment`, `Quiz`, `SubHeader`, `ExternalUrl`, `ExternalTool`"
         },
-        "module_item[content_id]": {
+        "module_item_content_id": {
           "type": "string",
           "description": "<p>The id of the content to link to the module item. Required, except for<br>'ExternalUrl', 'Page', and 'SubHeader' types.</p>"
         },
-        "module_item[position]": {
+        "module_item_position": {
           "type": "number",
           "description": "The position of this item in the module (1-based)."
         },
-        "module_item[indent]": {
+        "module_item_indent": {
           "type": "number",
           "description": "0-based indent level; module items may be indented to show a hierarchy"
         },
-        "module_item[page_url]": {
+        "module_item_page_url": {
           "type": "string",
           "description": "<p>Suffix for the linked wiki page (e.g. 'front-page'). Required for 'Page'<br>type.</p>"
         },
-        "module_item[external_url]": {
+        "module_item_external_url": {
           "type": "string",
           "description": "<p>External url that the item points to. \\[Required for 'ExternalUrl' and<br>'ExternalTool' types.</p>"
         },
-        "module_item[new_tab]": {
+        "module_item_new_tab": {
           "type": "boolean",
           "description": "<p>Whether the external tool opens in a new tab. Only applies to<br>'ExternalTool' type.</p>"
         },
-        "module_item[completion_requirement][type]": {
+        "module_item_completion_requirement_type": {
           "type": "string",
           "description": "<p>Completion requirement for this module item.<br>\"must\\_view\": Applies to all item types<br>\"must\\_contribute\": Only applies to \"Assignment\", \"Discussion\", and \"Page\" types<br>\"must\\_submit\", \"min\\_score\": Only apply to \"Assignment\" and \"Quiz\" types<br>\"must\\_mark\\_done\": Only applies to \"Assignment\" and \"Page\" types<br>Inapplicable types will be ignored Allowed values: <code>must\\_view</code>, <code>must\\_contribute</code>, <code>must\\_submit</code>, <code>must\\_mark\\_done</code></p>"
         },
-        "module_item[completion_requirement][min_score]": {
+        "module_item_completion_requirement_min_score": {
           "type": "number",
           "description": "<p>Minimum score required to complete. Required for completion\\_requirement<br>type 'min\\_score'.</p>"
         },
-        "module_item[iframe][width]": {
+        "module_item_iframe_width": {
           "type": "number",
           "description": "Width of the ExternalTool on launch"
         },
-        "module_item[iframe][height]": {
+        "module_item_iframe_height": {
           "type": "number",
           "description": "Height of the ExternalTool on launch"
         }
@@ -342,8 +342,8 @@ const definitions = [
       "required": [
         "course_id",
         "module_id",
-        "module_item[type]",
-        "module_item[content_id]"
+        "module_item_type",
+        "module_item_content_id"
       ]
     }
   },
@@ -365,39 +365,39 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "module_item[title]": {
+        "module_item_title": {
           "type": "string",
           "description": "The name of the module item"
         },
-        "module_item[position]": {
+        "module_item_position": {
           "type": "number",
           "description": "The position of this item in the module (1-based)"
         },
-        "module_item[indent]": {
+        "module_item_indent": {
           "type": "number",
           "description": "0-based indent level; module items may be indented to show a hierarchy"
         },
-        "module_item[external_url]": {
+        "module_item_external_url": {
           "type": "string",
           "description": "External url that the item points to. Only applies to 'ExternalUrl' type."
         },
-        "module_item[new_tab]": {
+        "module_item_new_tab": {
           "type": "boolean",
           "description": "<p>Whether the external tool opens in a new tab. Only applies to<br>'ExternalTool' type.</p>"
         },
-        "module_item[completion_requirement][type]": {
+        "module_item_completion_requirement_type": {
           "type": "string",
           "description": "<p>Completion requirement for this module item.<br>\"must\\_view\": Applies to all item types<br>\"must\\_contribute\": Only applies to \"Assignment\", \"Discussion\", and \"Page\" types<br>\"must\\_submit\", \"min\\_score\": Only apply to \"Assignment\" and \"Quiz\" types<br>\"must\\_mark\\_done\": Only applies to \"Assignment\" and \"Page\" types<br>Inapplicable types will be ignored Allowed values: <code>must\\_view</code>, <code>must\\_contribute</code>, <code>must\\_submit</code>, <code>must\\_mark\\_done</code></p>"
         },
-        "module_item[completion_requirement][min_score]": {
+        "module_item_completion_requirement_min_score": {
           "type": "number",
           "description": "<p>Minimum score required to complete, Required for completion\\_requirement<br>type 'min\\_score'.</p>"
         },
-        "module_item[published]": {
+        "module_item_published": {
           "type": "boolean",
           "description": "Whether the module item is published and visible to students."
         },
-        "module_item[module_id]": {
+        "module_item_module_id": {
           "type": "string",
           "description": "<p>Move this item to another module by specifying the target module id here.<br>The target module must be in the same course.</p>"
         }
@@ -588,7 +588,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: context_module_id"
         },
-        "overrides[]": {
+        "overrides": {
           "type": "array",
           "description": "<p>List of overrides to apply to the module. Overrides that already exist should include an ID<br>and will be updated if needed. New overrides will be created for overrides in the list<br>without an ID. Overrides not included in the list will be deleted. Providing an empty list<br>will delete all of the module's overrides. Keys for each override object can include: 'id',<br>'title', 'student\\_ids', and 'course\\_section\\_id'. 'group\\_id' is accepted if the Differentiation<br>Tags account setting is enabled.</p>"
         }
@@ -596,7 +596,7 @@ const definitions = [
       "required": [
         "course_id",
         "context_module_id",
-        "overrides[]"
+        "overrides"
       ]
     }
   }
@@ -604,16 +604,80 @@ const definitions = [
 
 const handlers = {
   get_cc_modules: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules", mappedArgs);
   },
   get_cc_modules_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:id", mappedArgs);
   },
   post_cc_modules: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/modules", args);
+    const mappedArgs = { ...args };
+    if ("module_name" in mappedArgs) {
+      mappedArgs["module[name]"] = mappedArgs["module_name"];
+      delete mappedArgs["module_name"];
+    }
+    if ("module_unlock_at" in mappedArgs) {
+      mappedArgs["module[unlock_at]"] = mappedArgs["module_unlock_at"];
+      delete mappedArgs["module_unlock_at"];
+    }
+    if ("module_position" in mappedArgs) {
+      mappedArgs["module[position]"] = mappedArgs["module_position"];
+      delete mappedArgs["module_position"];
+    }
+    if ("module_require_sequential_progress" in mappedArgs) {
+      mappedArgs["module[require_sequential_progress]"] = mappedArgs["module_require_sequential_progress"];
+      delete mappedArgs["module_require_sequential_progress"];
+    }
+    if ("module_prerequisite_module_ids" in mappedArgs) {
+      mappedArgs["module[prerequisite_module_ids][]"] = mappedArgs["module_prerequisite_module_ids"];
+      delete mappedArgs["module_prerequisite_module_ids"];
+    }
+    if ("module_publish_final_grade" in mappedArgs) {
+      mappedArgs["module[publish_final_grade]"] = mappedArgs["module_publish_final_grade"];
+      delete mappedArgs["module_publish_final_grade"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/modules", mappedArgs);
   },
   put_cc_modules_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:id", args);
+    const mappedArgs = { ...args };
+    if ("module_name" in mappedArgs) {
+      mappedArgs["module[name]"] = mappedArgs["module_name"];
+      delete mappedArgs["module_name"];
+    }
+    if ("module_unlock_at" in mappedArgs) {
+      mappedArgs["module[unlock_at]"] = mappedArgs["module_unlock_at"];
+      delete mappedArgs["module_unlock_at"];
+    }
+    if ("module_position" in mappedArgs) {
+      mappedArgs["module[position]"] = mappedArgs["module_position"];
+      delete mappedArgs["module_position"];
+    }
+    if ("module_require_sequential_progress" in mappedArgs) {
+      mappedArgs["module[require_sequential_progress]"] = mappedArgs["module_require_sequential_progress"];
+      delete mappedArgs["module_require_sequential_progress"];
+    }
+    if ("module_prerequisite_module_ids" in mappedArgs) {
+      mappedArgs["module[prerequisite_module_ids][]"] = mappedArgs["module_prerequisite_module_ids"];
+      delete mappedArgs["module_prerequisite_module_ids"];
+    }
+    if ("module_publish_final_grade" in mappedArgs) {
+      mappedArgs["module[publish_final_grade]"] = mappedArgs["module_publish_final_grade"];
+      delete mappedArgs["module_publish_final_grade"];
+    }
+    if ("module_published" in mappedArgs) {
+      mappedArgs["module[published]"] = mappedArgs["module_published"];
+      delete mappedArgs["module_published"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:id", mappedArgs);
   },
   delete_cc_modules_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/modules/:id", args);
@@ -622,16 +686,112 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:id/relock", args);
   },
   get_ccmm_items: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:module_id/items", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:module_id/items", mappedArgs);
   },
   get_ccmm_items_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:module_id/items/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:module_id/items/:id", mappedArgs);
   },
   post_ccmm_items: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/modules/:module_id/items", args);
+    const mappedArgs = { ...args };
+    if ("module_item_title" in mappedArgs) {
+      mappedArgs["module_item[title]"] = mappedArgs["module_item_title"];
+      delete mappedArgs["module_item_title"];
+    }
+    if ("module_item_type" in mappedArgs) {
+      mappedArgs["module_item[type]"] = mappedArgs["module_item_type"];
+      delete mappedArgs["module_item_type"];
+    }
+    if ("module_item_content_id" in mappedArgs) {
+      mappedArgs["module_item[content_id]"] = mappedArgs["module_item_content_id"];
+      delete mappedArgs["module_item_content_id"];
+    }
+    if ("module_item_position" in mappedArgs) {
+      mappedArgs["module_item[position]"] = mappedArgs["module_item_position"];
+      delete mappedArgs["module_item_position"];
+    }
+    if ("module_item_indent" in mappedArgs) {
+      mappedArgs["module_item[indent]"] = mappedArgs["module_item_indent"];
+      delete mappedArgs["module_item_indent"];
+    }
+    if ("module_item_page_url" in mappedArgs) {
+      mappedArgs["module_item[page_url]"] = mappedArgs["module_item_page_url"];
+      delete mappedArgs["module_item_page_url"];
+    }
+    if ("module_item_external_url" in mappedArgs) {
+      mappedArgs["module_item[external_url]"] = mappedArgs["module_item_external_url"];
+      delete mappedArgs["module_item_external_url"];
+    }
+    if ("module_item_new_tab" in mappedArgs) {
+      mappedArgs["module_item[new_tab]"] = mappedArgs["module_item_new_tab"];
+      delete mappedArgs["module_item_new_tab"];
+    }
+    if ("module_item_completion_requirement_type" in mappedArgs) {
+      mappedArgs["module_item[completion_requirement][type]"] = mappedArgs["module_item_completion_requirement_type"];
+      delete mappedArgs["module_item_completion_requirement_type"];
+    }
+    if ("module_item_completion_requirement_min_score" in mappedArgs) {
+      mappedArgs["module_item[completion_requirement][min_score]"] = mappedArgs["module_item_completion_requirement_min_score"];
+      delete mappedArgs["module_item_completion_requirement_min_score"];
+    }
+    if ("module_item_iframe_width" in mappedArgs) {
+      mappedArgs["module_item[iframe][width]"] = mappedArgs["module_item_iframe_width"];
+      delete mappedArgs["module_item_iframe_width"];
+    }
+    if ("module_item_iframe_height" in mappedArgs) {
+      mappedArgs["module_item[iframe][height]"] = mappedArgs["module_item_iframe_height"];
+      delete mappedArgs["module_item_iframe_height"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/modules/:module_id/items", mappedArgs);
   },
   put_ccmm_items_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:module_id/items/:id", args);
+    const mappedArgs = { ...args };
+    if ("module_item_title" in mappedArgs) {
+      mappedArgs["module_item[title]"] = mappedArgs["module_item_title"];
+      delete mappedArgs["module_item_title"];
+    }
+    if ("module_item_position" in mappedArgs) {
+      mappedArgs["module_item[position]"] = mappedArgs["module_item_position"];
+      delete mappedArgs["module_item_position"];
+    }
+    if ("module_item_indent" in mappedArgs) {
+      mappedArgs["module_item[indent]"] = mappedArgs["module_item_indent"];
+      delete mappedArgs["module_item_indent"];
+    }
+    if ("module_item_external_url" in mappedArgs) {
+      mappedArgs["module_item[external_url]"] = mappedArgs["module_item_external_url"];
+      delete mappedArgs["module_item_external_url"];
+    }
+    if ("module_item_new_tab" in mappedArgs) {
+      mappedArgs["module_item[new_tab]"] = mappedArgs["module_item_new_tab"];
+      delete mappedArgs["module_item_new_tab"];
+    }
+    if ("module_item_completion_requirement_type" in mappedArgs) {
+      mappedArgs["module_item[completion_requirement][type]"] = mappedArgs["module_item_completion_requirement_type"];
+      delete mappedArgs["module_item_completion_requirement_type"];
+    }
+    if ("module_item_completion_requirement_min_score" in mappedArgs) {
+      mappedArgs["module_item[completion_requirement][min_score]"] = mappedArgs["module_item_completion_requirement_min_score"];
+      delete mappedArgs["module_item_completion_requirement_min_score"];
+    }
+    if ("module_item_published" in mappedArgs) {
+      mappedArgs["module_item[published]"] = mappedArgs["module_item_published"];
+      delete mappedArgs["module_item_published"];
+    }
+    if ("module_item_module_id" in mappedArgs) {
+      mappedArgs["module_item[module_id]"] = mappedArgs["module_item_module_id"];
+      delete mappedArgs["module_item_module_id"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:module_id/items/:id", mappedArgs);
   },
   post_ccmmii_select_mastery_path: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/modules/:module_id/items/:id/select_mastery_path", args);
@@ -652,7 +812,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides", args);
   },
   put_ccmc_assignment_overrides: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides", args);
+    const mappedArgs = { ...args };
+    if ("overrides" in mappedArgs) {
+      mappedArgs["overrides[]"] = mappedArgs["overrides"];
+      delete mappedArgs["overrides"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides", mappedArgs);
   }
 };
 

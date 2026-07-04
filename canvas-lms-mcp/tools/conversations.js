@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "<p>When set, only return conversations of the specified type. For example,<br>set to \"unread\" to return only conversations that haven't been read.<br>The default behavior is to return all non-archived conversations (i.e.<br>read and unread). Allowed values: <code>unread</code>, <code>starred</code>, <code>archived</code>, <code>sent</code></p>"
         },
-        "filter[]": {
+        "filter": {
           "type": "string",
           "description": "<p>When set, only return conversations for the specified courses, groups<br>or users. The id should be prefixed with its type, e.g. \"user\\_123\",</p>"
         },
@@ -30,7 +30,7 @@ const definitions = [
           "type": "boolean",
           "description": "<p>Default is false. If true,<br>the top-level element of the response will be an object rather than<br>an array, and will have the keys \"conversations\" which will contain the<br>paged conversation data, and \"conversation\\_ids\" which will contain the<br>ids of all conversations under this scope/filter in the same order.</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>\"participant\\_avatars\":: Optionally include an \"avatar\\_url\" key for each user participating in the conversation<br>\"uuid\":: Optionally include an \"uuid\" key for each user participating in the conversation Allowed values: <code>participant\\_avatars</code>, <code>uuid</code></p>"
         },
@@ -47,7 +47,7 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "recipients[]": {
+        "recipients": {
           "type": "string",
           "description": "An array of recipient ids. These may be user ids"
         },
@@ -67,7 +67,7 @@ const definitions = [
           "type": "boolean",
           "description": "<p>Defaults to false. When false, individual private conversations will be<br>created with each recipient. If true, this will be a group conversation<br>(i.e. all recipients may see all messages and replies). Must be set true if<br>the number of recipients is over the set maximum (default is 100).</p>"
         },
-        "attachment_ids[]": {
+        "attachment_ids": {
           "type": "string",
           "description": "<p>An array of attachments ids. These must be files that have been previously<br>uploaded to the sender's \"conversation attachments\" folder.</p>"
         },
@@ -87,7 +87,7 @@ const definitions = [
           "type": "string",
           "description": "<p>Used when generating \"visible\" in the API response. See the explanation<br>under the <a href=\"#method.conversations.index\">index API action</a> Allowed values: <code>unread</code>, <code>starred</code>, <code>archived</code></p>"
         },
-        "filter[]": {
+        "filter": {
           "type": "string",
           "description": "<p>Used when generating \"visible\" in the API response. See the explanation<br>under the <a href=\"#method.conversations.index\">index API action</a></p>"
         },
@@ -103,13 +103,13 @@ const definitions = [
           "type": "string",
           "description": "<p>Display name to show as the message sender instead of the<br>authenticated user's name. Only honored when the request is<br>authenticated with a site admin service user token.</p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "\"uuid\":: Optionally include an \"uuid\" key for each user participating in the conversation Allowed values: `uuid`"
         }
       },
       "required": [
-        "recipients[]",
+        "recipients",
         "body"
       ]
     }
@@ -145,7 +145,7 @@ const definitions = [
           "type": "string",
           "description": "<p>Used when generating \"visible\" in the API response. See the explanation<br>under the <a href=\"#method.conversations.index\">index API action</a> Allowed values: <code>unread</code>, <code>starred</code>, <code>archived</code></p>"
         },
-        "filter[]": {
+        "filter": {
           "type": "string",
           "description": "<p>Used when generating \"visible\" in the API response. See the explanation<br>under the <a href=\"#method.conversations.index\">index API action</a></p>"
         },
@@ -177,15 +177,15 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "conversation[workflow_state]": {
+        "conversation_workflow_state": {
           "type": "string",
           "description": "Change the state of this conversation Allowed values: `read`, `unread`, `archived`"
         },
-        "conversation[subscribed]": {
+        "conversation_subscribed": {
           "type": "boolean",
           "description": "<p>Toggle the current user's subscription to the conversation (only valid for<br>group conversations). If unsubscribed, the user will still have access to<br>the latest messages, but the conversation won't be automatically flagged<br>as unread, nor will it jump to the top of the inbox.</p>"
         },
-        "conversation[starred]": {
+        "conversation_starred": {
           "type": "boolean",
           "description": "Toggle the starred state of the current user's view of the conversation."
         },
@@ -193,7 +193,7 @@ const definitions = [
           "type": "string",
           "description": "<p>Used when generating \"visible\" in the API response. See the explanation<br>under the <a href=\"#method.conversations.index\">index API action</a> Allowed values: <code>unread</code>, <code>starred</code>, <code>archived</code></p>"
         },
-        "filter[]": {
+        "filter": {
           "type": "string",
           "description": "<p>Used when generating \"visible\" in the API response. See the explanation<br>under the <a href=\"#method.conversations.index\">index API action</a></p>"
         },
@@ -241,14 +241,14 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "recipients[]": {
+        "recipients": {
           "type": "string",
           "description": "<p>An array of recipient ids. These may be user ids or course/group ids<br>prefixed with \"course\\_\" or \"group\\_\" respectively, e.g.<br>recipients\\[]=1\\&recipients\\[]=2\\&recipients\\[]=course\\_3</p>"
         }
       },
       "required": [
         "id",
-        "recipients[]"
+        "recipients"
       ]
     }
   },
@@ -266,7 +266,7 @@ const definitions = [
           "type": "string",
           "description": "The message to be sent."
         },
-        "attachment_ids[]": {
+        "attachment_ids": {
           "type": "string",
           "description": "<p>An array of attachments ids. These must be files that have been previously<br>uploaded to the sender's \"conversation attachments\" folder.</p>"
         },
@@ -278,11 +278,11 @@ const definitions = [
           "type": "string",
           "description": "Type of the associated media file. Allowed values: `audio`, `video`"
         },
-        "recipients[]": {
+        "recipients": {
           "type": "string",
           "description": "no description"
         },
-        "included_messages[]": {
+        "included_messages": {
           "type": "string",
           "description": "no description"
         }
@@ -303,14 +303,14 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "remove[]": {
+        "remove": {
           "type": "string",
           "description": "Array of message ids to be deleted"
         }
       },
       "required": [
         "id",
-        "remove[]"
+        "remove"
       ]
     }
   },
@@ -320,7 +320,7 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "conversation_ids[]": {
+        "conversation_ids": {
           "type": "string",
           "description": "List of conversations to update. Limited to 500 conversations."
         },
@@ -330,7 +330,7 @@ const definitions = [
         }
       },
       "required": [
-        "conversation_ids[]",
+        "conversation_ids",
         "event"
       ]
     }
@@ -365,19 +365,67 @@ const definitions = [
 
 const handlers = {
   get_conversations: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/conversations", args);
+    const mappedArgs = { ...args };
+    if ("filter" in mappedArgs) {
+      mappedArgs["filter[]"] = mappedArgs["filter"];
+      delete mappedArgs["filter"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/conversations", mappedArgs);
   },
   post_conversations: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/conversations", args);
+    const mappedArgs = { ...args };
+    if ("recipients" in mappedArgs) {
+      mappedArgs["recipients[]"] = mappedArgs["recipients"];
+      delete mappedArgs["recipients"];
+    }
+    if ("attachment_ids" in mappedArgs) {
+      mappedArgs["attachment_ids[]"] = mappedArgs["attachment_ids"];
+      delete mappedArgs["attachment_ids"];
+    }
+    if ("filter" in mappedArgs) {
+      mappedArgs["filter[]"] = mappedArgs["filter"];
+      delete mappedArgs["filter"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "POST", "/api/v1/conversations", mappedArgs);
   },
   get_c_batches: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/conversations/batches", args);
   },
   get_conversations_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/conversations/:id", args);
+    const mappedArgs = { ...args };
+    if ("filter" in mappedArgs) {
+      mappedArgs["filter[]"] = mappedArgs["filter"];
+      delete mappedArgs["filter"];
+    }
+    return genericHandler(client, "GET", "/api/v1/conversations/:id", mappedArgs);
   },
   put_conversations_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/conversations/:id", args);
+    const mappedArgs = { ...args };
+    if ("conversation_workflow_state" in mappedArgs) {
+      mappedArgs["conversation[workflow_state]"] = mappedArgs["conversation_workflow_state"];
+      delete mappedArgs["conversation_workflow_state"];
+    }
+    if ("conversation_subscribed" in mappedArgs) {
+      mappedArgs["conversation[subscribed]"] = mappedArgs["conversation_subscribed"];
+      delete mappedArgs["conversation_subscribed"];
+    }
+    if ("conversation_starred" in mappedArgs) {
+      mappedArgs["conversation[starred]"] = mappedArgs["conversation_starred"];
+      delete mappedArgs["conversation_starred"];
+    }
+    if ("filter" in mappedArgs) {
+      mappedArgs["filter[]"] = mappedArgs["filter"];
+      delete mappedArgs["filter"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/conversations/:id", mappedArgs);
   },
   post_c_mark_all_as_read: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/conversations/mark_all_as_read", args);
@@ -386,16 +434,44 @@ const handlers = {
     return genericHandler(client, "DELETE", "/api/v1/conversations/:id", args);
   },
   post_ci_add_recipients: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/conversations/:id/add_recipients", args);
+    const mappedArgs = { ...args };
+    if ("recipients" in mappedArgs) {
+      mappedArgs["recipients[]"] = mappedArgs["recipients"];
+      delete mappedArgs["recipients"];
+    }
+    return genericHandler(client, "POST", "/api/v1/conversations/:id/add_recipients", mappedArgs);
   },
   post_ci_add_message: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/conversations/:id/add_message", args);
+    const mappedArgs = { ...args };
+    if ("attachment_ids" in mappedArgs) {
+      mappedArgs["attachment_ids[]"] = mappedArgs["attachment_ids"];
+      delete mappedArgs["attachment_ids"];
+    }
+    if ("recipients" in mappedArgs) {
+      mappedArgs["recipients[]"] = mappedArgs["recipients"];
+      delete mappedArgs["recipients"];
+    }
+    if ("included_messages" in mappedArgs) {
+      mappedArgs["included_messages[]"] = mappedArgs["included_messages"];
+      delete mappedArgs["included_messages"];
+    }
+    return genericHandler(client, "POST", "/api/v1/conversations/:id/add_message", mappedArgs);
   },
   post_ci_remove_messages: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/conversations/:id/remove_messages", args);
+    const mappedArgs = { ...args };
+    if ("remove" in mappedArgs) {
+      mappedArgs["remove[]"] = mappedArgs["remove"];
+      delete mappedArgs["remove"];
+    }
+    return genericHandler(client, "POST", "/api/v1/conversations/:id/remove_messages", mappedArgs);
   },
   put_conversations: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/conversations", args);
+    const mappedArgs = { ...args };
+    if ("conversation_ids" in mappedArgs) {
+      mappedArgs["conversation_ids[]"] = mappedArgs["conversation_ids"];
+      delete mappedArgs["conversation_ids"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/conversations", mappedArgs);
   },
   get_c_find_recipients: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/conversations/find_recipients", args);

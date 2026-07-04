@@ -58,11 +58,11 @@ const definitions = [
           "type": "number",
           "description": "The new mastery threshold for the embedded rubric criterion."
         },
-        "ratings[][description]": {
+        "ratings_description": {
           "type": "string",
           "description": "The description of a new rating level for the embedded rubric criterion."
         },
-        "ratings[][points]": {
+        "ratings_points": {
           "type": "number",
           "description": "<p>The points corresponding to a new rating level for the embedded rubric<br>criterion.</p>"
         },
@@ -119,7 +119,16 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/outcomes/:id", args);
   },
   put_outcomes_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/outcomes/:id", args);
+    const mappedArgs = { ...args };
+    if ("ratings_description" in mappedArgs) {
+      mappedArgs["ratings[][description]"] = mappedArgs["ratings_description"];
+      delete mappedArgs["ratings_description"];
+    }
+    if ("ratings_points" in mappedArgs) {
+      mappedArgs["ratings[][points]"] = mappedArgs["ratings_points"];
+      delete mappedArgs["ratings_points"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/outcomes/:id", mappedArgs);
   },
   get_cc_outcome_alignments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_alignments", args);

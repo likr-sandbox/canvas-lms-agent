@@ -154,8 +154,11 @@ def parse_markdown_doc(doc_path):
                 elif "object" in ptype_lower:
                     ptype = "object"
                 
-                schema_pname = pname
-                if len(pname) > 64:
+                # Replace invalid characters
+                schema_pname = re.sub(r'[^a-zA-Z0-9_.-]', '_', pname)
+                schema_pname = re.sub(r'_+', '_', schema_pname).strip('_')
+
+                if len(schema_pname) > 64:
                     import hashlib
                     h = hashlib.md5(pname.encode()).hexdigest()[:8]
                     # Try to create a readable short name
@@ -163,8 +166,22 @@ def parse_markdown_doc(doc_path):
                     if len(p_parts) > 1:
                         prefix = ''.join([get_segment_abbr(px) for px in p_parts[:-1]])
                         schema_pname = f"{prefix}_{p_parts[-1]}"
+                        schema_pname = re.sub(r'[^a-zA-Z0-9_.-]', '_', schema_pname)
+                        schema_pname = re.sub(r'_+', '_', schema_pname).strip('_')
                     if len(schema_pname) > 64:
                         schema_pname = f"prop_{h}"
+                
+                # Check for uniqueness
+                original_schema_pname = schema_pname
+                counter = 1
+                while schema_pname in properties:
+                    existing_original = prop_mappings.get(schema_pname, schema_pname)
+                    if existing_original == pname:
+                        break
+                    schema_pname = f"{original_schema_pname}_{counter}"
+                    counter += 1
+
+                if schema_pname != pname:
                     prop_mappings[schema_pname] = pname
                 
                 properties[schema_pname] = {

@@ -15,7 +15,7 @@ test("get_uu_eportfolios calls correct endpoint", async () => {
   const handler = e_portfoliosModule.handlers.get_uu_eportfolios;
   assert.ok(handler, "Handler get_uu_eportfolios should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/eportfolios");

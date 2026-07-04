@@ -62,59 +62,59 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "user[id]": {
+        "user_id": {
           "type": "string",
           "description": "The ID of the user to create the login for."
         },
-        "login[unique_id]": {
+        "login_unique_id": {
           "type": "string",
           "description": "The unique ID for the new login."
         },
-        "login[password]": {
+        "login_password": {
           "type": "string",
           "description": "The new login's password."
         },
-        "login[sis_user_id]": {
+        "login_sis_user_id": {
           "type": "string",
           "description": "<p>SIS ID for the login. To set this parameter, the caller must be able to<br>manage SIS permissions on the account.</p>"
         },
-        "login[integration_id]": {
+        "login_integration_id": {
           "type": "string",
           "description": "<p>Integration ID for the login. To set this parameter, the caller must be able to<br>manage SIS permissions on the account. The Integration ID is a secondary<br>identifier useful for more complex SIS integrations.</p>"
         },
-        "login[authentication_provider_id]": {
+        "login_authentication_provider_id": {
           "type": "string",
           "description": "<p>The authentication provider this login is associated with. Logins<br>associated with a specific provider can only be used with that provider.<br>Legacy providers (LDAP, CAS, SAML) will search for logins associated with<br>them, or unassociated logins. New providers will only search for logins<br>explicitly associated with them. This can be the integer ID of the<br>provider, or the type of the provider (in which case, it will find the<br>first matching provider).</p>"
         },
-        "login[declared_user_type]": {
+        "login_declared_user_type": {
           "type": "string",
           "description": "<p>The declared intention of the user type. This can be set, but does<br>not change any Canvas functionality with respect to their access.<br>A user can still be a teacher, admin, student, etc. in any particular<br>context without regard to this setting. This can be used for<br>administrative purposes for integrations to be able to more easily<br>identify why the user was created.<br>Valid values are:<br>\\* administrative<br>\\* observer<br>\\* staff<br>\\* student<br>\\* student\\_other<br>\\* teacher</p>"
         },
-        "login[must_reset_password]": {
+        "login_must_reset_password": {
           "type": "boolean",
           "description": "<p>If true, the user will be required to change their password the next time<br>they sign in with this login. Only valid for logins that support Canvas<br>passwords.</p>"
         },
-        "user[existing_user_id]": {
+        "user_existing_user_id": {
           "type": "string",
           "description": "<p>A Canvas User ID to identify a user in a trusted account (alternative to <code>id</code>,<br><code>existing\\_sis\\_user\\_id</code>, or <code>existing\\_integration\\_id</code>). This parameter is<br>not available in OSS Canvas.</p>"
         },
-        "user[existing_integration_id]": {
+        "user_existing_integration_id": {
           "type": "string",
           "description": "<p>An Integration ID to identify a user in a trusted account (alternative to <code>id</code>,<br><code>existing\\_user\\_id</code>, or <code>existing\\_sis\\_user\\_id</code>). This parameter is not<br>available in OSS Canvas.</p>"
         },
-        "user[existing_sis_user_id]": {
+        "user_existing_sis_user_id": {
           "type": "string",
           "description": "<p>An SIS User ID to identify a user in a trusted account (alternative to <code>id</code>,<br><code>existing\\_integration\\_id</code>, or <code>existing\\_user\\_id</code>). This parameter is not<br>available in OSS Canvas.</p>"
         },
-        "user[trusted_account]": {
+        "user_trusted_account": {
           "type": "string",
           "description": "<p>The domain of the account to search for the user. This field is required when<br>identifying a user in a trusted account. This parameter is not available in OSS<br>Canvas.</p>"
         }
       },
       "required": [
         "account_id",
-        "user[id]",
-        "login[unique_id]"
+        "user_id",
+        "login_unique_id"
       ]
     }
   },
@@ -132,39 +132,39 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "login[unique_id]": {
+        "login_unique_id": {
           "type": "string",
           "description": "The new unique ID for the login."
         },
-        "login[password]": {
+        "login_password": {
           "type": "string",
           "description": "<p>The new password for the login. Admins can only set a password for another<br>user if the \"Password setting by admins\" account setting is enabled.</p>"
         },
-        "login[old_password]": {
+        "login_old_password": {
           "type": "string",
           "description": "<p>The prior password for the login. Required if the caller is changing<br>their own password.</p>"
         },
-        "login[sis_user_id]": {
+        "login_sis_user_id": {
           "type": "string",
           "description": "<p>SIS ID for the login. To set this parameter, the caller must be able to<br>manage SIS permissions on the account.</p>"
         },
-        "login[integration_id]": {
+        "login_integration_id": {
           "type": "string",
           "description": "<p>Integration ID for the login. To set this parameter, the caller must be able to<br>manage SIS permissions on the account. The Integration ID is a secondary<br>identifier useful for more complex SIS integrations.</p>"
         },
-        "login[authentication_provider_id]": {
+        "login_authentication_provider_id": {
           "type": "string",
           "description": "<p>The authentication provider this login is associated with. Logins<br>associated with a specific provider can only be used with that provider.<br>Legacy providers (LDAP, CAS, SAML) will search for logins associated with<br>them, or unassociated logins. New providers will only search for logins<br>explicitly associated with them. This can be the integer ID of the<br>provider, or the type of the provider (in which case, it will find the<br>first matching provider). To unassociate from a known provider, specify<br>null or an empty string.</p>"
         },
-        "login[workflow_state]": {
+        "login_workflow_state": {
           "type": "string",
           "description": "Used to suspend or re-activate a login. Allowed values: `active`, `suspended`"
         },
-        "login[declared_user_type]": {
+        "login_declared_user_type": {
           "type": "string",
           "description": "<p>The declared intention of the user type. This can be set, but does<br>not change any Canvas functionality with respect to their access.<br>A user can still be a teacher, admin, student, etc. in any particular<br>context without regard to this setting. This can be used for<br>administrative purposes for integrations to be able to more easily<br>identify why the user was created.<br>Valid values are:<br>\\* administrative<br>\\* observer<br>\\* staff<br>\\* student<br>\\* student\\_other<br>\\* teacher</p>"
         },
-        "login[must_reset_password]": {
+        "login_must_reset_password": {
           "type": "boolean",
           "description": "<p>If true, the user will be required to change their password the next time<br>they sign in with this login. Cleared automatically when the password is<br>changed. Only valid for logins that support Canvas passwords.</p>"
         },
@@ -213,10 +213,96 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/users/reset_password", args);
   },
   post_aa_logins: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/logins", args);
+    const mappedArgs = { ...args };
+    if ("user_id" in mappedArgs) {
+      mappedArgs["user[id]"] = mappedArgs["user_id"];
+      delete mappedArgs["user_id"];
+    }
+    if ("login_unique_id" in mappedArgs) {
+      mappedArgs["login[unique_id]"] = mappedArgs["login_unique_id"];
+      delete mappedArgs["login_unique_id"];
+    }
+    if ("login_password" in mappedArgs) {
+      mappedArgs["login[password]"] = mappedArgs["login_password"];
+      delete mappedArgs["login_password"];
+    }
+    if ("login_sis_user_id" in mappedArgs) {
+      mappedArgs["login[sis_user_id]"] = mappedArgs["login_sis_user_id"];
+      delete mappedArgs["login_sis_user_id"];
+    }
+    if ("login_integration_id" in mappedArgs) {
+      mappedArgs["login[integration_id]"] = mappedArgs["login_integration_id"];
+      delete mappedArgs["login_integration_id"];
+    }
+    if ("login_authentication_provider_id" in mappedArgs) {
+      mappedArgs["login[authentication_provider_id]"] = mappedArgs["login_authentication_provider_id"];
+      delete mappedArgs["login_authentication_provider_id"];
+    }
+    if ("login_declared_user_type" in mappedArgs) {
+      mappedArgs["login[declared_user_type]"] = mappedArgs["login_declared_user_type"];
+      delete mappedArgs["login_declared_user_type"];
+    }
+    if ("login_must_reset_password" in mappedArgs) {
+      mappedArgs["login[must_reset_password]"] = mappedArgs["login_must_reset_password"];
+      delete mappedArgs["login_must_reset_password"];
+    }
+    if ("user_existing_user_id" in mappedArgs) {
+      mappedArgs["user[existing_user_id]"] = mappedArgs["user_existing_user_id"];
+      delete mappedArgs["user_existing_user_id"];
+    }
+    if ("user_existing_integration_id" in mappedArgs) {
+      mappedArgs["user[existing_integration_id]"] = mappedArgs["user_existing_integration_id"];
+      delete mappedArgs["user_existing_integration_id"];
+    }
+    if ("user_existing_sis_user_id" in mappedArgs) {
+      mappedArgs["user[existing_sis_user_id]"] = mappedArgs["user_existing_sis_user_id"];
+      delete mappedArgs["user_existing_sis_user_id"];
+    }
+    if ("user_trusted_account" in mappedArgs) {
+      mappedArgs["user[trusted_account]"] = mappedArgs["user_trusted_account"];
+      delete mappedArgs["user_trusted_account"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/logins", mappedArgs);
   },
   put_aa_logins_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/logins/:id", args);
+    const mappedArgs = { ...args };
+    if ("login_unique_id" in mappedArgs) {
+      mappedArgs["login[unique_id]"] = mappedArgs["login_unique_id"];
+      delete mappedArgs["login_unique_id"];
+    }
+    if ("login_password" in mappedArgs) {
+      mappedArgs["login[password]"] = mappedArgs["login_password"];
+      delete mappedArgs["login_password"];
+    }
+    if ("login_old_password" in mappedArgs) {
+      mappedArgs["login[old_password]"] = mappedArgs["login_old_password"];
+      delete mappedArgs["login_old_password"];
+    }
+    if ("login_sis_user_id" in mappedArgs) {
+      mappedArgs["login[sis_user_id]"] = mappedArgs["login_sis_user_id"];
+      delete mappedArgs["login_sis_user_id"];
+    }
+    if ("login_integration_id" in mappedArgs) {
+      mappedArgs["login[integration_id]"] = mappedArgs["login_integration_id"];
+      delete mappedArgs["login_integration_id"];
+    }
+    if ("login_authentication_provider_id" in mappedArgs) {
+      mappedArgs["login[authentication_provider_id]"] = mappedArgs["login_authentication_provider_id"];
+      delete mappedArgs["login_authentication_provider_id"];
+    }
+    if ("login_workflow_state" in mappedArgs) {
+      mappedArgs["login[workflow_state]"] = mappedArgs["login_workflow_state"];
+      delete mappedArgs["login_workflow_state"];
+    }
+    if ("login_declared_user_type" in mappedArgs) {
+      mappedArgs["login[declared_user_type]"] = mappedArgs["login_declared_user_type"];
+      delete mappedArgs["login_declared_user_type"];
+    }
+    if ("login_must_reset_password" in mappedArgs) {
+      mappedArgs["login[must_reset_password]"] = mappedArgs["login_must_reset_password"];
+      delete mappedArgs["login_must_reset_password"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/logins/:id", mappedArgs);
   },
   delete_uu_logins_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/logins/:id", args);

@@ -33,7 +33,7 @@ test("post_pppsp_poll_submissions calls correct endpoint", async () => {
   const handler = poll_submissionsModule.handlers.post_pppsp_poll_submissions;
   assert.ok(handler, "Handler post_pppsp_poll_submissions should be defined");
 
-  const result = await handler(mockClient, {"poll_id": "test_poll_id", "poll_session_id": "test_poll_session_id", "poll_submissions[][poll_choice_id]": 123});
+  const result = await handler(mockClient, {"poll_id": "test_poll_id", "poll_session_id": "test_poll_session_id", "poll_submissions_poll_choice_id": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/polls/test_poll_id/poll_sessions/test_poll_session_id/poll_submissions");

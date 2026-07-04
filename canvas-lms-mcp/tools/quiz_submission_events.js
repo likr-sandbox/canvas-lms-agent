@@ -22,7 +22,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "quiz_submission_events[]": {
+        "quiz_submission_events": {
           "type": "array",
           "description": "The submission events to be recorded"
         }
@@ -31,7 +31,7 @@ const definitions = [
         "course_id",
         "quiz_id",
         "id",
-        "quiz_submission_events[]"
+        "quiz_submission_events"
       ]
     }
   },
@@ -73,7 +73,12 @@ const definitions = [
 
 const handlers = {
   post_ccqqsi_events: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/events", args);
+    const mappedArgs = { ...args };
+    if ("quiz_submission_events" in mappedArgs) {
+      mappedArgs["quiz_submission_events[]"] = mappedArgs["quiz_submission_events"];
+      delete mappedArgs["quiz_submission_events"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/events", mappedArgs);
   },
   get_ccqqsi_events: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/events", args);

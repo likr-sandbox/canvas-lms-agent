@@ -34,7 +34,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: attachment_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>By default, index returns id, locale, kind, media\\_object\\_id, and user\\_id for each of the<br>result MediaTracks. Use include\\[] to<br>add additional fields. For example include\\[]=content Allowed values: <code>content</code>, <code>webvtt\\_content</code>, <code>updated\\_at</code>, <code>created\\_at</code></p>"
         },
@@ -74,7 +74,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: attachment_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>By default, an update returns id, locale, kind, media\\_object\\_id, and user\\_id for each of the<br>result MediaTracks. Use include\\[] to<br>add additional fields. For example include\\[]=content Allowed values: <code>content</code>, <code>webvtt\\_content</code>, <code>updated\\_at</code>, <code>created\\_at</code></p>"
         }
@@ -188,7 +188,7 @@ const definitions = [
           "type": "string",
           "description": "Sort direction. Default is \"asc\" Allowed values: `asc`, `desc`"
         },
-        "exclude[]": {
+        "exclude": {
           "type": "string",
           "description": "<p>Array of data to exclude. By excluding \"sources\" and \"tracks\",<br>the api will not need to query kaltura, which greatly<br>speeds up its response.<br>sources:: Do not query kaltura for media\\_sources<br>tracks:: Do not query kaltura for media\\_tracks Allowed values: <code>sources</code>, <code>tracks</code></p>"
         },
@@ -249,13 +249,23 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/media_objects/:media_object_id/media_tracks", args);
   },
   get_maa_media_tracks: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/media_attachments/:attachment_id/media_tracks", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/media_attachments/:attachment_id/media_tracks", mappedArgs);
   },
   put_mom_media_tracks: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/media_objects/:media_object_id/media_tracks", args);
   },
   put_maa_media_tracks: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/media_attachments/:attachment_id/media_tracks", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/media_attachments/:attachment_id/media_tracks", mappedArgs);
   },
   get_media_objects: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/media_objects", args);
@@ -273,7 +283,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/media_attachments", args);
   },
   get_gg_media_attachments: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/groups/:group_id/media_attachments", args);
+    const mappedArgs = { ...args };
+    if ("exclude" in mappedArgs) {
+      mappedArgs["exclude[]"] = mappedArgs["exclude"];
+      delete mappedArgs["exclude"];
+    }
+    return genericHandler(client, "GET", "/api/v1/groups/:group_id/media_attachments", mappedArgs);
   },
   put_media_objects_media_object_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/media_objects/:media_object_id", args);

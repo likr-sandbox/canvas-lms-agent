@@ -15,7 +15,7 @@ test("get_cc_modules calls correct endpoint", async () => {
   const handler = modulesModule.handlers.get_cc_modules;
   assert.ok(handler, "Handler get_cc_modules should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/modules");
@@ -33,7 +33,7 @@ test("get_cc_modules_id calls correct endpoint", async () => {
   const handler = modulesModule.handlers.get_cc_modules_id;
   assert.ok(handler, "Handler get_cc_modules_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/modules/test_id");
@@ -51,7 +51,7 @@ test("post_cc_modules calls correct endpoint", async () => {
   const handler = modulesModule.handlers.post_cc_modules;
   assert.ok(handler, "Handler post_cc_modules should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "module[name]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "module_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/modules");
@@ -69,7 +69,7 @@ test("put_cc_modules_id calls correct endpoint", async () => {
   const handler = modulesModule.handlers.put_cc_modules_id;
   assert.ok(handler, "Handler put_cc_modules_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "module[name]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "module_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/modules/test_id");
@@ -123,7 +123,7 @@ test("get_ccmm_items calls correct endpoint", async () => {
   const handler = modulesModule.handlers.get_ccmm_items;
   assert.ok(handler, "Handler get_ccmm_items should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "module_id": "test_module_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "module_id": "test_module_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/modules/test_module_id/items");
@@ -141,7 +141,7 @@ test("get_ccmm_items_id calls correct endpoint", async () => {
   const handler = modulesModule.handlers.get_ccmm_items_id;
   assert.ok(handler, "Handler get_ccmm_items_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "module_id": "test_module_id", "id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "module_id": "test_module_id", "id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/modules/test_module_id/items/test_id");
@@ -159,7 +159,7 @@ test("post_ccmm_items calls correct endpoint", async () => {
   const handler = modulesModule.handlers.post_ccmm_items;
   assert.ok(handler, "Handler post_ccmm_items should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "module_id": "test_module_id", "module_item[title]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "module_id": "test_module_id", "module_item_title": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/modules/test_module_id/items");
@@ -177,7 +177,7 @@ test("put_ccmm_items_id calls correct endpoint", async () => {
   const handler = modulesModule.handlers.put_ccmm_items_id;
   assert.ok(handler, "Handler put_ccmm_items_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "module_id": "test_module_id", "id": "test_id", "module_item[title]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "module_id": "test_module_id", "id": "test_id", "module_item_title": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/modules/test_module_id/items/test_id");
@@ -303,7 +303,7 @@ test("put_ccmc_assignment_overrides calls correct endpoint", async () => {
   const handler = modulesModule.handlers.put_ccmc_assignment_overrides;
   assert.ok(handler, "Handler put_ccmc_assignment_overrides should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "context_module_id": "test_context_module_id", "overrides[]": ["test_val"]});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "context_module_id": "test_context_module_id", "overrides": ["test_val"]});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/modules/test_context_module_id/assignment_overrides");

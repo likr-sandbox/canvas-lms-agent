@@ -123,7 +123,7 @@ test("put_usccta_notification_preferences_notification calls correct endpoint", 
   const handler = notification_preferencesModule.handlers.put_usccta_notification_preferences_notification;
   assert.ok(handler, "Handler put_usccta_notification_preferences_notification should be defined");
 
-  const result = await handler(mockClient, {"type": "test_type", "address": "test_address", "notification": "test_notification", "notification_preferences[frequency]": "test_val"});
+  const result = await handler(mockClient, {"type": "test_type", "address": "test_address", "notification": "test_notification", "notification_preferences_frequency": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/users/self/communication_channels/test_type/test_address/notification_preferences/test_notification");
@@ -141,7 +141,7 @@ test("put_usccc_notification_preference_categories_category calls correct endpoi
   const handler = notification_preferencesModule.handlers.put_usccc_notification_preference_categories_category;
   assert.ok(handler, "Handler put_usccc_notification_preference_categories_category should be defined");
 
-  const result = await handler(mockClient, {"communication_channel_id": "test_communication_channel_id", "category": "test_category", "notification_preferences[frequency]": "test_val"});
+  const result = await handler(mockClient, {"communication_channel_id": "test_communication_channel_id", "category": "test_category", "notification_preferences_frequency": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/users/self/communication_channels/test_communication_channel_id/notification_preference_categories/test_category");
@@ -177,7 +177,7 @@ test("put_usccta_notification_preferences calls correct endpoint", async () => {
   const handler = notification_preferencesModule.handlers.put_usccta_notification_preferences;
   assert.ok(handler, "Handler put_usccta_notification_preferences should be defined");
 
-  const result = await handler(mockClient, {"type": "test_type", "address": "test_address", "notification_preferences[<X>][frequency]": "test_val"});
+  const result = await handler(mockClient, {"type": "test_type", "address": "test_address", "notification_preferences_X_frequency": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/users/self/communication_channels/test_type/test_address/notification_preferences");

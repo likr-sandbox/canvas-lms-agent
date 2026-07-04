@@ -10,7 +10,7 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"lti\\_guid\":: the 'tool\\_consumer\\_instance\\_guid' that will be sent for this account on LTI launches<br>\"registration\\_settings\":: returns info about the privacy policy and terms of use<br>\"services\":: returns services and whether they are enabled (requires account management permissions)<br>\"course\\_count\":: returns the number of courses directly under each account<br>\"sub\\_account\\_count\":: returns the number of sub-accounts directly under each account Allowed values: <code>lti\\_guid</code>, <code>registration\\_settings</code>, <code>services</code>, <code>course\\_count</code>, <code>sub\\_account\\_count</code></p>"
         },
@@ -27,7 +27,7 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"lti\\_guid\":: the 'tool\\_consumer\\_instance\\_guid' that will be sent for this account on LTI launches<br>\"registration\\_settings\":: returns info about the privacy policy and terms of use<br>\"services\":: returns services and whether they are enabled (requires account management permissions)<br>\"course\\_count\":: returns the number of courses directly under each account<br>\"sub\\_account\\_count\":: returns the number of sub-accounts directly under each account<br>\"site\\_admin\":: returns true if the account is the Site Admin account (only included if true) Allowed values: <code>lti\\_guid</code>, <code>registration\\_settings</code>, <code>services</code>, <code>course\\_count</code>, <code>sub\\_account\\_count</code>, <code>site\\_admin</code></p>"
         },
@@ -140,7 +140,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "permissions[]": {
+        "permissions": {
           "type": "string",
           "description": "<p>List of permissions to check against the authenticated user.<br>Permission names are documented in the <a href=\"roles.md#method.role_overrides.manageable_permissions\">List assignable permissions</a> endpoint.</p>"
         },
@@ -172,7 +172,7 @@ const definitions = [
           "type": "string",
           "description": "<p>Sorts the accounts by id or name.<br>Only applies when recursive is false. Defaults to id. Allowed values: <code>id</code>, <code>name</code></p>"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"course\\_count\":: returns the number of courses directly under each account<br>\"sub\\_account\\_count\":: returns the number of sub-accounts directly under each account Allowed values: <code>course\\_count</code>, <code>sub\\_account\\_count</code></p>"
         },
@@ -253,11 +253,11 @@ const definitions = [
           "type": "boolean",
           "description": "<p>If true, include only courses with at least one enrollment. If false,<br>include only courses with no enrollments. If not present, do not filter<br>on course enrollment status.</p>"
         },
-        "enrollment_type[]": {
+        "enrollment_type": {
           "type": "string",
           "description": "<p>If set, only return courses that have at least one user enrolled in<br>in the course with one of the specified enrollment types. Allowed values: <code>teacher</code>, <code>student</code>, <code>ta</code>, <code>observer</code>, <code>designer</code></p>"
         },
-        "enrollment_workflow_state[]": {
+        "enrollment_workflow_state": {
           "type": "string",
           "description": "<p>If set, only return courses that have at least one user enrolled in<br>in the course with one of the specified enrollment workflow states. Allowed values: <code>active</code>, <code>completed</code>, <code>deleted</code>, <code>invited</code>, <code>pending</code>, <code>creation\\_pending</code>, <code>rejected</code>, <code>inactive</code></p>"
         },
@@ -281,11 +281,11 @@ const definitions = [
           "type": "boolean",
           "description": "<p>If true, include only public courses. If false, exclude them.<br>If not present, do not filter on this basis.</p>"
         },
-        "by_teachers[]": {
+        "by_teachers": {
           "type": "number",
           "description": "<p>List of User IDs of teachers; if supplied, include only courses taught by<br>one of the referenced users.</p>"
         },
-        "by_subaccounts[]": {
+        "by_subaccounts": {
           "type": "number",
           "description": "<p>List of Account IDs; if supplied, include only courses associated with one<br>of the referenced subaccounts.</p>"
         },
@@ -293,11 +293,11 @@ const definitions = [
           "type": "boolean",
           "description": "<p>If present, only return courses that have at least one enrollment.<br>Equivalent to 'with\\_enrollments=true'; retained for compatibility.</p>"
         },
-        "state[]": {
+        "state": {
           "type": "string",
           "description": "<p>If set, only return courses that are in the given state(s). By default,<br>all states but \"deleted\" are returned. Allowed values: <code>created</code>, <code>claimed</code>, <code>available</code>, <code>completed</code>, <code>deleted</code>, <code>all</code></p>"
         },
-        "enrollment_term_id[]": {
+        "enrollment_term_id": {
           "type": "number",
           "description": "<p>If set, only includes courses from the specified terms. Can be either a single ID or<br>an array of enrollment term IDs.</p>"
         },
@@ -305,7 +305,7 @@ const definitions = [
           "type": "string",
           "description": "The partial course name, code, or full ID to match and return in the results list. Must be at least 3 characters."
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>- All explanations can be seen in the <a href=\"courses.md#method.courses.index\">Course API index documentation</a><br>- \"sections\", \"needs\\_grading\\_count\" and \"total\\_scores\" are not valid options at the account level Allowed values: <code>syllabus\\_body</code>, <code>term</code>, <code>course\\_progress</code>, <code>storage\\_quota\\_used\\_mb</code>, <code>total\\_students</code>, <code>teachers</code>, <code>account\\_name</code>, <code>concluded</code>, <code>post\\_manually</code></p>"
         },
@@ -353,131 +353,131 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "account[name]": {
+        "account_name": {
           "type": "string",
           "description": "Updates the account name"
         },
-        "account[sis_account_id]": {
+        "account_sis_account_id": {
           "type": "string",
           "description": "<p>Updates the account sis\\_account\\_id<br>Must have manage\\_sis permission and must not be a root\\_account.</p>"
         },
-        "account[default_time_zone]": {
+        "account_default_time_zone": {
           "type": "string",
           "description": "<p>The default time zone of the account. Allowed time zones are<br><a href=\"http://www.iana.org/time-zones\">IANA time zones</a> or friendlier<br><a href=\"http://api.rubyonrails.org/classes/ActiveSupport/TimeZone.html\">Ruby on Rails time zones</a>.</p>"
         },
-        "account[default_storage_quota_mb]": {
+        "account_default_storage_quota_mb": {
           "type": "number",
           "description": "The default course storage quota to be used, if not otherwise specified."
         },
-        "account[default_user_storage_quota_mb]": {
+        "account_default_user_storage_quota_mb": {
           "type": "number",
           "description": "The default user storage quota to be used, if not otherwise specified."
         },
-        "account[default_group_storage_quota_mb]": {
+        "account_default_group_storage_quota_mb": {
           "type": "number",
           "description": "The default group storage quota to be used, if not otherwise specified."
         },
-        "account[course_template_id]": {
+        "account_course_template_id": {
           "type": "number",
           "description": "<p>The ID of a course to be used as a template for all newly created courses.<br>Empty means to inherit the setting from parent account, 0 means to not<br>use a template even if a parent account has one set. The course must be<br>marked as a template.</p>"
         },
-        "account[parent_account_id]": {
+        "account_parent_account_id": {
           "type": "number",
           "description": "<p>The ID of a parent account to move the account to. The new parent account<br>must be in the same root account as the original. The hierarchy of<br>sub-accounts will be preserved in the new parent account. The caller must<br>be an administrator in both the original parent account and the new parent<br>account.</p>"
         },
-        "account[settings][restrict_student_past_view][value]": {
+        "account_settings_restrict_student_past_view_value": {
           "type": "boolean",
           "description": "Restrict students from viewing courses after end date"
         },
-        "account[settings][restrict_student_past_view][locked]": {
+        "account_settings_restrict_student_past_view_locked": {
           "type": "boolean",
           "description": "Lock this setting for sub-accounts and courses"
         },
-        "account[settings][restrict_student_future_view][value]": {
+        "account_settings_restrict_student_future_view_value": {
           "type": "boolean",
           "description": "Restrict students from viewing courses before start date"
         },
-        "account[settings][microsoft_sync_enabled]": {
+        "account_settings_microsoft_sync_enabled": {
           "type": "boolean",
           "description": "<p>Determines whether this account has Microsoft Teams Sync enabled or not.<br>Note that if you are altering Microsoft Teams sync settings you must enable<br>the Microsoft Group enrollment syncing feature flag. In addition, if you are enabling<br>Microsoft Teams sync, you must also specify a tenant, login attribute, and a remote attribute.<br>Specifying a suffix to use is optional.</p>"
         },
-        "account[settings][microsoft_sync_tenant]": {
+        "account_settings_microsoft_sync_tenant": {
           "type": "string",
           "description": "<p>The tenant this account should use when using Microsoft Teams Sync.<br>This should be an Azure Active Directory domain name.</p>"
         },
-        "account[settings][microsoft_sync_login_attribute]": {
+        "account_settings_microsoft_sync_login_attribute": {
           "type": "string",
           "description": "<p>The attribute this account should use to lookup users when using Microsoft Teams Sync.<br>Must be one of \"sub\", \"email\", \"oid\", \"preferred\\_username\", or \"integration\\_id\".</p>"
         },
-        "account[settings][microsoft_sync_login_attribute_suffix]": {
+        "account_settings_microsoft_sync_login_attribute_suffix": {
           "type": "string",
           "description": "<p>A suffix that will be appended to the result of the login attribute when associating<br>Canvas users with Microsoft users. Must be under 255 characters and contain no whitespace.<br>This field is optional.</p>"
         },
-        "account[settings][microsoft_sync_remote_attribute]": {
+        "account_settings_microsoft_sync_remote_attribute": {
           "type": "string",
           "description": "<p>The Active Directory attribute to use when associating Canvas users with Microsoft users.<br>Must be one of \"mail\", \"mailNickname\", or \"userPrincipalName\".</p>"
         },
-        "account[settings][restrict_student_future_view][locked]": {
+        "account_settings_restrict_student_future_view_locked": {
           "type": "boolean",
           "description": "Lock this setting for sub-accounts and courses"
         },
-        "account[settings][lock_all_announcements][value]": {
+        "account_settings_lock_all_announcements_value": {
           "type": "boolean",
           "description": "Disable comments on announcements"
         },
-        "account[settings][lock_all_announcements][locked]": {
+        "account_settings_lock_all_announcements_locked": {
           "type": "boolean",
           "description": "Lock this setting for sub-accounts and courses"
         },
-        "account[settings][usage_rights_required][value]": {
+        "account_settings_usage_rights_required_value": {
           "type": "boolean",
           "description": "Copyright and license information must be provided for files before they are published."
         },
-        "account[settings][usage_rights_required][locked]": {
+        "account_settings_usage_rights_required_locked": {
           "type": "boolean",
           "description": "Lock this setting for sub-accounts and courses"
         },
-        "account[settings][restrict_student_future_listing][value]": {
+        "account_settings_restrict_student_future_listing_value": {
           "type": "boolean",
           "description": "Restrict students from viewing future enrollments in course list"
         },
-        "account[settings][restrict_student_future_listing][locked]": {
+        "account_settings_restrict_student_future_listing_locked": {
           "type": "boolean",
           "description": "Lock this setting for sub-accounts and courses"
         },
-        "account[settings][conditional_release][value]": {
+        "account_settings_conditional_release_value": {
           "type": "boolean",
           "description": "Enable or disable individual learning paths for students based on assessment"
         },
-        "account[settings][conditional_release][locked]": {
+        "account_settings_conditional_release_locked": {
           "type": "boolean",
           "description": "Lock this setting for sub-accounts and courses"
         },
-        "account[settings][enable_course_paces][value]": {
+        "account_settings_enable_course_paces_value": {
           "type": "boolean",
           "description": "Enable or disable course pacing"
         },
-        "account[settings][enable_course_paces][locked]": {
+        "account_settings_enable_course_paces_locked": {
           "type": "boolean",
           "description": "Lock this setting for sub-accounts and courses"
         },
-        "account[settings][suppress_notifications]": {
+        "account_settings_suppress_notifications": {
           "type": "boolean",
           "description": "<p>Suppress notification messages from being created and sent. When set to<br>+true+, all notifications are suppressed. When set to an array of<br>notification category slugs (e.g. +\\[\"grading\", \"announcement\"]+), only<br>notifications in those categories are suppressed. Set to +false+ to<br>allow all notifications. Root account setting only.</p>"
         },
-        "account[settings][password_policy]": {
+        "account_settings_password_policy": {
           "type": "string",
           "description": "<p>Hash of optional password policy configuration parameters for a root account<br>+allow\\_login\\_suspension+ boolean:: Allow suspension of user logins upon reaching maximum\\_login\\_attempts<br>+require\\_number\\_characters+ boolean:: Require the use of number characters when setting up a new password<br>+require\\_symbol\\_characters+ boolean:: Require the use of symbol characters when setting up a new password<br>+minimum\\_character\\_length+ integer:: Minimum number of characters required for a new password<br>+maximum\\_login\\_attempts+ integer:: Maximum number of login attempts before a user is locked out<br><em>Required</em> feature option:<br>Enhance password options</p>"
         },
-        "account[settings][enable_as_k5_account][value]": {
+        "account_settings_enable_as_k5_account_value": {
           "type": "boolean",
           "description": "Enable or disable Canvas for Elementary for this account"
         },
-        "account[settings][use_classic_font_in_k5][value]": {
+        "account_settings_use_classic_font_in_k5_value": {
           "type": "boolean",
           "description": "Whether or not the classic font is used on the dashboard. Only applies if enable\\_as\\_k5\\_account is true."
         },
-        "account[settings][horizon_account][value]": {
+        "account_settings_horizon_account_value": {
           "type": "boolean",
           "description": "Enable or disable Canvas Career for this account"
         },
@@ -485,23 +485,23 @@ const definitions = [
           "type": "boolean",
           "description": "<p>Default is true. If false, any fields containing \u201csticky\u201d changes will not be updated.<br>See SIS CSV Format documentation for information on which fields can have SIS stickiness</p>"
         },
-        "account[settings][lock_outcome_proficiency][value]": {
+        "account_settings_lock_outcome_proficiency_value": {
           "type": "boolean",
           "description": "\\[DEPRECATED] Restrict instructors from changing mastery scale"
         },
-        "account[lock_outcome_proficiency][locked]": {
+        "account_lock_outcome_proficiency_locked": {
           "type": "boolean",
           "description": "\\[DEPRECATED] Lock this setting for sub-accounts and courses"
         },
-        "account[settings][lock_proficiency_calculation][value]": {
+        "account_settings_lock_proficiency_calculation_value": {
           "type": "boolean",
           "description": "\\[DEPRECATED] Restrict instructors from changing proficiency calculation method"
         },
-        "account[lock_proficiency_calculation][locked]": {
+        "account_lock_proficiency_calculation_locked": {
           "type": "boolean",
           "description": "\\[DEPRECATED] Lock this setting for sub-accounts and courses"
         },
-        "account[services]": {
+        "account_services": {
           "type": "string",
           "description": "Give this a set of keys and boolean values to enable or disable services matching the keys"
         }
@@ -603,30 +603,30 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "account[name]": {
+        "account_name": {
           "type": "string",
           "description": "The name of the new sub-account."
         },
-        "account[sis_account_id]": {
+        "account_sis_account_id": {
           "type": "string",
           "description": "The account's identifier in the Student Information System."
         },
-        "account[default_storage_quota_mb]": {
+        "account_default_storage_quota_mb": {
           "type": "number",
           "description": "The default course storage quota to be used, if not otherwise specified."
         },
-        "account[default_user_storage_quota_mb]": {
+        "account_default_user_storage_quota_mb": {
           "type": "number",
           "description": "The default user storage quota to be used, if not otherwise specified."
         },
-        "account[default_group_storage_quota_mb]": {
+        "account_default_group_storage_quota_mb": {
           "type": "number",
           "description": "The default group storage quota to be used, if not otherwise specified."
         }
       },
       "required": [
         "account_id",
-        "account[name]"
+        "account_name"
       ]
     }
   },
@@ -655,10 +655,20 @@ const definitions = [
 
 const handlers = {
   get_accounts: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts", mappedArgs);
   },
   get_horizon_accounts: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/horizon_accounts", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/horizon_accounts", mappedArgs);
   },
   get_manageable_accounts: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/manageable_accounts", args);
@@ -679,10 +689,20 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/settings/environment", args);
   },
   get_aa_permissions: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/permissions", args);
+    const mappedArgs = { ...args };
+    if ("permissions" in mappedArgs) {
+      mappedArgs["permissions[]"] = mappedArgs["permissions"];
+      delete mappedArgs["permissions"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/permissions", mappedArgs);
   },
   get_aa_sub_accounts: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sub_accounts", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sub_accounts", mappedArgs);
   },
   get_aa_terms_of_service: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/terms_of_service", args);
@@ -694,10 +714,188 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/manually_created_courses_account", args);
   },
   get_aa_courses: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/courses", args);
+    const mappedArgs = { ...args };
+    if ("enrollment_type" in mappedArgs) {
+      mappedArgs["enrollment_type[]"] = mappedArgs["enrollment_type"];
+      delete mappedArgs["enrollment_type"];
+    }
+    if ("enrollment_workflow_state" in mappedArgs) {
+      mappedArgs["enrollment_workflow_state[]"] = mappedArgs["enrollment_workflow_state"];
+      delete mappedArgs["enrollment_workflow_state"];
+    }
+    if ("by_teachers" in mappedArgs) {
+      mappedArgs["by_teachers[]"] = mappedArgs["by_teachers"];
+      delete mappedArgs["by_teachers"];
+    }
+    if ("by_subaccounts" in mappedArgs) {
+      mappedArgs["by_subaccounts[]"] = mappedArgs["by_subaccounts"];
+      delete mappedArgs["by_subaccounts"];
+    }
+    if ("state" in mappedArgs) {
+      mappedArgs["state[]"] = mappedArgs["state"];
+      delete mappedArgs["state"];
+    }
+    if ("enrollment_term_id" in mappedArgs) {
+      mappedArgs["enrollment_term_id[]"] = mappedArgs["enrollment_term_id"];
+      delete mappedArgs["enrollment_term_id"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/courses", mappedArgs);
   },
   put_accounts_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/accounts/:id", args);
+    const mappedArgs = { ...args };
+    if ("account_name" in mappedArgs) {
+      mappedArgs["account[name]"] = mappedArgs["account_name"];
+      delete mappedArgs["account_name"];
+    }
+    if ("account_sis_account_id" in mappedArgs) {
+      mappedArgs["account[sis_account_id]"] = mappedArgs["account_sis_account_id"];
+      delete mappedArgs["account_sis_account_id"];
+    }
+    if ("account_default_time_zone" in mappedArgs) {
+      mappedArgs["account[default_time_zone]"] = mappedArgs["account_default_time_zone"];
+      delete mappedArgs["account_default_time_zone"];
+    }
+    if ("account_default_storage_quota_mb" in mappedArgs) {
+      mappedArgs["account[default_storage_quota_mb]"] = mappedArgs["account_default_storage_quota_mb"];
+      delete mappedArgs["account_default_storage_quota_mb"];
+    }
+    if ("account_default_user_storage_quota_mb" in mappedArgs) {
+      mappedArgs["account[default_user_storage_quota_mb]"] = mappedArgs["account_default_user_storage_quota_mb"];
+      delete mappedArgs["account_default_user_storage_quota_mb"];
+    }
+    if ("account_default_group_storage_quota_mb" in mappedArgs) {
+      mappedArgs["account[default_group_storage_quota_mb]"] = mappedArgs["account_default_group_storage_quota_mb"];
+      delete mappedArgs["account_default_group_storage_quota_mb"];
+    }
+    if ("account_course_template_id" in mappedArgs) {
+      mappedArgs["account[course_template_id]"] = mappedArgs["account_course_template_id"];
+      delete mappedArgs["account_course_template_id"];
+    }
+    if ("account_parent_account_id" in mappedArgs) {
+      mappedArgs["account[parent_account_id]"] = mappedArgs["account_parent_account_id"];
+      delete mappedArgs["account_parent_account_id"];
+    }
+    if ("account_settings_restrict_student_past_view_value" in mappedArgs) {
+      mappedArgs["account[settings][restrict_student_past_view][value]"] = mappedArgs["account_settings_restrict_student_past_view_value"];
+      delete mappedArgs["account_settings_restrict_student_past_view_value"];
+    }
+    if ("account_settings_restrict_student_past_view_locked" in mappedArgs) {
+      mappedArgs["account[settings][restrict_student_past_view][locked]"] = mappedArgs["account_settings_restrict_student_past_view_locked"];
+      delete mappedArgs["account_settings_restrict_student_past_view_locked"];
+    }
+    if ("account_settings_restrict_student_future_view_value" in mappedArgs) {
+      mappedArgs["account[settings][restrict_student_future_view][value]"] = mappedArgs["account_settings_restrict_student_future_view_value"];
+      delete mappedArgs["account_settings_restrict_student_future_view_value"];
+    }
+    if ("account_settings_microsoft_sync_enabled" in mappedArgs) {
+      mappedArgs["account[settings][microsoft_sync_enabled]"] = mappedArgs["account_settings_microsoft_sync_enabled"];
+      delete mappedArgs["account_settings_microsoft_sync_enabled"];
+    }
+    if ("account_settings_microsoft_sync_tenant" in mappedArgs) {
+      mappedArgs["account[settings][microsoft_sync_tenant]"] = mappedArgs["account_settings_microsoft_sync_tenant"];
+      delete mappedArgs["account_settings_microsoft_sync_tenant"];
+    }
+    if ("account_settings_microsoft_sync_login_attribute" in mappedArgs) {
+      mappedArgs["account[settings][microsoft_sync_login_attribute]"] = mappedArgs["account_settings_microsoft_sync_login_attribute"];
+      delete mappedArgs["account_settings_microsoft_sync_login_attribute"];
+    }
+    if ("account_settings_microsoft_sync_login_attribute_suffix" in mappedArgs) {
+      mappedArgs["account[settings][microsoft_sync_login_attribute_suffix]"] = mappedArgs["account_settings_microsoft_sync_login_attribute_suffix"];
+      delete mappedArgs["account_settings_microsoft_sync_login_attribute_suffix"];
+    }
+    if ("account_settings_microsoft_sync_remote_attribute" in mappedArgs) {
+      mappedArgs["account[settings][microsoft_sync_remote_attribute]"] = mappedArgs["account_settings_microsoft_sync_remote_attribute"];
+      delete mappedArgs["account_settings_microsoft_sync_remote_attribute"];
+    }
+    if ("account_settings_restrict_student_future_view_locked" in mappedArgs) {
+      mappedArgs["account[settings][restrict_student_future_view][locked]"] = mappedArgs["account_settings_restrict_student_future_view_locked"];
+      delete mappedArgs["account_settings_restrict_student_future_view_locked"];
+    }
+    if ("account_settings_lock_all_announcements_value" in mappedArgs) {
+      mappedArgs["account[settings][lock_all_announcements][value]"] = mappedArgs["account_settings_lock_all_announcements_value"];
+      delete mappedArgs["account_settings_lock_all_announcements_value"];
+    }
+    if ("account_settings_lock_all_announcements_locked" in mappedArgs) {
+      mappedArgs["account[settings][lock_all_announcements][locked]"] = mappedArgs["account_settings_lock_all_announcements_locked"];
+      delete mappedArgs["account_settings_lock_all_announcements_locked"];
+    }
+    if ("account_settings_usage_rights_required_value" in mappedArgs) {
+      mappedArgs["account[settings][usage_rights_required][value]"] = mappedArgs["account_settings_usage_rights_required_value"];
+      delete mappedArgs["account_settings_usage_rights_required_value"];
+    }
+    if ("account_settings_usage_rights_required_locked" in mappedArgs) {
+      mappedArgs["account[settings][usage_rights_required][locked]"] = mappedArgs["account_settings_usage_rights_required_locked"];
+      delete mappedArgs["account_settings_usage_rights_required_locked"];
+    }
+    if ("account_settings_restrict_student_future_listing_value" in mappedArgs) {
+      mappedArgs["account[settings][restrict_student_future_listing][value]"] = mappedArgs["account_settings_restrict_student_future_listing_value"];
+      delete mappedArgs["account_settings_restrict_student_future_listing_value"];
+    }
+    if ("account_settings_restrict_student_future_listing_locked" in mappedArgs) {
+      mappedArgs["account[settings][restrict_student_future_listing][locked]"] = mappedArgs["account_settings_restrict_student_future_listing_locked"];
+      delete mappedArgs["account_settings_restrict_student_future_listing_locked"];
+    }
+    if ("account_settings_conditional_release_value" in mappedArgs) {
+      mappedArgs["account[settings][conditional_release][value]"] = mappedArgs["account_settings_conditional_release_value"];
+      delete mappedArgs["account_settings_conditional_release_value"];
+    }
+    if ("account_settings_conditional_release_locked" in mappedArgs) {
+      mappedArgs["account[settings][conditional_release][locked]"] = mappedArgs["account_settings_conditional_release_locked"];
+      delete mappedArgs["account_settings_conditional_release_locked"];
+    }
+    if ("account_settings_enable_course_paces_value" in mappedArgs) {
+      mappedArgs["account[settings][enable_course_paces][value]"] = mappedArgs["account_settings_enable_course_paces_value"];
+      delete mappedArgs["account_settings_enable_course_paces_value"];
+    }
+    if ("account_settings_enable_course_paces_locked" in mappedArgs) {
+      mappedArgs["account[settings][enable_course_paces][locked]"] = mappedArgs["account_settings_enable_course_paces_locked"];
+      delete mappedArgs["account_settings_enable_course_paces_locked"];
+    }
+    if ("account_settings_suppress_notifications" in mappedArgs) {
+      mappedArgs["account[settings][suppress_notifications]"] = mappedArgs["account_settings_suppress_notifications"];
+      delete mappedArgs["account_settings_suppress_notifications"];
+    }
+    if ("account_settings_password_policy" in mappedArgs) {
+      mappedArgs["account[settings][password_policy]"] = mappedArgs["account_settings_password_policy"];
+      delete mappedArgs["account_settings_password_policy"];
+    }
+    if ("account_settings_enable_as_k5_account_value" in mappedArgs) {
+      mappedArgs["account[settings][enable_as_k5_account][value]"] = mappedArgs["account_settings_enable_as_k5_account_value"];
+      delete mappedArgs["account_settings_enable_as_k5_account_value"];
+    }
+    if ("account_settings_use_classic_font_in_k5_value" in mappedArgs) {
+      mappedArgs["account[settings][use_classic_font_in_k5][value]"] = mappedArgs["account_settings_use_classic_font_in_k5_value"];
+      delete mappedArgs["account_settings_use_classic_font_in_k5_value"];
+    }
+    if ("account_settings_horizon_account_value" in mappedArgs) {
+      mappedArgs["account[settings][horizon_account][value]"] = mappedArgs["account_settings_horizon_account_value"];
+      delete mappedArgs["account_settings_horizon_account_value"];
+    }
+    if ("account_settings_lock_outcome_proficiency_value" in mappedArgs) {
+      mappedArgs["account[settings][lock_outcome_proficiency][value]"] = mappedArgs["account_settings_lock_outcome_proficiency_value"];
+      delete mappedArgs["account_settings_lock_outcome_proficiency_value"];
+    }
+    if ("account_lock_outcome_proficiency_locked" in mappedArgs) {
+      mappedArgs["account[lock_outcome_proficiency][locked]"] = mappedArgs["account_lock_outcome_proficiency_locked"];
+      delete mappedArgs["account_lock_outcome_proficiency_locked"];
+    }
+    if ("account_settings_lock_proficiency_calculation_value" in mappedArgs) {
+      mappedArgs["account[settings][lock_proficiency_calculation][value]"] = mappedArgs["account_settings_lock_proficiency_calculation_value"];
+      delete mappedArgs["account_settings_lock_proficiency_calculation_value"];
+    }
+    if ("account_lock_proficiency_calculation_locked" in mappedArgs) {
+      mappedArgs["account[lock_proficiency_calculation][locked]"] = mappedArgs["account_lock_proficiency_calculation_locked"];
+      delete mappedArgs["account_lock_proficiency_calculation_locked"];
+    }
+    if ("account_services" in mappedArgs) {
+      mappedArgs["account[services]"] = mappedArgs["account_services"];
+      delete mappedArgs["account_services"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/accounts/:id", mappedArgs);
   },
   delete_aa_users_user_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/users/:user_id", args);
@@ -712,7 +910,28 @@ const handlers = {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/users/:user_id/restore", args);
   },
   post_aa_sub_accounts: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/sub_accounts", args);
+    const mappedArgs = { ...args };
+    if ("account_name" in mappedArgs) {
+      mappedArgs["account[name]"] = mappedArgs["account_name"];
+      delete mappedArgs["account_name"];
+    }
+    if ("account_sis_account_id" in mappedArgs) {
+      mappedArgs["account[sis_account_id]"] = mappedArgs["account_sis_account_id"];
+      delete mappedArgs["account_sis_account_id"];
+    }
+    if ("account_default_storage_quota_mb" in mappedArgs) {
+      mappedArgs["account[default_storage_quota_mb]"] = mappedArgs["account_default_storage_quota_mb"];
+      delete mappedArgs["account_default_storage_quota_mb"];
+    }
+    if ("account_default_user_storage_quota_mb" in mappedArgs) {
+      mappedArgs["account[default_user_storage_quota_mb]"] = mappedArgs["account_default_user_storage_quota_mb"];
+      delete mappedArgs["account_default_user_storage_quota_mb"];
+    }
+    if ("account_default_group_storage_quota_mb" in mappedArgs) {
+      mappedArgs["account[default_group_storage_quota_mb]"] = mappedArgs["account_default_group_storage_quota_mb"];
+      delete mappedArgs["account_default_group_storage_quota_mb"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/sub_accounts", mappedArgs);
   },
   delete_aa_sub_accounts_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/sub_accounts/:id", args);

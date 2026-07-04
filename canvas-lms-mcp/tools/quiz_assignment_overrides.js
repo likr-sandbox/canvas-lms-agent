@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "quiz_assignment_overrides[][quiz_ids][]": {
+        "quiz_assignment_overrides_quiz_ids": {
           "type": "number",
           "description": "<p>An array of quiz IDs. If omitted, overrides for all quizzes available to<br>the operating user will be returned.</p>"
         },
@@ -38,7 +38,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: course_id"
         },
-        "quiz_assignment_overrides[][quiz_ids][]": {
+        "quiz_assignment_overrides_quiz_ids": {
           "type": "number",
           "description": "<p>An array of quiz IDs. If omitted, overrides for all quizzes available to<br>the operating user will be returned.</p>"
         },
@@ -56,10 +56,20 @@ const definitions = [
 
 const handlers = {
   get_ccq_assignment_overrides: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/assignment_overrides", args);
+    const mappedArgs = { ...args };
+    if ("quiz_assignment_overrides_quiz_ids" in mappedArgs) {
+      mappedArgs["quiz_assignment_overrides[][quiz_ids][]"] = mappedArgs["quiz_assignment_overrides_quiz_ids"];
+      delete mappedArgs["quiz_assignment_overrides_quiz_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/assignment_overrides", mappedArgs);
   },
   get_ccnq_assignment_overrides: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/new_quizzes/assignment_overrides", args);
+    const mappedArgs = { ...args };
+    if ("quiz_assignment_overrides_quiz_ids" in mappedArgs) {
+      mappedArgs["quiz_assignment_overrides[][quiz_ids][]"] = mappedArgs["quiz_assignment_overrides_quiz_ids"];
+      delete mappedArgs["quiz_assignment_overrides_quiz_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/new_quizzes/assignment_overrides", mappedArgs);
   }
 };
 

@@ -26,11 +26,11 @@ const definitions = [
           "type": "boolean",
           "description": "<p>If true, include draft templates. If false or omitted<br>only published templates will be returned.</p>"
         },
-        "type[]": {
+        "type": {
           "type": "string",
           "description": "What type of templates should be returned. Allowed values: `page`, `section`, `block`"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "no description Allowed values: `node_tree`, `thumbnail`"
         },
@@ -48,7 +48,16 @@ const definitions = [
 
 const handlers = {
   get_cc_block_editor_templates: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/courses/:course_id/block_editor_templates", args);
+    const mappedArgs = { ...args };
+    if ("type" in mappedArgs) {
+      mappedArgs["type[]"] = mappedArgs["type"];
+      delete mappedArgs["type"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/courses/:course_id/block_editor_templates", mappedArgs);
   }
 };
 

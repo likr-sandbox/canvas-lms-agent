@@ -34,7 +34,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: group_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>If \"all\\_dates\" is passed, all dates associated with graded discussions'<br>assignments will be included.<br>if \"sections\" is passed, includes the course sections that are associated<br>with the topic, if the topic is specific to certain sections of the course.<br>If \"sections\\_user\\_count\" is passed, then:<br>(a) If sections were asked for <em>and</em> the topic is specific to certain<br>course sections, includes the number of users in each<br>section. (as part of the section json asked for above)<br>(b) Else, includes at the root level the total number of users in the<br>topic's context (group or course) that the topic applies to.<br>If \"overrides\" is passed, the overrides for the assignment will be included Allowed values: <code>all\\_dates</code>, <code>sections</code>, <code>sections\\_user\\_count</code>, <code>overrides</code></p>"
         },
@@ -402,14 +402,14 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: group_id"
         },
-        "order[]": {
+        "order": {
           "type": "number",
           "description": "<p>The ids of the pinned discussion topics in the desired order.<br>(For example, \"order=104,102,103\".)</p>"
         }
       },
       "required": [
         "group_id",
-        "order[]"
+        "order"
       ]
     }
   },
@@ -560,7 +560,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: topic_id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>If \"all\\_dates\" is passed, all dates associated with graded discussions'<br>assignments will be included.<br>if \"sections\" is passed, includes the course sections that are associated<br>with the topic, if the topic is specific to certain sections of the course.<br>If \"sections\\_user\\_count\" is passed, then:<br>(a) If sections were asked for <em>and</em> the topic is specific to certain<br>course sections, includes the number of users in each<br>section. (as part of the section json asked for above)<br>(b) Else, includes at the root level the total number of users in the<br>topic's context (group or course) that the topic applies to.<br>If \"overrides\" is passed, the overrides for the assignment will be included Allowed values: <code>all\\_dates</code>, <code>sections</code>, <code>sections\\_user\\_count</code>, <code>overrides</code></p>"
         },
@@ -757,7 +757,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: summary_id"
         },
-        "_action": {
+        "action": {
           "type": "string",
           "description": "<p>Required<br>The action to take on the summary. Possible values are:<br>- \"seen\": Marks the summary as seen. This action saves the feedback if it's not already persisted.<br>- \"like\": Marks the summary as liked.<br>- \"dislike\": Marks the summary as disliked.<br>- \"add\\_comment\": Adds a written comment to a disliked summary. Requires the \"comment\" parameter.<br>- \"reset\\_like\": Resets the like status of the summary.<br>- \"regenerate\": Regenerates the summary feedback.<br>- \"disable\\_summary\": Disables the summary feedback.<br>Any other value will result in an error response.</p>"
         },
@@ -1124,7 +1124,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: topic_id"
         },
-        "ids[]": {
+        "ids": {
           "type": "string",
           "description": "<p>A list of entry ids to retrieve. Entries will be returned in id order,<br>smallest id first.</p>"
         },
@@ -1606,7 +1606,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics", args);
   },
   get_gg_discussion_topics: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics", mappedArgs);
   },
   post_cc_discussion_topics: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics", args);
@@ -1630,7 +1635,12 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics/reorder", args);
   },
   post_ggdt_reorder: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/reorder", args);
+    const mappedArgs = { ...args };
+    if ("order" in mappedArgs) {
+      mappedArgs["order[]"] = mappedArgs["order"];
+      delete mappedArgs["order"];
+    }
+    return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/reorder", mappedArgs);
   },
   put_ccdtt_entries_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:id", args);
@@ -1648,7 +1658,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:topic_id", args);
   },
   get_gg_discussion_topics_topic_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics/:topic_id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics/:topic_id", mappedArgs);
   },
   get_ccdtt_summaries: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:topic_id/summaries", args);
@@ -1672,7 +1687,12 @@ const handlers = {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics/:topic_id/summaries/:summary_id/feedback", args);
   },
   post_ggdttss_feedback: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/:topic_id/summaries/:summary_id/feedback", args);
+    const mappedArgs = { ...args };
+    if ("action" in mappedArgs) {
+      mappedArgs["_action"] = mappedArgs["action"];
+      delete mappedArgs["action"];
+    }
+    return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/:topic_id/summaries/:summary_id/feedback", mappedArgs);
   },
   get_ccdtt_view: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:topic_id/view", args);
@@ -1714,7 +1734,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entry_list", args);
   },
   get_ggdtt_entry_list: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entry_list", args);
+    const mappedArgs = { ...args };
+    if ("ids" in mappedArgs) {
+      mappedArgs["ids[]"] = mappedArgs["ids"];
+      delete mappedArgs["ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entry_list", mappedArgs);
   },
   put_ccdtt_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/:topic_id/read", args);

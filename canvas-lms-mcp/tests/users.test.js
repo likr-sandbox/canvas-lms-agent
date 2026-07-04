@@ -87,7 +87,7 @@ test("get_us_todo calls correct endpoint", async () => {
   const handler = usersModule.handlers.get_us_todo;
   assert.ok(handler, "Handler get_us_todo should be defined");
 
-  const result = await handler(mockClient, {"include[]": "test_val"});
+  const result = await handler(mockClient, {"include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/self/todo");
@@ -105,7 +105,7 @@ test("get_us_todo_item_count calls correct endpoint", async () => {
   const handler = usersModule.handlers.get_us_todo_item_count;
   assert.ok(handler, "Handler get_us_todo_item_count should be defined");
 
-  const result = await handler(mockClient, {"include[]": "test_val"});
+  const result = await handler(mockClient, {"include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/self/todo_item_count");
@@ -213,7 +213,7 @@ test("get_users_id calls correct endpoint", async () => {
   const handler = usersModule.handlers.get_users_id;
   assert.ok(handler, "Handler get_users_id should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_id");
@@ -231,7 +231,7 @@ test("post_aa_users calls correct endpoint", async () => {
   const handler = usersModule.handlers.post_aa_users;
   assert.ok(handler, "Handler post_aa_users should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "user[name]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "user_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/users");
@@ -249,7 +249,7 @@ test("post_aa_self_registration calls correct endpoint", async () => {
   const handler = usersModule.handlers.post_aa_self_registration;
   assert.ok(handler, "Handler post_aa_self_registration should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "user[name]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "user_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/self_registration");
@@ -429,7 +429,7 @@ test("put_users_id calls correct endpoint", async () => {
   const handler = usersModule.handlers.put_users_id;
   assert.ok(handler, "Handler put_users_id should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "user[name]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "user_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_id");
@@ -573,7 +573,7 @@ test("get_ui_graded_submissions calls correct endpoint", async () => {
   const handler = usersModule.handlers.get_ui_graded_submissions;
   assert.ok(handler, "Handler get_ui_graded_submissions should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_id/graded_submissions");
@@ -591,7 +591,7 @@ test("get_uu_profile calls correct endpoint", async () => {
   const handler = usersModule.handlers.get_uu_profile;
   assert.ok(handler, "Handler get_uu_profile should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/profile");

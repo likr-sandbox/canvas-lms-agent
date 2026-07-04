@@ -23,40 +23,40 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "discovery_page[primary][][authentication_provider_id]": {
+        "discovery_page_primary_authentication_provider_id": {
           "type": "number",
           "description": "The ID of an active authentication provider for this account."
         },
-        "discovery_page[primary][][label]": {
+        "discovery_page_primary_label": {
           "type": "string",
           "description": "The display label for this authentication provider button."
         },
-        "discovery_page[primary][][icon]": {
+        "discovery_page_primary_icon": {
           "type": "string",
           "description": "Icon key for this authentication provider button."
         },
-        "discovery_page[secondary][][authentication_provider_id]": {
+        "discovery_page_secondary_authentication_provider_id": {
           "type": "number",
           "description": "The ID of an active authentication provider for this account."
         },
-        "discovery_page[secondary][][label]": {
+        "discovery_page_secondary_label": {
           "type": "string",
           "description": "The display label for this authentication provider button."
         },
-        "discovery_page[secondary][][icon]": {
+        "discovery_page_secondary_icon": {
           "type": "string",
           "description": "Icon key for this authentication provider button."
         },
-        "discovery_page[active]": {
+        "discovery_page_active": {
           "type": "boolean",
           "description": "Whether the discovery page is enabled. Defaults to false if not provided."
         }
       },
       "required": [
-        "discovery_page[primary][][authentication_provider_id]",
-        "discovery_page[primary][][label]",
-        "discovery_page[secondary][][authentication_provider_id]",
-        "discovery_page[secondary][][label]"
+        "discovery_page_primary_authentication_provider_id",
+        "discovery_page_primary_label",
+        "discovery_page_secondary_authentication_provider_id",
+        "discovery_page_secondary_label"
       ]
     }
   },
@@ -66,33 +66,33 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "discovery_page[primary][][authentication_provider_id]": {
+        "discovery_page_primary_authentication_provider_id": {
           "type": "number",
           "description": "The ID of an active authentication provider for this account."
         },
-        "discovery_page[primary][][label]": {
+        "discovery_page_primary_label": {
           "type": "string",
           "description": "The display label for this authentication provider button."
         },
-        "discovery_page[primary][][icon]": {
+        "discovery_page_primary_icon": {
           "type": "string",
           "description": "Icon key for this authentication provider button."
         },
-        "discovery_page[secondary][][authentication_provider_id]": {
+        "discovery_page_secondary_authentication_provider_id": {
           "type": "number",
           "description": "The ID of an active authentication provider for this account."
         },
-        "discovery_page[secondary][][label]": {
+        "discovery_page_secondary_label": {
           "type": "string",
           "description": "The display label for this authentication provider button."
         },
-        "discovery_page[secondary][][icon]": {
+        "discovery_page_secondary_icon": {
           "type": "string",
           "description": "Icon key for this authentication provider button."
         }
       },
       "required": [
-        "discovery_page[primary][][authentication_provider_id]"
+        "discovery_page_primary_authentication_provider_id"
       ]
     }
   }
@@ -103,10 +103,64 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/discovery_pages", args);
   },
   put_discovery_pages: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/discovery_pages", args);
+    const mappedArgs = { ...args };
+    if ("discovery_page_primary_authentication_provider_id" in mappedArgs) {
+      mappedArgs["discovery_page[primary][][authentication_provider_id]"] = mappedArgs["discovery_page_primary_authentication_provider_id"];
+      delete mappedArgs["discovery_page_primary_authentication_provider_id"];
+    }
+    if ("discovery_page_primary_label" in mappedArgs) {
+      mappedArgs["discovery_page[primary][][label]"] = mappedArgs["discovery_page_primary_label"];
+      delete mappedArgs["discovery_page_primary_label"];
+    }
+    if ("discovery_page_primary_icon" in mappedArgs) {
+      mappedArgs["discovery_page[primary][][icon]"] = mappedArgs["discovery_page_primary_icon"];
+      delete mappedArgs["discovery_page_primary_icon"];
+    }
+    if ("discovery_page_secondary_authentication_provider_id" in mappedArgs) {
+      mappedArgs["discovery_page[secondary][][authentication_provider_id]"] = mappedArgs["discovery_page_secondary_authentication_provider_id"];
+      delete mappedArgs["discovery_page_secondary_authentication_provider_id"];
+    }
+    if ("discovery_page_secondary_label" in mappedArgs) {
+      mappedArgs["discovery_page[secondary][][label]"] = mappedArgs["discovery_page_secondary_label"];
+      delete mappedArgs["discovery_page_secondary_label"];
+    }
+    if ("discovery_page_secondary_icon" in mappedArgs) {
+      mappedArgs["discovery_page[secondary][][icon]"] = mappedArgs["discovery_page_secondary_icon"];
+      delete mappedArgs["discovery_page_secondary_icon"];
+    }
+    if ("discovery_page_active" in mappedArgs) {
+      mappedArgs["discovery_page[active]"] = mappedArgs["discovery_page_active"];
+      delete mappedArgs["discovery_page_active"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/discovery_pages", mappedArgs);
   },
   post_dp_token: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/discovery_pages/token", args);
+    const mappedArgs = { ...args };
+    if ("discovery_page_primary_authentication_provider_id" in mappedArgs) {
+      mappedArgs["discovery_page[primary][][authentication_provider_id]"] = mappedArgs["discovery_page_primary_authentication_provider_id"];
+      delete mappedArgs["discovery_page_primary_authentication_provider_id"];
+    }
+    if ("discovery_page_primary_label" in mappedArgs) {
+      mappedArgs["discovery_page[primary][][label]"] = mappedArgs["discovery_page_primary_label"];
+      delete mappedArgs["discovery_page_primary_label"];
+    }
+    if ("discovery_page_primary_icon" in mappedArgs) {
+      mappedArgs["discovery_page[primary][][icon]"] = mappedArgs["discovery_page_primary_icon"];
+      delete mappedArgs["discovery_page_primary_icon"];
+    }
+    if ("discovery_page_secondary_authentication_provider_id" in mappedArgs) {
+      mappedArgs["discovery_page[secondary][][authentication_provider_id]"] = mappedArgs["discovery_page_secondary_authentication_provider_id"];
+      delete mappedArgs["discovery_page_secondary_authentication_provider_id"];
+    }
+    if ("discovery_page_secondary_label" in mappedArgs) {
+      mappedArgs["discovery_page[secondary][][label]"] = mappedArgs["discovery_page_secondary_label"];
+      delete mappedArgs["discovery_page_secondary_label"];
+    }
+    if ("discovery_page_secondary_icon" in mappedArgs) {
+      mappedArgs["discovery_page[secondary][][icon]"] = mappedArgs["discovery_page_secondary_icon"];
+      delete mappedArgs["discovery_page_secondary_icon"];
+    }
+    return genericHandler(client, "POST", "/api/v1/discovery_pages/token", mappedArgs);
   }
 };
 

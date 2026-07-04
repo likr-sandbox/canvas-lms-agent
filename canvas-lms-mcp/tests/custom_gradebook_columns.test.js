@@ -33,7 +33,7 @@ test("post_cc_custom_gradebook_columns calls correct endpoint", async () => {
   const handler = custom_gradebook_columnsModule.handlers.post_cc_custom_gradebook_columns;
   assert.ok(handler, "Handler post_cc_custom_gradebook_columns should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "column[title]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "column_title": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/custom_gradebook_columns");
@@ -87,7 +87,7 @@ test("post_cccgc_reorder calls correct endpoint", async () => {
   const handler = custom_gradebook_columnsModule.handlers.post_cccgc_reorder;
   assert.ok(handler, "Handler post_cccgc_reorder should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "order[]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "order": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/custom_gradebook_columns/reorder");
@@ -123,7 +123,7 @@ test("put_cccgci_data_user_id calls correct endpoint", async () => {
   const handler = custom_gradebook_columnsModule.handlers.put_cccgci_data_user_id;
   assert.ok(handler, "Handler put_cccgci_data_user_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "user_id": "test_user_id", "column_data[content]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "user_id": "test_user_id", "column_data_content": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/custom_gradebook_columns/test_id/data/test_user_id");
@@ -141,7 +141,7 @@ test("put_cc_custom_gradebook_column_data calls correct endpoint", async () => {
   const handler = custom_gradebook_columnsModule.handlers.put_cc_custom_gradebook_column_data;
   assert.ok(handler, "Handler put_cc_custom_gradebook_column_data should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "column_data[]": ["test_val"]});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "column_data": ["test_val"]});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/custom_gradebook_column_data");

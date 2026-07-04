@@ -33,7 +33,7 @@ test("post_appointment_groups calls correct endpoint", async () => {
   const handler = appointment_groupsModule.handlers.post_appointment_groups;
   assert.ok(handler, "Handler post_appointment_groups should be defined");
 
-  const result = await handler(mockClient, {"appointment_group[context_codes][]": "test_val"});
+  const result = await handler(mockClient, {"appointment_group_context_codes": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/appointment_groups");
@@ -51,7 +51,7 @@ test("get_appointment_groups_id calls correct endpoint", async () => {
   const handler = appointment_groupsModule.handlers.get_appointment_groups_id;
   assert.ok(handler, "Handler get_appointment_groups_id should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/appointment_groups/test_id");
@@ -69,7 +69,7 @@ test("put_appointment_groups_id calls correct endpoint", async () => {
   const handler = appointment_groupsModule.handlers.put_appointment_groups_id;
   assert.ok(handler, "Handler put_appointment_groups_id should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "appointment_group[context_codes][]": "test_val"});
+  const result = await handler(mockClient, {"id": "test_id", "appointment_group_context_codes": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/appointment_groups/test_id");
@@ -141,7 +141,7 @@ test("get_ag_next_appointment calls correct endpoint", async () => {
   const handler = appointment_groupsModule.handlers.get_ag_next_appointment;
   assert.ok(handler, "Handler get_ag_next_appointment should be defined");
 
-  const result = await handler(mockClient, {"appointment_group_ids[]": "test_val"});
+  const result = await handler(mockClient, {"appointment_group_ids": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/appointment_groups/next_appointment");

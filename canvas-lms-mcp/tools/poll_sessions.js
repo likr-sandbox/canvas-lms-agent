@@ -59,22 +59,22 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: poll_id"
         },
-        "poll_sessions[][course_id]": {
+        "poll_sessions_course_id": {
           "type": "number",
           "description": "The id of the course this session is associated with."
         },
-        "poll_sessions[][course_section_id]": {
+        "poll_sessions_course_section_id": {
           "type": "number",
           "description": "The id of the course section this session is associated with."
         },
-        "poll_sessions[][has_public_results]": {
+        "poll_sessions_has_public_results": {
           "type": "boolean",
           "description": "Whether or not results are viewable by students."
         }
       },
       "required": [
         "poll_id",
-        "poll_sessions[][course_id]"
+        "poll_sessions_course_id"
       ]
     }
   },
@@ -92,15 +92,15 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "poll_sessions[][course_id]": {
+        "poll_sessions_course_id": {
           "type": "number",
           "description": "The id of the course this session is associated with."
         },
-        "poll_sessions[][course_section_id]": {
+        "poll_sessions_course_section_id": {
           "type": "number",
           "description": "The id of the course section this session is associated with."
         },
-        "poll_sessions[][has_public_results]": {
+        "poll_sessions_has_public_results": {
           "type": "boolean",
           "description": "Whether or not results are viewable by students."
         }
@@ -218,10 +218,36 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/polls/:poll_id/poll_sessions/:id", args);
   },
   post_pp_poll_sessions: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/polls/:poll_id/poll_sessions", args);
+    const mappedArgs = { ...args };
+    if ("poll_sessions_course_id" in mappedArgs) {
+      mappedArgs["poll_sessions[][course_id]"] = mappedArgs["poll_sessions_course_id"];
+      delete mappedArgs["poll_sessions_course_id"];
+    }
+    if ("poll_sessions_course_section_id" in mappedArgs) {
+      mappedArgs["poll_sessions[][course_section_id]"] = mappedArgs["poll_sessions_course_section_id"];
+      delete mappedArgs["poll_sessions_course_section_id"];
+    }
+    if ("poll_sessions_has_public_results" in mappedArgs) {
+      mappedArgs["poll_sessions[][has_public_results]"] = mappedArgs["poll_sessions_has_public_results"];
+      delete mappedArgs["poll_sessions_has_public_results"];
+    }
+    return genericHandler(client, "POST", "/api/v1/polls/:poll_id/poll_sessions", mappedArgs);
   },
   put_pp_poll_sessions_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/polls/:poll_id/poll_sessions/:id", args);
+    const mappedArgs = { ...args };
+    if ("poll_sessions_course_id" in mappedArgs) {
+      mappedArgs["poll_sessions[][course_id]"] = mappedArgs["poll_sessions_course_id"];
+      delete mappedArgs["poll_sessions_course_id"];
+    }
+    if ("poll_sessions_course_section_id" in mappedArgs) {
+      mappedArgs["poll_sessions[][course_section_id]"] = mappedArgs["poll_sessions_course_section_id"];
+      delete mappedArgs["poll_sessions_course_section_id"];
+    }
+    if ("poll_sessions_has_public_results" in mappedArgs) {
+      mappedArgs["poll_sessions[][has_public_results]"] = mappedArgs["poll_sessions_has_public_results"];
+      delete mappedArgs["poll_sessions_has_public_results"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/polls/:poll_id/poll_sessions/:id", mappedArgs);
   },
   delete_pp_poll_sessions_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/polls/:poll_id/poll_sessions/:id", args);

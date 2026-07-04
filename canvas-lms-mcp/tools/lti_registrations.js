@@ -30,7 +30,7 @@ const definitions = [
           "type": "string",
           "description": "The order to sort the given column by. Defaults to desc. Allowed values: `asc`, `desc`"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional data to include. Always includes \\[account\\_binding].<br>\"account\\_binding\":: the registration's binding to the given account<br>\"configuration\":: the registration's Canvas-style tool configuration, without any overlays applied.<br>\"overlaid\\_configuration\":: the registration's Canvas-style tool configuration, with all overlays applied.<br>\"overlay\":: the registration's admin-defined configuration overlay</p>"
         },
@@ -58,7 +58,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional data to include. Always includes \\[account\\_binding configuration].<br>\"account\\_binding\":: the registration's binding to the given account<br>\"configuration\":: the registration's Canvas-style tool configuration, without any overlays applied.<br>\"overlaid\\_configuration\":: the registration's Canvas-style tool configuration, with all overlays applied.<br>\"overlaid\\_legacy\\_configuration\":: the registration's legacy-style configuration, with all overlays applied.<br>\"overlay\":: the registration's admin-defined configuration overlay<br>\"overlay\\_versions\":: the registration's overlay's edit history</p>"
         },
@@ -557,10 +557,20 @@ const definitions = [
 
 const handlers = {
   get_aa_lti_registrations: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations", mappedArgs);
   },
   get_aa_lti_registrations_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/:id", mappedArgs);
   },
   post_aa_lti_registrations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/lti_registrations", args);

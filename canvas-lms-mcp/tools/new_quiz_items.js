@@ -73,63 +73,63 @@ const definitions = [
           "type": "number",
           "description": "The id of the assignment associated with the quiz."
         },
-        "item[position]": {
+        "item_position": {
           "type": "number",
           "description": "The position of the item within the quiz."
         },
-        "item[points_possible]": {
+        "item_points_possible": {
           "type": "number",
           "description": "The number of points available to score on this item. Must be positive."
         },
-        "item[entry_type]": {
+        "item_entry_type": {
           "type": "string",
           "description": "The type of the item. Allowed values: `Item`"
         },
-        "item[entry][title]": {
+        "item_entry_title": {
           "type": "string",
           "description": "The question title."
         },
-        "item[entry][item_body]": {
+        "item_entry_item_body": {
           "type": "string",
           "description": "The question stem (rich content)."
         },
-        "item[entry][calculator_type]": {
+        "item_entry_calculator_type": {
           "type": "string",
           "description": "Type of calculator the user will have access to during the question. Allowed values: `none`, `basic`, `scientific`"
         },
-        "item[entry][feedback][neutral]": {
+        "item_entry_feedback_neutral": {
           "type": "string",
           "description": "General feedback to show regardless of answer (rich content)."
         },
-        "item[entry][feedback][correct]": {
+        "item_entry_feedback_correct": {
           "type": "string",
           "description": "Feedback to show if the question is answered correctly (rich content)."
         },
-        "item[entry][feedback][incorrect]": {
+        "item_entry_feedback_incorrect": {
           "type": "string",
           "description": "Feedback to show if the question is answered incorrectly (rich content)."
         },
-        "item[entry][interaction_type_slug]": {
+        "item_entry_interaction_type_slug": {
           "type": "string",
           "description": "The type of question. One of 'multi-answer', 'matching', 'categorization', 'file-upload', 'formula', 'ordering', 'rich-fill-blank', 'hot-spot', 'choice', 'numeric', 'true-false', or 'essay'. See [Appendix: Question Types](#Question+Types-appendix) for more info about each type."
         },
-        "item[entry][interaction_data]": {
+        "item_entry_interaction_data": {
           "type": "object",
           "description": "An object that contains the question data. See [Appendix: Question Types](#Question+Types-appendix) for more info about this field."
         },
-        "item[entry][properties]": {
+        "item_entry_properties": {
           "type": "object",
           "description": "An object that contains additional properties for some question types. See [Appendix: Question Types](#Question+Types-appendix) for more info about this field."
         },
-        "item[entry][scoring_data]": {
+        "item_entry_scoring_data": {
           "type": "object",
           "description": "An object that describes how to score the question. See [Appendix: Question Types](#Question+Types-appendix) for more info about this field."
         },
-        "item[entry][answer_feedback]": {
+        "item_entry_answer_feedback": {
           "type": "object",
           "description": "Feedback provided for each answer (rich content, only available on 'choice' question types)."
         },
-        "item[entry][scoring_algorithm]": {
+        "item_entry_scoring_algorithm": {
           "type": "string",
           "description": "The algorithm used to score the question. See [Appendix: Question Types](#Question+Types-appendix) for more info about this field."
         }
@@ -137,12 +137,12 @@ const definitions = [
       "required": [
         "course_id",
         "assignment_id",
-        "item[entry_type]",
-        "item[entry][item_body]",
-        "item[entry][interaction_type_slug]",
-        "item[entry][interaction_data]",
-        "item[entry][scoring_data]",
-        "item[entry][scoring_algorithm]"
+        "item_entry_type",
+        "item_entry_item_body",
+        "item_entry_interaction_type_slug",
+        "item_entry_interaction_data",
+        "item_entry_scoring_data",
+        "item_entry_scoring_algorithm"
       ]
     }
   },
@@ -207,7 +207,68 @@ const handlers = {
     return genericHandler(client, "GET", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items", args);
   },
   post_qvccqa_items: async (client, args) => {
-    return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items", args);
+    const mappedArgs = { ...args };
+    if ("item_position" in mappedArgs) {
+      mappedArgs["item[position]"] = mappedArgs["item_position"];
+      delete mappedArgs["item_position"];
+    }
+    if ("item_points_possible" in mappedArgs) {
+      mappedArgs["item[points_possible]"] = mappedArgs["item_points_possible"];
+      delete mappedArgs["item_points_possible"];
+    }
+    if ("item_entry_type" in mappedArgs) {
+      mappedArgs["item[entry_type]"] = mappedArgs["item_entry_type"];
+      delete mappedArgs["item_entry_type"];
+    }
+    if ("item_entry_title" in mappedArgs) {
+      mappedArgs["item[entry][title]"] = mappedArgs["item_entry_title"];
+      delete mappedArgs["item_entry_title"];
+    }
+    if ("item_entry_item_body" in mappedArgs) {
+      mappedArgs["item[entry][item_body]"] = mappedArgs["item_entry_item_body"];
+      delete mappedArgs["item_entry_item_body"];
+    }
+    if ("item_entry_calculator_type" in mappedArgs) {
+      mappedArgs["item[entry][calculator_type]"] = mappedArgs["item_entry_calculator_type"];
+      delete mappedArgs["item_entry_calculator_type"];
+    }
+    if ("item_entry_feedback_neutral" in mappedArgs) {
+      mappedArgs["item[entry][feedback][neutral]"] = mappedArgs["item_entry_feedback_neutral"];
+      delete mappedArgs["item_entry_feedback_neutral"];
+    }
+    if ("item_entry_feedback_correct" in mappedArgs) {
+      mappedArgs["item[entry][feedback][correct]"] = mappedArgs["item_entry_feedback_correct"];
+      delete mappedArgs["item_entry_feedback_correct"];
+    }
+    if ("item_entry_feedback_incorrect" in mappedArgs) {
+      mappedArgs["item[entry][feedback][incorrect]"] = mappedArgs["item_entry_feedback_incorrect"];
+      delete mappedArgs["item_entry_feedback_incorrect"];
+    }
+    if ("item_entry_interaction_type_slug" in mappedArgs) {
+      mappedArgs["item[entry][interaction_type_slug]"] = mappedArgs["item_entry_interaction_type_slug"];
+      delete mappedArgs["item_entry_interaction_type_slug"];
+    }
+    if ("item_entry_interaction_data" in mappedArgs) {
+      mappedArgs["item[entry][interaction_data]"] = mappedArgs["item_entry_interaction_data"];
+      delete mappedArgs["item_entry_interaction_data"];
+    }
+    if ("item_entry_properties" in mappedArgs) {
+      mappedArgs["item[entry][properties]"] = mappedArgs["item_entry_properties"];
+      delete mappedArgs["item_entry_properties"];
+    }
+    if ("item_entry_scoring_data" in mappedArgs) {
+      mappedArgs["item[entry][scoring_data]"] = mappedArgs["item_entry_scoring_data"];
+      delete mappedArgs["item_entry_scoring_data"];
+    }
+    if ("item_entry_answer_feedback" in mappedArgs) {
+      mappedArgs["item[entry][answer_feedback]"] = mappedArgs["item_entry_answer_feedback"];
+      delete mappedArgs["item_entry_answer_feedback"];
+    }
+    if ("item_entry_scoring_algorithm" in mappedArgs) {
+      mappedArgs["item[entry][scoring_algorithm]"] = mappedArgs["item_entry_scoring_algorithm"];
+      delete mappedArgs["item_entry_scoring_algorithm"];
+    }
+    return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items", mappedArgs);
   },
   delete_qvccqa_items_item_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items/:item_id", args);

@@ -33,7 +33,7 @@ test("get_gg_discussion_topics calls correct endpoint", async () => {
   const handler = discussion_topicsModule.handlers.get_gg_discussion_topics;
   assert.ok(handler, "Handler get_gg_discussion_topics should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/discussion_topics");
@@ -177,7 +177,7 @@ test("post_ggdt_reorder calls correct endpoint", async () => {
   const handler = discussion_topicsModule.handlers.post_ggdt_reorder;
   assert.ok(handler, "Handler post_ggdt_reorder should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "order[]": 123});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "order": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/discussion_topics/reorder");
@@ -285,7 +285,7 @@ test("get_gg_discussion_topics_topic_id calls correct endpoint", async () => {
   const handler = discussion_topicsModule.handlers.get_gg_discussion_topics_topic_id;
   assert.ok(handler, "Handler get_gg_discussion_topics_topic_id should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/discussion_topics/test_topic_id");
@@ -429,7 +429,7 @@ test("post_ggdttss_feedback calls correct endpoint", async () => {
   const handler = discussion_topicsModule.handlers.post_ggdttss_feedback;
   assert.ok(handler, "Handler post_ggdttss_feedback should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "summary_id": "test_summary_id", "_action": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "summary_id": "test_summary_id", "action": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/discussion_topics/test_topic_id/summaries/test_summary_id/feedback");
@@ -681,7 +681,7 @@ test("get_ggdtt_entry_list calls correct endpoint", async () => {
   const handler = discussion_topicsModule.handlers.get_ggdtt_entry_list;
   assert.ok(handler, "Handler get_ggdtt_entry_list should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "ids[]": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "ids": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/discussion_topics/test_topic_id/entry_list");

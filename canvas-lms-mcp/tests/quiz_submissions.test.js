@@ -15,7 +15,7 @@ test("get_ccqq_submissions calls correct endpoint", async () => {
   const handler = quiz_submissionsModule.handlers.get_ccqq_submissions;
   assert.ok(handler, "Handler get_ccqq_submissions should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/test_quiz_id/submissions");
@@ -33,7 +33,7 @@ test("get_ccqq_submission calls correct endpoint", async () => {
   const handler = quiz_submissionsModule.handlers.get_ccqq_submission;
   assert.ok(handler, "Handler get_ccqq_submission should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/test_quiz_id/submission");
@@ -51,7 +51,7 @@ test("get_ccqq_submissions_id calls correct endpoint", async () => {
   const handler = quiz_submissionsModule.handlers.get_ccqq_submissions_id;
   assert.ok(handler, "Handler get_ccqq_submissions_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/test_quiz_id/submissions/test_id");
@@ -87,7 +87,7 @@ test("put_ccqq_submissions_id calls correct endpoint", async () => {
   const handler = quiz_submissionsModule.handlers.put_ccqq_submissions_id;
   assert.ok(handler, "Handler put_ccqq_submissions_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "id": "test_id", "quiz_submissions[][attempt]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "id": "test_id", "quiz_submissions_attempt": 123});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/test_quiz_id/submissions/test_id");

@@ -76,7 +76,7 @@ const definitions = [
           "type": "string",
           "description": "The state of the course pace"
         },
-        "course_pace_module_item_attributes[]": {
+        "course_pace_module_item_attributes": {
           "type": "string",
           "description": "Module Items attributes"
         },
@@ -132,7 +132,7 @@ const definitions = [
           "type": "string",
           "description": "The state of the course pace"
         },
-        "course_pace_module_item_attributes[]": {
+        "course_pace_module_item_attributes": {
           "type": "string",
           "description": "Module Items attributes"
         }
@@ -177,10 +177,20 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/course_pacing/:id", args);
   },
   post_cc_course_pacing: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/course_pacing", args);
+    const mappedArgs = { ...args };
+    if ("course_pace_module_item_attributes" in mappedArgs) {
+      mappedArgs["course_pace_module_item_attributes[]"] = mappedArgs["course_pace_module_item_attributes"];
+      delete mappedArgs["course_pace_module_item_attributes"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/course_pacing", mappedArgs);
   },
   put_cc_course_pacing_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/course_pacing/:id", args);
+    const mappedArgs = { ...args };
+    if ("course_pace_module_item_attributes" in mappedArgs) {
+      mappedArgs["course_pace_module_item_attributes[]"] = mappedArgs["course_pace_module_item_attributes"];
+      delete mappedArgs["course_pace_module_item_attributes"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/courses/:course_id/course_pacing/:id", mappedArgs);
   },
   delete_cc_course_pacing_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/course_pacing/:id", args);

@@ -33,7 +33,7 @@ test("get_uu_courses calls correct endpoint", async () => {
   const handler = coursesModule.handlers.get_uu_courses;
   assert.ok(handler, "Handler get_uu_courses should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/courses");
@@ -69,7 +69,7 @@ test("post_aa_courses calls correct endpoint", async () => {
   const handler = coursesModule.handlers.post_aa_courses;
   assert.ok(handler, "Handler post_aa_courses should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "course[name]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "course_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/courses");
@@ -375,7 +375,7 @@ test("get_aa_courses_id calls correct endpoint", async () => {
   const handler = coursesModule.handlers.get_aa_courses_id;
   assert.ok(handler, "Handler get_aa_courses_id should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/courses/test_id");
@@ -393,7 +393,7 @@ test("put_courses_id calls correct endpoint", async () => {
   const handler = coursesModule.handlers.put_courses_id;
   assert.ok(handler, "Handler put_courses_id should be defined");
 
-  const result = await handler(mockClient, {"id": "test_id", "course[account_id]": 123});
+  const result = await handler(mockClient, {"id": "test_id", "course_account_id": 123});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_id");
@@ -411,7 +411,7 @@ test("put_aa_courses calls correct endpoint", async () => {
   const handler = coursesModule.handlers.put_aa_courses;
   assert.ok(handler, "Handler put_aa_courses should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "course_ids[]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "course_ids": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/courses");
@@ -447,7 +447,7 @@ test("get_cc_effective_due_dates calls correct endpoint", async () => {
   const handler = coursesModule.handlers.get_cc_effective_due_dates;
   assert.ok(handler, "Handler get_cc_effective_due_dates should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_ids[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_ids": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/effective_due_dates");
@@ -465,7 +465,7 @@ test("get_cc_permissions calls correct endpoint", async () => {
   const handler = coursesModule.handlers.get_cc_permissions;
   assert.ok(handler, "Handler get_cc_permissions should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "permissions[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "permissions": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/permissions");

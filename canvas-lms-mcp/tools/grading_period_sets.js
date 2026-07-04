@@ -34,26 +34,26 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: account_id"
         },
-        "enrollment_term_ids[]": {
+        "enrollment_term_ids": {
           "type": "array",
           "description": "A list of associated term ids for the grading period set"
         },
-        "grading_period_set[title]": {
+        "grading_period_set_title": {
           "type": "string",
           "description": "The title of the grading period set"
         },
-        "grading_period_set[weighted]": {
+        "grading_period_set_weighted": {
           "type": "boolean",
           "description": "A boolean to determine whether the grading periods in the set are weighted"
         },
-        "grading_period_set[display_totals_for_all_grading_periods]": {
+        "grading_period_set_display_totals_for_all_grading_periods": {
           "type": "boolean",
           "description": "A boolean to determine whether the totals for all grading periods in the set are displayed"
         }
       },
       "required": [
         "account_id",
-        "grading_period_set[title]"
+        "grading_period_set_title"
       ]
     }
   },
@@ -85,7 +85,24 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/grading_period_sets", args);
   },
   post_aa_grading_period_sets: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/grading_period_sets", args);
+    const mappedArgs = { ...args };
+    if ("enrollment_term_ids" in mappedArgs) {
+      mappedArgs["enrollment_term_ids[]"] = mappedArgs["enrollment_term_ids"];
+      delete mappedArgs["enrollment_term_ids"];
+    }
+    if ("grading_period_set_title" in mappedArgs) {
+      mappedArgs["grading_period_set[title]"] = mappedArgs["grading_period_set_title"];
+      delete mappedArgs["grading_period_set_title"];
+    }
+    if ("grading_period_set_weighted" in mappedArgs) {
+      mappedArgs["grading_period_set[weighted]"] = mappedArgs["grading_period_set_weighted"];
+      delete mappedArgs["grading_period_set_weighted"];
+    }
+    if ("grading_period_set_display_totals_for_all_grading_periods" in mappedArgs) {
+      mappedArgs["grading_period_set[display_totals_for_all_grading_periods]"] = mappedArgs["grading_period_set_display_totals_for_all_grading_periods"];
+      delete mappedArgs["grading_period_set_display_totals_for_all_grading_periods"];
+    }
+    return genericHandler(client, "POST", "/api/v1/accounts/:account_id/grading_period_sets", mappedArgs);
   },
   delete_aa_grading_period_sets_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/grading_period_sets/:id", args);

@@ -18,11 +18,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: assignment_id"
         },
-        "quiz_report[report_type]": {
+        "quiz_report_report_type": {
           "type": "string",
           "description": "The type of report to be generated. Allowed values: `student_analysis`, `item_analysis`"
         },
-        "quiz_report[format]": {
+        "quiz_report_format": {
           "type": "string",
           "description": "The format of report to be generated. Allowed values: `csv`, `json`"
         }
@@ -30,8 +30,8 @@ const definitions = [
       "required": [
         "course_id",
         "assignment_id",
-        "quiz_report[report_type]",
-        "quiz_report[format]"
+        "quiz_report_report_type",
+        "quiz_report_format"
       ]
     }
   }
@@ -39,7 +39,16 @@ const definitions = [
 
 const handlers = {
   post_qvccqa_reports: async (client, args) => {
-    return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/reports", args);
+    const mappedArgs = { ...args };
+    if ("quiz_report_report_type" in mappedArgs) {
+      mappedArgs["quiz_report[report_type]"] = mappedArgs["quiz_report_report_type"];
+      delete mappedArgs["quiz_report_report_type"];
+    }
+    if ("quiz_report_format" in mappedArgs) {
+      mappedArgs["quiz_report[format]"] = mappedArgs["quiz_report_format"];
+      delete mappedArgs["quiz_report_format"];
+    }
+    return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/reports", mappedArgs);
   }
 };
 

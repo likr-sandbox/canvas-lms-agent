@@ -63,22 +63,22 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: user_id"
         },
-        "token[purpose]": {
+        "token_purpose": {
           "type": "string",
           "description": "The purpose of the token."
         },
-        "token[expires_at]": {
+        "token_expires_at": {
           "type": "string",
           "description": "The time at which the token will expire."
         },
-        "token[scopes][]": {
+        "token_scopes": {
           "type": "array",
           "description": "<p>The scopes to associate with the token.<br>Ignored if the default developer key does not have the \"enable scopes\" option enabled.<br>In such cases, the token will inherit the user's permissions instead.</p>"
         }
       },
       "required": [
         "user_id",
-        "token[purpose]"
+        "token_purpose"
       ]
     }
   },
@@ -96,19 +96,19 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "token[purpose]": {
+        "token_purpose": {
           "type": "string",
           "description": "The purpose of the token."
         },
-        "token[expires_at]": {
+        "token_expires_at": {
           "type": "string",
           "description": "The time at which the token will expire."
         },
-        "token[scopes][]": {
+        "token_scopes": {
           "type": "array",
           "description": "The scopes to associate with the token."
         },
-        "token[regenerate]": {
+        "token_regenerate": {
           "type": "boolean",
           "description": "Regenerate the actual token."
         }
@@ -150,10 +150,40 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/tokens/:id", args);
   },
   post_uu_tokens: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/users/:user_id/tokens", args);
+    const mappedArgs = { ...args };
+    if ("token_purpose" in mappedArgs) {
+      mappedArgs["token[purpose]"] = mappedArgs["token_purpose"];
+      delete mappedArgs["token_purpose"];
+    }
+    if ("token_expires_at" in mappedArgs) {
+      mappedArgs["token[expires_at]"] = mappedArgs["token_expires_at"];
+      delete mappedArgs["token_expires_at"];
+    }
+    if ("token_scopes" in mappedArgs) {
+      mappedArgs["token[scopes][]"] = mappedArgs["token_scopes"];
+      delete mappedArgs["token_scopes"];
+    }
+    return genericHandler(client, "POST", "/api/v1/users/:user_id/tokens", mappedArgs);
   },
   put_uu_tokens_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/users/:user_id/tokens/:id", args);
+    const mappedArgs = { ...args };
+    if ("token_purpose" in mappedArgs) {
+      mappedArgs["token[purpose]"] = mappedArgs["token_purpose"];
+      delete mappedArgs["token_purpose"];
+    }
+    if ("token_expires_at" in mappedArgs) {
+      mappedArgs["token[expires_at]"] = mappedArgs["token_expires_at"];
+      delete mappedArgs["token_expires_at"];
+    }
+    if ("token_scopes" in mappedArgs) {
+      mappedArgs["token[scopes][]"] = mappedArgs["token_scopes"];
+      delete mappedArgs["token_scopes"];
+    }
+    if ("token_regenerate" in mappedArgs) {
+      mappedArgs["token[regenerate]"] = mappedArgs["token_regenerate"];
+      delete mappedArgs["token_regenerate"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/users/:user_id/tokens/:id", mappedArgs);
   },
   delete_uu_tokens_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/tokens/:id", args);

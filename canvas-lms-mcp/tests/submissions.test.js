@@ -33,7 +33,7 @@ test("post_ssaa_submissions calls correct endpoint", async () => {
   const handler = submissionsModule.handlers.post_ssaa_submissions;
   assert.ok(handler, "Handler post_ssaa_submissions should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "comment[text_comment]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "comment_text_comment": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/assignments/test_assignment_id/submissions");
@@ -69,7 +69,7 @@ test("get_ssaa_submissions calls correct endpoint", async () => {
   const handler = submissionsModule.handlers.get_ssaa_submissions;
   assert.ok(handler, "Handler get_ssaa_submissions should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/assignments/test_assignment_id/submissions");
@@ -105,7 +105,7 @@ test("get_sss_submissions calls correct endpoint", async () => {
   const handler = submissionsModule.handlers.get_sss_submissions;
   assert.ok(handler, "Handler get_sss_submissions should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "student_ids[]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "student_ids": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/students/submissions");
@@ -141,7 +141,7 @@ test("get_ssaa_submissions_user_id calls correct endpoint", async () => {
   const handler = submissionsModule.handlers.get_ssaa_submissions_user_id;
   assert.ok(handler, "Handler get_ssaa_submissions_user_id should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "user_id": "test_user_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "user_id": "test_user_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/assignments/test_assignment_id/submissions/test_user_id");
@@ -177,7 +177,7 @@ test("get_ssaa_anonymous_submissions_anonymous_id calls correct endpoint", async
   const handler = submissionsModule.handlers.get_ssaa_anonymous_submissions_anonymous_id;
   assert.ok(handler, "Handler get_ssaa_anonymous_submissions_anonymous_id should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "anonymous_id": "test_anonymous_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "anonymous_id": "test_anonymous_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/assignments/test_assignment_id/anonymous_submissions/test_anonymous_id");
@@ -249,7 +249,7 @@ test("put_ssaa_submissions_user_id calls correct endpoint", async () => {
   const handler = submissionsModule.handlers.put_ssaa_submissions_user_id;
   assert.ok(handler, "Handler put_ssaa_submissions_user_id should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "user_id": "test_user_id", "comment[text_comment]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "user_id": "test_user_id", "comment_text_comment": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/assignments/test_assignment_id/submissions/test_user_id");
@@ -285,7 +285,7 @@ test("put_ssaa_anonymous_submissions_anonymous_id calls correct endpoint", async
   const handler = submissionsModule.handlers.put_ssaa_anonymous_submissions_anonymous_id;
   assert.ok(handler, "Handler put_ssaa_anonymous_submissions_anonymous_id should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "anonymous_id": "test_anonymous_id", "comment[text_comment]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "anonymous_id": "test_anonymous_id", "comment_text_comment": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/assignments/test_assignment_id/anonymous_submissions/test_anonymous_id");
@@ -321,7 +321,7 @@ test("get_cca_gradeable_students calls correct endpoint", async () => {
   const handler = submissionsModule.handlers.get_cca_gradeable_students;
   assert.ok(handler, "Handler get_cca_gradeable_students should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_ids[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_ids": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignments/gradeable_students");
@@ -393,7 +393,7 @@ test("post_ssaas_update_grades calls correct endpoint", async () => {
   const handler = submissionsModule.handlers.post_ssaas_update_grades;
   assert.ok(handler, "Handler post_ssaas_update_grades should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "grade_data[<student_id>][posted_grade]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "grade_data_student_id_posted_grade": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/assignments/test_assignment_id/submissions/update_grades");
@@ -501,7 +501,7 @@ test("put_sss_bulk_mark_read calls correct endpoint", async () => {
   const handler = submissionsModule.handlers.put_sss_bulk_mark_read;
   assert.ok(handler, "Handler put_sss_bulk_mark_read should be defined");
 
-  const result = await handler(mockClient, {"section_id": "test_section_id", "submissionIds[]": "test_val"});
+  const result = await handler(mockClient, {"section_id": "test_section_id", "submissionIds": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/sections/test_section_id/submissions/bulk_mark_read");

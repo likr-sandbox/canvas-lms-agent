@@ -31,7 +31,7 @@ const definitions = [
           "type": "string",
           "description": "Limit the search to a particular course/group (e.g. \"course\\_3\" or \"group\\_4\")."
         },
-        "exclude[]": {
+        "exclude": {
           "type": "string",
           "description": "<p>Array of ids to exclude from the search. These may be user ids or<br>course/group ids prefixed with \"course\\_\" or \"group\\_\" respectively,<br>e.g. exclude\\[]=1\\&exclude\\[]=2\\&exclude\\[]=course\\_3</p>"
         },
@@ -47,7 +47,7 @@ const definitions = [
           "type": "number",
           "description": "<p>When searching by user\\_id, only users that could be normally messaged by<br>this user will be returned. This parameter allows you to specify a<br>conversation that will be referenced for a shared context -- if both the<br>current user and the searched user are in the conversation, the user will<br>be returned. This is used to start new side conversations.</p>"
         },
-        "permissions[]": {
+        "permissions": {
           "type": "string",
           "description": "<p>Array of permission strings to be checked for each matched context (e.g.<br>\"send\\_messages\"). This argument determines which permissions may be<br>returned in the response; it won't prevent contexts from being returned if<br>they don't grant the permission(s).</p>"
         },
@@ -90,7 +90,16 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/conversations/find_recipients", args);
   },
   get_s_recipients: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/search/recipients", args);
+    const mappedArgs = { ...args };
+    if ("exclude" in mappedArgs) {
+      mappedArgs["exclude[]"] = mappedArgs["exclude"];
+      delete mappedArgs["exclude"];
+    }
+    if ("permissions" in mappedArgs) {
+      mappedArgs["permissions[]"] = mappedArgs["permissions"];
+      delete mappedArgs["permissions"];
+    }
+    return genericHandler(client, "GET", "/api/v1/search/recipients", mappedArgs);
   },
   get_s_all_courses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/search/all_courses", args);

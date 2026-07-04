@@ -51,7 +51,7 @@ test("get_cc_line_items_id calls correct endpoint", async () => {
   const handler = line_itemsModule.handlers.get_cc_line_items_id;
   assert.ok(handler, "Handler get_cc_line_items_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/lti/courses/test_course_id/line_items/test_id");

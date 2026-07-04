@@ -47,11 +47,11 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: quiz_id"
         },
-        "quiz_report[report_type]": {
+        "quiz_report_report_type": {
           "type": "string",
           "description": "The type of report to be generated. Allowed values: `student_analysis`, `item_analysis`"
         },
-        "quiz_report[includes_all_versions]": {
+        "quiz_report_includes_all_versions": {
           "type": "boolean",
           "description": "<p>Whether the report should consider all submissions or only the most<br>recent. Defaults to false, ignored for item\\_analysis.</p>"
         },
@@ -63,7 +63,7 @@ const definitions = [
       "required": [
         "course_id",
         "quiz_id",
-        "quiz_report[report_type]"
+        "quiz_report_report_type"
       ]
     }
   },
@@ -134,7 +134,16 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/reports", args);
   },
   post_ccqq_reports: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/reports", args);
+    const mappedArgs = { ...args };
+    if ("quiz_report_report_type" in mappedArgs) {
+      mappedArgs["quiz_report[report_type]"] = mappedArgs["quiz_report_report_type"];
+      delete mappedArgs["quiz_report_report_type"];
+    }
+    if ("quiz_report_includes_all_versions" in mappedArgs) {
+      mappedArgs["quiz_report[includes_all_versions]"] = mappedArgs["quiz_report_includes_all_versions"];
+      delete mappedArgs["quiz_report_includes_all_versions"];
+    }
+    return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/reports", mappedArgs);
   },
   get_ccqq_reports_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/reports/:id", args);

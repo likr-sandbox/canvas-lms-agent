@@ -51,7 +51,7 @@ test("post_qvccqa_items calls correct endpoint", async () => {
   const handler = new_quiz_itemsModule.handlers.post_qvccqa_items;
   assert.ok(handler, "Handler post_qvccqa_items should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "item[position]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "item_position": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/quiz/v1/courses/test_course_id/quizzes/test_assignment_id/items");

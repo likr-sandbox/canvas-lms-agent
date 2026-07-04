@@ -15,7 +15,7 @@ test("get_uu_observees calls correct endpoint", async () => {
   const handler = user_observeesModule.handlers.get_uu_observees;
   assert.ok(handler, "Handler get_uu_observees should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/observees");
@@ -33,7 +33,7 @@ test("get_uu_observers calls correct endpoint", async () => {
   const handler = user_observeesModule.handlers.get_uu_observers;
   assert.ok(handler, "Handler get_uu_observers should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/observers");
@@ -51,7 +51,7 @@ test("post_uu_observees calls correct endpoint", async () => {
   const handler = user_observeesModule.handlers.post_uu_observees;
   assert.ok(handler, "Handler post_uu_observees should be defined");
 
-  const result = await handler(mockClient, {"user_id": "test_user_id", "observee[unique_id]": "test_val"});
+  const result = await handler(mockClient, {"user_id": "test_user_id", "observee_unique_id": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/users/test_user_id/observees");

@@ -51,7 +51,7 @@ test("get_ccaga_assignments calls correct endpoint", async () => {
   const handler = assignmentsModule.handlers.get_ccaga_assignments;
   assert.ok(handler, "Handler get_ccaga_assignments should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_group_id": "test_assignment_group_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_group_id": "test_assignment_group_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignment_groups/test_assignment_group_id/assignments");
@@ -123,7 +123,7 @@ test("get_cc_assignments_id calls correct endpoint", async () => {
   const handler = assignmentsModule.handlers.get_cc_assignments_id;
   assert.ok(handler, "Handler get_cc_assignments_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignments/test_id");
@@ -141,7 +141,7 @@ test("post_cc_assignments calls correct endpoint", async () => {
   const handler = assignmentsModule.handlers.post_cc_assignments;
   assert.ok(handler, "Handler post_cc_assignments should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment[name]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignments");
@@ -159,7 +159,7 @@ test("put_cc_assignments_id calls correct endpoint", async () => {
   const handler = assignmentsModule.handlers.put_cc_assignments_id;
   assert.ok(handler, "Handler put_cc_assignments_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "assignment[name]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "assignment_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignments/test_id");
@@ -267,7 +267,7 @@ test("post_ccaa_overrides calls correct endpoint", async () => {
   const handler = assignmentsModule.handlers.post_ccaa_overrides;
   assert.ok(handler, "Handler post_ccaa_overrides should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "assignment_override[student_ids][]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "assignment_override_student_ids": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignments/test_assignment_id/overrides");
@@ -285,7 +285,7 @@ test("put_ccaa_overrides_id calls correct endpoint", async () => {
   const handler = assignmentsModule.handlers.put_ccaa_overrides_id;
   assert.ok(handler, "Handler put_ccaa_overrides_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "id": "test_id", "assignment_override[student_ids][]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "id": "test_id", "assignment_override_student_ids": 123});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignments/test_assignment_id/overrides/test_id");
@@ -321,7 +321,7 @@ test("get_cca_overrides calls correct endpoint", async () => {
   const handler = assignmentsModule.handlers.get_cca_overrides;
   assert.ok(handler, "Handler get_cca_overrides should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_overrides[][id]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_overrides_id": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignments/overrides");
@@ -339,7 +339,7 @@ test("post_cca_overrides calls correct endpoint", async () => {
   const handler = assignmentsModule.handlers.post_cca_overrides;
   assert.ok(handler, "Handler post_cca_overrides should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_overrides[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_overrides": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignments/overrides");
@@ -357,7 +357,7 @@ test("put_cca_overrides calls correct endpoint", async () => {
   const handler = assignmentsModule.handlers.put_cca_overrides;
   assert.ok(handler, "Handler put_cca_overrides should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_overrides[]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_overrides": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/assignments/overrides");

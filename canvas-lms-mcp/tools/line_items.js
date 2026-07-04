@@ -42,7 +42,7 @@ const definitions = [
           "type": "string",
           "description": "<p>The ISO8601 date and time when the line item stops receiving submissions. Corresponds<br>to the assignment's due\\_at date.</p>"
         },
-        "https://canvas.instructure.com/lti/submission_type": {
+        "https_canvas.instructure.com_lti_submission_type": {
           "type": "object",
           "description": "<p>(EXTENSION) - Optional block to set Assignment Submission Type when creating a new assignment is created.<br>type - 'none' or 'external\\_tool'::<br>external\\_tool\\_url - Submission URL only used when type: 'external\\_tool'::</p>"
         }
@@ -113,7 +113,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"launch\\_url\":: includes the launch URL for this line item using the \"<https://canvas.instructure.com/lti/launch_url>\" extension Allowed values: <code>launch\\_url</code></p>"
         },
@@ -154,7 +154,7 @@ const definitions = [
           "type": "string",
           "description": "May be used to limit the number of Line Items returned in a page"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"launch\\_url\":: includes the launch URL for each line item using the \"<https://canvas.instructure.com/lti/launch_url>\" extension Allowed values: <code>launch\\_url</code></p>"
         },
@@ -193,16 +193,31 @@ const definitions = [
 
 const handlers = {
   post_cc_line_items: async (client, args) => {
-    return genericHandler(client, "POST", "/api/lti/courses/:course_id/line_items", args);
+    const mappedArgs = { ...args };
+    if ("https_canvas.instructure.com_lti_submission_type" in mappedArgs) {
+      mappedArgs["https://canvas.instructure.com/lti/submission_type"] = mappedArgs["https_canvas.instructure.com_lti_submission_type"];
+      delete mappedArgs["https_canvas.instructure.com_lti_submission_type"];
+    }
+    return genericHandler(client, "POST", "/api/lti/courses/:course_id/line_items", mappedArgs);
   },
   put_cc_line_items_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/lti/courses/:course_id/line_items/:id", args);
   },
   get_cc_line_items_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/lti/courses/:course_id/line_items/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/lti/courses/:course_id/line_items/:id", mappedArgs);
   },
   get_cc_line_items: async (client, args) => {
-    return genericHandler(client, "GET", "/api/lti/courses/:course_id/line_items", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/lti/courses/:course_id/line_items", mappedArgs);
   },
   delete_cc_line_items_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/lti/courses/:course_id/line_items/:id", args);

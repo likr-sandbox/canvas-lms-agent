@@ -33,7 +33,7 @@ test("get_aala_launch_definitions calls correct endpoint", async () => {
   const handler = lti_launch_definitionsModule.handlers.get_aala_launch_definitions;
   assert.ok(handler, "Handler get_aala_launch_definitions should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "placements[Array]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "placements_Array": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/lti_apps/launch_definitions");

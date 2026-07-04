@@ -87,7 +87,7 @@ test("put_gg_front_page calls correct endpoint", async () => {
   const handler = pagesModule.handlers.put_gg_front_page;
   assert.ok(handler, "Handler put_gg_front_page should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "wiki_page[title]": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "wiki_page_title": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/front_page");
@@ -159,7 +159,7 @@ test("post_gg_pages calls correct endpoint", async () => {
   const handler = pagesModule.handlers.post_gg_pages;
   assert.ok(handler, "Handler post_gg_pages should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "wiki_page[title]": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "wiki_page_title": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/pages");
@@ -231,7 +231,7 @@ test("put_gg_pages_url_or_id calls correct endpoint", async () => {
   const handler = pagesModule.handlers.put_gg_pages_url_or_id;
   assert.ok(handler, "Handler put_gg_pages_url_or_id should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "url_or_id": "test_url_or_id", "wiki_page[title]": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "url_or_id": "test_url_or_id", "wiki_page_title": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/pages/test_url_or_id");

@@ -14,7 +14,7 @@ const definitions = [
           "type": "string",
           "description": "Defaults to \"reservable\" Allowed values: `reservable`, `manageable`"
         },
-        "context_codes[]": {
+        "context_codes": {
           "type": "string",
           "description": "Array of context codes used to limit returned results."
         },
@@ -22,7 +22,7 @@ const definitions = [
           "type": "boolean",
           "description": "Defaults to false. If true, includes past appointment groups"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include.<br>\"appointments\":: calendar event time slots for this appointment group<br>\"child\\_events\":: reservations of those time slots<br>\"participant\\_count\":: number of reservations<br>\"reserved\\_times\":: the event id, start time and end time of reservations<br>the current user has made)<br>\"all\\_context\\_codes\":: all context codes associated with this appointment group Allowed values: <code>appointments</code>, <code>child\\_events</code>, <code>participant\\_count</code>, <code>reserved\\_times</code>, <code>all\\_context\\_codes</code></p>"
         },
@@ -39,62 +39,62 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "appointment_group[context_codes][]": {
+        "appointment_group_context_codes": {
           "type": "string",
           "description": "<p>Array of context codes (courses, e.g. course\\_1) this group should be<br>linked to (1 or more). Users in the course(s) with appropriate permissions<br>will be able to sign up for this appointment group.</p>"
         },
-        "appointment_group[sub_context_codes][]": {
+        "appointment_group_sub_context_codes": {
           "type": "string",
           "description": "<p>Array of sub context codes (course sections or a single group category)<br>this group should be linked to. Used to limit the appointment group to<br>particular sections. If a group category is specified, students will sign<br>up in groups and the participant\\_type will be \"Group\" instead of \"User\".</p>"
         },
-        "appointment_group[title]": {
+        "appointment_group_title": {
           "type": "string",
           "description": "Short title for the appointment group."
         },
-        "appointment_group[description]": {
+        "appointment_group_description": {
           "type": "string",
           "description": "Longer text description of the appointment group."
         },
-        "appointment_group[location_name]": {
+        "appointment_group_location_name": {
           "type": "string",
           "description": "Location name of the appointment group."
         },
-        "appointment_group[location_address]": {
+        "appointment_group_location_address": {
           "type": "string",
           "description": "Location address."
         },
-        "appointment_group[publish]": {
+        "appointment_group_publish": {
           "type": "boolean",
           "description": "<p>Indicates whether this appointment group should be published (i.e. made<br>available for signup). Once published, an appointment group cannot be<br>unpublished. Defaults to false.</p>"
         },
-        "appointment_group[participants_per_appointment]": {
+        "appointment_group_participants_per_appointment": {
           "type": "number",
           "description": "<p>Maximum number of participants that may register for each time slot.<br>Defaults to null (no limit).</p>"
         },
-        "appointment_group[min_appointments_per_participant]": {
+        "appointment_group_min_appointments_per_participant": {
           "type": "number",
           "description": "<p>Minimum number of time slots a user must register for. If not set, users<br>do not need to sign up for any time slots.</p>"
         },
-        "appointment_group[max_appointments_per_participant]": {
+        "appointment_group_max_appointments_per_participant": {
           "type": "number",
           "description": "Maximum number of time slots a user may register for."
         },
-        "appointment_group[new_appointments][X][]": {
+        "appointment_group_new_appointments_X": {
           "type": "string",
           "description": "<p>Nested array of start time/end time pairs indicating time slots for this<br>appointment group. Refer to the example request.</p>"
         },
-        "appointment_group[participant_visibility]": {
+        "appointment_group_participant_visibility": {
           "type": "string",
           "description": "<p>\"private\":: participants cannot see who has signed up for a particular<br>time slot<br>\"protected\":: participants can see who has signed up. Defaults to<br>\"private\". Allowed values: <code>private</code>, <code>protected</code></p>"
         },
-        "appointment_group[allow_observer_signup]": {
+        "appointment_group_allow_observer_signup": {
           "type": "boolean",
           "description": "Whether observer users can sign-up for an appointment. Defaults to false."
         }
       },
       "required": [
-        "appointment_group[context_codes][]",
-        "appointment_group[title]"
+        "appointment_group_context_codes",
+        "appointment_group_title"
       ]
     }
   },
@@ -108,7 +108,7 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "include[]": {
+        "include": {
           "type": "string",
           "description": "<p>Array of additional information to include. See include\\[] argument of<br>\"List appointment groups\" action.<br>\"child\\_events\":: reservations of time slots time slots<br>\"appointments\":: will always be returned<br>\"all\\_context\\_codes\":: all context codes associated with this appointment group Allowed values: <code>child\\_events</code>, <code>appointments</code>, <code>all\\_context\\_codes</code></p>"
         },
@@ -132,62 +132,62 @@ const definitions = [
           "type": "string",
           "description": "Path parameter: id"
         },
-        "appointment_group[context_codes][]": {
+        "appointment_group_context_codes": {
           "type": "string",
           "description": "<p>Array of context codes (courses, e.g. course\\_1) this group should be<br>linked to (1 or more). Users in the course(s) with appropriate permissions<br>will be able to sign up for this appointment group.</p>"
         },
-        "appointment_group[sub_context_codes][]": {
+        "appointment_group_sub_context_codes": {
           "type": "string",
           "description": "<p>Array of sub context codes (course sections or a single group category)<br>this group should be linked to. Used to limit the appointment group to<br>particular sections. If a group category is specified, students will sign<br>up in groups and the participant\\_type will be \"Group\" instead of \"User\".</p>"
         },
-        "appointment_group[title]": {
+        "appointment_group_title": {
           "type": "string",
           "description": "Short title for the appointment group."
         },
-        "appointment_group[description]": {
+        "appointment_group_description": {
           "type": "string",
           "description": "Longer text description of the appointment group."
         },
-        "appointment_group[location_name]": {
+        "appointment_group_location_name": {
           "type": "string",
           "description": "Location name of the appointment group."
         },
-        "appointment_group[location_address]": {
+        "appointment_group_location_address": {
           "type": "string",
           "description": "Location address."
         },
-        "appointment_group[publish]": {
+        "appointment_group_publish": {
           "type": "boolean",
           "description": "<p>Indicates whether this appointment group should be published (i.e. made<br>available for signup). Once published, an appointment group cannot be<br>unpublished. Defaults to false.</p>"
         },
-        "appointment_group[participants_per_appointment]": {
+        "appointment_group_participants_per_appointment": {
           "type": "number",
           "description": "<p>Maximum number of participants that may register for each time slot.<br>Defaults to null (no limit).</p>"
         },
-        "appointment_group[min_appointments_per_participant]": {
+        "appointment_group_min_appointments_per_participant": {
           "type": "number",
           "description": "<p>Minimum number of time slots a user must register for. If not set, users<br>do not need to sign up for any time slots.</p>"
         },
-        "appointment_group[max_appointments_per_participant]": {
+        "appointment_group_max_appointments_per_participant": {
           "type": "number",
           "description": "Maximum number of time slots a user may register for."
         },
-        "appointment_group[new_appointments][X][]": {
+        "appointment_group_new_appointments_X": {
           "type": "string",
           "description": "<p>Nested array of start time/end time pairs indicating time slots for this<br>appointment group. Refer to the example request.</p>"
         },
-        "appointment_group[participant_visibility]": {
+        "appointment_group_participant_visibility": {
           "type": "string",
           "description": "<p>\"private\":: participants cannot see who has signed up for a particular<br>time slot<br>\"protected\":: participants can see who has signed up. Defaults to \"private\". Allowed values: <code>private</code>, <code>protected</code></p>"
         },
-        "appointment_group[allow_observer_signup]": {
+        "appointment_group_allow_observer_signup": {
           "type": "boolean",
           "description": "Whether observer users can sign-up for an appointment."
         }
       },
       "required": [
         "id",
-        "appointment_group[context_codes][]"
+        "appointment_group_context_codes"
       ]
     }
   },
@@ -265,7 +265,7 @@ const definitions = [
     "inputSchema": {
       "type": "object",
       "properties": {
-        "appointment_group_ids[]": {
+        "appointment_group_ids": {
           "type": "string",
           "description": "List of ids of appointment groups to search."
         },
@@ -280,16 +280,136 @@ const definitions = [
 
 const handlers = {
   get_appointment_groups: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/appointment_groups", args);
+    const mappedArgs = { ...args };
+    if ("context_codes" in mappedArgs) {
+      mappedArgs["context_codes[]"] = mappedArgs["context_codes"];
+      delete mappedArgs["context_codes"];
+    }
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/appointment_groups", mappedArgs);
   },
   post_appointment_groups: async (client, args) => {
-    return genericHandler(client, "POST", "/api/v1/appointment_groups", args);
+    const mappedArgs = { ...args };
+    if ("appointment_group_context_codes" in mappedArgs) {
+      mappedArgs["appointment_group[context_codes][]"] = mappedArgs["appointment_group_context_codes"];
+      delete mappedArgs["appointment_group_context_codes"];
+    }
+    if ("appointment_group_sub_context_codes" in mappedArgs) {
+      mappedArgs["appointment_group[sub_context_codes][]"] = mappedArgs["appointment_group_sub_context_codes"];
+      delete mappedArgs["appointment_group_sub_context_codes"];
+    }
+    if ("appointment_group_title" in mappedArgs) {
+      mappedArgs["appointment_group[title]"] = mappedArgs["appointment_group_title"];
+      delete mappedArgs["appointment_group_title"];
+    }
+    if ("appointment_group_description" in mappedArgs) {
+      mappedArgs["appointment_group[description]"] = mappedArgs["appointment_group_description"];
+      delete mappedArgs["appointment_group_description"];
+    }
+    if ("appointment_group_location_name" in mappedArgs) {
+      mappedArgs["appointment_group[location_name]"] = mappedArgs["appointment_group_location_name"];
+      delete mappedArgs["appointment_group_location_name"];
+    }
+    if ("appointment_group_location_address" in mappedArgs) {
+      mappedArgs["appointment_group[location_address]"] = mappedArgs["appointment_group_location_address"];
+      delete mappedArgs["appointment_group_location_address"];
+    }
+    if ("appointment_group_publish" in mappedArgs) {
+      mappedArgs["appointment_group[publish]"] = mappedArgs["appointment_group_publish"];
+      delete mappedArgs["appointment_group_publish"];
+    }
+    if ("appointment_group_participants_per_appointment" in mappedArgs) {
+      mappedArgs["appointment_group[participants_per_appointment]"] = mappedArgs["appointment_group_participants_per_appointment"];
+      delete mappedArgs["appointment_group_participants_per_appointment"];
+    }
+    if ("appointment_group_min_appointments_per_participant" in mappedArgs) {
+      mappedArgs["appointment_group[min_appointments_per_participant]"] = mappedArgs["appointment_group_min_appointments_per_participant"];
+      delete mappedArgs["appointment_group_min_appointments_per_participant"];
+    }
+    if ("appointment_group_max_appointments_per_participant" in mappedArgs) {
+      mappedArgs["appointment_group[max_appointments_per_participant]"] = mappedArgs["appointment_group_max_appointments_per_participant"];
+      delete mappedArgs["appointment_group_max_appointments_per_participant"];
+    }
+    if ("appointment_group_new_appointments_X" in mappedArgs) {
+      mappedArgs["appointment_group[new_appointments][X][]"] = mappedArgs["appointment_group_new_appointments_X"];
+      delete mappedArgs["appointment_group_new_appointments_X"];
+    }
+    if ("appointment_group_participant_visibility" in mappedArgs) {
+      mappedArgs["appointment_group[participant_visibility]"] = mappedArgs["appointment_group_participant_visibility"];
+      delete mappedArgs["appointment_group_participant_visibility"];
+    }
+    if ("appointment_group_allow_observer_signup" in mappedArgs) {
+      mappedArgs["appointment_group[allow_observer_signup]"] = mappedArgs["appointment_group_allow_observer_signup"];
+      delete mappedArgs["appointment_group_allow_observer_signup"];
+    }
+    return genericHandler(client, "POST", "/api/v1/appointment_groups", mappedArgs);
   },
   get_appointment_groups_id: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/appointment_groups/:id", args);
+    const mappedArgs = { ...args };
+    if ("include" in mappedArgs) {
+      mappedArgs["include[]"] = mappedArgs["include"];
+      delete mappedArgs["include"];
+    }
+    return genericHandler(client, "GET", "/api/v1/appointment_groups/:id", mappedArgs);
   },
   put_appointment_groups_id: async (client, args) => {
-    return genericHandler(client, "PUT", "/api/v1/appointment_groups/:id", args);
+    const mappedArgs = { ...args };
+    if ("appointment_group_context_codes" in mappedArgs) {
+      mappedArgs["appointment_group[context_codes][]"] = mappedArgs["appointment_group_context_codes"];
+      delete mappedArgs["appointment_group_context_codes"];
+    }
+    if ("appointment_group_sub_context_codes" in mappedArgs) {
+      mappedArgs["appointment_group[sub_context_codes][]"] = mappedArgs["appointment_group_sub_context_codes"];
+      delete mappedArgs["appointment_group_sub_context_codes"];
+    }
+    if ("appointment_group_title" in mappedArgs) {
+      mappedArgs["appointment_group[title]"] = mappedArgs["appointment_group_title"];
+      delete mappedArgs["appointment_group_title"];
+    }
+    if ("appointment_group_description" in mappedArgs) {
+      mappedArgs["appointment_group[description]"] = mappedArgs["appointment_group_description"];
+      delete mappedArgs["appointment_group_description"];
+    }
+    if ("appointment_group_location_name" in mappedArgs) {
+      mappedArgs["appointment_group[location_name]"] = mappedArgs["appointment_group_location_name"];
+      delete mappedArgs["appointment_group_location_name"];
+    }
+    if ("appointment_group_location_address" in mappedArgs) {
+      mappedArgs["appointment_group[location_address]"] = mappedArgs["appointment_group_location_address"];
+      delete mappedArgs["appointment_group_location_address"];
+    }
+    if ("appointment_group_publish" in mappedArgs) {
+      mappedArgs["appointment_group[publish]"] = mappedArgs["appointment_group_publish"];
+      delete mappedArgs["appointment_group_publish"];
+    }
+    if ("appointment_group_participants_per_appointment" in mappedArgs) {
+      mappedArgs["appointment_group[participants_per_appointment]"] = mappedArgs["appointment_group_participants_per_appointment"];
+      delete mappedArgs["appointment_group_participants_per_appointment"];
+    }
+    if ("appointment_group_min_appointments_per_participant" in mappedArgs) {
+      mappedArgs["appointment_group[min_appointments_per_participant]"] = mappedArgs["appointment_group_min_appointments_per_participant"];
+      delete mappedArgs["appointment_group_min_appointments_per_participant"];
+    }
+    if ("appointment_group_max_appointments_per_participant" in mappedArgs) {
+      mappedArgs["appointment_group[max_appointments_per_participant]"] = mappedArgs["appointment_group_max_appointments_per_participant"];
+      delete mappedArgs["appointment_group_max_appointments_per_participant"];
+    }
+    if ("appointment_group_new_appointments_X" in mappedArgs) {
+      mappedArgs["appointment_group[new_appointments][X][]"] = mappedArgs["appointment_group_new_appointments_X"];
+      delete mappedArgs["appointment_group_new_appointments_X"];
+    }
+    if ("appointment_group_participant_visibility" in mappedArgs) {
+      mappedArgs["appointment_group[participant_visibility]"] = mappedArgs["appointment_group_participant_visibility"];
+      delete mappedArgs["appointment_group_participant_visibility"];
+    }
+    if ("appointment_group_allow_observer_signup" in mappedArgs) {
+      mappedArgs["appointment_group[allow_observer_signup]"] = mappedArgs["appointment_group_allow_observer_signup"];
+      delete mappedArgs["appointment_group_allow_observer_signup"];
+    }
+    return genericHandler(client, "PUT", "/api/v1/appointment_groups/:id", mappedArgs);
   },
   delete_appointment_groups_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/appointment_groups/:id", args);
@@ -301,7 +421,12 @@ const handlers = {
     return genericHandler(client, "GET", "/api/v1/appointment_groups/:id/groups", args);
   },
   get_ag_next_appointment: async (client, args) => {
-    return genericHandler(client, "GET", "/api/v1/appointment_groups/next_appointment", args);
+    const mappedArgs = { ...args };
+    if ("appointment_group_ids" in mappedArgs) {
+      mappedArgs["appointment_group_ids[]"] = mappedArgs["appointment_group_ids"];
+      delete mappedArgs["appointment_group_ids"];
+    }
+    return genericHandler(client, "GET", "/api/v1/appointment_groups/next_appointment", mappedArgs);
   }
 };
 

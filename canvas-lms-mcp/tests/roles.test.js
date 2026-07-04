@@ -15,7 +15,7 @@ test("get_aa_roles calls correct endpoint", async () => {
   const handler = rolesModule.handlers.get_aa_roles;
   assert.ok(handler, "Handler get_aa_roles should be defined");
 
-  const result = await handler(mockClient, {"account_id": "test_account_id", "state[]": "test_val"});
+  const result = await handler(mockClient, {"account_id": "test_account_id", "state": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/accounts/test_account_id/roles");

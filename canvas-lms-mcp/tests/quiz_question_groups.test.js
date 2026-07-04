@@ -51,7 +51,7 @@ test("post_ccqq_groups calls correct endpoint", async () => {
   const handler = quiz_question_groupsModule.handlers.post_ccqq_groups;
   assert.ok(handler, "Handler post_ccqq_groups should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "quiz_groups[][name]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "quiz_groups_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/test_quiz_id/groups");
@@ -69,7 +69,7 @@ test("put_ccqq_groups_id calls correct endpoint", async () => {
   const handler = quiz_question_groupsModule.handlers.put_ccqq_groups_id;
   assert.ok(handler, "Handler put_ccqq_groups_id should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "id": "test_id", "quiz_groups[][name]": "test_val"});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "id": "test_id", "quiz_groups_name": "test_val"});
 
   assert.strictEqual(calledConfig.method, "put");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/test_quiz_id/groups/test_id");
@@ -105,7 +105,7 @@ test("post_ccqqgi_reorder calls correct endpoint", async () => {
   const handler = quiz_question_groupsModule.handlers.post_ccqqgi_reorder;
   assert.ok(handler, "Handler post_ccqqgi_reorder should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "id": "test_id", "order[][id]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "id": "test_id", "order_id": 123});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/quizzes/test_quiz_id/groups/test_id/reorder");

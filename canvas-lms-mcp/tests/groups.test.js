@@ -69,7 +69,7 @@ test("get_cc_bulk_user_tags calls correct endpoint", async () => {
   const handler = groupsModule.handlers.get_cc_bulk_user_tags;
   assert.ok(handler, "Handler get_cc_bulk_user_tags should be defined");
 
-  const result = await handler(mockClient, {"course_id": "test_course_id", "user_ids[]": 123});
+  const result = await handler(mockClient, {"course_id": "test_course_id", "user_ids": 123});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/courses/test_course_id/bulk_user_tags");
@@ -87,7 +87,7 @@ test("get_groups_group_id calls correct endpoint", async () => {
   const handler = groupsModule.handlers.get_groups_group_id;
   assert.ok(handler, "Handler get_groups_group_id should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "include[]": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "include": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id");
@@ -177,7 +177,7 @@ test("post_gg_invite calls correct endpoint", async () => {
   const handler = groupsModule.handlers.post_gg_invite;
   assert.ok(handler, "Handler post_gg_invite should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "invitees[]": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "invitees": "test_val"});
 
   assert.strictEqual(calledConfig.method, "post");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/invite");
@@ -285,7 +285,7 @@ test("get_gg_permissions calls correct endpoint", async () => {
   const handler = groupsModule.handlers.get_gg_permissions;
   assert.ok(handler, "Handler get_gg_permissions should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "permissions[]": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "permissions": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/permissions");
@@ -303,7 +303,7 @@ test("get_gg_memberships calls correct endpoint", async () => {
   const handler = groupsModule.handlers.get_gg_memberships;
   assert.ok(handler, "Handler get_gg_memberships should be defined");
 
-  const result = await handler(mockClient, {"group_id": "test_group_id", "filter_states[]": "test_val"});
+  const result = await handler(mockClient, {"group_id": "test_group_id", "filter_states": "test_val"});
 
   assert.strictEqual(calledConfig.method, "get");
   assert.strictEqual(calledConfig.url, "/api/v1/groups/test_group_id/memberships");
