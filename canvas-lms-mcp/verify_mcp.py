@@ -140,11 +140,177 @@ def test_mcp_server():
             assert not result.get("isError", False), f"get_user_grades failed: {result}"
             grades_data = json.loads(result.get("content", [])[0].get("text", "[]"))
             print(f"Found {len(grades_data)} submission grades in course {course_id}.")
-            if grades_data:
-                print(f"First grade detail: {grades_data[0]}")
+            # Step 6: Test list_modules
+            call_modules = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_modules",
+                    "arguments": {
+                        "course_id": course_id,
+                        "include_items": True
+                    }
+                },
+                "id": 6
+            }
+            print(f"Testing list_modules for course {course_id}...")
+            proc.stdin.write(json.dumps(call_modules) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_modules failed: {result}"
+            modules_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(modules_data)} modules.")
+            if modules_data:
+                print(f"First module: {modules_data[0]}")
+
+            # Step 7: Test list_files
+            call_files = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_files",
+                    "arguments": {
+                        "course_id": course_id
+                    }
+                },
+                "id": 7
+            }
+            print(f"Testing list_files for course {course_id}...")
+            proc.stdin.write(json.dumps(call_files) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_files failed: {result}"
+            files_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(files_data)} files.")
+            if files_data:
+                print(f"First file: {files_data[0]}")
+
+            # Step 8: Test list_discussion_topics
+            call_topics = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_discussion_topics",
+                    "arguments": {
+                        "course_id": course_id
+                    }
+                },
+                "id": 8
+            }
+            print(f"Testing list_discussion_topics for course {course_id}...")
+            proc.stdin.write(json.dumps(call_topics) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_discussion_topics failed: {result}"
+            topics_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(topics_data)} discussion topics.")
+            if topics_data:
+                print(f"First discussion topic: {topics_data[0]}")
+
+            # Step 9: Test list_announcements
+            call_announcements = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_announcements",
+                    "arguments": {
+                        "course_id": course_id
+                    }
+                },
+                "id": 9
+            }
+            print(f"Testing list_announcements for course {course_id}...")
+            proc.stdin.write(json.dumps(call_announcements) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_announcements failed: {result}"
+            announcements_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(announcements_data)} announcements.")
+            if announcements_data:
+                print(f"First announcement: {announcements_data[0]}")
+
+            # Step 10: Test list_pages
+            call_pages = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_pages",
+                    "arguments": {
+                        "course_id": course_id
+                    }
+                },
+                "id": 10
+            }
+            print(f"Testing list_pages for course {course_id}...")
+            proc.stdin.write(json.dumps(call_pages) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_pages failed: {result}"
+            pages_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(pages_data)} pages.")
+            if pages_data:
+                print(f"First page: {pages_data[0]}")
+                page_url = pages_data[0].get("url")
+                
+                # Step 11: Test get_page
+                call_get_page = {
+                    "jsonrpc": "2.0",
+                    "method": "tools/call",
+                    "params": {
+                        "name": "get_page",
+                        "arguments": {
+                            "course_id": course_id,
+                            "url_or_id": page_url
+                        }
+                    },
+                    "id": 11
+                }
+                print(f"Testing get_page for url/id '{page_url}'...")
+                proc.stdin.write(json.dumps(call_get_page) + "\n")
+                proc.stdin.flush()
+                stdout_line = proc.stdout.readline()
+                call_resp = json.loads(stdout_line)
+                result = call_resp.get("result", {})
+                assert not result.get("isError", False), f"get_page failed: {result}"
+                page_detail = json.loads(result.get("content", [])[0].get("text", "{}"))
+                print(f"Retrieved page: '{page_detail.get('title')}' with content length {len(page_detail.get('body', ''))} chars.")
+
+            # Step 12: Test list_quizzes
+            call_quizzes = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_quizzes",
+                    "arguments": {
+                        "course_id": course_id
+                    }
+                },
+                "id": 12
+            }
+            print(f"Testing list_quizzes for course {course_id}...")
+            proc.stdin.write(json.dumps(call_quizzes) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_quizzes failed: {result}"
+            quizzes_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(quizzes_data)} quizzes.")
+            if quizzes_data:
+                print(f"First quiz: {quizzes_data[0]}")
                 
         else:
-            print("No active courses found to perform list_assignments/get_user_grades testing.")
+            print("No active courses found to perform full testing.")
             
         print("ALL MCP SERVER TESTS PASSED SUCCESSFULLY!")
         
