@@ -49,7 +49,8 @@ def test_mcp_server():
         expected_tools = [
             "get_current_user", "list_courses", "list_assignments", "get_user_grades",
             "list_modules", "list_files", "list_discussion_topics", "list_announcements",
-            "list_pages", "get_page", "list_quizzes", "grade_or_comment_submission", "submit_assignment"
+            "list_pages", "get_page", "list_quizzes", "grade_or_comment_submission", "submit_assignment",
+            "list_users", "list_sections", "list_enrollments", "list_calendar_events", "list_rubrics"
         ]
         for expected in expected_tools:
             assert expected in tool_names, f"Expected tool '{expected}' is missing!"
@@ -367,6 +368,124 @@ def test_mcp_server():
             else:
                 grade_data = json.loads(result.get("content", [])[0].get("text", "{}"))
                 print(f"Success grade_or_comment_submission: {grade_data}")
+                
+            # Step 15: Test list_users
+            call_users = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_users",
+                    "arguments": {
+                        "course_id": course_id
+                    }
+                },
+                "id": 15
+            }
+            print(f"Testing list_users for course {course_id}...")
+            proc.stdin.write(json.dumps(call_users) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_users failed: {result}"
+            users_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(users_data)} users.")
+            if users_data:
+                print(f"First user: {users_data[0]}")
+
+            # Step 16: Test list_sections
+            call_sections = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_sections",
+                    "arguments": {
+                        "course_id": course_id
+                    }
+                },
+                "id": 16
+            }
+            print(f"Testing list_sections for course {course_id}...")
+            proc.stdin.write(json.dumps(call_sections) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_sections failed: {result}"
+            sections_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(sections_data)} sections.")
+            if sections_data:
+                print(f"First section: {sections_data[0]}")
+
+            # Step 17: Test list_enrollments
+            call_enrollments = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_enrollments",
+                    "arguments": {
+                        "course_id": course_id
+                    }
+                },
+                "id": 17
+            }
+            print(f"Testing list_enrollments for course {course_id}...")
+            proc.stdin.write(json.dumps(call_enrollments) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_enrollments failed: {result}"
+            enrollments_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(enrollments_data)} enrollments.")
+            if enrollments_data:
+                print(f"First enrollment: {enrollments_data[0]}")
+
+            # Step 18: Test list_calendar_events
+            call_calendar = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_calendar_events",
+                    "arguments": {}
+                },
+                "id": 18
+            }
+            print("Testing list_calendar_events...")
+            proc.stdin.write(json.dumps(call_calendar) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_calendar_events failed: {result}"
+            calendar_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(calendar_data)} calendar events.")
+            if calendar_data:
+                print(f"First calendar event: {calendar_data[0]}")
+
+            # Step 19: Test list_rubrics
+            call_rubrics = {
+                "jsonrpc": "2.0",
+                "method": "tools/call",
+                "params": {
+                    "name": "list_rubrics",
+                    "arguments": {
+                        "course_id": course_id
+                    }
+                },
+                "id": 19
+            }
+            print(f"Testing list_rubrics for course {course_id}...")
+            proc.stdin.write(json.dumps(call_rubrics) + "\n")
+            proc.stdin.flush()
+            stdout_line = proc.stdout.readline()
+            call_resp = json.loads(stdout_line)
+            result = call_resp.get("result", {})
+            assert not result.get("isError", False), f"list_rubrics failed: {result}"
+            rubrics_data = json.loads(result.get("content", [])[0].get("text", "[]"))
+            print(f"Found {len(rubrics_data)} rubrics.")
+            if rubrics_data:
+                print(f"First rubric: {rubrics_data[0]}")
                 
         else:
             print("No active courses found to perform full testing.")
