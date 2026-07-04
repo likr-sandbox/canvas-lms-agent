@@ -16,3 +16,7 @@
 - **Dynamic Test ID Resolution**:
   - Avoid hardcoding static student IDs or user IDs in verification scripts.
   - Retrieve lists dynamically (e.g. fetching grades/courses first), select a valid student `user_id` from the active response data, and pass it dynamically to subsequent write/grading test cases.
+
+## Git Workflow & Branch Policy
+- **Branch Protection & Development Branch (`dev`)**: Direct pushes/commits to protected branches (e.g. `master` or main release branches) are restricted. Perform all future feature development, testing, and documentation edits on the `dev` branch.
+- **Pull Request Operation**: Merging changes from the `dev` branch into protected main branches must be handled through Pull Requests (PRs) rather than direct merges or pushes.
