@@ -40,3 +40,42 @@ This document tracks the implementation and test status of all Model Context Pro
 | 34 | `update_quiz` | Updates an existing quiz | `PUT /api/v1/courses/:course_id/quizzes/:id` | Quizzes | `tools/quizzes.js` | `[x]` Done | `[x]` Verified |
 | 35 | `delete_quiz` | Deletes a quiz | `DELETE /api/v1/courses/:course_id/quizzes/:id` | Quizzes | `tools/quizzes.js` | `[x]` Done | `[x]` Verified |
 | 36 | `create_discussion_topic` | Creates a new discussion topic or announcement | `POST /api/v1/courses/:course_id/discussion_topics` | Discussions | `tools/discussions.js` | `[x]` Done | `[x]` Verified |
+| 37 | `list_accounts` | Lists accessible accounts | `GET /api/v1/accounts` | Accounts | `tools/accounts.js` | `[x]` Done | `[ ]` N/A |
+| 38 | `get_account` | Gets details for a specific account | `GET /api/v1/accounts/:id` | Accounts | `tools/accounts.js` | `[x]` Done | `[ ]` N/A |
+| 39 | `list_admins` | Lists account administrators | `GET /api/v1/accounts/:account_id/admins` | Accounts | `tools/accounts.js` | `[x]` Done | `[ ]` N/A |
+| 40 | `add_admin` | Promotes a user to admin | `POST /api/v1/accounts/:account_id/admins` | Accounts | `tools/accounts.js` | `[x]` Done | `[ ]` N/A |
+| 41 | `remove_admin` | Demotes an administrator | `DELETE /api/v1/accounts/:account_id/admins/:user_id` | Accounts | `tools/accounts.js` | `[x]` Done | `[ ]` N/A |
+| 42 | `list_roles` | Lists roles available to an account | `GET /api/v1/accounts/:account_id/roles` | Accounts | `tools/accounts.js` | `[x]` Done | `[ ]` N/A |
+| 43 | `get_role` | Gets specific role details | `GET /api/v1/accounts/:account_id/roles/:id` | Accounts | `tools/accounts.js` | `[x]` Done | `[ ]` N/A |
+| 44 | `list_conversations` | Lists inbox conversations | `GET /api/v1/conversations` | Conversations | `tools/conversations.js` | `[x]` Done | `[ ]` N/A |
+| 45 | `get_conversation` | Gets specific conversation details | `GET /api/v1/conversations/:id` | Conversations | `tools/conversations.js` | `[x]` Done | `[ ]` N/A |
+| 46 | `create_conversation` | Sends a message to recipients | `POST /api/v1/conversations` | Conversations | `tools/conversations.js` | `[x]` Done | `[ ]` N/A |
+| 47 | `delete_conversation` | Deletes a conversation | `DELETE /api/v1/conversations/:id` | Conversations | `tools/conversations.js` | `[x]` Done | `[ ]` N/A |
+| 48 | `list_communication_channels` | Lists user contact channels | `GET /api/v1/users/:user_id/communication_channels` | Conversations | `tools/conversations.js` | `[x]` Done | `[ ]` N/A |
+| 49 | `list_groups` | Lists groups in a course | `GET /api/v1/courses/:course_id/groups` | Groups | `tools/groups.js` | `[x]` Done | `[ ]` N/A |
+| 50 | `get_group` | Gets specific group details | `GET /api/v1/groups/:id` | Groups | `tools/groups.js` | `[x]` Done | `[ ]` N/A |
+| 51 | `create_group` | Creates a group for a course | `POST /api/v1/courses/:course_id/groups` | Groups | `tools/groups.js` | `[x]` Done | `[ ]` N/A |
+| 52 | `delete_group` | Deletes a group | `DELETE /api/v1/groups/:id` | Groups | `tools/groups.js` | `[x]` Done | `[ ]` N/A |
+| 53 | `list_group_categories` | Lists group categories | `GET /api/v1/courses/:course_id/group_categories` | Groups | `tools/groups.js` | `[x]` Done | `[ ]` N/A |
+| 54 | `get_group_category` | Gets group category details | `GET /api/v1/group_categories/:id` | Groups | `tools/groups.js` | `[x]` Done | `[ ]` N/A |
+| 55 | `create_group_category` | Creates a group category | `POST /api/v1/courses/:course_id/group_categories` | Groups | `tools/groups.js` | `[x]` Done | `[ ]` N/A |
+| 56 | `delete_group_category` | Deletes a group category | `DELETE /api/v1/group_categories/:id` | Groups | `tools/groups.js` | `[x]` Done | `[ ]` N/A |
+| 57 | `list_collaborations` | Lists course collaborations | `GET /api/v1/courses/:course_id/collaborations` | Groups | `tools/groups.js` | `[x]` Done | `[ ]` N/A |
+| 58 | `get_outcome` | Gets learning outcome details | `GET /api/v1/outcomes/:id` | Outcomes | `tools/outcomes.js` | `[x]` Done | `[ ]` N/A |
+| 59 | `update_outcome` | Updates learning outcome settings | `PUT /api/v1/outcomes/:id` | Outcomes | `tools/outcomes.js` | `[x]` Done | `[ ]` N/A |
+| 60 | `list_outcome_groups` | Lists outcome groups | `GET /api/v1/courses/:course_id/outcome_groups` | Outcomes | `tools/outcomes.js` | `[x]` Done | `[ ]` N/A |
+| 61 | `get_outcome_group` | Gets outcome group details | `GET /api/v1/courses/:course_id/outcome_groups/:id` | Outcomes | `tools/outcomes.js` | `[x]` Done | `[ ]` N/A |
+| 62 | `list_outcome_results` | Lists alignment assessment results | `GET /api/v1/courses/:course_id/outcome_results` | Outcomes | `tools/outcomes.js` | `[x]` Done | `[ ]` N/A |
+| 63 | `list_outcome_rollups` | Lists outcome rollups | `GET /api/v1/courses/:course_id/outcome_rollups` | Outcomes | `tools/outcomes.js` | `[x]` Done | `[ ]` N/A |
+| 64 | `get_sis_import` | Retrieves status of a SIS import | `GET /api/v1/accounts/:account_id/sis_imports/:id` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 65 | `create_sis_import` | Starts a SIS import | `POST /api/v1/accounts/:account_id/sis_imports` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 66 | `list_sis_assignments` | Lists SIS-enabled assignments | `GET /api/sis/courses/:course_id/assignments` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 67 | `list_external_tools` | Lists LTI external tools | `GET /api/v1/courses/:course_id/external_tools` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 68 | `get_external_tool` | Gets external tool details | `GET /api/v1/courses/:course_id/external_tools/:id` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 69 | `create_external_tool` | Installs an LTI tool | `POST /api/v1/courses/:course_id/external_tools` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 70 | `delete_external_tool` | Deletes an LTI tool | `DELETE /api/v1/courses/:course_id/external_tools/:id` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 71 | `list_lti_registrations` | Lists developer LTI registrations | `GET /api/v1/accounts/:account_id/lti_registrations` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 72 | `list_custom_gradebook_columns` | Lists custom gradebook columns | `GET /api/v1/courses/:course_id/custom_gradebook_columns` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 73 | `create_custom_gradebook_column` | Creates custom gradebook column | `POST /api/v1/courses/:course_id/custom_gradebook_columns` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 74 | `update_custom_gradebook_column_data` | Updates custom column data for student | `PUT /api/v1/courses/:course_id/custom_gradebook_columns/:id/data/:user_id` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+

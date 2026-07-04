@@ -67,22 +67,19 @@ When a Canvas LMS task is requested, perform operations in the following logical
 
 The following major resource areas from the Canvas LMS API documentation (`docs/services/canvas/resources/`) are currently unimplemented in the MCP server. Consider implementing these when new tasks require them:
 
-- **Accounts & Administration**:
-  - Accounts (`accounts.md`)
-  - Admins (`admins.md`)
-  - Roles (`roles.md`)
-- **Communication**:
-  - Conversations / Inbox (`conversations.md`)
-  - Communication Channels (`communication_channels.md`)
-- **Groups & Collaboration**:
-  - Groups (`groups.md`)
-  - Group Categories (`group_categories.md`)
-  - Collaborations (`collaborations.md`)
-- **Outcomes & Alignments**:
-  - Outcomes (`outcomes.md`)
-  - Outcome Groups (`outcome_groups.md`)
-  - Outcome Results (`outcome_results.md`)
-- **Integrations & Data Management**:
-  - SIS Imports & Integration (`sis_imports.md`, `sis_integration.md`)
-  - External Tools / LTI (`external_tools.md`, `lti_registrations.md`)
-  - Custom Gradebook Columns (`custom_gradebook_columns.md`)
+- **Analytics & Reporting**:
+  - Analytics (`analytics.md`)
+  - Account Reports (`account_reports.md`)
+  - Course Reports (`course_reports.md`)
+- **Developer & Authentication**:
+  - Access Tokens (`access_tokens.md`)
+  - Developer Keys (`developer_keys.md`)
+  - Authentication Providers (`authentication_providers.md`)
+- **Advanced Course Administration**:
+  - Blueprint Courses (`blueprint_courses.md`)
+  - Course Pace (`course_pace.md`)
+  - Content Migrations (`content_migrations.md`)
+- **Student Engagement & Customization**:
+  - Appointment Groups / Scheduling (`appointment_groups.md`)
+  - Feature Flags (`feature_flags.md`)
+  - Notification Preferences (`notification_preferences.md`)
