@@ -16,6 +16,11 @@ const conversations = require("./conversations");
 const groups = require("./groups");
 const outcomes = require("./outcomes");
 const integrations = require("./integrations");
+const analytics = require("./analytics");
+const reports = require("./reports");
+const authentications = require("./authentications");
+const course_admin = require("./course_admin");
+const customizations = require("./customizations");
 
 const allDefinitions = [
   ...courses.definitions,
@@ -36,6 +41,11 @@ const allDefinitions = [
   ...groups.definitions,
   ...outcomes.definitions,
   ...integrations.definitions,
+  ...analytics.definitions,
+  ...reports.definitions,
+  ...authentications.definitions,
+  ...course_admin.definitions,
+  ...customizations.definitions,
 ];
 
 const allHandlers = {
@@ -57,6 +67,11 @@ const allHandlers = {
   ...groups.handlers,
   ...outcomes.handlers,
   ...integrations.handlers,
+  ...analytics.handlers,
+  ...reports.handlers,
+  ...authentications.handlers,
+  ...course_admin.handlers,
+  ...customizations.handlers,
 };
 
 module.exports = {

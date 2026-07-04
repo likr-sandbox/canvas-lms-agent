@@ -78,4 +78,61 @@ This document tracks the implementation and test status of all Model Context Pro
 | 72 | `list_custom_gradebook_columns` | Lists custom gradebook columns | `GET /api/v1/courses/:course_id/custom_gradebook_columns` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
 | 73 | `create_custom_gradebook_column` | Creates custom gradebook column | `POST /api/v1/courses/:course_id/custom_gradebook_columns` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
 | 74 | `update_custom_gradebook_column_data` | Updates custom column data for student | `PUT /api/v1/courses/:course_id/custom_gradebook_columns/:id/data/:user_id` | Integrations | `tools/integrations.js` | `[x]` Done | `[ ]` N/A |
+| 75 | `get_department_participation_data` | Returns page view hits summed across all courses in the department | `GET /api/v1/accounts/:account_id/analytics/:term/activity` | Analytics | `tools/analytics.js` | `[x]` Done | `[ ]` N/A |
+| 76 | `get_department_grade_data` | Returns the distribution of grades for students in courses in the department | `GET /api/v1/accounts/:account_id/analytics/:term/grades` | Analytics | `tools/analytics.js` | `[x]` Done | `[ ]` N/A |
+| 77 | `get_course_participation_data` | Returns page view hits and participation numbers grouped by day for the course | `GET /api/v1/courses/:course_id/analytics/activity` | Analytics | `tools/analytics.js` | `[x]` Done | `[ ]` N/A |
+| 78 | `get_course_grade_data` | Returns the distribution of grades for students in the course | `GET /api/v1/courses/:course_id/analytics/grades` | Analytics | `tools/analytics.js` | `[x]` Done | `[ ]` N/A |
+| 79 | `get_course_student_summaries` | Returns a summary of student participation and grades in the course | `GET /api/v1/courses/:course_id/analytics/users` | Analytics | `tools/analytics.js` | `[x]` Done | `[ ]` N/A |
+| 80 | `get_user_participation_data` | Returns page view hits and participation numbers grouped by day for a student | `GET /api/v1/courses/:course_id/analytics/users/:student_id/activity` | Analytics | `tools/analytics.js` | `[x]` Done | `[ ]` N/A |
+| 81 | `get_user_assignment_data` | Returns assignment information and student grade details for a student | `GET /api/v1/courses/:course_id/analytics/users/:student_id/assignments` | Analytics | `tools/analytics.js` | `[x]` Done | `[ ]` N/A |
+| 82 | `list_account_reports` | Returns a paginated list of reports for the current account context | `GET /api/v1/accounts/:account_id/reports` | Reports | `tools/reports.js` | `[x]` Done | `[ ]` N/A |
+| 83 | `start_account_report` | Generates a report instance for the account | `POST /api/v1/accounts/:account_id/reports/:report_type` | Reports | `tools/reports.js` | `[x]` Done | `[ ]` N/A |
+| 84 | `get_account_report_status` | Returns the status of an account report | `GET /api/v1/accounts/:account_id/reports/:report_type/:id` | Reports | `tools/reports.js` | `[x]` Done | `[ ]` N/A |
+| 85 | `delete_account_report` | Deletes a generated account report | `DELETE /api/v1/accounts/:account_id/reports/:report_type/:id` | Reports | `tools/reports.js` | `[x]` Done | `[ ]` N/A |
+| 86 | `list_course_reports` | Returns a list of reports for the course context | `GET /api/v1/courses/:course_id/reports` | Reports | `tools/reports.js` | `[x]` Done | `[ ]` N/A |
+| 87 | `start_course_report` | Generates a report instance for the course | `POST /api/v1/courses/:course_id/reports/:report_type` | Reports | `tools/reports.js` | `[x]` Done | `[ ]` N/A |
+| 88 | `get_course_report_status` | Returns the status of a course report | `GET /api/v1/courses/:course_id/reports/:report_type/:id` | Reports | `tools/reports.js` | `[x]` Done | `[ ]` N/A |
+| 89 | `delete_course_report` | Deletes a generated course report | `DELETE /api/v1/courses/:course_id/reports/:report_type/:id` | Reports | `tools/reports.js` | `[x]` Done | `[ ]` N/A |
+| 90 | `list_access_tokens` | Lists access tokens for a user | `GET /api/v1/users/:user_id/tokens` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 91 | `create_access_token` | Creates an access token for a user | `POST /api/v1/users/:user_id/tokens` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 92 | `get_access_token` | Retrieves details of a specific access token | `GET /api/v1/users/:user_id/tokens/:id` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 93 | `update_access_token` | Updates an access token | `PUT /api/v1/users/:user_id/tokens/:id` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 94 | `delete_access_token` | Deletes an access token | `DELETE /api/v1/users/:user_id/tokens/:id` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 95 | `list_developer_keys` | Lists developer keys for an account | `GET /api/v1/accounts/:account_id/developer_keys` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 96 | `create_developer_key` | Creates a developer key for an account | `POST /api/v1/accounts/:account_id/developer_keys` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 97 | `update_developer_key` | Updates an existing developer key | `PUT /api/v1/developer_keys/:id` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 98 | `delete_developer_key` | Deletes a developer key | `DELETE /api/v1/developer_keys/:id` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 99 | `list_auth_providers` | Lists authentication providers for an account | `GET /api/v1/accounts/:account_id/authentication_providers` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 100 | `create_auth_provider` | Creates an authentication provider for an account | `POST /api/v1/accounts/:account_id/authentication_providers` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 101 | `get_auth_provider` | Retrieves details of an authentication provider | `GET /api/v1/accounts/:account_id/authentication_providers/:id` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 102 | `update_auth_provider` | Updates an authentication provider | `PUT /api/v1/accounts/:account_id/authentication_providers/:id` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 103 | `delete_auth_provider` | Deletes an authentication provider | `DELETE /api/v1/accounts/:account_id/authentication_providers/:id` | Authentications | `tools/authentications.js` | `[x]` Done | `[ ]` N/A |
+| 104 | `list_blueprint_templates` | Lists blueprint templates for a course | `GET /api/v1/courses/:course_id/blueprint_templates` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 105 | `list_blueprint_associated_courses` | Lists associated courses for a blueprint template | `GET /api/v1/courses/:course_id/blueprint_templates/:template_id/associated_courses` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 106 | `create_blueprint_migration` | Triggers a blueprint migration | `POST /api/v1/courses/:course_id/blueprint_templates/:template_id/migrations` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 107 | `list_blueprint_migrations` | Lists blueprint migrations | `GET /api/v1/courses/:course_id/blueprint_templates/:template_id/migrations` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 108 | `get_blueprint_migration` | Retrieves details of a specific blueprint migration | `GET /api/v1/courses/:course_id/blueprint_templates/:template_id/migrations/:id` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 109 | `list_course_paces` | Lists course paces | `GET /api/v1/courses/:course_id/course_paces` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 110 | `create_course_pace` | Creates a course pace | `POST /api/v1/courses/:course_id/course_paces` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 111 | `get_course_pace` | Retrieves details of a course pace | `GET /api/v1/courses/:course_id/course_paces/:id` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 112 | `update_course_pace` | Updates a course pace | `PUT /api/v1/courses/:course_id/course_paces/:id` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 113 | `delete_course_pace` | Deletes a course pace | `DELETE /api/v1/courses/:course_id/course_paces/:id` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 114 | `list_content_migrations` | Lists content migrations for a course | `GET /api/v1/courses/:course_id/content_migrations` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 115 | `get_content_migration` | Retrieves status of a content migration | `GET /api/v1/courses/:course_id/content_migrations/:id` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 116 | `create_content_migration` | Creates a content migration | `POST /api/v1/courses/:course_id/content_migrations` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 117 | `update_content_migration` | Updates content migration configuration | `PUT /api/v1/courses/:course_id/content_migrations/:id` | Course Admin | `tools/course_admin.js` | `[x]` Done | `[ ]` N/A |
+| 118 | `list_appointment_groups` | Lists appointment groups | `GET /api/v1/appointment_groups` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 119 | `create_appointment_group` | Creates an appointment group | `POST /api/v1/appointment_groups` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 120 | `get_appointment_group` | Retrieves details of an appointment group | `GET /api/v1/appointment_groups/:id` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 121 | `update_appointment_group` | Updates an appointment group | `PUT /api/v1/appointment_groups/:id` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 122 | `delete_appointment_group` | Deletes an appointment group | `DELETE /api/v1/appointment_groups/:id` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 123 | `list_features` | Lists features for a course, account, or user | `GET /api/v1/:context_type/:context_id/features` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 124 | `get_feature_flag` | Retrieves the feature flag for a course, account, or user | `GET /api/v1/:context_type/:context_id/features/flags/:feature` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 125 | `set_feature_flag` | Sets the feature flag for a course, account, or user | `PUT /api/v1/:context_type/:context_id/features/flags/:feature` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 126 | `delete_feature_flag` | Removes the feature flag for a course, account, or user | `DELETE /api/v1/:context_type/:context_id/features/flags/:feature` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 127 | `list_notification_preferences` | Lists notification preferences | `GET /api/v1/users/:user_id/communication_channels/:communication_channel_id/notification_preferences` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 128 | `get_notification_preference` | Retrieves details of a specific notification preference category | `GET /api/v1/users/:user_id/communication_channels/:communication_channel_id/notification_preferences/:category` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 129 | `update_notification_preference` | Updates a notification preference for the current user | `PUT /api/v1/users/self/communication_channels/:communication_channel_id/notification_preferences/:category` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+| 130 | `update_multiple_notification_preferences` | Updates multiple notification preferences for the current user | `PUT /api/v1/users/self/communication_channels/:communication_channel_id/notification_preferences` | Customizations | `tools/customizations.js` | `[x]` Done | `[ ]` N/A |
+
 
