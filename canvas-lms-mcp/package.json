@@ -1,6 +1,6 @@
 {
   "name": "@likr/canvas-lms-mcp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Model Context Protocol (MCP) Server for Canvas LMS",
   "main": "index.js",
   "publishConfig": {
