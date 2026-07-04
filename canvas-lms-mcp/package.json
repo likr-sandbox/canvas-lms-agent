@@ -1,8 +1,19 @@
 {
   "name": "canvas-lms-mcp",
   "version": "1.0.0",
-  "description": "MCP Server for Canvas LMS",
+  "description": "Model Context Protocol (MCP) Server for Canvas LMS",
   "main": "index.js",
+  "bin": {
+    "canvas-lms-mcp": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "tools",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
   "scripts": {
     "start": "node index.js",
     "test": "node --test tests/**/*.test.js"
@@ -11,5 +22,22 @@
     "@modelcontextprotocol/sdk": "^1.0.1",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7"
-  }
+  },
+  "keywords": [
+    "mcp",
+    "modelcontextprotocol",
+    "canvas",
+    "canvas-lms",
+    "lms"
+  ],
+  "author": "likr-sandbox",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/likr-sandbox/canvas-lms-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/likr-sandbox/canvas-lms-agent/issues"
+  },
+  "homepage": "https://github.com/likr-sandbox/canvas-lms-agent#readme"
 }
