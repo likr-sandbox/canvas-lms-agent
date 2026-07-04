@@ -7,31 +7,23 @@ This document details the mandatory workflow to execute upon completing any task
 ```mermaid
 graph TD
     A[Complete Code Changes] --> B[Run Node.js Tests]
-    B --> C[Run Python Verification]
-    C -->|Tests Pass| D[Check Current Branch]
-    C -->|Tests Fail| A
-    D -->|On dev branch| E[Commit & Push]
-    E --> F[Create Pull Request to master]
+    B -->|Tests Pass| C[Check Current Branch]
+    B -->|Tests Fail| A
+    C -->|On dev branch| D[Commit & Push]
+    D --> E[Create Pull Request to master]
 ```
 
 ---
 
-## 1. Run Unit & Verification Tests
+## 1. Run Unit & Integration Tests
 Before committing any changes, you must ensure that all tests pass. Never commit broken code.
 
-### Node.js Unit Tests
-Run the Jest/Node unit tests under `canvas-lms-mcp`:
+### Node.js Tests
+Run the unit and integration tests under `canvas-lms-mcp`:
 ```bash
 npm --prefix canvas-lms-mcp test
 ```
-All tests must pass. If any test fails, fix the code and re-run.
-
-### Python Verification Tests
-Run the Python integration and verification script inside the virtual environment:
-```bash
-.venv/bin/python canvas-lms-mcp/verify_mcp.py
-```
-This tests real tool interactions with the Canvas API (using mock/sandbox credentials defined in `.env`). Ensure it completes with `PASS` status.
+All tests must pass. Note that integration tests require a valid `CANVAS_API_TOKEN` and `CANVAS_BASE_URL` in `.env` to execute; otherwise, they will be skipped gracefully. If any test fails, fix the code and re-run.
 
 ---
 
