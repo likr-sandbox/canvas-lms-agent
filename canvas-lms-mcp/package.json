@@ -30,7 +30,7 @@
     "canvas-lms",
     "lms"
   ],
-  "author": "likr-sandbox",
+  "author": "Yosuke Onoue <onoue@likr-lab.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
