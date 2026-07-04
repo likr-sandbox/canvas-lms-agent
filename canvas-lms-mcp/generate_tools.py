@@ -3,7 +3,7 @@ import re
 import json
 
 # Paths
-WORKSPACE_DIR = "/home/likr/src/likr-sandbox/canvas-lms-agent"
+WORKSPACE_DIR = "/home/likr/work/likr/canvas-lms-agent"
 DOCS_DIR = os.path.join(WORKSPACE_DIR, "docs/services/canvas/resources")
 TOOLS_DIR = os.path.join(WORKSPACE_DIR, "canvas-lms-mcp/tools")
 TESTS_DIR = os.path.join(WORKSPACE_DIR, "canvas-lms-mcp/tests")

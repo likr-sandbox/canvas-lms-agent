@@ -31,11 +31,11 @@ All tests must pass. Note that integration tests require a valid `CANVAS_API_TOK
 Before committing, evaluate whether this task yielded reusable patterns, API usage gotchas, technical guidelines, or process optimizations that should apply to future tasks.
 
 ### Enforce Progressive Disclosure
-When persisting rules to [AGENTS.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/AGENTS.md), you must keep the main rules file clean, concise, and scannable:
+When persisting rules to [AGENTS.md](file:///home/likr/work/likr/canvas-lms-agent/.agents/AGENTS.md), you must keep the main rules file clean, concise, and scannable:
 
 1. **High-Level Bullet in AGENTS.md**: Add only a brief description of the rule under the relevant header in `AGENTS.md`.
 2. **Detailed Document in references/**: Place code snippets, exhaustive command options, error logs, and detailed descriptions in a new Markdown file within `.agents/references/` (e.g., `.agents/references/new_guideline.md`).
-3. **Link**: Insert a clickable link in `AGENTS.md` pointing to the new detail file using absolute path notation (e.g., `[new_guideline.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/references/new_guideline.md)`).
+3. **Link**: Insert a clickable link in `AGENTS.md` pointing to the new detail file using absolute path notation (e.g., `[new_guideline.md](file:///home/likr/work/likr/canvas-lms-agent/.agents/references/new_guideline.md)`).
 
 ---
 
@@ -69,7 +69,7 @@ git push origin dev
 Use the `github-mcp-server` tool `create_pull_request` (or the `gh` CLI if available) to create a Pull Request.
 
 **PR Parameters:**
-- **Repository**: `likr-sandbox/canvas-lms-agent`
+- **Repository**: `likr/canvas-lms-agent`
 - **Base**: `master` (protected branch)
 - **Head**: `dev`
 - **Title**: Describe the feature or fix (e.g., `Merge dev into master: Implement task completion workflow`)

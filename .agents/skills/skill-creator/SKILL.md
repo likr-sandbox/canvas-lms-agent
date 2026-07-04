@@ -321,7 +321,7 @@ Keep going until:
 - You're not making meaningful progress
 
 Once the iteration loop is complete and you are ready to finalize:
-- **Run Unit Tests and Create PR**: You must run regression tests, commit your skill changes, and create a Pull Request to merge them. Follow the detailed steps in [git_workflow.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/skills/skill-creator/references/git_workflow.md).
+- **Run Unit Tests and Create PR**: You must run regression tests, commit your skill changes, and create a Pull Request to merge them. Follow the detailed steps in [git_workflow.md](file:///home/likr/work/likr/canvas-lms-agent/.agents/skills/skill-creator/references/git_workflow.md).
 
 ---
 
@@ -469,7 +469,7 @@ The agents/ directory contains instructions for specialized subagents. Read them
 
 The references/ directory has additional documentation:
 - `references/schemas.md` — JSON structures for evals.json, grading.json, etc.
-- [git_workflow.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/skills/skill-creator/references/git_workflow.md) — Steps for unit testing, committing, and creating PRs upon skill completion.
+- [git_workflow.md](file:///home/likr/work/likr/canvas-lms-agent/.agents/skills/skill-creator/references/git_workflow.md) — Steps for unit testing, committing, and creating PRs upon skill completion.
 
 ---
 
