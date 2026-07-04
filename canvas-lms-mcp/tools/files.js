@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_files_quota",
+    "name": "get_ccf_quota",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/files/quota`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_files_quota",
+    "name": "get_ggf_quota",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/files/quota`",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_files_quota",
+    "name": "get_uuf_quota",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/files/quota` Returns the total and used storage quota for the course, group, or user. ```bash curl 'https:///api/v1/courses/1/files/quota' \\ -H 'Authorization: Bearer ' ``` ```js { \"quota\": 524288000, \"quota_used\": 402653184 } ``` [FilesController#api\\_index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/files_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -65,7 +65,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_files",
+    "name": "get_cc_files",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/files`",
     "inputSchema": {
       "type": "object",
@@ -85,7 +85,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_files",
+    "name": "get_uu_files",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/files`",
     "inputSchema": {
       "type": "object",
@@ -105,7 +105,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_files",
+    "name": "get_gg_files",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/files`",
     "inputSchema": {
       "type": "object",
@@ -125,7 +125,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_folders_id_files",
+    "name": "get_fi_files",
     "description": "**Scope:** `url:GET|/api/v1/folders/:id/files` Returns the paginated list of files for the folder or course. ```bash curl 'https:///api/v1/folders//files?content_types[]=image&content_types[]=text/plain \\ -H 'Authorization: Bearer ' ``` Returns a list of [File](../external-tools/plagiarism-detection-platform/plagiarism_detection_submissions.md#file) objects. [FilesController#public\\_url](https://github.com/instructure/canvas-lms/blob/master/app/controllers/files_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -173,7 +173,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_files_id_public_url",
+    "name": "get_fi_public_url",
     "description": "**Scope:** `url:GET|/api/v1/files/:id/public_url` Determine the URL that should be used for inline preview of the file. ```bash curl 'https:///api/v1/files/1/public_url' \\ -H 'Authorization: Bearer ' ``` ```js { \"public_url\": \"https://example-bucket.s3.amazonaws.com/example-namespace/attachments/1/example-filename?AWSAccessKeyId=example-key&Expires=1400000000&Signature=example-signature\" } ``` [FilesController#api\\_show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/fi...",
     "inputSchema": {
       "type": "object",
@@ -233,7 +233,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_files_id",
+    "name": "get_cc_files_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/files/:id`",
     "inputSchema": {
       "type": "object",
@@ -258,7 +258,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_files_id",
+    "name": "get_gg_files_id",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/files/:id`",
     "inputSchema": {
       "type": "object",
@@ -283,7 +283,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_files_id",
+    "name": "get_uu_files_id",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/files/:id` Returns the standard attachment json object ```bash curl 'https:///api/v1/files/' \\ -H 'Authorization: Bearer ' curl 'https:///api/v1/courses//files/' \\ -H 'Authorization: Bearer ' ``` Returns a [File](../external-tools/plagiarism-detection-platform/plagiarism_detection_submissions.md#file) object. [FilesController#file\\_ref](https://github.com/instructure/canvas-lms/blob/master/app/controllers/files_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -320,7 +320,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_files_file_ref_migration_id",
+    "name": "get_ccf_file_ref_migration_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/files/file_ref/:migration_id` Get information about a file from a course copy file reference ```bash curl https:///api/v1/courses/1/files/file_ref/i567b573b77fab13a1a39937c24ae88f2 \\ -H 'Authorization: Bearer ' ``` Returns a [File](../external-tools/plagiarism-detection-platform/plagiarism_detection_submissions.md#file) object. [FilesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/files_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -345,7 +345,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_files_file_id_download",
+    "name": "get_aaff_download",
     "description": "**Scope:** `url:GET|/accounts/:account_id/files/:file_id/download`",
     "inputSchema": {
       "type": "object",
@@ -370,7 +370,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_assessment_questions_assessment_question_id_files_file_id_download",
+    "name": "get_aqaff_download",
     "description": "**Scope:** `url:GET|/assessment_questions/:assessment_question_id/files/:file_id/download`",
     "inputSchema": {
       "type": "object",
@@ -395,7 +395,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_assignments_assignment_id_files_id_download",
+    "name": "get_aafi_download",
     "description": "**Scope:** `url:GET|/assignments/:assignment_id/files/:id/download`",
     "inputSchema": {
       "type": "object",
@@ -420,7 +420,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_files_file_id_download",
+    "name": "get_ccff_download",
     "description": "**Scope:** `url:GET|/courses/:course_id/files/:file_id/download`",
     "inputSchema": {
       "type": "object",
@@ -445,7 +445,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_files_file_id_download",
+    "name": "get_ff_download",
     "description": "**Scope:** `url:GET|/files/:file_id/download`",
     "inputSchema": {
       "type": "object",
@@ -465,7 +465,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_files_file_id_download",
+    "name": "get_ggff_download",
     "description": "**Scope:** `url:GET|/groups/:group_id/files/:file_id/download`",
     "inputSchema": {
       "type": "object",
@@ -490,7 +490,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_quiz_statistics_quiz_statistics_id_files_file_id_download",
+    "name": "get_qsqff_download",
     "description": "**Scope:** `url:GET|/quiz_statistics/:quiz_statistics_id/files/:file_id/download`",
     "inputSchema": {
       "type": "object",
@@ -515,7 +515,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_quizzes_quiz_submissions_quiz_submission_id_files_file_id_download",
+    "name": "get_qqsqff_download",
     "description": "**Scope:** `url:GET|/quizzes/quiz_submissions/:quiz_submission_id/files/:file_id/download`",
     "inputSchema": {
       "type": "object",
@@ -540,7 +540,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_files_file_id_download",
+    "name": "get_uuff_download",
     "description": "**Scope:** `url:GET|/users/:user_id/files/:file_id/download` Downloads the file ```bash curl 'https:///files//download' \\ -H 'Authorization: Bearer ' curl 'https:///courses//files//download' \\ -H 'Authorization: Bearer ' ``` Returns a [File](../external-tools/plagiarism-detection-platform/plagiarism_detection_submissions.md#file) object. [FilesController#api\\_update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/files_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -633,7 +633,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_files_id_icon_metadata",
+    "name": "get_fi_icon_metadata",
     "description": "**Scope:** `url:GET|/api/v1/files/:id/icon_metadata` Returns the icon maker file attachment metadata ```bash curl 'https:///api/v1/courses/1/files/1/metadata' \\ -H 'Authorization: Bearer ' ``` ```js { \"type\":\"image/svg+xml-icon-maker-icons\", \"alt\":\"\", \"shape\":\"square\", \"size\":\"small\", \"color\":\"#FFFFFF\", \"outlineColor\":\"#65499D\", \"outlineSize\":\"large\", \"text\":\"Hello\", \"textSize\":\"x-large\", \"textColor\":\"#65499D\", \"textBackgroundColor\":\"#FFFFFF\", \"textPosition\":\"bottom-third\", \"encodedImage\":\"da...",
     "inputSchema": {
       "type": "object",
@@ -653,7 +653,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_files_id_reset_verifier",
+    "name": "post_fi_reset_verifier",
     "description": "**Scope:** `url:POST|/api/v1/files/:id/reset_verifier` Resets the link verifier. Any existing links to the file using the previous hard-coded \"verifier\" parameter will no longer automatically grant access. Must have manage files and become other users permissions ```bash curl -X POST 'https:///api/v1/files//reset_verifier' \\ -H 'Authorization: Bearer ' ``` Returns a [File](../external-tools/plagiarism-detection-platform/plagiarism_detection_submissions.md#file) object. [FoldersController#api\\...",
     "inputSchema": {
       "type": "object",
@@ -669,7 +669,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_folders_id_folders",
+    "name": "get_fi_folders",
     "description": "**Scope:** `url:GET|/api/v1/folders/:id/folders` Returns the paginated list of folders in the folder. ```bash curl 'https:///api/v1/folders//folders' \\ -H 'Authorization: Bearer ' ``` Returns a list of [Folder](#folder) objects. [FoldersController#list\\_all\\_folders](https://github.com/instructure/canvas-lms/blob/master/app/controllers/folders_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -689,7 +689,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_folders",
+    "name": "get_cc_folders",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/folders`",
     "inputSchema": {
       "type": "object",
@@ -709,7 +709,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_folders",
+    "name": "get_uu_folders",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/folders`",
     "inputSchema": {
       "type": "object",
@@ -729,7 +729,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_folders",
+    "name": "get_gg_folders",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/folders` Returns the paginated list of all folders for the given context. This will be returned as a flat list containing all subfolders as well. ```bash curl 'https:///api/v1/courses//folders' \\ -H 'Authorization: Bearer ' ``` Returns a list of [Folder](#folder) objects. [FoldersController#resolve\\_path](https://github.com/instructure/canvas-lms/blob/master/app/controllers/folders_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -749,7 +749,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_folders_by_path_full_path",
+    "name": "get_ccf_by_path_full_path",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/folders/by_path/*full_path`",
     "inputSchema": {
       "type": "object",
@@ -774,7 +774,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_folders_by_path",
+    "name": "get_ccf_by_path",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/folders/by_path`",
     "inputSchema": {
       "type": "object",
@@ -794,7 +794,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_folders_by_path_full_path",
+    "name": "get_uuf_by_path_full_path",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/folders/by_path/*full_path`",
     "inputSchema": {
       "type": "object",
@@ -819,7 +819,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_folders_by_path",
+    "name": "get_uuf_by_path",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/folders/by_path`",
     "inputSchema": {
       "type": "object",
@@ -839,7 +839,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_folders_by_path_full_path",
+    "name": "get_ggf_by_path_full_path",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/folders/by_path/*full_path`",
     "inputSchema": {
       "type": "object",
@@ -864,7 +864,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_folders_by_path",
+    "name": "get_ggf_by_path",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/folders/by_path` Given the full path to a folder, returns a list of all Folders in the path hierarchy, starting at the root folder, and ending at the requested folder. The given path is relative to the context's root folder and does not include the root folder's name (e.g., \"course files\"). If an empty path is given, the context's root folder alone is returned. Otherwise, if no folder exists with the given full path, a Not Found error is returned. ...",
     "inputSchema": {
       "type": "object",
@@ -884,7 +884,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_folders_id",
+    "name": "get_cc_folders_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/folders/:id`",
     "inputSchema": {
       "type": "object",
@@ -909,7 +909,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_folders_id",
+    "name": "get_uu_folders_id",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/folders/:id`",
     "inputSchema": {
       "type": "object",
@@ -934,7 +934,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_folders_id",
+    "name": "get_gg_folders_id",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/folders/:id`",
     "inputSchema": {
       "type": "object",
@@ -1023,7 +1023,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_folders",
+    "name": "post_cc_folders",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/folders`",
     "inputSchema": {
       "type": "object",
@@ -1039,7 +1039,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_user_id_folders",
+    "name": "post_uu_folders",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/folders`",
     "inputSchema": {
       "type": "object",
@@ -1055,7 +1055,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_folders",
+    "name": "post_gg_folders",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/folders`",
     "inputSchema": {
       "type": "object",
@@ -1071,7 +1071,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_folders_folder_id_folders",
+    "name": "post_ff_folders",
     "description": "**Scope:** `url:POST|/api/v1/folders/:folder_id/folders`",
     "inputSchema": {
       "type": "object",
@@ -1087,7 +1087,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_folders",
+    "name": "post_aa_folders",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/folders` Creates a folder in the specified context ```bash curl 'https:///api/v1/folders//folders' \\ -F 'name=' \\ -F 'locked=true' \\ -H 'Authorization: Bearer ' ``` ```bash curl 'https:///api/v1/courses//folders' \\ -F 'name=' \\ -F 'locked=true' \\ -H 'Authorization: Bearer ' ``` Returns a [Folder](#folder) object. [FoldersController#api\\_destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/folders_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -1156,7 +1156,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_folders_folder_id_files",
+    "name": "post_ff_files",
     "description": "**Scope:** `url:POST|/api/v1/folders/:folder_id/files` Upload a file to a folder. This API endpoint is the first step in uploading a file. See the [File Upload Documentation](../basics/file.file_uploads.md) for details on the file upload workflow. Only those with the \"Manage Files\" permission on a course or group can upload files to a folder in that course or group. [FoldersController#copy\\_file](https://github.com/instructure/canvas-lms/blob/master/app/controllers/folders_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -1172,7 +1172,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_folders_dest_folder_id_copy_file",
+    "name": "post_fd_copy_file",
     "description": "**Scope:** `url:POST|/api/v1/folders/:dest_folder_id/copy_file` Copy a file from elsewhere in Canvas into a folder. Copying a file across contexts (between courses and users) is permitted, but the source and destination must belong to the same institution. ```bash curl 'https:///api/v1/folders/123/copy_file' \\ -H 'Authorization: Bearer ' -F 'source_file_id=456' ``` Returns a [File](../external-tools/plagiarism-detection-platform/plagiarism_detection_submissions.md#file) object. [FoldersContro...",
     "inputSchema": {
       "type": "object",
@@ -1197,7 +1197,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_folders_dest_folder_id_copy_folder",
+    "name": "post_fd_copy_folder",
     "description": "**Scope:** `url:POST|/api/v1/folders/:dest_folder_id/copy_folder` Copy a folder (and its contents) from elsewhere in Canvas into a folder. Copying a folder across contexts (between courses and users) is permitted, but the source and destination must belong to the same institution. If the source and destination folders are in the same context, the source folder may not contain the destination folder. A folder will be renamed at its destination if another folder with the same name already exist...",
     "inputSchema": {
       "type": "object",
@@ -1218,7 +1218,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_folders_media",
+    "name": "get_ccf_media",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/folders/media`",
     "inputSchema": {
       "type": "object",
@@ -1238,7 +1238,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_folders_media",
+    "name": "get_ggf_media",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/folders/media` Returns the details for a designated upload folder that the user has rights to upload to, and creates it if it doesn't exist. If the current user does not have the permissions to manage files in the course or group, the folder will belong to the current user directly. ```bash curl 'https:///api/v1/courses/1337/folders/media' \\ -H 'Authorization: Bearer ' ``` Returns a [Folder](#folder) object. [UsageRightsController#set\\_usage\\_right...",
     "inputSchema": {
       "type": "object",
@@ -1258,7 +1258,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_usage_rights",
+    "name": "put_cc_usage_rights",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/usage_rights`",
     "inputSchema": {
       "type": "object",
@@ -1274,7 +1274,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_usage_rights",
+    "name": "put_gg_usage_rights",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/usage_rights`",
     "inputSchema": {
       "type": "object",
@@ -1290,7 +1290,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_user_id_usage_rights",
+    "name": "put_uu_usage_rights",
     "description": "**Scope:** `url:PUT|/api/v1/users/:user_id/usage_rights` Sets copyright and license information for one or more files Returns an [UsageRights](#usagerights) object. [UsageRightsController#remove\\_usage\\_rights](https://github.com/instructure/canvas-lms/blob/master/app/controllers/usage_rights_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -1332,7 +1332,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_usage_rights",
+    "name": "delete_cc_usage_rights",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/usage_rights`",
     "inputSchema": {
       "type": "object",
@@ -1348,7 +1348,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_usage_rights",
+    "name": "delete_gg_usage_rights",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/usage_rights`",
     "inputSchema": {
       "type": "object",
@@ -1364,7 +1364,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_user_id_usage_rights",
+    "name": "delete_uu_usage_rights",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:user_id/usage_rights` Removes copyright and license information associated with one or more files [UsageRightsController#licenses](https://github.com/instructure/canvas-lms/blob/master/app/controllers/usage_rights_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -1389,7 +1389,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_content_licenses",
+    "name": "get_cc_content_licenses",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_licenses`",
     "inputSchema": {
       "type": "object",
@@ -1409,7 +1409,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_content_licenses",
+    "name": "get_gg_content_licenses",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/content_licenses`",
     "inputSchema": {
       "type": "object",
@@ -1429,7 +1429,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_licenses",
+    "name": "get_uu_content_licenses",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_licenses` A paginated list of licenses that can be applied Returns a list of [License](#license) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively...",
     "inputSchema": {
       "type": "object",
@@ -1451,28 +1451,28 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_files_quota: async (client, args) => {
+  get_ccf_quota: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/files/quota", args);
   },
-  get_groups_group_id_files_quota: async (client, args) => {
+  get_ggf_quota: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/files/quota", args);
   },
-  get_users_user_id_files_quota: async (client, args) => {
+  get_uuf_quota: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/files/quota", args);
   },
-  get_courses_course_id_files: async (client, args) => {
+  get_cc_files: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/files", args);
   },
-  get_users_user_id_files: async (client, args) => {
+  get_uu_files: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/files", args);
   },
-  get_groups_group_id_files: async (client, args) => {
+  get_gg_files: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/files", args);
   },
-  get_folders_id_files: async (client, args) => {
+  get_fi_files: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/folders/:id/files", args);
   },
-  get_files_id_public_url: async (client, args) => {
+  get_fi_public_url: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/files/:id/public_url", args);
   },
   get_files_id: async (client, args) => {
@@ -1481,43 +1481,43 @@ const handlers = {
   post_files_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/files/:id", args);
   },
-  get_courses_course_id_files_id: async (client, args) => {
+  get_cc_files_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/files/:id", args);
   },
-  get_groups_group_id_files_id: async (client, args) => {
+  get_gg_files_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/files/:id", args);
   },
-  get_users_user_id_files_id: async (client, args) => {
+  get_uu_files_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/files/:id", args);
   },
-  get_courses_course_id_files_file_ref_migration_id: async (client, args) => {
+  get_ccf_file_ref_migration_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/files/file_ref/:migration_id", args);
   },
-  get_accounts_account_id_files_file_id_download: async (client, args) => {
+  get_aaff_download: async (client, args) => {
     return genericHandler(client, "GET", "/accounts/:account_id/files/:file_id/download", args);
   },
-  get_assessment_questions_assessment_question_id_files_file_id_download: async (client, args) => {
+  get_aqaff_download: async (client, args) => {
     return genericHandler(client, "GET", "/assessment_questions/:assessment_question_id/files/:file_id/download", args);
   },
-  get_assignments_assignment_id_files_id_download: async (client, args) => {
+  get_aafi_download: async (client, args) => {
     return genericHandler(client, "GET", "/assignments/:assignment_id/files/:id/download", args);
   },
-  get_courses_course_id_files_file_id_download: async (client, args) => {
+  get_ccff_download: async (client, args) => {
     return genericHandler(client, "GET", "/courses/:course_id/files/:file_id/download", args);
   },
-  get_files_file_id_download: async (client, args) => {
+  get_ff_download: async (client, args) => {
     return genericHandler(client, "GET", "/files/:file_id/download", args);
   },
-  get_groups_group_id_files_file_id_download: async (client, args) => {
+  get_ggff_download: async (client, args) => {
     return genericHandler(client, "GET", "/groups/:group_id/files/:file_id/download", args);
   },
-  get_quiz_statistics_quiz_statistics_id_files_file_id_download: async (client, args) => {
+  get_qsqff_download: async (client, args) => {
     return genericHandler(client, "GET", "/quiz_statistics/:quiz_statistics_id/files/:file_id/download", args);
   },
-  get_quizzes_quiz_submissions_quiz_submission_id_files_file_id_download: async (client, args) => {
+  get_qqsqff_download: async (client, args) => {
     return genericHandler(client, "GET", "/quizzes/quiz_submissions/:quiz_submission_id/files/:file_id/download", args);
   },
-  get_users_user_id_files_file_id_download: async (client, args) => {
+  get_uuff_download: async (client, args) => {
     return genericHandler(client, "GET", "/users/:user_id/files/:file_id/download", args);
   },
   put_files_id: async (client, args) => {
@@ -1526,49 +1526,49 @@ const handlers = {
   delete_files_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/files/:id", args);
   },
-  get_files_id_icon_metadata: async (client, args) => {
+  get_fi_icon_metadata: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/files/:id/icon_metadata", args);
   },
-  post_files_id_reset_verifier: async (client, args) => {
+  post_fi_reset_verifier: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/files/:id/reset_verifier", args);
   },
-  get_folders_id_folders: async (client, args) => {
+  get_fi_folders: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/folders/:id/folders", args);
   },
-  get_courses_course_id_folders: async (client, args) => {
+  get_cc_folders: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/folders", args);
   },
-  get_users_user_id_folders: async (client, args) => {
+  get_uu_folders: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/folders", args);
   },
-  get_groups_group_id_folders: async (client, args) => {
+  get_gg_folders: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/folders", args);
   },
-  get_courses_course_id_folders_by_path_full_path: async (client, args) => {
+  get_ccf_by_path_full_path: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/folders/by_path/*full_path", args);
   },
-  get_courses_course_id_folders_by_path: async (client, args) => {
+  get_ccf_by_path: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/folders/by_path", args);
   },
-  get_users_user_id_folders_by_path_full_path: async (client, args) => {
+  get_uuf_by_path_full_path: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/folders/by_path/*full_path", args);
   },
-  get_users_user_id_folders_by_path: async (client, args) => {
+  get_uuf_by_path: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/folders/by_path", args);
   },
-  get_groups_group_id_folders_by_path_full_path: async (client, args) => {
+  get_ggf_by_path_full_path: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/folders/by_path/*full_path", args);
   },
-  get_groups_group_id_folders_by_path: async (client, args) => {
+  get_ggf_by_path: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/folders/by_path", args);
   },
-  get_courses_course_id_folders_id: async (client, args) => {
+  get_cc_folders_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/folders/:id", args);
   },
-  get_users_user_id_folders_id: async (client, args) => {
+  get_uu_folders_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/folders/:id", args);
   },
-  get_groups_group_id_folders_id: async (client, args) => {
+  get_gg_folders_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/folders/:id", args);
   },
   get_folders_id: async (client, args) => {
@@ -1577,64 +1577,64 @@ const handlers = {
   put_folders_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/folders/:id", args);
   },
-  post_courses_course_id_folders: async (client, args) => {
+  post_cc_folders: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/folders", args);
   },
-  post_users_user_id_folders: async (client, args) => {
+  post_uu_folders: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/folders", args);
   },
-  post_groups_group_id_folders: async (client, args) => {
+  post_gg_folders: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/folders", args);
   },
-  post_folders_folder_id_folders: async (client, args) => {
+  post_ff_folders: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/folders/:folder_id/folders", args);
   },
-  post_accounts_account_id_folders: async (client, args) => {
+  post_aa_folders: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/folders", args);
   },
   delete_folders_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/folders/:id", args);
   },
-  post_folders_folder_id_files: async (client, args) => {
+  post_ff_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/folders/:folder_id/files", args);
   },
-  post_folders_dest_folder_id_copy_file: async (client, args) => {
+  post_fd_copy_file: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/folders/:dest_folder_id/copy_file", args);
   },
-  post_folders_dest_folder_id_copy_folder: async (client, args) => {
+  post_fd_copy_folder: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/folders/:dest_folder_id/copy_folder", args);
   },
-  get_courses_course_id_folders_media: async (client, args) => {
+  get_ccf_media: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/folders/media", args);
   },
-  get_groups_group_id_folders_media: async (client, args) => {
+  get_ggf_media: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/folders/media", args);
   },
-  put_courses_course_id_usage_rights: async (client, args) => {
+  put_cc_usage_rights: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/usage_rights", args);
   },
-  put_groups_group_id_usage_rights: async (client, args) => {
+  put_gg_usage_rights: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/usage_rights", args);
   },
-  put_users_user_id_usage_rights: async (client, args) => {
+  put_uu_usage_rights: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:user_id/usage_rights", args);
   },
-  delete_courses_course_id_usage_rights: async (client, args) => {
+  delete_cc_usage_rights: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/usage_rights", args);
   },
-  delete_groups_group_id_usage_rights: async (client, args) => {
+  delete_gg_usage_rights: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/usage_rights", args);
   },
-  delete_users_user_id_usage_rights: async (client, args) => {
+  delete_uu_usage_rights: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/usage_rights", args);
   },
-  get_courses_course_id_content_licenses: async (client, args) => {
+  get_cc_content_licenses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_licenses", args);
   },
-  get_groups_group_id_content_licenses: async (client, args) => {
+  get_gg_content_licenses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/content_licenses", args);
   },
-  get_users_user_id_content_licenses: async (client, args) => {
+  get_uu_content_licenses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_licenses", args);
   }
 };

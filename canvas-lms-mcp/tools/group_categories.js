@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_group_categories",
+    "name": "get_aa_group_categories",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/group_categories`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_group_categories",
+    "name": "get_cc_group_categories",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/group_categories` Returns a paginated list of group categories in a context. The list returned depends on the permissions of the current user and the specified collaboration state. ```bash curl https:///api/v1/accounts//group_categories \\ -H 'Authorization: Bearer ' \\ -d 'collaboration_state=all' ``` Returns a list of [GroupCategory](#groupcategory) objects. [GroupCategoriesController#show](https://github.com/instructure/canvas-lms/blob/master/ap...",
     "inputSchema": {
       "type": "object",
@@ -69,7 +69,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_group_categories",
+    "name": "post_aa_group_categories",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/group_categories`",
     "inputSchema": {
       "type": "object",
@@ -85,7 +85,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_group_categories",
+    "name": "post_cc_group_categories",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/group_categories` Create a new group category ```bash curl htps:///api/v1/courses//group_categories \\ -F 'name=Project Groups' \\ -H 'Authorization: Bearer ' ``` Returns a [GroupCategory](#groupcategory) object. [GroupCategoriesController#bulk\\_manage\\_differentiation\\_tag](https://github.com/instructure/canvas-lms/blob/master/app/controllers/group_categories_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -134,7 +134,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_group_categories_bulk_manage_differentiation_tag",
+    "name": "post_ccgc_bulk_manage_differentiation_tag",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/group_categories/bulk_manage_differentiation_tag` This API is only meant for Groups and GroupCategories where non\\_collaborative is true. Perform bulk operations on groups within a group category, or create a new group category along with the groups in one transaction. If creation of the GroupCategory or any Group fails, the entire operation will be rolled back. ```bash curl https:///api/v1/courses/:course_id/group_categories/bulk_manage_differe...",
     "inputSchema": {
       "type": "object",
@@ -160,7 +160,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_group_categories_import_tags",
+    "name": "post_ccgc_import_tags",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/group_categories/import_tags` Create Differentiation Tags through a CSV import For more information on the format that's expected here, please see the \"Differentiation Tag CSV\" section in the API docs. ```js { \"completion\": 0, \"context_id\": 20, \"context_type\": \"Course\", \"created_at\": \"2013-07-05T10:57:48-06:00\", \"id\": 2, \"message\": null, \"tag\": \"course_tag_import\", \"updated_at\": \"2013-07-05T10:57:48-06:00\", \"user_id\": null, \"workflow_state\": \"ru...",
     "inputSchema": {
       "type": "object",
@@ -180,7 +180,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_group_categories_group_category_id_import",
+    "name": "post_gcg_import",
     "description": "**Scope:** `url:POST|/api/v1/group_categories/:group_category_id/import` Create Groups in a Group Category through a CSV import For more information on the format that's expected here, please see the \"Group Category CSV\" section in the API docs. ```js { \"completion\": 0, \"context_id\": 20, \"context_type\": \"GroupCategory\", \"created_at\": \"2013-07-05T10:57:48-06:00\", \"id\": 2, \"message\": null, \"tag\": \"course_group_import\", \"updated_at\": \"2013-07-05T10:57:48-06:00\", \"user_id\": null, \"workflow_state\"...",
     "inputSchema": {
       "type": "object",
@@ -260,7 +260,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_group_categories_group_category_id_groups",
+    "name": "get_gcg_groups",
     "description": "**Scope:** `url:GET|/api/v1/group_categories/:group_category_id/groups` Returns a paginated list of groups in a group category ```bash curl https:///api/v1/group_categories//groups \\ -H 'Authorization: Bearer ' ``` Returns a list of [Group](groups.md#group) objects. [GroupCategoriesController#export](https://github.com/instructure/canvas-lms/blob/master/app/controllers/group_categories_controller.rb) {% hint style=\"warning\" %} BETA: This API endpoint is not finalized, and there could be break...",
     "inputSchema": {
       "type": "object",
@@ -280,7 +280,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_group_categories_group_category_id_export",
+    "name": "get_gcg_export",
     "description": "**Scope:** `url:GET|/api/v1/group_categories/:group_category_id/export` Returns a csv file of users in format ready to import. ```bash curl https:///api/v1/group_categories//export \\ -H 'Authorization: Bearer ' ``` [GroupCategoriesController#export\\_tags](https://github.com/instructure/canvas-lms/blob/master/app/controllers/group_categories_controller.rb) {% hint style=\"warning\" %} BETA: This API endpoint is not finalized, and there could be breaking changes before its final release. {% endhi...",
     "inputSchema": {
       "type": "object",
@@ -300,7 +300,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_group_categories_export_tags",
+    "name": "get_ccgc_export_tags",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/group_categories/export_tags` Returns a csv file of users in format ready to import. ```bash curl https:///api/v1/group_categories/export_tags \\ -H 'Authorization: Bearer ' ``` [GroupCategoriesController#users](https://github.com/instructure/canvas-lms/blob/master/app/controllers/group_categories_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -320,7 +320,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_group_categories_group_category_id_users",
+    "name": "get_gcg_users",
     "description": "**Scope:** `url:GET|/api/v1/group_categories/:group_category_id/users` Returns a paginated list of users in the group category. ```bash curl https:///api/v1/group_categories/1/users \\ -H 'Authorization: Bearer ' ``` Returns a list of [User](users.md#user) objects. [GroupCategoriesController#assign\\_unassigned\\_members](https://github.com/instructure/canvas-lms/blob/master/app/controllers/group_categories_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -348,7 +348,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_group_categories_group_category_id_assign_unassigned_members",
+    "name": "post_gcg_assign_unassigned_members",
     "description": "**Scope:** `url:POST|/api/v1/group_categories/:group_category_id/assign_unassigned_members` Assign all unassigned members as evenly as possible among the existing student groups. ```bash curl https:///api/v1/group_categories/1/assign_unassigned_members \\ -H 'Authorization: Bearer ' ``` ```js { \"completion\": 0, \"context_id\": 20, \"context_type\": \"GroupCategory\", \"created_at\": \"2013-07-05T10:57:48-06:00\", \"id\": 2, \"message\": null, \"tag\": \"assign_unassigned_members\", \"updated_at\": \"2013-07-05T10:...",
     "inputSchema": {
       "type": "object",
@@ -370,28 +370,28 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_group_categories: async (client, args) => {
+  get_aa_group_categories: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/group_categories", args);
   },
-  get_courses_course_id_group_categories: async (client, args) => {
+  get_cc_group_categories: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/group_categories", args);
   },
   get_group_categories_group_category_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/group_categories/:group_category_id", args);
   },
-  post_accounts_account_id_group_categories: async (client, args) => {
+  post_aa_group_categories: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/group_categories", args);
   },
-  post_courses_course_id_group_categories: async (client, args) => {
+  post_cc_group_categories: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/group_categories", args);
   },
-  post_courses_course_id_group_categories_bulk_manage_differentiation_tag: async (client, args) => {
+  post_ccgc_bulk_manage_differentiation_tag: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/group_categories/bulk_manage_differentiation_tag", args);
   },
-  post_courses_course_id_group_categories_import_tags: async (client, args) => {
+  post_ccgc_import_tags: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/group_categories/import_tags", args);
   },
-  post_group_categories_group_category_id_import: async (client, args) => {
+  post_gcg_import: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/group_categories/:group_category_id/import", args);
   },
   put_group_categories_group_category_id: async (client, args) => {
@@ -400,19 +400,19 @@ const handlers = {
   delete_group_categories_group_category_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/group_categories/:group_category_id", args);
   },
-  get_group_categories_group_category_id_groups: async (client, args) => {
+  get_gcg_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/group_categories/:group_category_id/groups", args);
   },
-  get_group_categories_group_category_id_export: async (client, args) => {
+  get_gcg_export: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/group_categories/:group_category_id/export", args);
   },
-  get_courses_course_id_group_categories_export_tags: async (client, args) => {
+  get_ccgc_export_tags: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/group_categories/export_tags", args);
   },
-  get_group_categories_group_category_id_users: async (client, args) => {
+  get_gcg_users: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/group_categories/:group_category_id/users", args);
   },
-  post_group_categories_group_category_id_assign_unassigned_members: async (client, args) => {
+  post_gcg_assign_unassigned_members: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/group_categories/:group_category_id/assign_unassigned_members", args);
   }
 };

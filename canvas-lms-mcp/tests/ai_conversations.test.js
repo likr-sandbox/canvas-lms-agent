@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const ai_conversationsModule = require("../tools/ai_conversations");
 
-test("get_courses_course_id_ai_experiences_ai_experience_id_conversations_id calls correct endpoint", async () => {
+test("get_ccaea_conversations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = ai_conversationsModule.handlers.get_courses_course_id_ai_experiences_ai_experience_id_conversations_id;
-  assert.ok(handler, "Handler get_courses_course_id_ai_experiences_ai_experience_id_conversations_id should be defined");
+  const handler = ai_conversationsModule.handlers.get_ccaea_conversations_id;
+  assert.ok(handler, "Handler get_ccaea_conversations_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "ai_experience_id": "test_ai_experience_id", "id": "test_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_ai_experiences_ai_experience_id_conversations_id cal
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_ai_experiences_ai_experience_id_conversations calls correct endpoint", async () => {
+test("get_ccaea_conversations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = ai_conversationsModule.handlers.get_courses_course_id_ai_experiences_ai_experience_id_conversations;
-  assert.ok(handler, "Handler get_courses_course_id_ai_experiences_ai_experience_id_conversations should be defined");
+  const handler = ai_conversationsModule.handlers.get_ccaea_conversations;
+  assert.ok(handler, "Handler get_ccaea_conversations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "ai_experience_id": "test_ai_experience_id"});
 
@@ -41,15 +41,15 @@ test("get_courses_course_id_ai_experiences_ai_experience_id_conversations calls 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_ai_experiences_ai_experience_id_conversations calls correct endpoint", async () => {
+test("post_ccaea_conversations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = ai_conversationsModule.handlers.post_courses_course_id_ai_experiences_ai_experience_id_conversations;
-  assert.ok(handler, "Handler post_courses_course_id_ai_experiences_ai_experience_id_conversations should be defined");
+  const handler = ai_conversationsModule.handlers.post_ccaea_conversations;
+  assert.ok(handler, "Handler post_ccaea_conversations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "ai_experience_id": "test_ai_experience_id"});
 
@@ -59,15 +59,15 @@ test("post_courses_course_id_ai_experiences_ai_experience_id_conversations calls
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages calls correct endpoint", async () => {
+test("post_ccaeaci_messages calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = ai_conversationsModule.handlers.post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages;
-  assert.ok(handler, "Handler post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages should be defined");
+  const handler = ai_conversationsModule.handlers.post_ccaeaci_messages;
+  assert.ok(handler, "Handler post_ccaeaci_messages should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "ai_experience_id": "test_ai_experience_id", "id": "test_id", "message": "test_val"});
 
@@ -77,15 +77,15 @@ test("post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_me
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id calls correct endpoint", async () => {
+test("delete_ccaea_conversations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = ai_conversationsModule.handlers.delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id;
-  assert.ok(handler, "Handler delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id should be defined");
+  const handler = ai_conversationsModule.handlers.delete_ccaea_conversations_id;
+  assert.ok(handler, "Handler delete_ccaea_conversations_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "ai_experience_id": "test_ai_experience_id", "id": "test_id"});
 
@@ -95,15 +95,15 @@ test("delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_ai_experiences_ai_experience_id_conversations_id_evaluation calls correct endpoint", async () => {
+test("get_ccaeaci_evaluation calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = ai_conversationsModule.handlers.get_courses_course_id_ai_experiences_ai_experience_id_conversations_id_evaluation;
-  assert.ok(handler, "Handler get_courses_course_id_ai_experiences_ai_experience_id_conversations_id_evaluation should be defined");
+  const handler = ai_conversationsModule.handlers.get_ccaeaci_evaluation;
+  assert.ok(handler, "Handler get_ccaeaci_evaluation should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "ai_experience_id": "test_ai_experience_id", "id": "test_id"});
 
@@ -113,15 +113,15 @@ test("get_courses_course_id_ai_experiences_ai_experience_id_conversations_id_eva
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_evaluation calls correct endpoint", async () => {
+test("post_ccaeaci_evaluation calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = ai_conversationsModule.handlers.post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_evaluation;
-  assert.ok(handler, "Handler post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_evaluation should be defined");
+  const handler = ai_conversationsModule.handlers.post_ccaeaci_evaluation;
+  assert.ok(handler, "Handler post_ccaeaci_evaluation should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "ai_experience_id": "test_ai_experience_id", "id": "test_id"});
 
@@ -131,15 +131,15 @@ test("post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_ev
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages_message_id_feedback calls correct endpoint", async () => {
+test("post_ccaeacimm_feedback calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = ai_conversationsModule.handlers.post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages_message_id_feedback;
-  assert.ok(handler, "Handler post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages_message_id_feedback should be defined");
+  const handler = ai_conversationsModule.handlers.post_ccaeacimm_feedback;
+  assert.ok(handler, "Handler post_ccaeacimm_feedback should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "ai_experience_id": "test_ai_experience_id", "id": "test_id", "message_id": "test_message_id", "vote": "test_val"});
 
@@ -149,15 +149,15 @@ test("post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_me
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages_message_id_feedback_feedback_id calls correct endpoint", async () => {
+test("delete_ccaeacimm_feedback_feedback_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = ai_conversationsModule.handlers.delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages_message_id_feedback_feedback_id;
-  assert.ok(handler, "Handler delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages_message_id_feedback_feedback_id should be defined");
+  const handler = ai_conversationsModule.handlers.delete_ccaeacimm_feedback_feedback_id;
+  assert.ok(handler, "Handler delete_ccaeacimm_feedback_feedback_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "ai_experience_id": "test_ai_experience_id", "id": "test_id", "message_id": "test_message_id", "feedback_id": "test_feedback_id"});
 

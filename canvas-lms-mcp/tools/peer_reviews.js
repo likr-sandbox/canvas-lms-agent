@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_assignments_assignment_id_peer_reviews",
+    "name": "get_ccaa_peer_reviews",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/peer_reviews`",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_assignments_assignment_id_peer_reviews",
+    "name": "get_ssaa_peer_reviews",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/assignments/:assignment_id/peer_reviews`",
     "inputSchema": {
       "type": "object",
@@ -55,7 +55,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews",
+    "name": "get_ccaass_peer_reviews",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews`",
     "inputSchema": {
       "type": "object",
@@ -85,7 +85,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews",
+    "name": "get_ssaass_peer_reviews",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews` Get a list of all Peer Reviews for this assignment Returns a list of [PeerReview](#peerreview) objects. [PeerReviewsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/peer_reviews_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -119,7 +119,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews",
+    "name": "post_ccaass_peer_reviews",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews`",
     "inputSchema": {
       "type": "object",
@@ -145,7 +145,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews",
+    "name": "post_ssaass_peer_reviews",
     "description": "**Scope:** `url:POST|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews` Create a peer review for the assignment Returns a [PeerReview](#peerreview) object. [PeerReviewsApiController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/peer_reviews_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -176,7 +176,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews",
+    "name": "delete_ccaass_peer_reviews",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews`",
     "inputSchema": {
       "type": "object",
@@ -202,7 +202,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews",
+    "name": "delete_ssaass_peer_reviews",
     "description": "**Scope:** `url:DELETE|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews` Delete a peer review for the assignment Returns a [PeerReview](#peerreview) object. [PeerReviewsApiController#allocate](https://github.com/instructure/canvas-lms/blob/master/app/controllers/peer_reviews_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -233,7 +233,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments_assignment_id_allocate",
+    "name": "post_ccaa_allocate",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/:assignment_id/allocate` Allocates a submission for the current user to peer review Returns a [PeerReview](#peerreview) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason ove...",
     "inputSchema": {
       "type": "object",
@@ -256,31 +256,31 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_assignments_assignment_id_peer_reviews: async (client, args) => {
+  get_ccaa_peer_reviews: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/peer_reviews", args);
   },
-  get_sections_section_id_assignments_assignment_id_peer_reviews: async (client, args) => {
+  get_ssaa_peer_reviews: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/peer_reviews", args);
   },
-  get_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews: async (client, args) => {
+  get_ccaass_peer_reviews: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews", args);
   },
-  get_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews: async (client, args) => {
+  get_ssaass_peer_reviews: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews", args);
   },
-  post_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews: async (client, args) => {
+  post_ccaass_peer_reviews: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews", args);
   },
-  post_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews: async (client, args) => {
+  post_ssaass_peer_reviews: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews", args);
   },
-  delete_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews: async (client, args) => {
+  delete_ccaass_peer_reviews: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews", args);
   },
-  delete_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews: async (client, args) => {
+  delete_ssaass_peer_reviews: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:submission_id/peer_reviews", args);
   },
-  post_courses_course_id_assignments_assignment_id_allocate: async (client, args) => {
+  post_ccaa_allocate: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/allocate", args);
   }
 };

@@ -41,15 +41,15 @@ test("post_conversations calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_conversations_batches calls correct endpoint", async () => {
+test("get_c_batches calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = conversationsModule.handlers.get_conversations_batches;
-  assert.ok(handler, "Handler get_conversations_batches should be defined");
+  const handler = conversationsModule.handlers.get_c_batches;
+  assert.ok(handler, "Handler get_c_batches should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -95,15 +95,15 @@ test("put_conversations_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_conversations_mark_all_as_read calls correct endpoint", async () => {
+test("post_c_mark_all_as_read calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = conversationsModule.handlers.post_conversations_mark_all_as_read;
-  assert.ok(handler, "Handler post_conversations_mark_all_as_read should be defined");
+  const handler = conversationsModule.handlers.post_c_mark_all_as_read;
+  assert.ok(handler, "Handler post_c_mark_all_as_read should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -131,15 +131,15 @@ test("delete_conversations_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_conversations_id_add_recipients calls correct endpoint", async () => {
+test("post_ci_add_recipients calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = conversationsModule.handlers.post_conversations_id_add_recipients;
-  assert.ok(handler, "Handler post_conversations_id_add_recipients should be defined");
+  const handler = conversationsModule.handlers.post_ci_add_recipients;
+  assert.ok(handler, "Handler post_ci_add_recipients should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "recipients[]": "test_val"});
 
@@ -149,15 +149,15 @@ test("post_conversations_id_add_recipients calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_conversations_id_add_message calls correct endpoint", async () => {
+test("post_ci_add_message calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = conversationsModule.handlers.post_conversations_id_add_message;
-  assert.ok(handler, "Handler post_conversations_id_add_message should be defined");
+  const handler = conversationsModule.handlers.post_ci_add_message;
+  assert.ok(handler, "Handler post_ci_add_message should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "body": "test_val"});
 
@@ -167,15 +167,15 @@ test("post_conversations_id_add_message calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_conversations_id_remove_messages calls correct endpoint", async () => {
+test("post_ci_remove_messages calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = conversationsModule.handlers.post_conversations_id_remove_messages;
-  assert.ok(handler, "Handler post_conversations_id_remove_messages should be defined");
+  const handler = conversationsModule.handlers.post_ci_remove_messages;
+  assert.ok(handler, "Handler post_ci_remove_messages should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "remove[]": "test_val"});
 
@@ -203,15 +203,15 @@ test("put_conversations calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_conversations_find_recipients calls correct endpoint", async () => {
+test("get_c_find_recipients calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = conversationsModule.handlers.get_conversations_find_recipients;
-  assert.ok(handler, "Handler get_conversations_find_recipients should be defined");
+  const handler = conversationsModule.handlers.get_c_find_recipients;
+  assert.ok(handler, "Handler get_c_find_recipients should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -221,15 +221,15 @@ test("get_conversations_find_recipients calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_conversations_unread_count calls correct endpoint", async () => {
+test("get_c_unread_count calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = conversationsModule.handlers.get_conversations_unread_count;
-  assert.ok(handler, "Handler get_conversations_unread_count should be defined");
+  const handler = conversationsModule.handlers.get_c_unread_count;
+  assert.ok(handler, "Handler get_c_unread_count should be defined");
 
   const result = await handler(mockClient, {});
 

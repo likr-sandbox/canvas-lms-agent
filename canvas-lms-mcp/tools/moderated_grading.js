@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_assignments_assignment_id_moderated_students",
+    "name": "get_ccaa_moderated_students",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/moderated_students` Returns a paginated list of students selected for moderation Returns a list of [User](users.md#user) objects. [ModerationSetController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/moderation_set_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments_assignment_id_moderated_students",
+    "name": "post_ccaa_moderated_students",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/:assignment_id/moderated_students` Returns an array of users that were selected for moderation Returns a list of [User](users.md#user) objects. [ProvisionalGradesController#bulk\\_select](https://github.com/instructure/canvas-lms/blob/master/app/controllers/provisional_grades_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -55,7 +55,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_provisional_grades_bulk_select",
+    "name": "put_ccaapg_bulk_select",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/bulk_select` Choose which provisional grades will be received by associated students for an assignment. The caller must be the final grader for the assignment or an admin with :select\\_final\\_grade rights. ```js [{ \"assignment_id\": 867, \"student_id\": 5309, \"selected_provisional_grade_id\": 53669 }] ``` [ProvisionalGradesController#status](https://github.com/instructure/canvas-lms/blob/master/app/contro...",
     "inputSchema": {
       "type": "object",
@@ -76,7 +76,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_provisional_grades_status",
+    "name": "get_ccaapg_status",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/status` Tell whether the student's submission needs one or more provisional grades. ```bash curl 'https:///api/v1/courses/1/assignments/2/provisional_grades/status?student_id=1' ``` ```js { \"needs_provisional_grade\": false } ``` [ProvisionalGradesController#select](https://github.com/instructure/canvas-lms/blob/master/app/controllers/provisional_grades_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -105,7 +105,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_provisional_grades_provisional_grade_id_select",
+    "name": "put_ccaapgp_select",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/:provisional_grade_id/select` Choose which provisional grade the student should receive for a submission. The caller must be the final grader for the assignment or an admin with :select\\_final\\_grade rights. ```js { \"assignment_id\": 867, \"student_id\": 5309, \"selected_provisional_grade_id\": 53669 } ``` [ProvisionalGradesController#publish](https://github.com/instructure/canvas-lms/blob/master/app/contr...",
     "inputSchema": {
       "type": "object",
@@ -131,7 +131,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments_assignment_id_provisional_grades_publish",
+    "name": "post_ccaapg_publish",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/publish` Publish the selected provisional grade for all submissions to an assignment. Use the \"Select provisional grade\" endpoint to choose which provisional grade to publish for a particular submission. Students not in the moderation set will have their one and only provisional grade published. WARNING: This is irreversible. This will overwrite existing grades in the gradebook. ```bash curl 'https:/...",
     "inputSchema": {
       "type": "object",
@@ -152,7 +152,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_anonymous_provisional_grades_status",
+    "name": "get_ccaaapg_status",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/anonymous_provisional_grades/status` Determine whether or not the student's submission needs one or more provisional grades. ```bash curl 'https:///api/v1/courses/1/assignments/2/anonymous_provisional_grades/status?anonymous_id=1' ``` ```js { \"needs_provisional_grade\": false } ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms...",
     "inputSchema": {
       "type": "object",
@@ -183,25 +183,25 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_assignments_assignment_id_moderated_students: async (client, args) => {
+  get_ccaa_moderated_students: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/moderated_students", args);
   },
-  post_courses_course_id_assignments_assignment_id_moderated_students: async (client, args) => {
+  post_ccaa_moderated_students: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/moderated_students", args);
   },
-  put_courses_course_id_assignments_assignment_id_provisional_grades_bulk_select: async (client, args) => {
+  put_ccaapg_bulk_select: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/bulk_select", args);
   },
-  get_courses_course_id_assignments_assignment_id_provisional_grades_status: async (client, args) => {
+  get_ccaapg_status: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/status", args);
   },
-  put_courses_course_id_assignments_assignment_id_provisional_grades_provisional_grade_id_select: async (client, args) => {
+  put_ccaapgp_select: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/:provisional_grade_id/select", args);
   },
-  post_courses_course_id_assignments_assignment_id_provisional_grades_publish: async (client, args) => {
+  post_ccaapg_publish: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/provisional_grades/publish", args);
   },
-  get_courses_course_id_assignments_assignment_id_anonymous_provisional_grades_status: async (client, args) => {
+  get_ccaaapg_status: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/anonymous_provisional_grades/status", args);
   }
 };

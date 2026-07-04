@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_course_pacing_id",
+    "name": "get_cc_course_pacing_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/course_pacing/:id` Returns a course pace for the course and pace id provided ```bash curl https:///api/v1/courses/1/course_pacing/1 \\ -H 'Authorization: Bearer ' ``` Returns a [CoursePace](#coursepace) object. [CoursePacesController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/course_paces_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -35,7 +35,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_course_pacing",
+    "name": "post_cc_course_pacing",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/course_pacing` Creates a new course pace with specified parameters. ```bash curl https:///api/v1/courses/1/course_pacing \\ -X POST \\ -H 'Authorization: Bearer ' ``` Returns a [CoursePace](#coursepace) object. [CoursePacesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/course_paces_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -95,7 +95,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_course_pacing_id",
+    "name": "put_cc_course_pacing_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/course_pacing/:id` Returns the updated course pace ```bash curl https:///api/v1/courses/1/course_pacing/1 \\ -X PUT \\ -H 'Authorization: Bearer ' ``` Returns a [CoursePace](#coursepace) object. [CoursePacesController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/course_paces_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -145,7 +145,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_course_pacing_id",
+    "name": "delete_cc_course_pacing_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/course_pacing/:id` Returns the updated course pace ```bash curl https:///api/v1/courses/1/course_pacing/1 \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Returns a [CoursePace](#coursepace) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that bo...",
     "inputSchema": {
       "type": "object",
@@ -173,16 +173,16 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_course_pacing_id: async (client, args) => {
+  get_cc_course_pacing_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/course_pacing/:id", args);
   },
-  post_courses_course_id_course_pacing: async (client, args) => {
+  post_cc_course_pacing: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/course_pacing", args);
   },
-  put_courses_course_id_course_pacing_id: async (client, args) => {
+  put_cc_course_pacing_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/course_pacing/:id", args);
   },
-  delete_courses_course_id_course_pacing_id: async (client, args) => {
+  delete_cc_course_pacing_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/course_pacing/:id", args);
   }
 };

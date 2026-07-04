@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_lti_apps_launch_definitions",
+    "name": "get_ccla_launch_definitions",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/lti_apps/launch_definitions`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_apps_launch_definitions",
+    "name": "get_aala_launch_definitions",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_apps/launch_definitions` List all tools available in this context for the given placements, in the form of Launch Definitions. Used primarily by the Canvas frontend. API users should consider using the External Tools API instead. This endpoint is cached for 10 minutes! *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is publ...",
     "inputSchema": {
       "type": "object",
@@ -59,10 +59,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_lti_apps_launch_definitions: async (client, args) => {
+  get_ccla_launch_definitions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/lti_apps/launch_definitions", args);
   },
-  get_accounts_account_id_lti_apps_launch_definitions: async (client, args) => {
+  get_aala_launch_definitions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_apps/launch_definitions", args);
   }
 };

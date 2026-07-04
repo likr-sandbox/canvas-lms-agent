@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const proficiency_ratingsModule = require("../tools/proficiency_ratings");
 
-test("post_accounts_account_id_outcome_proficiency calls correct endpoint", async () => {
+test("post_aa_outcome_proficiency calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = proficiency_ratingsModule.handlers.post_accounts_account_id_outcome_proficiency;
-  assert.ok(handler, "Handler post_accounts_account_id_outcome_proficiency should be defined");
+  const handler = proficiency_ratingsModule.handlers.post_aa_outcome_proficiency;
+  assert.ok(handler, "Handler post_aa_outcome_proficiency should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -23,15 +23,15 @@ test("post_accounts_account_id_outcome_proficiency calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_outcome_proficiency calls correct endpoint", async () => {
+test("post_cc_outcome_proficiency calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = proficiency_ratingsModule.handlers.post_courses_course_id_outcome_proficiency;
-  assert.ok(handler, "Handler post_courses_course_id_outcome_proficiency should be defined");
+  const handler = proficiency_ratingsModule.handlers.post_cc_outcome_proficiency;
+  assert.ok(handler, "Handler post_cc_outcome_proficiency should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "ratings[][description]": "test_val"});
 
@@ -41,15 +41,15 @@ test("post_courses_course_id_outcome_proficiency calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_outcome_proficiency calls correct endpoint", async () => {
+test("get_aa_outcome_proficiency calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = proficiency_ratingsModule.handlers.get_accounts_account_id_outcome_proficiency;
-  assert.ok(handler, "Handler get_accounts_account_id_outcome_proficiency should be defined");
+  const handler = proficiency_ratingsModule.handlers.get_aa_outcome_proficiency;
+  assert.ok(handler, "Handler get_aa_outcome_proficiency should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -59,15 +59,15 @@ test("get_accounts_account_id_outcome_proficiency calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_outcome_proficiency calls correct endpoint", async () => {
+test("get_cc_outcome_proficiency calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = proficiency_ratingsModule.handlers.get_courses_course_id_outcome_proficiency;
-  assert.ok(handler, "Handler get_courses_course_id_outcome_proficiency should be defined");
+  const handler = proficiency_ratingsModule.handlers.get_cc_outcome_proficiency;
+  assert.ok(handler, "Handler get_cc_outcome_proficiency should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 

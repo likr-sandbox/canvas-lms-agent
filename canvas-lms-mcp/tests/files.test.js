@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const filesModule = require("../tools/files");
 
-test("get_courses_course_id_files_quota calls correct endpoint", async () => {
+test("get_ccf_quota calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_files_quota;
-  assert.ok(handler, "Handler get_courses_course_id_files_quota should be defined");
+  const handler = filesModule.handlers.get_ccf_quota;
+  assert.ok(handler, "Handler get_ccf_quota should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_files_quota calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_files_quota calls correct endpoint", async () => {
+test("get_ggf_quota calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_groups_group_id_files_quota;
-  assert.ok(handler, "Handler get_groups_group_id_files_quota should be defined");
+  const handler = filesModule.handlers.get_ggf_quota;
+  assert.ok(handler, "Handler get_ggf_quota should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -41,15 +41,15 @@ test("get_groups_group_id_files_quota calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_files_quota calls correct endpoint", async () => {
+test("get_uuf_quota calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_users_user_id_files_quota;
-  assert.ok(handler, "Handler get_users_user_id_files_quota should be defined");
+  const handler = filesModule.handlers.get_uuf_quota;
+  assert.ok(handler, "Handler get_uuf_quota should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -59,15 +59,15 @@ test("get_users_user_id_files_quota calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_files calls correct endpoint", async () => {
+test("get_cc_files calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_files;
-  assert.ok(handler, "Handler get_courses_course_id_files should be defined");
+  const handler = filesModule.handlers.get_cc_files;
+  assert.ok(handler, "Handler get_cc_files should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -77,15 +77,15 @@ test("get_courses_course_id_files calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_files calls correct endpoint", async () => {
+test("get_uu_files calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_users_user_id_files;
-  assert.ok(handler, "Handler get_users_user_id_files should be defined");
+  const handler = filesModule.handlers.get_uu_files;
+  assert.ok(handler, "Handler get_uu_files should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -95,15 +95,15 @@ test("get_users_user_id_files calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_files calls correct endpoint", async () => {
+test("get_gg_files calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_groups_group_id_files;
-  assert.ok(handler, "Handler get_groups_group_id_files should be defined");
+  const handler = filesModule.handlers.get_gg_files;
+  assert.ok(handler, "Handler get_gg_files should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -113,15 +113,15 @@ test("get_groups_group_id_files calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_folders_id_files calls correct endpoint", async () => {
+test("get_fi_files calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_folders_id_files;
-  assert.ok(handler, "Handler get_folders_id_files should be defined");
+  const handler = filesModule.handlers.get_fi_files;
+  assert.ok(handler, "Handler get_fi_files should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "content_types[]": "test_val"});
 
@@ -131,15 +131,15 @@ test("get_folders_id_files calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_files_id_public_url calls correct endpoint", async () => {
+test("get_fi_public_url calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_files_id_public_url;
-  assert.ok(handler, "Handler get_files_id_public_url should be defined");
+  const handler = filesModule.handlers.get_fi_public_url;
+  assert.ok(handler, "Handler get_fi_public_url should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "submission_id": 123});
 
@@ -185,15 +185,15 @@ test("post_files_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_files_id calls correct endpoint", async () => {
+test("get_cc_files_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_files_id;
-  assert.ok(handler, "Handler get_courses_course_id_files_id should be defined");
+  const handler = filesModule.handlers.get_cc_files_id;
+  assert.ok(handler, "Handler get_cc_files_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -203,15 +203,15 @@ test("get_courses_course_id_files_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_files_id calls correct endpoint", async () => {
+test("get_gg_files_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_groups_group_id_files_id;
-  assert.ok(handler, "Handler get_groups_group_id_files_id should be defined");
+  const handler = filesModule.handlers.get_gg_files_id;
+  assert.ok(handler, "Handler get_gg_files_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "id": "test_id"});
 
@@ -221,15 +221,15 @@ test("get_groups_group_id_files_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_files_id calls correct endpoint", async () => {
+test("get_uu_files_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_users_user_id_files_id;
-  assert.ok(handler, "Handler get_users_user_id_files_id should be defined");
+  const handler = filesModule.handlers.get_uu_files_id;
+  assert.ok(handler, "Handler get_uu_files_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id", "include[]": "test_val"});
 
@@ -239,15 +239,15 @@ test("get_users_user_id_files_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_files_file_ref_migration_id calls correct endpoint", async () => {
+test("get_ccf_file_ref_migration_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_files_file_ref_migration_id;
-  assert.ok(handler, "Handler get_courses_course_id_files_file_ref_migration_id should be defined");
+  const handler = filesModule.handlers.get_ccf_file_ref_migration_id;
+  assert.ok(handler, "Handler get_ccf_file_ref_migration_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "migration_id": "test_migration_id"});
 
@@ -257,15 +257,15 @@ test("get_courses_course_id_files_file_ref_migration_id calls correct endpoint",
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_files_file_id_download calls correct endpoint", async () => {
+test("get_aaff_download calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_accounts_account_id_files_file_id_download;
-  assert.ok(handler, "Handler get_accounts_account_id_files_file_id_download should be defined");
+  const handler = filesModule.handlers.get_aaff_download;
+  assert.ok(handler, "Handler get_aaff_download should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "file_id": "test_file_id"});
 
@@ -275,15 +275,15 @@ test("get_accounts_account_id_files_file_id_download calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_assessment_questions_assessment_question_id_files_file_id_download calls correct endpoint", async () => {
+test("get_aqaff_download calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_assessment_questions_assessment_question_id_files_file_id_download;
-  assert.ok(handler, "Handler get_assessment_questions_assessment_question_id_files_file_id_download should be defined");
+  const handler = filesModule.handlers.get_aqaff_download;
+  assert.ok(handler, "Handler get_aqaff_download should be defined");
 
   const result = await handler(mockClient, {"assessment_question_id": "test_assessment_question_id", "file_id": "test_file_id"});
 
@@ -293,15 +293,15 @@ test("get_assessment_questions_assessment_question_id_files_file_id_download cal
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_assignments_assignment_id_files_id_download calls correct endpoint", async () => {
+test("get_aafi_download calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_assignments_assignment_id_files_id_download;
-  assert.ok(handler, "Handler get_assignments_assignment_id_files_id_download should be defined");
+  const handler = filesModule.handlers.get_aafi_download;
+  assert.ok(handler, "Handler get_aafi_download should be defined");
 
   const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "id": "test_id"});
 
@@ -311,15 +311,15 @@ test("get_assignments_assignment_id_files_id_download calls correct endpoint", a
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_files_file_id_download calls correct endpoint", async () => {
+test("get_ccff_download calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_files_file_id_download;
-  assert.ok(handler, "Handler get_courses_course_id_files_file_id_download should be defined");
+  const handler = filesModule.handlers.get_ccff_download;
+  assert.ok(handler, "Handler get_ccff_download should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "file_id": "test_file_id"});
 
@@ -329,15 +329,15 @@ test("get_courses_course_id_files_file_id_download calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_files_file_id_download calls correct endpoint", async () => {
+test("get_ff_download calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_files_file_id_download;
-  assert.ok(handler, "Handler get_files_file_id_download should be defined");
+  const handler = filesModule.handlers.get_ff_download;
+  assert.ok(handler, "Handler get_ff_download should be defined");
 
   const result = await handler(mockClient, {"file_id": "test_file_id"});
 
@@ -347,15 +347,15 @@ test("get_files_file_id_download calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_files_file_id_download calls correct endpoint", async () => {
+test("get_ggff_download calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_groups_group_id_files_file_id_download;
-  assert.ok(handler, "Handler get_groups_group_id_files_file_id_download should be defined");
+  const handler = filesModule.handlers.get_ggff_download;
+  assert.ok(handler, "Handler get_ggff_download should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "file_id": "test_file_id"});
 
@@ -365,15 +365,15 @@ test("get_groups_group_id_files_file_id_download calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_quiz_statistics_quiz_statistics_id_files_file_id_download calls correct endpoint", async () => {
+test("get_qsqff_download calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_quiz_statistics_quiz_statistics_id_files_file_id_download;
-  assert.ok(handler, "Handler get_quiz_statistics_quiz_statistics_id_files_file_id_download should be defined");
+  const handler = filesModule.handlers.get_qsqff_download;
+  assert.ok(handler, "Handler get_qsqff_download should be defined");
 
   const result = await handler(mockClient, {"quiz_statistics_id": "test_quiz_statistics_id", "file_id": "test_file_id"});
 
@@ -383,15 +383,15 @@ test("get_quiz_statistics_quiz_statistics_id_files_file_id_download calls correc
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_quizzes_quiz_submissions_quiz_submission_id_files_file_id_download calls correct endpoint", async () => {
+test("get_qqsqff_download calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_quizzes_quiz_submissions_quiz_submission_id_files_file_id_download;
-  assert.ok(handler, "Handler get_quizzes_quiz_submissions_quiz_submission_id_files_file_id_download should be defined");
+  const handler = filesModule.handlers.get_qqsqff_download;
+  assert.ok(handler, "Handler get_qqsqff_download should be defined");
 
   const result = await handler(mockClient, {"quiz_submission_id": "test_quiz_submission_id", "file_id": "test_file_id"});
 
@@ -401,15 +401,15 @@ test("get_quizzes_quiz_submissions_quiz_submission_id_files_file_id_download cal
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_files_file_id_download calls correct endpoint", async () => {
+test("get_uuff_download calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_users_user_id_files_file_id_download;
-  assert.ok(handler, "Handler get_users_user_id_files_file_id_download should be defined");
+  const handler = filesModule.handlers.get_uuff_download;
+  assert.ok(handler, "Handler get_uuff_download should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "file_id": "test_file_id"});
 
@@ -455,15 +455,15 @@ test("delete_files_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_files_id_icon_metadata calls correct endpoint", async () => {
+test("get_fi_icon_metadata calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_files_id_icon_metadata;
-  assert.ok(handler, "Handler get_files_id_icon_metadata should be defined");
+  const handler = filesModule.handlers.get_fi_icon_metadata;
+  assert.ok(handler, "Handler get_fi_icon_metadata should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -473,15 +473,15 @@ test("get_files_id_icon_metadata calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_files_id_reset_verifier calls correct endpoint", async () => {
+test("post_fi_reset_verifier calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.post_files_id_reset_verifier;
-  assert.ok(handler, "Handler post_files_id_reset_verifier should be defined");
+  const handler = filesModule.handlers.post_fi_reset_verifier;
+  assert.ok(handler, "Handler post_fi_reset_verifier should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -491,15 +491,15 @@ test("post_files_id_reset_verifier calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_folders_id_folders calls correct endpoint", async () => {
+test("get_fi_folders calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_folders_id_folders;
-  assert.ok(handler, "Handler get_folders_id_folders should be defined");
+  const handler = filesModule.handlers.get_fi_folders;
+  assert.ok(handler, "Handler get_fi_folders should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -509,15 +509,15 @@ test("get_folders_id_folders calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_folders calls correct endpoint", async () => {
+test("get_cc_folders calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_folders;
-  assert.ok(handler, "Handler get_courses_course_id_folders should be defined");
+  const handler = filesModule.handlers.get_cc_folders;
+  assert.ok(handler, "Handler get_cc_folders should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -527,15 +527,15 @@ test("get_courses_course_id_folders calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_folders calls correct endpoint", async () => {
+test("get_uu_folders calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_users_user_id_folders;
-  assert.ok(handler, "Handler get_users_user_id_folders should be defined");
+  const handler = filesModule.handlers.get_uu_folders;
+  assert.ok(handler, "Handler get_uu_folders should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -545,15 +545,15 @@ test("get_users_user_id_folders calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_folders calls correct endpoint", async () => {
+test("get_gg_folders calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_groups_group_id_folders;
-  assert.ok(handler, "Handler get_groups_group_id_folders should be defined");
+  const handler = filesModule.handlers.get_gg_folders;
+  assert.ok(handler, "Handler get_gg_folders should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -563,15 +563,15 @@ test("get_groups_group_id_folders calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_folders_by_path_full_path calls correct endpoint", async () => {
+test("get_ccf_by_path_full_path calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_folders_by_path_full_path;
-  assert.ok(handler, "Handler get_courses_course_id_folders_by_path_full_path should be defined");
+  const handler = filesModule.handlers.get_ccf_by_path_full_path;
+  assert.ok(handler, "Handler get_ccf_by_path_full_path should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "full_path": "test_full_path"});
 
@@ -581,15 +581,15 @@ test("get_courses_course_id_folders_by_path_full_path calls correct endpoint", a
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_folders_by_path calls correct endpoint", async () => {
+test("get_ccf_by_path calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_folders_by_path;
-  assert.ok(handler, "Handler get_courses_course_id_folders_by_path should be defined");
+  const handler = filesModule.handlers.get_ccf_by_path;
+  assert.ok(handler, "Handler get_ccf_by_path should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -599,15 +599,15 @@ test("get_courses_course_id_folders_by_path calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_folders_by_path_full_path calls correct endpoint", async () => {
+test("get_uuf_by_path_full_path calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_users_user_id_folders_by_path_full_path;
-  assert.ok(handler, "Handler get_users_user_id_folders_by_path_full_path should be defined");
+  const handler = filesModule.handlers.get_uuf_by_path_full_path;
+  assert.ok(handler, "Handler get_uuf_by_path_full_path should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "full_path": "test_full_path"});
 
@@ -617,15 +617,15 @@ test("get_users_user_id_folders_by_path_full_path calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_folders_by_path calls correct endpoint", async () => {
+test("get_uuf_by_path calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_users_user_id_folders_by_path;
-  assert.ok(handler, "Handler get_users_user_id_folders_by_path should be defined");
+  const handler = filesModule.handlers.get_uuf_by_path;
+  assert.ok(handler, "Handler get_uuf_by_path should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -635,15 +635,15 @@ test("get_users_user_id_folders_by_path calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_folders_by_path_full_path calls correct endpoint", async () => {
+test("get_ggf_by_path_full_path calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_groups_group_id_folders_by_path_full_path;
-  assert.ok(handler, "Handler get_groups_group_id_folders_by_path_full_path should be defined");
+  const handler = filesModule.handlers.get_ggf_by_path_full_path;
+  assert.ok(handler, "Handler get_ggf_by_path_full_path should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "full_path": "test_full_path"});
 
@@ -653,15 +653,15 @@ test("get_groups_group_id_folders_by_path_full_path calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_folders_by_path calls correct endpoint", async () => {
+test("get_ggf_by_path calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_groups_group_id_folders_by_path;
-  assert.ok(handler, "Handler get_groups_group_id_folders_by_path should be defined");
+  const handler = filesModule.handlers.get_ggf_by_path;
+  assert.ok(handler, "Handler get_ggf_by_path should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -671,15 +671,15 @@ test("get_groups_group_id_folders_by_path calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_folders_id calls correct endpoint", async () => {
+test("get_cc_folders_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_folders_id;
-  assert.ok(handler, "Handler get_courses_course_id_folders_id should be defined");
+  const handler = filesModule.handlers.get_cc_folders_id;
+  assert.ok(handler, "Handler get_cc_folders_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -689,15 +689,15 @@ test("get_courses_course_id_folders_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_folders_id calls correct endpoint", async () => {
+test("get_uu_folders_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_users_user_id_folders_id;
-  assert.ok(handler, "Handler get_users_user_id_folders_id should be defined");
+  const handler = filesModule.handlers.get_uu_folders_id;
+  assert.ok(handler, "Handler get_uu_folders_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id"});
 
@@ -707,15 +707,15 @@ test("get_users_user_id_folders_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_folders_id calls correct endpoint", async () => {
+test("get_gg_folders_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_groups_group_id_folders_id;
-  assert.ok(handler, "Handler get_groups_group_id_folders_id should be defined");
+  const handler = filesModule.handlers.get_gg_folders_id;
+  assert.ok(handler, "Handler get_gg_folders_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "id": "test_id"});
 
@@ -761,15 +761,15 @@ test("put_folders_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_folders calls correct endpoint", async () => {
+test("post_cc_folders calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.post_courses_course_id_folders;
-  assert.ok(handler, "Handler post_courses_course_id_folders should be defined");
+  const handler = filesModule.handlers.post_cc_folders;
+  assert.ok(handler, "Handler post_cc_folders should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -779,15 +779,15 @@ test("post_courses_course_id_folders calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_users_user_id_folders calls correct endpoint", async () => {
+test("post_uu_folders calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.post_users_user_id_folders;
-  assert.ok(handler, "Handler post_users_user_id_folders should be defined");
+  const handler = filesModule.handlers.post_uu_folders;
+  assert.ok(handler, "Handler post_uu_folders should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -797,15 +797,15 @@ test("post_users_user_id_folders calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_folders calls correct endpoint", async () => {
+test("post_gg_folders calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.post_groups_group_id_folders;
-  assert.ok(handler, "Handler post_groups_group_id_folders should be defined");
+  const handler = filesModule.handlers.post_gg_folders;
+  assert.ok(handler, "Handler post_gg_folders should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -815,15 +815,15 @@ test("post_groups_group_id_folders calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_folders_folder_id_folders calls correct endpoint", async () => {
+test("post_ff_folders calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.post_folders_folder_id_folders;
-  assert.ok(handler, "Handler post_folders_folder_id_folders should be defined");
+  const handler = filesModule.handlers.post_ff_folders;
+  assert.ok(handler, "Handler post_ff_folders should be defined");
 
   const result = await handler(mockClient, {"folder_id": "test_folder_id"});
 
@@ -833,15 +833,15 @@ test("post_folders_folder_id_folders calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_folders calls correct endpoint", async () => {
+test("post_aa_folders calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.post_accounts_account_id_folders;
-  assert.ok(handler, "Handler post_accounts_account_id_folders should be defined");
+  const handler = filesModule.handlers.post_aa_folders;
+  assert.ok(handler, "Handler post_aa_folders should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "name": "test_val"});
 
@@ -869,15 +869,15 @@ test("delete_folders_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_folders_folder_id_files calls correct endpoint", async () => {
+test("post_ff_files calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.post_folders_folder_id_files;
-  assert.ok(handler, "Handler post_folders_folder_id_files should be defined");
+  const handler = filesModule.handlers.post_ff_files;
+  assert.ok(handler, "Handler post_ff_files should be defined");
 
   const result = await handler(mockClient, {"folder_id": "test_folder_id"});
 
@@ -887,15 +887,15 @@ test("post_folders_folder_id_files calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_folders_dest_folder_id_copy_file calls correct endpoint", async () => {
+test("post_fd_copy_file calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.post_folders_dest_folder_id_copy_file;
-  assert.ok(handler, "Handler post_folders_dest_folder_id_copy_file should be defined");
+  const handler = filesModule.handlers.post_fd_copy_file;
+  assert.ok(handler, "Handler post_fd_copy_file should be defined");
 
   const result = await handler(mockClient, {"dest_folder_id": "test_dest_folder_id", "source_file_id": "test_val"});
 
@@ -905,15 +905,15 @@ test("post_folders_dest_folder_id_copy_file calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_folders_dest_folder_id_copy_folder calls correct endpoint", async () => {
+test("post_fd_copy_folder calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.post_folders_dest_folder_id_copy_folder;
-  assert.ok(handler, "Handler post_folders_dest_folder_id_copy_folder should be defined");
+  const handler = filesModule.handlers.post_fd_copy_folder;
+  assert.ok(handler, "Handler post_fd_copy_folder should be defined");
 
   const result = await handler(mockClient, {"dest_folder_id": "test_dest_folder_id", "source_folder_id": "test_val"});
 
@@ -923,15 +923,15 @@ test("post_folders_dest_folder_id_copy_folder calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_folders_media calls correct endpoint", async () => {
+test("get_ccf_media calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_folders_media;
-  assert.ok(handler, "Handler get_courses_course_id_folders_media should be defined");
+  const handler = filesModule.handlers.get_ccf_media;
+  assert.ok(handler, "Handler get_ccf_media should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -941,15 +941,15 @@ test("get_courses_course_id_folders_media calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_folders_media calls correct endpoint", async () => {
+test("get_ggf_media calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_groups_group_id_folders_media;
-  assert.ok(handler, "Handler get_groups_group_id_folders_media should be defined");
+  const handler = filesModule.handlers.get_ggf_media;
+  assert.ok(handler, "Handler get_ggf_media should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -959,15 +959,15 @@ test("get_groups_group_id_folders_media calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_usage_rights calls correct endpoint", async () => {
+test("put_cc_usage_rights calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.put_courses_course_id_usage_rights;
-  assert.ok(handler, "Handler put_courses_course_id_usage_rights should be defined");
+  const handler = filesModule.handlers.put_cc_usage_rights;
+  assert.ok(handler, "Handler put_cc_usage_rights should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -977,15 +977,15 @@ test("put_courses_course_id_usage_rights calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_usage_rights calls correct endpoint", async () => {
+test("put_gg_usage_rights calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.put_groups_group_id_usage_rights;
-  assert.ok(handler, "Handler put_groups_group_id_usage_rights should be defined");
+  const handler = filesModule.handlers.put_gg_usage_rights;
+  assert.ok(handler, "Handler put_gg_usage_rights should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -995,15 +995,15 @@ test("put_groups_group_id_usage_rights calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_user_id_usage_rights calls correct endpoint", async () => {
+test("put_uu_usage_rights calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.put_users_user_id_usage_rights;
-  assert.ok(handler, "Handler put_users_user_id_usage_rights should be defined");
+  const handler = filesModule.handlers.put_uu_usage_rights;
+  assert.ok(handler, "Handler put_uu_usage_rights should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "file_ids[]": "test_val"});
 
@@ -1013,15 +1013,15 @@ test("put_users_user_id_usage_rights calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_usage_rights calls correct endpoint", async () => {
+test("delete_cc_usage_rights calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.delete_courses_course_id_usage_rights;
-  assert.ok(handler, "Handler delete_courses_course_id_usage_rights should be defined");
+  const handler = filesModule.handlers.delete_cc_usage_rights;
+  assert.ok(handler, "Handler delete_cc_usage_rights should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -1031,15 +1031,15 @@ test("delete_courses_course_id_usage_rights calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_groups_group_id_usage_rights calls correct endpoint", async () => {
+test("delete_gg_usage_rights calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.delete_groups_group_id_usage_rights;
-  assert.ok(handler, "Handler delete_groups_group_id_usage_rights should be defined");
+  const handler = filesModule.handlers.delete_gg_usage_rights;
+  assert.ok(handler, "Handler delete_gg_usage_rights should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -1049,15 +1049,15 @@ test("delete_groups_group_id_usage_rights calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_user_id_usage_rights calls correct endpoint", async () => {
+test("delete_uu_usage_rights calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.delete_users_user_id_usage_rights;
-  assert.ok(handler, "Handler delete_users_user_id_usage_rights should be defined");
+  const handler = filesModule.handlers.delete_uu_usage_rights;
+  assert.ok(handler, "Handler delete_uu_usage_rights should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "file_ids[]": "test_val"});
 
@@ -1067,15 +1067,15 @@ test("delete_users_user_id_usage_rights calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_content_licenses calls correct endpoint", async () => {
+test("get_cc_content_licenses calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_courses_course_id_content_licenses;
-  assert.ok(handler, "Handler get_courses_course_id_content_licenses should be defined");
+  const handler = filesModule.handlers.get_cc_content_licenses;
+  assert.ok(handler, "Handler get_cc_content_licenses should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -1085,15 +1085,15 @@ test("get_courses_course_id_content_licenses calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_content_licenses calls correct endpoint", async () => {
+test("get_gg_content_licenses calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_groups_group_id_content_licenses;
-  assert.ok(handler, "Handler get_groups_group_id_content_licenses should be defined");
+  const handler = filesModule.handlers.get_gg_content_licenses;
+  assert.ok(handler, "Handler get_gg_content_licenses should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -1103,15 +1103,15 @@ test("get_groups_group_id_content_licenses calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_licenses calls correct endpoint", async () => {
+test("get_uu_content_licenses calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = filesModule.handlers.get_users_user_id_content_licenses;
-  assert.ok(handler, "Handler get_users_user_id_content_licenses should be defined");
+  const handler = filesModule.handlers.get_uu_content_licenses;
+  assert.ok(handler, "Handler get_uu_content_licenses should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 

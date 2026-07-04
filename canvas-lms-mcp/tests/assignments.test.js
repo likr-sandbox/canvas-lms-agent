@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const assignmentsModule = require("../tools/assignments");
 
-test("delete_courses_course_id_assignments_id calls correct endpoint", async () => {
+test("delete_cc_assignments_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.delete_courses_course_id_assignments_id;
-  assert.ok(handler, "Handler delete_courses_course_id_assignments_id should be defined");
+  const handler = assignmentsModule.handlers.delete_cc_assignments_id;
+  assert.ok(handler, "Handler delete_cc_assignments_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -23,15 +23,15 @@ test("delete_courses_course_id_assignments_id calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_assignments calls correct endpoint", async () => {
+test("get_cc_assignments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.get_courses_course_id_assignments;
-  assert.ok(handler, "Handler get_courses_course_id_assignments should be defined");
+  const handler = assignmentsModule.handlers.get_cc_assignments;
+  assert.ok(handler, "Handler get_cc_assignments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -41,15 +41,15 @@ test("get_courses_course_id_assignments calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_assignment_groups_assignment_group_id_assignments calls correct endpoint", async () => {
+test("get_ccaga_assignments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.get_courses_course_id_assignment_groups_assignment_group_id_assignments;
-  assert.ok(handler, "Handler get_courses_course_id_assignment_groups_assignment_group_id_assignments should be defined");
+  const handler = assignmentsModule.handlers.get_ccaga_assignments;
+  assert.ok(handler, "Handler get_ccaga_assignments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_group_id": "test_assignment_group_id", "include[]": "test_val"});
 
@@ -59,15 +59,15 @@ test("get_courses_course_id_assignment_groups_assignment_group_id_assignments ca
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_courses_course_id_assignments calls correct endpoint", async () => {
+test("get_uucc_assignments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.get_users_user_id_courses_course_id_assignments;
-  assert.ok(handler, "Handler get_users_user_id_courses_course_id_assignments should be defined");
+  const handler = assignmentsModule.handlers.get_uucc_assignments;
+  assert.ok(handler, "Handler get_uucc_assignments should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "course_id": "test_course_id"});
 
@@ -77,15 +77,15 @@ test("get_users_user_id_courses_course_id_assignments calls correct endpoint", a
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_assignments_assignment_id_duplicate calls correct endpoint", async () => {
+test("post_ccaa_duplicate calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.post_courses_course_id_assignments_assignment_id_duplicate;
-  assert.ok(handler, "Handler post_courses_course_id_assignments_assignment_id_duplicate should be defined");
+  const handler = assignmentsModule.handlers.post_ccaa_duplicate;
+  assert.ok(handler, "Handler post_ccaa_duplicate should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "result_type": "test_val"});
 
@@ -95,15 +95,15 @@ test("post_courses_course_id_assignments_assignment_id_duplicate calls correct e
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_assignments_assignment_id_users_user_id_group_members calls correct endpoint", async () => {
+test("get_ccaauu_group_members calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.get_courses_course_id_assignments_assignment_id_users_user_id_group_members;
-  assert.ok(handler, "Handler get_courses_course_id_assignments_assignment_id_users_user_id_group_members should be defined");
+  const handler = assignmentsModule.handlers.get_ccaauu_group_members;
+  assert.ok(handler, "Handler get_ccaauu_group_members should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "user_id": "test_user_id"});
 
@@ -113,15 +113,15 @@ test("get_courses_course_id_assignments_assignment_id_users_user_id_group_member
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_assignments_id calls correct endpoint", async () => {
+test("get_cc_assignments_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.get_courses_course_id_assignments_id;
-  assert.ok(handler, "Handler get_courses_course_id_assignments_id should be defined");
+  const handler = assignmentsModule.handlers.get_cc_assignments_id;
+  assert.ok(handler, "Handler get_cc_assignments_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include[]": "test_val"});
 
@@ -131,15 +131,15 @@ test("get_courses_course_id_assignments_id calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_assignments calls correct endpoint", async () => {
+test("post_cc_assignments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.post_courses_course_id_assignments;
-  assert.ok(handler, "Handler post_courses_course_id_assignments should be defined");
+  const handler = assignmentsModule.handlers.post_cc_assignments;
+  assert.ok(handler, "Handler post_cc_assignments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment[name]": "test_val"});
 
@@ -149,15 +149,15 @@ test("post_courses_course_id_assignments calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_assignments_id calls correct endpoint", async () => {
+test("put_cc_assignments_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.put_courses_course_id_assignments_id;
-  assert.ok(handler, "Handler put_courses_course_id_assignments_id should be defined");
+  const handler = assignmentsModule.handlers.put_cc_assignments_id;
+  assert.ok(handler, "Handler put_cc_assignments_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "assignment[name]": "test_val"});
 
@@ -167,15 +167,15 @@ test("put_courses_course_id_assignments_id calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_assignments_bulk_update calls correct endpoint", async () => {
+test("put_cca_bulk_update calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.put_courses_course_id_assignments_bulk_update;
-  assert.ok(handler, "Handler put_courses_course_id_assignments_bulk_update should be defined");
+  const handler = assignmentsModule.handlers.put_cca_bulk_update;
+  assert.ok(handler, "Handler put_cca_bulk_update should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -185,15 +185,15 @@ test("put_courses_course_id_assignments_bulk_update calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_assignments_assignment_id_overrides calls correct endpoint", async () => {
+test("get_ccaa_overrides calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.get_courses_course_id_assignments_assignment_id_overrides;
-  assert.ok(handler, "Handler get_courses_course_id_assignments_assignment_id_overrides should be defined");
+  const handler = assignmentsModule.handlers.get_ccaa_overrides;
+  assert.ok(handler, "Handler get_ccaa_overrides should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id"});
 
@@ -203,15 +203,15 @@ test("get_courses_course_id_assignments_assignment_id_overrides calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_assignments_assignment_id_overrides_id calls correct endpoint", async () => {
+test("get_ccaa_overrides_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.get_courses_course_id_assignments_assignment_id_overrides_id;
-  assert.ok(handler, "Handler get_courses_course_id_assignments_assignment_id_overrides_id should be defined");
+  const handler = assignmentsModule.handlers.get_ccaa_overrides_id;
+  assert.ok(handler, "Handler get_ccaa_overrides_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "id": "test_id"});
 
@@ -221,15 +221,15 @@ test("get_courses_course_id_assignments_assignment_id_overrides_id calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_assignments_assignment_id_override calls correct endpoint", async () => {
+test("get_ggaa_override calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.get_groups_group_id_assignments_assignment_id_override;
-  assert.ok(handler, "Handler get_groups_group_id_assignments_assignment_id_override should be defined");
+  const handler = assignmentsModule.handlers.get_ggaa_override;
+  assert.ok(handler, "Handler get_ggaa_override should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "assignment_id": "test_assignment_id"});
 
@@ -239,15 +239,15 @@ test("get_groups_group_id_assignments_assignment_id_override calls correct endpo
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_sections_course_section_id_assignments_assignment_id_override calls correct endpoint", async () => {
+test("get_scaa_override calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.get_sections_course_section_id_assignments_assignment_id_override;
-  assert.ok(handler, "Handler get_sections_course_section_id_assignments_assignment_id_override should be defined");
+  const handler = assignmentsModule.handlers.get_scaa_override;
+  assert.ok(handler, "Handler get_scaa_override should be defined");
 
   const result = await handler(mockClient, {"course_section_id": "test_course_section_id", "assignment_id": "test_assignment_id"});
 
@@ -257,15 +257,15 @@ test("get_sections_course_section_id_assignments_assignment_id_override calls co
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_assignments_assignment_id_overrides calls correct endpoint", async () => {
+test("post_ccaa_overrides calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.post_courses_course_id_assignments_assignment_id_overrides;
-  assert.ok(handler, "Handler post_courses_course_id_assignments_assignment_id_overrides should be defined");
+  const handler = assignmentsModule.handlers.post_ccaa_overrides;
+  assert.ok(handler, "Handler post_ccaa_overrides should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "assignment_override[student_ids][]": 123});
 
@@ -275,15 +275,15 @@ test("post_courses_course_id_assignments_assignment_id_overrides calls correct e
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_assignments_assignment_id_overrides_id calls correct endpoint", async () => {
+test("put_ccaa_overrides_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.put_courses_course_id_assignments_assignment_id_overrides_id;
-  assert.ok(handler, "Handler put_courses_course_id_assignments_assignment_id_overrides_id should be defined");
+  const handler = assignmentsModule.handlers.put_ccaa_overrides_id;
+  assert.ok(handler, "Handler put_ccaa_overrides_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "id": "test_id", "assignment_override[student_ids][]": 123});
 
@@ -293,15 +293,15 @@ test("put_courses_course_id_assignments_assignment_id_overrides_id calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_assignments_assignment_id_overrides_id calls correct endpoint", async () => {
+test("delete_ccaa_overrides_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.delete_courses_course_id_assignments_assignment_id_overrides_id;
-  assert.ok(handler, "Handler delete_courses_course_id_assignments_assignment_id_overrides_id should be defined");
+  const handler = assignmentsModule.handlers.delete_ccaa_overrides_id;
+  assert.ok(handler, "Handler delete_ccaa_overrides_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "id": "test_id"});
 
@@ -311,15 +311,15 @@ test("delete_courses_course_id_assignments_assignment_id_overrides_id calls corr
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_assignments_overrides calls correct endpoint", async () => {
+test("get_cca_overrides calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.get_courses_course_id_assignments_overrides;
-  assert.ok(handler, "Handler get_courses_course_id_assignments_overrides should be defined");
+  const handler = assignmentsModule.handlers.get_cca_overrides;
+  assert.ok(handler, "Handler get_cca_overrides should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_overrides[][id]": "test_val"});
 
@@ -329,15 +329,15 @@ test("get_courses_course_id_assignments_overrides calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_assignments_overrides calls correct endpoint", async () => {
+test("post_cca_overrides calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.post_courses_course_id_assignments_overrides;
-  assert.ok(handler, "Handler post_courses_course_id_assignments_overrides should be defined");
+  const handler = assignmentsModule.handlers.post_cca_overrides;
+  assert.ok(handler, "Handler post_cca_overrides should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_overrides[]": "test_val"});
 
@@ -347,15 +347,15 @@ test("post_courses_course_id_assignments_overrides calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_assignments_overrides calls correct endpoint", async () => {
+test("put_cca_overrides calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assignmentsModule.handlers.put_courses_course_id_assignments_overrides;
-  assert.ok(handler, "Handler put_courses_course_id_assignments_overrides should be defined");
+  const handler = assignmentsModule.handlers.put_cca_overrides;
+  assert.ok(handler, "Handler put_cca_overrides should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_overrides[]": "test_val"});
 

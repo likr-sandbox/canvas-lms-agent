@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const block_editor_templateModule = require("../tools/block_editor_template");
 
-test("get_courses_course_id_block_editor_templates calls correct endpoint", async () => {
+test("get_cc_block_editor_templates calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = block_editor_templateModule.handlers.get_courses_course_id_block_editor_templates;
-  assert.ok(handler, "Handler get_courses_course_id_block_editor_templates should be defined");
+  const handler = block_editor_templateModule.handlers.get_cc_block_editor_templates;
+  assert.ok(handler, "Handler get_cc_block_editor_templates should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "sort": "test_val"});
 

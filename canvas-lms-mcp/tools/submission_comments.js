@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "put_courses_course_id_assignments_assignment_id_submissions_user_id_comments_id",
+    "name": "put_ccaasu_comments_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/comments/:id` Edit the given submission comment. Returns a [SubmissionComment](submissions.md#submissioncomment) object. [SubmissionCommentsApiController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/submission_comments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -40,7 +40,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_assignments_assignment_id_submissions_user_id_comments_id",
+    "name": "delete_ccaasu_comments_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/comments/:id` Delete the given submission comment. ```bash curl https:///api/v1/courses//assignments//submissions//comments/ \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Returns a [SubmissionComment](submissions.md#submissioncomment) object. [SubmissionCommentsApiController#create\\_file](https://github.com/instructure/canvas-lms/blob/master/app/controllers/submission_comments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -71,7 +71,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments_assignment_id_submissions_user_id_comments_files",
+    "name": "post_ccaasuc_files",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/comments/files` Upload a file to attach to a submission comment See the [File Upload Documentation](../basics/file.file_uploads.md) for details on the file upload workflow. The final step of the file upload workflow will return the attachment data, including the new file id. The caller can then PUT the file\\_id to the submission API to attach it to a comment *** This documentation is generated dire...",
     "inputSchema": {
       "type": "object",
@@ -99,13 +99,13 @@ const definitions = [
 ];
 
 const handlers = {
-  put_courses_course_id_assignments_assignment_id_submissions_user_id_comments_id: async (client, args) => {
+  put_ccaasu_comments_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/comments/:id", args);
   },
-  delete_courses_course_id_assignments_assignment_id_submissions_user_id_comments_id: async (client, args) => {
+  delete_ccaasu_comments_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/comments/:id", args);
   },
-  post_courses_course_id_assignments_assignment_id_submissions_user_id_comments_files: async (client, args) => {
+  post_ccaasuc_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/comments/files", args);
   }
 };

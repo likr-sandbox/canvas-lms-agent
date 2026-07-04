@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const originality_reportsModule = require("../tools/originality_reports");
 
-test("post_assignments_assignment_id_submissions_submission_id_originality_report calls correct endpoint", async () => {
+test("post_aass_originality_report calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = originality_reportsModule.handlers.post_assignments_assignment_id_submissions_submission_id_originality_report;
-  assert.ok(handler, "Handler post_assignments_assignment_id_submissions_submission_id_originality_report should be defined");
+  const handler = originality_reportsModule.handlers.post_aass_originality_report;
+  assert.ok(handler, "Handler post_aass_originality_report should be defined");
 
   const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "submission_id": "test_submission_id", "originality_report[file_id]": 123});
 
@@ -23,15 +23,15 @@ test("post_assignments_assignment_id_submissions_submission_id_originality_repor
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_assignments_assignment_id_submissions_submission_id_originality_report_id calls correct endpoint", async () => {
+test("put_aass_originality_report_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = originality_reportsModule.handlers.put_assignments_assignment_id_submissions_submission_id_originality_report_id;
-  assert.ok(handler, "Handler put_assignments_assignment_id_submissions_submission_id_originality_report_id should be defined");
+  const handler = originality_reportsModule.handlers.put_aass_originality_report_id;
+  assert.ok(handler, "Handler put_aass_originality_report_id should be defined");
 
   const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "submission_id": "test_submission_id", "id": "test_id"});
 
@@ -41,15 +41,15 @@ test("put_assignments_assignment_id_submissions_submission_id_originality_report
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_assignments_assignment_id_files_file_id_originality_report calls correct endpoint", async () => {
+test("put_aaff_originality_report calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = originality_reportsModule.handlers.put_assignments_assignment_id_files_file_id_originality_report;
-  assert.ok(handler, "Handler put_assignments_assignment_id_files_file_id_originality_report should be defined");
+  const handler = originality_reportsModule.handlers.put_aaff_originality_report;
+  assert.ok(handler, "Handler put_aaff_originality_report should be defined");
 
   const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "file_id": "test_file_id", "originality_report[originality_score]": 123});
 
@@ -59,15 +59,15 @@ test("put_assignments_assignment_id_files_file_id_originality_report calls corre
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_assignments_assignment_id_submissions_submission_id_originality_report_id calls correct endpoint", async () => {
+test("get_aass_originality_report_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = originality_reportsModule.handlers.get_assignments_assignment_id_submissions_submission_id_originality_report_id;
-  assert.ok(handler, "Handler get_assignments_assignment_id_submissions_submission_id_originality_report_id should be defined");
+  const handler = originality_reportsModule.handlers.get_aass_originality_report_id;
+  assert.ok(handler, "Handler get_aass_originality_report_id should be defined");
 
   const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "submission_id": "test_submission_id", "id": "test_id"});
 
@@ -77,15 +77,15 @@ test("get_assignments_assignment_id_submissions_submission_id_originality_report
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_assignments_assignment_id_files_file_id_originality_report calls correct endpoint", async () => {
+test("get_aaff_originality_report calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = originality_reportsModule.handlers.get_assignments_assignment_id_files_file_id_originality_report;
-  assert.ok(handler, "Handler get_assignments_assignment_id_files_file_id_originality_report should be defined");
+  const handler = originality_reportsModule.handlers.get_aaff_originality_report;
+  assert.ok(handler, "Handler get_aaff_originality_report should be defined");
 
   const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "file_id": "test_file_id"});
 

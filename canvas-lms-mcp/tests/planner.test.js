@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const plannerModule = require("../tools/planner");
 
-test("get_planner_items calls correct endpoint", async () => {
+test("get_p_items calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = plannerModule.handlers.get_planner_items;
-  assert.ok(handler, "Handler get_planner_items should be defined");
+  const handler = plannerModule.handlers.get_p_items;
+  assert.ok(handler, "Handler get_p_items should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -23,15 +23,15 @@ test("get_planner_items calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_planner_items calls correct endpoint", async () => {
+test("get_uup_items calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = plannerModule.handlers.get_users_user_id_planner_items;
-  assert.ok(handler, "Handler get_users_user_id_planner_items should be defined");
+  const handler = plannerModule.handlers.get_uup_items;
+  assert.ok(handler, "Handler get_uup_items should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "start_date": "test_val"});
 
@@ -131,15 +131,15 @@ test("delete_planner_notes_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_planner_overrides calls correct endpoint", async () => {
+test("get_p_overrides calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = plannerModule.handlers.get_planner_overrides;
-  assert.ok(handler, "Handler get_planner_overrides should be defined");
+  const handler = plannerModule.handlers.get_p_overrides;
+  assert.ok(handler, "Handler get_p_overrides should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -149,15 +149,15 @@ test("get_planner_overrides calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_planner_overrides_id calls correct endpoint", async () => {
+test("get_p_overrides_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = plannerModule.handlers.get_planner_overrides_id;
-  assert.ok(handler, "Handler get_planner_overrides_id should be defined");
+  const handler = plannerModule.handlers.get_p_overrides_id;
+  assert.ok(handler, "Handler get_p_overrides_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -167,15 +167,15 @@ test("get_planner_overrides_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_planner_overrides_id calls correct endpoint", async () => {
+test("put_p_overrides_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = plannerModule.handlers.put_planner_overrides_id;
-  assert.ok(handler, "Handler put_planner_overrides_id should be defined");
+  const handler = plannerModule.handlers.put_p_overrides_id;
+  assert.ok(handler, "Handler put_p_overrides_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "marked_complete": "test_val"});
 
@@ -185,15 +185,15 @@ test("put_planner_overrides_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_planner_overrides calls correct endpoint", async () => {
+test("post_p_overrides calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = plannerModule.handlers.post_planner_overrides;
-  assert.ok(handler, "Handler post_planner_overrides should be defined");
+  const handler = plannerModule.handlers.post_p_overrides;
+  assert.ok(handler, "Handler post_p_overrides should be defined");
 
   const result = await handler(mockClient, {"plannable_type": "test_val"});
 
@@ -203,15 +203,15 @@ test("post_planner_overrides calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_planner_overrides_id calls correct endpoint", async () => {
+test("delete_p_overrides_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = plannerModule.handlers.delete_planner_overrides_id;
-  assert.ok(handler, "Handler delete_planner_overrides_id should be defined");
+  const handler = plannerModule.handlers.delete_p_overrides_id;
+  assert.ok(handler, "Handler delete_p_overrides_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 

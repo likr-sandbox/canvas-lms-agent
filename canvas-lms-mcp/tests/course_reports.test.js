@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const course_reportsModule = require("../tools/course_reports");
 
-test("get_courses_course_id_reports_report_type_id calls correct endpoint", async () => {
+test("get_cc_reports_report_type_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = course_reportsModule.handlers.get_courses_course_id_reports_report_type_id;
-  assert.ok(handler, "Handler get_courses_course_id_reports_report_type_id should be defined");
+  const handler = course_reportsModule.handlers.get_cc_reports_report_type_id;
+  assert.ok(handler, "Handler get_cc_reports_report_type_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "report_type": "test_report_type", "id": "test_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_reports_report_type_id calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_reports_report_type calls correct endpoint", async () => {
+test("post_cc_reports_report_type calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = course_reportsModule.handlers.post_courses_course_id_reports_report_type;
-  assert.ok(handler, "Handler post_courses_course_id_reports_report_type should be defined");
+  const handler = course_reportsModule.handlers.post_cc_reports_report_type;
+  assert.ok(handler, "Handler post_cc_reports_report_type should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "report_type": "test_report_type", "parameters[]": "test_val"});
 
@@ -41,15 +41,15 @@ test("post_courses_course_id_reports_report_type calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_reports_report_type calls correct endpoint", async () => {
+test("get_cc_reports_report_type calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = course_reportsModule.handlers.get_courses_course_id_reports_report_type;
-  assert.ok(handler, "Handler get_courses_course_id_reports_report_type should be defined");
+  const handler = course_reportsModule.handlers.get_cc_reports_report_type;
+  assert.ok(handler, "Handler get_cc_reports_report_type should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "report_type": "test_report_type"});
 

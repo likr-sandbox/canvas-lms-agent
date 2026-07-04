@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_conferences",
+    "name": "get_cc_conferences",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/conferences`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_conferences",
+    "name": "get_gg_conferences",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/conferences` Retrieve the paginated list of conferences for this context This API returns a JSON object containing the list of conferences, the key for the list of conferences is \"conferences\" ```bash curl 'https:///api/v1/courses//conferences' \\ -H \"Authorization: Bearer \" curl 'https:///api/v1/groups//conferences' \\ -H \"Authorization: Bearer \" ``` Returns a list of [Conference](#conference) objects. [ConferencesController#for\\_user](https://githu...",
     "inputSchema": {
       "type": "object",
@@ -64,10 +64,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_conferences: async (client, args) => {
+  get_cc_conferences: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/conferences", args);
   },
-  get_groups_group_id_conferences: async (client, args) => {
+  get_gg_conferences: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/conferences", args);
   },
   get_conferences: async (client, args) => {

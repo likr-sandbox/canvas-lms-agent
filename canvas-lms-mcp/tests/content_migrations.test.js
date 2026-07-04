@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const content_migrationsModule = require("../tools/content_migrations");
 
-test("get_accounts_account_id_content_migrations_content_migration_id_migration_issues calls correct endpoint", async () => {
+test("get_aacmc_migration_issues calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_accounts_account_id_content_migrations_content_migration_id_migration_issues;
-  assert.ok(handler, "Handler get_accounts_account_id_content_migrations_content_migration_id_migration_issues should be defined");
+  const handler = content_migrationsModule.handlers.get_aacmc_migration_issues;
+  assert.ok(handler, "Handler get_aacmc_migration_issues should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "content_migration_id": "test_content_migration_id"});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_content_migrations_content_migration_id_migration_
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_content_migrations_content_migration_id_migration_issues calls correct endpoint", async () => {
+test("get_cccmc_migration_issues calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_courses_course_id_content_migrations_content_migration_id_migration_issues;
-  assert.ok(handler, "Handler get_courses_course_id_content_migrations_content_migration_id_migration_issues should be defined");
+  const handler = content_migrationsModule.handlers.get_cccmc_migration_issues;
+  assert.ok(handler, "Handler get_cccmc_migration_issues should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "content_migration_id": "test_content_migration_id"});
 
@@ -41,15 +41,15 @@ test("get_courses_course_id_content_migrations_content_migration_id_migration_is
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_content_migrations_content_migration_id_migration_issues calls correct endpoint", async () => {
+test("get_ggcmc_migration_issues calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_groups_group_id_content_migrations_content_migration_id_migration_issues;
-  assert.ok(handler, "Handler get_groups_group_id_content_migrations_content_migration_id_migration_issues should be defined");
+  const handler = content_migrationsModule.handlers.get_ggcmc_migration_issues;
+  assert.ok(handler, "Handler get_ggcmc_migration_issues should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "content_migration_id": "test_content_migration_id"});
 
@@ -59,15 +59,15 @@ test("get_groups_group_id_content_migrations_content_migration_id_migration_issu
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_migrations_content_migration_id_migration_issues calls correct endpoint", async () => {
+test("get_uucmc_migration_issues calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_users_user_id_content_migrations_content_migration_id_migration_issues;
-  assert.ok(handler, "Handler get_users_user_id_content_migrations_content_migration_id_migration_issues should be defined");
+  const handler = content_migrationsModule.handlers.get_uucmc_migration_issues;
+  assert.ok(handler, "Handler get_uucmc_migration_issues should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "content_migration_id": "test_content_migration_id"});
 
@@ -77,15 +77,15 @@ test("get_users_user_id_content_migrations_content_migration_id_migration_issues
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_content_migrations_content_migration_id_migration_issues_id calls correct endpoint", async () => {
+test("get_aacmc_migration_issues_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_accounts_account_id_content_migrations_content_migration_id_migration_issues_id;
-  assert.ok(handler, "Handler get_accounts_account_id_content_migrations_content_migration_id_migration_issues_id should be defined");
+  const handler = content_migrationsModule.handlers.get_aacmc_migration_issues_id;
+  assert.ok(handler, "Handler get_aacmc_migration_issues_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "content_migration_id": "test_content_migration_id", "id": "test_id"});
 
@@ -95,15 +95,15 @@ test("get_accounts_account_id_content_migrations_content_migration_id_migration_
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_content_migrations_content_migration_id_migration_issues_id calls correct endpoint", async () => {
+test("get_cccmc_migration_issues_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_courses_course_id_content_migrations_content_migration_id_migration_issues_id;
-  assert.ok(handler, "Handler get_courses_course_id_content_migrations_content_migration_id_migration_issues_id should be defined");
+  const handler = content_migrationsModule.handlers.get_cccmc_migration_issues_id;
+  assert.ok(handler, "Handler get_cccmc_migration_issues_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "content_migration_id": "test_content_migration_id", "id": "test_id"});
 
@@ -113,15 +113,15 @@ test("get_courses_course_id_content_migrations_content_migration_id_migration_is
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_content_migrations_content_migration_id_migration_issues_id calls correct endpoint", async () => {
+test("get_ggcmc_migration_issues_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_groups_group_id_content_migrations_content_migration_id_migration_issues_id;
-  assert.ok(handler, "Handler get_groups_group_id_content_migrations_content_migration_id_migration_issues_id should be defined");
+  const handler = content_migrationsModule.handlers.get_ggcmc_migration_issues_id;
+  assert.ok(handler, "Handler get_ggcmc_migration_issues_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "content_migration_id": "test_content_migration_id", "id": "test_id"});
 
@@ -131,15 +131,15 @@ test("get_groups_group_id_content_migrations_content_migration_id_migration_issu
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_migrations_content_migration_id_migration_issues_id calls correct endpoint", async () => {
+test("get_uucmc_migration_issues_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_users_user_id_content_migrations_content_migration_id_migration_issues_id;
-  assert.ok(handler, "Handler get_users_user_id_content_migrations_content_migration_id_migration_issues_id should be defined");
+  const handler = content_migrationsModule.handlers.get_uucmc_migration_issues_id;
+  assert.ok(handler, "Handler get_uucmc_migration_issues_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "content_migration_id": "test_content_migration_id", "id": "test_id"});
 
@@ -149,15 +149,15 @@ test("get_users_user_id_content_migrations_content_migration_id_migration_issues
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_content_migrations_content_migration_id_migration_issues_id calls correct endpoint", async () => {
+test("put_aacmc_migration_issues_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.put_accounts_account_id_content_migrations_content_migration_id_migration_issues_id;
-  assert.ok(handler, "Handler put_accounts_account_id_content_migrations_content_migration_id_migration_issues_id should be defined");
+  const handler = content_migrationsModule.handlers.put_aacmc_migration_issues_id;
+  assert.ok(handler, "Handler put_aacmc_migration_issues_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "content_migration_id": "test_content_migration_id", "id": "test_id"});
 
@@ -167,15 +167,15 @@ test("put_accounts_account_id_content_migrations_content_migration_id_migration_
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_content_migrations_content_migration_id_migration_issues_id calls correct endpoint", async () => {
+test("put_cccmc_migration_issues_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.put_courses_course_id_content_migrations_content_migration_id_migration_issues_id;
-  assert.ok(handler, "Handler put_courses_course_id_content_migrations_content_migration_id_migration_issues_id should be defined");
+  const handler = content_migrationsModule.handlers.put_cccmc_migration_issues_id;
+  assert.ok(handler, "Handler put_cccmc_migration_issues_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "content_migration_id": "test_content_migration_id", "id": "test_id"});
 
@@ -185,15 +185,15 @@ test("put_courses_course_id_content_migrations_content_migration_id_migration_is
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_content_migrations_content_migration_id_migration_issues_id calls correct endpoint", async () => {
+test("put_ggcmc_migration_issues_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.put_groups_group_id_content_migrations_content_migration_id_migration_issues_id;
-  assert.ok(handler, "Handler put_groups_group_id_content_migrations_content_migration_id_migration_issues_id should be defined");
+  const handler = content_migrationsModule.handlers.put_ggcmc_migration_issues_id;
+  assert.ok(handler, "Handler put_ggcmc_migration_issues_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "content_migration_id": "test_content_migration_id", "id": "test_id"});
 
@@ -203,15 +203,15 @@ test("put_groups_group_id_content_migrations_content_migration_id_migration_issu
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_user_id_content_migrations_content_migration_id_migration_issues_id calls correct endpoint", async () => {
+test("put_uucmc_migration_issues_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.put_users_user_id_content_migrations_content_migration_id_migration_issues_id;
-  assert.ok(handler, "Handler put_users_user_id_content_migrations_content_migration_id_migration_issues_id should be defined");
+  const handler = content_migrationsModule.handlers.put_uucmc_migration_issues_id;
+  assert.ok(handler, "Handler put_uucmc_migration_issues_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "content_migration_id": "test_content_migration_id", "id": "test_id", "workflow_state": "test_val"});
 
@@ -221,15 +221,15 @@ test("put_users_user_id_content_migrations_content_migration_id_migration_issues
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_content_migrations calls correct endpoint", async () => {
+test("get_aa_content_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_accounts_account_id_content_migrations;
-  assert.ok(handler, "Handler get_accounts_account_id_content_migrations should be defined");
+  const handler = content_migrationsModule.handlers.get_aa_content_migrations;
+  assert.ok(handler, "Handler get_aa_content_migrations should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -239,15 +239,15 @@ test("get_accounts_account_id_content_migrations calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_content_migrations calls correct endpoint", async () => {
+test("get_cc_content_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_courses_course_id_content_migrations;
-  assert.ok(handler, "Handler get_courses_course_id_content_migrations should be defined");
+  const handler = content_migrationsModule.handlers.get_cc_content_migrations;
+  assert.ok(handler, "Handler get_cc_content_migrations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -257,15 +257,15 @@ test("get_courses_course_id_content_migrations calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_content_migrations calls correct endpoint", async () => {
+test("get_gg_content_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_groups_group_id_content_migrations;
-  assert.ok(handler, "Handler get_groups_group_id_content_migrations should be defined");
+  const handler = content_migrationsModule.handlers.get_gg_content_migrations;
+  assert.ok(handler, "Handler get_gg_content_migrations should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -275,15 +275,15 @@ test("get_groups_group_id_content_migrations calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_migrations calls correct endpoint", async () => {
+test("get_uu_content_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_users_user_id_content_migrations;
-  assert.ok(handler, "Handler get_users_user_id_content_migrations should be defined");
+  const handler = content_migrationsModule.handlers.get_uu_content_migrations;
+  assert.ok(handler, "Handler get_uu_content_migrations should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -293,15 +293,15 @@ test("get_users_user_id_content_migrations calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_content_migrations_id calls correct endpoint", async () => {
+test("get_aa_content_migrations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_accounts_account_id_content_migrations_id;
-  assert.ok(handler, "Handler get_accounts_account_id_content_migrations_id should be defined");
+  const handler = content_migrationsModule.handlers.get_aa_content_migrations_id;
+  assert.ok(handler, "Handler get_aa_content_migrations_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -311,15 +311,15 @@ test("get_accounts_account_id_content_migrations_id calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_content_migrations_id calls correct endpoint", async () => {
+test("get_cc_content_migrations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_courses_course_id_content_migrations_id;
-  assert.ok(handler, "Handler get_courses_course_id_content_migrations_id should be defined");
+  const handler = content_migrationsModule.handlers.get_cc_content_migrations_id;
+  assert.ok(handler, "Handler get_cc_content_migrations_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -329,15 +329,15 @@ test("get_courses_course_id_content_migrations_id calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_content_migrations_id calls correct endpoint", async () => {
+test("get_gg_content_migrations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_groups_group_id_content_migrations_id;
-  assert.ok(handler, "Handler get_groups_group_id_content_migrations_id should be defined");
+  const handler = content_migrationsModule.handlers.get_gg_content_migrations_id;
+  assert.ok(handler, "Handler get_gg_content_migrations_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "id": "test_id"});
 
@@ -347,15 +347,15 @@ test("get_groups_group_id_content_migrations_id calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_migrations_id calls correct endpoint", async () => {
+test("get_uu_content_migrations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_users_user_id_content_migrations_id;
-  assert.ok(handler, "Handler get_users_user_id_content_migrations_id should be defined");
+  const handler = content_migrationsModule.handlers.get_uu_content_migrations_id;
+  assert.ok(handler, "Handler get_uu_content_migrations_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id"});
 
@@ -365,15 +365,15 @@ test("get_users_user_id_content_migrations_id calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_content_migrations calls correct endpoint", async () => {
+test("post_aa_content_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.post_accounts_account_id_content_migrations;
-  assert.ok(handler, "Handler post_accounts_account_id_content_migrations should be defined");
+  const handler = content_migrationsModule.handlers.post_aa_content_migrations;
+  assert.ok(handler, "Handler post_aa_content_migrations should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -383,15 +383,15 @@ test("post_accounts_account_id_content_migrations calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_content_migrations calls correct endpoint", async () => {
+test("post_cc_content_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.post_courses_course_id_content_migrations;
-  assert.ok(handler, "Handler post_courses_course_id_content_migrations should be defined");
+  const handler = content_migrationsModule.handlers.post_cc_content_migrations;
+  assert.ok(handler, "Handler post_cc_content_migrations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -401,15 +401,15 @@ test("post_courses_course_id_content_migrations calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_content_migrations calls correct endpoint", async () => {
+test("post_gg_content_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.post_groups_group_id_content_migrations;
-  assert.ok(handler, "Handler post_groups_group_id_content_migrations should be defined");
+  const handler = content_migrationsModule.handlers.post_gg_content_migrations;
+  assert.ok(handler, "Handler post_gg_content_migrations should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -419,15 +419,15 @@ test("post_groups_group_id_content_migrations calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_users_user_id_content_migrations calls correct endpoint", async () => {
+test("post_uu_content_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.post_users_user_id_content_migrations;
-  assert.ok(handler, "Handler post_users_user_id_content_migrations should be defined");
+  const handler = content_migrationsModule.handlers.post_uu_content_migrations;
+  assert.ok(handler, "Handler post_uu_content_migrations should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "migration_type": "test_val"});
 
@@ -437,15 +437,15 @@ test("post_users_user_id_content_migrations calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_content_migrations_id calls correct endpoint", async () => {
+test("put_aa_content_migrations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.put_accounts_account_id_content_migrations_id;
-  assert.ok(handler, "Handler put_accounts_account_id_content_migrations_id should be defined");
+  const handler = content_migrationsModule.handlers.put_aa_content_migrations_id;
+  assert.ok(handler, "Handler put_aa_content_migrations_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -455,15 +455,15 @@ test("put_accounts_account_id_content_migrations_id calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_content_migrations_id calls correct endpoint", async () => {
+test("put_cc_content_migrations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.put_courses_course_id_content_migrations_id;
-  assert.ok(handler, "Handler put_courses_course_id_content_migrations_id should be defined");
+  const handler = content_migrationsModule.handlers.put_cc_content_migrations_id;
+  assert.ok(handler, "Handler put_cc_content_migrations_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -473,15 +473,15 @@ test("put_courses_course_id_content_migrations_id calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_content_migrations_id calls correct endpoint", async () => {
+test("put_gg_content_migrations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.put_groups_group_id_content_migrations_id;
-  assert.ok(handler, "Handler put_groups_group_id_content_migrations_id should be defined");
+  const handler = content_migrationsModule.handlers.put_gg_content_migrations_id;
+  assert.ok(handler, "Handler put_gg_content_migrations_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "id": "test_id"});
 
@@ -491,15 +491,15 @@ test("put_groups_group_id_content_migrations_id calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_user_id_content_migrations_id calls correct endpoint", async () => {
+test("put_uu_content_migrations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.put_users_user_id_content_migrations_id;
-  assert.ok(handler, "Handler put_users_user_id_content_migrations_id should be defined");
+  const handler = content_migrationsModule.handlers.put_uu_content_migrations_id;
+  assert.ok(handler, "Handler put_uu_content_migrations_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id"});
 
@@ -509,15 +509,15 @@ test("put_users_user_id_content_migrations_id calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_content_migrations_migrators calls correct endpoint", async () => {
+test("get_aacm_migrators calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_accounts_account_id_content_migrations_migrators;
-  assert.ok(handler, "Handler get_accounts_account_id_content_migrations_migrators should be defined");
+  const handler = content_migrationsModule.handlers.get_aacm_migrators;
+  assert.ok(handler, "Handler get_aacm_migrators should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -527,15 +527,15 @@ test("get_accounts_account_id_content_migrations_migrators calls correct endpoin
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_content_migrations_migrators calls correct endpoint", async () => {
+test("get_cccm_migrators calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_courses_course_id_content_migrations_migrators;
-  assert.ok(handler, "Handler get_courses_course_id_content_migrations_migrators should be defined");
+  const handler = content_migrationsModule.handlers.get_cccm_migrators;
+  assert.ok(handler, "Handler get_cccm_migrators should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -545,15 +545,15 @@ test("get_courses_course_id_content_migrations_migrators calls correct endpoint"
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_content_migrations_migrators calls correct endpoint", async () => {
+test("get_ggcm_migrators calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_groups_group_id_content_migrations_migrators;
-  assert.ok(handler, "Handler get_groups_group_id_content_migrations_migrators should be defined");
+  const handler = content_migrationsModule.handlers.get_ggcm_migrators;
+  assert.ok(handler, "Handler get_ggcm_migrators should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -563,15 +563,15 @@ test("get_groups_group_id_content_migrations_migrators calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_migrations_migrators calls correct endpoint", async () => {
+test("get_uucm_migrators calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_users_user_id_content_migrations_migrators;
-  assert.ok(handler, "Handler get_users_user_id_content_migrations_migrators should be defined");
+  const handler = content_migrationsModule.handlers.get_uucm_migrators;
+  assert.ok(handler, "Handler get_uucm_migrators should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -581,15 +581,15 @@ test("get_users_user_id_content_migrations_migrators calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_content_migrations_id_selective_data calls correct endpoint", async () => {
+test("get_aacmi_selective_data calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_accounts_account_id_content_migrations_id_selective_data;
-  assert.ok(handler, "Handler get_accounts_account_id_content_migrations_id_selective_data should be defined");
+  const handler = content_migrationsModule.handlers.get_aacmi_selective_data;
+  assert.ok(handler, "Handler get_aacmi_selective_data should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -599,15 +599,15 @@ test("get_accounts_account_id_content_migrations_id_selective_data calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_content_migrations_id_selective_data calls correct endpoint", async () => {
+test("get_cccmi_selective_data calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_courses_course_id_content_migrations_id_selective_data;
-  assert.ok(handler, "Handler get_courses_course_id_content_migrations_id_selective_data should be defined");
+  const handler = content_migrationsModule.handlers.get_cccmi_selective_data;
+  assert.ok(handler, "Handler get_cccmi_selective_data should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -617,15 +617,15 @@ test("get_courses_course_id_content_migrations_id_selective_data calls correct e
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_content_migrations_id_selective_data calls correct endpoint", async () => {
+test("get_ggcmi_selective_data calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_groups_group_id_content_migrations_id_selective_data;
-  assert.ok(handler, "Handler get_groups_group_id_content_migrations_id_selective_data should be defined");
+  const handler = content_migrationsModule.handlers.get_ggcmi_selective_data;
+  assert.ok(handler, "Handler get_ggcmi_selective_data should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "id": "test_id"});
 
@@ -635,15 +635,15 @@ test("get_groups_group_id_content_migrations_id_selective_data calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_migrations_id_selective_data calls correct endpoint", async () => {
+test("get_uucmi_selective_data calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_users_user_id_content_migrations_id_selective_data;
-  assert.ok(handler, "Handler get_users_user_id_content_migrations_id_selective_data should be defined");
+  const handler = content_migrationsModule.handlers.get_uucmi_selective_data;
+  assert.ok(handler, "Handler get_uucmi_selective_data should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id", "type": "test_val"});
 
@@ -653,15 +653,15 @@ test("get_users_user_id_content_migrations_id_selective_data calls correct endpo
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_content_migrations_id_asset_id_mapping calls correct endpoint", async () => {
+test("get_cccmi_asset_id_mapping calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_migrationsModule.handlers.get_courses_course_id_content_migrations_id_asset_id_mapping;
-  assert.ok(handler, "Handler get_courses_course_id_content_migrations_id_asset_id_mapping should be defined");
+  const handler = content_migrationsModule.handlers.get_cccmi_asset_id_mapping;
+  assert.ok(handler, "Handler get_cccmi_asset_id_mapping should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 

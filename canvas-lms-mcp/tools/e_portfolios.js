@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_users_user_id_eportfolios",
+    "name": "get_uu_eportfolios",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/eportfolios` Get a list of all ePortfolios for the specified user. Returns a list of [ePortfolio](#eportfolio) objects. [EportfoliosApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/eportfolios_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -65,7 +65,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_eportfolios_eportfolio_id_pages",
+    "name": "get_ee_pages",
     "description": "**Scope:** `url:GET|/api/v1/eportfolios/:eportfolio_id/pages` Get details for the pages of an ePortfolio Returns a list of [ePortfolioPage](#eportfoliopage) objects. [EportfoliosApiController#moderate](https://github.com/instructure/canvas-lms/blob/master/app/controllers/eportfolios_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -85,7 +85,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_eportfolios_eportfolio_id_moderate",
+    "name": "put_ee_moderate",
     "description": "**Scope:** `url:PUT|/api/v1/eportfolios/:eportfolio_id/moderate` Update the spam\\_status of an eportfolio. Only available to admins who can moderate\\_user\\_content. Returns an [ePortfolio](#eportfolio) object. [EportfoliosApiController#moderate\\_all](https://github.com/instructure/canvas-lms/blob/master/app/controllers/eportfolios_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -105,7 +105,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_user_id_eportfolios",
+    "name": "put_uu_eportfolios",
     "description": "**Scope:** `url:PUT|/api/v1/users/:user_id/eportfolios` Update the spam\\_status for all active eportfolios of a user. Only available to admins who can moderate\\_user\\_content. [EportfoliosApiController#restore](https://github.com/instructure/canvas-lms/blob/master/app/controllers/eportfolios_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -125,7 +125,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_eportfolios_eportfolio_id_restore",
+    "name": "put_ee_restore",
     "description": "**Scope:** `url:PUT|/api/v1/eportfolios/:eportfolio_id/restore` Restore an ePortfolio back to active that was previously deleted. Only available to admins who can moderate\\_user\\_content. Returns an [ePortfolio](#eportfolio) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and...",
     "inputSchema": {
       "type": "object",
@@ -143,7 +143,7 @@ const definitions = [
 ];
 
 const handlers = {
-  get_users_user_id_eportfolios: async (client, args) => {
+  get_uu_eportfolios: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/eportfolios", args);
   },
   get_eportfolios_id: async (client, args) => {
@@ -152,16 +152,16 @@ const handlers = {
   delete_eportfolios_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/eportfolios/:id", args);
   },
-  get_eportfolios_eportfolio_id_pages: async (client, args) => {
+  get_ee_pages: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/eportfolios/:eportfolio_id/pages", args);
   },
-  put_eportfolios_eportfolio_id_moderate: async (client, args) => {
+  put_ee_moderate: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/eportfolios/:eportfolio_id/moderate", args);
   },
-  put_users_user_id_eportfolios: async (client, args) => {
+  put_uu_eportfolios: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:user_id/eportfolios", args);
   },
-  put_eportfolios_eportfolio_id_restore: async (client, args) => {
+  put_ee_restore: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/eportfolios/:eportfolio_id/restore", args);
   }
 };

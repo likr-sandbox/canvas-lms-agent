@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_users_self_bookmarks",
+    "name": "get_us_bookmarks",
     "description": "**Scope:** `url:GET|/api/v1/users/self/bookmarks` Returns the paginated list of bookmarks. ```bash curl 'https:///api/v1/users/self/bookmarks' \\ -H 'Authorization: Bearer ' ``` Returns a list of [Bookmark](#bookmark) objects. [Bookmarks::BookmarksController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/bookmarks/bookmarks_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -18,7 +18,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_self_bookmarks",
+    "name": "post_us_bookmarks",
     "description": "**Scope:** `url:POST|/api/v1/users/self/bookmarks` Creates a bookmark. ```bash curl 'https:///api/v1/users/self/bookmarks' \\ -F 'name=Biology 101' \\ -F 'url=/courses/1' \\ -H 'Authorization: Bearer ' ``` Returns a [Bookmark](#bookmark) object. [Bookmarks::BookmarksController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/bookmarks/bookmarks_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -43,7 +43,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_self_bookmarks_id",
+    "name": "get_us_bookmarks_id",
     "description": "**Scope:** `url:GET|/api/v1/users/self/bookmarks/:id` Returns the details for a bookmark. ```bash curl 'https:///api/v1/users/self/bookmarks/1' \\ -H 'Authorization: Bearer ' ``` Returns a [Bookmark](#bookmark) object. [Bookmarks::BookmarksController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/bookmarks/bookmarks_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -63,7 +63,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_self_bookmarks_id",
+    "name": "put_us_bookmarks_id",
     "description": "**Scope:** `url:PUT|/api/v1/users/self/bookmarks/:id` Updates a bookmark ```bash curl -X PUT 'https:///api/v1/users/self/bookmarks/1' \\ -F 'name=Biology 101' \\ -F 'url=/courses/1' \\ -H 'Authorization: Bearer ' ``` Returns a [Folder](files.md#folder) object. [Bookmarks::BookmarksController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/bookmarks/bookmarks_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -95,7 +95,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_self_bookmarks_id",
+    "name": "delete_us_bookmarks_id",
     "description": "**Scope:** `url:DELETE|/api/v1/users/self/bookmarks/:id` Deletes a bookmark ```bash curl -X DELETE 'https:///api/v1/users/self/bookmarks/1' \\ -H 'Authorization: Bearer ' ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical co...",
     "inputSchema": {
       "type": "object",
@@ -113,19 +113,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_users_self_bookmarks: async (client, args) => {
+  get_us_bookmarks: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/bookmarks", args);
   },
-  post_users_self_bookmarks: async (client, args) => {
+  post_us_bookmarks: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/self/bookmarks", args);
   },
-  get_users_self_bookmarks_id: async (client, args) => {
+  get_us_bookmarks_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/bookmarks/:id", args);
   },
-  put_users_self_bookmarks_id: async (client, args) => {
+  put_us_bookmarks_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/self/bookmarks/:id", args);
   },
-  delete_users_self_bookmarks_id: async (client, args) => {
+  delete_us_bookmarks_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/bookmarks/:id", args);
   }
 };

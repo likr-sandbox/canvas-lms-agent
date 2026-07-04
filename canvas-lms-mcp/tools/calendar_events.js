@@ -58,7 +58,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_calendar_events",
+    "name": "get_uu_calendar_events",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/calendar_events` Retrieve the paginated list of calendar events or assignments for the specified user. To view calendar events for a user other than yourself, you must either be an observer of that user or an administrator. Returns a list of [CalendarEvent](#calendarevent) objects. [CalendarEventsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/calendar_events_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -230,7 +230,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_calendar_events_id_reservations",
+    "name": "post_cei_reservations",
     "description": "**Scope:** `url:POST|/api/v1/calendar_events/:id/reservations`",
     "inputSchema": {
       "type": "object",
@@ -246,7 +246,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_calendar_events_id_reservations_participant_id",
+    "name": "post_cei_reservations_participant_id",
     "description": "**Scope:** `url:POST|/api/v1/calendar_events/:id/reservations/:participant_id` Reserves a particular time slot and return the new reservation ```bash curl 'https:///api/v1/calendar_events/345/reservations.json' \\ -X POST \\ -F 'cancel_existing=true' \\ -H \"Authorization: Bearer \" ``` [CalendarEventsApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/calendar_events_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -375,7 +375,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_calendar_events_save_enabled_account_calendars",
+    "name": "post_ce_save_enabled_account_calendars",
     "description": "**Scope:** `url:POST|/api/v1/calendar_events/save_enabled_account_calendars` Creates and updates the enabled\\_account\\_calendars and mark\\_feature\\_as\\_seen user preferences ```bash curl 'https:///api/v1/calendar_events/save_enabled_account_calendars' \\ -X POST \\ -F 'mark_feature_as_seen=true' \\ -F 'enabled_account_calendars[]=1' \\ -F 'enabled_account_calendars[]=2' \\ -H \"Authorization: Bearer \" ``` [CalendarEventsApiController#set\\_course\\_timetable](https://github.com/instructure/canvas-lms...",
     "inputSchema": {
       "type": "object",
@@ -392,7 +392,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_calendar_events_timetable",
+    "name": "post_ccce_timetable",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/calendar_events/timetable` Creates and updates \"timetable\" events for a course. Can automaticaly generate a series of calendar events based on simple schedules (e.g. \"Monday and Wednesday at 2:00pm\" ) Existing timetable events for the course and course sections will be updated if they still are part of the timetable. Otherwise, they will be deleted. ```bash curl 'https:///api/v1/calendar_events/timetable' \\ -X POST \\ -F 'timetables[all][][weekda...",
     "inputSchema": {
       "type": "object",
@@ -428,7 +428,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_calendar_events_timetable",
+    "name": "get_ccce_timetable",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/calendar_events/timetable` Returns the last timetable set by the [Set a course timetable](#method.calendar_events_api.set_course_timetable) endpoint [CalendarEventsApiController#set\\_course\\_timetable\\_events](https://github.com/instructure/canvas-lms/blob/master/app/controllers/calendar_events_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -448,7 +448,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_calendar_events_timetable_events",
+    "name": "post_ccce_timetable_events",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/calendar_events/timetable_events` Creates and updates \"timetable\" events for a course or course section. Similar to [setting a course timetable](#method.calendar_events_api.set_course_timetable), but instead of generating a list of events based on a timetable schedule, this endpoint expects a complete list of events. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure...",
     "inputSchema": {
       "type": "object",
@@ -497,7 +497,7 @@ const handlers = {
   get_calendar_events: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/calendar_events", args);
   },
-  get_users_user_id_calendar_events: async (client, args) => {
+  get_uu_calendar_events: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/calendar_events", args);
   },
   post_calendar_events: async (client, args) => {
@@ -506,10 +506,10 @@ const handlers = {
   get_calendar_events_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/calendar_events/:id", args);
   },
-  post_calendar_events_id_reservations: async (client, args) => {
+  post_cei_reservations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/calendar_events/:id/reservations", args);
   },
-  post_calendar_events_id_reservations_participant_id: async (client, args) => {
+  post_cei_reservations_participant_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/calendar_events/:id/reservations/:participant_id", args);
   },
   put_calendar_events_id: async (client, args) => {
@@ -518,16 +518,16 @@ const handlers = {
   delete_calendar_events_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/calendar_events/:id", args);
   },
-  post_calendar_events_save_enabled_account_calendars: async (client, args) => {
+  post_ce_save_enabled_account_calendars: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/calendar_events/save_enabled_account_calendars", args);
   },
-  post_courses_course_id_calendar_events_timetable: async (client, args) => {
+  post_ccce_timetable: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/calendar_events/timetable", args);
   },
-  get_courses_course_id_calendar_events_timetable: async (client, args) => {
+  get_ccce_timetable: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/calendar_events/timetable", args);
   },
-  post_courses_course_id_calendar_events_timetable_events: async (client, args) => {
+  post_ccce_timetable_events: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/calendar_events/timetable_events", args);
   }
 };

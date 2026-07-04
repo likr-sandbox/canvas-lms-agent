@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const discussion_topicsModule = require("../tools/discussion_topics");
 
-test("get_courses_course_id_discussion_topics calls correct endpoint", async () => {
+test("get_cc_discussion_topics calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_courses_course_id_discussion_topics;
-  assert.ok(handler, "Handler get_courses_course_id_discussion_topics should be defined");
+  const handler = discussion_topicsModule.handlers.get_cc_discussion_topics;
+  assert.ok(handler, "Handler get_cc_discussion_topics should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_discussion_topics calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_discussion_topics calls correct endpoint", async () => {
+test("get_gg_discussion_topics calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_groups_group_id_discussion_topics;
-  assert.ok(handler, "Handler get_groups_group_id_discussion_topics should be defined");
+  const handler = discussion_topicsModule.handlers.get_gg_discussion_topics;
+  assert.ok(handler, "Handler get_gg_discussion_topics should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "include[]": "test_val"});
 
@@ -41,15 +41,15 @@ test("get_groups_group_id_discussion_topics calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_discussion_topics calls correct endpoint", async () => {
+test("post_cc_discussion_topics calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_courses_course_id_discussion_topics;
-  assert.ok(handler, "Handler post_courses_course_id_discussion_topics should be defined");
+  const handler = discussion_topicsModule.handlers.post_cc_discussion_topics;
+  assert.ok(handler, "Handler post_cc_discussion_topics should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -59,15 +59,15 @@ test("post_courses_course_id_discussion_topics calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_discussion_topics calls correct endpoint", async () => {
+test("post_gg_discussion_topics calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_groups_group_id_discussion_topics;
-  assert.ok(handler, "Handler post_groups_group_id_discussion_topics should be defined");
+  const handler = discussion_topicsModule.handlers.post_gg_discussion_topics;
+  assert.ok(handler, "Handler post_gg_discussion_topics should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "title": "test_val"});
 
@@ -77,15 +77,15 @@ test("post_groups_group_id_discussion_topics calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_discussion_topics_topic_id calls correct endpoint", async () => {
+test("put_cc_discussion_topics_topic_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_courses_course_id_discussion_topics_topic_id;
-  assert.ok(handler, "Handler put_courses_course_id_discussion_topics_topic_id should be defined");
+  const handler = discussion_topicsModule.handlers.put_cc_discussion_topics_topic_id;
+  assert.ok(handler, "Handler put_cc_discussion_topics_topic_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -95,15 +95,15 @@ test("put_courses_course_id_discussion_topics_topic_id calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_discussion_topics_topic_id calls correct endpoint", async () => {
+test("put_gg_discussion_topics_topic_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_groups_group_id_discussion_topics_topic_id;
-  assert.ok(handler, "Handler put_groups_group_id_discussion_topics_topic_id should be defined");
+  const handler = discussion_topicsModule.handlers.put_gg_discussion_topics_topic_id;
+  assert.ok(handler, "Handler put_gg_discussion_topics_topic_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "title": "test_val"});
 
@@ -113,15 +113,15 @@ test("put_groups_group_id_discussion_topics_topic_id calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_discussion_topics_topic_id calls correct endpoint", async () => {
+test("delete_cc_discussion_topics_topic_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_courses_course_id_discussion_topics_topic_id;
-  assert.ok(handler, "Handler delete_courses_course_id_discussion_topics_topic_id should be defined");
+  const handler = discussion_topicsModule.handlers.delete_cc_discussion_topics_topic_id;
+  assert.ok(handler, "Handler delete_cc_discussion_topics_topic_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -131,15 +131,15 @@ test("delete_courses_course_id_discussion_topics_topic_id calls correct endpoint
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_groups_group_id_discussion_topics_topic_id calls correct endpoint", async () => {
+test("delete_gg_discussion_topics_topic_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_groups_group_id_discussion_topics_topic_id;
-  assert.ok(handler, "Handler delete_groups_group_id_discussion_topics_topic_id should be defined");
+  const handler = discussion_topicsModule.handlers.delete_gg_discussion_topics_topic_id;
+  assert.ok(handler, "Handler delete_gg_discussion_topics_topic_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id"});
 
@@ -149,15 +149,15 @@ test("delete_groups_group_id_discussion_topics_topic_id calls correct endpoint",
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_discussion_topics_reorder calls correct endpoint", async () => {
+test("post_ccdt_reorder calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_courses_course_id_discussion_topics_reorder;
-  assert.ok(handler, "Handler post_courses_course_id_discussion_topics_reorder should be defined");
+  const handler = discussion_topicsModule.handlers.post_ccdt_reorder;
+  assert.ok(handler, "Handler post_ccdt_reorder should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -167,15 +167,15 @@ test("post_courses_course_id_discussion_topics_reorder calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_discussion_topics_reorder calls correct endpoint", async () => {
+test("post_ggdt_reorder calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_groups_group_id_discussion_topics_reorder;
-  assert.ok(handler, "Handler post_groups_group_id_discussion_topics_reorder should be defined");
+  const handler = discussion_topicsModule.handlers.post_ggdt_reorder;
+  assert.ok(handler, "Handler post_ggdt_reorder should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "order[]": 123});
 
@@ -185,15 +185,15 @@ test("post_groups_group_id_discussion_topics_reorder calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_discussion_topics_topic_id_entries_id calls correct endpoint", async () => {
+test("put_ccdtt_entries_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_courses_course_id_discussion_topics_topic_id_entries_id;
-  assert.ok(handler, "Handler put_courses_course_id_discussion_topics_topic_id_entries_id should be defined");
+  const handler = discussion_topicsModule.handlers.put_ccdtt_entries_id;
+  assert.ok(handler, "Handler put_ccdtt_entries_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id", "id": "test_id"});
 
@@ -203,15 +203,15 @@ test("put_courses_course_id_discussion_topics_topic_id_entries_id calls correct 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_discussion_topics_topic_id_entries_id calls correct endpoint", async () => {
+test("put_ggdtt_entries_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_groups_group_id_discussion_topics_topic_id_entries_id;
-  assert.ok(handler, "Handler put_groups_group_id_discussion_topics_topic_id_entries_id should be defined");
+  const handler = discussion_topicsModule.handlers.put_ggdtt_entries_id;
+  assert.ok(handler, "Handler put_ggdtt_entries_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "id": "test_id", "message": "test_val"});
 
@@ -221,15 +221,15 @@ test("put_groups_group_id_discussion_topics_topic_id_entries_id calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_discussion_topics_topic_id_entries_id calls correct endpoint", async () => {
+test("delete_ccdtt_entries_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_courses_course_id_discussion_topics_topic_id_entries_id;
-  assert.ok(handler, "Handler delete_courses_course_id_discussion_topics_topic_id_entries_id should be defined");
+  const handler = discussion_topicsModule.handlers.delete_ccdtt_entries_id;
+  assert.ok(handler, "Handler delete_ccdtt_entries_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id", "id": "test_id"});
 
@@ -239,15 +239,15 @@ test("delete_courses_course_id_discussion_topics_topic_id_entries_id calls corre
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_groups_group_id_discussion_topics_topic_id_entries_id calls correct endpoint", async () => {
+test("delete_ggdtt_entries_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_groups_group_id_discussion_topics_topic_id_entries_id;
-  assert.ok(handler, "Handler delete_groups_group_id_discussion_topics_topic_id_entries_id should be defined");
+  const handler = discussion_topicsModule.handlers.delete_ggdtt_entries_id;
+  assert.ok(handler, "Handler delete_ggdtt_entries_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "id": "test_id"});
 
@@ -257,15 +257,15 @@ test("delete_groups_group_id_discussion_topics_topic_id_entries_id calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_discussion_topics_topic_id calls correct endpoint", async () => {
+test("get_cc_discussion_topics_topic_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_courses_course_id_discussion_topics_topic_id;
-  assert.ok(handler, "Handler get_courses_course_id_discussion_topics_topic_id should be defined");
+  const handler = discussion_topicsModule.handlers.get_cc_discussion_topics_topic_id;
+  assert.ok(handler, "Handler get_cc_discussion_topics_topic_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -275,15 +275,15 @@ test("get_courses_course_id_discussion_topics_topic_id calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_discussion_topics_topic_id calls correct endpoint", async () => {
+test("get_gg_discussion_topics_topic_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_groups_group_id_discussion_topics_topic_id;
-  assert.ok(handler, "Handler get_groups_group_id_discussion_topics_topic_id should be defined");
+  const handler = discussion_topicsModule.handlers.get_gg_discussion_topics_topic_id;
+  assert.ok(handler, "Handler get_gg_discussion_topics_topic_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "include[]": "test_val"});
 
@@ -293,15 +293,15 @@ test("get_groups_group_id_discussion_topics_topic_id calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_discussion_topics_topic_id_summaries calls correct endpoint", async () => {
+test("get_ccdtt_summaries calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_courses_course_id_discussion_topics_topic_id_summaries;
-  assert.ok(handler, "Handler get_courses_course_id_discussion_topics_topic_id_summaries should be defined");
+  const handler = discussion_topicsModule.handlers.get_ccdtt_summaries;
+  assert.ok(handler, "Handler get_ccdtt_summaries should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -311,15 +311,15 @@ test("get_courses_course_id_discussion_topics_topic_id_summaries calls correct e
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_discussion_topics_topic_id_summaries calls correct endpoint", async () => {
+test("get_ggdtt_summaries calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_groups_group_id_discussion_topics_topic_id_summaries;
-  assert.ok(handler, "Handler get_groups_group_id_discussion_topics_topic_id_summaries should be defined");
+  const handler = discussion_topicsModule.handlers.get_ggdtt_summaries;
+  assert.ok(handler, "Handler get_ggdtt_summaries should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id"});
 
@@ -329,15 +329,15 @@ test("get_groups_group_id_discussion_topics_topic_id_summaries calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_discussion_topics_topic_id_summaries calls correct endpoint", async () => {
+test("post_ccdtt_summaries calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_courses_course_id_discussion_topics_topic_id_summaries;
-  assert.ok(handler, "Handler post_courses_course_id_discussion_topics_topic_id_summaries should be defined");
+  const handler = discussion_topicsModule.handlers.post_ccdtt_summaries;
+  assert.ok(handler, "Handler post_ccdtt_summaries should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -347,15 +347,15 @@ test("post_courses_course_id_discussion_topics_topic_id_summaries calls correct 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_discussion_topics_topic_id_summaries calls correct endpoint", async () => {
+test("post_ggdtt_summaries calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_groups_group_id_discussion_topics_topic_id_summaries;
-  assert.ok(handler, "Handler post_groups_group_id_discussion_topics_topic_id_summaries should be defined");
+  const handler = discussion_topicsModule.handlers.post_ggdtt_summaries;
+  assert.ok(handler, "Handler post_ggdtt_summaries should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "userInput": "test_val"});
 
@@ -365,15 +365,15 @@ test("post_groups_group_id_discussion_topics_topic_id_summaries calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_discussion_topics_topic_id_summaries_disable calls correct endpoint", async () => {
+test("put_ccdtts_disable calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_courses_course_id_discussion_topics_topic_id_summaries_disable;
-  assert.ok(handler, "Handler put_courses_course_id_discussion_topics_topic_id_summaries_disable should be defined");
+  const handler = discussion_topicsModule.handlers.put_ccdtts_disable;
+  assert.ok(handler, "Handler put_ccdtts_disable should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -383,15 +383,15 @@ test("put_courses_course_id_discussion_topics_topic_id_summaries_disable calls c
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_discussion_topics_topic_id_summaries_disable calls correct endpoint", async () => {
+test("put_ggdtts_disable calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_groups_group_id_discussion_topics_topic_id_summaries_disable;
-  assert.ok(handler, "Handler put_groups_group_id_discussion_topics_topic_id_summaries_disable should be defined");
+  const handler = discussion_topicsModule.handlers.put_ggdtts_disable;
+  assert.ok(handler, "Handler put_ggdtts_disable should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id"});
 
@@ -401,15 +401,15 @@ test("put_groups_group_id_discussion_topics_topic_id_summaries_disable calls cor
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_discussion_topics_topic_id_summaries_summary_id_feedback calls correct endpoint", async () => {
+test("post_ccdttss_feedback calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_courses_course_id_discussion_topics_topic_id_summaries_summary_id_feedback;
-  assert.ok(handler, "Handler post_courses_course_id_discussion_topics_topic_id_summaries_summary_id_feedback should be defined");
+  const handler = discussion_topicsModule.handlers.post_ccdttss_feedback;
+  assert.ok(handler, "Handler post_ccdttss_feedback should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id", "summary_id": "test_summary_id"});
 
@@ -419,15 +419,15 @@ test("post_courses_course_id_discussion_topics_topic_id_summaries_summary_id_fee
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_discussion_topics_topic_id_summaries_summary_id_feedback calls correct endpoint", async () => {
+test("post_ggdttss_feedback calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_groups_group_id_discussion_topics_topic_id_summaries_summary_id_feedback;
-  assert.ok(handler, "Handler post_groups_group_id_discussion_topics_topic_id_summaries_summary_id_feedback should be defined");
+  const handler = discussion_topicsModule.handlers.post_ggdttss_feedback;
+  assert.ok(handler, "Handler post_ggdttss_feedback should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "summary_id": "test_summary_id", "_action": "test_val"});
 
@@ -437,15 +437,15 @@ test("post_groups_group_id_discussion_topics_topic_id_summaries_summary_id_feedb
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_discussion_topics_topic_id_view calls correct endpoint", async () => {
+test("get_ccdtt_view calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_courses_course_id_discussion_topics_topic_id_view;
-  assert.ok(handler, "Handler get_courses_course_id_discussion_topics_topic_id_view should be defined");
+  const handler = discussion_topicsModule.handlers.get_ccdtt_view;
+  assert.ok(handler, "Handler get_ccdtt_view should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -455,15 +455,15 @@ test("get_courses_course_id_discussion_topics_topic_id_view calls correct endpoi
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_discussion_topics_topic_id_view calls correct endpoint", async () => {
+test("get_ggdtt_view calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_groups_group_id_discussion_topics_topic_id_view;
-  assert.ok(handler, "Handler get_groups_group_id_discussion_topics_topic_id_view should be defined");
+  const handler = discussion_topicsModule.handlers.get_ggdtt_view;
+  assert.ok(handler, "Handler get_ggdtt_view should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id"});
 
@@ -473,15 +473,15 @@ test("get_groups_group_id_discussion_topics_topic_id_view calls correct endpoint
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_discussion_topics_topic_id_entries calls correct endpoint", async () => {
+test("post_ccdtt_entries calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_courses_course_id_discussion_topics_topic_id_entries;
-  assert.ok(handler, "Handler post_courses_course_id_discussion_topics_topic_id_entries should be defined");
+  const handler = discussion_topicsModule.handlers.post_ccdtt_entries;
+  assert.ok(handler, "Handler post_ccdtt_entries should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -491,15 +491,15 @@ test("post_courses_course_id_discussion_topics_topic_id_entries calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_discussion_topics_topic_id_entries calls correct endpoint", async () => {
+test("post_ggdtt_entries calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_groups_group_id_discussion_topics_topic_id_entries;
-  assert.ok(handler, "Handler post_groups_group_id_discussion_topics_topic_id_entries should be defined");
+  const handler = discussion_topicsModule.handlers.post_ggdtt_entries;
+  assert.ok(handler, "Handler post_ggdtt_entries should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "message": "test_val"});
 
@@ -509,15 +509,15 @@ test("post_groups_group_id_discussion_topics_topic_id_entries calls correct endp
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_discussion_topics_topic_id_duplicate calls correct endpoint", async () => {
+test("post_ccdtt_duplicate calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_courses_course_id_discussion_topics_topic_id_duplicate;
-  assert.ok(handler, "Handler post_courses_course_id_discussion_topics_topic_id_duplicate should be defined");
+  const handler = discussion_topicsModule.handlers.post_ccdtt_duplicate;
+  assert.ok(handler, "Handler post_ccdtt_duplicate should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -527,15 +527,15 @@ test("post_courses_course_id_discussion_topics_topic_id_duplicate calls correct 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_discussion_topics_topic_id_duplicate calls correct endpoint", async () => {
+test("post_ggdtt_duplicate calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_groups_group_id_discussion_topics_topic_id_duplicate;
-  assert.ok(handler, "Handler post_groups_group_id_discussion_topics_topic_id_duplicate should be defined");
+  const handler = discussion_topicsModule.handlers.post_ggdtt_duplicate;
+  assert.ok(handler, "Handler post_ggdtt_duplicate should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id"});
 
@@ -545,15 +545,15 @@ test("post_groups_group_id_discussion_topics_topic_id_duplicate calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_discussion_topics_topic_id_entries calls correct endpoint", async () => {
+test("get_ccdtt_entries calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_courses_course_id_discussion_topics_topic_id_entries;
-  assert.ok(handler, "Handler get_courses_course_id_discussion_topics_topic_id_entries should be defined");
+  const handler = discussion_topicsModule.handlers.get_ccdtt_entries;
+  assert.ok(handler, "Handler get_ccdtt_entries should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -563,15 +563,15 @@ test("get_courses_course_id_discussion_topics_topic_id_entries calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_discussion_topics_topic_id_entries calls correct endpoint", async () => {
+test("get_ggdtt_entries calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_groups_group_id_discussion_topics_topic_id_entries;
-  assert.ok(handler, "Handler get_groups_group_id_discussion_topics_topic_id_entries should be defined");
+  const handler = discussion_topicsModule.handlers.get_ggdtt_entries;
+  assert.ok(handler, "Handler get_ggdtt_entries should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id"});
 
@@ -581,15 +581,15 @@ test("get_groups_group_id_discussion_topics_topic_id_entries calls correct endpo
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies calls correct endpoint", async () => {
+test("post_ccdttee_replies calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies;
-  assert.ok(handler, "Handler post_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies should be defined");
+  const handler = discussion_topicsModule.handlers.post_ccdttee_replies;
+  assert.ok(handler, "Handler post_ccdttee_replies should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id", "entry_id": "test_entry_id"});
 
@@ -599,15 +599,15 @@ test("post_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies calls correct endpoint", async () => {
+test("post_ggdttee_replies calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies;
-  assert.ok(handler, "Handler post_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies should be defined");
+  const handler = discussion_topicsModule.handlers.post_ggdttee_replies;
+  assert.ok(handler, "Handler post_ggdttee_replies should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "entry_id": "test_entry_id", "message": "test_val"});
 
@@ -617,15 +617,15 @@ test("post_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies c
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies calls correct endpoint", async () => {
+test("get_ccdttee_replies calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies;
-  assert.ok(handler, "Handler get_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies should be defined");
+  const handler = discussion_topicsModule.handlers.get_ccdttee_replies;
+  assert.ok(handler, "Handler get_ccdttee_replies should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id", "entry_id": "test_entry_id"});
 
@@ -635,15 +635,15 @@ test("get_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies calls correct endpoint", async () => {
+test("get_ggdttee_replies calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies;
-  assert.ok(handler, "Handler get_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies should be defined");
+  const handler = discussion_topicsModule.handlers.get_ggdttee_replies;
+  assert.ok(handler, "Handler get_ggdttee_replies should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "entry_id": "test_entry_id"});
 
@@ -653,15 +653,15 @@ test("get_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies ca
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_discussion_topics_topic_id_entry_list calls correct endpoint", async () => {
+test("get_ccdtt_entry_list calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_courses_course_id_discussion_topics_topic_id_entry_list;
-  assert.ok(handler, "Handler get_courses_course_id_discussion_topics_topic_id_entry_list should be defined");
+  const handler = discussion_topicsModule.handlers.get_ccdtt_entry_list;
+  assert.ok(handler, "Handler get_ccdtt_entry_list should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -671,15 +671,15 @@ test("get_courses_course_id_discussion_topics_topic_id_entry_list calls correct 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_discussion_topics_topic_id_entry_list calls correct endpoint", async () => {
+test("get_ggdtt_entry_list calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.get_groups_group_id_discussion_topics_topic_id_entry_list;
-  assert.ok(handler, "Handler get_groups_group_id_discussion_topics_topic_id_entry_list should be defined");
+  const handler = discussion_topicsModule.handlers.get_ggdtt_entry_list;
+  assert.ok(handler, "Handler get_ggdtt_entry_list should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "ids[]": "test_val"});
 
@@ -689,15 +689,15 @@ test("get_groups_group_id_discussion_topics_topic_id_entry_list calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_discussion_topics_topic_id_read calls correct endpoint", async () => {
+test("put_ccdtt_read calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_courses_course_id_discussion_topics_topic_id_read;
-  assert.ok(handler, "Handler put_courses_course_id_discussion_topics_topic_id_read should be defined");
+  const handler = discussion_topicsModule.handlers.put_ccdtt_read;
+  assert.ok(handler, "Handler put_ccdtt_read should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -707,15 +707,15 @@ test("put_courses_course_id_discussion_topics_topic_id_read calls correct endpoi
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_discussion_topics_topic_id_read calls correct endpoint", async () => {
+test("put_ggdtt_read calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_groups_group_id_discussion_topics_topic_id_read;
-  assert.ok(handler, "Handler put_groups_group_id_discussion_topics_topic_id_read should be defined");
+  const handler = discussion_topicsModule.handlers.put_ggdtt_read;
+  assert.ok(handler, "Handler put_ggdtt_read should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id"});
 
@@ -725,15 +725,15 @@ test("put_groups_group_id_discussion_topics_topic_id_read calls correct endpoint
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_discussion_topics_read_all calls correct endpoint", async () => {
+test("put_ccdt_read_all calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_courses_course_id_discussion_topics_read_all;
-  assert.ok(handler, "Handler put_courses_course_id_discussion_topics_read_all should be defined");
+  const handler = discussion_topicsModule.handlers.put_ccdt_read_all;
+  assert.ok(handler, "Handler put_ccdt_read_all should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -743,15 +743,15 @@ test("put_courses_course_id_discussion_topics_read_all calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_discussion_topics_read_all calls correct endpoint", async () => {
+test("put_ggdt_read_all calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_groups_group_id_discussion_topics_read_all;
-  assert.ok(handler, "Handler put_groups_group_id_discussion_topics_read_all should be defined");
+  const handler = discussion_topicsModule.handlers.put_ggdt_read_all;
+  assert.ok(handler, "Handler put_ggdt_read_all should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -761,15 +761,15 @@ test("put_groups_group_id_discussion_topics_read_all calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_discussion_topics_topic_id_read calls correct endpoint", async () => {
+test("delete_ccdtt_read calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_courses_course_id_discussion_topics_topic_id_read;
-  assert.ok(handler, "Handler delete_courses_course_id_discussion_topics_topic_id_read should be defined");
+  const handler = discussion_topicsModule.handlers.delete_ccdtt_read;
+  assert.ok(handler, "Handler delete_ccdtt_read should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -779,15 +779,15 @@ test("delete_courses_course_id_discussion_topics_topic_id_read calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_groups_group_id_discussion_topics_topic_id_read calls correct endpoint", async () => {
+test("delete_ggdtt_read calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_groups_group_id_discussion_topics_topic_id_read;
-  assert.ok(handler, "Handler delete_groups_group_id_discussion_topics_topic_id_read should be defined");
+  const handler = discussion_topicsModule.handlers.delete_ggdtt_read;
+  assert.ok(handler, "Handler delete_ggdtt_read should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id"});
 
@@ -797,15 +797,15 @@ test("delete_groups_group_id_discussion_topics_topic_id_read calls correct endpo
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_discussion_topics_topic_id_read_all calls correct endpoint", async () => {
+test("put_ccdtt_read_all calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_courses_course_id_discussion_topics_topic_id_read_all;
-  assert.ok(handler, "Handler put_courses_course_id_discussion_topics_topic_id_read_all should be defined");
+  const handler = discussion_topicsModule.handlers.put_ccdtt_read_all;
+  assert.ok(handler, "Handler put_ccdtt_read_all should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -815,15 +815,15 @@ test("put_courses_course_id_discussion_topics_topic_id_read_all calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_discussion_topics_topic_id_read_all calls correct endpoint", async () => {
+test("put_ggdtt_read_all calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_groups_group_id_discussion_topics_topic_id_read_all;
-  assert.ok(handler, "Handler put_groups_group_id_discussion_topics_topic_id_read_all should be defined");
+  const handler = discussion_topicsModule.handlers.put_ggdtt_read_all;
+  assert.ok(handler, "Handler put_ggdtt_read_all should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "forced_read_state": true});
 
@@ -833,15 +833,15 @@ test("put_groups_group_id_discussion_topics_topic_id_read_all calls correct endp
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_discussion_topics_topic_id_read_all calls correct endpoint", async () => {
+test("delete_ccdtt_read_all calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_courses_course_id_discussion_topics_topic_id_read_all;
-  assert.ok(handler, "Handler delete_courses_course_id_discussion_topics_topic_id_read_all should be defined");
+  const handler = discussion_topicsModule.handlers.delete_ccdtt_read_all;
+  assert.ok(handler, "Handler delete_ccdtt_read_all should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -851,15 +851,15 @@ test("delete_courses_course_id_discussion_topics_topic_id_read_all calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_groups_group_id_discussion_topics_topic_id_read_all calls correct endpoint", async () => {
+test("delete_ggdtt_read_all calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_groups_group_id_discussion_topics_topic_id_read_all;
-  assert.ok(handler, "Handler delete_groups_group_id_discussion_topics_topic_id_read_all should be defined");
+  const handler = discussion_topicsModule.handlers.delete_ggdtt_read_all;
+  assert.ok(handler, "Handler delete_ggdtt_read_all should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "forced_read_state": true});
 
@@ -869,15 +869,15 @@ test("delete_groups_group_id_discussion_topics_topic_id_read_all calls correct e
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_discussion_topics_topic_id_entries_entry_id_read calls correct endpoint", async () => {
+test("put_ccdttee_read calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_courses_course_id_discussion_topics_topic_id_entries_entry_id_read;
-  assert.ok(handler, "Handler put_courses_course_id_discussion_topics_topic_id_entries_entry_id_read should be defined");
+  const handler = discussion_topicsModule.handlers.put_ccdttee_read;
+  assert.ok(handler, "Handler put_ccdttee_read should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id", "entry_id": "test_entry_id"});
 
@@ -887,15 +887,15 @@ test("put_courses_course_id_discussion_topics_topic_id_entries_entry_id_read cal
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_discussion_topics_topic_id_entries_entry_id_read calls correct endpoint", async () => {
+test("put_ggdttee_read calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_groups_group_id_discussion_topics_topic_id_entries_entry_id_read;
-  assert.ok(handler, "Handler put_groups_group_id_discussion_topics_topic_id_entries_entry_id_read should be defined");
+  const handler = discussion_topicsModule.handlers.put_ggdttee_read;
+  assert.ok(handler, "Handler put_ggdttee_read should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "entry_id": "test_entry_id", "forced_read_state": true});
 
@@ -905,15 +905,15 @@ test("put_groups_group_id_discussion_topics_topic_id_entries_entry_id_read calls
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_discussion_topics_topic_id_entries_entry_id_read calls correct endpoint", async () => {
+test("delete_ccdttee_read calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_courses_course_id_discussion_topics_topic_id_entries_entry_id_read;
-  assert.ok(handler, "Handler delete_courses_course_id_discussion_topics_topic_id_entries_entry_id_read should be defined");
+  const handler = discussion_topicsModule.handlers.delete_ccdttee_read;
+  assert.ok(handler, "Handler delete_ccdttee_read should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id", "entry_id": "test_entry_id"});
 
@@ -923,15 +923,15 @@ test("delete_courses_course_id_discussion_topics_topic_id_entries_entry_id_read 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_groups_group_id_discussion_topics_topic_id_entries_entry_id_read calls correct endpoint", async () => {
+test("delete_ggdttee_read calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_groups_group_id_discussion_topics_topic_id_entries_entry_id_read;
-  assert.ok(handler, "Handler delete_groups_group_id_discussion_topics_topic_id_entries_entry_id_read should be defined");
+  const handler = discussion_topicsModule.handlers.delete_ggdttee_read;
+  assert.ok(handler, "Handler delete_ggdttee_read should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "entry_id": "test_entry_id", "forced_read_state": true});
 
@@ -941,15 +941,15 @@ test("delete_groups_group_id_discussion_topics_topic_id_entries_entry_id_read ca
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_discussion_topics_topic_id_entries_entry_id_rating calls correct endpoint", async () => {
+test("post_ccdttee_rating calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_courses_course_id_discussion_topics_topic_id_entries_entry_id_rating;
-  assert.ok(handler, "Handler post_courses_course_id_discussion_topics_topic_id_entries_entry_id_rating should be defined");
+  const handler = discussion_topicsModule.handlers.post_ccdttee_rating;
+  assert.ok(handler, "Handler post_ccdttee_rating should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id", "entry_id": "test_entry_id"});
 
@@ -959,15 +959,15 @@ test("post_courses_course_id_discussion_topics_topic_id_entries_entry_id_rating 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_discussion_topics_topic_id_entries_entry_id_rating calls correct endpoint", async () => {
+test("post_ggdttee_rating calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.post_groups_group_id_discussion_topics_topic_id_entries_entry_id_rating;
-  assert.ok(handler, "Handler post_groups_group_id_discussion_topics_topic_id_entries_entry_id_rating should be defined");
+  const handler = discussion_topicsModule.handlers.post_ggdttee_rating;
+  assert.ok(handler, "Handler post_ggdttee_rating should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id", "entry_id": "test_entry_id", "rating": 123});
 
@@ -977,15 +977,15 @@ test("post_groups_group_id_discussion_topics_topic_id_entries_entry_id_rating ca
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_discussion_topics_topic_id_subscribed calls correct endpoint", async () => {
+test("put_ccdtt_subscribed calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_courses_course_id_discussion_topics_topic_id_subscribed;
-  assert.ok(handler, "Handler put_courses_course_id_discussion_topics_topic_id_subscribed should be defined");
+  const handler = discussion_topicsModule.handlers.put_ccdtt_subscribed;
+  assert.ok(handler, "Handler put_ccdtt_subscribed should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -995,15 +995,15 @@ test("put_courses_course_id_discussion_topics_topic_id_subscribed calls correct 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_discussion_topics_topic_id_subscribed calls correct endpoint", async () => {
+test("put_ggdtt_subscribed calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.put_groups_group_id_discussion_topics_topic_id_subscribed;
-  assert.ok(handler, "Handler put_groups_group_id_discussion_topics_topic_id_subscribed should be defined");
+  const handler = discussion_topicsModule.handlers.put_ggdtt_subscribed;
+  assert.ok(handler, "Handler put_ggdtt_subscribed should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id"});
 
@@ -1013,15 +1013,15 @@ test("put_groups_group_id_discussion_topics_topic_id_subscribed calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_discussion_topics_topic_id_subscribed calls correct endpoint", async () => {
+test("delete_ccdtt_subscribed calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_courses_course_id_discussion_topics_topic_id_subscribed;
-  assert.ok(handler, "Handler delete_courses_course_id_discussion_topics_topic_id_subscribed should be defined");
+  const handler = discussion_topicsModule.handlers.delete_ccdtt_subscribed;
+  assert.ok(handler, "Handler delete_ccdtt_subscribed should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "topic_id": "test_topic_id"});
 
@@ -1031,15 +1031,15 @@ test("delete_courses_course_id_discussion_topics_topic_id_subscribed calls corre
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_groups_group_id_discussion_topics_topic_id_subscribed calls correct endpoint", async () => {
+test("delete_ggdtt_subscribed calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discussion_topicsModule.handlers.delete_groups_group_id_discussion_topics_topic_id_subscribed;
-  assert.ok(handler, "Handler delete_groups_group_id_discussion_topics_topic_id_subscribed should be defined");
+  const handler = discussion_topicsModule.handlers.delete_ggdtt_subscribed;
+  assert.ok(handler, "Handler delete_ggdtt_subscribed should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "topic_id": "test_topic_id"});
 

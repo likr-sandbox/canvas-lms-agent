@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_accounts_account_id_developer_keys_developer_key_id_developer_key_account_bindings",
+    "name": "post_aadkd_developer_key_account_bindings",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/developer_keys/:developer_key_id/developer_key_account_bindings` Create a new Developer Key Account Binding. The developer key specified in the request URL must be available in the requested account or the requested account's account chain. If the binding already exists for the specified account/key combination it will be updated. Returns a [DeveloperKeyAccountBinding](#developerkeyaccountbinding) object. *** This documentation is generated di...",
     "inputSchema": {
       "type": "object",
@@ -32,7 +32,7 @@ const definitions = [
 ];
 
 const handlers = {
-  post_accounts_account_id_developer_keys_developer_key_id_developer_key_account_bindings: async (client, args) => {
+  post_aadkd_developer_key_account_bindings: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/developer_keys/:developer_key_id/developer_key_account_bindings", args);
   }
 };

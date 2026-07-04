@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const access_tokensModule = require("../tools/access_tokens");
 
-test("get_users_user_id_user_generated_tokens calls correct endpoint", async () => {
+test("get_uu_user_generated_tokens calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = access_tokensModule.handlers.get_users_user_id_user_generated_tokens;
-  assert.ok(handler, "Handler get_users_user_id_user_generated_tokens should be defined");
+  const handler = access_tokensModule.handlers.get_uu_user_generated_tokens;
+  assert.ok(handler, "Handler get_uu_user_generated_tokens should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "per_page": 123});
 
@@ -23,15 +23,15 @@ test("get_users_user_id_user_generated_tokens calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_tokens_id calls correct endpoint", async () => {
+test("get_uu_tokens_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = access_tokensModule.handlers.get_users_user_id_tokens_id;
-  assert.ok(handler, "Handler get_users_user_id_tokens_id should be defined");
+  const handler = access_tokensModule.handlers.get_uu_tokens_id;
+  assert.ok(handler, "Handler get_uu_tokens_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id"});
 
@@ -41,15 +41,15 @@ test("get_users_user_id_tokens_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_users_user_id_tokens calls correct endpoint", async () => {
+test("post_uu_tokens calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = access_tokensModule.handlers.post_users_user_id_tokens;
-  assert.ok(handler, "Handler post_users_user_id_tokens should be defined");
+  const handler = access_tokensModule.handlers.post_uu_tokens;
+  assert.ok(handler, "Handler post_uu_tokens should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "token[purpose]": "test_val"});
 
@@ -59,15 +59,15 @@ test("post_users_user_id_tokens calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_user_id_tokens_id calls correct endpoint", async () => {
+test("put_uu_tokens_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = access_tokensModule.handlers.put_users_user_id_tokens_id;
-  assert.ok(handler, "Handler put_users_user_id_tokens_id should be defined");
+  const handler = access_tokensModule.handlers.put_uu_tokens_id;
+  assert.ok(handler, "Handler put_uu_tokens_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id", "token[purpose]": "test_val"});
 
@@ -77,15 +77,15 @@ test("put_users_user_id_tokens_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_user_id_tokens_id calls correct endpoint", async () => {
+test("delete_uu_tokens_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = access_tokensModule.handlers.delete_users_user_id_tokens_id;
-  assert.ok(handler, "Handler delete_users_user_id_tokens_id should be defined");
+  const handler = access_tokensModule.handlers.delete_uu_tokens_id;
+  assert.ok(handler, "Handler delete_uu_tokens_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id"});
 

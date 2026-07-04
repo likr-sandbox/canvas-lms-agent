@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const pagesModule = require("../tools/pages");
 
-test("get_courses_course_id_front_page calls correct endpoint", async () => {
+test("get_cc_front_page calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_courses_course_id_front_page;
-  assert.ok(handler, "Handler get_courses_course_id_front_page should be defined");
+  const handler = pagesModule.handlers.get_cc_front_page;
+  assert.ok(handler, "Handler get_cc_front_page should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_front_page calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_front_page calls correct endpoint", async () => {
+test("get_gg_front_page calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_groups_group_id_front_page;
-  assert.ok(handler, "Handler get_groups_group_id_front_page should be defined");
+  const handler = pagesModule.handlers.get_gg_front_page;
+  assert.ok(handler, "Handler get_gg_front_page should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -41,15 +41,15 @@ test("get_groups_group_id_front_page calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_pages_url_or_id_duplicate calls correct endpoint", async () => {
+test("post_ccpu_duplicate calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.post_courses_course_id_pages_url_or_id_duplicate;
-  assert.ok(handler, "Handler post_courses_course_id_pages_url_or_id_duplicate should be defined");
+  const handler = pagesModule.handlers.post_ccpu_duplicate;
+  assert.ok(handler, "Handler post_ccpu_duplicate should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "url_or_id": "test_url_or_id"});
 
@@ -59,15 +59,15 @@ test("post_courses_course_id_pages_url_or_id_duplicate calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_front_page calls correct endpoint", async () => {
+test("put_cc_front_page calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.put_courses_course_id_front_page;
-  assert.ok(handler, "Handler put_courses_course_id_front_page should be defined");
+  const handler = pagesModule.handlers.put_cc_front_page;
+  assert.ok(handler, "Handler put_cc_front_page should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -77,15 +77,15 @@ test("put_courses_course_id_front_page calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_front_page calls correct endpoint", async () => {
+test("put_gg_front_page calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.put_groups_group_id_front_page;
-  assert.ok(handler, "Handler put_groups_group_id_front_page should be defined");
+  const handler = pagesModule.handlers.put_gg_front_page;
+  assert.ok(handler, "Handler put_gg_front_page should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "wiki_page[title]": "test_val"});
 
@@ -95,15 +95,15 @@ test("put_groups_group_id_front_page calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_pages calls correct endpoint", async () => {
+test("get_cc_pages calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_courses_course_id_pages;
-  assert.ok(handler, "Handler get_courses_course_id_pages should be defined");
+  const handler = pagesModule.handlers.get_cc_pages;
+  assert.ok(handler, "Handler get_cc_pages should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -113,15 +113,15 @@ test("get_courses_course_id_pages calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_pages calls correct endpoint", async () => {
+test("get_gg_pages calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_groups_group_id_pages;
-  assert.ok(handler, "Handler get_groups_group_id_pages should be defined");
+  const handler = pagesModule.handlers.get_gg_pages;
+  assert.ok(handler, "Handler get_gg_pages should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "sort": "test_val"});
 
@@ -131,15 +131,15 @@ test("get_groups_group_id_pages calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_pages calls correct endpoint", async () => {
+test("post_cc_pages calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.post_courses_course_id_pages;
-  assert.ok(handler, "Handler post_courses_course_id_pages should be defined");
+  const handler = pagesModule.handlers.post_cc_pages;
+  assert.ok(handler, "Handler post_cc_pages should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -149,15 +149,15 @@ test("post_courses_course_id_pages calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_pages calls correct endpoint", async () => {
+test("post_gg_pages calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.post_groups_group_id_pages;
-  assert.ok(handler, "Handler post_groups_group_id_pages should be defined");
+  const handler = pagesModule.handlers.post_gg_pages;
+  assert.ok(handler, "Handler post_gg_pages should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "wiki_page[title]": "test_val"});
 
@@ -167,15 +167,15 @@ test("post_groups_group_id_pages calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_pages_url_or_id calls correct endpoint", async () => {
+test("get_cc_pages_url_or_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_courses_course_id_pages_url_or_id;
-  assert.ok(handler, "Handler get_courses_course_id_pages_url_or_id should be defined");
+  const handler = pagesModule.handlers.get_cc_pages_url_or_id;
+  assert.ok(handler, "Handler get_cc_pages_url_or_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "url_or_id": "test_url_or_id"});
 
@@ -185,15 +185,15 @@ test("get_courses_course_id_pages_url_or_id calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_pages_url_or_id calls correct endpoint", async () => {
+test("get_gg_pages_url_or_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_groups_group_id_pages_url_or_id;
-  assert.ok(handler, "Handler get_groups_group_id_pages_url_or_id should be defined");
+  const handler = pagesModule.handlers.get_gg_pages_url_or_id;
+  assert.ok(handler, "Handler get_gg_pages_url_or_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "url_or_id": "test_url_or_id"});
 
@@ -203,15 +203,15 @@ test("get_groups_group_id_pages_url_or_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_pages_url_or_id calls correct endpoint", async () => {
+test("put_cc_pages_url_or_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.put_courses_course_id_pages_url_or_id;
-  assert.ok(handler, "Handler put_courses_course_id_pages_url_or_id should be defined");
+  const handler = pagesModule.handlers.put_cc_pages_url_or_id;
+  assert.ok(handler, "Handler put_cc_pages_url_or_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "url_or_id": "test_url_or_id"});
 
@@ -221,15 +221,15 @@ test("put_courses_course_id_pages_url_or_id calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_groups_group_id_pages_url_or_id calls correct endpoint", async () => {
+test("put_gg_pages_url_or_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.put_groups_group_id_pages_url_or_id;
-  assert.ok(handler, "Handler put_groups_group_id_pages_url_or_id should be defined");
+  const handler = pagesModule.handlers.put_gg_pages_url_or_id;
+  assert.ok(handler, "Handler put_gg_pages_url_or_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "url_or_id": "test_url_or_id", "wiki_page[title]": "test_val"});
 
@@ -239,15 +239,15 @@ test("put_groups_group_id_pages_url_or_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_pages_url_or_id calls correct endpoint", async () => {
+test("delete_cc_pages_url_or_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.delete_courses_course_id_pages_url_or_id;
-  assert.ok(handler, "Handler delete_courses_course_id_pages_url_or_id should be defined");
+  const handler = pagesModule.handlers.delete_cc_pages_url_or_id;
+  assert.ok(handler, "Handler delete_cc_pages_url_or_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "url_or_id": "test_url_or_id"});
 
@@ -257,15 +257,15 @@ test("delete_courses_course_id_pages_url_or_id calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_groups_group_id_pages_url_or_id calls correct endpoint", async () => {
+test("delete_gg_pages_url_or_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.delete_groups_group_id_pages_url_or_id;
-  assert.ok(handler, "Handler delete_groups_group_id_pages_url_or_id should be defined");
+  const handler = pagesModule.handlers.delete_gg_pages_url_or_id;
+  assert.ok(handler, "Handler delete_gg_pages_url_or_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "url_or_id": "test_url_or_id"});
 
@@ -275,15 +275,15 @@ test("delete_groups_group_id_pages_url_or_id calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_pages_url_or_id_revisions calls correct endpoint", async () => {
+test("get_ccpu_revisions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_courses_course_id_pages_url_or_id_revisions;
-  assert.ok(handler, "Handler get_courses_course_id_pages_url_or_id_revisions should be defined");
+  const handler = pagesModule.handlers.get_ccpu_revisions;
+  assert.ok(handler, "Handler get_ccpu_revisions should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "url_or_id": "test_url_or_id"});
 
@@ -293,15 +293,15 @@ test("get_courses_course_id_pages_url_or_id_revisions calls correct endpoint", a
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_pages_url_or_id_revisions calls correct endpoint", async () => {
+test("get_ggpu_revisions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_groups_group_id_pages_url_or_id_revisions;
-  assert.ok(handler, "Handler get_groups_group_id_pages_url_or_id_revisions should be defined");
+  const handler = pagesModule.handlers.get_ggpu_revisions;
+  assert.ok(handler, "Handler get_ggpu_revisions should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "url_or_id": "test_url_or_id"});
 
@@ -311,15 +311,15 @@ test("get_groups_group_id_pages_url_or_id_revisions calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_pages_url_or_id_revisions_latest calls correct endpoint", async () => {
+test("get_ccpur_latest calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_courses_course_id_pages_url_or_id_revisions_latest;
-  assert.ok(handler, "Handler get_courses_course_id_pages_url_or_id_revisions_latest should be defined");
+  const handler = pagesModule.handlers.get_ccpur_latest;
+  assert.ok(handler, "Handler get_ccpur_latest should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "url_or_id": "test_url_or_id"});
 
@@ -329,15 +329,15 @@ test("get_courses_course_id_pages_url_or_id_revisions_latest calls correct endpo
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_pages_url_or_id_revisions_latest calls correct endpoint", async () => {
+test("get_ggpur_latest calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_groups_group_id_pages_url_or_id_revisions_latest;
-  assert.ok(handler, "Handler get_groups_group_id_pages_url_or_id_revisions_latest should be defined");
+  const handler = pagesModule.handlers.get_ggpur_latest;
+  assert.ok(handler, "Handler get_ggpur_latest should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "url_or_id": "test_url_or_id"});
 
@@ -347,15 +347,15 @@ test("get_groups_group_id_pages_url_or_id_revisions_latest calls correct endpoin
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_pages_url_or_id_revisions_revision_id calls correct endpoint", async () => {
+test("get_ccpu_revisions_revision_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_courses_course_id_pages_url_or_id_revisions_revision_id;
-  assert.ok(handler, "Handler get_courses_course_id_pages_url_or_id_revisions_revision_id should be defined");
+  const handler = pagesModule.handlers.get_ccpu_revisions_revision_id;
+  assert.ok(handler, "Handler get_ccpu_revisions_revision_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "url_or_id": "test_url_or_id", "revision_id": "test_revision_id"});
 
@@ -365,15 +365,15 @@ test("get_courses_course_id_pages_url_or_id_revisions_revision_id calls correct 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_pages_url_or_id_revisions_revision_id calls correct endpoint", async () => {
+test("get_ggpu_revisions_revision_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.get_groups_group_id_pages_url_or_id_revisions_revision_id;
-  assert.ok(handler, "Handler get_groups_group_id_pages_url_or_id_revisions_revision_id should be defined");
+  const handler = pagesModule.handlers.get_ggpu_revisions_revision_id;
+  assert.ok(handler, "Handler get_ggpu_revisions_revision_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "url_or_id": "test_url_or_id", "revision_id": "test_revision_id", "summary": true});
 
@@ -383,15 +383,15 @@ test("get_groups_group_id_pages_url_or_id_revisions_revision_id calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_pages_url_or_id_revisions_revision_id calls correct endpoint", async () => {
+test("post_ccpu_revisions_revision_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.post_courses_course_id_pages_url_or_id_revisions_revision_id;
-  assert.ok(handler, "Handler post_courses_course_id_pages_url_or_id_revisions_revision_id should be defined");
+  const handler = pagesModule.handlers.post_ccpu_revisions_revision_id;
+  assert.ok(handler, "Handler post_ccpu_revisions_revision_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "url_or_id": "test_url_or_id", "revision_id": "test_revision_id"});
 
@@ -401,15 +401,15 @@ test("post_courses_course_id_pages_url_or_id_revisions_revision_id calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_pages_url_or_id_revisions_revision_id calls correct endpoint", async () => {
+test("post_ggpu_revisions_revision_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = pagesModule.handlers.post_groups_group_id_pages_url_or_id_revisions_revision_id;
-  assert.ok(handler, "Handler post_groups_group_id_pages_url_or_id_revisions_revision_id should be defined");
+  const handler = pagesModule.handlers.post_ggpu_revisions_revision_id;
+  assert.ok(handler, "Handler post_ggpu_revisions_revision_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "url_or_id": "test_url_or_id", "revision_id": "test_revision_id"});
 

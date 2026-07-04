@@ -23,15 +23,15 @@ test("post_jwts calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_jwts_refresh calls correct endpoint", async () => {
+test("post_j_refresh calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = jw_tsModule.handlers.post_jwts_refresh;
-  assert.ok(handler, "Handler post_jwts_refresh should be defined");
+  const handler = jw_tsModule.handlers.post_j_refresh;
+  assert.ok(handler, "Handler post_j_refresh should be defined");
 
   const result = await handler(mockClient, {"jwt": "test_val"});
 

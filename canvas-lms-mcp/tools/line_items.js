@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_courses_course_id_line_items",
+    "name": "post_cc_line_items",
     "description": "**Scope:** `url:POST|/api/lti/courses/:course_id/line_items` Create a new Line Item ```bash { \"scoreMaximum\": 100.0, \"label\": \"LineItemLabel1\", \"resourceId\": 1, \"tag\": \"MyTag\", \"resourceLinkId\": \"1\", \"startDateTime\": \"2022-01-31T22:23:11+0000\", \"endDateTime\": \"2022-02-07T22:23:11+0000\", \"https://canvas.instructure.com/lti/submission_type\": { \"type\": \"external_tool\", \"external_tool_url\": \"https://my.launch.url\" } } ``` Returns a [LineItem](#lineitem) object. [Lti::Ims::LineItemsController#upda...",
     "inputSchema": {
       "type": "object",
@@ -55,7 +55,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_line_items_id",
+    "name": "put_cc_line_items_id",
     "description": "**Scope:** `url:PUT|/api/lti/courses/:course_id/line_items/:id` Update new Line Item Returns a [LineItem](#lineitem) object. [Lti::Ims::LineItemsController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/ims/line_items_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -100,7 +100,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_line_items_id",
+    "name": "get_cc_line_items_id",
     "description": "**Scope:** `url:GET|/api/lti/courses/:course_id/line_items/:id` Show existing Line Item Returns a [LineItem](#lineitem) object. [Lti::Ims::LineItemsController#index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/ims/line_items_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -129,7 +129,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_line_items",
+    "name": "get_cc_line_items",
     "description": "**Scope:** `url:GET|/api/lti/courses/:course_id/line_items` List all Line Items for a course Returns a [LineItem](#lineitem) object. [Lti::Ims::LineItemsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/ims/line_items_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -169,7 +169,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_line_items_id",
+    "name": "delete_cc_line_items_id",
     "description": "**Scope:** `url:DELETE|/api/lti/courses/:course_id/line_items/:id` Delete an existing Line Item Returns a [LineItem](#lineitem) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbo...",
     "inputSchema": {
       "type": "object",
@@ -192,19 +192,19 @@ const definitions = [
 ];
 
 const handlers = {
-  post_courses_course_id_line_items: async (client, args) => {
+  post_cc_line_items: async (client, args) => {
     return genericHandler(client, "POST", "/api/lti/courses/:course_id/line_items", args);
   },
-  put_courses_course_id_line_items_id: async (client, args) => {
+  put_cc_line_items_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/lti/courses/:course_id/line_items/:id", args);
   },
-  get_courses_course_id_line_items_id: async (client, args) => {
+  get_cc_line_items_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/lti/courses/:course_id/line_items/:id", args);
   },
-  get_courses_course_id_line_items: async (client, args) => {
+  get_cc_line_items: async (client, args) => {
     return genericHandler(client, "GET", "/api/lti/courses/:course_id/line_items", args);
   },
-  delete_courses_course_id_line_items_id: async (client, args) => {
+  delete_cc_line_items_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/lti/courses/:course_id/line_items/:id", args);
   }
 };

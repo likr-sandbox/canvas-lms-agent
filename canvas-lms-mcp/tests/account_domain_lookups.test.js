@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const account_domain_lookupsModule = require("../tools/account_domain_lookups");
 
-test("get_accounts_search calls correct endpoint", async () => {
+test("get_a_search calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_domain_lookupsModule.handlers.get_accounts_search;
-  assert.ok(handler, "Handler get_accounts_search should be defined");
+  const handler = account_domain_lookupsModule.handlers.get_a_search;
+  assert.ok(handler, "Handler get_a_search should be defined");
 
   const result = await handler(mockClient, {"name": "test_val"});
 

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_media_objects_media_object_id_media_tracks",
+    "name": "get_mom_media_tracks",
     "description": "**Scope:** `url:GET|/api/v1/media_objects/:media_object_id/media_tracks`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_media_attachments_attachment_id_media_tracks",
+    "name": "get_maa_media_tracks",
     "description": "**Scope:** `url:GET|/api/v1/media_attachments/:attachment_id/media_tracks` List the media tracks associated with a media object or attachment ```bash curl https:///api/v1/media_objects//media_tracks?include[]=content -H 'Authorization: Bearer ' ``` ```bash curl https:///api/v1/media_attachments//media_tracks?include[]=content -H 'Authorization: Bearer ' ``` Returns a list of [MediaTrack](#mediatrack) objects. [MediaTracksController#update](https://github.com/instructure/canvas-lms/blob/master...",
     "inputSchema": {
       "type": "object",
@@ -49,7 +49,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_media_objects_media_object_id_media_tracks",
+    "name": "put_mom_media_tracks",
     "description": "**Scope:** `url:PUT|/api/v1/media_objects/:media_object_id/media_tracks`",
     "inputSchema": {
       "type": "object",
@@ -65,7 +65,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_media_attachments_attachment_id_media_tracks",
+    "name": "put_maa_media_tracks",
     "description": "**Scope:** `url:PUT|/api/v1/media_attachments/:attachment_id/media_tracks` Replace the media tracks associated with a media object or attachment with the array of tracks provided in the body. Update will delete any existing tracks not listed, leave untouched any tracks with no content field, and update or create tracks with a content field. ```bash curl -X PUT https:///api/v1/media_objects//media_tracks?include[]=content \\ -H 'Authorization: Bearer ' -d '[{\"locale\": \"en\"}, {\"locale\": \"af\",\"co...",
     "inputSchema": {
       "type": "object",
@@ -98,7 +98,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_media_objects",
+    "name": "get_cc_media_objects",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/media_objects`",
     "inputSchema": {
       "type": "object",
@@ -118,7 +118,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_media_objects",
+    "name": "get_gg_media_objects",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/media_objects`",
     "inputSchema": {
       "type": "object",
@@ -151,7 +151,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_media_attachments",
+    "name": "get_cc_media_attachments",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/media_attachments`",
     "inputSchema": {
       "type": "object",
@@ -171,7 +171,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_media_attachments",
+    "name": "get_gg_media_attachments",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/media_attachments` Returns media objects created by the user making the request. When using the second version, returns media objects associated with the given course. ```bash curl https:///api/v1/media_objects?exclude[]=sources&exclude[]=tracks \\ -H 'Authorization: Bearer ' curl https:///api/v1/courses/17/media_objects?exclude[]=sources&exclude[]=tracks \\ -H 'Authorization: Bearer ' ``` Returns a list of [MediaObject](#mediaobject) objects. [Media...",
     "inputSchema": {
       "type": "object",
@@ -245,34 +245,34 @@ const definitions = [
 ];
 
 const handlers = {
-  get_media_objects_media_object_id_media_tracks: async (client, args) => {
+  get_mom_media_tracks: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/media_objects/:media_object_id/media_tracks", args);
   },
-  get_media_attachments_attachment_id_media_tracks: async (client, args) => {
+  get_maa_media_tracks: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/media_attachments/:attachment_id/media_tracks", args);
   },
-  put_media_objects_media_object_id_media_tracks: async (client, args) => {
+  put_mom_media_tracks: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/media_objects/:media_object_id/media_tracks", args);
   },
-  put_media_attachments_attachment_id_media_tracks: async (client, args) => {
+  put_maa_media_tracks: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/media_attachments/:attachment_id/media_tracks", args);
   },
   get_media_objects: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/media_objects", args);
   },
-  get_courses_course_id_media_objects: async (client, args) => {
+  get_cc_media_objects: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/media_objects", args);
   },
-  get_groups_group_id_media_objects: async (client, args) => {
+  get_gg_media_objects: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/media_objects", args);
   },
   get_media_attachments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/media_attachments", args);
   },
-  get_courses_course_id_media_attachments: async (client, args) => {
+  get_cc_media_attachments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/media_attachments", args);
   },
-  get_groups_group_id_media_attachments: async (client, args) => {
+  get_gg_media_attachments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/media_attachments", args);
   },
   put_media_objects_media_object_id: async (client, args) => {

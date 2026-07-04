@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_quiz_v1_courses_course_id_quizzes_assignment_id_accommodations",
+    "name": "post_qvccqa_accommodations",
     "description": "**Scope:** `url:POST|/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/accommodations` Apply accommodations at the \\quiz level\\ for students in a specific assignment. \\Request Body Format:\\ \\[{ \"user\\_id\": 3, \"extra\\_time\": 60, \"extra\\_attempts\": 1, \"reduce\\_choices\\_enabled\": true }] \\Responses\\ * \\200 OK\\: Accommodations were processed with some successes and failures * \\401 Unauthorized\\: User does not have permission to update accommodations * \\404 Not Found\\: The course or assignmen...",
     "inputSchema": {
       "type": "object",
@@ -43,7 +43,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_quiz_v1_courses_course_id_accommodations",
+    "name": "post_qvcc_accommodations",
     "description": "**Scope:** `url:POST|/api/quiz/v1/courses/:course_id/accommodations` Apply accommodations at the \\course level\\ for students enrolled in a given course. \\Request Body Format:\\ \\[{ \"user\\_id\": 3, \"extra\\_time\": 60, \"apply\\_to\\_in\\_progress\\_quiz\\_sessions\": true, \"reduce\\_choices\\_enabled\": true }] \\Responses\\ * \\200 OK\\: Accommodations were processed with some successes and failures * \\401 Unauthorized\\: User does not have permission to update accommodations * \\404 Not Found\\: The course was ...",
     "inputSchema": {
       "type": "object",
@@ -78,10 +78,10 @@ const definitions = [
 ];
 
 const handlers = {
-  post_quiz_v1_courses_course_id_quizzes_assignment_id_accommodations: async (client, args) => {
+  post_qvccqa_accommodations: async (client, args) => {
     return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/accommodations", args);
   },
-  post_quiz_v1_courses_course_id_accommodations: async (client, args) => {
+  post_qvcc_accommodations: async (client, args) => {
     return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/accommodations", args);
   }
 };

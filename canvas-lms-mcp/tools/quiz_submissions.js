@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_submissions",
+    "name": "get_ccqq_submissions",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/submissions` Get a list of all submissions for this quiz. Users who can view or manage grades for a course will have submissions from multiple users returned. A user who can only submit will have only their own submissions returned. When a user has an in-progress submission, only that submission is returned. When there isn't an in-progress quiz\\_submission, all completed submissions, including previous attempts, are returned. \\20...",
     "inputSchema": {
       "type": "object",
@@ -34,7 +34,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_submission",
+    "name": "get_ccqq_submission",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/submission` Get the submission for this quiz for the current user. \\200 OK\\ response code is returned if the request was successful. ```js { \"quiz_submissions\": [QuizSubmission] } ``` [Quizzes::QuizSubmissionsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_submissions_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -63,7 +63,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_submissions_id",
+    "name": "get_ccqq_submissions_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id` Get a single quiz submission. \\200 OK\\ response code is returned if the request was successful. ```js { \"quiz_submissions\": [QuizSubmission] } ``` [Quizzes::QuizSubmissionsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_submissions_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -97,7 +97,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_quizzes_quiz_id_submissions",
+    "name": "post_ccqq_submissions",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:quiz_id/submissions` Start taking a Quiz by creating a QuizSubmission which you can use to answer questions and submit your answers. \\Responses\\ * \\200 OK\\ if the request was successful * \\400 Bad Request\\ if the quiz is locked * \\403 Forbidden\\ if an invalid access code is specified * \\403 Forbidden\\ if the Quiz's IP filter restriction does not pass * \\409 Conflict\\ if a QuizSubmission already exists for this user and quiz ```js { \"qui...",
     "inputSchema": {
       "type": "object",
@@ -126,7 +126,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_quizzes_quiz_id_submissions_id",
+    "name": "put_ccqq_submissions_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id` Update the amount of points a student has scored for questions they've answered, provide comments for the student about their answer(s), or simply fudge the total score by a specific amount of points. \\Responses\\ * \\200 OK\\ if the request was successful * \\403 Forbidden\\ if you are not a teacher in this course * \\400 Bad Request\\ if the attempt parameter is missing or invalid * \\400 Bad Request\\ if the specified ...",
     "inputSchema": {
       "type": "object",
@@ -165,7 +165,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_quizzes_quiz_id_submissions_id_complete",
+    "name": "post_ccqqsi_complete",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/complete` Complete the quiz submission by marking it as complete and grading it. When the quiz submission has been marked as complete, no further modifications will be allowed. \\Responses\\ * \\200 OK\\ if the request was successful * \\403 Forbidden\\ if an invalid access code is specified * \\403 Forbidden\\ if the Quiz's IP filter restriction does not pass * \\403 Forbidden\\ if an invalid token is specified * \\400 Bad...",
     "inputSchema": {
       "type": "object",
@@ -205,7 +205,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_submissions_id_time",
+    "name": "get_ccqqsi_time",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/time` Get the current timing data for the quiz attempt, both the end\\_at timestamp and the time\\_left parameter. \\Responses\\ * \\200 OK\\ if the request was successful ```js { \"end_at\": [DateTime], \"time_left\": [Integer] } ``` **Parameter synopsis** ``` { \"quiz_submissions\": [{ \"fudge_points\": null, // null for no change, or a signed decimal \"questions\": { \"QUESTION_ID\": { \"score\": null, // null for no change, or an...",
     "inputSchema": {
       "type": "object",
@@ -237,25 +237,25 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_quizzes_quiz_id_submissions: async (client, args) => {
+  get_ccqq_submissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions", args);
   },
-  get_courses_course_id_quizzes_quiz_id_submission: async (client, args) => {
+  get_ccqq_submission: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submission", args);
   },
-  get_courses_course_id_quizzes_quiz_id_submissions_id: async (client, args) => {
+  get_ccqq_submissions_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id", args);
   },
-  post_courses_course_id_quizzes_quiz_id_submissions: async (client, args) => {
+  post_ccqq_submissions: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions", args);
   },
-  put_courses_course_id_quizzes_quiz_id_submissions_id: async (client, args) => {
+  put_ccqq_submissions_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id", args);
   },
-  post_courses_course_id_quizzes_quiz_id_submissions_id_complete: async (client, args) => {
+  post_ccqqsi_complete: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/complete", args);
   },
-  get_courses_course_id_quizzes_quiz_id_submissions_id_time: async (client, args) => {
+  get_ccqqsi_time: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/time", args);
   }
 };

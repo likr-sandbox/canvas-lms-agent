@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const poll_choicesModule = require("../tools/poll_choices");
 
-test("get_polls_poll_id_poll_choices calls correct endpoint", async () => {
+test("get_pp_poll_choices calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = poll_choicesModule.handlers.get_polls_poll_id_poll_choices;
-  assert.ok(handler, "Handler get_polls_poll_id_poll_choices should be defined");
+  const handler = poll_choicesModule.handlers.get_pp_poll_choices;
+  assert.ok(handler, "Handler get_pp_poll_choices should be defined");
 
   const result = await handler(mockClient, {"poll_id": "test_poll_id"});
 
@@ -23,15 +23,15 @@ test("get_polls_poll_id_poll_choices calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_polls_poll_id_poll_choices_id calls correct endpoint", async () => {
+test("get_pp_poll_choices_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = poll_choicesModule.handlers.get_polls_poll_id_poll_choices_id;
-  assert.ok(handler, "Handler get_polls_poll_id_poll_choices_id should be defined");
+  const handler = poll_choicesModule.handlers.get_pp_poll_choices_id;
+  assert.ok(handler, "Handler get_pp_poll_choices_id should be defined");
 
   const result = await handler(mockClient, {"poll_id": "test_poll_id", "id": "test_id"});
 
@@ -41,15 +41,15 @@ test("get_polls_poll_id_poll_choices_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_polls_poll_id_poll_choices calls correct endpoint", async () => {
+test("post_pp_poll_choices calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = poll_choicesModule.handlers.post_polls_poll_id_poll_choices;
-  assert.ok(handler, "Handler post_polls_poll_id_poll_choices should be defined");
+  const handler = poll_choicesModule.handlers.post_pp_poll_choices;
+  assert.ok(handler, "Handler post_pp_poll_choices should be defined");
 
   const result = await handler(mockClient, {"poll_id": "test_poll_id", "poll_choices[][text]": "test_val"});
 
@@ -59,15 +59,15 @@ test("post_polls_poll_id_poll_choices calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_polls_poll_id_poll_choices_id calls correct endpoint", async () => {
+test("put_pp_poll_choices_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = poll_choicesModule.handlers.put_polls_poll_id_poll_choices_id;
-  assert.ok(handler, "Handler put_polls_poll_id_poll_choices_id should be defined");
+  const handler = poll_choicesModule.handlers.put_pp_poll_choices_id;
+  assert.ok(handler, "Handler put_pp_poll_choices_id should be defined");
 
   const result = await handler(mockClient, {"poll_id": "test_poll_id", "id": "test_id", "poll_choices[][text]": "test_val"});
 
@@ -77,15 +77,15 @@ test("put_polls_poll_id_poll_choices_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_polls_poll_id_poll_choices_id calls correct endpoint", async () => {
+test("delete_pp_poll_choices_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = poll_choicesModule.handlers.delete_polls_poll_id_poll_choices_id;
-  assert.ok(handler, "Handler delete_polls_poll_id_poll_choices_id should be defined");
+  const handler = poll_choicesModule.handlers.delete_pp_poll_choices_id;
+  assert.ok(handler, "Handler delete_pp_poll_choices_id should be defined");
 
   const result = await handler(mockClient, {"poll_id": "test_poll_id", "id": "test_id"});
 

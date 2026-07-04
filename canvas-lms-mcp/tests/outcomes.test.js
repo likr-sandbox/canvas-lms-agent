@@ -41,15 +41,15 @@ test("put_outcomes_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_outcome_alignments calls correct endpoint", async () => {
+test("get_cc_outcome_alignments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = outcomesModule.handlers.get_courses_course_id_outcome_alignments;
-  assert.ok(handler, "Handler get_courses_course_id_outcome_alignments should be defined");
+  const handler = outcomesModule.handlers.get_cc_outcome_alignments;
+  assert.ok(handler, "Handler get_cc_outcome_alignments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "student_id": 123});
 

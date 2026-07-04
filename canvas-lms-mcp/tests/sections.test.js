@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const sectionsModule = require("../tools/sections");
 
-test("get_courses_course_id_sections calls correct endpoint", async () => {
+test("get_cc_sections calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sectionsModule.handlers.get_courses_course_id_sections;
-  assert.ok(handler, "Handler get_courses_course_id_sections should be defined");
+  const handler = sectionsModule.handlers.get_cc_sections;
+  assert.ok(handler, "Handler get_cc_sections should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "include[]": "test_val"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_sections calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_sections calls correct endpoint", async () => {
+test("post_cc_sections calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sectionsModule.handlers.post_courses_course_id_sections;
-  assert.ok(handler, "Handler post_courses_course_id_sections should be defined");
+  const handler = sectionsModule.handlers.post_cc_sections;
+  assert.ok(handler, "Handler post_cc_sections should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "course_section[name]": "test_val"});
 
@@ -41,15 +41,15 @@ test("post_courses_course_id_sections calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_sections_id_crosslist_new_course_id calls correct endpoint", async () => {
+test("post_si_crosslist_new_course_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sectionsModule.handlers.post_sections_id_crosslist_new_course_id;
-  assert.ok(handler, "Handler post_sections_id_crosslist_new_course_id should be defined");
+  const handler = sectionsModule.handlers.post_si_crosslist_new_course_id;
+  assert.ok(handler, "Handler post_si_crosslist_new_course_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "new_course_id": "test_new_course_id", "override_sis_stickiness": true});
 
@@ -59,15 +59,15 @@ test("post_sections_id_crosslist_new_course_id calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_sections_id_crosslist calls correct endpoint", async () => {
+test("delete_si_crosslist calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sectionsModule.handlers.delete_sections_id_crosslist;
-  assert.ok(handler, "Handler delete_sections_id_crosslist should be defined");
+  const handler = sectionsModule.handlers.delete_si_crosslist;
+  assert.ok(handler, "Handler delete_si_crosslist should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "override_sis_stickiness": true});
 
@@ -95,15 +95,15 @@ test("put_sections_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_sections_id calls correct endpoint", async () => {
+test("get_cc_sections_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sectionsModule.handlers.get_courses_course_id_sections_id;
-  assert.ok(handler, "Handler get_courses_course_id_sections_id should be defined");
+  const handler = sectionsModule.handlers.get_cc_sections_id;
+  assert.ok(handler, "Handler get_cc_sections_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -149,15 +149,15 @@ test("delete_sections_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_sections_id_users calls correct endpoint", async () => {
+test("get_si_users calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sectionsModule.handlers.get_sections_id_users;
-  assert.ok(handler, "Handler get_sections_id_users should be defined");
+  const handler = sectionsModule.handlers.get_si_users;
+  assert.ok(handler, "Handler get_si_users should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "search_term": "test_val"});
 

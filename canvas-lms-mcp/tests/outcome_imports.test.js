@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const outcome_importsModule = require("../tools/outcome_imports");
 
-test("post_accounts_account_id_outcome_imports_group_learning_outcome_group_id calls correct endpoint", async () => {
+test("post_aaoi_group_learning_outcome_group_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = outcome_importsModule.handlers.post_accounts_account_id_outcome_imports_group_learning_outcome_group_id;
-  assert.ok(handler, "Handler post_accounts_account_id_outcome_imports_group_learning_outcome_group_id should be defined");
+  const handler = outcome_importsModule.handlers.post_aaoi_group_learning_outcome_group_id;
+  assert.ok(handler, "Handler post_aaoi_group_learning_outcome_group_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "learning_outcome_group_id": "test_learning_outcome_group_id"});
 
@@ -23,15 +23,15 @@ test("post_accounts_account_id_outcome_imports_group_learning_outcome_group_id c
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_outcome_imports_group_learning_outcome_group_id calls correct endpoint", async () => {
+test("post_ccoi_group_learning_outcome_group_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = outcome_importsModule.handlers.post_courses_course_id_outcome_imports_group_learning_outcome_group_id;
-  assert.ok(handler, "Handler post_courses_course_id_outcome_imports_group_learning_outcome_group_id should be defined");
+  const handler = outcome_importsModule.handlers.post_ccoi_group_learning_outcome_group_id;
+  assert.ok(handler, "Handler post_ccoi_group_learning_outcome_group_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "learning_outcome_group_id": "test_learning_outcome_group_id", "import_type": "test_val"});
 
@@ -41,15 +41,15 @@ test("post_courses_course_id_outcome_imports_group_learning_outcome_group_id cal
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_outcome_imports_id calls correct endpoint", async () => {
+test("get_aa_outcome_imports_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = outcome_importsModule.handlers.get_accounts_account_id_outcome_imports_id;
-  assert.ok(handler, "Handler get_accounts_account_id_outcome_imports_id should be defined");
+  const handler = outcome_importsModule.handlers.get_aa_outcome_imports_id;
+  assert.ok(handler, "Handler get_aa_outcome_imports_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -59,15 +59,15 @@ test("get_accounts_account_id_outcome_imports_id calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_outcome_imports_id calls correct endpoint", async () => {
+test("get_cc_outcome_imports_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = outcome_importsModule.handlers.get_courses_course_id_outcome_imports_id;
-  assert.ok(handler, "Handler get_courses_course_id_outcome_imports_id should be defined");
+  const handler = outcome_importsModule.handlers.get_cc_outcome_imports_id;
+  assert.ok(handler, "Handler get_cc_outcome_imports_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -77,15 +77,15 @@ test("get_courses_course_id_outcome_imports_id calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_outcome_imports_id_created_group_ids calls correct endpoint", async () => {
+test("get_aaoii_created_group_ids calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = outcome_importsModule.handlers.get_accounts_account_id_outcome_imports_id_created_group_ids;
-  assert.ok(handler, "Handler get_accounts_account_id_outcome_imports_id_created_group_ids should be defined");
+  const handler = outcome_importsModule.handlers.get_aaoii_created_group_ids;
+  assert.ok(handler, "Handler get_aaoii_created_group_ids should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -95,15 +95,15 @@ test("get_accounts_account_id_outcome_imports_id_created_group_ids calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_outcome_imports_id_created_group_ids calls correct endpoint", async () => {
+test("get_ccoii_created_group_ids calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = outcome_importsModule.handlers.get_courses_course_id_outcome_imports_id_created_group_ids;
-  assert.ok(handler, "Handler get_courses_course_id_outcome_imports_id_created_group_ids should be defined");
+  const handler = outcome_importsModule.handlers.get_ccoii_created_group_ids;
+  assert.ok(handler, "Handler get_ccoii_created_group_ids should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 

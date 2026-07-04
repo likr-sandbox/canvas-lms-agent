@@ -66,7 +66,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_account_calendars",
+    "name": "put_aa_account_calendars",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/account_calendars` Set visibility and/or auto\\_subscribe on many calendars simultaneously. Requires the `manage_account_calendar_visibility` permission on the account. Accepts a JSON array of objects containing 2-3 keys each: `id` (the account's id, required), `visible` (a boolean indicating whether the account calendar is visible), and `auto_subscribe` (a boolean indicating whether users should see these events in their calendar without manual...",
     "inputSchema": {
       "type": "object",
@@ -82,7 +82,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_account_calendars",
+    "name": "get_aa_account_calendars",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/account_calendars` Returns a paginated list of account calendars for the provided account and its first level of sub-accounts. Includes hidden calendars in the response. Requires the `manage_account_calendar_visibility` permission. ```bash curl https:///api/v1/accounts/1/account_calendars \\ -H 'Authorization: Bearer ' ``` Returns a list of [AccountCalendar](#accountcalendar) objects. [AccountCalendarsApiController#visible\\_calendars\\_count](htt...",
     "inputSchema": {
       "type": "object",
@@ -110,7 +110,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_visible_calendars_count",
+    "name": "get_aa_visible_calendars_count",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/visible_calendars_count` Returns the number of visible account calendars. ```bash curl https:///api/v1/accounts/1/visible_calendars_count \\ -H 'Authorization: Bearer ' ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents c...",
     "inputSchema": {
       "type": "object",
@@ -141,13 +141,13 @@ const handlers = {
   put_account_calendars_account_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/account_calendars/:account_id", args);
   },
-  put_accounts_account_id_account_calendars: async (client, args) => {
+  put_aa_account_calendars: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/account_calendars", args);
   },
-  get_accounts_account_id_account_calendars: async (client, args) => {
+  get_aa_account_calendars: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/account_calendars", args);
   },
-  get_accounts_account_id_visible_calendars_count: async (client, args) => {
+  get_aa_visible_calendars_count: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/visible_calendars_count", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_sis_accounts_account_id_assignments",
+    "name": "get_saa_assignments",
     "description": "**Scope:** `url:GET|/api/sis/accounts/:account_id/assignments`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sis_courses_course_id_assignments",
+    "name": "get_scc_assignments",
     "description": "**Scope:** `url:GET|/api/sis/courses/:course_id/assignments` Retrieve a list of published assignments flagged as \"post\\_to\\_sis\". See the Assignments API for more details on assignments. Assignment group and section information are included for convenience. Each section includes course information for the origin course and the cross-listed course, if applicable. The `origin_course` is the course to which the section belongs or the course from which the section was cross-listed. Generally, the...",
     "inputSchema": {
       "type": "object",
@@ -61,7 +61,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_sis_courses_course_id_disable_post_to_sis",
+    "name": "put_scc_disable_post_to_sis",
     "description": "**Scope:** `url:PUT|/api/sis/courses/:course_id/disable_post_to_sis` Disable all assignments flagged as \"post\\_to\\_sis\", with the option of making it specific to a grading period, in a course. On success, the response will be 204 No Content with an empty body. On failure, the response will be 400 Bad Request with a body of a specific message. For disabling assignments in a specific grading period ```bash curl 'https:///api/sis/courses//disable_post_to_sis' \\ -X PUT \\ -H \"Authorization: Bearer...",
     "inputSchema": {
       "type": "object",
@@ -83,13 +83,13 @@ const definitions = [
 ];
 
 const handlers = {
-  get_sis_accounts_account_id_assignments: async (client, args) => {
+  get_saa_assignments: async (client, args) => {
     return genericHandler(client, "GET", "/api/sis/accounts/:account_id/assignments", args);
   },
-  get_sis_courses_course_id_assignments: async (client, args) => {
+  get_scc_assignments: async (client, args) => {
     return genericHandler(client, "GET", "/api/sis/courses/:course_id/assignments", args);
   },
-  put_sis_courses_course_id_disable_post_to_sis: async (client, args) => {
+  put_scc_disable_post_to_sis: async (client, args) => {
     return genericHandler(client, "PUT", "/api/sis/courses/:course_id/disable_post_to_sis", args);
   }
 };

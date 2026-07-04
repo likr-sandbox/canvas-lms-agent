@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_sis_imports_id_errors",
+    "name": "get_aasii_errors",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/sis_imports/:id/errors`",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_sis_import_errors",
+    "name": "get_aa_sis_import_errors",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/sis_import_errors` Returns the list of SIS import errors for an account or a SIS import. Import errors are only stored for 30 days. Example: curl 'https\\://\\/api/v1/accounts/\\/sis\\_imports/\\/sis\\_import\\_errors'\\ -H \"Authorization: Bearer \\\" Example: curl 'https\\://\\/api/v1/accounts/\\/sis\\_import\\_errors'\\ -H \"Authorization: Bearer \\\" Returns a list of [SisImportError](#sisimporterror) objects. *** This documentation is generated directly from ...",
     "inputSchema": {
       "type": "object",
@@ -56,10 +56,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_sis_imports_id_errors: async (client, args) => {
+  get_aasii_errors: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sis_imports/:id/errors", args);
   },
-  get_accounts_account_id_sis_import_errors: async (client, args) => {
+  get_aa_sis_import_errors: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sis_import_errors", args);
   }
 };

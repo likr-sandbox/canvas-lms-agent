@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_names_and_roles",
+    "name": "get_cc_names_and_roles",
     "description": "**Scope:** `url:GET|/api/lti/courses/:course_id/names_and_roles` Return active NamesAndRoleMemberships in the given course. Returns a [NamesAndRoleMemberships](#namesandrolememberships) object. [Lti::Ims::NamesAndRolesController#group\\_index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/ims/names_and_roles_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -37,7 +37,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_names_and_roles",
+    "name": "get_gg_names_and_roles",
     "description": "**Scope:** `url:GET|/api/lti/groups/:group_id/names_and_roles` Return active NamesAndRoleMemberships in the given group. Returns a [NamesAndRoleMemberships](#namesandrolememberships) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason ...",
     "inputSchema": {
       "type": "object",
@@ -71,10 +71,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_names_and_roles: async (client, args) => {
+  get_cc_names_and_roles: async (client, args) => {
     return genericHandler(client, "GET", "/api/lti/courses/:course_id/names_and_roles", args);
   },
-  get_groups_group_id_names_and_roles: async (client, args) => {
+  get_gg_names_and_roles: async (client, args) => {
     return genericHandler(client, "GET", "/api/lti/groups/:group_id/names_and_roles", args);
   }
 };

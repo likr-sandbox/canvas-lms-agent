@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const communication_channelsModule = require("../tools/communication_channels");
 
-test("get_users_user_id_communication_channels calls correct endpoint", async () => {
+test("get_uu_communication_channels calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = communication_channelsModule.handlers.get_users_user_id_communication_channels;
-  assert.ok(handler, "Handler get_users_user_id_communication_channels should be defined");
+  const handler = communication_channelsModule.handlers.get_uu_communication_channels;
+  assert.ok(handler, "Handler get_uu_communication_channels should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -23,15 +23,15 @@ test("get_users_user_id_communication_channels calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_users_user_id_communication_channels calls correct endpoint", async () => {
+test("post_uu_communication_channels calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = communication_channelsModule.handlers.post_users_user_id_communication_channels;
-  assert.ok(handler, "Handler post_users_user_id_communication_channels should be defined");
+  const handler = communication_channelsModule.handlers.post_uu_communication_channels;
+  assert.ok(handler, "Handler post_uu_communication_channels should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "communication_channel[address]": "test_val"});
 
@@ -41,15 +41,15 @@ test("post_users_user_id_communication_channels calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_user_id_communication_channels_id calls correct endpoint", async () => {
+test("delete_uu_communication_channels_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = communication_channelsModule.handlers.delete_users_user_id_communication_channels_id;
-  assert.ok(handler, "Handler delete_users_user_id_communication_channels_id should be defined");
+  const handler = communication_channelsModule.handlers.delete_uu_communication_channels_id;
+  assert.ok(handler, "Handler delete_uu_communication_channels_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id"});
 
@@ -59,15 +59,15 @@ test("delete_users_user_id_communication_channels_id calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_user_id_communication_channels_type_address calls correct endpoint", async () => {
+test("delete_uu_communication_channels_type_address calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = communication_channelsModule.handlers.delete_users_user_id_communication_channels_type_address;
-  assert.ok(handler, "Handler delete_users_user_id_communication_channels_type_address should be defined");
+  const handler = communication_channelsModule.handlers.delete_uu_communication_channels_type_address;
+  assert.ok(handler, "Handler delete_uu_communication_channels_type_address should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "type": "test_type", "address": "test_address"});
 
@@ -77,15 +77,15 @@ test("delete_users_user_id_communication_channels_type_address calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_self_communication_channels_push calls correct endpoint", async () => {
+test("delete_uscc_push calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = communication_channelsModule.handlers.delete_users_self_communication_channels_push;
-  assert.ok(handler, "Handler delete_users_self_communication_channels_push should be defined");
+  const handler = communication_channelsModule.handlers.delete_uscc_push;
+  assert.ok(handler, "Handler delete_uscc_push should be defined");
 
   const result = await handler(mockClient, {});
 

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_ip_filters",
+    "name": "get_ccqq_ip_filters",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/ip_filters` Get a list of available IP filters for this Quiz. \\200 OK\\ response code is returned if the request was successful. ```js { \"quiz_ip_filters\": [QuizIPFilter] } ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both hum...",
     "inputSchema": {
       "type": "object",
@@ -32,7 +32,7 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_quizzes_quiz_id_ip_filters: async (client, args) => {
+  get_ccqq_ip_filters: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/ip_filters", args);
   }
 };

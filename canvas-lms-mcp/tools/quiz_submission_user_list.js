@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_courses_course_id_quizzes_id_submission_users_message",
+    "name": "post_ccqisu_message",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:id/submission_users/message` { \"body\": { \"type\": \"string\", \"description\": \"message body of the conversation to be created\", \"example\": \"Please take the quiz.\" }, \"recipients\": { \"type\": \"string\", \"description\": \"Who to send the message to. May be either 'submitted' or 'unsubmitted'\", \"example\": \"submitted\" }, \"subject\": { \"type\": \"string\", \"description\": \"Subject of the new Conversation created\", \"example\": \"ATTN: Quiz 101 Students\" } }...",
     "inputSchema": {
       "type": "object",
@@ -32,7 +32,7 @@ const definitions = [
 ];
 
 const handlers = {
-  post_courses_course_id_quizzes_id_submission_users_message: async (client, args) => {
+  post_ccqisu_message: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:id/submission_users/message", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_audit_course_courses_course_id",
+    "name": "get_ac_courses_course_id",
     "description": "**Scope:** `url:GET|/api/v1/audit/course/courses/:course_id` List course change events for a given course. Returns a list of [CourseEvent](#courseevent) objects. [CourseAuditApiController#for\\_account](https://github.com/instructure/canvas-lms/blob/master/app/controllers/course_audit_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -33,7 +33,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_audit_course_accounts_account_id",
+    "name": "get_ac_accounts_account_id",
     "description": "**Scope:** `url:GET|/api/v1/audit/course/accounts/:account_id` List course change events for a given account. Returns a list of [CourseEvent](#courseevent) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content eff...",
     "inputSchema": {
       "type": "object",
@@ -63,10 +63,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_audit_course_courses_course_id: async (client, args) => {
+  get_ac_courses_course_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/audit/course/courses/:course_id", args);
   },
-  get_audit_course_accounts_account_id: async (client, args) => {
+  get_ac_accounts_account_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/audit/course/accounts/:account_id", args);
   }
 };

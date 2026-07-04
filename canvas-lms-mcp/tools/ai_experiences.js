@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_ai_experiences",
+    "name": "get_cc_ai_experiences",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/ai_experiences` Retrieve the paginated list of AI experiences for a course Returns a list of [AiExperience](#aiexperience) objects. [AiExperiencesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_experiences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -29,7 +29,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_ai_experiences_id",
+    "name": "get_cc_ai_experiences_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/ai_experiences/:id` Retrieve an AI experience by ID Returns an [AiExperience](#aiexperience) object. [AiExperiencesController#new](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_experiences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -54,7 +54,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_ai_experiences_new",
+    "name": "get_ccae_new",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/ai_experiences/new` Display the form for creating a new AI experience [AiExperiencesController#edit](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_experiences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -74,7 +74,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_ai_experiences_id_edit",
+    "name": "get_ccaei_edit",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/ai_experiences/:id/edit` Display the form for editing an existing AI experience [AiExperiencesController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_experiences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -99,7 +99,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_ai_experiences",
+    "name": "post_cc_ai_experiences",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/ai_experiences` Create a new AI experience for the specified course Returns an [AiExperience](#aiexperience) object. [AiExperiencesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_experiences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -142,7 +142,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_ai_experiences_id",
+    "name": "put_cc_ai_experiences_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/ai_experiences/:id` Update an existing AI experience Returns an [AiExperience](#aiexperience) object. [AiExperiencesController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_experiences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -189,7 +189,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_ai_experiences_id",
+    "name": "delete_cc_ai_experiences_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/ai_experiences/:id` Delete an AI experience (soft delete - marks as deleted) Returns an [AiExperience](#aiexperience) object. [AiExperiencesController#ai\\_conversations\\_index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_experiences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -210,7 +210,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_ai_experiences_id_ai_conversations",
+    "name": "get_ccaei_ai_conversations",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/ai_experiences/:id/ai_conversations` Retrieve the latest AI conversation for each student in the course for this AI experience. Only available to teachers and course managers. [AiExperiencesController#ai\\_conversation\\_show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_experiences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -235,7 +235,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_ai_experiences_id_ai_conversations_conversation_id",
+    "name": "get_ccaei_ai_conversations_conversation_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/ai_experiences/:id/ai_conversations/:conversation_id` Retrieve a specific student's AI conversation with full message history. Only available to teachers and course managers. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents ...",
     "inputSchema": {
       "type": "object",
@@ -267,31 +267,31 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_ai_experiences: async (client, args) => {
+  get_cc_ai_experiences: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/ai_experiences", args);
   },
-  get_courses_course_id_ai_experiences_id: async (client, args) => {
+  get_cc_ai_experiences_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/ai_experiences/:id", args);
   },
-  get_courses_course_id_ai_experiences_new: async (client, args) => {
+  get_ccae_new: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/ai_experiences/new", args);
   },
-  get_courses_course_id_ai_experiences_id_edit: async (client, args) => {
+  get_ccaei_edit: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/ai_experiences/:id/edit", args);
   },
-  post_courses_course_id_ai_experiences: async (client, args) => {
+  post_cc_ai_experiences: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/ai_experiences", args);
   },
-  put_courses_course_id_ai_experiences_id: async (client, args) => {
+  put_cc_ai_experiences_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/ai_experiences/:id", args);
   },
-  delete_courses_course_id_ai_experiences_id: async (client, args) => {
+  delete_cc_ai_experiences_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/ai_experiences/:id", args);
   },
-  get_courses_course_id_ai_experiences_id_ai_conversations: async (client, args) => {
+  get_ccaei_ai_conversations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/ai_experiences/:id/ai_conversations", args);
   },
-  get_courses_course_id_ai_experiences_id_ai_conversations_conversation_id: async (client, args) => {
+  get_ccaei_ai_conversations_conversation_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/ai_experiences/:id/ai_conversations/:conversation_id", args);
   }
 };

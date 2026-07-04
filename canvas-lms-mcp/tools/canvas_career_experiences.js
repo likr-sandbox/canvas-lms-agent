@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_career_enabled",
+    "name": "get_c_enabled",
     "description": "**Scope:** `url:GET|/api/v1/career/enabled` Returns whether the root account has Canvas Career (Horizon) enabled in at least one subaccount. ```bash curl https:///api/v1/career/enabled \\ -H 'Authorization: Bearer ' ``` ```js {\"enabled\": true} ``` [CareerExperienceController#experience\\_summary](https://github.com/instructure/canvas-lms/blob/master/app/controllers/career_experience_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -18,7 +18,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_career_experience_summary",
+    "name": "get_c_experience_summary",
     "description": "**Scope:** `url:GET|/api/v1/career/experience_summary` Returns the current user's active experience and available experiences they can switch to. ```bash curl https:///api/v1/career/experience_summary \\ -H 'Authorization: Bearer ' ``` Returns an [ExperienceSummary](#experiencesummary) object. [CareerExperienceController#switch\\_experience](https://github.com/instructure/canvas-lms/blob/master/app/controllers/career_experience_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -31,7 +31,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_career_switch_experience",
+    "name": "post_c_switch_experience",
     "description": "**Scope:** `url:POST|/api/v1/career/switch_experience` Switch the current user's active experience to the specified one. ```bash curl -X POST https:///api/v1/career/switch_experience \\ -H 'Authorization: Bearer ' \\ -d 'experience=academic' ``` [CareerExperienceController#switch\\_role](https://github.com/instructure/canvas-lms/blob/master/app/controllers/career_experience_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -47,7 +47,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_career_switch_role",
+    "name": "post_c_switch_role",
     "description": "**Scope:** `url:POST|/api/v1/career/switch_role` Switch the current user's role within the current experience. ```bash curl -X POST https:///api/v1/career/switch_role \\ -H 'Authorization: Bearer ' \\ -d 'role=learner' ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents c...",
     "inputSchema": {
       "type": "object",
@@ -65,16 +65,16 @@ const definitions = [
 ];
 
 const handlers = {
-  get_career_enabled: async (client, args) => {
+  get_c_enabled: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/career/enabled", args);
   },
-  get_career_experience_summary: async (client, args) => {
+  get_c_experience_summary: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/career/experience_summary", args);
   },
-  post_career_switch_experience: async (client, args) => {
+  post_c_switch_experience: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/career/switch_experience", args);
   },
-  post_career_switch_role: async (client, args) => {
+  post_c_switch_role: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/career/switch_role", args);
   }
 };

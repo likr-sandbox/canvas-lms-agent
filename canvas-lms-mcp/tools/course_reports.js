@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_reports_report_type_id",
+    "name": "get_cc_reports_report_type_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/reports/:report_type/:id` Returns the status of a report. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses//reports// ``` Returns a [Report](#report) object. [CourseReportsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/course_reports_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -35,7 +35,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_reports_report_type",
+    "name": "post_cc_reports_report_type",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/reports/:report_type` Generates a report instance for the account. Note that \"report\" in the request must match one of the available report names. Returns a [Report](#report) object. [CourseReportsController#last](https://github.com/instructure/canvas-lms/blob/master/app/controllers/course_reports_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -64,7 +64,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_reports_report_type",
+    "name": "get_cc_reports_report_type",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/reports/:report_type` Returns the status of the last report initiated by the current user. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses//reports/ ``` Returns a [Report](#report) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed s...",
     "inputSchema": {
       "type": "object",
@@ -91,13 +91,13 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_reports_report_type_id: async (client, args) => {
+  get_cc_reports_report_type_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/reports/:report_type/:id", args);
   },
-  post_courses_course_id_reports_report_type: async (client, args) => {
+  post_cc_reports_report_type: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/reports/:report_type", args);
   },
-  get_courses_course_id_reports_report_type: async (client, args) => {
+  get_cc_reports_report_type: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/reports/:report_type", args);
   }
 };

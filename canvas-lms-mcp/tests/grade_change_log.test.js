@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const grade_change_logModule = require("../tools/grade_change_log");
 
-test("get_audit_grade_change_assignments_assignment_id calls correct endpoint", async () => {
+test("get_agc_assignments_assignment_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grade_change_logModule.handlers.get_audit_grade_change_assignments_assignment_id;
-  assert.ok(handler, "Handler get_audit_grade_change_assignments_assignment_id should be defined");
+  const handler = grade_change_logModule.handlers.get_agc_assignments_assignment_id;
+  assert.ok(handler, "Handler get_agc_assignments_assignment_id should be defined");
 
   const result = await handler(mockClient, {"assignment_id": "test_assignment_id", "start_time": "test_val"});
 
@@ -23,15 +23,15 @@ test("get_audit_grade_change_assignments_assignment_id calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_audit_grade_change_courses_course_id calls correct endpoint", async () => {
+test("get_agc_courses_course_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grade_change_logModule.handlers.get_audit_grade_change_courses_course_id;
-  assert.ok(handler, "Handler get_audit_grade_change_courses_course_id should be defined");
+  const handler = grade_change_logModule.handlers.get_agc_courses_course_id;
+  assert.ok(handler, "Handler get_agc_courses_course_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "start_time": "test_val"});
 
@@ -41,15 +41,15 @@ test("get_audit_grade_change_courses_course_id calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_audit_grade_change_students_student_id calls correct endpoint", async () => {
+test("get_agc_students_student_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grade_change_logModule.handlers.get_audit_grade_change_students_student_id;
-  assert.ok(handler, "Handler get_audit_grade_change_students_student_id should be defined");
+  const handler = grade_change_logModule.handlers.get_agc_students_student_id;
+  assert.ok(handler, "Handler get_agc_students_student_id should be defined");
 
   const result = await handler(mockClient, {"student_id": "test_student_id", "start_time": "test_val"});
 
@@ -59,15 +59,15 @@ test("get_audit_grade_change_students_student_id calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_audit_grade_change_graders_grader_id calls correct endpoint", async () => {
+test("get_agc_graders_grader_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grade_change_logModule.handlers.get_audit_grade_change_graders_grader_id;
-  assert.ok(handler, "Handler get_audit_grade_change_graders_grader_id should be defined");
+  const handler = grade_change_logModule.handlers.get_agc_graders_grader_id;
+  assert.ok(handler, "Handler get_agc_graders_grader_id should be defined");
 
   const result = await handler(mockClient, {"grader_id": "test_grader_id", "start_time": "test_val"});
 
@@ -77,15 +77,15 @@ test("get_audit_grade_change_graders_grader_id calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_audit_grade_change calls correct endpoint", async () => {
+test("get_a_grade_change calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grade_change_logModule.handlers.get_audit_grade_change;
-  assert.ok(handler, "Handler get_audit_grade_change should be defined");
+  const handler = grade_change_logModule.handlers.get_a_grade_change;
+  assert.ok(handler, "Handler get_a_grade_change should be defined");
 
   const result = await handler(mockClient, {"course_id": 123});
 

@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const content_sharesModule = require("../tools/content_shares");
 
-test("post_users_user_id_content_shares calls correct endpoint", async () => {
+test("post_uu_content_shares calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_sharesModule.handlers.post_users_user_id_content_shares;
-  assert.ok(handler, "Handler post_users_user_id_content_shares should be defined");
+  const handler = content_sharesModule.handlers.post_uu_content_shares;
+  assert.ok(handler, "Handler post_uu_content_shares should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "receiver_ids": ["test_val"]});
 
@@ -23,15 +23,15 @@ test("post_users_user_id_content_shares calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_shares_sent calls correct endpoint", async () => {
+test("get_uucs_sent calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_sharesModule.handlers.get_users_user_id_content_shares_sent;
-  assert.ok(handler, "Handler get_users_user_id_content_shares_sent should be defined");
+  const handler = content_sharesModule.handlers.get_uucs_sent;
+  assert.ok(handler, "Handler get_uucs_sent should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -41,15 +41,15 @@ test("get_users_user_id_content_shares_sent calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_shares_received calls correct endpoint", async () => {
+test("get_uucs_received calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_sharesModule.handlers.get_users_user_id_content_shares_received;
-  assert.ok(handler, "Handler get_users_user_id_content_shares_received should be defined");
+  const handler = content_sharesModule.handlers.get_uucs_received;
+  assert.ok(handler, "Handler get_uucs_received should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -59,15 +59,15 @@ test("get_users_user_id_content_shares_received calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_shares_unread_count calls correct endpoint", async () => {
+test("get_uucs_unread_count calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_sharesModule.handlers.get_users_user_id_content_shares_unread_count;
-  assert.ok(handler, "Handler get_users_user_id_content_shares_unread_count should be defined");
+  const handler = content_sharesModule.handlers.get_uucs_unread_count;
+  assert.ok(handler, "Handler get_uucs_unread_count should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -77,15 +77,15 @@ test("get_users_user_id_content_shares_unread_count calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_content_shares_id calls correct endpoint", async () => {
+test("get_uu_content_shares_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_sharesModule.handlers.get_users_user_id_content_shares_id;
-  assert.ok(handler, "Handler get_users_user_id_content_shares_id should be defined");
+  const handler = content_sharesModule.handlers.get_uu_content_shares_id;
+  assert.ok(handler, "Handler get_uu_content_shares_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id"});
 
@@ -95,15 +95,15 @@ test("get_users_user_id_content_shares_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_user_id_content_shares_id calls correct endpoint", async () => {
+test("delete_uu_content_shares_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_sharesModule.handlers.delete_users_user_id_content_shares_id;
-  assert.ok(handler, "Handler delete_users_user_id_content_shares_id should be defined");
+  const handler = content_sharesModule.handlers.delete_uu_content_shares_id;
+  assert.ok(handler, "Handler delete_uu_content_shares_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id"});
 
@@ -113,15 +113,15 @@ test("delete_users_user_id_content_shares_id calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_users_user_id_content_shares_id_add_users calls correct endpoint", async () => {
+test("post_uucsi_add_users calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_sharesModule.handlers.post_users_user_id_content_shares_id_add_users;
-  assert.ok(handler, "Handler post_users_user_id_content_shares_id_add_users should be defined");
+  const handler = content_sharesModule.handlers.post_uucsi_add_users;
+  assert.ok(handler, "Handler post_uucsi_add_users should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id", "receiver_ids": ["test_val"]});
 
@@ -131,15 +131,15 @@ test("post_users_user_id_content_shares_id_add_users calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_user_id_content_shares_id calls correct endpoint", async () => {
+test("put_uu_content_shares_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_sharesModule.handlers.put_users_user_id_content_shares_id;
-  assert.ok(handler, "Handler put_users_user_id_content_shares_id should be defined");
+  const handler = content_sharesModule.handlers.put_uu_content_shares_id;
+  assert.ok(handler, "Handler put_uu_content_shares_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "id": "test_id", "read_state": "test_val"});
 

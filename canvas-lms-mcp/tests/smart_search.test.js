@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const smart_searchModule = require("../tools/smart_search");
 
-test("get_courses_course_id_smartsearch calls correct endpoint", async () => {
+test("get_cc_smartsearch calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = smart_searchModule.handlers.get_courses_course_id_smartsearch;
-  assert.ok(handler, "Handler get_courses_course_id_smartsearch should be defined");
+  const handler = smart_searchModule.handlers.get_cc_smartsearch;
+  assert.ok(handler, "Handler get_cc_smartsearch should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "q": "test_val"});
 

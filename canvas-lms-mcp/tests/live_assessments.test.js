@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const live_assessmentsModule = require("../tools/live_assessments");
 
-test("post_courses_course_id_live_assessments_assessment_id_results calls correct endpoint", async () => {
+test("post_cclaa_results calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = live_assessmentsModule.handlers.post_courses_course_id_live_assessments_assessment_id_results;
-  assert.ok(handler, "Handler post_courses_course_id_live_assessments_assessment_id_results should be defined");
+  const handler = live_assessmentsModule.handlers.post_cclaa_results;
+  assert.ok(handler, "Handler post_cclaa_results should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assessment_id": "test_assessment_id"});
 
@@ -23,15 +23,15 @@ test("post_courses_course_id_live_assessments_assessment_id_results calls correc
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_live_assessments_assessment_id_results calls correct endpoint", async () => {
+test("get_cclaa_results calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = live_assessmentsModule.handlers.get_courses_course_id_live_assessments_assessment_id_results;
-  assert.ok(handler, "Handler get_courses_course_id_live_assessments_assessment_id_results should be defined");
+  const handler = live_assessmentsModule.handlers.get_cclaa_results;
+  assert.ok(handler, "Handler get_cclaa_results should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assessment_id": "test_assessment_id", "user_id": 123});
 
@@ -41,15 +41,15 @@ test("get_courses_course_id_live_assessments_assessment_id_results calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_live_assessments calls correct endpoint", async () => {
+test("post_cc_live_assessments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = live_assessmentsModule.handlers.post_courses_course_id_live_assessments;
-  assert.ok(handler, "Handler post_courses_course_id_live_assessments should be defined");
+  const handler = live_assessmentsModule.handlers.post_cc_live_assessments;
+  assert.ok(handler, "Handler post_cc_live_assessments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -59,15 +59,15 @@ test("post_courses_course_id_live_assessments calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_live_assessments calls correct endpoint", async () => {
+test("get_cc_live_assessments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = live_assessmentsModule.handlers.get_courses_course_id_live_assessments;
-  assert.ok(handler, "Handler get_courses_course_id_live_assessments should be defined");
+  const handler = live_assessmentsModule.handlers.get_cc_live_assessments;
+  assert.ok(handler, "Handler get_cc_live_assessments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 

@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const rubricsModule = require("../tools/rubrics");
 
-test("post_courses_course_id_rubrics calls correct endpoint", async () => {
+test("post_cc_rubrics calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.post_courses_course_id_rubrics;
-  assert.ok(handler, "Handler post_courses_course_id_rubrics should be defined");
+  const handler = rubricsModule.handlers.post_cc_rubrics;
+  assert.ok(handler, "Handler post_cc_rubrics should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": 123});
 
@@ -23,15 +23,15 @@ test("post_courses_course_id_rubrics calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_rubrics_id calls correct endpoint", async () => {
+test("put_cc_rubrics_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.put_courses_course_id_rubrics_id;
-  assert.ok(handler, "Handler put_courses_course_id_rubrics_id should be defined");
+  const handler = rubricsModule.handlers.put_cc_rubrics_id;
+  assert.ok(handler, "Handler put_cc_rubrics_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "rubric_association_id": 123});
 
@@ -41,15 +41,15 @@ test("put_courses_course_id_rubrics_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_rubrics_id calls correct endpoint", async () => {
+test("delete_cc_rubrics_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.delete_courses_course_id_rubrics_id;
-  assert.ok(handler, "Handler delete_courses_course_id_rubrics_id should be defined");
+  const handler = rubricsModule.handlers.delete_cc_rubrics_id;
+  assert.ok(handler, "Handler delete_cc_rubrics_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -59,15 +59,15 @@ test("delete_courses_course_id_rubrics_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_rubrics calls correct endpoint", async () => {
+test("get_aa_rubrics calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.get_accounts_account_id_rubrics;
-  assert.ok(handler, "Handler get_accounts_account_id_rubrics should be defined");
+  const handler = rubricsModule.handlers.get_aa_rubrics;
+  assert.ok(handler, "Handler get_aa_rubrics should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -77,15 +77,15 @@ test("get_accounts_account_id_rubrics calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_rubrics calls correct endpoint", async () => {
+test("get_cc_rubrics calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.get_courses_course_id_rubrics;
-  assert.ok(handler, "Handler get_courses_course_id_rubrics should be defined");
+  const handler = rubricsModule.handlers.get_cc_rubrics;
+  assert.ok(handler, "Handler get_cc_rubrics should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -95,15 +95,15 @@ test("get_courses_course_id_rubrics calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_rubrics_id calls correct endpoint", async () => {
+test("get_aa_rubrics_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.get_accounts_account_id_rubrics_id;
-  assert.ok(handler, "Handler get_accounts_account_id_rubrics_id should be defined");
+  const handler = rubricsModule.handlers.get_aa_rubrics_id;
+  assert.ok(handler, "Handler get_aa_rubrics_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -113,15 +113,15 @@ test("get_accounts_account_id_rubrics_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_rubrics_id calls correct endpoint", async () => {
+test("get_cc_rubrics_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.get_courses_course_id_rubrics_id;
-  assert.ok(handler, "Handler get_courses_course_id_rubrics_id should be defined");
+  const handler = rubricsModule.handlers.get_cc_rubrics_id;
+  assert.ok(handler, "Handler get_cc_rubrics_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include[]": "test_val"});
 
@@ -131,15 +131,15 @@ test("get_courses_course_id_rubrics_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_rubrics_id_used_locations calls correct endpoint", async () => {
+test("get_ccri_used_locations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.get_courses_course_id_rubrics_id_used_locations;
-  assert.ok(handler, "Handler get_courses_course_id_rubrics_id_used_locations should be defined");
+  const handler = rubricsModule.handlers.get_ccri_used_locations;
+  assert.ok(handler, "Handler get_ccri_used_locations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -149,15 +149,15 @@ test("get_courses_course_id_rubrics_id_used_locations calls correct endpoint", a
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_rubrics_id_used_locations calls correct endpoint", async () => {
+test("get_aari_used_locations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.get_accounts_account_id_rubrics_id_used_locations;
-  assert.ok(handler, "Handler get_accounts_account_id_rubrics_id_used_locations should be defined");
+  const handler = rubricsModule.handlers.get_aari_used_locations;
+  assert.ok(handler, "Handler get_aari_used_locations should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -167,15 +167,15 @@ test("get_accounts_account_id_rubrics_id_used_locations calls correct endpoint",
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_rubrics_upload calls correct endpoint", async () => {
+test("post_ccr_upload calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.post_courses_course_id_rubrics_upload;
-  assert.ok(handler, "Handler post_courses_course_id_rubrics_upload should be defined");
+  const handler = rubricsModule.handlers.post_ccr_upload;
+  assert.ok(handler, "Handler post_ccr_upload should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -185,15 +185,15 @@ test("post_courses_course_id_rubrics_upload calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_rubrics_upload calls correct endpoint", async () => {
+test("post_aar_upload calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.post_accounts_account_id_rubrics_upload;
-  assert.ok(handler, "Handler post_accounts_account_id_rubrics_upload should be defined");
+  const handler = rubricsModule.handlers.post_aar_upload;
+  assert.ok(handler, "Handler post_aar_upload should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -203,15 +203,15 @@ test("post_accounts_account_id_rubrics_upload calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_rubrics_upload_template calls correct endpoint", async () => {
+test("get_r_upload_template calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.get_rubrics_upload_template;
-  assert.ok(handler, "Handler get_rubrics_upload_template should be defined");
+  const handler = rubricsModule.handlers.get_r_upload_template;
+  assert.ok(handler, "Handler get_r_upload_template should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -221,15 +221,15 @@ test("get_rubrics_upload_template calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_rubrics_upload_id calls correct endpoint", async () => {
+test("get_ccr_upload_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.get_courses_course_id_rubrics_upload_id;
-  assert.ok(handler, "Handler get_courses_course_id_rubrics_upload_id should be defined");
+  const handler = rubricsModule.handlers.get_ccr_upload_id;
+  assert.ok(handler, "Handler get_ccr_upload_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -239,15 +239,15 @@ test("get_courses_course_id_rubrics_upload_id calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_rubrics_upload_id calls correct endpoint", async () => {
+test("get_aar_upload_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.get_accounts_account_id_rubrics_upload_id;
-  assert.ok(handler, "Handler get_accounts_account_id_rubrics_upload_id should be defined");
+  const handler = rubricsModule.handlers.get_aar_upload_id;
+  assert.ok(handler, "Handler get_aar_upload_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -257,15 +257,15 @@ test("get_accounts_account_id_rubrics_upload_id calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments calls correct endpoint", async () => {
+test("post_ccrar_rubric_assessments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.post_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments;
-  assert.ok(handler, "Handler post_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments should be defined");
+  const handler = rubricsModule.handlers.post_ccrar_rubric_assessments;
+  assert.ok(handler, "Handler post_ccrar_rubric_assessments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "rubric_association_id": "test_rubric_association_id", "provisional": "test_val"});
 
@@ -275,15 +275,15 @@ test("post_courses_course_id_rubric_associations_rubric_association_id_rubric_as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments_id calls correct endpoint", async () => {
+test("put_ccrar_rubric_assessments_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.put_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments_id;
-  assert.ok(handler, "Handler put_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments_id should be defined");
+  const handler = rubricsModule.handlers.put_ccrar_rubric_assessments_id;
+  assert.ok(handler, "Handler put_ccrar_rubric_assessments_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "rubric_association_id": "test_rubric_association_id", "id": "test_id", "provisional": "test_val"});
 
@@ -293,15 +293,15 @@ test("put_courses_course_id_rubric_associations_rubric_association_id_rubric_ass
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments_id calls correct endpoint", async () => {
+test("delete_ccrar_rubric_assessments_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.delete_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments_id;
-  assert.ok(handler, "Handler delete_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments_id should be defined");
+  const handler = rubricsModule.handlers.delete_ccrar_rubric_assessments_id;
+  assert.ok(handler, "Handler delete_ccrar_rubric_assessments_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "rubric_association_id": "test_rubric_association_id", "id": "test_id"});
 
@@ -311,15 +311,15 @@ test("delete_courses_course_id_rubric_associations_rubric_association_id_rubric_
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_rubric_associations calls correct endpoint", async () => {
+test("post_cc_rubric_associations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.post_courses_course_id_rubric_associations;
-  assert.ok(handler, "Handler post_courses_course_id_rubric_associations should be defined");
+  const handler = rubricsModule.handlers.post_cc_rubric_associations;
+  assert.ok(handler, "Handler post_cc_rubric_associations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "rubric_association[rubric_id]": 123});
 
@@ -329,15 +329,15 @@ test("post_courses_course_id_rubric_associations calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_rubric_associations_id calls correct endpoint", async () => {
+test("put_cc_rubric_associations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.put_courses_course_id_rubric_associations_id;
-  assert.ok(handler, "Handler put_courses_course_id_rubric_associations_id should be defined");
+  const handler = rubricsModule.handlers.put_cc_rubric_associations_id;
+  assert.ok(handler, "Handler put_cc_rubric_associations_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "rubric_association[rubric_id]": 123});
 
@@ -347,15 +347,15 @@ test("put_courses_course_id_rubric_associations_id calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_rubric_associations_id calls correct endpoint", async () => {
+test("delete_cc_rubric_associations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rubricsModule.handlers.delete_courses_course_id_rubric_associations_id;
-  assert.ok(handler, "Handler delete_courses_course_id_rubric_associations_id should be defined");
+  const handler = rubricsModule.handlers.delete_cc_rubric_associations_id;
+  assert.ok(handler, "Handler delete_cc_rubric_associations_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 

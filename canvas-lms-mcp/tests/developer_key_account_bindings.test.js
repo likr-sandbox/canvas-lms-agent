@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const developer_key_account_bindingsModule = require("../tools/developer_key_account_bindings");
 
-test("post_accounts_account_id_developer_keys_developer_key_id_developer_key_account_bindings calls correct endpoint", async () => {
+test("post_aadkd_developer_key_account_bindings calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = developer_key_account_bindingsModule.handlers.post_accounts_account_id_developer_keys_developer_key_id_developer_key_account_bindings;
-  assert.ok(handler, "Handler post_accounts_account_id_developer_keys_developer_key_id_developer_key_account_bindings should be defined");
+  const handler = developer_key_account_bindingsModule.handlers.post_aadkd_developer_key_account_bindings;
+  assert.ok(handler, "Handler post_aadkd_developer_key_account_bindings should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "developer_key_id": "test_developer_key_id", "workflow_state": "test_val"});
 

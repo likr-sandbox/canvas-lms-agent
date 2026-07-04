@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const feature_flagsModule = require("../tools/feature_flags");
 
-test("get_courses_course_id_features calls correct endpoint", async () => {
+test("get_cc_features calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.get_courses_course_id_features;
-  assert.ok(handler, "Handler get_courses_course_id_features should be defined");
+  const handler = feature_flagsModule.handlers.get_cc_features;
+  assert.ok(handler, "Handler get_cc_features should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_features calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_features calls correct endpoint", async () => {
+test("get_aa_features calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.get_accounts_account_id_features;
-  assert.ok(handler, "Handler get_accounts_account_id_features should be defined");
+  const handler = feature_flagsModule.handlers.get_aa_features;
+  assert.ok(handler, "Handler get_aa_features should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_features calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_features calls correct endpoint", async () => {
+test("get_uu_features calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.get_users_user_id_features;
-  assert.ok(handler, "Handler get_users_user_id_features should be defined");
+  const handler = feature_flagsModule.handlers.get_uu_features;
+  assert.ok(handler, "Handler get_uu_features should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "hide_inherited_enabled": true});
 
@@ -59,15 +59,15 @@ test("get_users_user_id_features calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_features_enabled calls correct endpoint", async () => {
+test("get_ccf_enabled calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.get_courses_course_id_features_enabled;
-  assert.ok(handler, "Handler get_courses_course_id_features_enabled should be defined");
+  const handler = feature_flagsModule.handlers.get_ccf_enabled;
+  assert.ok(handler, "Handler get_ccf_enabled should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -77,15 +77,15 @@ test("get_courses_course_id_features_enabled calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_features_enabled calls correct endpoint", async () => {
+test("get_aaf_enabled calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.get_accounts_account_id_features_enabled;
-  assert.ok(handler, "Handler get_accounts_account_id_features_enabled should be defined");
+  const handler = feature_flagsModule.handlers.get_aaf_enabled;
+  assert.ok(handler, "Handler get_aaf_enabled should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -95,15 +95,15 @@ test("get_accounts_account_id_features_enabled calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_features_enabled calls correct endpoint", async () => {
+test("get_uuf_enabled calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.get_users_user_id_features_enabled;
-  assert.ok(handler, "Handler get_users_user_id_features_enabled should be defined");
+  const handler = feature_flagsModule.handlers.get_uuf_enabled;
+  assert.ok(handler, "Handler get_uuf_enabled should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 
@@ -113,15 +113,15 @@ test("get_users_user_id_features_enabled calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_features_environment calls correct endpoint", async () => {
+test("get_f_environment calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.get_features_environment;
-  assert.ok(handler, "Handler get_features_environment should be defined");
+  const handler = feature_flagsModule.handlers.get_f_environment;
+  assert.ok(handler, "Handler get_f_environment should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -131,15 +131,15 @@ test("get_features_environment calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_features_flags_feature calls correct endpoint", async () => {
+test("get_ccf_flags_feature calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.get_courses_course_id_features_flags_feature;
-  assert.ok(handler, "Handler get_courses_course_id_features_flags_feature should be defined");
+  const handler = feature_flagsModule.handlers.get_ccf_flags_feature;
+  assert.ok(handler, "Handler get_ccf_flags_feature should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "feature": "test_feature"});
 
@@ -149,15 +149,15 @@ test("get_courses_course_id_features_flags_feature calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_features_flags_feature calls correct endpoint", async () => {
+test("get_aaf_flags_feature calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.get_accounts_account_id_features_flags_feature;
-  assert.ok(handler, "Handler get_accounts_account_id_features_flags_feature should be defined");
+  const handler = feature_flagsModule.handlers.get_aaf_flags_feature;
+  assert.ok(handler, "Handler get_aaf_flags_feature should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "feature": "test_feature"});
 
@@ -167,15 +167,15 @@ test("get_accounts_account_id_features_flags_feature calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_features_flags_feature calls correct endpoint", async () => {
+test("get_uuf_flags_feature calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.get_users_user_id_features_flags_feature;
-  assert.ok(handler, "Handler get_users_user_id_features_flags_feature should be defined");
+  const handler = feature_flagsModule.handlers.get_uuf_flags_feature;
+  assert.ok(handler, "Handler get_uuf_flags_feature should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "feature": "test_feature"});
 
@@ -185,15 +185,15 @@ test("get_users_user_id_features_flags_feature calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_features_flags_feature calls correct endpoint", async () => {
+test("put_ccf_flags_feature calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.put_courses_course_id_features_flags_feature;
-  assert.ok(handler, "Handler put_courses_course_id_features_flags_feature should be defined");
+  const handler = feature_flagsModule.handlers.put_ccf_flags_feature;
+  assert.ok(handler, "Handler put_ccf_flags_feature should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "feature": "test_feature"});
 
@@ -203,15 +203,15 @@ test("put_courses_course_id_features_flags_feature calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_features_flags_feature calls correct endpoint", async () => {
+test("put_aaf_flags_feature calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.put_accounts_account_id_features_flags_feature;
-  assert.ok(handler, "Handler put_accounts_account_id_features_flags_feature should be defined");
+  const handler = feature_flagsModule.handlers.put_aaf_flags_feature;
+  assert.ok(handler, "Handler put_aaf_flags_feature should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "feature": "test_feature"});
 
@@ -221,15 +221,15 @@ test("put_accounts_account_id_features_flags_feature calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_user_id_features_flags_feature calls correct endpoint", async () => {
+test("put_uuf_flags_feature calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.put_users_user_id_features_flags_feature;
-  assert.ok(handler, "Handler put_users_user_id_features_flags_feature should be defined");
+  const handler = feature_flagsModule.handlers.put_uuf_flags_feature;
+  assert.ok(handler, "Handler put_uuf_flags_feature should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "feature": "test_feature", "state": "test_val"});
 
@@ -239,15 +239,15 @@ test("put_users_user_id_features_flags_feature calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_features_flags_feature calls correct endpoint", async () => {
+test("delete_ccf_flags_feature calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.delete_courses_course_id_features_flags_feature;
-  assert.ok(handler, "Handler delete_courses_course_id_features_flags_feature should be defined");
+  const handler = feature_flagsModule.handlers.delete_ccf_flags_feature;
+  assert.ok(handler, "Handler delete_ccf_flags_feature should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "feature": "test_feature"});
 
@@ -257,15 +257,15 @@ test("delete_courses_course_id_features_flags_feature calls correct endpoint", a
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_features_flags_feature calls correct endpoint", async () => {
+test("delete_aaf_flags_feature calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.delete_accounts_account_id_features_flags_feature;
-  assert.ok(handler, "Handler delete_accounts_account_id_features_flags_feature should be defined");
+  const handler = feature_flagsModule.handlers.delete_aaf_flags_feature;
+  assert.ok(handler, "Handler delete_aaf_flags_feature should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "feature": "test_feature"});
 
@@ -275,15 +275,15 @@ test("delete_accounts_account_id_features_flags_feature calls correct endpoint",
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_user_id_features_flags_feature calls correct endpoint", async () => {
+test("delete_uuf_flags_feature calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = feature_flagsModule.handlers.delete_users_user_id_features_flags_feature;
-  assert.ok(handler, "Handler delete_users_user_id_features_flags_feature should be defined");
+  const handler = feature_flagsModule.handlers.delete_uuf_flags_feature;
+  assert.ok(handler, "Handler delete_uuf_flags_feature should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "feature": "test_feature"});
 

@@ -23,15 +23,15 @@ test("get_epub_exports calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_epub_exports calls correct endpoint", async () => {
+test("post_cc_epub_exports calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = e_pub_exportsModule.handlers.post_courses_course_id_epub_exports;
-  assert.ok(handler, "Handler post_courses_course_id_epub_exports should be defined");
+  const handler = e_pub_exportsModule.handlers.post_cc_epub_exports;
+  assert.ok(handler, "Handler post_cc_epub_exports should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -41,15 +41,15 @@ test("post_courses_course_id_epub_exports calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_epub_exports_id calls correct endpoint", async () => {
+test("get_cc_epub_exports_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = e_pub_exportsModule.handlers.get_courses_course_id_epub_exports_id;
-  assert.ok(handler, "Handler get_courses_course_id_epub_exports_id should be defined");
+  const handler = e_pub_exportsModule.handlers.get_cc_epub_exports_id;
+  assert.ok(handler, "Handler get_cc_epub_exports_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_lti_registrations",
+    "name": "get_aa_lti_registrations",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations` Returns all LTI registrations in the specified account. Includes registrations created in this account, those set to 'allow' from a parent root account (like Site Admin) and 'on' for this account, and those enabled 'on' at the parent root account level. ```bash This would return the specified LTI registration curl -X GET 'https:///api/v1/accounts//registrations' \\ -H \"Authorization: Bearer \" ``` Returns a [ListLtiRegistration...",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_registrations_id",
+    "name": "get_aa_lti_registrations_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations/:id` Return details about the specified LTI registration, including the configuration and account binding. ```bash This would return the specified LTI registration curl -X GET 'https:///api/v1/accounts//lti_registrations/' \\ -H \"Authorization: Bearer \" ``` Returns a [Lti::Registration](#lti::registration) object. [Lti::RegistrationsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/reg...",
     "inputSchema": {
       "type": "object",
@@ -74,7 +74,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_lti_registrations",
+    "name": "post_aa_lti_registrations",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/lti_registrations` Create a new LTI Registration, as well as an associated Tool Configuration, Developer Key, and Registration Account binding. To install/create using Dynamic Registration, please use the [Dynamic Registration API](../external-tools/lti/file.registration.md). ```bash This would create a new LTI Registration, as well as an associated Developer Key and LTI Tool Configuration. curl -X POST 'https:///api/v1/accounts//lti_registrat...",
     "inputSchema": {
       "type": "object",
@@ -126,7 +126,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_registration_by_client_id_client_id",
+    "name": "get_aa_lti_registration_by_client_id_client_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registration_by_client_id/:client_id` Returns details about the specified LTI registration, including the configuration and account binding. ```bash This would return the specified LTI registration curl -X GET 'https:///api/v1/accounts//lti_registration_by_client_id/' \\ -H \"Authorization: Bearer \" ``` Returns a [Lti::Registration](#lti::registration) object. [Lti::RegistrationsController#show\\_by\\_utid](https://github.com/instructure/canvas...",
     "inputSchema": {
       "type": "object",
@@ -151,7 +151,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_registrations_by_utid_utid",
+    "name": "get_aalr_by_utid_utid",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations/by_utid/:utid` Returns an LTI registration by looking up its unified\\_tool\\_id. Searches both manual configurations and IMS registrations. Only returns registrations that are active and accessible from the current account (owned by account, Site Admin, or has binding). ```bash curl -X GET 'https:///api/v1/accounts//lti_registrations/by_utid/' \\ -H \"Authorization: Bearer \" ``` Returns a [Lti::Registration](#lti::registration) o...",
     "inputSchema": {
       "type": "object",
@@ -176,7 +176,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_registrations_install_status_client_id",
+    "name": "get_aalr_install_status_client_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations/install_status/:client_id` Returns the local installation status for a Site Admin LTI registration. If the developer key's registration is in Site Admin, returns the local copy in the current account (if installed). If the registration is already in the current account, returns it directly. ```bash curl -X GET 'https:///api/v1/accounts//lti_registrations/install_status/' \\ -H \"Authorization: Bearer \" ``` Returns a [Lti::Regist...",
     "inputSchema": {
       "type": "object",
@@ -201,7 +201,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_lti_registrations_id",
+    "name": "put_aa_lti_registrations_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/lti_registrations/:id` Update the specified LTI registration with the provided parameters. Note that updating the base tool configuration of a registration that is associated with a Dynamic Registration will return a 422. All other fields can be updated freely. ```bash This would update the specified LTI Registration, as well as its associated Developer Key and LTI Tool Configuration. curl -X PUT 'https:///api/v1/accounts//lti_registrations/' \\...",
     "inputSchema": {
       "type": "object",
@@ -254,7 +254,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_lti_registrations_id_reset",
+    "name": "put_aalri_reset",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/lti_registrations/:id/reset` Reset the specified LTI registration to its default settings in this context. This removes all customizations that were present in the overlay associated with this context. ```bash This would reset the specified LTI registration to its default settings curl -X PUT 'https:///api/v1/accounts//lti_registrations//reset' \\ -H \"Authorization: Bearer \" ``` Returns a [Lti::Registration](#lti::registration) object. [Lti::Reg...",
     "inputSchema": {
       "type": "object",
@@ -275,7 +275,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_lti_registrations_id",
+    "name": "delete_aa_lti_registrations_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/lti_registrations/:id` Remove the specified LTI registration ```bash This would delete the specified LTI registration curl -X DELETE 'https:///api/v1/accounts//lti_registrations/' \\ -H \"Authorization: Bearer \" ``` Returns a [Lti::Registration](#lti::registration) object. [Lti::RegistrationsController#bind](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/registrations_controller.rb) {% hint style=\"warning\" %} BETA: T...",
     "inputSchema": {
       "type": "object",
@@ -296,7 +296,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_lti_registrations_id_bind",
+    "name": "post_aalri_bind",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/lti_registrations/:id/bind` Enable or disable the specified LTI registration for the specified root account. To enable an inherited registration (eg from Site Admin), pass the registration's global ID. Only allowed for root accounts. \\Specifics for centrally-managed/federated consortia:\\ Child root accounts may not bind inherited registrations. For parent root account, binding also applies to all child root accounts. ```bash This would enable ...",
     "inputSchema": {
       "type": "object",
@@ -322,7 +322,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_lti_registrations_id_bind",
+    "name": "delete_aalri_bind",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/lti_registrations/:id/bind` Deletes the account binding for this registration, effectively removing it from the account. Only available when the lti\\_deactivate\\_registrations feature flag is enabled. Only valid for inherited (Site Admin) registrations \u2014 use destroy for registrations owned by this account. Returns a [Lti::RegistrationAccountBinding](#lti::registrationaccountbinding) object. [Lti::RegistrationsController#install\\_from\\_templa...",
     "inputSchema": {
       "type": "object",
@@ -343,7 +343,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_lti_registrations_id_install_from_template",
+    "name": "post_aalri_install_from_template",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/lti_registrations/:id/install_from_template` This endpoint installs a local copy of a \"template\" LTI registration from Site Admin into the specified account. The local copy can then be customized for the account without affecting the template registration. Only allowed for root accounts and for registrations from Site Admin marked as templates. ```bash This would install the specified template LTI registration into the specified account curl -...",
     "inputSchema": {
       "type": "object",
@@ -364,7 +364,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_registrations_registration_id_deployments_deployment_id_context_search",
+    "name": "get_aalrrdd_context_search",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations/:registration_id/deployments/:deployment_id/context_search` This is a utility endpoint used by the Canvas Apps UI and may not serve general use cases. Search for accounts and courses that match the search term on name, SIS id, or course code. Returns all matching accounts and courses, including those nested in sub-accounts. Returns bare-bones data about each account and course, and only up to 20 of each. Used to populate the s...",
     "inputSchema": {
       "type": "object",
@@ -402,7 +402,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_registrations_id_overlay_history",
+    "name": "get_aalri_overlay_history",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations/:id/overlay_history` Returns the overlay history items for the specified LTI registration. ```bash This would return the overlay history for the specified LTI registration curl -X GET 'https:///api/v1/accounts//lti_registrations//overlay_history?limit=50' \\ -H \"Authorization: Bearer \" ``` Returns a list of [Lti::OverlayVersion](#lti::overlayversion) objects. [Lti::RegistrationsController#history](https://github.com/instructure...",
     "inputSchema": {
       "type": "object",
@@ -431,7 +431,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_registrations_id_history",
+    "name": "get_aalri_history",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations/:id/history` Returns the history entries for the specified LTI registration. This endpoint provides comprehensive change tracking for all fields associated with the registration, including registration fields, developer key changes, internal configuration changes, and overlay changes. Supports pagination using the `page` and `per_page` parameters. The default page size is 10. ```bash This would return the history for the speci...",
     "inputSchema": {
       "type": "object",
@@ -456,7 +456,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_registrations_id_update_requests_update_request_id",
+    "name": "get_aalri_update_requests_update_request_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations/:id/update_requests/:update_request_id` Retrieves details about a specific registration update request. ```bash curl 'https:///api/v1/accounts//lti_registrations//update_requests/' \\ -H \"Authorization: Bearer \" ``` [Lti::RegistrationsController#latest\\_registration\\_update\\_request](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/registrations_controller.rb) {% hint style=\"warning\" %} BETA: This API e...",
     "inputSchema": {
       "type": "object",
@@ -490,7 +490,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_registrations_id_latest_update_request",
+    "name": "get_aalri_latest_update_request",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations/:id/latest_update_request` Retrieves the most recent update request for a registration, regardless of its status. Returns 404 if there are no update requests for this registration. ```bash curl 'https:///api/v1/accounts//lti_registrations//latest_update_request' \\ -H \"Authorization: Bearer \" ``` [Lti::RegistrationsController#apply\\_registration\\_update\\_request](https://github.com/instructure/canvas-lms/blob/master/app/control...",
     "inputSchema": {
       "type": "object",
@@ -515,7 +515,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_lti_registrations_id_update_requests_update_request_id_apply",
+    "name": "put_aalriuru_apply",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/lti_registrations/:id/update_requests/:update_request_id/apply` Applies a registration update request to an existing registration, replacing the existing configuration and overlay with the new values. If the request is rejected, marks it as rejected without applying changes. ```bash curl -X POST 'https:///api/v1/accounts//lti_registrations/:id/update_requests/:update_request_id/apply' \\ -d '{\"overlay\": , \"accepted\": boolean}' \\ -H \"Content-Type...",
     "inputSchema": {
       "type": "object",
@@ -556,58 +556,58 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_lti_registrations: async (client, args) => {
+  get_aa_lti_registrations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations", args);
   },
-  get_accounts_account_id_lti_registrations_id: async (client, args) => {
+  get_aa_lti_registrations_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/:id", args);
   },
-  post_accounts_account_id_lti_registrations: async (client, args) => {
+  post_aa_lti_registrations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/lti_registrations", args);
   },
-  get_accounts_account_id_lti_registration_by_client_id_client_id: async (client, args) => {
+  get_aa_lti_registration_by_client_id_client_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registration_by_client_id/:client_id", args);
   },
-  get_accounts_account_id_lti_registrations_by_utid_utid: async (client, args) => {
+  get_aalr_by_utid_utid: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/by_utid/:utid", args);
   },
-  get_accounts_account_id_lti_registrations_install_status_client_id: async (client, args) => {
+  get_aalr_install_status_client_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/install_status/:client_id", args);
   },
-  put_accounts_account_id_lti_registrations_id: async (client, args) => {
+  put_aa_lti_registrations_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/lti_registrations/:id", args);
   },
-  put_accounts_account_id_lti_registrations_id_reset: async (client, args) => {
+  put_aalri_reset: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/lti_registrations/:id/reset", args);
   },
-  delete_accounts_account_id_lti_registrations_id: async (client, args) => {
+  delete_aa_lti_registrations_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/lti_registrations/:id", args);
   },
-  post_accounts_account_id_lti_registrations_id_bind: async (client, args) => {
+  post_aalri_bind: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/lti_registrations/:id/bind", args);
   },
-  delete_accounts_account_id_lti_registrations_id_bind: async (client, args) => {
+  delete_aalri_bind: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/lti_registrations/:id/bind", args);
   },
-  post_accounts_account_id_lti_registrations_id_install_from_template: async (client, args) => {
+  post_aalri_install_from_template: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/lti_registrations/:id/install_from_template", args);
   },
-  get_accounts_account_id_lti_registrations_registration_id_deployments_deployment_id_context_search: async (client, args) => {
+  get_aalrrdd_context_search: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/:registration_id/deployments/:deployment_id/context_search", args);
   },
-  get_accounts_account_id_lti_registrations_id_overlay_history: async (client, args) => {
+  get_aalri_overlay_history: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/:id/overlay_history", args);
   },
-  get_accounts_account_id_lti_registrations_id_history: async (client, args) => {
+  get_aalri_history: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/:id/history", args);
   },
-  get_accounts_account_id_lti_registrations_id_update_requests_update_request_id: async (client, args) => {
+  get_aalri_update_requests_update_request_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/:id/update_requests/:update_request_id", args);
   },
-  get_accounts_account_id_lti_registrations_id_latest_update_request: async (client, args) => {
+  get_aalri_latest_update_request: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/:id/latest_update_request", args);
   },
-  put_accounts_account_id_lti_registrations_id_update_requests_update_request_id_apply: async (client, args) => {
+  put_aalriuru_apply: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/lti_registrations/:id/update_requests/:update_request_id/apply", args);
   }
 };

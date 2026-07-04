@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const quiz_submission_questionsModule = require("../tools/quiz_submission_questions");
 
-test("get_quiz_submissions_quiz_submission_id_questions calls correct endpoint", async () => {
+test("get_qsq_questions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = quiz_submission_questionsModule.handlers.get_quiz_submissions_quiz_submission_id_questions;
-  assert.ok(handler, "Handler get_quiz_submissions_quiz_submission_id_questions should be defined");
+  const handler = quiz_submission_questionsModule.handlers.get_qsq_questions;
+  assert.ok(handler, "Handler get_qsq_questions should be defined");
 
   const result = await handler(mockClient, {"quiz_submission_id": "test_quiz_submission_id", "include[]": "test_val"});
 
@@ -23,15 +23,15 @@ test("get_quiz_submissions_quiz_submission_id_questions calls correct endpoint",
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_quiz_submissions_quiz_submission_id_questions calls correct endpoint", async () => {
+test("post_qsq_questions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = quiz_submission_questionsModule.handlers.post_quiz_submissions_quiz_submission_id_questions;
-  assert.ok(handler, "Handler post_quiz_submissions_quiz_submission_id_questions should be defined");
+  const handler = quiz_submission_questionsModule.handlers.post_qsq_questions;
+  assert.ok(handler, "Handler post_qsq_questions should be defined");
 
   const result = await handler(mockClient, {"quiz_submission_id": "test_quiz_submission_id", "attempt": 123});
 
@@ -41,15 +41,15 @@ test("post_quiz_submissions_quiz_submission_id_questions calls correct endpoint"
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_quiz_submissions_quiz_submission_id_questions_id_formatted_answer calls correct endpoint", async () => {
+test("get_qsqqi_formatted_answer calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = quiz_submission_questionsModule.handlers.get_quiz_submissions_quiz_submission_id_questions_id_formatted_answer;
-  assert.ok(handler, "Handler get_quiz_submissions_quiz_submission_id_questions_id_formatted_answer should be defined");
+  const handler = quiz_submission_questionsModule.handlers.get_qsqqi_formatted_answer;
+  assert.ok(handler, "Handler get_qsqqi_formatted_answer should be defined");
 
   const result = await handler(mockClient, {"quiz_submission_id": "test_quiz_submission_id", "id": "test_id", "answer": "test_val"});
 
@@ -59,15 +59,15 @@ test("get_quiz_submissions_quiz_submission_id_questions_id_formatted_answer call
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_quiz_submissions_quiz_submission_id_questions_id_flag calls correct endpoint", async () => {
+test("put_qsqqi_flag calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = quiz_submission_questionsModule.handlers.put_quiz_submissions_quiz_submission_id_questions_id_flag;
-  assert.ok(handler, "Handler put_quiz_submissions_quiz_submission_id_questions_id_flag should be defined");
+  const handler = quiz_submission_questionsModule.handlers.put_qsqqi_flag;
+  assert.ok(handler, "Handler put_qsqqi_flag should be defined");
 
   const result = await handler(mockClient, {"quiz_submission_id": "test_quiz_submission_id", "id": "test_id", "attempt": 123});
 
@@ -77,15 +77,15 @@ test("put_quiz_submissions_quiz_submission_id_questions_id_flag calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_quiz_submissions_quiz_submission_id_questions_id_unflag calls correct endpoint", async () => {
+test("put_qsqqi_unflag calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = quiz_submission_questionsModule.handlers.put_quiz_submissions_quiz_submission_id_questions_id_unflag;
-  assert.ok(handler, "Handler put_quiz_submissions_quiz_submission_id_questions_id_unflag should be defined");
+  const handler = quiz_submission_questionsModule.handlers.put_qsqqi_unflag;
+  assert.ok(handler, "Handler put_qsqqi_unflag should be defined");
 
   const result = await handler(mockClient, {"quiz_submission_id": "test_quiz_submission_id", "id": "test_id", "attempt": 123});
 

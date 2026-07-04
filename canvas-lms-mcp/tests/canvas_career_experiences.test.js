@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const canvas_career_experiencesModule = require("../tools/canvas_career_experiences");
 
-test("get_career_enabled calls correct endpoint", async () => {
+test("get_c_enabled calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = canvas_career_experiencesModule.handlers.get_career_enabled;
-  assert.ok(handler, "Handler get_career_enabled should be defined");
+  const handler = canvas_career_experiencesModule.handlers.get_c_enabled;
+  assert.ok(handler, "Handler get_c_enabled should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -23,15 +23,15 @@ test("get_career_enabled calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_career_experience_summary calls correct endpoint", async () => {
+test("get_c_experience_summary calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = canvas_career_experiencesModule.handlers.get_career_experience_summary;
-  assert.ok(handler, "Handler get_career_experience_summary should be defined");
+  const handler = canvas_career_experiencesModule.handlers.get_c_experience_summary;
+  assert.ok(handler, "Handler get_c_experience_summary should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -41,15 +41,15 @@ test("get_career_experience_summary calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_career_switch_experience calls correct endpoint", async () => {
+test("post_c_switch_experience calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = canvas_career_experiencesModule.handlers.post_career_switch_experience;
-  assert.ok(handler, "Handler post_career_switch_experience should be defined");
+  const handler = canvas_career_experiencesModule.handlers.post_c_switch_experience;
+  assert.ok(handler, "Handler post_c_switch_experience should be defined");
 
   const result = await handler(mockClient, {"experience": "test_val"});
 
@@ -59,15 +59,15 @@ test("post_career_switch_experience calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_career_switch_role calls correct endpoint", async () => {
+test("post_c_switch_role calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = canvas_career_experiencesModule.handlers.post_career_switch_role;
-  assert.ok(handler, "Handler post_career_switch_role should be defined");
+  const handler = canvas_career_experiencesModule.handlers.post_c_switch_role;
+  assert.ok(handler, "Handler post_c_switch_role should be defined");
 
   const result = await handler(mockClient, {"role": "test_val"});
 

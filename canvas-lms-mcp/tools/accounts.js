@@ -98,7 +98,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_settings",
+    "name": "get_aa_settings",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/settings` Returns a JSON object containing a subset of settings for the specified account. It's possible an empty set will be returned if no settings are applicable. The caller must be an Account admin with the manage\\_account\\_settings permission. ```bash curl https:///api/v1/accounts//settings \\ -H 'Authorization: Bearer ' ``` ```js {\"microsoft_sync_enabled\": true, \"microsoft_sync_login_attribute_suffix\": false} ``` [AccountsController#enviro...",
     "inputSchema": {
       "type": "object",
@@ -118,7 +118,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_settings_environment",
+    "name": "get_s_environment",
     "description": "**Scope:** `url:GET|/api/v1/settings/environment` Return a hash of global settings for the root account This is the same information supplied to the web interface as +ENV.SETTINGS+. ```bash curl 'http:///api/v1/settings/environment' \\ -H \"Authorization: Bearer \" ``` ```js { \"calendar_contexts_limit\": 10, \"open_registration\": false, ...} ``` [AccountsController#permissions](https://github.com/instructure/canvas-lms/blob/master/app/controllers/accounts_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -131,7 +131,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_permissions",
+    "name": "get_aa_permissions",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/permissions` Returns permission information for the calling user and the given account. You may use `self` as the account id to check permissions against the domain root account. The caller must have an account role or admin (teacher/TA/designer) enrollment in a course in the account. See also the [Course](courses.md#method.courses.permissions) and [Group](groups.md#method.groups.permissions) counterparts. ```bash curl https:///api/v1/accounts/...",
     "inputSchema": {
       "type": "object",
@@ -155,7 +155,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_sub_accounts",
+    "name": "get_aa_sub_accounts",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/sub_accounts` List accounts that are sub-accounts of the given account. ```bash curl https:///api/v1/accounts//sub_accounts \\ -H 'Authorization: Bearer ' ``` Returns a list of [Account](accounts_-lti.md#account) objects. [AccountsController#terms\\_of\\_service](https://github.com/instructure/canvas-lms/blob/master/app/controllers/accounts_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -187,7 +187,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_terms_of_service",
+    "name": "get_aa_terms_of_service",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/terms_of_service` Returns the terms of service for that account Returns a [TermsOfService](#termsofservice) object. [AccountsController#help\\_links](https://github.com/instructure/canvas-lms/blob/master/app/controllers/accounts_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -207,7 +207,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_help_links",
+    "name": "get_aa_help_links",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/help_links` Returns the help links for that account Returns a [HelpLinks](#helplinks) object. [AccountsController#manually\\_created\\_courses\\_account](https://github.com/instructure/canvas-lms/blob/master/app/controllers/accounts_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -240,7 +240,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_courses",
+    "name": "get_aa_courses",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/courses` Retrieve a paginated list of courses in this account. Returns a list of [Course](courses.md#course) objects. [AccountsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/accounts_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -512,7 +512,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_users_user_id",
+    "name": "delete_aa_users_user_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/users/:user_id` Delete a user record from a Canvas root account. If a user is associated with multiple root accounts (in a multi-tenant instance of Canvas), this action will NOT remove them from the other accounts. WARNING: This API will allow a user to remove themselves from the account. If they do this, they won't be able to make API calls or log into Canvas at that account. ```bash curl https:///api/v1/accounts/3/users/5 \\ -H 'Authorizati...",
     "inputSchema": {
       "type": "object",
@@ -533,7 +533,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_users",
+    "name": "delete_aa_users",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/users` Delete multiple users from a Canvas root account. If a user is associated with multiple root accounts (in a multi-tenant instance of Canvas), this action will NOT remove them from the other accounts. WARNING: This API will allow a user to remove themselves from the account. If they do this, they won't be able to make API calls or log into Canvas at that account. ```bash curl https:///api/v1/accounts/3/users \\ -H 'Authorization: Bearer...",
     "inputSchema": {
       "type": "object",
@@ -549,7 +549,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_users_bulk_update",
+    "name": "put_aau_bulk_update",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/users/bulk_update` Updates multiple users in bulk. ```bash curl https:///api/v1/accounts/3/users/bulk_update \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -d 'user_ids[]=1' \\ -d 'user_ids[]=2' \\ -d 'user[event]=suspend' ``` Returns a [Progress](progress.md#progress) object. [AccountsController#restore\\_user](https://github.com/instructure/canvas-lms/blob/master/app/controllers/accounts_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -573,7 +573,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_users_user_id_restore",
+    "name": "put_aauu_restore",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/users/:user_id/restore` Restore a user record along with the most recently deleted pseudonym from a Canvas root account. ```bash curl https:///api/v1/accounts/3/users/5/restore \\ -H 'Authorization: Bearer ' \\ -X PUT ``` Returns an [User](users.md#user) object. [SubAccountsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/sub_accounts_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -594,7 +594,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_sub_accounts",
+    "name": "post_aa_sub_accounts",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/sub_accounts` Add a new sub-account to a given account. Returns an [Account](accounts_-lti.md#account) object. [SubAccountsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/sub_accounts_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -631,7 +631,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_sub_accounts_id",
+    "name": "delete_aa_sub_accounts_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/sub_accounts/:id` Cannot delete an account with active courses or active sub\\_accounts. Cannot delete a root\\_account Returns an [Account](accounts_-lti.md#account) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agen...",
     "inputSchema": {
       "type": "object",
@@ -672,49 +672,49 @@ const handlers = {
   get_accounts_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:id", args);
   },
-  get_accounts_account_id_settings: async (client, args) => {
+  get_aa_settings: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/settings", args);
   },
-  get_settings_environment: async (client, args) => {
+  get_s_environment: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/settings/environment", args);
   },
-  get_accounts_account_id_permissions: async (client, args) => {
+  get_aa_permissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/permissions", args);
   },
-  get_accounts_account_id_sub_accounts: async (client, args) => {
+  get_aa_sub_accounts: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sub_accounts", args);
   },
-  get_accounts_account_id_terms_of_service: async (client, args) => {
+  get_aa_terms_of_service: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/terms_of_service", args);
   },
-  get_accounts_account_id_help_links: async (client, args) => {
+  get_aa_help_links: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/help_links", args);
   },
   get_manually_created_courses_account: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/manually_created_courses_account", args);
   },
-  get_accounts_account_id_courses: async (client, args) => {
+  get_aa_courses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/courses", args);
   },
   put_accounts_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:id", args);
   },
-  delete_accounts_account_id_users_user_id: async (client, args) => {
+  delete_aa_users_user_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/users/:user_id", args);
   },
-  delete_accounts_account_id_users: async (client, args) => {
+  delete_aa_users: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/users", args);
   },
-  put_accounts_account_id_users_bulk_update: async (client, args) => {
+  put_aau_bulk_update: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/users/bulk_update", args);
   },
-  put_accounts_account_id_users_user_id_restore: async (client, args) => {
+  put_aauu_restore: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/users/:user_id/restore", args);
   },
-  post_accounts_account_id_sub_accounts: async (client, args) => {
+  post_aa_sub_accounts: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/sub_accounts", args);
   },
-  delete_accounts_account_id_sub_accounts_id: async (client, args) => {
+  delete_aa_sub_accounts_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/sub_accounts/:id", args);
   }
 };

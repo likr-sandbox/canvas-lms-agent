@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_id_late_policy",
+    "name": "get_ci_late_policy",
     "description": "**Scope:** `url:GET|/api/v1/courses/:id/late_policy` Returns the late policy for a course. ```js { \"late_policy\": LatePolicy } ``` [LatePolicyController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/late_policy_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_id_late_policy",
+    "name": "post_ci_late_policy",
     "description": "**Scope:** `url:POST|/api/v1/courses/:id/late_policy` Create a late policy. If the course already has a late policy, a bad\\_request is returned since there can only be one late policy per course. ```js { \"late_policy\": LatePolicy } ``` [LatePolicyController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/late_policy_controller.rb) **Scope:** `url:PATCH|/api/v1/courses/:id/late_policy` Patch a late policy. No body is returned upon success. | Parameter | Type | Des...",
     "inputSchema": {
       "type": "object",
@@ -71,10 +71,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_id_late_policy: async (client, args) => {
+  get_ci_late_policy: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:id/late_policy", args);
   },
-  post_courses_id_late_policy: async (client, args) => {
+  post_ci_late_policy: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:id/late_policy", args);
   }
 };

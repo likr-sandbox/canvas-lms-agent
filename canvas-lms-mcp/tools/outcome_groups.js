@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_global_root_outcome_group",
+    "name": "get_g_root_outcome_group",
     "description": "**Scope:** `url:GET|/api/v1/global/root_outcome_group`",
     "inputSchema": {
       "type": "object",
@@ -18,7 +18,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_root_outcome_group",
+    "name": "get_aa_root_outcome_group",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/root_outcome_group`",
     "inputSchema": {
       "type": "object",
@@ -38,7 +38,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_root_outcome_group",
+    "name": "get_cc_root_outcome_group",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/root_outcome_group` Convenience redirect to find the root outcome group for a particular context. Will redirect to the appropriate outcome group's URL. [OutcomeGroupsApiController#index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/outcome_groups_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -58,7 +58,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_outcome_groups",
+    "name": "get_aa_outcome_groups",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/outcome_groups`",
     "inputSchema": {
       "type": "object",
@@ -78,7 +78,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_groups",
+    "name": "get_cc_outcome_groups",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_groups` Returns a list of all outcome groups in the specified context. Returns a list of [OutcomeGroup](#outcomegroup) objects. [OutcomeGroupsApiController#link\\_index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/outcome_groups_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -98,7 +98,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_outcome_group_links",
+    "name": "get_aa_outcome_group_links",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/outcome_group_links`",
     "inputSchema": {
       "type": "object",
@@ -118,7 +118,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_group_links",
+    "name": "get_cc_outcome_group_links",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_group_links` Returns a list of all outcome links in the specified context. Returns a list of [OutcomeLink](#outcomelink) objects. [OutcomeGroupsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/outcome_groups_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -146,7 +146,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_global_outcome_groups_id",
+    "name": "get_g_outcome_groups_id",
     "description": "**Scope:** `url:GET|/api/v1/global/outcome_groups/:id`",
     "inputSchema": {
       "type": "object",
@@ -166,7 +166,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_outcome_groups_id",
+    "name": "get_aa_outcome_groups_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/outcome_groups/:id`",
     "inputSchema": {
       "type": "object",
@@ -191,7 +191,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_groups_id",
+    "name": "get_cc_outcome_groups_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_groups/:id` Returns detailed information about a specific outcome group. Returns an [OutcomeGroup](#outcomegroup) object. [OutcomeGroupsApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/outcome_groups_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -216,7 +216,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_global_outcome_groups_id",
+    "name": "put_g_outcome_groups_id",
     "description": "**Scope:** `url:PUT|/api/v1/global/outcome_groups/:id`",
     "inputSchema": {
       "type": "object",
@@ -232,7 +232,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_outcome_groups_id",
+    "name": "put_aa_outcome_groups_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/outcome_groups/:id`",
     "inputSchema": {
       "type": "object",
@@ -253,7 +253,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_outcome_groups_id",
+    "name": "put_cc_outcome_groups_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/outcome_groups/:id` Modify an existing outcome group. Fields not provided are left as is; unrecognized fields are ignored. When changing the parent outcome group, the new parent group must belong to the same context as this outcome group, and must not be a descendant of this outcome group (i.e. no cycles allowed). ```bash curl 'https:///api/v1/accounts/1/outcome_groups/2.json' \\ -X PUT \\ -F 'title=Outcome Group Title' \\ -F 'description=Outcome gr...",
     "inputSchema": {
       "type": "object",
@@ -290,7 +290,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_global_outcome_groups_id",
+    "name": "delete_g_outcome_groups_id",
     "description": "**Scope:** `url:DELETE|/api/v1/global/outcome_groups/:id`",
     "inputSchema": {
       "type": "object",
@@ -306,7 +306,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_outcome_groups_id",
+    "name": "delete_aa_outcome_groups_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/outcome_groups/:id`",
     "inputSchema": {
       "type": "object",
@@ -327,7 +327,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_outcome_groups_id",
+    "name": "delete_cc_outcome_groups_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/outcome_groups/:id` Deleting an outcome group deletes descendant outcome groups and outcome links. The linked outcomes themselves are only deleted if all links to the outcome were deleted. Aligned outcomes cannot be deleted; as such, if all remaining links to an aligned outcome are included in this group's descendants, the group deletion will fail. ```bash curl 'https:///api/v1/accounts/1/outcome_groups/2.json' \\ -X DELETE \\ -H \"Authorization:...",
     "inputSchema": {
       "type": "object",
@@ -348,7 +348,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_global_outcome_groups_id_outcomes",
+    "name": "get_gogi_outcomes",
     "description": "**Scope:** `url:GET|/api/v1/global/outcome_groups/:id/outcomes`",
     "inputSchema": {
       "type": "object",
@@ -368,7 +368,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_outcome_groups_id_outcomes",
+    "name": "get_aaogi_outcomes",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/outcome_groups/:id/outcomes`",
     "inputSchema": {
       "type": "object",
@@ -393,7 +393,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_groups_id_outcomes",
+    "name": "get_ccogi_outcomes",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_groups/:id/outcomes` A paginated list of the immediate OutcomeLink children of the outcome group. Returns a list of [OutcomeLink](#outcomelink) objects. [OutcomeGroupsApiController#link](https://github.com/instructure/canvas-lms/blob/master/app/controllers/outcome_groups_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -422,7 +422,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_global_outcome_groups_id_outcomes",
+    "name": "post_gogi_outcomes",
     "description": "**Scope:** `url:POST|/api/v1/global/outcome_groups/:id/outcomes`",
     "inputSchema": {
       "type": "object",
@@ -438,7 +438,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_global_outcome_groups_id_outcomes_outcome_id",
+    "name": "put_gogi_outcomes_outcome_id",
     "description": "**Scope:** `url:PUT|/api/v1/global/outcome_groups/:id/outcomes/:outcome_id`",
     "inputSchema": {
       "type": "object",
@@ -459,7 +459,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_outcome_groups_id_outcomes",
+    "name": "post_aaogi_outcomes",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/outcome_groups/:id/outcomes`",
     "inputSchema": {
       "type": "object",
@@ -480,7 +480,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_outcome_groups_id_outcomes_outcome_id",
+    "name": "put_aaogi_outcomes_outcome_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/outcome_groups/:id/outcomes/:outcome_id`",
     "inputSchema": {
       "type": "object",
@@ -506,7 +506,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_outcome_groups_id_outcomes",
+    "name": "post_ccogi_outcomes",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/outcome_groups/:id/outcomes`",
     "inputSchema": {
       "type": "object",
@@ -527,7 +527,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_outcome_groups_id_outcomes_outcome_id",
+    "name": "put_ccogi_outcomes_outcome_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/outcome_groups/:id/outcomes/:outcome_id` Link an outcome into the outcome group. The outcome to link can either be specified by a PUT to the link URL for a specific outcome (the outcome\\_id in the PUT URLs) or by supplying the information for a new outcome (title, description, ratings, mastery\\_points) in a POST to the collection. If linking an existing outcome, the outcome\\_id must identify an outcome available to this context; i.e. an outcome o...",
     "inputSchema": {
       "type": "object",
@@ -593,7 +593,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_global_outcome_groups_id_outcomes_outcome_id",
+    "name": "delete_gogi_outcomes_outcome_id",
     "description": "**Scope:** `url:DELETE|/api/v1/global/outcome_groups/:id/outcomes/:outcome_id`",
     "inputSchema": {
       "type": "object",
@@ -614,7 +614,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_outcome_groups_id_outcomes_outcome_id",
+    "name": "delete_aaogi_outcomes_outcome_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/outcome_groups/:id/outcomes/:outcome_id`",
     "inputSchema": {
       "type": "object",
@@ -640,7 +640,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_outcome_groups_id_outcomes_outcome_id",
+    "name": "delete_ccogi_outcomes_outcome_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/outcome_groups/:id/outcomes/:outcome_id` Unlinking an outcome only deletes the outcome itself if this was the last link to the outcome in any group in any context. Aligned outcomes cannot be deleted; as such, if this is the last link to an aligned outcome, the unlinking will fail. ```bash curl 'https:///api/v1/accounts/1/outcome_groups/1/outcomes/1.json' \\ -X DELETE \\ -H \"Authorization: Bearer \" ``` Returns an [OutcomeLink](#outcomelink) objec...",
     "inputSchema": {
       "type": "object",
@@ -666,7 +666,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_global_outcome_groups_id_subgroups",
+    "name": "get_gogi_subgroups",
     "description": "**Scope:** `url:GET|/api/v1/global/outcome_groups/:id/subgroups`",
     "inputSchema": {
       "type": "object",
@@ -686,7 +686,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_outcome_groups_id_subgroups",
+    "name": "get_aaogi_subgroups",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/outcome_groups/:id/subgroups`",
     "inputSchema": {
       "type": "object",
@@ -711,7 +711,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_groups_id_subgroups",
+    "name": "get_ccogi_subgroups",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_groups/:id/subgroups` A paginated list of the immediate OutcomeGroup children of the outcome group. Returns a list of [OutcomeGroup](#outcomegroup) objects. [OutcomeGroupsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/outcome_groups_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -736,7 +736,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_global_outcome_groups_id_subgroups",
+    "name": "post_gogi_subgroups",
     "description": "**Scope:** `url:POST|/api/v1/global/outcome_groups/:id/subgroups`",
     "inputSchema": {
       "type": "object",
@@ -752,7 +752,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_outcome_groups_id_subgroups",
+    "name": "post_aaogi_subgroups",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/outcome_groups/:id/subgroups`",
     "inputSchema": {
       "type": "object",
@@ -773,7 +773,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_outcome_groups_id_subgroups",
+    "name": "post_ccogi_subgroups",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/outcome_groups/:id/subgroups` Creates a new empty subgroup under the outcome group with the given title and description. ```bash curl 'https:///api/v1/accounts/1/outcome_groups/1/subgroups.json' \\ -X POST \\ -F 'title=Outcome Group Title' \\ -F 'description=Outcome group description' \\ -F 'vendor_guid=customid9000' \\ -H \"Authorization: Bearer \" ``` ```bash curl 'https:///api/v1/accounts/1/outcome_groups/1/subgroups.json' \\ -X POST \\ --data-binary ...",
     "inputSchema": {
       "type": "object",
@@ -807,7 +807,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_global_outcome_groups_id_import",
+    "name": "post_gogi_import",
     "description": "**Scope:** `url:POST|/api/v1/global/outcome_groups/:id/import`",
     "inputSchema": {
       "type": "object",
@@ -823,7 +823,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_outcome_groups_id_import",
+    "name": "post_aaogi_import",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/outcome_groups/:id/import`",
     "inputSchema": {
       "type": "object",
@@ -844,7 +844,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_outcome_groups_id_import",
+    "name": "post_ccogi_import",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/outcome_groups/:id/import` Creates a new subgroup of the outcome group with the same title and description as the source group, then creates links in that new subgroup to the same outcomes that are linked in the source group. Recurses on the subgroups of the source group, importing them each in turn into the new subgroup. Allows you to copy organizational structure, but does not create copies of the outcomes themselves, only new links. The sourc...",
     "inputSchema": {
       "type": "object",
@@ -876,115 +876,115 @@ const definitions = [
 ];
 
 const handlers = {
-  get_global_root_outcome_group: async (client, args) => {
+  get_g_root_outcome_group: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/global/root_outcome_group", args);
   },
-  get_accounts_account_id_root_outcome_group: async (client, args) => {
+  get_aa_root_outcome_group: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/root_outcome_group", args);
   },
-  get_courses_course_id_root_outcome_group: async (client, args) => {
+  get_cc_root_outcome_group: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/root_outcome_group", args);
   },
-  get_accounts_account_id_outcome_groups: async (client, args) => {
+  get_aa_outcome_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/outcome_groups", args);
   },
-  get_courses_course_id_outcome_groups: async (client, args) => {
+  get_cc_outcome_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_groups", args);
   },
-  get_accounts_account_id_outcome_group_links: async (client, args) => {
+  get_aa_outcome_group_links: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/outcome_group_links", args);
   },
-  get_courses_course_id_outcome_group_links: async (client, args) => {
+  get_cc_outcome_group_links: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_group_links", args);
   },
-  get_global_outcome_groups_id: async (client, args) => {
+  get_g_outcome_groups_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/global/outcome_groups/:id", args);
   },
-  get_accounts_account_id_outcome_groups_id: async (client, args) => {
+  get_aa_outcome_groups_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/outcome_groups/:id", args);
   },
-  get_courses_course_id_outcome_groups_id: async (client, args) => {
+  get_cc_outcome_groups_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_groups/:id", args);
   },
-  put_global_outcome_groups_id: async (client, args) => {
+  put_g_outcome_groups_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/global/outcome_groups/:id", args);
   },
-  put_accounts_account_id_outcome_groups_id: async (client, args) => {
+  put_aa_outcome_groups_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/outcome_groups/:id", args);
   },
-  put_courses_course_id_outcome_groups_id: async (client, args) => {
+  put_cc_outcome_groups_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/outcome_groups/:id", args);
   },
-  delete_global_outcome_groups_id: async (client, args) => {
+  delete_g_outcome_groups_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/global/outcome_groups/:id", args);
   },
-  delete_accounts_account_id_outcome_groups_id: async (client, args) => {
+  delete_aa_outcome_groups_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/outcome_groups/:id", args);
   },
-  delete_courses_course_id_outcome_groups_id: async (client, args) => {
+  delete_cc_outcome_groups_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/outcome_groups/:id", args);
   },
-  get_global_outcome_groups_id_outcomes: async (client, args) => {
+  get_gogi_outcomes: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/global/outcome_groups/:id/outcomes", args);
   },
-  get_accounts_account_id_outcome_groups_id_outcomes: async (client, args) => {
+  get_aaogi_outcomes: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/outcome_groups/:id/outcomes", args);
   },
-  get_courses_course_id_outcome_groups_id_outcomes: async (client, args) => {
+  get_ccogi_outcomes: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_groups/:id/outcomes", args);
   },
-  post_global_outcome_groups_id_outcomes: async (client, args) => {
+  post_gogi_outcomes: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/global/outcome_groups/:id/outcomes", args);
   },
-  put_global_outcome_groups_id_outcomes_outcome_id: async (client, args) => {
+  put_gogi_outcomes_outcome_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/global/outcome_groups/:id/outcomes/:outcome_id", args);
   },
-  post_accounts_account_id_outcome_groups_id_outcomes: async (client, args) => {
+  post_aaogi_outcomes: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/outcome_groups/:id/outcomes", args);
   },
-  put_accounts_account_id_outcome_groups_id_outcomes_outcome_id: async (client, args) => {
+  put_aaogi_outcomes_outcome_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/outcome_groups/:id/outcomes/:outcome_id", args);
   },
-  post_courses_course_id_outcome_groups_id_outcomes: async (client, args) => {
+  post_ccogi_outcomes: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/outcome_groups/:id/outcomes", args);
   },
-  put_courses_course_id_outcome_groups_id_outcomes_outcome_id: async (client, args) => {
+  put_ccogi_outcomes_outcome_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/outcome_groups/:id/outcomes/:outcome_id", args);
   },
-  delete_global_outcome_groups_id_outcomes_outcome_id: async (client, args) => {
+  delete_gogi_outcomes_outcome_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/global/outcome_groups/:id/outcomes/:outcome_id", args);
   },
-  delete_accounts_account_id_outcome_groups_id_outcomes_outcome_id: async (client, args) => {
+  delete_aaogi_outcomes_outcome_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/outcome_groups/:id/outcomes/:outcome_id", args);
   },
-  delete_courses_course_id_outcome_groups_id_outcomes_outcome_id: async (client, args) => {
+  delete_ccogi_outcomes_outcome_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/outcome_groups/:id/outcomes/:outcome_id", args);
   },
-  get_global_outcome_groups_id_subgroups: async (client, args) => {
+  get_gogi_subgroups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/global/outcome_groups/:id/subgroups", args);
   },
-  get_accounts_account_id_outcome_groups_id_subgroups: async (client, args) => {
+  get_aaogi_subgroups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/outcome_groups/:id/subgroups", args);
   },
-  get_courses_course_id_outcome_groups_id_subgroups: async (client, args) => {
+  get_ccogi_subgroups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_groups/:id/subgroups", args);
   },
-  post_global_outcome_groups_id_subgroups: async (client, args) => {
+  post_gogi_subgroups: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/global/outcome_groups/:id/subgroups", args);
   },
-  post_accounts_account_id_outcome_groups_id_subgroups: async (client, args) => {
+  post_aaogi_subgroups: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/outcome_groups/:id/subgroups", args);
   },
-  post_courses_course_id_outcome_groups_id_subgroups: async (client, args) => {
+  post_ccogi_subgroups: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/outcome_groups/:id/subgroups", args);
   },
-  post_global_outcome_groups_id_import: async (client, args) => {
+  post_gogi_import: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/global/outcome_groups/:id/import", args);
   },
-  post_accounts_account_id_outcome_groups_id_import: async (client, args) => {
+  post_aaogi_import: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/outcome_groups/:id/import", args);
   },
-  post_courses_course_id_outcome_groups_id_import: async (client, args) => {
+  post_ccogi_import: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/outcome_groups/:id/import", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_quizzes_assignment_overrides",
+    "name": "get_ccq_assignment_overrides",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/assignment_overrides` Retrieve the actual due-at, unlock-at, and available-at dates for quizzes based on the assignment overrides active for the current API user. ```js { \"quiz_assignment_overrides\": [{ \"quiz_id\": \"1\", \"due_dates\": [QuizAssignmentOverride], \"all_dates\": [QuizAssignmentOverride] },{ \"quiz_id\": \"2\", \"due_dates\": [QuizAssignmentOverride], \"all_dates\": [QuizAssignmentOverride] }] } ``` Returns a [QuizAssignmentOverrideSetCont...",
     "inputSchema": {
       "type": "object",
@@ -29,7 +29,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_new_quizzes_assignment_overrides",
+    "name": "get_ccnq_assignment_overrides",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/new_quizzes/assignment_overrides` Retrieve the actual due-at, unlock-at, and available-at dates for quizzes based on the assignment overrides active for the current API user. ```js { \"quiz_assignment_overrides\": [{ \"quiz_id\": \"1\", \"due_dates\": [QuizAssignmentOverride], \"all_dates\": [QuizAssignmentOverride] },{ \"quiz_id\": \"2\", \"due_dates\": [QuizAssignmentOverride], \"all_dates\": [QuizAssignmentOverride] }] } ``` Returns a [QuizAssignmentOverrideSet...",
     "inputSchema": {
       "type": "object",
@@ -55,10 +55,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_quizzes_assignment_overrides: async (client, args) => {
+  get_ccq_assignment_overrides: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/assignment_overrides", args);
   },
-  get_courses_course_id_new_quizzes_assignment_overrides: async (client, args) => {
+  get_ccnq_assignment_overrides: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/new_quizzes/assignment_overrides", args);
   }
 };

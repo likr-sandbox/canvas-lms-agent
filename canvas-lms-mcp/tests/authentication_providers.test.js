@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const authentication_providersModule = require("../tools/authentication_providers");
 
-test("get_accounts_account_id_authentication_providers calls correct endpoint", async () => {
+test("get_aa_authentication_providers calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentication_providersModule.handlers.get_accounts_account_id_authentication_providers;
-  assert.ok(handler, "Handler get_accounts_account_id_authentication_providers should be defined");
+  const handler = authentication_providersModule.handlers.get_aa_authentication_providers;
+  assert.ok(handler, "Handler get_aa_authentication_providers should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_authentication_providers calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_authentication_providers_id calls correct endpoint", async () => {
+test("get_aa_authentication_providers_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentication_providersModule.handlers.get_accounts_account_id_authentication_providers_id;
-  assert.ok(handler, "Handler get_accounts_account_id_authentication_providers_id should be defined");
+  const handler = authentication_providersModule.handlers.get_aa_authentication_providers_id;
+  assert.ok(handler, "Handler get_aa_authentication_providers_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_authentication_providers_id calls correct endpoint
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_authentication_providers calls correct endpoint", async () => {
+test("post_aa_authentication_providers calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentication_providersModule.handlers.post_accounts_account_id_authentication_providers;
-  assert.ok(handler, "Handler post_accounts_account_id_authentication_providers should be defined");
+  const handler = authentication_providersModule.handlers.post_aa_authentication_providers;
+  assert.ok(handler, "Handler post_aa_authentication_providers should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -59,15 +59,15 @@ test("post_accounts_account_id_authentication_providers calls correct endpoint",
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_authentication_providers_id calls correct endpoint", async () => {
+test("put_aa_authentication_providers_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentication_providersModule.handlers.put_accounts_account_id_authentication_providers_id;
-  assert.ok(handler, "Handler put_accounts_account_id_authentication_providers_id should be defined");
+  const handler = authentication_providersModule.handlers.put_aa_authentication_providers_id;
+  assert.ok(handler, "Handler put_aa_authentication_providers_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -77,15 +77,15 @@ test("put_accounts_account_id_authentication_providers_id calls correct endpoint
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_authentication_providers_id calls correct endpoint", async () => {
+test("delete_aa_authentication_providers_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentication_providersModule.handlers.delete_accounts_account_id_authentication_providers_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_authentication_providers_id should be defined");
+  const handler = authentication_providersModule.handlers.delete_aa_authentication_providers_id;
+  assert.ok(handler, "Handler delete_aa_authentication_providers_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -95,15 +95,15 @@ test("delete_accounts_account_id_authentication_providers_id calls correct endpo
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_authentication_providers_id_restore calls correct endpoint", async () => {
+test("put_aaapi_restore calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentication_providersModule.handlers.put_accounts_account_id_authentication_providers_id_restore;
-  assert.ok(handler, "Handler put_accounts_account_id_authentication_providers_id_restore should be defined");
+  const handler = authentication_providersModule.handlers.put_aaapi_restore;
+  assert.ok(handler, "Handler put_aaapi_restore should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -113,15 +113,15 @@ test("put_accounts_account_id_authentication_providers_id_restore calls correct 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_sso_settings calls correct endpoint", async () => {
+test("get_aa_sso_settings calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentication_providersModule.handlers.get_accounts_account_id_sso_settings;
-  assert.ok(handler, "Handler get_accounts_account_id_sso_settings should be defined");
+  const handler = authentication_providersModule.handlers.get_aa_sso_settings;
+  assert.ok(handler, "Handler get_aa_sso_settings should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -131,15 +131,15 @@ test("get_accounts_account_id_sso_settings calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_sso_settings calls correct endpoint", async () => {
+test("put_aa_sso_settings calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentication_providersModule.handlers.put_accounts_account_id_sso_settings;
-  assert.ok(handler, "Handler put_accounts_account_id_sso_settings should be defined");
+  const handler = authentication_providersModule.handlers.put_aa_sso_settings;
+  assert.ok(handler, "Handler put_aa_sso_settings should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -149,15 +149,15 @@ test("put_accounts_account_id_sso_settings calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_authentication_providers_force_password_reset calls correct endpoint", async () => {
+test("post_aaap_force_password_reset calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentication_providersModule.handlers.post_accounts_account_id_authentication_providers_force_password_reset;
-  assert.ok(handler, "Handler post_accounts_account_id_authentication_providers_force_password_reset should be defined");
+  const handler = authentication_providersModule.handlers.post_aaap_force_password_reset;
+  assert.ok(handler, "Handler post_aaap_force_password_reset should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 

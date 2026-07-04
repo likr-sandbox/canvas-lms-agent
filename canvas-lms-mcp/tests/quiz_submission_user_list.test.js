@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const quiz_submission_user_listModule = require("../tools/quiz_submission_user_list");
 
-test("post_courses_course_id_quizzes_id_submission_users_message calls correct endpoint", async () => {
+test("post_ccqisu_message calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = quiz_submission_user_listModule.handlers.post_courses_course_id_quizzes_id_submission_users_message;
-  assert.ok(handler, "Handler post_courses_course_id_quizzes_id_submission_users_message should be defined");
+  const handler = quiz_submission_user_listModule.handlers.post_ccqisu_message;
+  assert.ok(handler, "Handler post_ccqisu_message should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "conversations": "test_val"});
 

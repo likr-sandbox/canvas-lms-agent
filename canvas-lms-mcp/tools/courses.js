@@ -46,7 +46,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_courses",
+    "name": "get_uu_courses",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/courses` Returns a paginated list of active courses for this user. To view the course list for a user other than yourself, you must be either an observer of that user or an administrator. Returns a list of [Course](#course) objects. [CoursesController#user\\_progress](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -86,7 +86,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_users_user_id_progress",
+    "name": "get_ccuu_progress",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/users/:user_id/progress` Return progress information for the user and course You can supply +self+ as the user\\_id to query your own progress in a course. To query another user's progress, you must be a teacher in the course, an administrator, or a linked observer of the user. Returns a [CourseProgress](#courseprogress) object. [CoursesController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -111,7 +111,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_courses",
+    "name": "post_aa_courses",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/courses` Create a new course Returns a [Course](#course) object. [CoursesController#create\\_file](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -255,7 +255,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_files",
+    "name": "post_cc_files",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/files` Upload a file to the course. This API endpoint is the first step in uploading a file to a course. See the [File Upload Documentation](../basics/file.file_uploads.md) for details on the file upload workflow. Only those with the \"Manage Files\" permission on a course can upload files to the course. By default, this is Teachers, TAs and Designers. [CoursesController#students](https://github.com/instructure/canvas-lms/blob/master/app/controlle...",
     "inputSchema": {
       "type": "object",
@@ -271,7 +271,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_students",
+    "name": "get_cc_students",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/students` Returns the paginated list of students enrolled in this course. DEPRECATED: Please use the [course users](#method.courses.users) endpoint and pass \"student\" as the enrollment\\_type. Returns a list of [User](users.md#user) objects. [CoursesController#users](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -291,7 +291,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_users",
+    "name": "get_cc_users",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/users`",
     "inputSchema": {
       "type": "object",
@@ -311,7 +311,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_search_users",
+    "name": "get_cc_search_users",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/search_users` Returns the paginated list of users in this course. And optionally the user's enrollments in the course. Returns a list of [User](users.md#user) objects. [CoursesController#recent\\_students](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -371,7 +371,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_recent_students",
+    "name": "get_cc_recent_students",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/recent_students` Returns the paginated list of users in this course, ordered by how recently they have logged in. The records include the 'last\\_login' field which contains a timestamp of the last time that user logged into canvas. The querying user must have the 'View usage reports' permission. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses//recent_users ``` Returns a list of [User](users.md#user) objects. [CoursesController#...",
     "inputSchema": {
       "type": "object",
@@ -391,7 +391,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_users_id",
+    "name": "get_cc_users_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/users/:id` Return information on a single user. Accepts the same include\\[] parameters as the :users: action, and returns a single user with the same fields as that action. Returns an [User](users.md#user) object. [CoursesController#content\\_share\\_users](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -416,7 +416,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_content_share_users",
+    "name": "get_cc_content_share_users",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_share_users` Returns a paginated list of users you can share content with. Requires the content share feature and the user must have the manage content permission for the course. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses//content_share_users \\ -d 'search_term=smith' ``` Returns a list of [User](users.md#user) objects. [CoursesController#preview\\_html](https://github.com/instructure/canvas-lms/blob/master/app/contr...",
     "inputSchema": {
       "type": "object",
@@ -441,7 +441,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_preview_html",
+    "name": "post_cc_preview_html",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/preview_html` Preview html content processed for this course ```bash curl https:///api/v1/courses//preview_html \\ -F 'html=processed html' \\ -H 'Authorization: Bearer ' ``` ```js { \"html\": \"processed html\" } ``` [CoursesController#activity\\_stream](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -461,7 +461,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_activity_stream",
+    "name": "get_cc_activity_stream",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/activity_stream` Returns the current user's course-specific activity stream, paginated. For full documentation, see the API documentation for the user activity stream, in the user api. [CoursesController#activity\\_stream\\_summary](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -481,7 +481,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_activity_stream_summary",
+    "name": "get_ccas_summary",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/activity_stream/summary` Returns a summary of the current user's course-specific activity stream. For full documentation, see the API documentation for the user activity stream summary, in the user api. [CoursesController#todo\\_items](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -501,7 +501,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_todo",
+    "name": "get_cc_todo",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/todo` Returns the current user's course-specific todo items. For full documentation, see the API documentation for the user todo items, in the user api. [CoursesController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -542,7 +542,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_settings",
+    "name": "get_cc_settings",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/settings` Returns some of a course's settings. ```bash curl https:///api/v1/courses//settings \\ -X GET \\ -H 'Authorization: Bearer ' ``` ```js { \"allow_student_discussion_topics\": true, \"allow_student_forum_attachments\": false, \"allow_student_discussion_editing\": true, \"grading_standard_enabled\": true, \"grading_standard_id\": 137, \"allow_student_organized_groups\": true, \"hide_final_grades\": false, \"hide_distribution_graphs\": false, \"hide_sections_...",
     "inputSchema": {
       "type": "object",
@@ -562,7 +562,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_settings",
+    "name": "put_cc_settings",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/settings` Can update the following course settings: ```bash curl https:///api/v1/courses//settings \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -d 'allow_student_discussion_topics=false' ``` [CoursesController#student\\_view\\_student](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -658,7 +658,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_student_view_student",
+    "name": "get_cc_student_view_student",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/student_view_student` Returns information for a test student in this course. Creates a test student if one does not already exist for the course. The caller must have permission to access the course's student view. ```bash curl https:///api/v1/courses//student_view_student \\ -X GET \\ -H 'Authorization: Bearer ' ``` Returns an [User](users.md#user) object. [CoursesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controlle...",
     "inputSchema": {
       "type": "object",
@@ -698,7 +698,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_courses_id",
+    "name": "get_aa_courses_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/courses/:id` Return information on a single course. Accepts the same include\\[] parameters as the list action plus: Returns a [Course](#course) object. [CoursesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -947,7 +947,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_courses",
+    "name": "put_aa_courses",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/courses` Update multiple courses in an account. Operates asynchronously; use the [progress endpoint](progress.md#method.progress.show) to query the status of an operation. ```bash curl https:///api/v1/accounts//courses \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -d 'event=offer' \\ -d 'course_ids[]=1' \\ -d 'course_ids[]=2' ``` Returns a [Progress](progress.md#progress) object. [CoursesController#reset\\_content](https://github.com/instructure/canvas...",
     "inputSchema": {
       "type": "object",
@@ -973,7 +973,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_reset_content",
+    "name": "post_cc_reset_content",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/reset_content` Deletes the current course, and creates a new equivalent course with no content, but all sections and users moved over. Returns a [Course](#course) object. [CoursesController#effective\\_due\\_dates](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -989,7 +989,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_effective_due_dates",
+    "name": "get_cc_effective_due_dates",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/effective_due_dates` For each assignment in the course, returns each assigned student's ID and their corresponding due date along with some grading period data. Returns a collection with keys representing assignment IDs and values as a collection containing keys representing student IDs and values representing the student's effective due\\_at, the grading\\_period\\_id of which the due\\_at falls in, and whether or not the grading period is closed (i...",
     "inputSchema": {
       "type": "object",
@@ -1013,7 +1013,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_permissions",
+    "name": "get_cc_permissions",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/permissions` Returns permission information for the calling user in the given course. See also the [Account](accounts.md#method.accounts.permissions) and [Group](groups.md#method.groups.permissions) counterparts. ```bash curl https:///api/v1/courses//permissions \\ -H 'Authorization: Bearer ' \\ -d 'permissions[]=manage_grades' -d 'permissions[]=send_messages' ``` ```js {'manage_grades': 'false', 'send_messages': 'true'} ``` [CoursesController#bulk...",
     "inputSchema": {
       "type": "object",
@@ -1037,7 +1037,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_bulk_user_progress",
+    "name": "get_cc_bulk_user_progress",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/bulk_user_progress` Returns progress information for all users enrolled in the given course. You must be a user who has permission to view all grades in the course (such as a teacher or administrator). ```bash curl https:///api/v1/courses//bulk_user_progress \\ -H 'Authorization: Bearer ' ``` ```js [ { \"id\": 1, \"display_name\": \"Test Student 1\", \"avatar_image_url\": \"https:///images/messages/avatar-50.png\", \"html_url\": \"https:///courses/1/users/1\", ...",
     "inputSchema": {
       "type": "object",
@@ -1057,7 +1057,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_id_dismiss_migration_limitation_message",
+    "name": "post_ci_dismiss_migration_limitation_message",
     "description": "**Scope:** `url:POST|/api/v1/courses/:id/dismiss_migration_limitation_message` Remove alert about the limitations of quiz migrations that is displayed to a user in a course you must be logged in to use this endpoint ```js { \"success\": \"true\" } ``` [CoursesController#restore\\_version](https://github.com/instructure/canvas-lms/blob/master/app/controllers/courses_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -1073,7 +1073,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_restore_version_id",
+    "name": "post_cc_restore_version_id",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/restore/:version_id` Restore a course's syllabus body to a previously saved version. No other course content is affected. Requires the syllabus\\_versioning feature flag to be enabled on the account, and the caller must have permission to manage course content. ```bash curl -X POST -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/restore/4 ``` Returns a [Course](#course) object. [ContentImportsController#copy\\_course\\_status](https://git...",
     "inputSchema": {
       "type": "object",
@@ -1094,7 +1094,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_course_copy_id",
+    "name": "get_cc_course_copy_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/course_copy/:id` DEPRECATED: Please use the [Content Migrations API](content_migrations.md#method.content_migrations.create) Retrieve the status of a course copy * id The unique identifier for the course copy. * created\\_at The time that the copy was initiated. * progress The progress of the copy as an integer. It is null before the copying starts, and 100 when finished. * workflow\\_state The current status of the course copy. Possible values: \"c...",
     "inputSchema": {
       "type": "object",
@@ -1119,7 +1119,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_course_copy",
+    "name": "post_cc_course_copy",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/course_copy` DEPRECATED: Please use the [Content Migrations API](content_migrations.md#method.content_migrations.create) Copies content from one course into another. The default is to copy all course content. You can control specific types to copy by using either the 'except' option or the 'only' option. The response is the same as the course copy status endpoint *** This documentation is generated directly from the Canvas LMS source code, avail...",
     "inputSchema": {
       "type": "object",
@@ -1152,94 +1152,94 @@ const handlers = {
   get_courses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses", args);
   },
-  get_users_user_id_courses: async (client, args) => {
+  get_uu_courses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/courses", args);
   },
-  get_courses_course_id_users_user_id_progress: async (client, args) => {
+  get_ccuu_progress: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/users/:user_id/progress", args);
   },
-  post_accounts_account_id_courses: async (client, args) => {
+  post_aa_courses: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/courses", args);
   },
-  post_courses_course_id_files: async (client, args) => {
+  post_cc_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/files", args);
   },
-  get_courses_course_id_students: async (client, args) => {
+  get_cc_students: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/students", args);
   },
-  get_courses_course_id_users: async (client, args) => {
+  get_cc_users: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/users", args);
   },
-  get_courses_course_id_search_users: async (client, args) => {
+  get_cc_search_users: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/search_users", args);
   },
-  get_courses_course_id_recent_students: async (client, args) => {
+  get_cc_recent_students: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/recent_students", args);
   },
-  get_courses_course_id_users_id: async (client, args) => {
+  get_cc_users_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/users/:id", args);
   },
-  get_courses_course_id_content_share_users: async (client, args) => {
+  get_cc_content_share_users: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_share_users", args);
   },
-  post_courses_course_id_preview_html: async (client, args) => {
+  post_cc_preview_html: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/preview_html", args);
   },
-  get_courses_course_id_activity_stream: async (client, args) => {
+  get_cc_activity_stream: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/activity_stream", args);
   },
-  get_courses_course_id_activity_stream_summary: async (client, args) => {
+  get_ccas_summary: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/activity_stream/summary", args);
   },
-  get_courses_course_id_todo: async (client, args) => {
+  get_cc_todo: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/todo", args);
   },
   delete_courses_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:id", args);
   },
-  get_courses_course_id_settings: async (client, args) => {
+  get_cc_settings: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/settings", args);
   },
-  put_courses_course_id_settings: async (client, args) => {
+  put_cc_settings: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/settings", args);
   },
-  get_courses_course_id_student_view_student: async (client, args) => {
+  get_cc_student_view_student: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/student_view_student", args);
   },
   get_courses_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:id", args);
   },
-  get_accounts_account_id_courses_id: async (client, args) => {
+  get_aa_courses_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/courses/:id", args);
   },
   put_courses_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:id", args);
   },
-  put_accounts_account_id_courses: async (client, args) => {
+  put_aa_courses: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/courses", args);
   },
-  post_courses_course_id_reset_content: async (client, args) => {
+  post_cc_reset_content: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/reset_content", args);
   },
-  get_courses_course_id_effective_due_dates: async (client, args) => {
+  get_cc_effective_due_dates: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/effective_due_dates", args);
   },
-  get_courses_course_id_permissions: async (client, args) => {
+  get_cc_permissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/permissions", args);
   },
-  get_courses_course_id_bulk_user_progress: async (client, args) => {
+  get_cc_bulk_user_progress: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/bulk_user_progress", args);
   },
-  post_courses_id_dismiss_migration_limitation_message: async (client, args) => {
+  post_ci_dismiss_migration_limitation_message: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:id/dismiss_migration_limitation_message", args);
   },
-  post_courses_course_id_restore_version_id: async (client, args) => {
+  post_cc_restore_version_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/restore/:version_id", args);
   },
-  get_courses_course_id_course_copy_id: async (client, args) => {
+  get_cc_course_copy_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/course_copy/:id", args);
   },
-  post_courses_course_id_course_copy: async (client, args) => {
+  post_cc_course_copy: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/course_copy", args);
   }
 };

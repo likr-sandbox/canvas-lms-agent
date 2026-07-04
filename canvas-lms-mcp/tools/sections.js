@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_sections",
+    "name": "get_cc_sections",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/sections` A paginated list of the list of sections for this course. Returns a list of [Section](#section) objects. [SectionsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/sections_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -33,7 +33,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_sections",
+    "name": "post_cc_sections",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/sections` Creates a new section for this course. Returns a [Section](#section) object. [SectionsController#crosslist](https://github.com/instructure/canvas-lms/blob/master/app/controllers/sections_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -77,7 +77,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_sections_id_crosslist_new_course_id",
+    "name": "post_si_crosslist_new_course_id",
     "description": "**Scope:** `url:POST|/api/v1/sections/:id/crosslist/:new_course_id` Move the Section to another course. The new course may be in a different account (department), but must belong to the same root account (institution). Returns a [Section](#section) object. [SectionsController#uncrosslist](https://github.com/instructure/canvas-lms/blob/master/app/controllers/sections_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -102,7 +102,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_sections_id_crosslist",
+    "name": "delete_si_crosslist",
     "description": "**Scope:** `url:DELETE|/api/v1/sections/:id/crosslist` Undo cross-listing of a Section, returning it to its original course. Returns a [Section](#section) object. [SectionsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/sections_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -166,7 +166,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_sections_id",
+    "name": "get_cc_sections_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/sections/:id`",
     "inputSchema": {
       "type": "object",
@@ -231,7 +231,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_id_users",
+    "name": "get_si_users",
     "description": "**Scope:** `url:GET|/api/v1/sections/:id/users` Returns a paginated list of users in the section. ```bash curl https:///api/v1/sections/1/users \\ -H 'Authorization: Bearer ' ``` Returns a list of [User](users.md#user) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI ag...",
     "inputSchema": {
       "type": "object",
@@ -269,22 +269,22 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_sections: async (client, args) => {
+  get_cc_sections: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/sections", args);
   },
-  post_courses_course_id_sections: async (client, args) => {
+  post_cc_sections: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/sections", args);
   },
-  post_sections_id_crosslist_new_course_id: async (client, args) => {
+  post_si_crosslist_new_course_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/sections/:id/crosslist/:new_course_id", args);
   },
-  delete_sections_id_crosslist: async (client, args) => {
+  delete_si_crosslist: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/sections/:id/crosslist", args);
   },
   put_sections_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/sections/:id", args);
   },
-  get_courses_course_id_sections_id: async (client, args) => {
+  get_cc_sections_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/sections/:id", args);
   },
   get_sections_id: async (client, args) => {
@@ -293,7 +293,7 @@ const handlers = {
   delete_sections_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/sections/:id", args);
   },
-  get_sections_id_users: async (client, args) => {
+  get_si_users: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:id/users", args);
   }
 };

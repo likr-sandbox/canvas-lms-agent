@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_services_kaltura",
+    "name": "get_s_kaltura",
     "description": "**Scope:** `url:GET|/api/v1/services/kaltura` Return the config information for the Kaltura plugin in json format. * enabled Enabled state of the Kaltura plugin * domain Main domain of the Kaltura instance (This is the URL where the Kaltura API resides) * resources\\_domain Kaltura URL for grabbing thumbnails and other resources * rtmp\\_domain Hostname to be used for RTMP recording * partner\\_id Partner ID used for communicating with the Kaltura instance ```js { 'domain': 'kaltura.example.com'...",
     "inputSchema": {
       "type": "object",
@@ -18,7 +18,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_services_kaltura_session",
+    "name": "post_s_kaltura_session",
     "description": "**Scope:** `url:POST|/api/v1/services/kaltura_session` Start a new Kaltura session, so that new media can be recorded and uploaded to this Canvas instance's Kaltura instance. * ks The kaltura session id, for use in the kaltura v3 API. This can be used in the uploadtoken service, for instance, to upload a new media file into kaltura. ```js { 'ks': '1e39ad505f30c4fa1af5752b51bd69fe' } ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https:/...",
     "inputSchema": {
       "type": "object",
@@ -28,10 +28,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_services_kaltura: async (client, args) => {
+  get_s_kaltura: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/services/kaltura", args);
   },
-  post_services_kaltura_session: async (client, args) => {
+  post_s_kaltura_session: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/services/kaltura_session", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_courses_course_id_assignments_assignment_id_submissions",
+    "name": "post_ccaa_submissions",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/:assignment_id/submissions`",
     "inputSchema": {
       "type": "object",
@@ -26,7 +26,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_sections_section_id_assignments_assignment_id_submissions",
+    "name": "post_ssaa_submissions",
     "description": "**Scope:** `url:POST|/api/v1/sections/:section_id/assignments/:assignment_id/submissions` Make a submission for an assignment. You must be actively enrolled as a student in the course/section to do this. Concluded and pending enrollments are not permitted. All online turn-in submission types are supported in this API. However, there are a few things that are not yet supported: * Files can be submitted based on a file ID of a user or group file or through the [file upload API](#method.submissi...",
     "inputSchema": {
       "type": "object",
@@ -92,7 +92,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_submissions",
+    "name": "get_ccaa_submissions",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/submissions`",
     "inputSchema": {
       "type": "object",
@@ -117,7 +117,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_assignments_assignment_id_submissions",
+    "name": "get_ssaa_submissions",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/assignments/:assignment_id/submissions` A paginated list of all existing submissions for an assignment. * assignment\\_id The unique identifier for the assignment. * user\\_id The id of the user who submitted the assignment. * grader\\_id The id of the user who graded the submission. This will be null for submissions that haven't been graded yet. It will be a positive number if a real user has graded the submission and a negative number if the sub...",
     "inputSchema": {
       "type": "object",
@@ -150,7 +150,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_students_submissions",
+    "name": "get_ccs_submissions",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/students/submissions`",
     "inputSchema": {
       "type": "object",
@@ -170,7 +170,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_students_submissions",
+    "name": "get_sss_submissions",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/students/submissions` A paginated list of all existing submissions for a given set of students and assignments. ```js [ { \"assignment_id\": 100, grade: 5, \"user_id\": 1, ... }, { \"assignment_id\": 101, grade: 6, \"user_id\": 2, ... } [ { \"user_id\": 1, \"submissions\": [ { \"assignment_id\": 100, grade: 5, ... }, { \"assignment_id\": 101, grade: 6, ... } ] } ] ``` [SubmissionsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/con...",
     "inputSchema": {
       "type": "object",
@@ -242,7 +242,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_submissions_user_id",
+    "name": "get_ccaa_submissions_user_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id`",
     "inputSchema": {
       "type": "object",
@@ -272,7 +272,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_assignments_assignment_id_submissions_user_id",
+    "name": "get_ssaa_submissions_user_id",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id` Get a single submission, based on user id. [SubmissionsApiController#show\\_anonymous](https://github.com/instructure/canvas-lms/blob/master/app/controllers/submissions_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -306,7 +306,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_anonymous_submissions_anonymous_id",
+    "name": "get_ccaa_anonymous_submissions_anonymous_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id`",
     "inputSchema": {
       "type": "object",
@@ -336,7 +336,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_assignments_assignment_id_anonymous_submissions_anonymous_id",
+    "name": "get_ssaa_anonymous_submissions_anonymous_id",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id` Get a single submission, based on the submission's anonymous id. [SubmissionsApiController#create\\_file](https://github.com/instructure/canvas-lms/blob/master/app/controllers/submissions_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -370,7 +370,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments_assignment_id_submissions_user_id_files",
+    "name": "post_ccaasu_files",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/files`",
     "inputSchema": {
       "type": "object",
@@ -396,7 +396,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_sections_section_id_assignments_assignment_id_submissions_user_id_files",
+    "name": "post_ssaasu_files",
     "description": "**Scope:** `url:POST|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/files` Upload a file to a submission. This API endpoint is the first step in uploading a file to a submission as a student. See the [File Upload Documentation](../basics/file.file_uploads.md) for details on the file upload workflow. The final step of the file upload workflow will return the attachment data, including the new file id. The caller can then POST to submit the +online\\_upload+ assignm...",
     "inputSchema": {
       "type": "object",
@@ -422,7 +422,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_submissions_user_id",
+    "name": "put_ccaa_submissions_user_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id`",
     "inputSchema": {
       "type": "object",
@@ -448,7 +448,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_sections_section_id_assignments_assignment_id_submissions_user_id",
+    "name": "put_ssaa_submissions_user_id",
     "description": "**Scope:** `url:PUT|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id` Comment on and/or update the grading for a student's assignment submission. If any submission or rubric\\_assessment arguments are provided, the user must have permission to manage grades in the appropriate context (course or section). [SubmissionsApiController#update\\_anonymous](https://github.com/instructure/canvas-lms/blob/master/app/controllers/submissions_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -534,7 +534,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_anonymous_submissions_anonymous_id",
+    "name": "put_ccaa_anonymous_submissions_anonymous_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id`",
     "inputSchema": {
       "type": "object",
@@ -560,7 +560,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_sections_section_id_assignments_assignment_id_anonymous_submissions_anonymous_id",
+    "name": "put_ssaa_anonymous_submissions_anonymous_id",
     "description": "**Scope:** `url:PUT|/api/v1/sections/:section_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id` Comment on and/or update the grading for a student's assignment submission, fetching the submission by anonymous id (instead of user id). If any submission or rubric\\_assessment arguments are provided, the user must have permission to manage grades in the appropriate context (course or section). [SubmissionsApiController#gradeable\\_students](https://github.com/instructure/canvas-lm...",
     "inputSchema": {
       "type": "object",
@@ -630,7 +630,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_gradeable_students",
+    "name": "get_ccaa_gradeable_students",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/gradeable_students` A paginated list of gradeable students for the assignment. The caller must have permission to view grades. If anonymous grading is enabled for the current assignment and the allow\\_new\\_anonymous\\_id parameter is passed, the returned data will not include any values identifying the student, but will instead include an assignment-specific anonymous ID for each student. Section-limited instructors will...",
     "inputSchema": {
       "type": "object",
@@ -663,7 +663,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_gradeable_students",
+    "name": "get_cca_gradeable_students",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/gradeable_students` A paginated list of students eligible to submit a list of assignments. The caller must have permission to view grades for the requested course. Section-limited instructors will only see students in their own sections. ```js A [UserDisplay] with an extra assignment_ids field to indicate what assignments that user can submit [ { \"id\": 2, \"display_name\": \"Display Name\", \"avatar_image_url\": \"http://avatar-image-url.jpe...",
     "inputSchema": {
       "type": "object",
@@ -687,7 +687,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_submissions_update_grades",
+    "name": "post_ccs_update_grades",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/submissions/update_grades`",
     "inputSchema": {
       "type": "object",
@@ -703,7 +703,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments_assignment_id_submissions_update_grades",
+    "name": "post_ccaas_update_grades",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/update_grades`",
     "inputSchema": {
       "type": "object",
@@ -724,7 +724,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_sections_section_id_submissions_update_grades",
+    "name": "post_sss_update_grades",
     "description": "**Scope:** `url:POST|/api/v1/sections/:section_id/submissions/update_grades`",
     "inputSchema": {
       "type": "object",
@@ -740,7 +740,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_sections_section_id_assignments_assignment_id_submissions_update_grades",
+    "name": "post_ssaas_update_grades",
     "description": "**Scope:** `url:POST|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/update_grades` Update the grading and comments on multiple student's assignment submissions in an asynchronous job. The user must have permission to manage grades in the appropriate context (course or section). ```bash curl 'https:///api/v1/courses/1/assignments/2/submissions/update_grades' \\ -X POST \\ -F 'grade_data[3][posted_grade]=88' \\ -F 'grade_data[4][posted_grade]=95' \\ -H \"Authorization: Bearer \" ...",
     "inputSchema": {
       "type": "object",
@@ -797,7 +797,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_submissions_user_id_read",
+    "name": "put_ccaasu_read",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read`",
     "inputSchema": {
       "type": "object",
@@ -823,7 +823,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_sections_section_id_assignments_assignment_id_submissions_user_id_read",
+    "name": "put_ssaasu_read",
     "description": "**Scope:** `url:PUT|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/read` No request fields are necessary. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//assignments//submissions//read.json' \\ -X PUT \\ -H \"Authorization: Bearer \" \\ -H \"Content-Length: 0\" ``` [SubmissionsApiController#mark\\_submission\\_unread](https://github.com/instructure/canvas-lms/blob/master/app/controllers/submissions_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -849,7 +849,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_assignments_assignment_id_submissions_user_id_read",
+    "name": "delete_ccaasu_read",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read`",
     "inputSchema": {
       "type": "object",
@@ -875,7 +875,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_sections_section_id_assignments_assignment_id_submissions_user_id_read",
+    "name": "delete_ssaasu_read",
     "description": "**Scope:** `url:DELETE|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/read` No request fields are necessary. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//assignments//submissions//read.json' \\ -X DELETE \\ -H \"Authorization: Bearer \" ``` [SubmissionsApiController#mark\\_bulk\\_submissions\\_as\\_read](https://github.com/instructure/canvas-lms/blob/master/app/controllers/submissions_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -901,7 +901,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_submissions_bulk_mark_read",
+    "name": "put_ccs_bulk_mark_read",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/submissions/bulk_mark_read`",
     "inputSchema": {
       "type": "object",
@@ -917,7 +917,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_sections_section_id_submissions_bulk_mark_read",
+    "name": "put_sss_bulk_mark_read",
     "description": "**Scope:** `url:PUT|/api/v1/sections/:section_id/submissions/bulk_mark_read` Accepts a string array of submission ids. Loops through and marks each submission as read On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//submissions/bulk_mark_read.json' \\ -X PUT \\ -H \"Authorization: Bearer \" \\ -H \"Content-Length: 0\" \\ -F 'submissionIds=['88']' ``` [SubmissionsApiController#mark\\_submission\\_item\\_read](https://github.com/instructure/canvas-...",
     "inputSchema": {
       "type": "object",
@@ -937,7 +937,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_submissions_user_id_read_item",
+    "name": "put_ccaasu_read_item",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read/:item`",
     "inputSchema": {
       "type": "object",
@@ -968,7 +968,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_sections_section_id_assignments_assignment_id_submissions_user_id_read_item",
+    "name": "put_ssaasu_read_item",
     "description": "**Scope:** `url:PUT|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/read/:item` No request fields are necessary. A submission item can be \"grade\", \"comment\" or \"rubric\" On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//assignments//submissions//read/.json' \\ -X PUT \\ -H \"Authorization: Bearer \" \\ -H \"Content-Length: 0\" ``` [SubmissionsApiController#submissions\\_clear\\_unread](https://github.com/instructure/c...",
     "inputSchema": {
       "type": "object",
@@ -999,7 +999,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_submissions_user_id_clear_unread",
+    "name": "put_ccsu_clear_unread",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/submissions/:user_id/clear_unread`",
     "inputSchema": {
       "type": "object",
@@ -1020,7 +1020,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_sections_section_id_submissions_user_id_clear_unread",
+    "name": "put_sssu_clear_unread",
     "description": "**Scope:** `url:PUT|/api/v1/sections/:section_id/submissions/:user_id/clear_unread` Site-admin-only endpoint. No request fields are necessary. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//submissions//clear_unread.json' \\ -X PUT \\ -H \"Authorization: Bearer \" \\ -H \"Content-Length: 0\" ``` [SubmissionsApiController#rubric\\_assessments\\_read\\_state](https://github.com/instructure/canvas-lms/blob/master/app/controllers/submissions_api_c...",
     "inputSchema": {
       "type": "object",
@@ -1041,7 +1041,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_submissions_user_id_rubric_comments_read",
+    "name": "get_ccaasurc_read",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read`",
     "inputSchema": {
       "type": "object",
@@ -1071,7 +1071,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_submissions_user_id_rubric_assessments_read",
+    "name": "get_ccaasura_read",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read`",
     "inputSchema": {
       "type": "object",
@@ -1101,7 +1101,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_assignments_assignment_id_submissions_user_id_rubric_comments_read",
+    "name": "get_ssaasurc_read",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read`",
     "inputSchema": {
       "type": "object",
@@ -1131,7 +1131,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_assignments_assignment_id_submissions_user_id_rubric_assessments_read",
+    "name": "get_ssaasura_read",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read` Return whether new rubric comments/grading made on a submission have been seen by the student being assessed. ```bash curl 'https:///api/v1/courses//assignments//submissions//rubric_comments/read' \\ -H \"Authorization: Bearer \" curl 'https:///api/v1/courses//assignments//submissions//rubric_assessments/read' \\ -H \"Authorization: Bearer \" ``` ```js { \"read\": false } ``` [Sub...",
     "inputSchema": {
       "type": "object",
@@ -1161,7 +1161,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_submissions_user_id_rubric_comments_read",
+    "name": "put_ccaasurc_read",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read`",
     "inputSchema": {
       "type": "object",
@@ -1187,7 +1187,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_submissions_user_id_rubric_assessments_read",
+    "name": "put_ccaasura_read",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read`",
     "inputSchema": {
       "type": "object",
@@ -1213,7 +1213,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_sections_section_id_assignments_assignment_id_submissions_user_id_rubric_comments_read",
+    "name": "put_ssaasurc_read",
     "description": "**Scope:** `url:PUT|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read`",
     "inputSchema": {
       "type": "object",
@@ -1239,7 +1239,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_sections_section_id_assignments_assignment_id_submissions_user_id_rubric_assessments_read",
+    "name": "put_ssaasura_read",
     "description": "**Scope:** `url:PUT|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read` Indicate that rubric comments/grading made on a submission have been read by the student being assessed. Only the student who owns the submission can use this endpoint. NOTE: Rubric assessments will be marked as read automatically when they are viewed in Canvas web. ```bash curl 'https:///api/v1/courses//assignments//submissions//rubric_comments/read' \\ -X PUT \\ -H \"Author...",
     "inputSchema": {
       "type": "object",
@@ -1265,7 +1265,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_submissions_user_id_document_annotations_read",
+    "name": "get_ccaasuda_read",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read`",
     "inputSchema": {
       "type": "object",
@@ -1295,7 +1295,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_assignments_assignment_id_submissions_user_id_document_annotations_read",
+    "name": "get_ssaasuda_read",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read` Return whether annotations made on a submitted document have been read by the student ```bash curl 'https:///api/v1/courses//assignments//submissions//document_annotations/read' \\ -H \"Authorization: Bearer \" ``` ```js { \"read\": false } ``` [SubmissionsApiController#mark\\_document\\_annotations\\_read](https://github.com/instructure/canvas-lms/blob/master/app/controllers/su...",
     "inputSchema": {
       "type": "object",
@@ -1325,7 +1325,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_submissions_user_id_document_annotations_read",
+    "name": "put_ccaasuda_read",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read`",
     "inputSchema": {
       "type": "object",
@@ -1351,7 +1351,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_sections_section_id_assignments_assignment_id_submissions_user_id_document_annotations_read",
+    "name": "put_ssaasuda_read",
     "description": "**Scope:** `url:PUT|/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read` Indicate that annotations made on a submitted document have been read by the student. Only the student who owns the submission can use this endpoint. NOTE: Document annotations will be marked as read automatically when they are viewed in Canvas web. ```bash curl 'https:///api/v1/courses//assignments//submissions//document_annotations/read' \\ -X PUT \\ -H \"Authorization: B...",
     "inputSchema": {
       "type": "object",
@@ -1377,7 +1377,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_submission_summary",
+    "name": "get_ccaa_submission_summary",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/submission_summary`",
     "inputSchema": {
       "type": "object",
@@ -1402,7 +1402,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_assignments_assignment_id_submission_summary",
+    "name": "get_ssaa_submission_summary",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/assignments/:assignment_id/submission_summary` Returns the number of submissions for the given assignment based on gradeable students that fall into three categories: graded, ungraded, not submitted. ```js { \"graded\": 5, \"ungraded\": 10, \"not_submitted\": 42 } ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with ...",
     "inputSchema": {
       "type": "object",
@@ -1437,142 +1437,142 @@ const definitions = [
 ];
 
 const handlers = {
-  post_courses_course_id_assignments_assignment_id_submissions: async (client, args) => {
+  post_ccaa_submissions: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions", args);
   },
-  post_sections_section_id_assignments_assignment_id_submissions: async (client, args) => {
+  post_ssaa_submissions: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions", args);
   },
-  get_courses_course_id_assignments_assignment_id_submissions: async (client, args) => {
+  get_ccaa_submissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions", args);
   },
-  get_sections_section_id_assignments_assignment_id_submissions: async (client, args) => {
+  get_ssaa_submissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions", args);
   },
-  get_courses_course_id_students_submissions: async (client, args) => {
+  get_ccs_submissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/students/submissions", args);
   },
-  get_sections_section_id_students_submissions: async (client, args) => {
+  get_sss_submissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/students/submissions", args);
   },
-  get_courses_course_id_assignments_assignment_id_submissions_user_id: async (client, args) => {
+  get_ccaa_submissions_user_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id", args);
   },
-  get_sections_section_id_assignments_assignment_id_submissions_user_id: async (client, args) => {
+  get_ssaa_submissions_user_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id", args);
   },
-  get_courses_course_id_assignments_assignment_id_anonymous_submissions_anonymous_id: async (client, args) => {
+  get_ccaa_anonymous_submissions_anonymous_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id", args);
   },
-  get_sections_section_id_assignments_assignment_id_anonymous_submissions_anonymous_id: async (client, args) => {
+  get_ssaa_anonymous_submissions_anonymous_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id", args);
   },
-  post_courses_course_id_assignments_assignment_id_submissions_user_id_files: async (client, args) => {
+  post_ccaasu_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/files", args);
   },
-  post_sections_section_id_assignments_assignment_id_submissions_user_id_files: async (client, args) => {
+  post_ssaasu_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/files", args);
   },
-  put_courses_course_id_assignments_assignment_id_submissions_user_id: async (client, args) => {
+  put_ccaa_submissions_user_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id", args);
   },
-  put_sections_section_id_assignments_assignment_id_submissions_user_id: async (client, args) => {
+  put_ssaa_submissions_user_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id", args);
   },
-  put_courses_course_id_assignments_assignment_id_anonymous_submissions_anonymous_id: async (client, args) => {
+  put_ccaa_anonymous_submissions_anonymous_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id", args);
   },
-  put_sections_section_id_assignments_assignment_id_anonymous_submissions_anonymous_id: async (client, args) => {
+  put_ssaa_anonymous_submissions_anonymous_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/anonymous_submissions/:anonymous_id", args);
   },
-  get_courses_course_id_assignments_assignment_id_gradeable_students: async (client, args) => {
+  get_ccaa_gradeable_students: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/gradeable_students", args);
   },
-  get_courses_course_id_assignments_gradeable_students: async (client, args) => {
+  get_cca_gradeable_students: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/gradeable_students", args);
   },
-  post_courses_course_id_submissions_update_grades: async (client, args) => {
+  post_ccs_update_grades: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/submissions/update_grades", args);
   },
-  post_courses_course_id_assignments_assignment_id_submissions_update_grades: async (client, args) => {
+  post_ccaas_update_grades: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/update_grades", args);
   },
-  post_sections_section_id_submissions_update_grades: async (client, args) => {
+  post_sss_update_grades: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/sections/:section_id/submissions/update_grades", args);
   },
-  post_sections_section_id_assignments_assignment_id_submissions_update_grades: async (client, args) => {
+  post_ssaas_update_grades: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/update_grades", args);
   },
-  put_courses_course_id_assignments_assignment_id_submissions_user_id_read: async (client, args) => {
+  put_ccaasu_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read", args);
   },
-  put_sections_section_id_assignments_assignment_id_submissions_user_id_read: async (client, args) => {
+  put_ssaasu_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/read", args);
   },
-  delete_courses_course_id_assignments_assignment_id_submissions_user_id_read: async (client, args) => {
+  delete_ccaasu_read: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read", args);
   },
-  delete_sections_section_id_assignments_assignment_id_submissions_user_id_read: async (client, args) => {
+  delete_ssaasu_read: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/read", args);
   },
-  put_courses_course_id_submissions_bulk_mark_read: async (client, args) => {
+  put_ccs_bulk_mark_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/submissions/bulk_mark_read", args);
   },
-  put_sections_section_id_submissions_bulk_mark_read: async (client, args) => {
+  put_sss_bulk_mark_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/sections/:section_id/submissions/bulk_mark_read", args);
   },
-  put_courses_course_id_assignments_assignment_id_submissions_user_id_read_item: async (client, args) => {
+  put_ccaasu_read_item: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/read/:item", args);
   },
-  put_sections_section_id_assignments_assignment_id_submissions_user_id_read_item: async (client, args) => {
+  put_ssaasu_read_item: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/read/:item", args);
   },
-  put_courses_course_id_submissions_user_id_clear_unread: async (client, args) => {
+  put_ccsu_clear_unread: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/submissions/:user_id/clear_unread", args);
   },
-  put_sections_section_id_submissions_user_id_clear_unread: async (client, args) => {
+  put_sssu_clear_unread: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/sections/:section_id/submissions/:user_id/clear_unread", args);
   },
-  get_courses_course_id_assignments_assignment_id_submissions_user_id_rubric_comments_read: async (client, args) => {
+  get_ccaasurc_read: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read", args);
   },
-  get_courses_course_id_assignments_assignment_id_submissions_user_id_rubric_assessments_read: async (client, args) => {
+  get_ccaasura_read: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read", args);
   },
-  get_sections_section_id_assignments_assignment_id_submissions_user_id_rubric_comments_read: async (client, args) => {
+  get_ssaasurc_read: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read", args);
   },
-  get_sections_section_id_assignments_assignment_id_submissions_user_id_rubric_assessments_read: async (client, args) => {
+  get_ssaasura_read: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read", args);
   },
-  put_courses_course_id_assignments_assignment_id_submissions_user_id_rubric_comments_read: async (client, args) => {
+  put_ccaasurc_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read", args);
   },
-  put_courses_course_id_assignments_assignment_id_submissions_user_id_rubric_assessments_read: async (client, args) => {
+  put_ccaasura_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read", args);
   },
-  put_sections_section_id_assignments_assignment_id_submissions_user_id_rubric_comments_read: async (client, args) => {
+  put_ssaasurc_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_comments/read", args);
   },
-  put_sections_section_id_assignments_assignment_id_submissions_user_id_rubric_assessments_read: async (client, args) => {
+  put_ssaasura_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/rubric_assessments/read", args);
   },
-  get_courses_course_id_assignments_assignment_id_submissions_user_id_document_annotations_read: async (client, args) => {
+  get_ccaasuda_read: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read", args);
   },
-  get_sections_section_id_assignments_assignment_id_submissions_user_id_document_annotations_read: async (client, args) => {
+  get_ssaasuda_read: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read", args);
   },
-  put_courses_course_id_assignments_assignment_id_submissions_user_id_document_annotations_read: async (client, args) => {
+  put_ccaasuda_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read", args);
   },
-  put_sections_section_id_assignments_assignment_id_submissions_user_id_document_annotations_read: async (client, args) => {
+  put_ssaasuda_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/sections/:section_id/assignments/:assignment_id/submissions/:user_id/document_annotations/read", args);
   },
-  get_courses_course_id_assignments_assignment_id_submission_summary: async (client, args) => {
+  get_ccaa_submission_summary: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/submission_summary", args);
   },
-  get_sections_section_id_assignments_assignment_id_submission_summary: async (client, args) => {
+  get_ssaa_submission_summary: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/assignments/:assignment_id/submission_summary", args);
   }
 };

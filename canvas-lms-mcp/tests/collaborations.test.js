@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const collaborationsModule = require("../tools/collaborations");
 
-test("get_courses_course_id_collaborations calls correct endpoint", async () => {
+test("get_cc_collaborations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = collaborationsModule.handlers.get_courses_course_id_collaborations;
-  assert.ok(handler, "Handler get_courses_course_id_collaborations should be defined");
+  const handler = collaborationsModule.handlers.get_cc_collaborations;
+  assert.ok(handler, "Handler get_cc_collaborations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_collaborations calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_collaborations calls correct endpoint", async () => {
+test("get_gg_collaborations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = collaborationsModule.handlers.get_groups_group_id_collaborations;
-  assert.ok(handler, "Handler get_groups_group_id_collaborations should be defined");
+  const handler = collaborationsModule.handlers.get_gg_collaborations;
+  assert.ok(handler, "Handler get_gg_collaborations should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -41,15 +41,15 @@ test("get_groups_group_id_collaborations calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_collaborations_id_members calls correct endpoint", async () => {
+test("get_ci_members calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = collaborationsModule.handlers.get_collaborations_id_members;
-  assert.ok(handler, "Handler get_collaborations_id_members should be defined");
+  const handler = collaborationsModule.handlers.get_ci_members;
+  assert.ok(handler, "Handler get_ci_members should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "include[]": "test_val"});
 
@@ -59,15 +59,15 @@ test("get_collaborations_id_members calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_potential_collaborators calls correct endpoint", async () => {
+test("get_cc_potential_collaborators calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = collaborationsModule.handlers.get_courses_course_id_potential_collaborators;
-  assert.ok(handler, "Handler get_courses_course_id_potential_collaborators should be defined");
+  const handler = collaborationsModule.handlers.get_cc_potential_collaborators;
+  assert.ok(handler, "Handler get_cc_potential_collaborators should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -77,15 +77,15 @@ test("get_courses_course_id_potential_collaborators calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_potential_collaborators calls correct endpoint", async () => {
+test("get_gg_potential_collaborators calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = collaborationsModule.handlers.get_groups_group_id_potential_collaborators;
-  assert.ok(handler, "Handler get_groups_group_id_potential_collaborators should be defined");
+  const handler = collaborationsModule.handlers.get_gg_potential_collaborators;
+  assert.ok(handler, "Handler get_gg_potential_collaborators should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_lti_registrations_registration_id_controls",
+    "name": "get_aalrr_controls",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls` List all LTI ContextControls for the given LTI Registration. These controls are partitioned by LTI Deployment, and have added calculated fields for display in the Canvas UI. This endpoint is used to populate the Availability page for an LTI Registration and may not be useful for general API Usage. For listing all ContextControls for a given Deployment, see the LTI Deployments - List Controls for Depl...",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_lti_registrations_registration_id_controls_id",
+    "name": "get_aalrr_controls_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/:id` Display details of the specified LTI ContextControl for the specified LTI registration in this context. ```bash curl -X GET 'https:///api/v1/accounts//lti_registrations//controls/' \\ -H \"Authorization: Bearer \" ``` Returns a [Lti::ContextControl](#lti::contextcontrol) object. [Lti::ContextControlsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/context_...",
     "inputSchema": {
       "type": "object",
@@ -60,7 +60,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_current_account_id_lti_registrations_registration_id_controls",
+    "name": "post_aclrr_controls",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:current_account_id/lti_registrations/:registration_id/controls` Create a new LTI ContextControl for the specified LTI registration in this context. ```bash curl -X POST 'https:///api/v1/accounts//lti_registrations//controls' \\ -H \"Authorization: Bearer \" \\ -d '{ \"account_id\": 1, \"deployment_id\": 1, \"available\": true }' ``` Returns a [Lti::ContextControl](#lti::contextcontrol) object. [Lti::ContextControlsController#create\\_many](https://github.com/instru...",
     "inputSchema": {
       "type": "object",
@@ -101,7 +101,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_lti_registrations_registration_id_controls_bulk",
+    "name": "post_aalrrc_bulk",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/bulk` Create up to 100 new LTI ContextControls for the specified LTI registration in this context. Control parameters are sent as a JSON array of objects, each with the same parameters as the Create LTI Context Control endpoint. Note that if a control already exists for the specified context and deployment, it will be updated instead of created. ```bash curl -X POST 'https:///api/v1/accounts//lti_reg...",
     "inputSchema": {
       "type": "object",
@@ -142,7 +142,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_lti_registrations_registration_id_controls_id",
+    "name": "put_aalrr_controls_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/:id` Changes the availability of a context control. This endpoint can only be used to change the availability of a context control; no other attributes about the control (such as which course or account it belongs to) can be changed here. To change those values, the control should be deleted and a new one created instead. Returns the context control with its new availability value applied. ```bash cur...",
     "inputSchema": {
       "type": "object",
@@ -177,7 +177,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_lti_registrations_registration_id_controls_id",
+    "name": "delete_aalrr_controls_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/:id` Deletes a context control. Returns the control that is now deleted. Note: Deleting the \"primary\" control for a deployment (the control associated with the context where the deployment is installed) is not allowed and will return an error. This prevents situations where a deployment cannot be managed from the Apps page. ```bash curl \"https:///api/v1/accounts//lti_registrations//controls/\" \\ -X ...",
     "inputSchema": {
       "type": "object",
@@ -205,22 +205,22 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_lti_registrations_registration_id_controls: async (client, args) => {
+  get_aalrr_controls: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls", args);
   },
-  get_accounts_account_id_lti_registrations_registration_id_controls_id: async (client, args) => {
+  get_aalrr_controls_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/:id", args);
   },
-  post_accounts_current_account_id_lti_registrations_registration_id_controls: async (client, args) => {
+  post_aclrr_controls: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:current_account_id/lti_registrations/:registration_id/controls", args);
   },
-  post_accounts_account_id_lti_registrations_registration_id_controls_bulk: async (client, args) => {
+  post_aalrrc_bulk: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/bulk", args);
   },
-  put_accounts_account_id_lti_registrations_registration_id_controls_id: async (client, args) => {
+  put_aalrr_controls_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/:id", args);
   },
-  delete_accounts_account_id_lti_registrations_registration_id_controls_id: async (client, args) => {
+  delete_aalrr_controls_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/lti_registrations/:registration_id/controls/:id", args);
   }
 };

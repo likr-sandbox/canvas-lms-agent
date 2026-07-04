@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const lti_resource_linksModule = require("../tools/lti_resource_links");
 
-test("get_courses_course_id_lti_resource_links calls correct endpoint", async () => {
+test("get_cc_lti_resource_links calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_resource_linksModule.handlers.get_courses_course_id_lti_resource_links;
-  assert.ok(handler, "Handler get_courses_course_id_lti_resource_links should be defined");
+  const handler = lti_resource_linksModule.handlers.get_cc_lti_resource_links;
+  assert.ok(handler, "Handler get_cc_lti_resource_links should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "include_deleted": true});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_lti_resource_links calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_lti_resource_links_id calls correct endpoint", async () => {
+test("get_cc_lti_resource_links_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_resource_linksModule.handlers.get_courses_course_id_lti_resource_links_id;
-  assert.ok(handler, "Handler get_courses_course_id_lti_resource_links_id should be defined");
+  const handler = lti_resource_linksModule.handlers.get_cc_lti_resource_links_id;
+  assert.ok(handler, "Handler get_cc_lti_resource_links_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "include_deleted": true});
 
@@ -41,15 +41,15 @@ test("get_courses_course_id_lti_resource_links_id calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_lti_resource_links calls correct endpoint", async () => {
+test("post_cc_lti_resource_links calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_resource_linksModule.handlers.post_courses_course_id_lti_resource_links;
-  assert.ok(handler, "Handler post_courses_course_id_lti_resource_links should be defined");
+  const handler = lti_resource_linksModule.handlers.post_cc_lti_resource_links;
+  assert.ok(handler, "Handler post_cc_lti_resource_links should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "url": "test_val"});
 
@@ -59,15 +59,15 @@ test("post_courses_course_id_lti_resource_links calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_lti_resource_links_bulk calls correct endpoint", async () => {
+test("post_cclrl_bulk calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_resource_linksModule.handlers.post_courses_course_id_lti_resource_links_bulk;
-  assert.ok(handler, "Handler post_courses_course_id_lti_resource_links_bulk should be defined");
+  const handler = lti_resource_linksModule.handlers.post_cclrl_bulk;
+  assert.ok(handler, "Handler post_cclrl_bulk should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "POST": "test_val"});
 
@@ -77,15 +77,15 @@ test("post_courses_course_id_lti_resource_links_bulk calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_lti_resource_links_id calls correct endpoint", async () => {
+test("put_cc_lti_resource_links_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_resource_linksModule.handlers.put_courses_course_id_lti_resource_links_id;
-  assert.ok(handler, "Handler put_courses_course_id_lti_resource_links_id should be defined");
+  const handler = lti_resource_linksModule.handlers.put_cc_lti_resource_links_id;
+  assert.ok(handler, "Handler put_cc_lti_resource_links_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id", "url": "test_val"});
 
@@ -95,15 +95,15 @@ test("put_courses_course_id_lti_resource_links_id calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_lti_resource_links_id calls correct endpoint", async () => {
+test("delete_cc_lti_resource_links_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_resource_linksModule.handlers.delete_courses_course_id_lti_resource_links_id;
-  assert.ok(handler, "Handler delete_courses_course_id_lti_resource_links_id should be defined");
+  const handler = lti_resource_linksModule.handlers.delete_cc_lti_resource_links_id;
+  assert.ok(handler, "Handler delete_cc_lti_resource_links_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 

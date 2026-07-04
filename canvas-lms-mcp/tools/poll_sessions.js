@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_polls_poll_id_poll_sessions",
+    "name": "get_pp_poll_sessions",
     "description": "**Scope:** `url:GET|/api/v1/polls/:poll_id/poll_sessions` Returns the paginated list of PollSessions in this poll. ```js { \"poll_sessions\": [PollSession] } ``` [Polling::PollSessionsController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_sessions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_polls_poll_id_poll_sessions_id",
+    "name": "get_pp_poll_sessions_id",
     "description": "**Scope:** `url:GET|/api/v1/polls/:poll_id/poll_sessions/:id` Returns the poll session with the given id ```js { \"poll_sessions\": [PollSession] } ``` [Polling::PollSessionsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_sessions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -50,7 +50,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_polls_poll_id_poll_sessions",
+    "name": "post_pp_poll_sessions",
     "description": "**Scope:** `url:POST|/api/v1/polls/:poll_id/poll_sessions` Create a new poll session for this poll ```js { \"poll_sessions\": [PollSession] } ``` [Polling::PollSessionsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_sessions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -79,7 +79,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_polls_poll_id_poll_sessions_id",
+    "name": "put_pp_poll_sessions_id",
     "description": "**Scope:** `url:PUT|/api/v1/polls/:poll_id/poll_sessions/:id` Update an existing poll session for this poll ```js { \"poll_sessions\": [PollSession] } ``` [Polling::PollSessionsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_sessions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -112,7 +112,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_polls_poll_id_poll_sessions_id",
+    "name": "delete_pp_poll_sessions_id",
     "description": "**Scope:** `url:DELETE|/api/v1/polls/:poll_id/poll_sessions/:id` \\204 No Content\\ response code is returned if the deletion was successful. [Polling::PollSessionsController#open](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_sessions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -133,7 +133,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_polls_poll_id_poll_sessions_id_open",
+    "name": "get_pppsi_open",
     "description": "**Scope:** `url:GET|/api/v1/polls/:poll_id/poll_sessions/:id/open` [Polling::PollSessionsController#close](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_sessions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -158,7 +158,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_polls_poll_id_poll_sessions_id_close",
+    "name": "get_pppsi_close",
     "description": "**Scope:** `url:GET|/api/v1/polls/:poll_id/poll_sessions/:id/close` [Polling::PollSessionsController#opened](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_sessions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -183,7 +183,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_poll_sessions_opened",
+    "name": "get_ps_opened",
     "description": "**Scope:** `url:GET|/api/v1/poll_sessions/opened` A paginated list of all opened poll sessions available to the current user. ```js { \"poll_sessions\": [PollSession] } ``` [Polling::PollSessionsController#closed](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_sessions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -196,7 +196,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_poll_sessions_closed",
+    "name": "get_ps_closed",
     "description": "**Scope:** `url:GET|/api/v1/poll_sessions/closed` A paginated list of all closed poll sessions available to the current user. ```js { \"poll_sessions\": [PollSession] } ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical conte...",
     "inputSchema": {
       "type": "object",
@@ -211,31 +211,31 @@ const definitions = [
 ];
 
 const handlers = {
-  get_polls_poll_id_poll_sessions: async (client, args) => {
+  get_pp_poll_sessions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/polls/:poll_id/poll_sessions", args);
   },
-  get_polls_poll_id_poll_sessions_id: async (client, args) => {
+  get_pp_poll_sessions_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/polls/:poll_id/poll_sessions/:id", args);
   },
-  post_polls_poll_id_poll_sessions: async (client, args) => {
+  post_pp_poll_sessions: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/polls/:poll_id/poll_sessions", args);
   },
-  put_polls_poll_id_poll_sessions_id: async (client, args) => {
+  put_pp_poll_sessions_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/polls/:poll_id/poll_sessions/:id", args);
   },
-  delete_polls_poll_id_poll_sessions_id: async (client, args) => {
+  delete_pp_poll_sessions_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/polls/:poll_id/poll_sessions/:id", args);
   },
-  get_polls_poll_id_poll_sessions_id_open: async (client, args) => {
+  get_pppsi_open: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/polls/:poll_id/poll_sessions/:id/open", args);
   },
-  get_polls_poll_id_poll_sessions_id_close: async (client, args) => {
+  get_pppsi_close: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/polls/:poll_id/poll_sessions/:id/close", args);
   },
-  get_poll_sessions_opened: async (client, args) => {
+  get_ps_opened: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/poll_sessions/opened", args);
   },
-  get_poll_sessions_closed: async (client, args) => {
+  get_ps_closed: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/poll_sessions/closed", args);
   }
 };

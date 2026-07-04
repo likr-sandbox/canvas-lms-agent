@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_conversations_find_recipients",
+    "name": "get_c_find_recipients",
     "description": "**Scope:** `url:GET|/api/v1/conversations/find_recipients`",
     "inputSchema": {
       "type": "object",
@@ -18,7 +18,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_search_recipients",
+    "name": "get_s_recipients",
     "description": "**Scope:** `url:GET|/api/v1/search/recipients` Find valid recipients (users, courses and groups) that the current user can send messages to. The /api/v1/search/recipients path is the preferred endpoint, /api/v1/conversations/find\\_recipients is deprecated. Pagination is supported. * id The unique identifier for the user/context. For groups/courses, the id is prefixed by \"group\\_\"/\"course\\_\" respectively. * name The name of the context or short name of the user * full\\_name Only set for users....",
     "inputSchema": {
       "type": "object",
@@ -59,7 +59,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_search_all_courses",
+    "name": "get_s_all_courses",
     "description": "**Scope:** `url:GET|/api/v1/search/all_courses` A paginated list of all courses visible in the public index *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com. If you need addition...",
     "inputSchema": {
       "type": "object",
@@ -86,13 +86,13 @@ const definitions = [
 ];
 
 const handlers = {
-  get_conversations_find_recipients: async (client, args) => {
+  get_c_find_recipients: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/conversations/find_recipients", args);
   },
-  get_search_recipients: async (client, args) => {
+  get_s_recipients: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/search/recipients", args);
   },
-  get_search_all_courses: async (client, args) => {
+  get_s_all_courses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/search/all_courses", args);
   }
 };

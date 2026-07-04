@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const historyModule = require("../tools/history");
 
-test("get_users_user_id_history calls correct endpoint", async () => {
+test("get_uu_history calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = historyModule.handlers.get_users_user_id_history;
-  assert.ok(handler, "Handler get_users_user_id_history should be defined");
+  const handler = historyModule.handlers.get_uu_history;
+  assert.ok(handler, "Handler get_uu_history should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 

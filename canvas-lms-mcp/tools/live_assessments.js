@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_courses_course_id_live_assessments_assessment_id_results",
+    "name": "post_cclaa_results",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/live_assessments/:assessment_id/results` Creates live assessment results and adds them to a live assessment ```bash { \"results\": [{ \"passed\": false, \"assessed_at\": \"2014-05-26T14:57:23-07:00\", \"links\": { \"user\": \"15\" } },{ \"passed\": true, \"assessed_at\": \"2014-05-26T13:05:40-07:00\", \"links\": { \"user\": \"16\" } }] } ``` ```js { \"results\": [Result] } ``` [LiveAssessments::ResultsController#index](https://github.com/instructure/canvas-lms/blob/master/...",
     "inputSchema": {
       "type": "object",
@@ -26,7 +26,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_live_assessments_assessment_id_results",
+    "name": "get_cclaa_results",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/live_assessments/:assessment_id/results` Returns a paginated list of live assessment results ```js { \"results\": [Result] } ``` [LiveAssessments::AssessmentsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/live_assessments/assessments_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -55,7 +55,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_live_assessments",
+    "name": "post_cc_live_assessments",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/live_assessments` Creates or finds an existing live assessment with the given key and aligns it with the linked outcome ```bash { \"assessments\": [{ \"key\": \"2014-05-27-Outcome-52\", \"title\": \"Tuesday's LiveAssessment\", \"links\": { \"outcome\": \"1\" } }] } ``` ```js { \"links\": { \"assessments.results\": \"http://example.com/courses/1/live_assessments/5/results\" }, \"assessments\": [Assessment] } ``` [LiveAssessments::AssessmentsController#index](https://git...",
     "inputSchema": {
       "type": "object",
@@ -71,7 +71,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_live_assessments",
+    "name": "get_cc_live_assessments",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/live_assessments` Returns a paginated list of live assessments. ```js { \"links\": { \"assessments.results\": \"http://example.com/courses/1/live_assessments/{assessments.id}/results\" }, \"assessments\": [Assessment] } ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform de...",
     "inputSchema": {
       "type": "object",
@@ -93,16 +93,16 @@ const definitions = [
 ];
 
 const handlers = {
-  post_courses_course_id_live_assessments_assessment_id_results: async (client, args) => {
+  post_cclaa_results: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/live_assessments/:assessment_id/results", args);
   },
-  get_courses_course_id_live_assessments_assessment_id_results: async (client, args) => {
+  get_cclaa_results: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/live_assessments/:assessment_id/results", args);
   },
-  post_courses_course_id_live_assessments: async (client, args) => {
+  post_cc_live_assessments: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/live_assessments", args);
   },
-  get_courses_course_id_live_assessments: async (client, args) => {
+  get_cc_live_assessments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/live_assessments", args);
   }
 };

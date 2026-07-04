@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const late_policyModule = require("../tools/late_policy");
 
-test("get_courses_id_late_policy calls correct endpoint", async () => {
+test("get_ci_late_policy calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = late_policyModule.handlers.get_courses_id_late_policy;
-  assert.ok(handler, "Handler get_courses_id_late_policy should be defined");
+  const handler = late_policyModule.handlers.get_ci_late_policy;
+  assert.ok(handler, "Handler get_ci_late_policy should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_id_late_policy calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_id_late_policy calls correct endpoint", async () => {
+test("post_ci_late_policy calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = late_policyModule.handlers.post_courses_id_late_policy;
-  assert.ok(handler, "Handler post_courses_id_late_policy should be defined");
+  const handler = late_policyModule.handlers.post_ci_late_policy;
+  assert.ok(handler, "Handler post_ci_late_policy should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "late_policy[missing_submission_deduction_enabled]": true});
 

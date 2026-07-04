@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const sis_integrationModule = require("../tools/sis_integration");
 
-test("get_sis_accounts_account_id_assignments calls correct endpoint", async () => {
+test("get_saa_assignments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_integrationModule.handlers.get_sis_accounts_account_id_assignments;
-  assert.ok(handler, "Handler get_sis_accounts_account_id_assignments should be defined");
+  const handler = sis_integrationModule.handlers.get_saa_assignments;
+  assert.ok(handler, "Handler get_saa_assignments should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -23,15 +23,15 @@ test("get_sis_accounts_account_id_assignments calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_sis_courses_course_id_assignments calls correct endpoint", async () => {
+test("get_scc_assignments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_integrationModule.handlers.get_sis_courses_course_id_assignments;
-  assert.ok(handler, "Handler get_sis_courses_course_id_assignments should be defined");
+  const handler = sis_integrationModule.handlers.get_scc_assignments;
+  assert.ok(handler, "Handler get_scc_assignments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "account_id": 123});
 
@@ -41,15 +41,15 @@ test("get_sis_courses_course_id_assignments calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_sis_courses_course_id_disable_post_to_sis calls correct endpoint", async () => {
+test("put_scc_disable_post_to_sis calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_integrationModule.handlers.put_sis_courses_course_id_disable_post_to_sis;
-  assert.ok(handler, "Handler put_sis_courses_course_id_disable_post_to_sis should be defined");
+  const handler = sis_integrationModule.handlers.put_scc_disable_post_to_sis;
+  assert.ok(handler, "Handler put_scc_disable_post_to_sis should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "grading_period_id": 123});
 

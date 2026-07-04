@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_users_user_id_communication_channels",
+    "name": "get_uu_communication_channels",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/communication_channels` Returns a paginated list of communication channels for the specified user, sorted by position. ```bash curl https:///api/v1/users/12345/communication_channels \\ -H 'Authorization: Bearer ' ``` Returns a list of [CommunicationChannel](#communicationchannel) objects. [CommunicationChannelsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/communication_channels_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_user_id_communication_channels",
+    "name": "post_uu_communication_channels",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/communication_channels` Creates a new communication channel for the specified user. ```bash curl https:///api/v1/users/1/communication_channels \\ -H 'Authorization: Bearer ' \\ -d 'communication_channel[address]=new@example.com' \\ -d 'communication_channel[type]=email' \\ ``` Returns a [CommunicationChannel](#communicationchannel) object. [CommunicationChannelsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/co...",
     "inputSchema": {
       "type": "object",
@@ -59,7 +59,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_user_id_communication_channels_id",
+    "name": "delete_uu_communication_channels_id",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:user_id/communication_channels/:id`",
     "inputSchema": {
       "type": "object",
@@ -80,7 +80,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_user_id_communication_channels_type_address",
+    "name": "delete_uu_communication_channels_type_address",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:user_id/communication_channels/:type/:address` Delete an existing communication channel. ```bash curl https:///api/v1/users/5/communication_channels/3 -H 'Authorization: Bearer -X DELETE ``` Returns a [CommunicationChannel](#communicationchannel) object. [CommunicationChannelsController#delete\\_push\\_token](https://github.com/instructure/canvas-lms/blob/master/app/controllers/communication_channels_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -106,7 +106,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_self_communication_channels_push",
+    "name": "delete_uscc_push",
     "description": "**Scope:** `url:DELETE|/api/v1/users/self/communication_channels/push` ```bash curl https:///api/v1/users/self/communication_channels/push -H 'Authorization: Bearer -X DELETE -d 'push_token=' ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and re...",
     "inputSchema": {
       "type": "object",
@@ -116,19 +116,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_users_user_id_communication_channels: async (client, args) => {
+  get_uu_communication_channels: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/communication_channels", args);
   },
-  post_users_user_id_communication_channels: async (client, args) => {
+  post_uu_communication_channels: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/communication_channels", args);
   },
-  delete_users_user_id_communication_channels_id: async (client, args) => {
+  delete_uu_communication_channels_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/communication_channels/:id", args);
   },
-  delete_users_user_id_communication_channels_type_address: async (client, args) => {
+  delete_uu_communication_channels_type_address: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/communication_channels/:type/:address", args);
   },
-  delete_users_self_communication_channels_push: async (client, args) => {
+  delete_uscc_push: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/communication_channels/push", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_assignment_groups",
+    "name": "get_cc_assignment_groups",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignment_groups` Returns the paginated list of assignment groups for the current context. The returned groups are sorted by their position field. Returns a list of [AssignmentGroup](#assignmentgroup) objects. [AssignmentGroupsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignment_groups_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -49,7 +49,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignment_groups_assignment_group_id",
+    "name": "get_cc_assignment_groups_assignment_group_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignment_groups/:assignment_group_id` Returns the assignment group with the given id. Returns an [AssignmentGroup](#assignmentgroup) object. [AssignmentGroupsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignment_groups_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -86,7 +86,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignment_groups",
+    "name": "post_cc_assignment_groups",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignment_groups` Create a new assignment group for this course. Returns an [AssignmentGroup](#assignmentgroup) object. [AssignmentGroupsApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignment_groups_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -122,7 +122,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignment_groups_assignment_group_id",
+    "name": "put_cc_assignment_groups_assignment_group_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignment_groups/:assignment_group_id` Modify an existing Assignment Group. Returns an [AssignmentGroup](#assignmentgroup) object. [AssignmentGroupsApiController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignment_groups_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -167,7 +167,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_assignment_groups_assignment_group_id",
+    "name": "delete_cc_assignment_groups_assignment_group_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/assignment_groups/:assignment_group_id` Deletes the assignment group with the given id. Returns an [AssignmentGroup](#assignmentgroup) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reaso...",
     "inputSchema": {
       "type": "object",
@@ -194,19 +194,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_assignment_groups: async (client, args) => {
+  get_cc_assignment_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignment_groups", args);
   },
-  get_courses_course_id_assignment_groups_assignment_group_id: async (client, args) => {
+  get_cc_assignment_groups_assignment_group_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignment_groups/:assignment_group_id", args);
   },
-  post_courses_course_id_assignment_groups: async (client, args) => {
+  post_cc_assignment_groups: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignment_groups", args);
   },
-  put_courses_course_id_assignment_groups_assignment_group_id: async (client, args) => {
+  put_cc_assignment_groups_assignment_group_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignment_groups/:assignment_group_id", args);
   },
-  delete_courses_course_id_assignment_groups_assignment_group_id: async (client, args) => {
+  delete_cc_assignment_groups_assignment_group_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/assignment_groups/:assignment_group_id", args);
   }
 };

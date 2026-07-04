@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_blueprint_templates_template_id",
+    "name": "get_cc_blueprint_templates_template_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blueprint_templates/:template_id` Using 'default' as the template\\_id should suffice for the current implmentation (as there should be only one template per course). However, using specific template ids may become necessary in the future ```bash curl https:///api/v1/courses/1/blueprint_templates/default \\ -H 'Authorization: Bearer ' ``` Returns a [BlueprintTemplate](#blueprinttemplate) object. [MasterCourses::MasterTemplatesController#associated\\...",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blueprint_templates_template_id_associated_courses",
+    "name": "get_ccbtt_associated_courses",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blueprint_templates/:template_id/associated_courses` Returns a list of courses that are configured to receive updates from this blueprint ```bash curl https:///api/v1/courses/1/blueprint_templates/default/associated_courses \\ -H 'Authorization: Bearer ' ``` Returns a list of [Course](courses.md#course) objects. [MasterCourses::MasterTemplatesController#update\\_associations](https://github.com/instructure/canvas-lms/blob/master/app/controllers/mas...",
     "inputSchema": {
       "type": "object",
@@ -55,7 +55,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_blueprint_templates_template_id_update_associations",
+    "name": "put_ccbtt_update_associations",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/blueprint_templates/:template_id/update_associations` Send a list of course ids to add or remove new associations for the template. Cannot add courses that do not belong to the blueprint course's account. Also cannot add other blueprint courses or courses that already have an association with another blueprint course. After associating new courses, [start a sync](#method.master_courses/master_templates.queue_migration) to populate their contents ...",
     "inputSchema": {
       "type": "object",
@@ -84,7 +84,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_blueprint_templates_template_id_migrations",
+    "name": "post_ccbtt_migrations",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/blueprint_templates/:template_id/migrations` Begins a migration to push recently updated content to all associated courses. Only one migration can be running at a time. ```bash curl https:///api/v1/courses/1/blueprint_templates/default/migrations \\ -X POST \\ -F 'comment=Fixed spelling in question 3 of midterm exam' \\ -F 'send_notification=true' \\ -H 'Authorization: Bearer ' ``` Returns a [BlueprintMigration](#blueprintmigration) object. [MasterC...",
     "inputSchema": {
       "type": "object",
@@ -125,7 +125,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_blueprint_templates_template_id_restrict_item",
+    "name": "put_ccbtt_restrict_item",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/blueprint_templates/:template_id/restrict_item` If a blueprint course object is restricted, editing will be limited for copies in associated courses. ```bash curl https:///api/v1/courses/1/blueprint_templates/default/restrict_item \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -d 'content_type=assignment' \\ -d 'content_id=2' \\ -d 'restricted=true' ``` [MasterCourses::MasterTemplatesController#unsynced\\_changes](https://github.com/instructure/canvas-lms...",
     "inputSchema": {
       "type": "object",
@@ -162,7 +162,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blueprint_templates_template_id_unsynced_changes",
+    "name": "get_ccbtt_unsynced_changes",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blueprint_templates/:template_id/unsynced_changes` Retrieve a list of learning objects that have changed since the last blueprint sync operation. If no syncs have been completed, a ChangeRecord with a change\\_type of +initial\\_sync+ is returned. Returns a list of [ChangeRecord](#changerecord) objects. [MasterCourses::MasterTemplatesController#migrations\\_index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/master_courses/m...",
     "inputSchema": {
       "type": "object",
@@ -187,7 +187,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blueprint_templates_template_id_migrations",
+    "name": "get_ccbtt_migrations",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blueprint_templates/:template_id/migrations` Shows a paginated list of migrations for the template, starting with the most recent. This endpoint can be called on a blueprint course. See also [the associated course side](#method.master_courses/master_templates.imports_index). ```bash curl https:///api/v1/courses/1/blueprint_templates/default/migrations \\ -H 'Authorization: Bearer ' ``` Returns a list of [BlueprintMigration](#blueprintmigration) ob...",
     "inputSchema": {
       "type": "object",
@@ -212,7 +212,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blueprint_templates_template_id_migrations_id",
+    "name": "get_ccbtt_migrations_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blueprint_templates/:template_id/migrations/:id` Shows the status of a migration. This endpoint can be called on a blueprint course. See also [the associated course side](#method.master_courses/master_templates.imports_show). ```bash curl https:///api/v1/courses/1/blueprint_templates/default/migrations/:id \\ -H 'Authorization: Bearer ' ``` Returns a [BlueprintMigration](#blueprintmigration) object. [MasterCourses::MasterTemplatesController#migrat...",
     "inputSchema": {
       "type": "object",
@@ -242,7 +242,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blueprint_templates_template_id_migrations_id_details",
+    "name": "get_ccbttmi_details",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blueprint_templates/:template_id/migrations/:id/details` Show the changes that were propagated in a blueprint migration. This endpoint can be called on a blueprint course. See also [the associated course side](#method.master_courses/master_templates.import_details). ```bash curl https:///api/v1/courses/1/blueprint_templates/default/migrations/2/details \\ -H 'Authorization: Bearer ' ``` Returns a list of [ChangeRecord](#changerecord) objects. [Mas...",
     "inputSchema": {
       "type": "object",
@@ -272,7 +272,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blueprint_subscriptions",
+    "name": "get_cc_blueprint_subscriptions",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blueprint_subscriptions` Returns a list of blueprint subscriptions for the given course. (Currently a course may have no more than one.) ```bash curl https:///api/v1/courses/2/blueprint_subscriptions \\ -H 'Authorization: Bearer ' ``` Returns a list of [BlueprintSubscription](#blueprintsubscription) objects. [MasterCourses::MasterTemplatesController#imports\\_index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/master_course...",
     "inputSchema": {
       "type": "object",
@@ -292,7 +292,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blueprint_subscriptions_subscription_id_migrations",
+    "name": "get_ccbss_migrations",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blueprint_subscriptions/:subscription_id/migrations` Shows a paginated list of migrations imported into a course associated with a blueprint, starting with the most recent. See also [the blueprint course side](#method.master_courses/master_templates.migrations_index). Use 'default' as the subscription\\_id to use the currently active blueprint subscription. ```bash curl https:///api/v1/courses/2/blueprint_subscriptions/default/migrations \\ -H 'Aut...",
     "inputSchema": {
       "type": "object",
@@ -317,7 +317,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_id",
+    "name": "get_ccbss_migrations_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blueprint_subscriptions/:subscription_id/migrations/:id` Shows the status of an import into a course associated with a blueprint. See also [the blueprint course side](#method.master_courses/master_templates.migrations_show). ```bash curl https:///api/v1/courses/2/blueprint_subscriptions/default/migrations/:id \\ -H 'Authorization: Bearer ' ``` Returns a [BlueprintMigration](#blueprintmigration) object. [MasterCourses::MasterTemplatesController#imp...",
     "inputSchema": {
       "type": "object",
@@ -347,7 +347,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_id_details",
+    "name": "get_ccbssmi_details",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blueprint_subscriptions/:subscription_id/migrations/:id/details` Show the changes that were propagated to a course associated with a blueprint. See also [the blueprint course side](#method.master_courses/master_templates.migration_details). ```bash curl https:///api/v1/courses/2/blueprint_subscriptions/default/7/details \\ -H 'Authorization: Bearer ' ``` Returns a list of [ChangeRecord](#changerecord) objects. *** This documentation is generated d...",
     "inputSchema": {
       "type": "object",
@@ -379,43 +379,43 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_blueprint_templates_template_id: async (client, args) => {
+  get_cc_blueprint_templates_template_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blueprint_templates/:template_id", args);
   },
-  get_courses_course_id_blueprint_templates_template_id_associated_courses: async (client, args) => {
+  get_ccbtt_associated_courses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blueprint_templates/:template_id/associated_courses", args);
   },
-  put_courses_course_id_blueprint_templates_template_id_update_associations: async (client, args) => {
+  put_ccbtt_update_associations: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/blueprint_templates/:template_id/update_associations", args);
   },
-  post_courses_course_id_blueprint_templates_template_id_migrations: async (client, args) => {
+  post_ccbtt_migrations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/blueprint_templates/:template_id/migrations", args);
   },
-  put_courses_course_id_blueprint_templates_template_id_restrict_item: async (client, args) => {
+  put_ccbtt_restrict_item: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/blueprint_templates/:template_id/restrict_item", args);
   },
-  get_courses_course_id_blueprint_templates_template_id_unsynced_changes: async (client, args) => {
+  get_ccbtt_unsynced_changes: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blueprint_templates/:template_id/unsynced_changes", args);
   },
-  get_courses_course_id_blueprint_templates_template_id_migrations: async (client, args) => {
+  get_ccbtt_migrations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blueprint_templates/:template_id/migrations", args);
   },
-  get_courses_course_id_blueprint_templates_template_id_migrations_id: async (client, args) => {
+  get_ccbtt_migrations_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blueprint_templates/:template_id/migrations/:id", args);
   },
-  get_courses_course_id_blueprint_templates_template_id_migrations_id_details: async (client, args) => {
+  get_ccbttmi_details: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blueprint_templates/:template_id/migrations/:id/details", args);
   },
-  get_courses_course_id_blueprint_subscriptions: async (client, args) => {
+  get_cc_blueprint_subscriptions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blueprint_subscriptions", args);
   },
-  get_courses_course_id_blueprint_subscriptions_subscription_id_migrations: async (client, args) => {
+  get_ccbss_migrations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blueprint_subscriptions/:subscription_id/migrations", args);
   },
-  get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_id: async (client, args) => {
+  get_ccbss_migrations_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blueprint_subscriptions/:subscription_id/migrations/:id", args);
   },
-  get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_id_details: async (client, args) => {
+  get_ccbssmi_details: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blueprint_subscriptions/:subscription_id/migrations/:id/details", args);
   }
 };

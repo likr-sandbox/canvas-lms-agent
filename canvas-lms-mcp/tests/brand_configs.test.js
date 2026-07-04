@@ -23,15 +23,15 @@ test("get_brand_variables calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_brand_variables calls correct endpoint", async () => {
+test("get_aa_brand_variables calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = brand_configsModule.handlers.get_accounts_account_id_brand_variables;
-  assert.ok(handler, "Handler get_accounts_account_id_brand_variables should be defined");
+  const handler = brand_configsModule.handlers.get_aa_brand_variables;
+  assert.ok(handler, "Handler get_aa_brand_variables should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_brand_variables calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_brand_variables calls correct endpoint", async () => {
+test("get_cc_brand_variables calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = brand_configsModule.handlers.get_courses_course_id_brand_variables;
-  assert.ok(handler, "Handler get_courses_course_id_brand_variables should be defined");
+  const handler = brand_configsModule.handlers.get_cc_brand_variables;
+  assert.ok(handler, "Handler get_cc_brand_variables should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 

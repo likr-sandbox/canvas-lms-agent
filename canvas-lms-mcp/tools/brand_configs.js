@@ -18,7 +18,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_brand_variables",
+    "name": "get_aa_brand_variables",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/brand_variables`",
     "inputSchema": {
       "type": "object",
@@ -38,7 +38,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_brand_variables",
+    "name": "get_cc_brand_variables",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/brand_variables` Will redirect to a static json file that has all of the brand variables used by the provided context. Even though this is a redirect, do not store the redirected url since if the sub-account makes any changes it will redirect to a new url. ```bash curl 'https:///api/v1/accounts/123/brand_variables' -H 'Authorization: Bearer ' ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](h...",
     "inputSchema": {
       "type": "object",
@@ -63,10 +63,10 @@ const handlers = {
   get_brand_variables: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/brand_variables", args);
   },
-  get_accounts_account_id_brand_variables: async (client, args) => {
+  get_aa_brand_variables: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/brand_variables", args);
   },
-  get_courses_course_id_brand_variables: async (client, args) => {
+  get_cc_brand_variables: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/brand_variables", args);
   }
 };

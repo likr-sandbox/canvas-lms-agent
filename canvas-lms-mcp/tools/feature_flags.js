@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_features",
+    "name": "get_cc_features",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/features`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_features",
+    "name": "get_aa_features",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/features`",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_features",
+    "name": "get_uu_features",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/features` A paginated list of all features that apply to a given Account, Course, or User. ```bash curl 'http:///api/v1/courses/1/features' \\ -H \"Authorization: Bearer \" ``` Returns a list of [Feature](#feature) objects. [FeatureFlagsController#enabled\\_features](https://github.com/instructure/canvas-lms/blob/master/app/controllers/feature_flags_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -69,7 +69,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_features_enabled",
+    "name": "get_ccf_enabled",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/features/enabled`",
     "inputSchema": {
       "type": "object",
@@ -89,7 +89,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_features_enabled",
+    "name": "get_aaf_enabled",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/features/enabled`",
     "inputSchema": {
       "type": "object",
@@ -109,7 +109,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_features_enabled",
+    "name": "get_uuf_enabled",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/features/enabled` A paginated list of all features that are enabled on a given Account, Course, or User. Only the feature names are returned. ```bash curl 'http:///api/v1/courses/1/features/enabled' \\ -H \"Authorization: Bearer \" ``` ```js [\"fancy_wickets\", \"automatic_essay_grading\", \"telepathic_navigation\"] ``` [FeatureFlagsController#environment](https://github.com/instructure/canvas-lms/blob/master/app/controllers/feature_flags_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -129,7 +129,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_features_environment",
+    "name": "get_f_environment",
     "description": "**Scope:** `url:GET|/api/v1/features/environment` Return a hash of global feature options that pertain to the Canvas user interface. This is the same information supplied to the web interface as +ENV.FEATURES+. ```bash curl 'http:///api/v1/features/environment' \\ -H \"Authorization: Bearer \" ``` ```js { \"telepathic_navigation\": true, \"fancy_wickets\": true, \"automatic_essay_grading\": false } ``` [FeatureFlagsController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/...",
     "inputSchema": {
       "type": "object",
@@ -142,7 +142,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_features_flags_feature",
+    "name": "get_ccf_flags_feature",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/features/flags/:feature`",
     "inputSchema": {
       "type": "object",
@@ -167,7 +167,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_features_flags_feature",
+    "name": "get_aaf_flags_feature",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/features/flags/:feature`",
     "inputSchema": {
       "type": "object",
@@ -192,7 +192,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_features_flags_feature",
+    "name": "get_uuf_flags_feature",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/features/flags/:feature` Get the feature flag that applies to a given Account, Course, or User. The flag may be defined on the object, or it may be inherited from a parent account. You can look at the context\\_id and context\\_type of the returned object to determine which is the case. If these fields are missing, then the object is the global Canvas default. ```bash curl 'http:///api/v1/courses/1/features/flags/fancy_wickets' \\ -H \"Authorization: Bea...",
     "inputSchema": {
       "type": "object",
@@ -217,7 +217,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_features_flags_feature",
+    "name": "put_ccf_flags_feature",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/features/flags/:feature`",
     "inputSchema": {
       "type": "object",
@@ -238,7 +238,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_features_flags_feature",
+    "name": "put_aaf_flags_feature",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/features/flags/:feature`",
     "inputSchema": {
       "type": "object",
@@ -259,7 +259,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_user_id_features_flags_feature",
+    "name": "put_uuf_flags_feature",
     "description": "**Scope:** `url:PUT|/api/v1/users/:user_id/features/flags/:feature` Set a feature flag for a given Account, Course, or User. This call will fail if a parent account sets a feature flag for the same feature in any state other than \"allowed\". ```bash curl -X PUT 'http:///api/v1/courses/1/features/flags/fancy_wickets' \\ -H \"Authorization: Bearer \" \\ -F \"state=on\" ``` Returns a [FeatureFlag](#featureflag) object. [FeatureFlagsController#delete](https://github.com/instructure/canvas-lms/blob/maste...",
     "inputSchema": {
       "type": "object",
@@ -284,7 +284,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_features_flags_feature",
+    "name": "delete_ccf_flags_feature",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/features/flags/:feature`",
     "inputSchema": {
       "type": "object",
@@ -305,7 +305,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_features_flags_feature",
+    "name": "delete_aaf_flags_feature",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/features/flags/:feature`",
     "inputSchema": {
       "type": "object",
@@ -326,7 +326,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_user_id_features_flags_feature",
+    "name": "delete_uuf_flags_feature",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:user_id/features/flags/:feature` Remove feature flag for a given Account, Course, or User. (Note that the flag must be defined on the Account, Course, or User directly.) The object will then inherit the feature flags from a higher account, if any exist. If this flag was 'on' or 'off', then lower-level account flags that were masked by this one will apply again. ```bash curl -X DELETE 'http:///api/v1/courses/1/features/flags/fancy_wickets' \\ -H \"Authorizat...",
     "inputSchema": {
       "type": "object",
@@ -349,52 +349,52 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_features: async (client, args) => {
+  get_cc_features: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/features", args);
   },
-  get_accounts_account_id_features: async (client, args) => {
+  get_aa_features: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/features", args);
   },
-  get_users_user_id_features: async (client, args) => {
+  get_uu_features: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/features", args);
   },
-  get_courses_course_id_features_enabled: async (client, args) => {
+  get_ccf_enabled: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/features/enabled", args);
   },
-  get_accounts_account_id_features_enabled: async (client, args) => {
+  get_aaf_enabled: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/features/enabled", args);
   },
-  get_users_user_id_features_enabled: async (client, args) => {
+  get_uuf_enabled: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/features/enabled", args);
   },
-  get_features_environment: async (client, args) => {
+  get_f_environment: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/features/environment", args);
   },
-  get_courses_course_id_features_flags_feature: async (client, args) => {
+  get_ccf_flags_feature: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/features/flags/:feature", args);
   },
-  get_accounts_account_id_features_flags_feature: async (client, args) => {
+  get_aaf_flags_feature: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/features/flags/:feature", args);
   },
-  get_users_user_id_features_flags_feature: async (client, args) => {
+  get_uuf_flags_feature: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/features/flags/:feature", args);
   },
-  put_courses_course_id_features_flags_feature: async (client, args) => {
+  put_ccf_flags_feature: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/features/flags/:feature", args);
   },
-  put_accounts_account_id_features_flags_feature: async (client, args) => {
+  put_aaf_flags_feature: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/features/flags/:feature", args);
   },
-  put_users_user_id_features_flags_feature: async (client, args) => {
+  put_uuf_flags_feature: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:user_id/features/flags/:feature", args);
   },
-  delete_courses_course_id_features_flags_feature: async (client, args) => {
+  delete_ccf_flags_feature: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/features/flags/:feature", args);
   },
-  delete_accounts_account_id_features_flags_feature: async (client, args) => {
+  delete_aaf_flags_feature: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/features/flags/:feature", args);
   },
-  delete_users_user_id_features_flags_feature: async (client, args) => {
+  delete_uuf_flags_feature: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/features/flags/:feature", args);
   }
 };

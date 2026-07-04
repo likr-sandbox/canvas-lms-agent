@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_users_user_id_communication_channels_communication_channel_id_notification_preferences",
+    "name": "get_uuccc_notification_preferences",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/communication_channels/:communication_channel_id/notification_preferences`",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_communication_channels_type_address_notification_preferences",
+    "name": "get_uuccta_notification_preferences",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/communication_channels/:type/:address/notification_preferences` Fetch all preferences for the given communication channel Returns a list of [NotificationPreference](#notificationpreference) objects. [NotificationPreferencesController#category\\_index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/notification_preferences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -60,7 +60,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_communication_channels_communication_channel_id_notification_preference_categories",
+    "name": "get_uuccc_notification_preference_categories",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/communication_channels/:communication_channel_id/notification_preference_categories` Fetch all notification preference categories for the given communication channel [NotificationPreferencesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/notification_preferences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -85,7 +85,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_communication_channels_communication_channel_id_notification_preferences_notification",
+    "name": "get_uuccc_notification_preferences_notification",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/communication_channels/:communication_channel_id/notification_preferences/:notification`",
     "inputSchema": {
       "type": "object",
@@ -115,7 +115,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_communication_channels_type_address_notification_preferences_notification",
+    "name": "get_uuccta_notification_preferences_notification",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/communication_channels/:type/:address/notification_preferences/:notification` Fetch the preference for the given notification for the given communication channel Returns a [NotificationPreference](#notificationpreference) object. [NotificationPreferencesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/notification_preferences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -150,7 +150,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_self_communication_channels_communication_channel_id_notification_preferences_notification",
+    "name": "put_usccc_notification_preferences_notification",
     "description": "**Scope:** `url:PUT|/api/v1/users/self/communication_channels/:communication_channel_id/notification_preferences/:notification`",
     "inputSchema": {
       "type": "object",
@@ -171,7 +171,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_self_communication_channels_type_address_notification_preferences_notification",
+    "name": "put_usccta_notification_preferences_notification",
     "description": "**Scope:** `url:PUT|/api/v1/users/self/communication_channels/:type/:address/notification_preferences/:notification` Change the preference for a single notification for a single communication channel [NotificationPreferencesController#update\\_preferences\\_by\\_category](https://github.com/instructure/canvas-lms/blob/master/app/controllers/notification_preferences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -202,7 +202,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_self_communication_channels_communication_channel_id_notification_preference_categories_category",
+    "name": "put_usccc_notification_preference_categories_category",
     "description": "**Scope:** `url:PUT|/api/v1/users/self/communication_channels/:communication_channel_id/notification_preference_categories/:category` Change the preferences for multiple notifications based on the category for a single communication channel [NotificationPreferencesController#update\\_all](https://github.com/instructure/canvas-lms/blob/master/app/controllers/notification_preferences_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -228,7 +228,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_self_communication_channels_communication_channel_id_notification_preferences",
+    "name": "put_usccc_notification_preferences",
     "description": "**Scope:** `url:PUT|/api/v1/users/self/communication_channels/:communication_channel_id/notification_preferences`",
     "inputSchema": {
       "type": "object",
@@ -244,7 +244,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_self_communication_channels_type_address_notification_preferences",
+    "name": "put_usccta_notification_preferences",
     "description": "**Scope:** `url:PUT|/api/v1/users/self/communication_channels/:type/:address/notification_preferences` Change the preferences for multiple notifications for a single communication channel at once *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and re...",
     "inputSchema": {
       "type": "object",
@@ -272,34 +272,34 @@ const definitions = [
 ];
 
 const handlers = {
-  get_users_user_id_communication_channels_communication_channel_id_notification_preferences: async (client, args) => {
+  get_uuccc_notification_preferences: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/communication_channels/:communication_channel_id/notification_preferences", args);
   },
-  get_users_user_id_communication_channels_type_address_notification_preferences: async (client, args) => {
+  get_uuccta_notification_preferences: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/communication_channels/:type/:address/notification_preferences", args);
   },
-  get_users_user_id_communication_channels_communication_channel_id_notification_preference_categories: async (client, args) => {
+  get_uuccc_notification_preference_categories: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/communication_channels/:communication_channel_id/notification_preference_categories", args);
   },
-  get_users_user_id_communication_channels_communication_channel_id_notification_preferences_notification: async (client, args) => {
+  get_uuccc_notification_preferences_notification: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/communication_channels/:communication_channel_id/notification_preferences/:notification", args);
   },
-  get_users_user_id_communication_channels_type_address_notification_preferences_notification: async (client, args) => {
+  get_uuccta_notification_preferences_notification: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/communication_channels/:type/:address/notification_preferences/:notification", args);
   },
-  put_users_self_communication_channels_communication_channel_id_notification_preferences_notification: async (client, args) => {
+  put_usccc_notification_preferences_notification: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:communication_channel_id/notification_preferences/:notification", args);
   },
-  put_users_self_communication_channels_type_address_notification_preferences_notification: async (client, args) => {
+  put_usccta_notification_preferences_notification: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:type/:address/notification_preferences/:notification", args);
   },
-  put_users_self_communication_channels_communication_channel_id_notification_preference_categories_category: async (client, args) => {
+  put_usccc_notification_preference_categories_category: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:communication_channel_id/notification_preference_categories/:category", args);
   },
-  put_users_self_communication_channels_communication_channel_id_notification_preferences: async (client, args) => {
+  put_usccc_notification_preferences: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:communication_channel_id/notification_preferences", args);
   },
-  put_users_self_communication_channels_type_address_notification_preferences: async (client, args) => {
+  put_usccta_notification_preferences: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/self/communication_channels/:type/:address/notification_preferences", args);
   }
 };

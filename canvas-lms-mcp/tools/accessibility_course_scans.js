@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_users_user_id_educator_accessibility_course_scan",
+    "name": "post_uu_educator_accessibility_course_scan",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/educator_accessibility_course_scan` Queues a background job that scans all a11y-enabled courses where the user has an active teacher or designer enrollment. Idempotent \u2014 if a scan is already queued or running, the existing Progress is returned. Requires the educator\\_dashboard feature flag on the root account and a11y\\_checker\\_account\\_statistics on site admin. Returns a [Progress](progress.md#progress) object. *** This documentation is generated d...",
     "inputSchema": {
       "type": "object",
@@ -23,7 +23,7 @@ const definitions = [
 ];
 
 const handlers = {
-  post_users_user_id_educator_accessibility_course_scan: async (client, args) => {
+  post_uu_educator_accessibility_course_scan: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/educator_accessibility_course_scan", args);
   }
 };

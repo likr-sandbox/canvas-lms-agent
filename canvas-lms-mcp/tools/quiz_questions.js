@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_questions",
+    "name": "get_ccqq_questions",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/questions` Returns the paginated list of QuizQuestions in this quiz. Returns a list of [QuizQuestion](#quizquestion) objects. [Quizzes::QuizQuestionsController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_questions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -38,7 +38,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_questions_id",
+    "name": "get_ccqq_questions_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id` Returns the quiz question with the given id Returns a [QuizQuestion](#quizquestion) object. [Quizzes::QuizQuestionsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_questions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -68,7 +68,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_quizzes_quiz_id_questions",
+    "name": "post_ccqq_questions",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:quiz_id/questions` Create a new quiz question for this quiz Returns a [QuizQuestion](#quizquestion) object. [Quizzes::QuizQuestionsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_questions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -133,7 +133,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_quizzes_quiz_id_questions_id",
+    "name": "put_ccqq_questions_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id` Updates an existing quiz question for this quiz Returns a [QuizQuestion](#quizquestion) object. [Quizzes::QuizQuestionsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_questions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -203,7 +203,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_quizzes_quiz_id_questions_id",
+    "name": "delete_ccqq_questions_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id` \\204 No Content\\ response code is returned if the deletion was successful. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively...",
     "inputSchema": {
       "type": "object",
@@ -231,19 +231,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_quizzes_quiz_id_questions: async (client, args) => {
+  get_ccqq_questions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions", args);
   },
-  get_courses_course_id_quizzes_quiz_id_questions_id: async (client, args) => {
+  get_ccqq_questions_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id", args);
   },
-  post_courses_course_id_quizzes_quiz_id_questions: async (client, args) => {
+  post_ccqq_questions: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions", args);
   },
-  put_courses_course_id_quizzes_quiz_id_questions_id: async (client, args) => {
+  put_ccqq_questions_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id", args);
   },
-  delete_courses_course_id_quizzes_quiz_id_questions_id: async (client, args) => {
+  delete_ccqq_questions_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/quizzes/:quiz_id/questions/:id", args);
   }
 };

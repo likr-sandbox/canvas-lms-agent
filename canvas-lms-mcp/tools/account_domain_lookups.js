@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_search",
+    "name": "get_a_search",
     "description": "**Scope:** `url:GET|/api/v1/accounts/search` Returns a list of up to 5 matching account domains Partial match on name / domain are supported ```bash curl https:///api/v1/accounts/search \\ -G -H 'Authorization: Bearer ' \\ -d 'name=utah' ``` ```js [ { \"name\": \"University of Utah\", \"domain\": \"utah.edu\", \"distance\": null, // distance is always nil, but preserved in the api response for backwards compatibility \"authentication_provider\": \"canvas\", // which authentication_provider param to pass to t...",
     "inputSchema": {
       "type": "object",
@@ -36,7 +36,7 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_search: async (client, args) => {
+  get_a_search: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/search", args);
   }
 };

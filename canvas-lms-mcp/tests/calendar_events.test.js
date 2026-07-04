@@ -23,15 +23,15 @@ test("get_calendar_events calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_calendar_events calls correct endpoint", async () => {
+test("get_uu_calendar_events calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = calendar_eventsModule.handlers.get_users_user_id_calendar_events;
-  assert.ok(handler, "Handler get_users_user_id_calendar_events should be defined");
+  const handler = calendar_eventsModule.handlers.get_uu_calendar_events;
+  assert.ok(handler, "Handler get_uu_calendar_events should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "type": "test_val"});
 
@@ -77,15 +77,15 @@ test("get_calendar_events_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_calendar_events_id_reservations calls correct endpoint", async () => {
+test("post_cei_reservations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = calendar_eventsModule.handlers.post_calendar_events_id_reservations;
-  assert.ok(handler, "Handler post_calendar_events_id_reservations should be defined");
+  const handler = calendar_eventsModule.handlers.post_cei_reservations;
+  assert.ok(handler, "Handler post_cei_reservations should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -95,15 +95,15 @@ test("post_calendar_events_id_reservations calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_calendar_events_id_reservations_participant_id calls correct endpoint", async () => {
+test("post_cei_reservations_participant_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = calendar_eventsModule.handlers.post_calendar_events_id_reservations_participant_id;
-  assert.ok(handler, "Handler post_calendar_events_id_reservations_participant_id should be defined");
+  const handler = calendar_eventsModule.handlers.post_cei_reservations_participant_id;
+  assert.ok(handler, "Handler post_cei_reservations_participant_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "participant_id": "test_participant_id", "comments": "test_val"});
 
@@ -149,15 +149,15 @@ test("delete_calendar_events_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_calendar_events_save_enabled_account_calendars calls correct endpoint", async () => {
+test("post_ce_save_enabled_account_calendars calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = calendar_eventsModule.handlers.post_calendar_events_save_enabled_account_calendars;
-  assert.ok(handler, "Handler post_calendar_events_save_enabled_account_calendars should be defined");
+  const handler = calendar_eventsModule.handlers.post_ce_save_enabled_account_calendars;
+  assert.ok(handler, "Handler post_ce_save_enabled_account_calendars should be defined");
 
   const result = await handler(mockClient, {"mark_feature_as_seen": true});
 
@@ -167,15 +167,15 @@ test("post_calendar_events_save_enabled_account_calendars calls correct endpoint
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_calendar_events_timetable calls correct endpoint", async () => {
+test("post_ccce_timetable calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = calendar_eventsModule.handlers.post_courses_course_id_calendar_events_timetable;
-  assert.ok(handler, "Handler post_courses_course_id_calendar_events_timetable should be defined");
+  const handler = calendar_eventsModule.handlers.post_ccce_timetable;
+  assert.ok(handler, "Handler post_ccce_timetable should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "timetables[course_section_id][]": ["test_val"]});
 
@@ -185,15 +185,15 @@ test("post_courses_course_id_calendar_events_timetable calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_calendar_events_timetable calls correct endpoint", async () => {
+test("get_ccce_timetable calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = calendar_eventsModule.handlers.get_courses_course_id_calendar_events_timetable;
-  assert.ok(handler, "Handler get_courses_course_id_calendar_events_timetable should be defined");
+  const handler = calendar_eventsModule.handlers.get_ccce_timetable;
+  assert.ok(handler, "Handler get_ccce_timetable should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -203,15 +203,15 @@ test("get_courses_course_id_calendar_events_timetable calls correct endpoint", a
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_calendar_events_timetable_events calls correct endpoint", async () => {
+test("post_ccce_timetable_events calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = calendar_eventsModule.handlers.post_courses_course_id_calendar_events_timetable_events;
-  assert.ok(handler, "Handler post_courses_course_id_calendar_events_timetable_events should be defined");
+  const handler = calendar_eventsModule.handlers.post_ccce_timetable_events;
+  assert.ok(handler, "Handler post_ccce_timetable_events should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "course_section_id": "test_val"});
 

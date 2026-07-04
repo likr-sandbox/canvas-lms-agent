@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const temporary_enrollment_pairingsModule = require("../tools/temporary_enrollment_pairings");
 
-test("get_accounts_account_id_temporary_enrollment_pairings calls correct endpoint", async () => {
+test("get_aa_temporary_enrollment_pairings calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = temporary_enrollment_pairingsModule.handlers.get_accounts_account_id_temporary_enrollment_pairings;
-  assert.ok(handler, "Handler get_accounts_account_id_temporary_enrollment_pairings should be defined");
+  const handler = temporary_enrollment_pairingsModule.handlers.get_aa_temporary_enrollment_pairings;
+  assert.ok(handler, "Handler get_aa_temporary_enrollment_pairings should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "include_deleted": true});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_temporary_enrollment_pairings calls correct endpoi
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_temporary_enrollment_pairings_id calls correct endpoint", async () => {
+test("get_aa_temporary_enrollment_pairings_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = temporary_enrollment_pairingsModule.handlers.get_accounts_account_id_temporary_enrollment_pairings_id;
-  assert.ok(handler, "Handler get_accounts_account_id_temporary_enrollment_pairings_id should be defined");
+  const handler = temporary_enrollment_pairingsModule.handlers.get_aa_temporary_enrollment_pairings_id;
+  assert.ok(handler, "Handler get_aa_temporary_enrollment_pairings_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_temporary_enrollment_pairings_id calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_temporary_enrollment_pairings_new calls correct endpoint", async () => {
+test("get_aatep_new calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = temporary_enrollment_pairingsModule.handlers.get_accounts_account_id_temporary_enrollment_pairings_new;
-  assert.ok(handler, "Handler get_accounts_account_id_temporary_enrollment_pairings_new should be defined");
+  const handler = temporary_enrollment_pairingsModule.handlers.get_aatep_new;
+  assert.ok(handler, "Handler get_aatep_new should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -59,15 +59,15 @@ test("get_accounts_account_id_temporary_enrollment_pairings_new calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_temporary_enrollment_pairings calls correct endpoint", async () => {
+test("post_aa_temporary_enrollment_pairings calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = temporary_enrollment_pairingsModule.handlers.post_accounts_account_id_temporary_enrollment_pairings;
-  assert.ok(handler, "Handler post_accounts_account_id_temporary_enrollment_pairings should be defined");
+  const handler = temporary_enrollment_pairingsModule.handlers.post_aa_temporary_enrollment_pairings;
+  assert.ok(handler, "Handler post_aa_temporary_enrollment_pairings should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "workflow_state": "test_val"});
 
@@ -77,15 +77,15 @@ test("post_accounts_account_id_temporary_enrollment_pairings calls correct endpo
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_temporary_enrollment_pairings_id calls correct endpoint", async () => {
+test("delete_aa_temporary_enrollment_pairings_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = temporary_enrollment_pairingsModule.handlers.delete_accounts_account_id_temporary_enrollment_pairings_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_temporary_enrollment_pairings_id should be defined");
+  const handler = temporary_enrollment_pairingsModule.handlers.delete_aa_temporary_enrollment_pairings_id;
+  assert.ok(handler, "Handler delete_aa_temporary_enrollment_pairings_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 

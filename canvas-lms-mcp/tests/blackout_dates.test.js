@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const blackout_datesModule = require("../tools/blackout_dates");
 
-test("get_courses_course_id_blackout_dates calls correct endpoint", async () => {
+test("get_cc_blackout_dates calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.get_courses_course_id_blackout_dates;
-  assert.ok(handler, "Handler get_courses_course_id_blackout_dates should be defined");
+  const handler = blackout_datesModule.handlers.get_cc_blackout_dates;
+  assert.ok(handler, "Handler get_cc_blackout_dates should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_blackout_dates calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_blackout_dates calls correct endpoint", async () => {
+test("get_aa_blackout_dates calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.get_accounts_account_id_blackout_dates;
-  assert.ok(handler, "Handler get_accounts_account_id_blackout_dates should be defined");
+  const handler = blackout_datesModule.handlers.get_aa_blackout_dates;
+  assert.ok(handler, "Handler get_aa_blackout_dates should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_blackout_dates calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blackout_dates_id calls correct endpoint", async () => {
+test("get_cc_blackout_dates_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.get_courses_course_id_blackout_dates_id;
-  assert.ok(handler, "Handler get_courses_course_id_blackout_dates_id should be defined");
+  const handler = blackout_datesModule.handlers.get_cc_blackout_dates_id;
+  assert.ok(handler, "Handler get_cc_blackout_dates_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -59,15 +59,15 @@ test("get_courses_course_id_blackout_dates_id calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_blackout_dates_id calls correct endpoint", async () => {
+test("get_aa_blackout_dates_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.get_accounts_account_id_blackout_dates_id;
-  assert.ok(handler, "Handler get_accounts_account_id_blackout_dates_id should be defined");
+  const handler = blackout_datesModule.handlers.get_aa_blackout_dates_id;
+  assert.ok(handler, "Handler get_aa_blackout_dates_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -77,15 +77,15 @@ test("get_accounts_account_id_blackout_dates_id calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blackout_dates_new calls correct endpoint", async () => {
+test("get_ccbd_new calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.get_courses_course_id_blackout_dates_new;
-  assert.ok(handler, "Handler get_courses_course_id_blackout_dates_new should be defined");
+  const handler = blackout_datesModule.handlers.get_ccbd_new;
+  assert.ok(handler, "Handler get_ccbd_new should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -95,15 +95,15 @@ test("get_courses_course_id_blackout_dates_new calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_blackout_dates_new calls correct endpoint", async () => {
+test("get_aabd_new calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.get_accounts_account_id_blackout_dates_new;
-  assert.ok(handler, "Handler get_accounts_account_id_blackout_dates_new should be defined");
+  const handler = blackout_datesModule.handlers.get_aabd_new;
+  assert.ok(handler, "Handler get_aabd_new should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -113,15 +113,15 @@ test("get_accounts_account_id_blackout_dates_new calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_blackout_dates calls correct endpoint", async () => {
+test("post_cc_blackout_dates calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.post_courses_course_id_blackout_dates;
-  assert.ok(handler, "Handler post_courses_course_id_blackout_dates should be defined");
+  const handler = blackout_datesModule.handlers.post_cc_blackout_dates;
+  assert.ok(handler, "Handler post_cc_blackout_dates should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -131,15 +131,15 @@ test("post_courses_course_id_blackout_dates calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_blackout_dates calls correct endpoint", async () => {
+test("post_aa_blackout_dates calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.post_accounts_account_id_blackout_dates;
-  assert.ok(handler, "Handler post_accounts_account_id_blackout_dates should be defined");
+  const handler = blackout_datesModule.handlers.post_aa_blackout_dates;
+  assert.ok(handler, "Handler post_aa_blackout_dates should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "start_date": "test_val"});
 
@@ -149,15 +149,15 @@ test("post_accounts_account_id_blackout_dates calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_blackout_dates_id calls correct endpoint", async () => {
+test("put_cc_blackout_dates_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.put_courses_course_id_blackout_dates_id;
-  assert.ok(handler, "Handler put_courses_course_id_blackout_dates_id should be defined");
+  const handler = blackout_datesModule.handlers.put_cc_blackout_dates_id;
+  assert.ok(handler, "Handler put_cc_blackout_dates_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -167,15 +167,15 @@ test("put_courses_course_id_blackout_dates_id calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_blackout_dates_id calls correct endpoint", async () => {
+test("put_aa_blackout_dates_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.put_accounts_account_id_blackout_dates_id;
-  assert.ok(handler, "Handler put_accounts_account_id_blackout_dates_id should be defined");
+  const handler = blackout_datesModule.handlers.put_aa_blackout_dates_id;
+  assert.ok(handler, "Handler put_aa_blackout_dates_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "start_date": "test_val"});
 
@@ -185,15 +185,15 @@ test("put_accounts_account_id_blackout_dates_id calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_blackout_dates_id calls correct endpoint", async () => {
+test("delete_cc_blackout_dates_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.delete_courses_course_id_blackout_dates_id;
-  assert.ok(handler, "Handler delete_courses_course_id_blackout_dates_id should be defined");
+  const handler = blackout_datesModule.handlers.delete_cc_blackout_dates_id;
+  assert.ok(handler, "Handler delete_cc_blackout_dates_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 
@@ -203,15 +203,15 @@ test("delete_courses_course_id_blackout_dates_id calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_blackout_dates_id calls correct endpoint", async () => {
+test("delete_aa_blackout_dates_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.delete_accounts_account_id_blackout_dates_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_blackout_dates_id should be defined");
+  const handler = blackout_datesModule.handlers.delete_aa_blackout_dates_id;
+  assert.ok(handler, "Handler delete_aa_blackout_dates_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -221,15 +221,15 @@ test("delete_accounts_account_id_blackout_dates_id calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_blackout_dates calls correct endpoint", async () => {
+test("put_cc_blackout_dates calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blackout_datesModule.handlers.put_courses_course_id_blackout_dates;
-  assert.ok(handler, "Handler put_courses_course_id_blackout_dates should be defined");
+  const handler = blackout_datesModule.handlers.put_cc_blackout_dates;
+  assert.ok(handler, "Handler put_cc_blackout_dates should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "blackout_dates:": "test_val"});
 

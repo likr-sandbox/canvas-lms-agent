@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_outcome_results",
+    "name": "get_cc_outcome_results",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_results` Gets the outcome results for users and outcomes in the specified context. used in sLMGB ```js { outcome_results: [OutcomeResult] } ``` [OutcomeResultsController#outcome\\_order](https://github.com/instructure/canvas-lms/blob/master/app/controllers/outcome_results_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -41,7 +41,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assign_outcome_order",
+    "name": "post_cc_assign_outcome_order",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assign_outcome_order` Saves the ordering of outcomes in LMGB for a user [OutcomeResultsController#rollups](https://github.com/instructure/canvas-lms/blob/master/app/controllers/outcome_results_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -57,7 +57,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_rollups",
+    "name": "get_cc_outcome_rollups",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_rollups` Gets the outcome rollups for the users and outcomes in the specified context. ```js { \"rollups\": [OutcomeRollup], \"linked\": { // (Optional) Included if include[] has outcomes \"outcomes\": [Outcome], // (Optional) Included if aggregate is not set and include[] has users \"users\": [User], // (Optional) Included if aggregate is 'course' and include[] has courses \"courses\": [Course] // (Optional) Included if include[] has outcome_group...",
     "inputSchema": {
       "type": "object",
@@ -121,7 +121,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcomes_outcome_id_contributing_scores",
+    "name": "get_ccoo_contributing_scores",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcomes/:outcome_id/contributing_scores` Gets the contributing scores for a specific outcome and set of users. Contributing scores are the individual assignment/quiz scores that contributed to the outcome score for each user. Returns all alignments for the outcome in the course context. ```js { \"outcome\": { \"id\": \"1\", \"title\": \"Outcome 1\" }, \"alignments\": [ { \"alignment_id\": \"123\", \"associated_asset_id\": \"456\", \"associated_asset_name\": \"Assignme...",
     "inputSchema": {
       "type": "object",
@@ -158,7 +158,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_mastery_distribution",
+    "name": "get_cc_outcome_mastery_distribution",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_mastery_distribution` Returns the distribution of student scores across mastery levels for all outcomes. This endpoint fetches data for ALL students (not paginated) to provide accurate distribution statistics for charts and analytics. ```js { \"outcome_distributions\": { \"1\": { \"outcome_id\": \"1\", \"ratings\": [ { \"description\": \"Exceeds Mastery\", \"points\": 4.0, \"color\": \"#127A1B\", \"count\": 5, \"student_ids\": [\"1\", \"3\", \"7\", \"12\", \"15\"] }, { \"d...",
     "inputSchema": {
       "type": "object",
@@ -216,19 +216,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_outcome_results: async (client, args) => {
+  get_cc_outcome_results: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_results", args);
   },
-  post_courses_course_id_assign_outcome_order: async (client, args) => {
+  post_cc_assign_outcome_order: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assign_outcome_order", args);
   },
-  get_courses_course_id_outcome_rollups: async (client, args) => {
+  get_cc_outcome_rollups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_rollups", args);
   },
-  get_courses_course_id_outcomes_outcome_id_contributing_scores: async (client, args) => {
+  get_ccoo_contributing_scores: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcomes/:outcome_id/contributing_scores", args);
   },
-  get_courses_course_id_outcome_mastery_distribution: async (client, args) => {
+  get_cc_outcome_mastery_distribution: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_mastery_distribution", args);
   },
   post_enqueue_outcome_rollup_calculation: async (client, args) => {

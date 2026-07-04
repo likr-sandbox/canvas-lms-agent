@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const asset_processorModule = require("../tools/asset_processor");
 
-test("post_asset_processors_asset_processor_id_reports calls correct endpoint", async () => {
+test("post_apa_reports calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = asset_processorModule.handlers.post_asset_processors_asset_processor_id_reports;
-  assert.ok(handler, "Handler post_asset_processors_asset_processor_id_reports should be defined");
+  const handler = asset_processorModule.handlers.post_apa_reports;
+  assert.ok(handler, "Handler post_apa_reports should be defined");
 
   const result = await handler(mockClient, {"asset_processor_id": "test_asset_processor_id", "assetId": "test_val"});
 
@@ -23,15 +23,15 @@ test("post_asset_processors_asset_processor_id_reports calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_asset_processor_eulas_context_external_tool_id_deployment calls correct endpoint", async () => {
+test("put_apec_deployment calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = asset_processorModule.handlers.put_asset_processor_eulas_context_external_tool_id_deployment;
-  assert.ok(handler, "Handler put_asset_processor_eulas_context_external_tool_id_deployment should be defined");
+  const handler = asset_processorModule.handlers.put_apec_deployment;
+  assert.ok(handler, "Handler put_apec_deployment should be defined");
 
   const result = await handler(mockClient, {"context_external_tool_id": "test_context_external_tool_id", "eulaRequired": true});
 
@@ -41,15 +41,15 @@ test("put_asset_processor_eulas_context_external_tool_id_deployment calls correc
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_asset_processor_eulas_context_external_tool_id_user calls correct endpoint", async () => {
+test("post_apec_user calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = asset_processorModule.handlers.post_asset_processor_eulas_context_external_tool_id_user;
-  assert.ok(handler, "Handler post_asset_processor_eulas_context_external_tool_id_user should be defined");
+  const handler = asset_processorModule.handlers.post_apec_user;
+  assert.ok(handler, "Handler post_apec_user should be defined");
 
   const result = await handler(mockClient, {"context_external_tool_id": "test_context_external_tool_id", "userId": "test_val"});
 
@@ -59,15 +59,15 @@ test("post_asset_processor_eulas_context_external_tool_id_user calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_asset_processor_eulas_context_external_tool_id_user calls correct endpoint", async () => {
+test("delete_apec_user calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = asset_processorModule.handlers.delete_asset_processor_eulas_context_external_tool_id_user;
-  assert.ok(handler, "Handler delete_asset_processor_eulas_context_external_tool_id_user should be defined");
+  const handler = asset_processorModule.handlers.delete_apec_user;
+  assert.ok(handler, "Handler delete_apec_user should be defined");
 
   const result = await handler(mockClient, {"context_external_tool_id": "test_context_external_tool_id"});
 

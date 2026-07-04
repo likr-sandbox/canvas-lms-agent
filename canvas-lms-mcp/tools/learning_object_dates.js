@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_modules_context_module_id_date_details",
+    "name": "get_ccmc_date_details",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/modules/:context_module_id/date_details`",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_date_details",
+    "name": "get_ccaa_date_details",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/date_details`",
     "inputSchema": {
       "type": "object",
@@ -55,7 +55,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_date_details",
+    "name": "get_ccqq_date_details",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/date_details`",
     "inputSchema": {
       "type": "object",
@@ -80,7 +80,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_discussion_topics_discussion_topic_id_date_details",
+    "name": "get_ccdtd_date_details",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/discussion_topics/:discussion_topic_id/date_details`",
     "inputSchema": {
       "type": "object",
@@ -105,7 +105,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_pages_url_or_id_date_details",
+    "name": "get_ccpu_date_details",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/pages/:url_or_id/date_details`",
     "inputSchema": {
       "type": "object",
@@ -130,7 +130,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_files_attachment_id_date_details",
+    "name": "get_ccfa_date_details",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/files/:attachment_id/date_details` Get a learning object's date-related information, including due date, availability dates, override status, and a paginated list of all assignment overrides for the item. Returns a [LearningObjectDates](#learningobjectdates) object. [LearningObjectDatesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/learning_object_dates_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -163,7 +163,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_date_details",
+    "name": "put_ccaa_date_details",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/date_details`",
     "inputSchema": {
       "type": "object",
@@ -184,7 +184,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_quizzes_quiz_id_date_details",
+    "name": "put_ccqq_date_details",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/quizzes/:quiz_id/date_details`",
     "inputSchema": {
       "type": "object",
@@ -205,7 +205,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_discussion_topics_discussion_topic_id_date_details",
+    "name": "put_ccdtd_date_details",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/discussion_topics/:discussion_topic_id/date_details`",
     "inputSchema": {
       "type": "object",
@@ -226,7 +226,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_pages_url_or_id_date_details",
+    "name": "put_ccpu_date_details",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/pages/:url_or_id/date_details`",
     "inputSchema": {
       "type": "object",
@@ -247,7 +247,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_files_attachment_id_date_details",
+    "name": "put_ccfa_date_details",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/files/:attachment_id/date_details` Updates date-related information for learning objects, including due date, availability dates, override status, and assignment overrides. Returns 204 No Content response code if successful. ```bash curl https:///api/v1/courses/:course_id/assignments/:assignment_id/date_details \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -H 'Content-Type: application/json' \\ -d '{ \"due_at\": \"2012-07-01T23:59:00-06:00\", \"unlock_at\": ...",
     "inputSchema": {
       "type": "object",
@@ -310,37 +310,37 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_modules_context_module_id_date_details: async (client, args) => {
+  get_ccmc_date_details: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:context_module_id/date_details", args);
   },
-  get_courses_course_id_assignments_assignment_id_date_details: async (client, args) => {
+  get_ccaa_date_details: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/date_details", args);
   },
-  get_courses_course_id_quizzes_quiz_id_date_details: async (client, args) => {
+  get_ccqq_date_details: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/date_details", args);
   },
-  get_courses_course_id_discussion_topics_discussion_topic_id_date_details: async (client, args) => {
+  get_ccdtd_date_details: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:discussion_topic_id/date_details", args);
   },
-  get_courses_course_id_pages_url_or_id_date_details: async (client, args) => {
+  get_ccpu_date_details: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/pages/:url_or_id/date_details", args);
   },
-  get_courses_course_id_files_attachment_id_date_details: async (client, args) => {
+  get_ccfa_date_details: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/files/:attachment_id/date_details", args);
   },
-  put_courses_course_id_assignments_assignment_id_date_details: async (client, args) => {
+  put_ccaa_date_details: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/date_details", args);
   },
-  put_courses_course_id_quizzes_quiz_id_date_details: async (client, args) => {
+  put_ccqq_date_details: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:quiz_id/date_details", args);
   },
-  put_courses_course_id_discussion_topics_discussion_topic_id_date_details: async (client, args) => {
+  put_ccdtd_date_details: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/:discussion_topic_id/date_details", args);
   },
-  put_courses_course_id_pages_url_or_id_date_details: async (client, args) => {
+  put_ccpu_date_details: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/pages/:url_or_id/date_details", args);
   },
-  put_courses_course_id_files_attachment_id_date_details: async (client, args) => {
+  put_ccfa_date_details: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/files/:attachment_id/date_details", args);
   }
 };

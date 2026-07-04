@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const sis_import_errorsModule = require("../tools/sis_import_errors");
 
-test("get_accounts_account_id_sis_imports_id_errors calls correct endpoint", async () => {
+test("get_aasii_errors calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_import_errorsModule.handlers.get_accounts_account_id_sis_imports_id_errors;
-  assert.ok(handler, "Handler get_accounts_account_id_sis_imports_id_errors should be defined");
+  const handler = sis_import_errorsModule.handlers.get_aasii_errors;
+  assert.ok(handler, "Handler get_aasii_errors should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_sis_imports_id_errors calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_sis_import_errors calls correct endpoint", async () => {
+test("get_aa_sis_import_errors calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_import_errorsModule.handlers.get_accounts_account_id_sis_import_errors;
-  assert.ok(handler, "Handler get_accounts_account_id_sis_import_errors should be defined");
+  const handler = sis_import_errorsModule.handlers.get_aa_sis_import_errors;
+  assert.ok(handler, "Handler get_aa_sis_import_errors should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "failure": true});
 

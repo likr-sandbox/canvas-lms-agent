@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_quiz_v1_courses_course_id_quizzes_assignment_id",
+    "name": "get_qvcc_quizzes_assignment_id",
     "description": "**Scope:** `url:GET|/api/quiz/v1/courses/:course_id/quizzes/:assignment_id` Get details about a single new quiz. ```bash curl 'https:///api/quiz/v1/courses/1/quizzes/12' \\ -H 'Authorization: Bearer ' ``` Returns a [NewQuiz](#newquiz) object.",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_quiz_v1_courses_course_id_quizzes",
+    "name": "get_qvcc_quizzes",
     "description": "**Scope:** `url:GET|/api/quiz/v1/courses/:course_id/quizzes` Get a list of new quizzes. ```bash curl 'https:///api/quiz/v1/courses/1/quizzes' \\ -H 'Authorization Bearer ' ``` Returns a list of [NewQuiz](#newquiz) objects.",
     "inputSchema": {
       "type": "object",
@@ -50,7 +50,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_quiz_v1_courses_course_id_quizzes",
+    "name": "post_qvcc_quizzes",
     "description": "**Scope:** `url:POST|/api/quiz/v1/courses/:course_id/quizzes` Create a new quiz for the course. ```bash curl 'https:///api/quiz/v1/courses/1/quizzes' \\ -X POST \\ -H 'Authorization Bearer ' \\ -d 'quiz[title]=New quiz' \\ -d 'quiz[assignment_group_id]=1' \\ -d 'quiz[points_possible]=100.0' \\ -d 'quiz[due_at]=2023-01-02T00:00:00Z' \\ -d 'quiz[lock_at]=2023-01-03T00:00:00Z' \\ -d 'quiz[unlock_at]=2023-01-01T00:00:00Z' \\ -d 'quiz[grading_type]=points' \\ -d 'quiz[instructions]=Instructions for quiz' \\ ...",
     "inputSchema": {
       "type": "object",
@@ -103,7 +103,7 @@ const definitions = [
           "type": "string",
           "description": "<p>Specifies ranges of IP addresses where the quiz can be taken from. Each range is an array like<br>\\[start address, end address], or null if there's no restriction.</p>"
         },
-        "quiz[quiz_settings][multiple_attempts][multiple_attempts_enabled]": {
+        "qqsma_multiple_attempts_enabled": {
           "type": "boolean",
           "description": "Whether multiple attempts for this quiz is true."
         },
@@ -135,15 +135,15 @@ const definitions = [
           "type": "boolean",
           "description": "Whether to allow user to return to previous questions when 'one\\_at\\_a\\_time\\_type' is set to 'question'."
         },
-        "quiz[quiz_settings][result_view_settings][result_view_restricted]": {
+        "qqsrvs_result_view_restricted": {
           "type": "boolean",
           "description": "Whether the results view is restricted for students. Must be true for any student restrictions to be set."
         },
-        "quiz[quiz_settings][result_view_settings][display_points_awarded]": {
+        "qqsrvs_display_points_awarded": {
           "type": "boolean",
           "description": "Whether points are shown. Must set result\\_view\\_restricted to true to use this parameter."
         },
-        "quiz[quiz_settings][result_view_settings][display_points_possible]": {
+        "qqsrvs_display_points_possible": {
           "type": "boolean",
           "description": "Whether points possible is shown. Must set result\\_view\\_restricted to true to use this parameter."
         },
@@ -155,35 +155,35 @@ const definitions = [
           "type": "boolean",
           "description": "<p>Whether item response is shown. Only set if display\\_items is true. Must be true for<br>display\\_item\\_response\\_qualifier, show\\_item\\_responses\\_at, hide\\_item\\_responses\\_at, and<br>display\\_item\\_response\\_correctness to be set.</p>"
         },
-        "quiz[quiz_settings][result_view_settings][display_item_response_qualifier]": {
+        "qqsrvs_display_item_response_qualifier": {
           "type": "string",
           "description": "Specifies after which attempts student responses should be shown to them. Only used if display\\_item\\_response is true. Allowed values: `always`, `once_per_attempt`, `after_last_attempt`, `once_after_last_attempt`"
         },
-        "quiz[quiz_settings][result_view_settings][show_item_responses_at]": {
+        "qqsrvs_show_item_responses_at": {
           "type": "string",
           "description": "When student responses should be shown to them. Only used if display\\_item\\_response is true."
         },
-        "quiz[quiz_settings][result_view_settings][hide_item_responses_at]": {
+        "qqsrvs_hide_item_responses_at": {
           "type": "string",
           "description": "When student responses should be hidden from them. Only used if display\\_item\\_response is true."
         },
-        "quiz[quiz_settings][result_view_settings][display_item_response_correctness]": {
+        "qqsrvs_display_item_response_correctness": {
           "type": "boolean",
           "description": "<p>Whether item correctness is shown. Only set if display\\_item\\_response is true. Must be true for<br>display\\_item\\_response\\_correctness\\_qualifier, show\\_item\\_response\\_correctness\\_at, hide\\_item\\_response\\_correctness\\_at<br>and display\\_item\\_correct\\_answer to be set.</p>"
         },
-        "quiz[quiz_settings][result_view_settings][display_item_response_correctness_qualifier]": {
+        "qqsrvs_display_item_response_correctness_qualifier": {
           "type": "string",
           "description": "Specifies after which attempts student response correctness should be shown to them. Only used if display\\_item\\_response\\_correctness is true. Allowed values: `always`, `after_last_attempt`"
         },
-        "quiz[quiz_settings][result_view_settings][show_item_response_correctness_at]": {
+        "qqsrvs_show_item_response_correctness_at": {
           "type": "string",
           "description": "When student response correctness should be shown to them. Only used if display\\_item\\_response\\_correctness is true."
         },
-        "quiz[quiz_settings][result_view_settings][hide_item_response_correctness_at]": {
+        "qqsrvs_hide_item_response_correctness_at": {
           "type": "string",
           "description": "When student response correctness should be hidden from them. Only used if display\\_item\\_response\\_correctness is true."
         },
-        "quiz[quiz_settings][result_view_settings][display_item_correct_answer]": {
+        "qqsrvs_display_item_correct_answer": {
           "type": "boolean",
           "description": "Whether correct answer is shown. Only set if display\\_item\\_response\\_correctness is true."
         },
@@ -222,7 +222,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_quiz_v1_courses_course_id_quizzes_assignment_id",
+    "name": "delete_qvcc_quizzes_assignment_id",
     "description": "**Scope:** `url:DELETE|/api/quiz/v1/courses/:course_id/quizzes/:assignment_id` Delete a single new quiz. ```bash curl 'https:///api/quiz/v1/courses/1/quizzes/12' \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Returns a [NewQuiz](#newquiz) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that bo...",
     "inputSchema": {
       "type": "object",
@@ -245,16 +245,65 @@ const definitions = [
 ];
 
 const handlers = {
-  get_quiz_v1_courses_course_id_quizzes_assignment_id: async (client, args) => {
+  get_qvcc_quizzes_assignment_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id", args);
   },
-  get_quiz_v1_courses_course_id_quizzes: async (client, args) => {
+  get_qvcc_quizzes: async (client, args) => {
     return genericHandler(client, "GET", "/api/quiz/v1/courses/:course_id/quizzes", args);
   },
-  post_quiz_v1_courses_course_id_quizzes: async (client, args) => {
-    return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/quizzes", args);
+  post_qvcc_quizzes: async (client, args) => {
+    const mappedArgs = { ...args };
+    if ("qqsma_multiple_attempts_enabled" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][multiple_attempts][multiple_attempts_enabled]"] = mappedArgs["qqsma_multiple_attempts_enabled"];
+      delete mappedArgs["qqsma_multiple_attempts_enabled"];
+    }
+    if ("qqsrvs_result_view_restricted" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][result_view_restricted]"] = mappedArgs["qqsrvs_result_view_restricted"];
+      delete mappedArgs["qqsrvs_result_view_restricted"];
+    }
+    if ("qqsrvs_display_points_awarded" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_points_awarded]"] = mappedArgs["qqsrvs_display_points_awarded"];
+      delete mappedArgs["qqsrvs_display_points_awarded"];
+    }
+    if ("qqsrvs_display_points_possible" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_points_possible]"] = mappedArgs["qqsrvs_display_points_possible"];
+      delete mappedArgs["qqsrvs_display_points_possible"];
+    }
+    if ("qqsrvs_display_item_response_qualifier" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_item_response_qualifier]"] = mappedArgs["qqsrvs_display_item_response_qualifier"];
+      delete mappedArgs["qqsrvs_display_item_response_qualifier"];
+    }
+    if ("qqsrvs_show_item_responses_at" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][show_item_responses_at]"] = mappedArgs["qqsrvs_show_item_responses_at"];
+      delete mappedArgs["qqsrvs_show_item_responses_at"];
+    }
+    if ("qqsrvs_hide_item_responses_at" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][hide_item_responses_at]"] = mappedArgs["qqsrvs_hide_item_responses_at"];
+      delete mappedArgs["qqsrvs_hide_item_responses_at"];
+    }
+    if ("qqsrvs_display_item_response_correctness" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_item_response_correctness]"] = mappedArgs["qqsrvs_display_item_response_correctness"];
+      delete mappedArgs["qqsrvs_display_item_response_correctness"];
+    }
+    if ("qqsrvs_display_item_response_correctness_qualifier" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_item_response_correctness_qualifier]"] = mappedArgs["qqsrvs_display_item_response_correctness_qualifier"];
+      delete mappedArgs["qqsrvs_display_item_response_correctness_qualifier"];
+    }
+    if ("qqsrvs_show_item_response_correctness_at" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][show_item_response_correctness_at]"] = mappedArgs["qqsrvs_show_item_response_correctness_at"];
+      delete mappedArgs["qqsrvs_show_item_response_correctness_at"];
+    }
+    if ("qqsrvs_hide_item_response_correctness_at" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][hide_item_response_correctness_at]"] = mappedArgs["qqsrvs_hide_item_response_correctness_at"];
+      delete mappedArgs["qqsrvs_hide_item_response_correctness_at"];
+    }
+    if ("qqsrvs_display_item_correct_answer" in mappedArgs) {
+      mappedArgs["quiz[quiz_settings][result_view_settings][display_item_correct_answer]"] = mappedArgs["qqsrvs_display_item_correct_answer"];
+      delete mappedArgs["qqsrvs_display_item_correct_answer"];
+    }
+    return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/quizzes", mappedArgs);
   },
-  delete_quiz_v1_courses_course_id_quizzes_assignment_id: async (client, args) => {
+  delete_qvcc_quizzes_assignment_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id", args);
   }
 };

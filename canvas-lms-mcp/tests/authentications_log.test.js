@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const authentications_logModule = require("../tools/authentications_log");
 
-test("get_audit_authentication_logins_login_id calls correct endpoint", async () => {
+test("get_aa_logins_login_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentications_logModule.handlers.get_audit_authentication_logins_login_id;
-  assert.ok(handler, "Handler get_audit_authentication_logins_login_id should be defined");
+  const handler = authentications_logModule.handlers.get_aa_logins_login_id;
+  assert.ok(handler, "Handler get_aa_logins_login_id should be defined");
 
   const result = await handler(mockClient, {"login_id": "test_login_id", "start_time": "test_val"});
 
@@ -23,15 +23,15 @@ test("get_audit_authentication_logins_login_id calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_audit_authentication_accounts_account_id calls correct endpoint", async () => {
+test("get_aa_accounts_account_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentications_logModule.handlers.get_audit_authentication_accounts_account_id;
-  assert.ok(handler, "Handler get_audit_authentication_accounts_account_id should be defined");
+  const handler = authentications_logModule.handlers.get_aa_accounts_account_id;
+  assert.ok(handler, "Handler get_aa_accounts_account_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "start_time": "test_val"});
 
@@ -41,15 +41,15 @@ test("get_audit_authentication_accounts_account_id calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_audit_authentication_users_user_id calls correct endpoint", async () => {
+test("get_aa_users_user_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = authentications_logModule.handlers.get_audit_authentication_users_user_id;
-  assert.ok(handler, "Handler get_audit_authentication_users_user_id should be defined");
+  const handler = authentications_logModule.handlers.get_aa_users_user_id;
+  assert.ok(handler, "Handler get_aa_users_user_id should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "start_time": "test_val"});
 

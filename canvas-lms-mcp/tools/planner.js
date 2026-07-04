@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_planner_items",
+    "name": "get_p_items",
     "description": "**Scope:** `url:GET|/api/v1/planner/items`",
     "inputSchema": {
       "type": "object",
@@ -18,7 +18,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_planner_items",
+    "name": "get_uup_items",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/planner/items` Retrieve the paginated list of objects to be shown on the planner for the current user with the associated planner override to override an item's visibility if set. Planner items for a student may also be retrieved by a linked observer. Use the path that accepts a user\\_id and supply the student's id. ```js [ { \"context_type\": \"Course\", \"course_id\": 1, \"planner_override\": { ... planner override object ... }, // Associated PlannerOverri...",
     "inputSchema": {
       "type": "object",
@@ -184,7 +184,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_planner_overrides",
+    "name": "get_p_overrides",
     "description": "**Scope:** `url:GET|/api/v1/planner/overrides` Retrieve a planner override for the current user Returns a list of [PlannerOverride](#planneroverride) objects. [PlannerOverridesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/planner_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -197,7 +197,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_planner_overrides_id",
+    "name": "get_p_overrides_id",
     "description": "**Scope:** `url:GET|/api/v1/planner/overrides/:id` Retrieve a planner override for the current user Returns a [PlannerOverride](#planneroverride) object. [PlannerOverridesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/planner_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -217,7 +217,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_planner_overrides_id",
+    "name": "put_p_overrides_id",
     "description": "**Scope:** `url:PUT|/api/v1/planner/overrides/:id` Update a planner override's visibilty for the current user Returns a [PlannerOverride](#planneroverride) object. [PlannerOverridesController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/planner_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -241,7 +241,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_planner_overrides",
+    "name": "post_p_overrides",
     "description": "**Scope:** `url:POST|/api/v1/planner/overrides` Create a planner override for the current user Returns a [PlannerOverride](#planneroverride) object. [PlannerOverridesController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/planner_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -270,7 +270,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_planner_overrides_id",
+    "name": "delete_p_overrides_id",
     "description": "**Scope:** `url:DELETE|/api/v1/planner/overrides/:id` Delete a planner override for the current user Returns a [PlannerOverride](#planneroverride) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. ...",
     "inputSchema": {
       "type": "object",
@@ -288,10 +288,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_planner_items: async (client, args) => {
+  get_p_items: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/planner/items", args);
   },
-  get_users_user_id_planner_items: async (client, args) => {
+  get_uup_items: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/planner/items", args);
   },
   get_planner_notes: async (client, args) => {
@@ -309,19 +309,19 @@ const handlers = {
   delete_planner_notes_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/planner_notes/:id", args);
   },
-  get_planner_overrides: async (client, args) => {
+  get_p_overrides: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/planner/overrides", args);
   },
-  get_planner_overrides_id: async (client, args) => {
+  get_p_overrides_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/planner/overrides/:id", args);
   },
-  put_planner_overrides_id: async (client, args) => {
+  put_p_overrides_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/planner/overrides/:id", args);
   },
-  post_planner_overrides: async (client, args) => {
+  post_p_overrides: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/planner/overrides", args);
   },
-  delete_planner_overrides_id: async (client, args) => {
+  delete_p_overrides_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/planner/overrides/:id", args);
   }
 };

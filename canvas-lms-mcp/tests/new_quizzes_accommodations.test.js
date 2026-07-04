@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const new_quizzes_accommodationsModule = require("../tools/new_quizzes_accommodations");
 
-test("post_quiz_v1_courses_course_id_quizzes_assignment_id_accommodations calls correct endpoint", async () => {
+test("post_qvccqa_accommodations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = new_quizzes_accommodationsModule.handlers.post_quiz_v1_courses_course_id_quizzes_assignment_id_accommodations;
-  assert.ok(handler, "Handler post_quiz_v1_courses_course_id_quizzes_assignment_id_accommodations should be defined");
+  const handler = new_quizzes_accommodationsModule.handlers.post_qvccqa_accommodations;
+  assert.ok(handler, "Handler post_qvccqa_accommodations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "user_id": 123});
 
@@ -23,15 +23,15 @@ test("post_quiz_v1_courses_course_id_quizzes_assignment_id_accommodations calls 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_quiz_v1_courses_course_id_accommodations calls correct endpoint", async () => {
+test("post_qvcc_accommodations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = new_quizzes_accommodationsModule.handlers.post_quiz_v1_courses_course_id_accommodations;
-  assert.ok(handler, "Handler post_quiz_v1_courses_course_id_accommodations should be defined");
+  const handler = new_quizzes_accommodationsModule.handlers.post_qvcc_accommodations;
+  assert.ok(handler, "Handler post_qvcc_accommodations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "user_id": 123});
 

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_audit_authentication_logins_login_id",
+    "name": "get_aa_logins_login_id",
     "description": "**Scope:** `url:GET|/api/v1/audit/authentication/logins/:login_id` List authentication events for a given login. [AuthenticationAuditApiController#for\\_account](https://github.com/instructure/canvas-lms/blob/master/app/controllers/authentication_audit_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -33,7 +33,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_audit_authentication_accounts_account_id",
+    "name": "get_aa_accounts_account_id",
     "description": "**Scope:** `url:GET|/api/v1/audit/authentication/accounts/:account_id` List authentication events for a given account. [AuthenticationAuditApiController#for\\_user](https://github.com/instructure/canvas-lms/blob/master/app/controllers/authentication_audit_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -61,7 +61,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_audit_authentication_users_user_id",
+    "name": "get_aa_users_user_id",
     "description": "**Scope:** `url:GET|/api/v1/audit/authentication/users/:user_id` List authentication events for a given user. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com. If you need additi...",
     "inputSchema": {
       "type": "object",
@@ -91,13 +91,13 @@ const definitions = [
 ];
 
 const handlers = {
-  get_audit_authentication_logins_login_id: async (client, args) => {
+  get_aa_logins_login_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/audit/authentication/logins/:login_id", args);
   },
-  get_audit_authentication_accounts_account_id: async (client, args) => {
+  get_aa_accounts_account_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/audit/authentication/accounts/:account_id", args);
   },
-  get_audit_authentication_users_user_id: async (client, args) => {
+  get_aa_users_user_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/audit/authentication/users/:user_id", args);
   }
 };

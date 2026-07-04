@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_grading_period_sets",
+    "name": "get_aa_grading_period_sets",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/grading_period_sets` Returns the paginated list of grading period sets ```js { \"grading_period_set\": [GradingPeriodGroup] } ``` [GradingPeriodSetsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grading_period_sets_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_grading_period_sets",
+    "name": "post_aa_grading_period_sets",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/grading_period_sets` Create and return a new grading period set ```js { \"grading_period_set\": [GradingPeriodGroup] } ``` [GradingPeriodSetsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grading_period_sets_controller.rb) **Scope:** `url:PATCH|/api/v1/accounts/:account_id/grading_period_sets/:id` Update an existing grading period set \\204 No Content\\ response code is returned if the update was successfu...",
     "inputSchema": {
       "type": "object",
@@ -58,7 +58,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_grading_period_sets_id",
+    "name": "delete_aa_grading_period_sets_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/grading_period_sets/:id` \\204 No Content\\ response code is returned if the deletion was successful. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Lea...",
     "inputSchema": {
       "type": "object",
@@ -81,13 +81,13 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_grading_period_sets: async (client, args) => {
+  get_aa_grading_period_sets: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/grading_period_sets", args);
   },
-  post_accounts_account_id_grading_period_sets: async (client, args) => {
+  post_aa_grading_period_sets: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/grading_period_sets", args);
   },
-  delete_accounts_account_id_grading_period_sets_id: async (client, args) => {
+  delete_aa_grading_period_sets_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/grading_period_sets/:id", args);
   }
 };

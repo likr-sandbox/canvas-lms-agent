@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_enrollments",
+    "name": "get_cc_enrollments",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/enrollments`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_section_id_enrollments",
+    "name": "get_ss_enrollments",
     "description": "**Scope:** `url:GET|/api/v1/sections/:section_id/enrollments`",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_enrollments",
+    "name": "get_uu_enrollments",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/enrollments` Depending on the URL given, return a paginated list of either (1) all of the enrollments in a course, (2) all of the enrollments in a section or (3) all of a user's enrollments. This includes student, teacher, TA, and observer enrollments. If a user has multiple enrollments in a context (e.g. as a teacher and a student or in multiple course sections), each enrollment will be listed separately. note: Currently, only a root level admin use...",
     "inputSchema": {
       "type": "object",
@@ -109,7 +109,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_enrollments_id",
+    "name": "get_aa_enrollments_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/enrollments/:id` Get an Enrollment object by Enrollment ID Returns an [Enrollment](#enrollment) object. [EnrollmentsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/enrollments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -134,7 +134,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_enrollments",
+    "name": "post_cc_enrollments",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/enrollments`",
     "inputSchema": {
       "type": "object",
@@ -150,7 +150,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_sections_section_id_enrollments",
+    "name": "post_ss_enrollments",
     "description": "**Scope:** `url:POST|/api/v1/sections/:section_id/enrollments` Create a new user enrollment for a course or section. ```bash curl https:///api/v1/courses/:course_id/enrollments \\ -X POST \\ -F 'enrollment[user_id]=1' \\ -F 'enrollment[type]=StudentEnrollment' \\ -F 'enrollment[enrollment_state]=active' \\ -F 'enrollment[course_section_id]=1' \\ -F 'enrollment[limit_privileges_to_course_section]=true' \\ -F 'enrollment[notify]=false' ``` ```bash curl https:///api/v1/courses/:course_id/enrollments \\ ...",
     "inputSchema": {
       "type": "object",
@@ -232,7 +232,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_bulk_enrollment",
+    "name": "post_aa_bulk_enrollment",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/bulk_enrollment` Enrolls multiple users in one or more courses in a single operation. ```bash curl https:///api/v1/accounts/:account_id/bulk_enrollment \\ -X POST \\ -F 'user_ids[]=1' \\ -F 'user_ids[]=2' \\ -F 'course_ids[]=10' \\ -F 'course_ids[]=11' ``` ```bash curl https:///api/v1/accounts/:account_id/bulk_enrollment \\ -X POST \\ -F 'user_ids[]=1' \\ -F 'course_ids[]=10' \\ -F 'course_ids[]=11' \\ -F 'course_ids[]=12' \\ -F 'enrollment_type=TeacherE...",
     "inputSchema": {
       "type": "object",
@@ -274,7 +274,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_enrollments_id",
+    "name": "delete_cc_enrollments_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/enrollments/:id` Conclude, deactivate, or delete an enrollment. If the +task+ argument isn't given, the enrollment will be concluded. ```bash curl https:///api/v1/courses/:course_id/enrollments/:enrollment_id \\ -X DELETE \\ -F 'task=conclude' ``` Returns an [Enrollment](#enrollment) object. [EnrollmentsApiController#accept](https://github.com/instructure/canvas-lms/blob/master/app/controllers/enrollments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -299,7 +299,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_enrollments_id_accept",
+    "name": "post_ccei_accept",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/enrollments/:id/accept` accepts a pending course invitation for the current user ```bash curl https:///api/v1/courses//enrollments/:id/accept \\ -X POST \\ -H 'Authorization: Bearer ' ``` ```js { \"success\": true } ``` [EnrollmentsApiController#reject](https://github.com/instructure/canvas-lms/blob/master/app/controllers/enrollments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -320,7 +320,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_enrollments_id_reject",
+    "name": "post_ccei_reject",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/enrollments/:id/reject` rejects a pending course invitation for the current user ```bash curl https:///api/v1/courses//enrollments/:id/reject \\ -X POST \\ -H 'Authorization: Bearer ' ``` ```js { \"success\": true } ``` [EnrollmentsApiController#reactivate](https://github.com/instructure/canvas-lms/blob/master/app/controllers/enrollments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -341,7 +341,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_enrollments_id_reactivate",
+    "name": "put_ccei_reactivate",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/enrollments/:id/reactivate` Activates an inactive enrollment ```bash curl https:///api/v1/courses/:course_id/enrollments/:enrollment_id/reactivate \\ -X PUT ``` Returns an [Enrollment](#enrollment) object. [EnrollmentsApiController#last\\_attended](https://github.com/instructure/canvas-lms/blob/master/app/controllers/enrollments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -362,7 +362,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_users_user_id_last_attended",
+    "name": "put_ccuu_last_attended",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/users/:user_id/last_attended` Add last attended date to student enrollment in course ```bash curl https:///api/v1/courses/:course_id/user/:user_id/last_attended\" -X PUT => date=\"Thu%20Dec%2021%202017%2000:00:00%20GMT-0700%20(MST) ``` Returns an [Enrollment](#enrollment) object. [EnrollmentsApiController#show\\_temporary\\_enrollment\\_status](https://github.com/instructure/canvas-lms/blob/master/app/controllers/enrollments_api_controller.rb) {% hint...",
     "inputSchema": {
       "type": "object",
@@ -387,7 +387,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_temporary_enrollment_status",
+    "name": "get_uu_temporary_enrollment_status",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/temporary_enrollment_status` Returns a JSON Object containing the temporary enrollment status for a user. ```js { \"is_provider\": false, \"is_recipient\": true, \"can_provide\": false } ``` [EnrollmentsApiController#bulk\\_temporary\\_enrollment\\_status](https://github.com/instructure/canvas-lms/blob/master/app/controllers/enrollments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -441,43 +441,43 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_enrollments: async (client, args) => {
+  get_cc_enrollments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/enrollments", args);
   },
-  get_sections_section_id_enrollments: async (client, args) => {
+  get_ss_enrollments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:section_id/enrollments", args);
   },
-  get_users_user_id_enrollments: async (client, args) => {
+  get_uu_enrollments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/enrollments", args);
   },
-  get_accounts_account_id_enrollments_id: async (client, args) => {
+  get_aa_enrollments_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/enrollments/:id", args);
   },
-  post_courses_course_id_enrollments: async (client, args) => {
+  post_cc_enrollments: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/enrollments", args);
   },
-  post_sections_section_id_enrollments: async (client, args) => {
+  post_ss_enrollments: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/sections/:section_id/enrollments", args);
   },
-  post_accounts_account_id_bulk_enrollment: async (client, args) => {
+  post_aa_bulk_enrollment: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/bulk_enrollment", args);
   },
-  delete_courses_course_id_enrollments_id: async (client, args) => {
+  delete_cc_enrollments_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/enrollments/:id", args);
   },
-  post_courses_course_id_enrollments_id_accept: async (client, args) => {
+  post_ccei_accept: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/enrollments/:id/accept", args);
   },
-  post_courses_course_id_enrollments_id_reject: async (client, args) => {
+  post_ccei_reject: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/enrollments/:id/reject", args);
   },
-  put_courses_course_id_enrollments_id_reactivate: async (client, args) => {
+  put_ccei_reactivate: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/enrollments/:id/reactivate", args);
   },
-  put_courses_course_id_users_user_id_last_attended: async (client, args) => {
+  put_ccuu_last_attended: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/users/:user_id/last_attended", args);
   },
-  get_users_user_id_temporary_enrollment_status: async (client, args) => {
+  get_uu_temporary_enrollment_status: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/temporary_enrollment_status", args);
   },
   get_temporary_enrollment_status: async (client, args) => {

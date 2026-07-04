@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_audit_grade_change_assignments_assignment_id",
+    "name": "get_agc_assignments_assignment_id",
     "description": "**Scope:** `url:GET|/api/v1/audit/grade_change/assignments/:assignment_id` List grade change events for a given assignment. Returns a list of [GradeChangeEvent](#gradechangeevent) objects. [GradeChangeAuditApiController#for\\_course](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grade_change_audit_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -33,7 +33,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_audit_grade_change_courses_course_id",
+    "name": "get_agc_courses_course_id",
     "description": "**Scope:** `url:GET|/api/v1/audit/grade_change/courses/:course_id` List grade change events for a given course. Returns a list of [GradeChangeEvent](#gradechangeevent) objects. [GradeChangeAuditApiController#for\\_student](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grade_change_audit_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -61,7 +61,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_audit_grade_change_students_student_id",
+    "name": "get_agc_students_student_id",
     "description": "**Scope:** `url:GET|/api/v1/audit/grade_change/students/:student_id` List grade change events for a given student. Returns a list of [GradeChangeEvent](#gradechangeevent) objects. [GradeChangeAuditApiController#for\\_grader](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grade_change_audit_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -89,7 +89,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_audit_grade_change_graders_grader_id",
+    "name": "get_agc_graders_grader_id",
     "description": "**Scope:** `url:GET|/api/v1/audit/grade_change/graders/:grader_id` List grade change events for a given grader. Returns a list of [GradeChangeEvent](#gradechangeevent) objects. [GradeChangeAuditApiController#query](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grade_change_audit_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -117,7 +117,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_audit_grade_change",
+    "name": "get_a_grade_change",
     "description": "**Scope:** `url:GET|/api/v1/audit/grade_change` List grade change events satisfying all given parameters. Teachers may query for events in courses they teach. Queries without +course\\_id+ or +assignment\\_id+ require account administrator rights. At least one of +course\\_id+, +assignment\\_id+, +student\\_id+, or +grader\\_id+ must be specified. Returns a list of [GradeChangeEvent](#gradechangeevent) objects. *** This documentation is generated directly from the Canvas LMS source code, available ...",
     "inputSchema": {
       "type": "object",
@@ -156,19 +156,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_audit_grade_change_assignments_assignment_id: async (client, args) => {
+  get_agc_assignments_assignment_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/audit/grade_change/assignments/:assignment_id", args);
   },
-  get_audit_grade_change_courses_course_id: async (client, args) => {
+  get_agc_courses_course_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/audit/grade_change/courses/:course_id", args);
   },
-  get_audit_grade_change_students_student_id: async (client, args) => {
+  get_agc_students_student_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/audit/grade_change/students/:student_id", args);
   },
-  get_audit_grade_change_graders_grader_id: async (client, args) => {
+  get_agc_graders_grader_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/audit/grade_change/graders/:grader_id", args);
   },
-  get_audit_grade_change: async (client, args) => {
+  get_a_grade_change: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/audit/grade_change", args);
   }
 };

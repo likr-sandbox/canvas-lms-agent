@@ -212,7 +212,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_appointment_groups_id_users",
+    "name": "get_agi_users",
     "description": "**Scope:** `url:GET|/api/v1/appointment_groups/:id/users` A paginated list of users that are (or may be) participating in this appointment group. Refer to the Users API for the response fields. Returns no results for appointment groups with the \"Group\" participant\\_type. [AppointmentGroupsController#groups](https://github.com/instructure/canvas-lms/blob/master/app/controllers/appointment_groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -236,7 +236,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_appointment_groups_id_groups",
+    "name": "get_agi_groups",
     "description": "**Scope:** `url:GET|/api/v1/appointment_groups/:id/groups` A paginated list of student groups that are (or may be) participating in this appointment group. Refer to the Groups API for the response fields. Returns no results for appointment groups with the \"User\" participant\\_type. [AppointmentGroupsController#next\\_appointment](https://github.com/instructure/canvas-lms/blob/master/app/controllers/appointment_groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -260,7 +260,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_appointment_groups_next_appointment",
+    "name": "get_ag_next_appointment",
     "description": "**Scope:** `url:GET|/api/v1/appointment_groups/next_appointment` Return the next appointment available to sign up for. The appointment is returned in a one-element array. If no future appointments are available, an empty array is returned. Returns a list of [CalendarEvent](calendar_events.md#calendarevent) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published ...",
     "inputSchema": {
       "type": "object",
@@ -294,13 +294,13 @@ const handlers = {
   delete_appointment_groups_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/appointment_groups/:id", args);
   },
-  get_appointment_groups_id_users: async (client, args) => {
+  get_agi_users: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/appointment_groups/:id/users", args);
   },
-  get_appointment_groups_id_groups: async (client, args) => {
+  get_agi_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/appointment_groups/:id/groups", args);
   },
-  get_appointment_groups_next_appointment: async (client, args) => {
+  get_ag_next_appointment: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/appointment_groups/next_appointment", args);
   }
 };

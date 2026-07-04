@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_quiz_v1_courses_course_id_quizzes_assignment_id_reports",
+    "name": "post_qvccqa_reports",
     "description": "**Scope:** `url:POST|/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/reports` Generate a new report for this quiz. Returns a progress object that can be used to track the progress of the report generation. *Responses* * \\400 Bad Request\\ if the specified report type or format is invalid * \\409 Conflict\\ if a quiz report of the specified type is already being generated Returns a [Progress](progress.md#progress) object. *** This documentation is generated directly from the Canvas LMS sou...",
     "inputSchema": {
       "type": "object",
@@ -38,7 +38,7 @@ const definitions = [
 ];
 
 const handlers = {
-  post_quiz_v1_courses_course_id_quizzes_assignment_id_reports: async (client, args) => {
+  post_qvccqa_reports: async (client, args) => {
     return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/reports", args);
   }
 };

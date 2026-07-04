@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_account_notifications",
+    "name": "get_aa_account_notifications",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/account_notifications` Returns a list of all global notifications in the account for the current user Any notifications that have been closed by the user will not be returned, unless a include\\_past parameter is passed in as true. Admins can request all global notifications for the account by passing in an include\\_all parameter. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/accounts/2/users/self/account_notifications ``` Returns a...",
     "inputSchema": {
       "type": "object",
@@ -37,7 +37,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_account_notifications_id",
+    "name": "get_aa_account_notifications_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/account_notifications/:id` Returns a global notification for the current user A notification that has been closed by the user will not be returned ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/accounts/2/users/self/account_notifications/4 ``` Returns an [AccountNotification](#accountnotification) object. [AccountNotificationsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/account_notificatio...",
     "inputSchema": {
       "type": "object",
@@ -62,7 +62,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_account_notifications",
+    "name": "post_aa_account_notifications",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/account_notifications` Create and return a new global notification for an account. ```bash curl -X POST -H 'Authorization: Bearer ' \\ https:///api/v1/accounts/2/account_notifications \\ -d 'account_notification[subject]=New notification' \\ -d 'account_notification[start_at]=2014-01-01T00:00:00Z' \\ -d 'account_notification[end_at]=2014-02-01T00:00:00Z' \\ -d 'account_notification[message]=This is a global notification' ``` ```js { \"subject\": \"New...",
     "inputSchema": {
       "type": "object",
@@ -106,7 +106,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_account_notifications_id",
+    "name": "put_aa_account_notifications_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/account_notifications/:id` Update global notification for an account. ```bash curl -X PUT -H 'Authorization: Bearer ' \\ https:///api/v1/accounts/2/account_notifications/1 \\ -d 'account_notification[subject]=New notification' \\ -d 'account_notification[start_at]=2014-01-01T00:00:00Z' \\ -d 'account_notification[end_at]=2014-02-01T00:00:00Z' \\ -d 'account_notification[message]=This is a global notification' ``` ```js { \"subject\": \"New notification...",
     "inputSchema": {
       "type": "object",
@@ -151,7 +151,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_account_notifications_id",
+    "name": "delete_aa_account_notifications_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/account_notifications/:id` If the current user no longer wants to see this account notification, it can be closed with this call. This affects the current user only. If the current user is an admin and they pass a remove parameter with a value of \"true\", the account notification will be destroyed. This affects all users. ```bash curl -X DELETE -H 'Authorization: Bearer ' \\ https:///api/v1/accounts/2/account_notifications/4 ``` Returns an [Ac...",
     "inputSchema": {
       "type": "object",
@@ -178,19 +178,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_account_notifications: async (client, args) => {
+  get_aa_account_notifications: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/account_notifications", args);
   },
-  get_accounts_account_id_account_notifications_id: async (client, args) => {
+  get_aa_account_notifications_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/account_notifications/:id", args);
   },
-  post_accounts_account_id_account_notifications: async (client, args) => {
+  post_aa_account_notifications: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/account_notifications", args);
   },
-  put_accounts_account_id_account_notifications_id: async (client, args) => {
+  put_aa_account_notifications_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/account_notifications/:id", args);
   },
-  delete_accounts_account_id_account_notifications_id: async (client, args) => {
+  delete_aa_account_notifications_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/account_notifications/:id", args);
   }
 };

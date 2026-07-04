@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const new_quizzes_reportsModule = require("../tools/new_quizzes_reports");
 
-test("post_quiz_v1_courses_course_id_quizzes_assignment_id_reports calls correct endpoint", async () => {
+test("post_qvccqa_reports calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = new_quizzes_reportsModule.handlers.post_quiz_v1_courses_course_id_quizzes_assignment_id_reports;
-  assert.ok(handler, "Handler post_quiz_v1_courses_course_id_quizzes_assignment_id_reports should be defined");
+  const handler = new_quizzes_reportsModule.handlers.post_qvccqa_reports;
+  assert.ok(handler, "Handler post_qvccqa_reports should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "quiz_report[report_type]": "test_val"});
 

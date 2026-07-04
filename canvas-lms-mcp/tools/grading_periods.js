@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_grading_periods",
+    "name": "get_aa_grading_periods",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/grading_periods`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_grading_periods",
+    "name": "get_cc_grading_periods",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/grading_periods` Returns the paginated list of grading periods for the current course. ```js { \"grading_periods\": [GradingPeriod] } ``` [GradingPeriodsController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grading_periods_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_grading_periods_id",
+    "name": "get_cc_grading_periods_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/grading_periods/:id` Returns the grading period with the given id ```js { \"grading_periods\": [GradingPeriod] } ``` [GradingPeriodsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grading_periods_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -70,7 +70,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_grading_periods_id",
+    "name": "put_cc_grading_periods_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/grading_periods/:id` Update an existing grading period. ```js { \"grading_periods\": [GradingPeriod] } ``` [GradingPeriodsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grading_periods_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -105,7 +105,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_grading_periods_id",
+    "name": "delete_cc_grading_periods_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/grading_periods/:id`",
     "inputSchema": {
       "type": "object",
@@ -126,7 +126,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_grading_periods_id",
+    "name": "delete_aa_grading_periods_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/grading_periods/:id` \\204 No Content\\ response code is returned if the deletion was successful. [GradingPeriodsController#batch\\_update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grading_periods_controller.rb) **Scope:** `url:PATCH|/api/v1/courses/:course_id/grading_periods/batch_update` **Scope:** `url:PATCH|/api/v1/grading_period_sets/:set_id/grading_periods/batch_update` Update multiple grading periods ```js { ...",
     "inputSchema": {
       "type": "object",
@@ -182,22 +182,22 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_grading_periods: async (client, args) => {
+  get_aa_grading_periods: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/grading_periods", args);
   },
-  get_courses_course_id_grading_periods: async (client, args) => {
+  get_cc_grading_periods: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/grading_periods", args);
   },
-  get_courses_course_id_grading_periods_id: async (client, args) => {
+  get_cc_grading_periods_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/grading_periods/:id", args);
   },
-  put_courses_course_id_grading_periods_id: async (client, args) => {
+  put_cc_grading_periods_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/grading_periods/:id", args);
   },
-  delete_courses_course_id_grading_periods_id: async (client, args) => {
+  delete_cc_grading_periods_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/grading_periods/:id", args);
   },
-  delete_accounts_account_id_grading_periods_id: async (client, args) => {
+  delete_aa_grading_periods_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/grading_periods/:id", args);
   }
 };

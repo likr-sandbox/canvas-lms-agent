@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_users_user_id_educator_accessibility_course_statistics",
+    "name": "get_uu_educator_accessibility_course_statistics",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/educator_accessibility_course_statistics` Returns per-course accessibility issue statistics for the current user's active teacher and designer courses. Only courses where the accessibility checker is enabled and whose workflow state is neither completed nor deleted are included. Only statistic records with workflow\\_state \"active\" are returned. Requires the educator\\_dashboard feature flag to be enabled on the root account, and a11y\\_checker\\_account...",
     "inputSchema": {
       "type": "object",
@@ -27,7 +27,7 @@ const definitions = [
 ];
 
 const handlers = {
-  get_users_user_id_educator_accessibility_course_statistics: async (client, args) => {
+  get_uu_educator_accessibility_course_statistics: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/educator_accessibility_course_statistics", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_polls_poll_id_poll_choices",
+    "name": "get_pp_poll_choices",
     "description": "**Scope:** `url:GET|/api/v1/polls/:poll_id/poll_choices` Returns the paginated list of PollChoices in this poll. ```js { \"poll_choices\": [PollChoice] } ``` [Polling::PollChoicesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_choices_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_polls_poll_id_poll_choices_id",
+    "name": "get_pp_poll_choices_id",
     "description": "**Scope:** `url:GET|/api/v1/polls/:poll_id/poll_choices/:id` Returns the poll choice with the given id ```js { \"poll_choices\": [PollChoice] } ``` [Polling::PollChoicesController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_choices_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -50,7 +50,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_polls_poll_id_poll_choices",
+    "name": "post_pp_poll_choices",
     "description": "**Scope:** `url:POST|/api/v1/polls/:poll_id/poll_choices` Create a new poll choice for this poll ```js { \"poll_choices\": [PollChoice] } ``` [Polling::PollChoicesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_choices_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -79,7 +79,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_polls_poll_id_poll_choices_id",
+    "name": "put_pp_poll_choices_id",
     "description": "**Scope:** `url:PUT|/api/v1/polls/:poll_id/poll_choices/:id` Update an existing poll choice for this poll ```js { \"poll_choices\": [PollChoice] } ``` [Polling::PollChoicesController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_choices_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -113,7 +113,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_polls_poll_id_poll_choices_id",
+    "name": "delete_pp_poll_choices_id",
     "description": "**Scope:** `url:DELETE|/api/v1/polls/:poll_id/poll_choices/:id` \\204 No Content\\ response code is returned if the deletion was successful. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gi...",
     "inputSchema": {
       "type": "object",
@@ -136,19 +136,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_polls_poll_id_poll_choices: async (client, args) => {
+  get_pp_poll_choices: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/polls/:poll_id/poll_choices", args);
   },
-  get_polls_poll_id_poll_choices_id: async (client, args) => {
+  get_pp_poll_choices_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/polls/:poll_id/poll_choices/:id", args);
   },
-  post_polls_poll_id_poll_choices: async (client, args) => {
+  post_pp_poll_choices: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/polls/:poll_id/poll_choices", args);
   },
-  put_polls_poll_id_poll_choices_id: async (client, args) => {
+  put_pp_poll_choices_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/polls/:poll_id/poll_choices/:id", args);
   },
-  delete_polls_poll_id_poll_choices_id: async (client, args) => {
+  delete_pp_poll_choices_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/polls/:poll_id/poll_choices/:id", args);
   }
 };

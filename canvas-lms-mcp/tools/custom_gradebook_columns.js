@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_custom_gradebook_columns",
+    "name": "get_cc_custom_gradebook_columns",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/custom_gradebook_columns` A paginated list of all custom gradebook columns for a course Returns a list of [CustomColumn](#customcolumn) objects. [CustomGradebookColumnsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/custom_gradebook_columns_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -29,7 +29,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_custom_gradebook_columns",
+    "name": "post_cc_custom_gradebook_columns",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/custom_gradebook_columns` Create a custom gradebook column Returns a [CustomColumn](#customcolumn) object. [CustomGradebookColumnsApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/custom_gradebook_columns_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -66,7 +66,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_custom_gradebook_columns_id",
+    "name": "put_cc_custom_gradebook_columns_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/custom_gradebook_columns/:id` Accepts the same parameters as custom gradebook column creation Returns a [CustomColumn](#customcolumn) object. [CustomGradebookColumnsApiController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/custom_gradebook_columns_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -87,7 +87,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_custom_gradebook_columns_id",
+    "name": "delete_cc_custom_gradebook_columns_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/custom_gradebook_columns/:id` Permanently deletes a custom column and its associated data Returns a [CustomColumn](#customcolumn) object. [CustomGradebookColumnsApiController#reorder](https://github.com/instructure/canvas-lms/blob/master/app/controllers/custom_gradebook_columns_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -108,7 +108,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_custom_gradebook_columns_reorder",
+    "name": "post_cccgc_reorder",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/custom_gradebook_columns/reorder` Puts the given columns in the specified order \\200 OK\\ is returned if successful [CustomGradebookColumnDataApiController#index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/custom_gradebook_column_data_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -129,7 +129,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_custom_gradebook_columns_id_data",
+    "name": "get_cccgci_data",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/custom_gradebook_columns/:id/data` This does not list entries for students without associated data. Returns a list of [ColumnDatum](#columndatum) objects. [CustomGradebookColumnDataApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/custom_gradebook_column_data_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -158,7 +158,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_custom_gradebook_columns_id_data_user_id",
+    "name": "put_cccgci_data_user_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/custom_gradebook_columns/:id/data/:user_id` Set the content of a custom column Returns a [ColumnDatum](#columndatum) object. [CustomGradebookColumnDataApiController#bulk\\_update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/custom_gradebook_column_data_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -189,7 +189,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_custom_gradebook_column_data",
+    "name": "put_cc_custom_gradebook_column_data",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/custom_gradebook_column_data` Set the content of custom columns { \"column\\_data\": \\[ { \"column\\_id\": example\\_column\\_id, \"user\\_id\": example\\_student\\_id, \"content\": example\\_content }, { \"column\\_id\": example\\_column\\_id, \"user\\_id\": example\\_student\\_id, \"content: example\\_content } ] } ```bash ``` Returns a [Progress](progress.md#progress) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Gith...",
     "inputSchema": {
       "type": "object",
@@ -212,28 +212,28 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_custom_gradebook_columns: async (client, args) => {
+  get_cc_custom_gradebook_columns: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/custom_gradebook_columns", args);
   },
-  post_courses_course_id_custom_gradebook_columns: async (client, args) => {
+  post_cc_custom_gradebook_columns: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/custom_gradebook_columns", args);
   },
-  put_courses_course_id_custom_gradebook_columns_id: async (client, args) => {
+  put_cc_custom_gradebook_columns_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/custom_gradebook_columns/:id", args);
   },
-  delete_courses_course_id_custom_gradebook_columns_id: async (client, args) => {
+  delete_cc_custom_gradebook_columns_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/custom_gradebook_columns/:id", args);
   },
-  post_courses_course_id_custom_gradebook_columns_reorder: async (client, args) => {
+  post_cccgc_reorder: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/custom_gradebook_columns/reorder", args);
   },
-  get_courses_course_id_custom_gradebook_columns_id_data: async (client, args) => {
+  get_cccgci_data: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/custom_gradebook_columns/:id/data", args);
   },
-  put_courses_course_id_custom_gradebook_columns_id_data_user_id: async (client, args) => {
+  put_cccgci_data_user_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/custom_gradebook_columns/:id/data/:user_id", args);
   },
-  put_courses_course_id_custom_gradebook_column_data: async (client, args) => {
+  put_cc_custom_gradebook_column_data: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/custom_gradebook_column_data", args);
   }
 };

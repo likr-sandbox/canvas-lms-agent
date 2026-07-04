@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_statistics",
+    "name": "get_ccqq_statistics",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/statistics` This endpoint provides statistics for all quiz versions, or for a specific quiz version, in which case the output is guaranteed to represent the *latest* and most current version of the quiz. \\200 OK\\ response code is returned if the request was successful. ```js { \"quiz_statistics\": [ QuizStatistics ] } ``` Based on the question type it represents, the `question_statistics` document may include extra metrics. You can...",
     "inputSchema": {
       "type": "object",
@@ -36,7 +36,7 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_quizzes_quiz_id_statistics: async (client, args) => {
+  get_ccqq_statistics: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/statistics", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_courses_course_id_study_assist",
+    "name": "post_cc_study_assist",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/study_assist` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com. If you need additional information that is not directly available ...",
     "inputSchema": {
       "type": "object",
@@ -23,7 +23,7 @@ const definitions = [
 ];
 
 const handlers = {
-  post_courses_course_id_study_assist: async (client, args) => {
+  post_cc_study_assist: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/study_assist", args);
   }
 };

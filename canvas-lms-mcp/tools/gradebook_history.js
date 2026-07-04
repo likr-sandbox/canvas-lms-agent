@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_gradebook_history_days",
+    "name": "get_ccgh_days",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/gradebook_history/days` Returns a map of dates to grader/assignment groups Returns a list of [Day](#day) objects. [GradebookHistoryApiController#day\\_details](https://github.com/instructure/canvas-lms/blob/master/app/controllers/gradebook_history_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_gradebook_history_date",
+    "name": "get_cc_gradebook_history_date",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/gradebook_history/:date` Returns the graders who worked on this day, along with the assignments they worked on. More details can be obtained by selecting a grader and assignment and calling the 'submissions' api endpoint for a given date. Returns a list of [Grader](#grader) objects. [GradebookHistoryApiController#submissions](https://github.com/instructure/canvas-lms/blob/master/app/controllers/gradebook_history_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -50,7 +50,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_gradebook_history_date_graders_grader_id_assignments_assignment_id_submissions",
+    "name": "get_ccghdggaa_submissions",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/gradebook_history/:date/graders/:grader_id/assignments/:assignment_id/submissions` Gives a nested list of submission versions Returns a list of [SubmissionHistory](#submissionhistory) objects. [GradebookHistoryApiController#feed](https://github.com/instructure/canvas-lms/blob/master/app/controllers/gradebook_history_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -85,7 +85,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_gradebook_history_feed",
+    "name": "get_ccgh_feed",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/gradebook_history/feed` Gives a paginated, uncollated list of submission versions for all matching submissions in the context. This SubmissionVersion objects will not include the +new\\_grade+ or +previous\\_grade+ keys, only the +grade+; same for +graded\\_at+ and +grader+. Returns a list of [SubmissionVersion](#submissionversion) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://gi...",
     "inputSchema": {
       "type": "object",
@@ -119,16 +119,16 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_gradebook_history_days: async (client, args) => {
+  get_ccgh_days: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/gradebook_history/days", args);
   },
-  get_courses_course_id_gradebook_history_date: async (client, args) => {
+  get_cc_gradebook_history_date: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/gradebook_history/:date", args);
   },
-  get_courses_course_id_gradebook_history_date_graders_grader_id_assignments_assignment_id_submissions: async (client, args) => {
+  get_ccghdggaa_submissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/gradebook_history/:date/graders/:grader_id/assignments/:assignment_id/submissions", args);
   },
-  get_courses_course_id_gradebook_history_feed: async (client, args) => {
+  get_ccgh_feed: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/gradebook_history/feed", args);
   }
 };

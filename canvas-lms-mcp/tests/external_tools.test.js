@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const external_toolsModule = require("../tools/external_tools");
 
-test("get_courses_course_id_external_tools calls correct endpoint", async () => {
+test("get_cc_external_tools calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.get_courses_course_id_external_tools;
-  assert.ok(handler, "Handler get_courses_course_id_external_tools should be defined");
+  const handler = external_toolsModule.handlers.get_cc_external_tools;
+  assert.ok(handler, "Handler get_cc_external_tools should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_external_tools calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_external_tools calls correct endpoint", async () => {
+test("get_aa_external_tools calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.get_accounts_account_id_external_tools;
-  assert.ok(handler, "Handler get_accounts_account_id_external_tools should be defined");
+  const handler = external_toolsModule.handlers.get_aa_external_tools;
+  assert.ok(handler, "Handler get_aa_external_tools should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_external_tools calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_external_tools calls correct endpoint", async () => {
+test("get_gg_external_tools calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.get_groups_group_id_external_tools;
-  assert.ok(handler, "Handler get_groups_group_id_external_tools should be defined");
+  const handler = external_toolsModule.handlers.get_gg_external_tools;
+  assert.ok(handler, "Handler get_gg_external_tools should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "search_term": "test_val"});
 
@@ -59,15 +59,15 @@ test("get_groups_group_id_external_tools calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_external_tools_sessionless_launch calls correct endpoint", async () => {
+test("get_ccet_sessionless_launch calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.get_courses_course_id_external_tools_sessionless_launch;
-  assert.ok(handler, "Handler get_courses_course_id_external_tools_sessionless_launch should be defined");
+  const handler = external_toolsModule.handlers.get_ccet_sessionless_launch;
+  assert.ok(handler, "Handler get_ccet_sessionless_launch should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -77,15 +77,15 @@ test("get_courses_course_id_external_tools_sessionless_launch calls correct endp
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_external_tools_sessionless_launch calls correct endpoint", async () => {
+test("get_aaet_sessionless_launch calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.get_accounts_account_id_external_tools_sessionless_launch;
-  assert.ok(handler, "Handler get_accounts_account_id_external_tools_sessionless_launch should be defined");
+  const handler = external_toolsModule.handlers.get_aaet_sessionless_launch;
+  assert.ok(handler, "Handler get_aaet_sessionless_launch should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_val"});
 
@@ -95,15 +95,15 @@ test("get_accounts_account_id_external_tools_sessionless_launch calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_external_tools_external_tool_id calls correct endpoint", async () => {
+test("get_cc_external_tools_external_tool_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.get_courses_course_id_external_tools_external_tool_id;
-  assert.ok(handler, "Handler get_courses_course_id_external_tools_external_tool_id should be defined");
+  const handler = external_toolsModule.handlers.get_cc_external_tools_external_tool_id;
+  assert.ok(handler, "Handler get_cc_external_tools_external_tool_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "external_tool_id": "test_external_tool_id"});
 
@@ -113,15 +113,15 @@ test("get_courses_course_id_external_tools_external_tool_id calls correct endpoi
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_external_tools_external_tool_id calls correct endpoint", async () => {
+test("get_aa_external_tools_external_tool_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.get_accounts_account_id_external_tools_external_tool_id;
-  assert.ok(handler, "Handler get_accounts_account_id_external_tools_external_tool_id should be defined");
+  const handler = external_toolsModule.handlers.get_aa_external_tools_external_tool_id;
+  assert.ok(handler, "Handler get_aa_external_tools_external_tool_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "external_tool_id": "test_external_tool_id"});
 
@@ -131,15 +131,15 @@ test("get_accounts_account_id_external_tools_external_tool_id calls correct endp
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_external_tools calls correct endpoint", async () => {
+test("post_cc_external_tools calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.post_courses_course_id_external_tools;
-  assert.ok(handler, "Handler post_courses_course_id_external_tools should be defined");
+  const handler = external_toolsModule.handlers.post_cc_external_tools;
+  assert.ok(handler, "Handler post_cc_external_tools should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -149,15 +149,15 @@ test("post_courses_course_id_external_tools calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_external_tools calls correct endpoint", async () => {
+test("post_aa_external_tools calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.post_accounts_account_id_external_tools;
-  assert.ok(handler, "Handler post_accounts_account_id_external_tools should be defined");
+  const handler = external_toolsModule.handlers.post_aa_external_tools;
+  assert.ok(handler, "Handler post_aa_external_tools should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "client_id": "test_val"});
 
@@ -167,15 +167,15 @@ test("post_accounts_account_id_external_tools calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_external_tools_external_tool_id calls correct endpoint", async () => {
+test("put_cc_external_tools_external_tool_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.put_courses_course_id_external_tools_external_tool_id;
-  assert.ok(handler, "Handler put_courses_course_id_external_tools_external_tool_id should be defined");
+  const handler = external_toolsModule.handlers.put_cc_external_tools_external_tool_id;
+  assert.ok(handler, "Handler put_cc_external_tools_external_tool_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "external_tool_id": "test_external_tool_id"});
 
@@ -185,15 +185,15 @@ test("put_courses_course_id_external_tools_external_tool_id calls correct endpoi
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_external_tools_external_tool_id calls correct endpoint", async () => {
+test("put_aa_external_tools_external_tool_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.put_accounts_account_id_external_tools_external_tool_id;
-  assert.ok(handler, "Handler put_accounts_account_id_external_tools_external_tool_id should be defined");
+  const handler = external_toolsModule.handlers.put_aa_external_tools_external_tool_id;
+  assert.ok(handler, "Handler put_aa_external_tools_external_tool_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "external_tool_id": "test_external_tool_id"});
 
@@ -203,15 +203,15 @@ test("put_accounts_account_id_external_tools_external_tool_id calls correct endp
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_external_tools_external_tool_id calls correct endpoint", async () => {
+test("delete_cc_external_tools_external_tool_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.delete_courses_course_id_external_tools_external_tool_id;
-  assert.ok(handler, "Handler delete_courses_course_id_external_tools_external_tool_id should be defined");
+  const handler = external_toolsModule.handlers.delete_cc_external_tools_external_tool_id;
+  assert.ok(handler, "Handler delete_cc_external_tools_external_tool_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "external_tool_id": "test_external_tool_id"});
 
@@ -221,15 +221,15 @@ test("delete_courses_course_id_external_tools_external_tool_id calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_external_tools_external_tool_id calls correct endpoint", async () => {
+test("delete_aa_external_tools_external_tool_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.delete_accounts_account_id_external_tools_external_tool_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_external_tools_external_tool_id should be defined");
+  const handler = external_toolsModule.handlers.delete_aa_external_tools_external_tool_id;
+  assert.ok(handler, "Handler delete_aa_external_tools_external_tool_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "external_tool_id": "test_external_tool_id"});
 
@@ -239,15 +239,15 @@ test("delete_accounts_account_id_external_tools_external_tool_id calls correct e
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_external_tools_rce_favorites_id calls correct endpoint", async () => {
+test("post_aaet_rce_favorites_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.post_accounts_account_id_external_tools_rce_favorites_id;
-  assert.ok(handler, "Handler post_accounts_account_id_external_tools_rce_favorites_id should be defined");
+  const handler = external_toolsModule.handlers.post_aaet_rce_favorites_id;
+  assert.ok(handler, "Handler post_aaet_rce_favorites_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -257,15 +257,15 @@ test("post_accounts_account_id_external_tools_rce_favorites_id calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_external_tools_rce_favorites_id calls correct endpoint", async () => {
+test("delete_aaet_rce_favorites_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.delete_accounts_account_id_external_tools_rce_favorites_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_external_tools_rce_favorites_id should be defined");
+  const handler = external_toolsModule.handlers.delete_aaet_rce_favorites_id;
+  assert.ok(handler, "Handler delete_aaet_rce_favorites_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -275,15 +275,15 @@ test("delete_accounts_account_id_external_tools_rce_favorites_id calls correct e
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_external_tools_top_nav_favorites_id calls correct endpoint", async () => {
+test("post_aaet_top_nav_favorites_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.post_accounts_account_id_external_tools_top_nav_favorites_id;
-  assert.ok(handler, "Handler post_accounts_account_id_external_tools_top_nav_favorites_id should be defined");
+  const handler = external_toolsModule.handlers.post_aaet_top_nav_favorites_id;
+  assert.ok(handler, "Handler post_aaet_top_nav_favorites_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -293,15 +293,15 @@ test("post_accounts_account_id_external_tools_top_nav_favorites_id calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_external_tools_top_nav_favorites_id calls correct endpoint", async () => {
+test("delete_aaet_top_nav_favorites_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.delete_accounts_account_id_external_tools_top_nav_favorites_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_external_tools_top_nav_favorites_id should be defined");
+  const handler = external_toolsModule.handlers.delete_aaet_top_nav_favorites_id;
+  assert.ok(handler, "Handler delete_aaet_top_nav_favorites_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -311,15 +311,15 @@ test("delete_accounts_account_id_external_tools_top_nav_favorites_id calls corre
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_external_tools_visible_course_nav_tools calls correct endpoint", async () => {
+test("get_et_visible_course_nav_tools calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.get_external_tools_visible_course_nav_tools;
-  assert.ok(handler, "Handler get_external_tools_visible_course_nav_tools should be defined");
+  const handler = external_toolsModule.handlers.get_et_visible_course_nav_tools;
+  assert.ok(handler, "Handler get_et_visible_course_nav_tools should be defined");
 
   const result = await handler(mockClient, {"context_codes[]": "test_val"});
 
@@ -329,15 +329,15 @@ test("get_external_tools_visible_course_nav_tools calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_external_tools_visible_course_nav_tools calls correct endpoint", async () => {
+test("get_ccet_visible_course_nav_tools calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = external_toolsModule.handlers.get_courses_course_id_external_tools_visible_course_nav_tools;
-  assert.ok(handler, "Handler get_courses_course_id_external_tools_visible_course_nav_tools should be defined");
+  const handler = external_toolsModule.handlers.get_ccet_visible_course_nav_tools;
+  assert.ok(handler, "Handler get_ccet_visible_course_nav_tools should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 

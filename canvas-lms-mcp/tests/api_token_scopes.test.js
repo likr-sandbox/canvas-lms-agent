@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const api_token_scopesModule = require("../tools/api_token_scopes");
 
-test("get_accounts_account_id_scopes calls correct endpoint", async () => {
+test("get_aa_scopes calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = api_token_scopesModule.handlers.get_accounts_account_id_scopes;
-  assert.ok(handler, "Handler get_accounts_account_id_scopes should be defined");
+  const handler = api_token_scopesModule.handlers.get_aa_scopes;
+  assert.ok(handler, "Handler get_aa_scopes should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "group_by": "test_val"});
 

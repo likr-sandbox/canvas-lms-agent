@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_progress_id_cancel",
+    "name": "post_pi_cancel",
     "description": "**Scope:** `url:POST|/api/v1/progress/:id/cancel` Cancel an asynchronous job associated with a Progress object If you include \"message\" in the POSTed data, it will be set on the Progress and returned. This is handy to distinguish between cancel and fail for a workflow\\_state of \"failed\". Returns a [Progress](#progress) object. [Lti::Ims::ProgressController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/ims/progress_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -41,7 +41,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_progress_id",
+    "name": "get_cc_progress_id",
     "description": "**Scope:** `url:GET|/api/lti/courses/:course_id/progress/:id` Return completion and status information about an asynchronous job Returns a [Progress](#progress) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content...",
     "inputSchema": {
       "type": "object",
@@ -71,10 +71,10 @@ const handlers = {
   get_progress_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/progress/:id", args);
   },
-  post_progress_id_cancel: async (client, args) => {
+  post_pi_cancel: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/progress/:id/cancel", args);
   },
-  get_courses_course_id_progress_id: async (client, args) => {
+  get_cc_progress_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/lti/courses/:course_id/progress/:id", args);
   }
 };

@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const moderated_gradingModule = require("../tools/moderated_grading");
 
-test("get_courses_course_id_assignments_assignment_id_moderated_students calls correct endpoint", async () => {
+test("get_ccaa_moderated_students calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = moderated_gradingModule.handlers.get_courses_course_id_assignments_assignment_id_moderated_students;
-  assert.ok(handler, "Handler get_courses_course_id_assignments_assignment_id_moderated_students should be defined");
+  const handler = moderated_gradingModule.handlers.get_ccaa_moderated_students;
+  assert.ok(handler, "Handler get_ccaa_moderated_students should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_assignments_assignment_id_moderated_students calls c
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_assignments_assignment_id_moderated_students calls correct endpoint", async () => {
+test("post_ccaa_moderated_students calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = moderated_gradingModule.handlers.post_courses_course_id_assignments_assignment_id_moderated_students;
-  assert.ok(handler, "Handler post_courses_course_id_assignments_assignment_id_moderated_students should be defined");
+  const handler = moderated_gradingModule.handlers.post_ccaa_moderated_students;
+  assert.ok(handler, "Handler post_ccaa_moderated_students should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "student_ids[]": 123});
 
@@ -41,15 +41,15 @@ test("post_courses_course_id_assignments_assignment_id_moderated_students calls 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_assignments_assignment_id_provisional_grades_bulk_select calls correct endpoint", async () => {
+test("put_ccaapg_bulk_select calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = moderated_gradingModule.handlers.put_courses_course_id_assignments_assignment_id_provisional_grades_bulk_select;
-  assert.ok(handler, "Handler put_courses_course_id_assignments_assignment_id_provisional_grades_bulk_select should be defined");
+  const handler = moderated_gradingModule.handlers.put_ccaapg_bulk_select;
+  assert.ok(handler, "Handler put_ccaapg_bulk_select should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id"});
 
@@ -59,15 +59,15 @@ test("put_courses_course_id_assignments_assignment_id_provisional_grades_bulk_se
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_assignments_assignment_id_provisional_grades_status calls correct endpoint", async () => {
+test("get_ccaapg_status calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = moderated_gradingModule.handlers.get_courses_course_id_assignments_assignment_id_provisional_grades_status;
-  assert.ok(handler, "Handler get_courses_course_id_assignments_assignment_id_provisional_grades_status should be defined");
+  const handler = moderated_gradingModule.handlers.get_ccaapg_status;
+  assert.ok(handler, "Handler get_ccaapg_status should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "student_id": 123});
 
@@ -77,15 +77,15 @@ test("get_courses_course_id_assignments_assignment_id_provisional_grades_status 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_assignments_assignment_id_provisional_grades_provisional_grade_id_select calls correct endpoint", async () => {
+test("put_ccaapgp_select calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = moderated_gradingModule.handlers.put_courses_course_id_assignments_assignment_id_provisional_grades_provisional_grade_id_select;
-  assert.ok(handler, "Handler put_courses_course_id_assignments_assignment_id_provisional_grades_provisional_grade_id_select should be defined");
+  const handler = moderated_gradingModule.handlers.put_ccaapgp_select;
+  assert.ok(handler, "Handler put_ccaapgp_select should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "provisional_grade_id": "test_provisional_grade_id"});
 
@@ -95,15 +95,15 @@ test("put_courses_course_id_assignments_assignment_id_provisional_grades_provisi
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_assignments_assignment_id_provisional_grades_publish calls correct endpoint", async () => {
+test("post_ccaapg_publish calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = moderated_gradingModule.handlers.post_courses_course_id_assignments_assignment_id_provisional_grades_publish;
-  assert.ok(handler, "Handler post_courses_course_id_assignments_assignment_id_provisional_grades_publish should be defined");
+  const handler = moderated_gradingModule.handlers.post_ccaapg_publish;
+  assert.ok(handler, "Handler post_ccaapg_publish should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id"});
 
@@ -113,15 +113,15 @@ test("post_courses_course_id_assignments_assignment_id_provisional_grades_publis
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_assignments_assignment_id_anonymous_provisional_grades_status calls correct endpoint", async () => {
+test("get_ccaaapg_status calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = moderated_gradingModule.handlers.get_courses_course_id_assignments_assignment_id_anonymous_provisional_grades_status;
-  assert.ok(handler, "Handler get_courses_course_id_assignments_assignment_id_anonymous_provisional_grades_status should be defined");
+  const handler = moderated_gradingModule.handlers.get_ccaaapg_status;
+  assert.ok(handler, "Handler get_ccaaapg_status should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "anonymous_id": "test_val"});
 

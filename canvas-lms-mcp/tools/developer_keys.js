@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_developer_keys",
+    "name": "get_aa_developer_keys",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/developer_keys` List all developer keys created in the current account. Returns a list of [DeveloperKey](#developerkey) objects. [DeveloperKeysController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/developer_keys_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -29,7 +29,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_developer_keys",
+    "name": "post_aa_developer_keys",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/developer_keys` Create a new Canvas API key. Creating an LTI 1.3 registration is not supported here and should be done via the LTI Registration API. Returns a [DeveloperKey](#developerkey) object. [DeveloperKeysController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/developer_keys_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -199,7 +199,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_developer_keys_id_regenerate_secret",
+    "name": "post_dki_regenerate_secret",
     "description": "**Scope:** `url:POST|/api/v1/developer_keys/:id/regenerate_secret` Regenerate the secret (api\\_key) for an existing Canvas API key. This invalidates the existing secret. Any applications using the old secret will stop working. Regenerating a secret for an LTI key is not supported. This endpoint requires the developer\\_key\\_regenerate\\_secret feature flag to be enabled. This feature flag can only be turned on by Site Admins ```bash curl https:///api/v1/developer_keys//regenerate_secret \\ -X PO...",
     "inputSchema": {
       "type": "object",
@@ -217,10 +217,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_developer_keys: async (client, args) => {
+  get_aa_developer_keys: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/developer_keys", args);
   },
-  post_accounts_account_id_developer_keys: async (client, args) => {
+  post_aa_developer_keys: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/developer_keys", args);
   },
   put_developer_keys_id: async (client, args) => {
@@ -229,7 +229,7 @@ const handlers = {
   delete_developer_keys_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/developer_keys/:id", args);
   },
-  post_developer_keys_id_regenerate_secret: async (client, args) => {
+  post_dki_regenerate_secret: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/developer_keys/:id/regenerate_secret", args);
   }
 };

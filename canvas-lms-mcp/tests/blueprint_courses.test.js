@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const blueprint_coursesModule = require("../tools/blueprint_courses");
 
-test("get_courses_course_id_blueprint_templates_template_id calls correct endpoint", async () => {
+test("get_cc_blueprint_templates_template_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.get_courses_course_id_blueprint_templates_template_id;
-  assert.ok(handler, "Handler get_courses_course_id_blueprint_templates_template_id should be defined");
+  const handler = blueprint_coursesModule.handlers.get_cc_blueprint_templates_template_id;
+  assert.ok(handler, "Handler get_cc_blueprint_templates_template_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "template_id": "test_template_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_blueprint_templates_template_id calls correct endpoi
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blueprint_templates_template_id_associated_courses calls correct endpoint", async () => {
+test("get_ccbtt_associated_courses calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.get_courses_course_id_blueprint_templates_template_id_associated_courses;
-  assert.ok(handler, "Handler get_courses_course_id_blueprint_templates_template_id_associated_courses should be defined");
+  const handler = blueprint_coursesModule.handlers.get_ccbtt_associated_courses;
+  assert.ok(handler, "Handler get_ccbtt_associated_courses should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "template_id": "test_template_id"});
 
@@ -41,15 +41,15 @@ test("get_courses_course_id_blueprint_templates_template_id_associated_courses c
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_blueprint_templates_template_id_update_associations calls correct endpoint", async () => {
+test("put_ccbtt_update_associations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.put_courses_course_id_blueprint_templates_template_id_update_associations;
-  assert.ok(handler, "Handler put_courses_course_id_blueprint_templates_template_id_update_associations should be defined");
+  const handler = blueprint_coursesModule.handlers.put_ccbtt_update_associations;
+  assert.ok(handler, "Handler put_ccbtt_update_associations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "template_id": "test_template_id", "course_ids_to_add": ["test_val"]});
 
@@ -59,15 +59,15 @@ test("put_courses_course_id_blueprint_templates_template_id_update_associations 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_blueprint_templates_template_id_migrations calls correct endpoint", async () => {
+test("post_ccbtt_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.post_courses_course_id_blueprint_templates_template_id_migrations;
-  assert.ok(handler, "Handler post_courses_course_id_blueprint_templates_template_id_migrations should be defined");
+  const handler = blueprint_coursesModule.handlers.post_ccbtt_migrations;
+  assert.ok(handler, "Handler post_ccbtt_migrations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "template_id": "test_template_id", "comment": "test_val"});
 
@@ -77,15 +77,15 @@ test("post_courses_course_id_blueprint_templates_template_id_migrations calls co
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_blueprint_templates_template_id_restrict_item calls correct endpoint", async () => {
+test("put_ccbtt_restrict_item calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.put_courses_course_id_blueprint_templates_template_id_restrict_item;
-  assert.ok(handler, "Handler put_courses_course_id_blueprint_templates_template_id_restrict_item should be defined");
+  const handler = blueprint_coursesModule.handlers.put_ccbtt_restrict_item;
+  assert.ok(handler, "Handler put_ccbtt_restrict_item should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "template_id": "test_template_id", "content_type": "test_val"});
 
@@ -95,15 +95,15 @@ test("put_courses_course_id_blueprint_templates_template_id_restrict_item calls 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blueprint_templates_template_id_unsynced_changes calls correct endpoint", async () => {
+test("get_ccbtt_unsynced_changes calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.get_courses_course_id_blueprint_templates_template_id_unsynced_changes;
-  assert.ok(handler, "Handler get_courses_course_id_blueprint_templates_template_id_unsynced_changes should be defined");
+  const handler = blueprint_coursesModule.handlers.get_ccbtt_unsynced_changes;
+  assert.ok(handler, "Handler get_ccbtt_unsynced_changes should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "template_id": "test_template_id"});
 
@@ -113,15 +113,15 @@ test("get_courses_course_id_blueprint_templates_template_id_unsynced_changes cal
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blueprint_templates_template_id_migrations calls correct endpoint", async () => {
+test("get_ccbtt_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.get_courses_course_id_blueprint_templates_template_id_migrations;
-  assert.ok(handler, "Handler get_courses_course_id_blueprint_templates_template_id_migrations should be defined");
+  const handler = blueprint_coursesModule.handlers.get_ccbtt_migrations;
+  assert.ok(handler, "Handler get_ccbtt_migrations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "template_id": "test_template_id"});
 
@@ -131,15 +131,15 @@ test("get_courses_course_id_blueprint_templates_template_id_migrations calls cor
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blueprint_templates_template_id_migrations_id calls correct endpoint", async () => {
+test("get_ccbtt_migrations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.get_courses_course_id_blueprint_templates_template_id_migrations_id;
-  assert.ok(handler, "Handler get_courses_course_id_blueprint_templates_template_id_migrations_id should be defined");
+  const handler = blueprint_coursesModule.handlers.get_ccbtt_migrations_id;
+  assert.ok(handler, "Handler get_ccbtt_migrations_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "template_id": "test_template_id", "id": "test_id"});
 
@@ -149,15 +149,15 @@ test("get_courses_course_id_blueprint_templates_template_id_migrations_id calls 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blueprint_templates_template_id_migrations_id_details calls correct endpoint", async () => {
+test("get_ccbttmi_details calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.get_courses_course_id_blueprint_templates_template_id_migrations_id_details;
-  assert.ok(handler, "Handler get_courses_course_id_blueprint_templates_template_id_migrations_id_details should be defined");
+  const handler = blueprint_coursesModule.handlers.get_ccbttmi_details;
+  assert.ok(handler, "Handler get_ccbttmi_details should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "template_id": "test_template_id", "id": "test_id"});
 
@@ -167,15 +167,15 @@ test("get_courses_course_id_blueprint_templates_template_id_migrations_id_detail
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blueprint_subscriptions calls correct endpoint", async () => {
+test("get_cc_blueprint_subscriptions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.get_courses_course_id_blueprint_subscriptions;
-  assert.ok(handler, "Handler get_courses_course_id_blueprint_subscriptions should be defined");
+  const handler = blueprint_coursesModule.handlers.get_cc_blueprint_subscriptions;
+  assert.ok(handler, "Handler get_cc_blueprint_subscriptions should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -185,15 +185,15 @@ test("get_courses_course_id_blueprint_subscriptions calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blueprint_subscriptions_subscription_id_migrations calls correct endpoint", async () => {
+test("get_ccbss_migrations calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.get_courses_course_id_blueprint_subscriptions_subscription_id_migrations;
-  assert.ok(handler, "Handler get_courses_course_id_blueprint_subscriptions_subscription_id_migrations should be defined");
+  const handler = blueprint_coursesModule.handlers.get_ccbss_migrations;
+  assert.ok(handler, "Handler get_ccbss_migrations should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "subscription_id": "test_subscription_id"});
 
@@ -203,15 +203,15 @@ test("get_courses_course_id_blueprint_subscriptions_subscription_id_migrations c
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_id calls correct endpoint", async () => {
+test("get_ccbss_migrations_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_id;
-  assert.ok(handler, "Handler get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_id should be defined");
+  const handler = blueprint_coursesModule.handlers.get_ccbss_migrations_id;
+  assert.ok(handler, "Handler get_ccbss_migrations_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "subscription_id": "test_subscription_id", "id": "test_id"});
 
@@ -221,15 +221,15 @@ test("get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_i
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_id_details calls correct endpoint", async () => {
+test("get_ccbssmi_details calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = blueprint_coursesModule.handlers.get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_id_details;
-  assert.ok(handler, "Handler get_courses_course_id_blueprint_subscriptions_subscription_id_migrations_id_details should be defined");
+  const handler = blueprint_coursesModule.handlers.get_ccbssmi_details;
+  assert.ok(handler, "Handler get_ccbssmi_details should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "subscription_id": "test_subscription_id", "id": "test_id"});
 

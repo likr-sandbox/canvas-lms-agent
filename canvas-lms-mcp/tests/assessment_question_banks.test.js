@@ -41,15 +41,15 @@ test("get_question_banks_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_question_banks_id_questions calls correct endpoint", async () => {
+test("get_qbi_questions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = assessment_question_banksModule.handlers.get_question_banks_id_questions;
-  assert.ok(handler, "Handler get_question_banks_id_questions should be defined");
+  const handler = assessment_question_banksModule.handlers.get_qbi_questions;
+  assert.ok(handler, "Handler get_qbi_questions should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 

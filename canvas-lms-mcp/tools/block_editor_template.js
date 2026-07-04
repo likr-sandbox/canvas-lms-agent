@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_block_editor_templates",
+    "name": "get_cc_block_editor_templates",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/block_editor_templates` A list of the block templates available to the current user. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/block_editor_templates?sort=name&order=asc&drafts=true ``` Returns a list of [BlockEditorTemplate](#blockeditortemplate) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentati...",
     "inputSchema": {
       "type": "object",
@@ -47,7 +47,7 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_block_editor_templates: async (client, args) => {
+  get_cc_block_editor_templates: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/block_editor_templates", args);
   }
 };

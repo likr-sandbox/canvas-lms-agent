@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const account_reportsModule = require("../tools/account_reports");
 
-test("get_accounts_account_id_reports calls correct endpoint", async () => {
+test("get_aa_reports calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_reportsModule.handlers.get_accounts_account_id_reports;
-  assert.ok(handler, "Handler get_accounts_account_id_reports should be defined");
+  const handler = account_reportsModule.handlers.get_aa_reports;
+  assert.ok(handler, "Handler get_aa_reports should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "include[]": "test_val"});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_reports calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_reports_report calls correct endpoint", async () => {
+test("post_aa_reports_report calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_reportsModule.handlers.post_accounts_account_id_reports_report;
-  assert.ok(handler, "Handler post_accounts_account_id_reports_report should be defined");
+  const handler = account_reportsModule.handlers.post_aa_reports_report;
+  assert.ok(handler, "Handler post_aa_reports_report should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "report": "test_report", "parameters[]": "test_val"});
 
@@ -41,15 +41,15 @@ test("post_accounts_account_id_reports_report calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_reports_report calls correct endpoint", async () => {
+test("get_aa_reports_report calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_reportsModule.handlers.get_accounts_account_id_reports_report;
-  assert.ok(handler, "Handler get_accounts_account_id_reports_report should be defined");
+  const handler = account_reportsModule.handlers.get_aa_reports_report;
+  assert.ok(handler, "Handler get_aa_reports_report should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "report": "test_report"});
 
@@ -59,15 +59,15 @@ test("get_accounts_account_id_reports_report calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_reports_report_id calls correct endpoint", async () => {
+test("get_aa_reports_report_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_reportsModule.handlers.get_accounts_account_id_reports_report_id;
-  assert.ok(handler, "Handler get_accounts_account_id_reports_report_id should be defined");
+  const handler = account_reportsModule.handlers.get_aa_reports_report_id;
+  assert.ok(handler, "Handler get_aa_reports_report_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "report": "test_report", "id": "test_id"});
 
@@ -77,15 +77,15 @@ test("get_accounts_account_id_reports_report_id calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_reports_report_id calls correct endpoint", async () => {
+test("delete_aa_reports_report_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_reportsModule.handlers.delete_accounts_account_id_reports_report_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_reports_report_id should be defined");
+  const handler = account_reportsModule.handlers.delete_aa_reports_report_id;
+  assert.ok(handler, "Handler delete_aa_reports_report_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "report": "test_report", "id": "test_id"});
 
@@ -95,15 +95,15 @@ test("delete_accounts_account_id_reports_report_id calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_reports_report_id_abort calls correct endpoint", async () => {
+test("put_aarri_abort calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_reportsModule.handlers.put_accounts_account_id_reports_report_id_abort;
-  assert.ok(handler, "Handler put_accounts_account_id_reports_report_id_abort should be defined");
+  const handler = account_reportsModule.handlers.put_aarri_abort;
+  assert.ok(handler, "Handler put_aarri_abort should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "report": "test_report", "id": "test_id"});
 

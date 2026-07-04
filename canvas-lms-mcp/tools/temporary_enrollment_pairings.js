@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_temporary_enrollment_pairings",
+    "name": "get_aa_temporary_enrollment_pairings",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/temporary_enrollment_pairings` Returns the list of temporary enrollment pairings for a root account. Returns a list of [TemporaryEnrollmentPairing](#temporaryenrollmentpairing) objects. [TemporaryEnrollmentPairingsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/temporary_enrollment_pairings_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -29,7 +29,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_temporary_enrollment_pairings_id",
+    "name": "get_aa_temporary_enrollment_pairings_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/temporary_enrollment_pairings/:id` Returns the temporary enrollment pairing with the given id. Returns a [TemporaryEnrollmentPairing](#temporaryenrollmentpairing) object. [TemporaryEnrollmentPairingsApiController#new](https://github.com/instructure/canvas-lms/blob/master/app/controllers/temporary_enrollment_pairings_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -54,7 +54,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_temporary_enrollment_pairings_new",
+    "name": "get_aatep_new",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/temporary_enrollment_pairings/new` Initialize an unsaved Temporary Enrollment Pairing. Returns a [TemporaryEnrollmentPairing](#temporaryenrollmentpairing) object. [TemporaryEnrollmentPairingsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/temporary_enrollment_pairings_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -74,7 +74,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_temporary_enrollment_pairings",
+    "name": "post_aa_temporary_enrollment_pairings",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/temporary_enrollment_pairings` Create a Temporary Enrollment Pairing. Returns a [TemporaryEnrollmentPairing](#temporaryenrollmentpairing) object. [TemporaryEnrollmentPairingsApiController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/temporary_enrollment_pairings_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -98,7 +98,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_temporary_enrollment_pairings_id",
+    "name": "delete_aa_temporary_enrollment_pairings_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/temporary_enrollment_pairings/:id` Delete a temporary enrollment pairing Returns a [TemporaryEnrollmentPairing](#temporaryenrollmentpairing) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, a...",
     "inputSchema": {
       "type": "object",
@@ -121,19 +121,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_temporary_enrollment_pairings: async (client, args) => {
+  get_aa_temporary_enrollment_pairings: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/temporary_enrollment_pairings", args);
   },
-  get_accounts_account_id_temporary_enrollment_pairings_id: async (client, args) => {
+  get_aa_temporary_enrollment_pairings_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/temporary_enrollment_pairings/:id", args);
   },
-  get_accounts_account_id_temporary_enrollment_pairings_new: async (client, args) => {
+  get_aatep_new: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/temporary_enrollment_pairings/new", args);
   },
-  post_accounts_account_id_temporary_enrollment_pairings: async (client, args) => {
+  post_aa_temporary_enrollment_pairings: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/temporary_enrollment_pairings", args);
   },
-  delete_accounts_account_id_temporary_enrollment_pairings_id: async (client, args) => {
+  delete_aa_temporary_enrollment_pairings_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/temporary_enrollment_pairings/:id", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_sis_imports",
+    "name": "get_aa_sis_imports",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/sis_imports` Returns the list of SIS imports for an account Example: curl https\\://\\/api/v1/accounts/\\/sis\\_imports\\ -H 'Authorization: Bearer \\' Returns a list of [SisImport](#sisimport) objects. [SisImportsApiController#importing](https://github.com/instructure/canvas-lms/blob/master/app/controllers/sis_imports_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -37,7 +37,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_sis_imports_importing",
+    "name": "get_aasi_importing",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/sis_imports/importing` Returns the SIS imports that are currently processing for an account. If no imports are running, will return an empty array. Example: curl https\\://\\/api/v1/accounts/\\/sis\\_imports/importing\\ -H 'Authorization: Bearer \\' Returns a [SisImport](#sisimport) object. [SisImportsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/sis_imports_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -57,7 +57,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_sis_imports",
+    "name": "post_aa_sis_imports",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/sis_imports` Import SIS data into Canvas. Must be on a root account with SIS imports enabled. For more information on the format that's expected here, please see the \"SIS CSV\" section in the API docs. Returns a [SisImport](#sisimport) object. [SisImportsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/sis_imports_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -153,7 +153,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_sis_imports_id",
+    "name": "get_aa_sis_imports_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/sis_imports/:id` Get the status of an already created SIS import. Examples: curl https\\://\\/api/v1/accounts/\\/sis\\_imports/\\\\ -H 'Authorization: Bearer \\' Returns a [SisImport](#sisimport) object. [SisImportsApiController#restore\\_states](https://github.com/instructure/canvas-lms/blob/master/app/controllers/sis_imports_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -178,7 +178,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_sis_imports_id_restore_states",
+    "name": "put_aasii_restore_states",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/sis_imports/:id/restore_states` This will restore the the workflow\\_state for all the items that changed their workflow\\_state during the import being restored. This will restore states for items imported with the following importers: accounts.csv terms.csv courses.csv sections.csv group\\_categories.csv groups.csv users.csv admins.csv This also restores states for other items that changed during the import. An example would be if an enrollment ...",
     "inputSchema": {
       "type": "object",
@@ -211,7 +211,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_sis_imports_id_abort",
+    "name": "put_aasii_abort",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/sis_imports/:id/abort` Abort a SIS import that has not completed. Aborting a sis batch that is running can take some time for every process to see the abort event. Subsequent sis batches begin to process 10 minutes after the abort to allow each process to clean up properly. ```bash curl https:///api/v1/accounts//sis_imports//abort \\ -H 'Authorization: Bearer ' ``` Returns a [SisImport](#sisimport) object. [SisImportsApiController#abort\\_all\\_pe...",
     "inputSchema": {
       "type": "object",
@@ -232,7 +232,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_sis_imports_abort_all_pending",
+    "name": "put_aasi_abort_all_pending",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/sis_imports/abort_all_pending` Abort already created but not processed or processing SIS imports. ```bash curl https:///api/v1/accounts//sis_imports/abort_all_pending \\ -H 'Authorization: Bearer ' ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so tha...",
     "inputSchema": {
       "type": "object",
@@ -250,25 +250,25 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_sis_imports: async (client, args) => {
+  get_aa_sis_imports: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sis_imports", args);
   },
-  get_accounts_account_id_sis_imports_importing: async (client, args) => {
+  get_aasi_importing: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sis_imports/importing", args);
   },
-  post_accounts_account_id_sis_imports: async (client, args) => {
+  post_aa_sis_imports: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/sis_imports", args);
   },
-  get_accounts_account_id_sis_imports_id: async (client, args) => {
+  get_aa_sis_imports_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sis_imports/:id", args);
   },
-  put_accounts_account_id_sis_imports_id_restore_states: async (client, args) => {
+  put_aasii_restore_states: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/sis_imports/:id/restore_states", args);
   },
-  put_accounts_account_id_sis_imports_id_abort: async (client, args) => {
+  put_aasii_abort: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/sis_imports/:id/abort", args);
   },
-  put_accounts_account_id_sis_imports_abort_all_pending: async (client, args) => {
+  put_aasi_abort_all_pending: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/sis_imports/abort_all_pending", args);
   }
 };

@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const quiz_ip_filtersModule = require("../tools/quiz_ip_filters");
 
-test("get_courses_course_id_quizzes_quiz_id_ip_filters calls correct endpoint", async () => {
+test("get_ccqq_ip_filters calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = quiz_ip_filtersModule.handlers.get_courses_course_id_quizzes_quiz_id_ip_filters;
-  assert.ok(handler, "Handler get_courses_course_id_quizzes_quiz_id_ip_filters should be defined");
+  const handler = quiz_ip_filtersModule.handlers.get_ccqq_ip_filters;
+  assert.ok(handler, "Handler get_ccqq_ip_filters should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id"});
 

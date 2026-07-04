@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_admins",
+    "name": "get_aa_admins",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/admins` A paginated list of the admins in the account Returns a list of [Admin](#admin) objects. [AdminsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/admins_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -37,7 +37,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_admins",
+    "name": "post_aa_admins",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/admins` Flag an existing user as an admin within the account. Returns an [Admin](#admin) object. [AdminsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/admins_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -70,7 +70,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_admins_user_id",
+    "name": "delete_aa_admins_user_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/admins/:user_id` Remove the rights associated with an account admin role from a user. Returns an [Admin](#admin) object. [AdminsController#self\\_roles](https://github.com/instructure/canvas-lms/blob/master/app/controllers/admins_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -100,7 +100,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_admins_self",
+    "name": "get_aaa_self",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/admins/self` A paginated list of the current user's roles in the account. The results are the same as those returned by the [List account admins](#method.admins.index) endpoint with +user\\_id+ set to +self+, except the \"Admins - Add / Remove\" permission is not required. Returns a list of [Admin](#admin) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/can...",
     "inputSchema": {
       "type": "object",
@@ -122,16 +122,16 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_admins: async (client, args) => {
+  get_aa_admins: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/admins", args);
   },
-  post_accounts_account_id_admins: async (client, args) => {
+  post_aa_admins: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/admins", args);
   },
-  delete_accounts_account_id_admins_user_id: async (client, args) => {
+  delete_aa_admins_user_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/admins/:user_id", args);
   },
-  get_accounts_account_id_admins_self: async (client, args) => {
+  get_aaa_self: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/admins/self", args);
   }
 };

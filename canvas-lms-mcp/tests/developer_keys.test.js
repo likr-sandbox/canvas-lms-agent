@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const developer_keysModule = require("../tools/developer_keys");
 
-test("get_accounts_account_id_developer_keys calls correct endpoint", async () => {
+test("get_aa_developer_keys calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = developer_keysModule.handlers.get_accounts_account_id_developer_keys;
-  assert.ok(handler, "Handler get_accounts_account_id_developer_keys should be defined");
+  const handler = developer_keysModule.handlers.get_aa_developer_keys;
+  assert.ok(handler, "Handler get_aa_developer_keys should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "inherited": true});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_developer_keys calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_developer_keys calls correct endpoint", async () => {
+test("post_aa_developer_keys calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = developer_keysModule.handlers.post_accounts_account_id_developer_keys;
-  assert.ok(handler, "Handler post_accounts_account_id_developer_keys should be defined");
+  const handler = developer_keysModule.handlers.post_aa_developer_keys;
+  assert.ok(handler, "Handler post_aa_developer_keys should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "developer_key": "test_val"});
 
@@ -77,15 +77,15 @@ test("delete_developer_keys_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_developer_keys_id_regenerate_secret calls correct endpoint", async () => {
+test("post_dki_regenerate_secret calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = developer_keysModule.handlers.post_developer_keys_id_regenerate_secret;
-  assert.ok(handler, "Handler post_developer_keys_id_regenerate_secret should be defined");
+  const handler = developer_keysModule.handlers.post_dki_regenerate_secret;
+  assert.ok(handler, "Handler post_dki_regenerate_secret should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 

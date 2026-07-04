@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const searchModule = require("../tools/search");
 
-test("get_conversations_find_recipients calls correct endpoint", async () => {
+test("get_c_find_recipients calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = searchModule.handlers.get_conversations_find_recipients;
-  assert.ok(handler, "Handler get_conversations_find_recipients should be defined");
+  const handler = searchModule.handlers.get_c_find_recipients;
+  assert.ok(handler, "Handler get_c_find_recipients should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -23,15 +23,15 @@ test("get_conversations_find_recipients calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_search_recipients calls correct endpoint", async () => {
+test("get_s_recipients calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = searchModule.handlers.get_search_recipients;
-  assert.ok(handler, "Handler get_search_recipients should be defined");
+  const handler = searchModule.handlers.get_s_recipients;
+  assert.ok(handler, "Handler get_s_recipients should be defined");
 
   const result = await handler(mockClient, {"search": "test_val"});
 
@@ -41,15 +41,15 @@ test("get_search_recipients calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_search_all_courses calls correct endpoint", async () => {
+test("get_s_all_courses calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = searchModule.handlers.get_search_all_courses;
-  assert.ok(handler, "Handler get_search_all_courses should be defined");
+  const handler = searchModule.handlers.get_s_all_courses;
+  assert.ok(handler, "Handler get_s_all_courses should be defined");
 
   const result = await handler(mockClient, {"search": "test_val"});
 

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_quiz_submissions_quiz_submission_id_questions",
+    "name": "get_qsq_questions",
     "description": "**Scope:** `url:GET|/api/v1/quiz_submissions/:quiz_submission_id/questions` Get a list of all the question records for this quiz submission. \\200 OK\\ response code is returned if the request was successful. ```js { \"quiz_submission_questions\": [QuizSubmissionQuestion] } ``` [Quizzes::QuizSubmissionQuestionsController#answer](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_submission_questions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -29,7 +29,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_quiz_submissions_quiz_submission_id_questions",
+    "name": "post_qsq_questions",
     "description": "**Scope:** `url:POST|/api/v1/quiz_submissions/:quiz_submission_id/questions` Provide or update an answer to one or more QuizQuestions. ```bash { \"attempt\": 1, \"validation_token\": \"YOUR_VALIDATION_TOKEN\", \"access_code\": null, \"quiz_questions\": [{ \"id\": \"1\", \"answer\": \"Hello World!\" }, { \"id\": \"2\", \"answer\": 42.0 }] } ``` Returns a list of [QuizSubmissionQuestion](#quizsubmissionquestion) objects. [Quizzes::QuizSubmissionQuestionsController#formatted\\_answer](https://github.com/instructure/canv...",
     "inputSchema": {
       "type": "object",
@@ -63,7 +63,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_quiz_submissions_quiz_submission_id_questions_id_formatted_answer",
+    "name": "get_qsqqi_formatted_answer",
     "description": "**Scope:** `url:GET|/api/v1/quiz_submissions/:quiz_submission_id/questions/:id/formatted_answer` Matches the intended behavior of the UI when a numerical answer is entered and returns the resulting formatted number ```js { \"formatted_answer\": 12.1234 } ``` [Quizzes::QuizSubmissionQuestionsController#flag](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_submission_questions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -93,7 +93,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_quiz_submissions_quiz_submission_id_questions_id_flag",
+    "name": "put_qsqqi_flag",
     "description": "**Scope:** `url:PUT|/api/v1/quiz_submissions/:quiz_submission_id/questions/:id/flag` Set a flag on a quiz question to indicate that you want to return to it later. ```bash { \"attempt\": 1, \"validation_token\": \"YOUR_VALIDATION_TOKEN\", \"access_code\": null } ``` [Quizzes::QuizSubmissionQuestionsController#unflag](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_submission_questions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -128,7 +128,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_quiz_submissions_quiz_submission_id_questions_id_unflag",
+    "name": "put_qsqqi_unflag",
     "description": "**Scope:** `url:PUT|/api/v1/quiz_submissions/:quiz_submission_id/questions/:id/unflag` Remove the flag that you previously set on a quiz question after you've returned to it. ```bash { \"attempt\": 1, \"validation_token\": \"YOUR_VALIDATION_TOKEN\", \"access_code\": null } ``` .appendix\\_entry div.syntaxhighlighter table { width: 100%; } .appendix\\_entry h4 { color: green; } * Question parametric type: `essay_question` * Parameter type: **`Text`** * Parameter synopsis: `{ \"answer\": \"Answer text.\" }` ...",
     "inputSchema": {
       "type": "object",
@@ -165,19 +165,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_quiz_submissions_quiz_submission_id_questions: async (client, args) => {
+  get_qsq_questions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/quiz_submissions/:quiz_submission_id/questions", args);
   },
-  post_quiz_submissions_quiz_submission_id_questions: async (client, args) => {
+  post_qsq_questions: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/quiz_submissions/:quiz_submission_id/questions", args);
   },
-  get_quiz_submissions_quiz_submission_id_questions_id_formatted_answer: async (client, args) => {
+  get_qsqqi_formatted_answer: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/quiz_submissions/:quiz_submission_id/questions/:id/formatted_answer", args);
   },
-  put_quiz_submissions_quiz_submission_id_questions_id_flag: async (client, args) => {
+  put_qsqqi_flag: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/quiz_submissions/:quiz_submission_id/questions/:id/flag", args);
   },
-  put_quiz_submissions_quiz_submission_id_questions_id_unflag: async (client, args) => {
+  put_qsqqi_unflag: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/quiz_submissions/:quiz_submission_id/questions/:id/unflag", args);
   }
 };

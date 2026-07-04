@@ -61,7 +61,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_discovery_pages_token",
+    "name": "post_dp_token",
     "description": "**Scope:** `url:POST|/api/v1/discovery_pages/token` Returns a short-lived RS256-signed JWT containing the discovery page button link configuration, suitable for sending to the identity service preview iframe via postMessage. A discovery\\_page configuration must be provided in the request body. Omitting it returns a 400 Bad Request. ```bash curl -X POST 'https:///api/v1/discovery_pages/token' \\ -H 'Authorization: Bearer ' \\ -H 'Content-Type: application/json' \\ -d '{ \"discovery_page\": { \"prima...",
     "inputSchema": {
       "type": "object",
@@ -105,7 +105,7 @@ const handlers = {
   put_discovery_pages: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/discovery_pages", args);
   },
-  post_discovery_pages_token: async (client, args) => {
+  post_dp_token: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/discovery_pages/token", args);
   }
 };

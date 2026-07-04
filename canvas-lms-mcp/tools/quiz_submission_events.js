@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_courses_course_id_quizzes_quiz_id_submissions_id_events",
+    "name": "post_ccqqsi_events",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/events` Store a set of events which were captured during a quiz taking session. On success, the response will be 204 No Content with an empty body. ```bash { \"quiz_submission_events\": [ { \"client_timestamp\": \"2014-10-08T19:29:58Z\", \"event_type\": \"question_answered\", \"event_data\" : {\"answer\": \"42\"} }, { \"client_timestamp\": \"2014-10-08T19:30:17Z\", \"event_type\": \"question_flagged\", \"event_data\" : { \"question_id\": \"1...",
     "inputSchema": {
       "type": "object",
@@ -36,7 +36,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_submissions_id_events",
+    "name": "get_ccqqsi_events",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/events` Retrieve the set of events captured during a specific submission attempt. ```js { \"quiz_submission_events\": [ { \"id\": \"3409\", \"event_type\": \"page_blurred\", \"event_data\": null, \"created_at\": \"2014-11-16T13:37:21Z\" }, { \"id\": \"3410\", \"event_type\": \"page_focused\", \"event_data\": null, \"created_at\": \"2014-11-16T13:37:27Z\" } ] } ``` *** This documentation is generated directly from the Canvas LMS source code, av...",
     "inputSchema": {
       "type": "object",
@@ -72,10 +72,10 @@ const definitions = [
 ];
 
 const handlers = {
-  post_courses_course_id_quizzes_quiz_id_submissions_id_events: async (client, args) => {
+  post_ccqqsi_events: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/events", args);
   },
-  get_courses_course_id_quizzes_quiz_id_submissions_id_events: async (client, args) => {
+  get_ccqqsi_events: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/:id/events", args);
   }
 };

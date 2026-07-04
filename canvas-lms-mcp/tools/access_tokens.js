@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_users_user_id_user_generated_tokens",
+    "name": "get_uu_user_generated_tokens",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/user_generated_tokens` Returns a list of manually generated access tokens for the specified user. Note that the actual token values are only returned when the token is first created. Returns a list of [Token](#token) objects. [TokensController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/tokens_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -29,7 +29,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_tokens_id",
+    "name": "get_uu_tokens_id",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/tokens/:id` The ID can be the actual database ID of the token, or the 'token\\_hint' value. [TokensController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/tokens_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -54,7 +54,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_user_id_tokens",
+    "name": "post_uu_tokens",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/tokens` Create a new access token for the specified user. If the user is not the current user, the token will be created as \"pending\", and must be activated by the user before it can be used. [TokensController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/tokens_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -83,7 +83,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_user_id_tokens_id",
+    "name": "put_uu_tokens_id",
     "description": "**Scope:** `url:PUT|/api/v1/users/:user_id/tokens/:id` Update an existing access token. The ID can be the actual database ID of the token, or the 'token\\_hint' value. Regenerating an expired token requires a new expiration date. [TokensController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/tokens_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -120,7 +120,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_user_id_tokens_id",
+    "name": "delete_uu_tokens_id",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:user_id/tokens/:id` The ID can be the actual database ID of the token, or the 'token\\_hint' value. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitb...",
     "inputSchema": {
       "type": "object",
@@ -143,19 +143,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_users_user_id_user_generated_tokens: async (client, args) => {
+  get_uu_user_generated_tokens: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/user_generated_tokens", args);
   },
-  get_users_user_id_tokens_id: async (client, args) => {
+  get_uu_tokens_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/tokens/:id", args);
   },
-  post_users_user_id_tokens: async (client, args) => {
+  post_uu_tokens: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/tokens", args);
   },
-  put_users_user_id_tokens_id: async (client, args) => {
+  put_uu_tokens_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:user_id/tokens/:id", args);
   },
-  delete_users_user_id_tokens_id: async (client, args) => {
+  delete_uu_tokens_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/tokens/:id", args);
   }
 };

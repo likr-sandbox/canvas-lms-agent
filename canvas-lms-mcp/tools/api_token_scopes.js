@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_scopes",
+    "name": "get_aa_scopes",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/scopes` A list of scopes that can be applied to developer keys and access tokens. Returns a list of [Scope](#scope) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical co...",
     "inputSchema": {
       "type": "object",
@@ -31,7 +31,7 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_scopes: async (client, args) => {
+  get_aa_scopes: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/scopes", args);
   }
 };

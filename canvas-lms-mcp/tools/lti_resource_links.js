@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_lti_resource_links",
+    "name": "get_cc_lti_resource_links",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/lti_resource_links` Returns all Resource Links in the specified course. This includes links that are associated with Assignments, Module Items, Collaborations, and that are embedded in rich content. This endpoint is paginated, and will return 50 links per page by default. Links are sorted by the order in which they were created. ```bash This would return the first 50 LTI resource links for the course, with a Link header pointing to the next page ...",
     "inputSchema": {
       "type": "object",
@@ -33,7 +33,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_lti_resource_links_id",
+    "name": "get_cc_lti_resource_links_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/lti_resource_links/:id` Return details about the specified resource link. The ID can be in the standard Canvas format (\"1\"), or in these special formats: * resource\\_link\\_uuid:\\ - Find the resource link by its resource\\_link\\_uuid * lookup\\_uuid:\\ - Find the resource link by its lookup\\_uuid ```bash This would return the specified LTI resource link curl -X GET 'https:///api/v1/courses/1/lti_resource_links/lookup_uuid:c522554a-d4be-49ef-b163-9c87...",
     "inputSchema": {
       "type": "object",
@@ -62,7 +62,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_lti_resource_links",
+    "name": "post_cc_lti_resource_links",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/lti_resource_links` Create a new LTI Resource Link in the specified course with the provided parameters. \\Caution!\\ Resource Links are usually created by the tool via LTI Deep Linking. The tool has no knowledge of links created via this API, and may not be able to handle or launch them. Links created using this API cannot be associated with a specific piece of Canvas content, like an Assignment, Module Item, or Collaboration. Links created using...",
     "inputSchema": {
       "type": "object",
@@ -91,7 +91,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_lti_resource_links_bulk",
+    "name": "post_cclrl_bulk",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/lti_resource_links/bulk` Create up to 100 new LTI Resource Links in the specified course with the provided parameters. \\Caution!\\ Resource Links are usually created by the tool via LTI Deep Linking. The tool has no knowledge of links created via this API, and may not be able to handle or launch them. Links created using this API cannot be associated with a specific piece of Canvas content, like an Assignment, Module Item, or Collaboration. Links...",
     "inputSchema": {
       "type": "object",
@@ -124,7 +124,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_lti_resource_links_id",
+    "name": "put_cc_lti_resource_links_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/lti_resource_links/:id` Update the specified resource link with the provided parameters. \\Caution!\\ Changing existing links may result in launch errors. ```bash This would update the specified LTI resource link curl -X PUT 'https:///api/v1/courses/1/lti_resource_links/1' \\ -H \"Authorization: Bearer \" \\ -d 'url=https://example.com/lti/launch/new_content_item/456' -d 'custom[hello]=world' ``` Returns a [Lti::ResourceLink](#lti::resourcelink) object...",
     "inputSchema": {
       "type": "object",
@@ -161,7 +161,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_lti_resource_links_id",
+    "name": "delete_cc_lti_resource_links_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/lti_resource_links/:id` Delete the specified resource link. The ID can be in the standard Canvas format (\"1\"), or in these special formats: * resource\\_link\\_uuid:\\ - Find the resource link by its resource\\_link\\_uuid * lookup\\_uuid:\\ - Find the resource link by its lookup\\_uuid Only links that are not associated with Assignments, Module Items, or Collaborations can be deleted. ```bash This would return the specified LTI resource link curl -X ...",
     "inputSchema": {
       "type": "object",
@@ -184,22 +184,22 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_lti_resource_links: async (client, args) => {
+  get_cc_lti_resource_links: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/lti_resource_links", args);
   },
-  get_courses_course_id_lti_resource_links_id: async (client, args) => {
+  get_cc_lti_resource_links_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/lti_resource_links/:id", args);
   },
-  post_courses_course_id_lti_resource_links: async (client, args) => {
+  post_cc_lti_resource_links: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/lti_resource_links", args);
   },
-  post_courses_course_id_lti_resource_links_bulk: async (client, args) => {
+  post_cclrl_bulk: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/lti_resource_links/bulk", args);
   },
-  put_courses_course_id_lti_resource_links_id: async (client, args) => {
+  put_cc_lti_resource_links_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/lti_resource_links/:id", args);
   },
-  delete_courses_course_id_lti_resource_links_id: async (client, args) => {
+  delete_cc_lti_resource_links_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/lti_resource_links/:id", args);
   }
 };

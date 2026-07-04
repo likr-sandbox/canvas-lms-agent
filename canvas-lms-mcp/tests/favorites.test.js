@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const favoritesModule = require("../tools/favorites");
 
-test("get_users_self_favorites_courses calls correct endpoint", async () => {
+test("get_usf_courses calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = favoritesModule.handlers.get_users_self_favorites_courses;
-  assert.ok(handler, "Handler get_users_self_favorites_courses should be defined");
+  const handler = favoritesModule.handlers.get_usf_courses;
+  assert.ok(handler, "Handler get_usf_courses should be defined");
 
   const result = await handler(mockClient, {"exclude_blueprint_courses": true});
 
@@ -23,15 +23,15 @@ test("get_users_self_favorites_courses calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_self_favorites_groups calls correct endpoint", async () => {
+test("get_usf_groups calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = favoritesModule.handlers.get_users_self_favorites_groups;
-  assert.ok(handler, "Handler get_users_self_favorites_groups should be defined");
+  const handler = favoritesModule.handlers.get_usf_groups;
+  assert.ok(handler, "Handler get_usf_groups should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -41,15 +41,15 @@ test("get_users_self_favorites_groups calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_users_self_favorites_courses_id calls correct endpoint", async () => {
+test("post_usf_courses_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = favoritesModule.handlers.post_users_self_favorites_courses_id;
-  assert.ok(handler, "Handler post_users_self_favorites_courses_id should be defined");
+  const handler = favoritesModule.handlers.post_usf_courses_id;
+  assert.ok(handler, "Handler post_usf_courses_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -59,15 +59,15 @@ test("post_users_self_favorites_courses_id calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_users_self_favorites_groups_id calls correct endpoint", async () => {
+test("post_usf_groups_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = favoritesModule.handlers.post_users_self_favorites_groups_id;
-  assert.ok(handler, "Handler post_users_self_favorites_groups_id should be defined");
+  const handler = favoritesModule.handlers.post_usf_groups_id;
+  assert.ok(handler, "Handler post_usf_groups_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -77,15 +77,15 @@ test("post_users_self_favorites_groups_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_self_favorites_courses_id calls correct endpoint", async () => {
+test("delete_usf_courses_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = favoritesModule.handlers.delete_users_self_favorites_courses_id;
-  assert.ok(handler, "Handler delete_users_self_favorites_courses_id should be defined");
+  const handler = favoritesModule.handlers.delete_usf_courses_id;
+  assert.ok(handler, "Handler delete_usf_courses_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -95,15 +95,15 @@ test("delete_users_self_favorites_courses_id calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_self_favorites_groups_id calls correct endpoint", async () => {
+test("delete_usf_groups_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = favoritesModule.handlers.delete_users_self_favorites_groups_id;
-  assert.ok(handler, "Handler delete_users_self_favorites_groups_id should be defined");
+  const handler = favoritesModule.handlers.delete_usf_groups_id;
+  assert.ok(handler, "Handler delete_usf_groups_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -113,15 +113,15 @@ test("delete_users_self_favorites_groups_id calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_self_favorites_courses calls correct endpoint", async () => {
+test("delete_usf_courses calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = favoritesModule.handlers.delete_users_self_favorites_courses;
-  assert.ok(handler, "Handler delete_users_self_favorites_courses should be defined");
+  const handler = favoritesModule.handlers.delete_usf_courses;
+  assert.ok(handler, "Handler delete_usf_courses should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -131,15 +131,15 @@ test("delete_users_self_favorites_courses calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_self_favorites_groups calls correct endpoint", async () => {
+test("delete_usf_groups calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = favoritesModule.handlers.delete_users_self_favorites_groups;
-  assert.ok(handler, "Handler delete_users_self_favorites_groups should be defined");
+  const handler = favoritesModule.handlers.delete_usf_groups;
+  assert.ok(handler, "Handler delete_usf_groups should be defined");
 
   const result = await handler(mockClient, {});
 

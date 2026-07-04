@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const lti_launch_definitionsModule = require("../tools/lti_launch_definitions");
 
-test("get_courses_course_id_lti_apps_launch_definitions calls correct endpoint", async () => {
+test("get_ccla_launch_definitions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_launch_definitionsModule.handlers.get_courses_course_id_lti_apps_launch_definitions;
-  assert.ok(handler, "Handler get_courses_course_id_lti_apps_launch_definitions should be defined");
+  const handler = lti_launch_definitionsModule.handlers.get_ccla_launch_definitions;
+  assert.ok(handler, "Handler get_ccla_launch_definitions should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_lti_apps_launch_definitions calls correct endpoint",
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_lti_apps_launch_definitions calls correct endpoint", async () => {
+test("get_aala_launch_definitions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_launch_definitionsModule.handlers.get_accounts_account_id_lti_apps_launch_definitions;
-  assert.ok(handler, "Handler get_accounts_account_id_lti_apps_launch_definitions should be defined");
+  const handler = lti_launch_definitionsModule.handlers.get_aala_launch_definitions;
+  assert.ok(handler, "Handler get_aala_launch_definitions should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "placements[Array]": "test_val"});
 

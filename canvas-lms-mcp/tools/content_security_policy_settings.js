@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_csp_settings",
+    "name": "get_cc_csp_settings",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/csp_settings`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_csp_settings",
+    "name": "get_aa_csp_settings",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/csp_settings` Update multiple modules in an account. * enabled Whether CSP is enabled. * inherited Whether the current CSP settings are inherited from a parent account. * settings\\_locked Whether current CSP settings can be overridden by sub-accounts and courses. * effective\\_whitelist If enabled, lists the currently allowed domains (includes domains automatically allowed through external tools). * tools\\_whitelist (Account-only) Lists the auto...",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_csp_settings",
+    "name": "put_cc_csp_settings",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/csp_settings`",
     "inputSchema": {
       "type": "object",
@@ -61,7 +61,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_csp_settings",
+    "name": "put_aa_csp_settings",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/csp_settings` Either explicitly sets CSP to be on or off for courses and sub-accounts, or clear the explicit settings to default to those set by a parent account Note: If \"inherited\" and \"settings\\_locked\" are both true for this account or course, then the CSP setting cannot be modified. [CspSettingsController#set\\_csp\\_lock](https://github.com/instructure/canvas-lms/blob/master/app/controllers/csp_settings_controller.rb) {% hint style=\"warning...",
     "inputSchema": {
       "type": "object",
@@ -82,7 +82,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_csp_settings_lock",
+    "name": "put_aacs_lock",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/csp_settings/lock` Can only be set if CSP is explicitly enabled or disabled on this account (i.e. \"inherited\" is false). [CspSettingsController#add\\_domain](https://github.com/instructure/canvas-lms/blob/master/app/controllers/csp_settings_controller.rb) {% hint style=\"warning\" %} BETA: This API endpoint is not finalized, and there could be breaking changes before its final release. {% endhint %}",
     "inputSchema": {
       "type": "object",
@@ -103,7 +103,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_csp_settings_domains",
+    "name": "post_aacs_domains",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/csp_settings/domains` Adds an allowed domain for the current account. Note: this will not take effect unless CSP is explicitly enabled on this account. [CspSettingsController#add\\_multiple\\_domains](https://github.com/instructure/canvas-lms/blob/master/app/controllers/csp_settings_controller.rb) {% hint style=\"warning\" %} BETA: This API endpoint is not finalized, and there could be breaking changes before its final release. {% endhint %}",
     "inputSchema": {
       "type": "object",
@@ -124,7 +124,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_csp_settings_domains_batch_create",
+    "name": "post_aacsd_batch_create",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/csp_settings/domains/batch_create` Adds multiple allowed domains for the current account. Note: this will not take effect unless CSP is explicitly enabled on this account. [CspSettingsController#remove\\_domain](https://github.com/instructure/canvas-lms/blob/master/app/controllers/csp_settings_controller.rb) {% hint style=\"warning\" %} BETA: This API endpoint is not finalized, and there could be breaking changes before its final release. {% endh...",
     "inputSchema": {
       "type": "object",
@@ -145,7 +145,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_csp_settings_domains",
+    "name": "delete_aacs_domains",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/csp_settings/domains` Removes an allowed domain from the current account. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com. If...",
     "inputSchema": {
       "type": "object",
@@ -168,28 +168,28 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_csp_settings: async (client, args) => {
+  get_cc_csp_settings: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/csp_settings", args);
   },
-  get_accounts_account_id_csp_settings: async (client, args) => {
+  get_aa_csp_settings: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/csp_settings", args);
   },
-  put_courses_course_id_csp_settings: async (client, args) => {
+  put_cc_csp_settings: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/csp_settings", args);
   },
-  put_accounts_account_id_csp_settings: async (client, args) => {
+  put_aa_csp_settings: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/csp_settings", args);
   },
-  put_accounts_account_id_csp_settings_lock: async (client, args) => {
+  put_aacs_lock: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/csp_settings/lock", args);
   },
-  post_accounts_account_id_csp_settings_domains: async (client, args) => {
+  post_aacs_domains: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/csp_settings/domains", args);
   },
-  post_accounts_account_id_csp_settings_domains_batch_create: async (client, args) => {
+  post_aacsd_batch_create: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/csp_settings/domains/batch_create", args);
   },
-  delete_accounts_account_id_csp_settings_domains: async (client, args) => {
+  delete_aacs_domains: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/csp_settings/domains", args);
   }
 };

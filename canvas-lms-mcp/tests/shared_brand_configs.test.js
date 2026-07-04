@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const shared_brand_configsModule = require("../tools/shared_brand_configs");
 
-test("post_accounts_account_id_shared_brand_configs calls correct endpoint", async () => {
+test("post_aa_shared_brand_configs calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = shared_brand_configsModule.handlers.post_accounts_account_id_shared_brand_configs;
-  assert.ok(handler, "Handler post_accounts_account_id_shared_brand_configs should be defined");
+  const handler = shared_brand_configsModule.handlers.post_aa_shared_brand_configs;
+  assert.ok(handler, "Handler post_aa_shared_brand_configs should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "shared_brand_config[name]": "test_val"});
 
@@ -23,15 +23,15 @@ test("post_accounts_account_id_shared_brand_configs calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_shared_brand_configs_id calls correct endpoint", async () => {
+test("put_aa_shared_brand_configs_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = shared_brand_configsModule.handlers.put_accounts_account_id_shared_brand_configs_id;
-  assert.ok(handler, "Handler put_accounts_account_id_shared_brand_configs_id should be defined");
+  const handler = shared_brand_configsModule.handlers.put_aa_shared_brand_configs_id;
+  assert.ok(handler, "Handler put_aa_shared_brand_configs_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 

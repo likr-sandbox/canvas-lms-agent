@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_analytics_terms_term_id_activity",
+    "name": "get_aaatt_activity",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/terms/:term_id/activity`",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_current_activity",
+    "name": "get_aaacur_activity",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/current/activity`",
     "inputSchema": {
       "type": "object",
@@ -50,7 +50,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_completed_activity",
+    "name": "get_aaacmp_activity",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/completed/activity` Returns page view hits summed across all courses in the department. Two groupings of these counts are returned; one by day (+by\\_date+), the other by category (+by\\_category+). The possible categories are announcements, assignments, collaborations, conferences, discussions, files, general, grades, groups, modules, other, pages, and quizzes. This and the other department-level endpoints have three variations which a...",
     "inputSchema": {
       "type": "object",
@@ -70,7 +70,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_terms_term_id_grades",
+    "name": "get_aaatt_grades",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/terms/:term_id/grades`",
     "inputSchema": {
       "type": "object",
@@ -95,7 +95,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_current_grades",
+    "name": "get_aaacur_grades",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/current/grades`",
     "inputSchema": {
       "type": "object",
@@ -115,7 +115,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_completed_grades",
+    "name": "get_aaacmp_grades",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/completed/grades` Returns the distribution of grades for students in courses in the department. Each data point is one student's current grade in one course; if a student is in multiple courses, he contributes one value per course, but if he's enrolled multiple times in the same course (e.g. a lecture section and a lab section), he only constributes on value for that course. Grades are binned to the nearest integer score; anomalous gr...",
     "inputSchema": {
       "type": "object",
@@ -135,7 +135,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_terms_term_id_statistics",
+    "name": "get_aaatt_statistics",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/terms/:term_id/statistics`",
     "inputSchema": {
       "type": "object",
@@ -160,7 +160,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_current_statistics",
+    "name": "get_aaacur_statistics",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/current/statistics`",
     "inputSchema": {
       "type": "object",
@@ -180,7 +180,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_completed_statistics",
+    "name": "get_aaacmp_statistics",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/completed/statistics` Returns numeric statistics about the department and term (or filter). Shares the same variations on endpoint as the participation data. ```bash curl https:///api/v1/accounts//analytics/current/statistics \\ -H 'Authorization: Bearer ' curl https:///api/v1/accounts//analytics/completed/statistics \\ -H 'Authorization: Bearer ' curl https:///api/v1/accounts//analytics/terms//statistics \\ -H 'Authorization: Bearer ' `...",
     "inputSchema": {
       "type": "object",
@@ -200,7 +200,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_terms_term_id_statistics_by_subaccount",
+    "name": "get_aaatt_statistics_by_subaccount",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/terms/:term_id/statistics_by_subaccount`",
     "inputSchema": {
       "type": "object",
@@ -225,7 +225,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_current_statistics_by_subaccount",
+    "name": "get_aaacur_statistics_by_subaccount",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/current/statistics_by_subaccount`",
     "inputSchema": {
       "type": "object",
@@ -245,7 +245,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_analytics_completed_statistics_by_subaccount",
+    "name": "get_aaacmp_statistics_by_subaccount",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/analytics/completed/statistics_by_subaccount` Returns numeric statistics about the department subaccounts and term (or filter). Shares the same variations on endpoint as the participation data. ```bash curl https:///api/v1/accounts//analytics/current/statistics_by_subaccount \\ -H 'Authorization: Bearer ' curl https:///api/v1/accounts//analytics/completed/statistics_by_subaccount \\ -H 'Authorization: Bearer ' curl https:///api/v1/accounts//analy...",
     "inputSchema": {
       "type": "object",
@@ -265,7 +265,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_analytics_activity",
+    "name": "get_cca_activity",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/analytics/activity` Returns page view hits and participation numbers grouped by day through the entire history of the course. Page views is returned as a hash, where the hash keys are dates in the format \"YYYY-MM-DD\". The page\\_views result set includes page views broken out by access category. Participations is returned as an array of dates in the format \"YYYY-MM-DD\". ```bash curl https:///api/v1/courses//analytics/activity \\ -H 'Authorization: ...",
     "inputSchema": {
       "type": "object",
@@ -285,7 +285,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_analytics_assignments",
+    "name": "get_cca_assignments",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/analytics/assignments` Returns a list of assignments for the course sorted by due date. For each assignment returns basic assignment information, the grade breakdown, and a breakdown of on-time/late status of homework submissions. ```bash curl https:///api/v1/courses//analytics/assignments \\ -H 'Authorization: Bearer ' ``` ```js [ { \"assignment_id\": 1234, \"title\": \"Assignment 1\", \"points_possible\": 10, \"due_at\": \"2012-01-25T22:00:00-07:00\", \"unlo...",
     "inputSchema": {
       "type": "object",
@@ -309,7 +309,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_analytics_student_summaries",
+    "name": "get_cca_student_summaries",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/analytics/student_summaries` Returns a summary of per-user access information for all students in a course. This includes total page views, total participations, and a breakdown of on-time/late status for all homework submissions in the course. Each student's summary also includes the maximum number of page views and participations by any student in the course, which may be useful for some visualizations (since determining maximums client side ca...",
     "inputSchema": {
       "type": "object",
@@ -337,7 +337,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_analytics_users_student_id_activity",
+    "name": "get_ccaus_activity",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/analytics/users/:student_id/activity` Returns page view hits grouped by hour, and participation details through the entire history of the course. `page_views` are returned as a hash, where the keys are iso8601 dates, bucketed by the hour. `participations` are returned as an array of hashes, sorted oldest to newest. ```bash curl https:///api/v1/courses//analytics/users//activity \\ -H 'Authorization: Bearer ' ``` ```js { \"page_views\": { \"2012-01-24...",
     "inputSchema": {
       "type": "object",
@@ -362,7 +362,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_analytics_users_student_id_assignments",
+    "name": "get_ccaus_assignments",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/analytics/users/:student_id/assignments` Returns a list of assignments for the course sorted by due date. For each assignment returns basic assignment information, the grade breakdown (including the student's actual grade), and the basic submission information for the student's submission if it exists. ```bash curl https:///api/v1/courses//analytics/users//assignments \\ -H 'Authorization: Bearer ' ``` ```js [ { \"assignment_id\": 1234, \"title\": \"As...",
     "inputSchema": {
       "type": "object",
@@ -387,7 +387,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_analytics_users_student_id_communication",
+    "name": "get_ccaus_communication",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/analytics/users/:student_id/communication` Returns messaging \"hits\" grouped by day through the entire history of the course. Returns a hash containing the number of instructor-to-student messages, and student-to-instructor messages, where the hash keys are dates in the format \"YYYY-MM-DD\". Message hits include Conversation messages and comments on homework submissions. ```bash curl https:///api/v1/courses//analytics/users//communication \\ -H 'Aut...",
     "inputSchema": {
       "type": "object",
@@ -414,58 +414,58 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_analytics_terms_term_id_activity: async (client, args) => {
+  get_aaatt_activity: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/terms/:term_id/activity", args);
   },
-  get_accounts_account_id_analytics_current_activity: async (client, args) => {
+  get_aaacur_activity: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/current/activity", args);
   },
-  get_accounts_account_id_analytics_completed_activity: async (client, args) => {
+  get_aaacmp_activity: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/completed/activity", args);
   },
-  get_accounts_account_id_analytics_terms_term_id_grades: async (client, args) => {
+  get_aaatt_grades: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/terms/:term_id/grades", args);
   },
-  get_accounts_account_id_analytics_current_grades: async (client, args) => {
+  get_aaacur_grades: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/current/grades", args);
   },
-  get_accounts_account_id_analytics_completed_grades: async (client, args) => {
+  get_aaacmp_grades: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/completed/grades", args);
   },
-  get_accounts_account_id_analytics_terms_term_id_statistics: async (client, args) => {
+  get_aaatt_statistics: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/terms/:term_id/statistics", args);
   },
-  get_accounts_account_id_analytics_current_statistics: async (client, args) => {
+  get_aaacur_statistics: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/current/statistics", args);
   },
-  get_accounts_account_id_analytics_completed_statistics: async (client, args) => {
+  get_aaacmp_statistics: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/completed/statistics", args);
   },
-  get_accounts_account_id_analytics_terms_term_id_statistics_by_subaccount: async (client, args) => {
+  get_aaatt_statistics_by_subaccount: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/terms/:term_id/statistics_by_subaccount", args);
   },
-  get_accounts_account_id_analytics_current_statistics_by_subaccount: async (client, args) => {
+  get_aaacur_statistics_by_subaccount: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/current/statistics_by_subaccount", args);
   },
-  get_accounts_account_id_analytics_completed_statistics_by_subaccount: async (client, args) => {
+  get_aaacmp_statistics_by_subaccount: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/analytics/completed/statistics_by_subaccount", args);
   },
-  get_courses_course_id_analytics_activity: async (client, args) => {
+  get_cca_activity: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/analytics/activity", args);
   },
-  get_courses_course_id_analytics_assignments: async (client, args) => {
+  get_cca_assignments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/analytics/assignments", args);
   },
-  get_courses_course_id_analytics_student_summaries: async (client, args) => {
+  get_cca_student_summaries: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/analytics/student_summaries", args);
   },
-  get_courses_course_id_analytics_users_student_id_activity: async (client, args) => {
+  get_ccaus_activity: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/analytics/users/:student_id/activity", args);
   },
-  get_courses_course_id_analytics_users_student_id_assignments: async (client, args) => {
+  get_ccaus_assignments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/analytics/users/:student_id/assignments", args);
   },
-  get_courses_course_id_analytics_users_student_id_communication: async (client, args) => {
+  get_ccaus_communication: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/analytics/users/:student_id/communication", args);
   }
 };

@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const servicesModule = require("../tools/services");
 
-test("get_services_kaltura calls correct endpoint", async () => {
+test("get_s_kaltura calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = servicesModule.handlers.get_services_kaltura;
-  assert.ok(handler, "Handler get_services_kaltura should be defined");
+  const handler = servicesModule.handlers.get_s_kaltura;
+  assert.ok(handler, "Handler get_s_kaltura should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -23,15 +23,15 @@ test("get_services_kaltura calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_services_kaltura_session calls correct endpoint", async () => {
+test("post_s_kaltura_session calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = servicesModule.handlers.post_services_kaltura_session;
-  assert.ok(handler, "Handler post_services_kaltura_session should be defined");
+  const handler = servicesModule.handlers.post_s_kaltura_session;
+  assert.ok(handler, "Handler post_s_kaltura_session should be defined");
 
   const result = await handler(mockClient, {});
 

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_authentication_providers",
+    "name": "get_aa_authentication_providers",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/authentication_providers` Returns a paginated list of authentication providers ```bash curl 'https:///api/v1/accounts//authentication_providers' \\ -H 'Authorization: Bearer ' ``` Returns a list of [AuthenticationProvider](#authenticationprovider) objects. [AuthenticationProvidersController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/authentication_providers_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_authentication_providers_id",
+    "name": "get_aa_authentication_providers_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/authentication_providers/:id` Get the specified authentication provider ```bash curl 'https:///api/v1/accounts//authentication_providers/' \\ -H 'Authorization: Bearer ' ``` Returns an [AuthenticationProvider](#authenticationprovider) object. [AuthenticationProvidersController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/authentication_providers_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -50,7 +50,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_authentication_providers",
+    "name": "post_aa_authentication_providers",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/authentication_providers` Add external authentication provider(s) for the account. Services may be Apple, CAS, Facebook, GitHub, Google, LDAP, LinkedIn, Microsoft, OpenID Connect, or SAML. Each authentication provider is specified as a set of parameters as described below. A provider specification must include an 'auth\\_type' parameter with a value of 'apple', 'canvas', 'cas', 'clever', 'facebook', 'github', 'google', 'ldap', 'linkedin', 'micr...",
     "inputSchema": {
       "type": "object",
@@ -66,7 +66,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_authentication_providers_id",
+    "name": "put_aa_authentication_providers_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/authentication_providers/:id` Update an authentication provider using the same options as the [Add authentication provider](#method.authentication_providers.create) endpoint. You cannot update an existing provider to a new authentication type. ```bash curl -X PUT 'https:///api/v1/accounts//authentication_providers/' \\ -F 'idp_entity_id=' \\ -F 'log_in_url=' \\ -H 'Authorization: Bearer ' ``` Returns an [AuthenticationProvider](#authenticationprov...",
     "inputSchema": {
       "type": "object",
@@ -87,7 +87,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_authentication_providers_id",
+    "name": "delete_aa_authentication_providers_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/authentication_providers/:id` Delete the config ```bash curl -X DELETE 'https:///api/v1/accounts//authentication_providers/' \\ -H 'Authorization: Bearer ' ``` [AuthenticationProvidersController#restore](https://github.com/instructure/canvas-lms/blob/master/app/controllers/authentication_providers_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -108,7 +108,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_authentication_providers_id_restore",
+    "name": "put_aaapi_restore",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/authentication_providers/:id/restore` Restore an authentication provider back to active that was previously deleted. Only available to admins who can manage\\_authentication\\_provider for given root account. ```bash curl -X PUT 'https:///api/v1/accounts//authentication_providers//restore' \\ -H 'Authorization: Bearer ' ``` Returns an [AuthenticationProvider](#authenticationprovider) object. [AuthenticationProvidersController#show\\_sso\\_settings](...",
     "inputSchema": {
       "type": "object",
@@ -129,7 +129,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_sso_settings",
+    "name": "get_aa_sso_settings",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/sso_settings` The way to get the current state of each account level setting that's relevant to Single Sign On configuration You can list the current state of each setting with \"update\\_sso\\_settings\" ```bash curl -XGET 'https:///api/v1/accounts//sso_settings' \\ -H 'Authorization: Bearer ' ``` Returns a [SSOSettings](#ssosettings) object. [AuthenticationProvidersController#update\\_sso\\_settings](https://github.com/instructure/canvas-lms/blob/ma...",
     "inputSchema": {
       "type": "object",
@@ -149,7 +149,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_sso_settings",
+    "name": "put_aa_sso_settings",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/sso_settings` For various cases of mixed SSO configurations, you may need to set some configuration at the account level to handle the particulars of your setup. This endpoint accepts a PUT request to set several possible account settings. All setting are optional on each request, any that are not provided at all are simply retained as is. Any that provide the key but a null-ish value (blank string, null, undefined) will be UN-set. You can list...",
     "inputSchema": {
       "type": "object",
@@ -165,7 +165,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_authentication_providers_force_password_reset",
+    "name": "post_aaap_force_password_reset",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/authentication_providers/force_password_reset` Enqueues a job to set the must\\_reset\\_password flag on all active Canvas login pseudonyms for the account. Affected users will be required to change their password on next login. Only available for accounts that have Canvas authentication enabled. ```bash curl -X POST 'https:///api/v1/accounts//authentication_providers/force_password_reset' \\ -H 'Authorization: Bearer ' ``` *** This documentation...",
     "inputSchema": {
       "type": "object",
@@ -183,31 +183,31 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_authentication_providers: async (client, args) => {
+  get_aa_authentication_providers: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/authentication_providers", args);
   },
-  get_accounts_account_id_authentication_providers_id: async (client, args) => {
+  get_aa_authentication_providers_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/authentication_providers/:id", args);
   },
-  post_accounts_account_id_authentication_providers: async (client, args) => {
+  post_aa_authentication_providers: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/authentication_providers", args);
   },
-  put_accounts_account_id_authentication_providers_id: async (client, args) => {
+  put_aa_authentication_providers_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/authentication_providers/:id", args);
   },
-  delete_accounts_account_id_authentication_providers_id: async (client, args) => {
+  delete_aa_authentication_providers_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/authentication_providers/:id", args);
   },
-  put_accounts_account_id_authentication_providers_id_restore: async (client, args) => {
+  put_aaapi_restore: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/authentication_providers/:id/restore", args);
   },
-  get_accounts_account_id_sso_settings: async (client, args) => {
+  get_aa_sso_settings: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/sso_settings", args);
   },
-  put_accounts_account_id_sso_settings: async (client, args) => {
+  put_aa_sso_settings: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/sso_settings", args);
   },
-  post_accounts_account_id_authentication_providers_force_password_reset: async (client, args) => {
+  post_aaap_force_password_reset: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/authentication_providers/force_password_reset", args);
   }
 };

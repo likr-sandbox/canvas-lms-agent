@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_asset_processors_asset_processor_id_reports",
+    "name": "post_apa_reports",
     "description": "**Scope:** `url:POST|/api/lti/asset_processors/:asset_processor_id/reports` Creates a report for a given Canvas-managed asset (such as a submission attachment). Returns an HTTP 201 (Created) on success. ```bash { \"assetId\" : \"57d463ea-6e5d-45c8-a86f-64f3dd9ef81e\", \"type\": \"originality\", \"timestamp\": \"2025-01-24T17:56:53.221+00:00\", \"title\": \"Originality Report\", \"result\" : \"75/100\", \"indicationColor\" : \"#EC0000\", \"indicationAlt\" : \"High percentage of matched text.\", \"priority\": 5, \"processing...",
     "inputSchema": {
       "type": "object",
@@ -65,7 +65,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_asset_processor_eulas_context_external_tool_id_deployment",
+    "name": "put_apec_deployment",
     "description": "**Scope:** `url:PUT|/api/lti/asset_processor_eulas/:context_external_tool_id/deployment` Provides a mechanism by which a platform can enable or disable the requirement for users to accept a EULA within the scope of an entire deployment ```bash { \"eulaRequired\": true, } ``` ```js { \"eulaRequired\": true, } ``` [Lti::Ims::AssetProcessorEulaController#create\\_acceptance](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/ims/asset_processor_eula_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -85,7 +85,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_asset_processor_eulas_context_external_tool_id_user",
+    "name": "post_apec_user",
     "description": "**Scope:** `url:POST|/api/lti/asset_processor_eulas/:context_external_tool_id/user` The EULA user acceptance service provides a mechanism by which a tool can notify a platform of whether or not a user has accepted a EULA. ```bash { \"userId\": \"59ed2101-0302-406c-b53f-9705ae1cb357\", \"accepted\": true, \"timestamp\": \"2022-04-16T18:54:36.736+00:00\" } ``` ```js { \"userId\": \"59ed2101-0302-406c-b53f-9705ae1cb357\", \"accepted\": true, \"timestamp\": \"2022-04-16T18:54:36.736+00:00\" } ``` [Lti::Ims::AssetPro...",
     "inputSchema": {
       "type": "object",
@@ -113,7 +113,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_asset_processor_eulas_context_external_tool_id_user",
+    "name": "delete_apec_user",
     "description": "**Scope:** `url:DELETE|/api/lti/asset_processor_eulas/:context_external_tool_id/user` Remove the EULA acceptance status for all users within the current deployment. This will allow a tool to reset the EULA acceptance status for all users, and force them to accept the EULA again in the case that the EULA has changed. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published...",
     "inputSchema": {
       "type": "object",
@@ -131,16 +131,16 @@ const definitions = [
 ];
 
 const handlers = {
-  post_asset_processors_asset_processor_id_reports: async (client, args) => {
+  post_apa_reports: async (client, args) => {
     return genericHandler(client, "POST", "/api/lti/asset_processors/:asset_processor_id/reports", args);
   },
-  put_asset_processor_eulas_context_external_tool_id_deployment: async (client, args) => {
+  put_apec_deployment: async (client, args) => {
     return genericHandler(client, "PUT", "/api/lti/asset_processor_eulas/:context_external_tool_id/deployment", args);
   },
-  post_asset_processor_eulas_context_external_tool_id_user: async (client, args) => {
+  post_apec_user: async (client, args) => {
     return genericHandler(client, "POST", "/api/lti/asset_processor_eulas/:context_external_tool_id/user", args);
   },
-  delete_asset_processor_eulas_context_external_tool_id_user: async (client, args) => {
+  delete_apec_user: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/lti/asset_processor_eulas/:context_external_tool_id/user", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_modules",
+    "name": "get_cc_modules",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/modules` A paginated list of the modules in a course ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/222/modules ``` Returns a list of [Module](#module) objects. [ContextModulesApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/context_modules_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -37,7 +37,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_modules_id",
+    "name": "get_cc_modules_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/modules/:id` Get information about a single module ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/222/modules/123 ``` Returns a [Module](#module) object. [ContextModulesApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/context_modules_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -70,7 +70,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_modules",
+    "name": "post_cc_modules",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/modules` Create and return a new module ```bash curl https:///api/v1/courses//modules \\ -X POST \\ -H 'Authorization: Bearer ' \\ -d 'module[name]=module' \\ -d 'module[position]=2' \\ -d 'module[prerequisite_module_ids][]=121' \\ -d 'module[prerequisite_module_ids][]=122' ``` Returns a [Module](#module) object. [ContextModulesApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/context_modules_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -111,7 +111,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_modules_id",
+    "name": "put_cc_modules_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/modules/:id` Update and return an existing module ```bash curl https:///api/v1/courses//modules/ \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -d 'module[name]=module' \\ -d 'module[position]=2' \\ -d 'module[prerequisite_module_ids][]=121' \\ -d 'module[prerequisite_module_ids][]=122' ``` Returns a [Module](#module) object. [ContextModulesApiController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/context_modules_api_con...",
     "inputSchema": {
       "type": "object",
@@ -160,7 +160,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_modules_id",
+    "name": "delete_cc_modules_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/modules/:id` Delete a module ```bash curl https:///api/v1/courses//modules/ \\ -X Delete \\ -H 'Authorization: Bearer ' ``` Returns a [Module](#module) object. [ContextModulesApiController#relock](https://github.com/instructure/canvas-lms/blob/master/app/controllers/context_modules_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -181,7 +181,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_modules_id_relock",
+    "name": "put_ccmi_relock",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/modules/:id/relock` Resets module progressions to their default locked state and recalculates them based on the current requirements. Adding progression requirements to an active course will not lock students out of modules they have already unlocked unless this action is called. ```bash curl https:///api/v1/courses//modules//relock \\ -X PUT \\ -H 'Authorization: Bearer ' ``` Returns a [Module](#module) object. [ContextModuleItemsApiController#ind...",
     "inputSchema": {
       "type": "object",
@@ -202,7 +202,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_modules_module_id_items",
+    "name": "get_ccmm_items",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/modules/:module_id/items` A paginated list of the items in a module ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/222/modules/123/items ``` Returns a list of [ModuleItem](#moduleitem) objects. [ContextModuleItemsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/context_module_items_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -239,7 +239,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_modules_module_id_items_id",
+    "name": "get_ccmm_items_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/modules/:module_id/items/:id` Get information about a single module item ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/222/modules/123/items/768 ``` Returns a [ModuleItem](#moduleitem) object. [ContextModuleItemsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/context_module_items_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -277,7 +277,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_modules_module_id_items",
+    "name": "post_ccmm_items",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/modules/:module_id/items` Create and return a new module item ```bash curl https:///api/v1/courses//modules//items \\ -X POST \\ -H 'Authorization: Bearer ' \\ -d 'module_item[title]=module item' \\ -d 'module_item[type]=ExternalTool' \\ -d 'module_item[content_id]=10' \\ -d 'module_item[position]=2' \\ -d 'module_item[indent]=1' \\ -d 'module_item[new_tab]=true' \\ -d 'module_item[iframe][width]=300' \\ -d 'module_item[iframe][height]=200' ``` Returns a ...",
     "inputSchema": {
       "type": "object",
@@ -348,7 +348,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_modules_module_id_items_id",
+    "name": "put_ccmm_items_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/modules/:module_id/items/:id` Update and return an existing module item ```bash curl https:///api/v1/courses//modules//items/ \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -d 'module_item[position]=2' \\ -d 'module_item[indent]=1' \\ -d 'module_item[new_tab]=true' ``` Returns a [ModuleItem](#moduleitem) object. [ContextModuleItemsApiController#select\\_mastery\\_path](https://github.com/instructure/canvas-lms/blob/master/app/controllers/context_module_ite...",
     "inputSchema": {
       "type": "object",
@@ -410,7 +410,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_modules_module_id_items_id_select_mastery_path",
+    "name": "post_ccmmii_select_mastery_path",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/modules/:module_id/items/:id/select_mastery_path` Select a mastery path when module item includes several possible paths. Requires Mastery Paths feature to be enabled. Returns a compound document with the assignments included in the given path and any module items related to those assignments ```bash curl https:///api/v1/courses//modules//items//select_master_path \\ -X POST \\ -H 'Authorization: Bearer ' \\ -d 'assignment_set_id=2992' ``` [Context...",
     "inputSchema": {
       "type": "object",
@@ -444,7 +444,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_modules_module_id_items_id",
+    "name": "delete_ccmm_items_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/modules/:module_id/items/:id` Delete a module item ```bash curl https:///api/v1/courses//modules//items/ \\ -X Delete \\ -H 'Authorization: Bearer ' ``` Returns a [ModuleItem](#moduleitem) object. [ContextModuleItemsApiController#mark\\_as\\_done](https://github.com/instructure/canvas-lms/blob/master/app/controllers/context_module_items_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -470,7 +470,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_modules_module_id_items_id_done",
+    "name": "put_ccmmii_done",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/modules/:module_id/items/:id/done` Mark a module item as done/not done. Use HTTP method PUT to mark as done, and DELETE to mark as not done. ```bash curl https:///api/v1/courses//modules//items//done \\ -X Put \\ -H 'Authorization: Bearer ' ``` [ContextModuleItemsApiController#item\\_sequence](https://github.com/instructure/canvas-lms/blob/master/app/controllers/context_module_items_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -496,7 +496,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_module_item_sequence",
+    "name": "get_cc_module_item_sequence",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/module_item_sequence` Given an asset in a course, find the ModuleItem it belongs to, the previous and next Module Items in the course sequence, and also any applicable mastery path rules ```bash curl https:///api/v1/courses//module_item_sequence?asset_type=Assignment&asset_id=123 \\ -H 'Authorization: Bearer ' ``` Returns a [ModuleItemSequence](#moduleitemsequence) object. [ContextModuleItemsApiController#mark\\_item\\_read](https://github.com/instr...",
     "inputSchema": {
       "type": "object",
@@ -524,7 +524,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_modules_module_id_items_id_mark_read",
+    "name": "post_ccmmii_mark_read",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/modules/:module_id/items/:id/mark_read` Fulfills \"must view\" requirement for a module item. It is generally not necessary to do this explicitly, but it is provided for applications that need to access external content directly (bypassing the html\\_url redirect that normally allows Canvas to fulfill \"must view\" requirements). This endpoint cannot be used to complete requirements on locked or unpublished module items. ```bash curl https:///api/v1/...",
     "inputSchema": {
       "type": "object",
@@ -550,7 +550,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_modules_context_module_id_assignment_overrides",
+    "name": "get_ccmc_assignment_overrides",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides` Returns a paginated list of AssignmentOverrides that apply to the ContextModule. ```bash curl https:///api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides \\ -H 'Authorization: Bearer ' ``` Returns a list of [ModuleAssignmentOverride](#moduleassignmentoverride) objects. [ModuleAssignmentOverridesController#bulk\\_update](https://github.com/instructure/canvas-lms/blob/master/app/...",
     "inputSchema": {
       "type": "object",
@@ -575,7 +575,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_modules_context_module_id_assignment_overrides",
+    "name": "put_ccmc_assignment_overrides",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides` Accepts a list of overrides and applies them to the ContextModule. Returns 204 No Content response code if successful. ```bash curl https:///api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -H 'Content-Type: application/json' \\ -d '{ \"overrides\": [ { \"id\": 212, \"course_section_id\": 3564 }, { \"id\": 56, \"group_id\": 7809 }, { \"title\": \"...",
     "inputSchema": {
       "type": "object",
@@ -603,55 +603,55 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_modules: async (client, args) => {
+  get_cc_modules: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules", args);
   },
-  get_courses_course_id_modules_id: async (client, args) => {
+  get_cc_modules_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:id", args);
   },
-  post_courses_course_id_modules: async (client, args) => {
+  post_cc_modules: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/modules", args);
   },
-  put_courses_course_id_modules_id: async (client, args) => {
+  put_cc_modules_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:id", args);
   },
-  delete_courses_course_id_modules_id: async (client, args) => {
+  delete_cc_modules_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/modules/:id", args);
   },
-  put_courses_course_id_modules_id_relock: async (client, args) => {
+  put_ccmi_relock: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:id/relock", args);
   },
-  get_courses_course_id_modules_module_id_items: async (client, args) => {
+  get_ccmm_items: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:module_id/items", args);
   },
-  get_courses_course_id_modules_module_id_items_id: async (client, args) => {
+  get_ccmm_items_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:module_id/items/:id", args);
   },
-  post_courses_course_id_modules_module_id_items: async (client, args) => {
+  post_ccmm_items: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/modules/:module_id/items", args);
   },
-  put_courses_course_id_modules_module_id_items_id: async (client, args) => {
+  put_ccmm_items_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:module_id/items/:id", args);
   },
-  post_courses_course_id_modules_module_id_items_id_select_mastery_path: async (client, args) => {
+  post_ccmmii_select_mastery_path: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/modules/:module_id/items/:id/select_mastery_path", args);
   },
-  delete_courses_course_id_modules_module_id_items_id: async (client, args) => {
+  delete_ccmm_items_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/modules/:module_id/items/:id", args);
   },
-  put_courses_course_id_modules_module_id_items_id_done: async (client, args) => {
+  put_ccmmii_done: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:module_id/items/:id/done", args);
   },
-  get_courses_course_id_module_item_sequence: async (client, args) => {
+  get_cc_module_item_sequence: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/module_item_sequence", args);
   },
-  post_courses_course_id_modules_module_id_items_id_mark_read: async (client, args) => {
+  post_ccmmii_mark_read: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/modules/:module_id/items/:id/mark_read", args);
   },
-  get_courses_course_id_modules_context_module_id_assignment_overrides: async (client, args) => {
+  get_ccmc_assignment_overrides: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides", args);
   },
-  put_courses_course_id_modules_context_module_id_assignment_overrides: async (client, args) => {
+  put_ccmc_assignment_overrides: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/modules/:context_module_id/assignment_overrides", args);
   }
 };

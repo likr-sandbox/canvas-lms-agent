@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_quizzes",
+    "name": "get_cc_quizzes",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes` Returns the paginated list of Quizzes in this course. ```bash curl https:///api/v1/courses//quizzes \\ -H 'Authorization: Bearer ' ``` Returns a list of [Quiz](#quiz) objects. [Quizzes::QuizzesApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quizzes_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -29,7 +29,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_quizzes_id",
+    "name": "get_cc_quizzes_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:id` Returns the quiz with the given id. Returns a [Quiz](#quiz) object. [Quizzes::QuizzesApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quizzes_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -54,7 +54,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_quizzes",
+    "name": "post_cc_quizzes",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes` Create a new quiz for this course. Returns a [Quiz](#quiz) object. [Quizzes::QuizzesApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quizzes_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -163,7 +163,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_quizzes_id",
+    "name": "put_cc_quizzes_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/quizzes/:id` Modify an existing quiz. See the documentation for quiz creation. Additional arguments: Returns a [Quiz](#quiz) object. [Quizzes::QuizzesApiController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quizzes_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -188,7 +188,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_quizzes_id",
+    "name": "delete_cc_quizzes_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/quizzes/:id` Deletes a quiz and returns the deleted quiz object. Returns a [Quiz](#quiz) object. [Quizzes::QuizzesApiController#reorder](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quizzes_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -209,7 +209,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_quizzes_id_reorder",
+    "name": "post_ccqi_reorder",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:id/reorder` Change order of the quiz questions or groups within the quiz \\204 No Content\\ response code is returned if the reorder was successful. [Quizzes::QuizzesApiController#validate\\_access\\_code](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quizzes_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -239,7 +239,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_quizzes_id_validate_access_code",
+    "name": "post_ccqi_validate_access_code",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:id/validate_access_code` Accepts an access code and returns a boolean indicating whether that access code is correct *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical co...",
     "inputSchema": {
       "type": "object",
@@ -267,25 +267,25 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_quizzes: async (client, args) => {
+  get_cc_quizzes: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes", args);
   },
-  get_courses_course_id_quizzes_id: async (client, args) => {
+  get_cc_quizzes_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:id", args);
   },
-  post_courses_course_id_quizzes: async (client, args) => {
+  post_cc_quizzes: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes", args);
   },
-  put_courses_course_id_quizzes_id: async (client, args) => {
+  put_cc_quizzes_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:id", args);
   },
-  delete_courses_course_id_quizzes_id: async (client, args) => {
+  delete_cc_quizzes_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/quizzes/:id", args);
   },
-  post_courses_course_id_quizzes_id_reorder: async (client, args) => {
+  post_ccqi_reorder: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:id/reorder", args);
   },
-  post_courses_course_id_quizzes_id_validate_access_code: async (client, args) => {
+  post_ccqi_validate_access_code: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:id/validate_access_code", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_smartsearch",
+    "name": "get_cc_smartsearch",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/smartsearch` Find course content using a meaning-based search Returns a list of [SearchResult](#searchresult) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content ef...",
     "inputSchema": {
       "type": "object",
@@ -40,7 +40,7 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_smartsearch: async (client, args) => {
+  get_cc_smartsearch: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/smartsearch", args);
   }
 };

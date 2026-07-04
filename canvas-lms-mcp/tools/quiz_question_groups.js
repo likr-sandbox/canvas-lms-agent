@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_groups",
+    "name": "get_ccqq_groups",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/groups` Returns a list of question groups in a quiz. ```js { \"quiz_groups\": [QuizGroup] } ``` [Quizzes::QuizGroupsController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_groups_id",
+    "name": "get_ccqq_groups_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id` Returns details of the quiz group with the given id. Returns a [QuizGroup](#quizgroup) object. [Quizzes::QuizGroupsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -60,7 +60,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_quizzes_quiz_id_groups",
+    "name": "post_ccqq_groups",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:quiz_id/groups` Create a new question group for this quiz \\201 Created\\ response code is returned if the creation was successful. ```js { \"quiz_groups\": [QuizGroup] } ``` [Quizzes::QuizGroupsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -97,7 +97,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_quizzes_quiz_id_groups_id",
+    "name": "put_ccqq_groups_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id` Update a question group ```js { \"quiz_groups\": [QuizGroup] } ``` [Quizzes::QuizGroupsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -135,7 +135,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_quizzes_quiz_id_groups_id",
+    "name": "delete_ccqq_groups_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id` Delete a question group \\204 No Content\\ response code is returned if the deletion was successful. [Quizzes::QuizGroupsController#reorder](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -161,7 +161,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_quizzes_quiz_id_groups_id_reorder",
+    "name": "post_ccqqgi_reorder",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id/reorder` Change the order of the quiz questions within the group \\204 No Content\\ response code is returned if the reorder was successful. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can rea...",
     "inputSchema": {
       "type": "object",
@@ -198,22 +198,22 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_quizzes_quiz_id_groups: async (client, args) => {
+  get_ccqq_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups", args);
   },
-  get_courses_course_id_quizzes_quiz_id_groups_id: async (client, args) => {
+  get_ccqq_groups_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id", args);
   },
-  post_courses_course_id_quizzes_quiz_id_groups: async (client, args) => {
+  post_ccqq_groups: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups", args);
   },
-  put_courses_course_id_quizzes_quiz_id_groups_id: async (client, args) => {
+  put_ccqq_groups_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id", args);
   },
-  delete_courses_course_id_quizzes_quiz_id_groups_id: async (client, args) => {
+  delete_ccqq_groups_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id", args);
   },
-  post_courses_course_id_quizzes_quiz_id_groups_id_reorder: async (client, args) => {
+  post_ccqqgi_reorder: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/groups/:id/reorder", args);
   }
 };

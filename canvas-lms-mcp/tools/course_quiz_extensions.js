@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_courses_course_id_quiz_extensions",
+    "name": "post_cc_quiz_extensions",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quiz_extensions` \\Responses\\ * \\200 OK\\ if the request was successful * \\403 Forbidden\\ if you are not allowed to extend quizzes for this course ```bash { \"quiz_extensions\": [{ \"user_id\": 3, \"extra_attempts\": 2, \"extra_time\": 20, \"manually_unlocked\": true },{ \"user_id\": 2, \"extra_attempts\": 2, \"extra_time\": 20, \"manually_unlocked\": false }] } ``` ```bash { \"quiz_extensions\": [{ \"user_id\": 3, \"extend_from_now\": 20 }] } ``` ```js { \"quiz_extension...",
     "inputSchema": {
       "type": "object",
@@ -48,7 +48,7 @@ const definitions = [
 ];
 
 const handlers = {
-  post_courses_course_id_quiz_extensions: async (client, args) => {
+  post_cc_quiz_extensions: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quiz_extensions", args);
   }
 };

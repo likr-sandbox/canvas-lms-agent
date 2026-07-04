@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_content_migrations_content_migration_id_migration_issues",
+    "name": "get_aacmc_migration_issues",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/content_migrations/:content_migration_id/migration_issues`",
     "inputSchema": {
       "type": "object",
@@ -30,7 +30,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_content_migrations_content_migration_id_migration_issues",
+    "name": "get_cccmc_migration_issues",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_migrations/:content_migration_id/migration_issues`",
     "inputSchema": {
       "type": "object",
@@ -55,7 +55,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_content_migrations_content_migration_id_migration_issues",
+    "name": "get_ggcmc_migration_issues",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/content_migrations/:content_migration_id/migration_issues`",
     "inputSchema": {
       "type": "object",
@@ -80,7 +80,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_migrations_content_migration_id_migration_issues",
+    "name": "get_uucmc_migration_issues",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_migrations/:content_migration_id/migration_issues` Returns paginated migration issues ```bash curl https:///api/v1/courses//content_migrations//migration_issues \\ -H 'Authorization: Bearer ' ``` Returns a list of [MigrationIssue](#migrationissue) objects. [MigrationIssuesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/migration_issues_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -105,7 +105,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_content_migrations_content_migration_id_migration_issues_id",
+    "name": "get_aacmc_migration_issues_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/content_migrations/:content_migration_id/migration_issues/:id`",
     "inputSchema": {
       "type": "object",
@@ -135,7 +135,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_content_migrations_content_migration_id_migration_issues_id",
+    "name": "get_cccmc_migration_issues_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_migrations/:content_migration_id/migration_issues/:id`",
     "inputSchema": {
       "type": "object",
@@ -165,7 +165,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_content_migrations_content_migration_id_migration_issues_id",
+    "name": "get_ggcmc_migration_issues_id",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/content_migrations/:content_migration_id/migration_issues/:id`",
     "inputSchema": {
       "type": "object",
@@ -195,7 +195,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_migrations_content_migration_id_migration_issues_id",
+    "name": "get_uucmc_migration_issues_id",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_migrations/:content_migration_id/migration_issues/:id` Returns data on an individual migration issue ```bash curl https:///api/v1/courses//content_migrations//migration_issues/ \\ -H 'Authorization: Bearer ' ``` Returns a [MigrationIssue](#migrationissue) object. [MigrationIssuesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/migration_issues_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -225,7 +225,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_content_migrations_content_migration_id_migration_issues_id",
+    "name": "put_aacmc_migration_issues_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/content_migrations/:content_migration_id/migration_issues/:id`",
     "inputSchema": {
       "type": "object",
@@ -251,7 +251,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_content_migrations_content_migration_id_migration_issues_id",
+    "name": "put_cccmc_migration_issues_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/content_migrations/:content_migration_id/migration_issues/:id`",
     "inputSchema": {
       "type": "object",
@@ -277,7 +277,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_content_migrations_content_migration_id_migration_issues_id",
+    "name": "put_ggcmc_migration_issues_id",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/content_migrations/:content_migration_id/migration_issues/:id`",
     "inputSchema": {
       "type": "object",
@@ -303,7 +303,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_user_id_content_migrations_content_migration_id_migration_issues_id",
+    "name": "put_uucmc_migration_issues_id",
     "description": "**Scope:** `url:PUT|/api/v1/users/:user_id/content_migrations/:content_migration_id/migration_issues/:id` Update the workflow\\_state of a migration issue ```bash curl -X PUT https:///api/v1/courses//content_migrations//migration_issues/ \\ -H 'Authorization: Bearer ' \\ -F 'workflow_state=resolved' ``` Returns a [MigrationIssue](#migrationissue) object. [ContentMigrationsController#index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_migrations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -334,7 +334,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_content_migrations",
+    "name": "get_aa_content_migrations",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/content_migrations`",
     "inputSchema": {
       "type": "object",
@@ -354,7 +354,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_content_migrations",
+    "name": "get_cc_content_migrations",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_migrations`",
     "inputSchema": {
       "type": "object",
@@ -374,7 +374,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_content_migrations",
+    "name": "get_gg_content_migrations",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/content_migrations`",
     "inputSchema": {
       "type": "object",
@@ -394,7 +394,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_migrations",
+    "name": "get_uu_content_migrations",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_migrations` Returns paginated content migrations ```bash curl https:///api/v1/courses//content_migrations \\ -H 'Authorization: Bearer ' ``` Returns a list of [ContentMigration](#contentmigration) objects. [ContentMigrationsController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_migrations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -414,7 +414,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_content_migrations_id",
+    "name": "get_aa_content_migrations_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/content_migrations/:id`",
     "inputSchema": {
       "type": "object",
@@ -439,7 +439,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_content_migrations_id",
+    "name": "get_cc_content_migrations_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_migrations/:id`",
     "inputSchema": {
       "type": "object",
@@ -464,7 +464,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_content_migrations_id",
+    "name": "get_gg_content_migrations_id",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/content_migrations/:id`",
     "inputSchema": {
       "type": "object",
@@ -489,7 +489,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_migrations_id",
+    "name": "get_uu_content_migrations_id",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_migrations/:id` Returns data on an individual content migration ```bash curl https:///api/v1/courses//content_migrations/ \\ -H 'Authorization: Bearer ' ``` Returns a [ContentMigration](#contentmigration) object. [ContentMigrationsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_migrations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -514,7 +514,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_content_migrations",
+    "name": "post_aa_content_migrations",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/content_migrations`",
     "inputSchema": {
       "type": "object",
@@ -530,7 +530,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_content_migrations",
+    "name": "post_cc_content_migrations",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/content_migrations`",
     "inputSchema": {
       "type": "object",
@@ -546,7 +546,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_content_migrations",
+    "name": "post_gg_content_migrations",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/content_migrations`",
     "inputSchema": {
       "type": "object",
@@ -562,7 +562,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_user_id_content_migrations",
+    "name": "post_uu_content_migrations",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/content_migrations` Create a content migration. If the migration requires a file to be uploaded the actual processing of the file will start once the file upload process is completed. File uploading works as described in the [File Upload Documentation](../basics/file.file_uploads.md) except that the values are set on a *pre\\_attachment* sub-hash. For migrations that don't require a file to be uploaded, like course copy, the processing will begin as ...",
     "inputSchema": {
       "type": "object",
@@ -679,7 +679,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_content_migrations_id",
+    "name": "put_aa_content_migrations_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/content_migrations/:id`",
     "inputSchema": {
       "type": "object",
@@ -700,7 +700,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_content_migrations_id",
+    "name": "put_cc_content_migrations_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/content_migrations/:id`",
     "inputSchema": {
       "type": "object",
@@ -721,7 +721,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_content_migrations_id",
+    "name": "put_gg_content_migrations_id",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/content_migrations/:id`",
     "inputSchema": {
       "type": "object",
@@ -742,7 +742,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_user_id_content_migrations_id",
+    "name": "put_uu_content_migrations_id",
     "description": "**Scope:** `url:PUT|/api/v1/users/:user_id/content_migrations/:id` Update a content migration. Takes same arguments as [create](#method.content_migrations.create) except that you can't change the migration type. However, changing most settings after the migration process has started will not do anything. Generally updating the content migration will be used when there is a file upload problem, or when importing content selectively. If the first upload has a problem you can supply new *pre\\_at...",
     "inputSchema": {
       "type": "object",
@@ -763,7 +763,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_content_migrations_migrators",
+    "name": "get_aacm_migrators",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/content_migrations/migrators`",
     "inputSchema": {
       "type": "object",
@@ -783,7 +783,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_content_migrations_migrators",
+    "name": "get_cccm_migrators",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_migrations/migrators`",
     "inputSchema": {
       "type": "object",
@@ -803,7 +803,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_content_migrations_migrators",
+    "name": "get_ggcm_migrators",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/content_migrations/migrators`",
     "inputSchema": {
       "type": "object",
@@ -823,7 +823,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_migrations_migrators",
+    "name": "get_uucm_migrators",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_migrations/migrators` Lists the currently available migration types. These values may change. Returns a list of [Migrator](#migrator) objects. [ContentMigrationsController#content\\_list](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_migrations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -843,7 +843,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_content_migrations_id_selective_data",
+    "name": "get_aacmi_selective_data",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/content_migrations/:id/selective_data`",
     "inputSchema": {
       "type": "object",
@@ -868,7 +868,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_content_migrations_id_selective_data",
+    "name": "get_cccmi_selective_data",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_migrations/:id/selective_data`",
     "inputSchema": {
       "type": "object",
@@ -893,7 +893,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_content_migrations_id_selective_data",
+    "name": "get_ggcmi_selective_data",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/content_migrations/:id/selective_data`",
     "inputSchema": {
       "type": "object",
@@ -918,7 +918,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_migrations_id_selective_data",
+    "name": "get_uucmi_selective_data",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_migrations/:id/selective_data` Enumerates the content available for selective import in a tree structure. Each node provides a +property+ copy argument that can be supplied to the [Update endpoint](#method.content_migrations.update) to selectively copy the content associated with that tree node and its children. Each node may also provide a +sub\\_items\\_url+ or an array of +sub\\_items+ which you can use to obtain copy parameters for a subset ...",
     "inputSchema": {
       "type": "object",
@@ -947,7 +947,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_content_migrations_id_asset_id_mapping",
+    "name": "get_cccmi_asset_id_mapping",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_migrations/:id/asset_id_mapping` Given a complete course copy or blueprint import content migration, return a mapping of asset ids from the source course to the destination course that were copied in this migration or an earlier one with the same course pair and migration\\_type (course copy or blueprint). The returned object's keys are asset types as they appear in API URLs (+announcements+, +assignments+, +discussion\\_topics+, +files+, +...",
     "inputSchema": {
       "type": "object",
@@ -974,115 +974,115 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_content_migrations_content_migration_id_migration_issues: async (client, args) => {
+  get_aacmc_migration_issues: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/content_migrations/:content_migration_id/migration_issues", args);
   },
-  get_courses_course_id_content_migrations_content_migration_id_migration_issues: async (client, args) => {
+  get_cccmc_migration_issues: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_migrations/:content_migration_id/migration_issues", args);
   },
-  get_groups_group_id_content_migrations_content_migration_id_migration_issues: async (client, args) => {
+  get_ggcmc_migration_issues: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/content_migrations/:content_migration_id/migration_issues", args);
   },
-  get_users_user_id_content_migrations_content_migration_id_migration_issues: async (client, args) => {
+  get_uucmc_migration_issues: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_migrations/:content_migration_id/migration_issues", args);
   },
-  get_accounts_account_id_content_migrations_content_migration_id_migration_issues_id: async (client, args) => {
+  get_aacmc_migration_issues_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/content_migrations/:content_migration_id/migration_issues/:id", args);
   },
-  get_courses_course_id_content_migrations_content_migration_id_migration_issues_id: async (client, args) => {
+  get_cccmc_migration_issues_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_migrations/:content_migration_id/migration_issues/:id", args);
   },
-  get_groups_group_id_content_migrations_content_migration_id_migration_issues_id: async (client, args) => {
+  get_ggcmc_migration_issues_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/content_migrations/:content_migration_id/migration_issues/:id", args);
   },
-  get_users_user_id_content_migrations_content_migration_id_migration_issues_id: async (client, args) => {
+  get_uucmc_migration_issues_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_migrations/:content_migration_id/migration_issues/:id", args);
   },
-  put_accounts_account_id_content_migrations_content_migration_id_migration_issues_id: async (client, args) => {
+  put_aacmc_migration_issues_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/content_migrations/:content_migration_id/migration_issues/:id", args);
   },
-  put_courses_course_id_content_migrations_content_migration_id_migration_issues_id: async (client, args) => {
+  put_cccmc_migration_issues_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/content_migrations/:content_migration_id/migration_issues/:id", args);
   },
-  put_groups_group_id_content_migrations_content_migration_id_migration_issues_id: async (client, args) => {
+  put_ggcmc_migration_issues_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/content_migrations/:content_migration_id/migration_issues/:id", args);
   },
-  put_users_user_id_content_migrations_content_migration_id_migration_issues_id: async (client, args) => {
+  put_uucmc_migration_issues_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:user_id/content_migrations/:content_migration_id/migration_issues/:id", args);
   },
-  get_accounts_account_id_content_migrations: async (client, args) => {
+  get_aa_content_migrations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/content_migrations", args);
   },
-  get_courses_course_id_content_migrations: async (client, args) => {
+  get_cc_content_migrations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_migrations", args);
   },
-  get_groups_group_id_content_migrations: async (client, args) => {
+  get_gg_content_migrations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/content_migrations", args);
   },
-  get_users_user_id_content_migrations: async (client, args) => {
+  get_uu_content_migrations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_migrations", args);
   },
-  get_accounts_account_id_content_migrations_id: async (client, args) => {
+  get_aa_content_migrations_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/content_migrations/:id", args);
   },
-  get_courses_course_id_content_migrations_id: async (client, args) => {
+  get_cc_content_migrations_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_migrations/:id", args);
   },
-  get_groups_group_id_content_migrations_id: async (client, args) => {
+  get_gg_content_migrations_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/content_migrations/:id", args);
   },
-  get_users_user_id_content_migrations_id: async (client, args) => {
+  get_uu_content_migrations_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_migrations/:id", args);
   },
-  post_accounts_account_id_content_migrations: async (client, args) => {
+  post_aa_content_migrations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/content_migrations", args);
   },
-  post_courses_course_id_content_migrations: async (client, args) => {
+  post_cc_content_migrations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/content_migrations", args);
   },
-  post_groups_group_id_content_migrations: async (client, args) => {
+  post_gg_content_migrations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/content_migrations", args);
   },
-  post_users_user_id_content_migrations: async (client, args) => {
+  post_uu_content_migrations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/content_migrations", args);
   },
-  put_accounts_account_id_content_migrations_id: async (client, args) => {
+  put_aa_content_migrations_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/content_migrations/:id", args);
   },
-  put_courses_course_id_content_migrations_id: async (client, args) => {
+  put_cc_content_migrations_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/content_migrations/:id", args);
   },
-  put_groups_group_id_content_migrations_id: async (client, args) => {
+  put_gg_content_migrations_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/content_migrations/:id", args);
   },
-  put_users_user_id_content_migrations_id: async (client, args) => {
+  put_uu_content_migrations_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:user_id/content_migrations/:id", args);
   },
-  get_accounts_account_id_content_migrations_migrators: async (client, args) => {
+  get_aacm_migrators: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/content_migrations/migrators", args);
   },
-  get_courses_course_id_content_migrations_migrators: async (client, args) => {
+  get_cccm_migrators: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_migrations/migrators", args);
   },
-  get_groups_group_id_content_migrations_migrators: async (client, args) => {
+  get_ggcm_migrators: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/content_migrations/migrators", args);
   },
-  get_users_user_id_content_migrations_migrators: async (client, args) => {
+  get_uucm_migrators: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_migrations/migrators", args);
   },
-  get_accounts_account_id_content_migrations_id_selective_data: async (client, args) => {
+  get_aacmi_selective_data: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/content_migrations/:id/selective_data", args);
   },
-  get_courses_course_id_content_migrations_id_selective_data: async (client, args) => {
+  get_cccmi_selective_data: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_migrations/:id/selective_data", args);
   },
-  get_groups_group_id_content_migrations_id_selective_data: async (client, args) => {
+  get_ggcmi_selective_data: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/content_migrations/:id/selective_data", args);
   },
-  get_users_user_id_content_migrations_id_selective_data: async (client, args) => {
+  get_uucmi_selective_data: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_migrations/:id/selective_data", args);
   },
-  get_courses_course_id_content_migrations_id_asset_id_mapping: async (client, args) => {
+  get_cccmi_asset_id_mapping: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_migrations/:id/asset_id_mapping", args);
   }
 };

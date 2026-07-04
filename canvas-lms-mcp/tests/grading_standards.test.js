@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const grading_standardsModule = require("../tools/grading_standards");
 
-test("post_accounts_account_id_grading_standards calls correct endpoint", async () => {
+test("post_aa_grading_standards calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_standardsModule.handlers.post_accounts_account_id_grading_standards;
-  assert.ok(handler, "Handler post_accounts_account_id_grading_standards should be defined");
+  const handler = grading_standardsModule.handlers.post_aa_grading_standards;
+  assert.ok(handler, "Handler post_aa_grading_standards should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -23,15 +23,15 @@ test("post_accounts_account_id_grading_standards calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_grading_standards calls correct endpoint", async () => {
+test("post_cc_grading_standards calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_standardsModule.handlers.post_courses_course_id_grading_standards;
-  assert.ok(handler, "Handler post_courses_course_id_grading_standards should be defined");
+  const handler = grading_standardsModule.handlers.post_cc_grading_standards;
+  assert.ok(handler, "Handler post_cc_grading_standards should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "title": "test_val"});
 
@@ -41,15 +41,15 @@ test("post_courses_course_id_grading_standards calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_grading_standards calls correct endpoint", async () => {
+test("get_cc_grading_standards calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_standardsModule.handlers.get_courses_course_id_grading_standards;
-  assert.ok(handler, "Handler get_courses_course_id_grading_standards should be defined");
+  const handler = grading_standardsModule.handlers.get_cc_grading_standards;
+  assert.ok(handler, "Handler get_cc_grading_standards should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -59,15 +59,15 @@ test("get_courses_course_id_grading_standards calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_grading_standards calls correct endpoint", async () => {
+test("get_aa_grading_standards calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_standardsModule.handlers.get_accounts_account_id_grading_standards;
-  assert.ok(handler, "Handler get_accounts_account_id_grading_standards should be defined");
+  const handler = grading_standardsModule.handlers.get_aa_grading_standards;
+  assert.ok(handler, "Handler get_aa_grading_standards should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -77,15 +77,15 @@ test("get_accounts_account_id_grading_standards calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_grading_standards_grading_standard_id calls correct endpoint", async () => {
+test("get_cc_grading_standards_grading_standard_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_standardsModule.handlers.get_courses_course_id_grading_standards_grading_standard_id;
-  assert.ok(handler, "Handler get_courses_course_id_grading_standards_grading_standard_id should be defined");
+  const handler = grading_standardsModule.handlers.get_cc_grading_standards_grading_standard_id;
+  assert.ok(handler, "Handler get_cc_grading_standards_grading_standard_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "grading_standard_id": "test_grading_standard_id"});
 
@@ -95,15 +95,15 @@ test("get_courses_course_id_grading_standards_grading_standard_id calls correct 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_grading_standards_grading_standard_id calls correct endpoint", async () => {
+test("get_aa_grading_standards_grading_standard_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_standardsModule.handlers.get_accounts_account_id_grading_standards_grading_standard_id;
-  assert.ok(handler, "Handler get_accounts_account_id_grading_standards_grading_standard_id should be defined");
+  const handler = grading_standardsModule.handlers.get_aa_grading_standards_grading_standard_id;
+  assert.ok(handler, "Handler get_aa_grading_standards_grading_standard_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "grading_standard_id": "test_grading_standard_id"});
 
@@ -113,15 +113,15 @@ test("get_accounts_account_id_grading_standards_grading_standard_id calls correc
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_grading_standards_grading_standard_id calls correct endpoint", async () => {
+test("put_cc_grading_standards_grading_standard_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_standardsModule.handlers.put_courses_course_id_grading_standards_grading_standard_id;
-  assert.ok(handler, "Handler put_courses_course_id_grading_standards_grading_standard_id should be defined");
+  const handler = grading_standardsModule.handlers.put_cc_grading_standards_grading_standard_id;
+  assert.ok(handler, "Handler put_cc_grading_standards_grading_standard_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "grading_standard_id": "test_grading_standard_id"});
 
@@ -131,15 +131,15 @@ test("put_courses_course_id_grading_standards_grading_standard_id calls correct 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_grading_standards_grading_standard_id calls correct endpoint", async () => {
+test("put_aa_grading_standards_grading_standard_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_standardsModule.handlers.put_accounts_account_id_grading_standards_grading_standard_id;
-  assert.ok(handler, "Handler put_accounts_account_id_grading_standards_grading_standard_id should be defined");
+  const handler = grading_standardsModule.handlers.put_aa_grading_standards_grading_standard_id;
+  assert.ok(handler, "Handler put_aa_grading_standards_grading_standard_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "grading_standard_id": "test_grading_standard_id", "title": "test_val"});
 
@@ -149,15 +149,15 @@ test("put_accounts_account_id_grading_standards_grading_standard_id calls correc
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_grading_standards_grading_standard_id calls correct endpoint", async () => {
+test("delete_cc_grading_standards_grading_standard_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_standardsModule.handlers.delete_courses_course_id_grading_standards_grading_standard_id;
-  assert.ok(handler, "Handler delete_courses_course_id_grading_standards_grading_standard_id should be defined");
+  const handler = grading_standardsModule.handlers.delete_cc_grading_standards_grading_standard_id;
+  assert.ok(handler, "Handler delete_cc_grading_standards_grading_standard_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "grading_standard_id": "test_grading_standard_id"});
 
@@ -167,15 +167,15 @@ test("delete_courses_course_id_grading_standards_grading_standard_id calls corre
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_grading_standards_grading_standard_id calls correct endpoint", async () => {
+test("delete_aa_grading_standards_grading_standard_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_standardsModule.handlers.delete_accounts_account_id_grading_standards_grading_standard_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_grading_standards_grading_standard_id should be defined");
+  const handler = grading_standardsModule.handlers.delete_aa_grading_standards_grading_standard_id;
+  assert.ok(handler, "Handler delete_aa_grading_standards_grading_standard_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "grading_standard_id": "test_grading_standard_id"});
 

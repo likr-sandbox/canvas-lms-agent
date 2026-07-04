@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const what_if_gradesModule = require("../tools/what_if_grades");
 
-test("put_submissions_id_what_if_grades calls correct endpoint", async () => {
+test("put_si_what_if_grades calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = what_if_gradesModule.handlers.put_submissions_id_what_if_grades;
-  assert.ok(handler, "Handler put_submissions_id_what_if_grades should be defined");
+  const handler = what_if_gradesModule.handlers.put_si_what_if_grades;
+  assert.ok(handler, "Handler put_si_what_if_grades should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "student_entered_score": 123});
 
@@ -23,15 +23,15 @@ test("put_submissions_id_what_if_grades calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_what_if_grades_reset calls correct endpoint", async () => {
+test("put_ccwig_reset calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = what_if_gradesModule.handlers.put_courses_course_id_what_if_grades_reset;
-  assert.ok(handler, "Handler put_courses_course_id_what_if_grades_reset should be defined");
+  const handler = what_if_gradesModule.handlers.put_ccwig_reset;
+  assert.ok(handler, "Handler put_ccwig_reset should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 

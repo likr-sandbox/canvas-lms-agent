@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const scoreModule = require("../tools/score");
 
-test("post_courses_course_id_line_items_line_item_id_scores calls correct endpoint", async () => {
+test("post_cclil_scores calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = scoreModule.handlers.post_courses_course_id_line_items_line_item_id_scores;
-  assert.ok(handler, "Handler post_courses_course_id_line_items_line_item_id_scores should be defined");
+  const handler = scoreModule.handlers.post_cclil_scores;
+  assert.ok(handler, "Handler post_cclil_scores should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "line_item_id": "test_line_item_id", "userId": "test_val"});
 

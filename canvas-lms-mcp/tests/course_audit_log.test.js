@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const course_audit_logModule = require("../tools/course_audit_log");
 
-test("get_audit_course_courses_course_id calls correct endpoint", async () => {
+test("get_ac_courses_course_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = course_audit_logModule.handlers.get_audit_course_courses_course_id;
-  assert.ok(handler, "Handler get_audit_course_courses_course_id should be defined");
+  const handler = course_audit_logModule.handlers.get_ac_courses_course_id;
+  assert.ok(handler, "Handler get_ac_courses_course_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "start_time": "test_val"});
 
@@ -23,15 +23,15 @@ test("get_audit_course_courses_course_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_audit_course_accounts_account_id calls correct endpoint", async () => {
+test("get_ac_accounts_account_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = course_audit_logModule.handlers.get_audit_course_accounts_account_id;
-  assert.ok(handler, "Handler get_audit_course_accounts_account_id should be defined");
+  const handler = course_audit_logModule.handlers.get_ac_accounts_account_id;
+  assert.ok(handler, "Handler get_ac_accounts_account_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "start_time": "test_val"});
 

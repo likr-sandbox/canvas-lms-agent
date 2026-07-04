@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const peer_reviewsModule = require("../tools/peer_reviews");
 
-test("get_courses_course_id_assignments_assignment_id_peer_reviews calls correct endpoint", async () => {
+test("get_ccaa_peer_reviews calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = peer_reviewsModule.handlers.get_courses_course_id_assignments_assignment_id_peer_reviews;
-  assert.ok(handler, "Handler get_courses_course_id_assignments_assignment_id_peer_reviews should be defined");
+  const handler = peer_reviewsModule.handlers.get_ccaa_peer_reviews;
+  assert.ok(handler, "Handler get_ccaa_peer_reviews should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_assignments_assignment_id_peer_reviews calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_sections_section_id_assignments_assignment_id_peer_reviews calls correct endpoint", async () => {
+test("get_ssaa_peer_reviews calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = peer_reviewsModule.handlers.get_sections_section_id_assignments_assignment_id_peer_reviews;
-  assert.ok(handler, "Handler get_sections_section_id_assignments_assignment_id_peer_reviews should be defined");
+  const handler = peer_reviewsModule.handlers.get_ssaa_peer_reviews;
+  assert.ok(handler, "Handler get_ssaa_peer_reviews should be defined");
 
   const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id"});
 
@@ -41,15 +41,15 @@ test("get_sections_section_id_assignments_assignment_id_peer_reviews calls corre
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews calls correct endpoint", async () => {
+test("get_ccaass_peer_reviews calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = peer_reviewsModule.handlers.get_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews;
-  assert.ok(handler, "Handler get_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews should be defined");
+  const handler = peer_reviewsModule.handlers.get_ccaass_peer_reviews;
+  assert.ok(handler, "Handler get_ccaass_peer_reviews should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "submission_id": "test_submission_id"});
 
@@ -59,15 +59,15 @@ test("get_courses_course_id_assignments_assignment_id_submissions_submission_id_
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews calls correct endpoint", async () => {
+test("get_ssaass_peer_reviews calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = peer_reviewsModule.handlers.get_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews;
-  assert.ok(handler, "Handler get_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews should be defined");
+  const handler = peer_reviewsModule.handlers.get_ssaass_peer_reviews;
+  assert.ok(handler, "Handler get_ssaass_peer_reviews should be defined");
 
   const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "submission_id": "test_submission_id", "include[]": "test_val"});
 
@@ -77,15 +77,15 @@ test("get_sections_section_id_assignments_assignment_id_submissions_submission_i
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews calls correct endpoint", async () => {
+test("post_ccaass_peer_reviews calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = peer_reviewsModule.handlers.post_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews;
-  assert.ok(handler, "Handler post_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews should be defined");
+  const handler = peer_reviewsModule.handlers.post_ccaass_peer_reviews;
+  assert.ok(handler, "Handler post_ccaass_peer_reviews should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "submission_id": "test_submission_id"});
 
@@ -95,15 +95,15 @@ test("post_courses_course_id_assignments_assignment_id_submissions_submission_id
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews calls correct endpoint", async () => {
+test("post_ssaass_peer_reviews calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = peer_reviewsModule.handlers.post_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews;
-  assert.ok(handler, "Handler post_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews should be defined");
+  const handler = peer_reviewsModule.handlers.post_ssaass_peer_reviews;
+  assert.ok(handler, "Handler post_ssaass_peer_reviews should be defined");
 
   const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "submission_id": "test_submission_id", "user_id": 123});
 
@@ -113,15 +113,15 @@ test("post_sections_section_id_assignments_assignment_id_submissions_submission_
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews calls correct endpoint", async () => {
+test("delete_ccaass_peer_reviews calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = peer_reviewsModule.handlers.delete_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews;
-  assert.ok(handler, "Handler delete_courses_course_id_assignments_assignment_id_submissions_submission_id_peer_reviews should be defined");
+  const handler = peer_reviewsModule.handlers.delete_ccaass_peer_reviews;
+  assert.ok(handler, "Handler delete_ccaass_peer_reviews should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id", "submission_id": "test_submission_id"});
 
@@ -131,15 +131,15 @@ test("delete_courses_course_id_assignments_assignment_id_submissions_submission_
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews calls correct endpoint", async () => {
+test("delete_ssaass_peer_reviews calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = peer_reviewsModule.handlers.delete_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews;
-  assert.ok(handler, "Handler delete_sections_section_id_assignments_assignment_id_submissions_submission_id_peer_reviews should be defined");
+  const handler = peer_reviewsModule.handlers.delete_ssaass_peer_reviews;
+  assert.ok(handler, "Handler delete_ssaass_peer_reviews should be defined");
 
   const result = await handler(mockClient, {"section_id": "test_section_id", "assignment_id": "test_assignment_id", "submission_id": "test_submission_id", "user_id": 123});
 
@@ -149,15 +149,15 @@ test("delete_sections_section_id_assignments_assignment_id_submissions_submissio
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_assignments_assignment_id_allocate calls correct endpoint", async () => {
+test("post_ccaa_allocate calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = peer_reviewsModule.handlers.post_courses_course_id_assignments_assignment_id_allocate;
-  assert.ok(handler, "Handler post_courses_course_id_assignments_assignment_id_allocate should be defined");
+  const handler = peer_reviewsModule.handlers.post_ccaa_allocate;
+  assert.ok(handler, "Handler post_ccaa_allocate should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": "test_assignment_id"});
 

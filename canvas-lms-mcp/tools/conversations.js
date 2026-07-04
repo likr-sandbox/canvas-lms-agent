@@ -115,7 +115,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_conversations_batches",
+    "name": "get_c_batches",
     "description": "**Scope:** `url:GET|/api/v1/conversations/batches` Returns any currently running conversation batches for the current user. Conversation batches are created when a bulk private message is sent asynchronously (see the mode argument to the [create API action](#method.conversations.create)). ```js [ { \"id\": 1, \"subject\": \"conversations api example\", \"workflow_state\": \"created\", \"completion\": 0.1234, \"tags\": [], \"message\": { \"id\": 1, \"created_at\": \"2011-09-02T10:00:00Z\", \"body\": \"quick reminder, ...",
     "inputSchema": {
       "type": "object",
@@ -208,7 +208,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_conversations_mark_all_as_read",
+    "name": "post_c_mark_all_as_read",
     "description": "**Scope:** `url:POST|/api/v1/conversations/mark_all_as_read` Mark all conversations as read. [ConversationsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/conversations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -232,7 +232,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_conversations_id_add_recipients",
+    "name": "post_ci_add_recipients",
     "description": "**Scope:** `url:POST|/api/v1/conversations/:id/add_recipients` Add recipients to an existing group conversation. Response is similar to the GET/show action, except that only includes the latest message (e.g. \"joe was added to the conversation by bob\") ```js { \"id\": 2, \"subject\": \"conversations api example\", \"workflow_state\": \"read\", \"last_message\": \"let's talk this over with jim\", \"last_message_at\": \"2011-09-02T12:00:00-06:00\", \"message_count\": 2, \"subscribed\": true, \"private\": false, \"starre...",
     "inputSchema": {
       "type": "object",
@@ -253,7 +253,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_conversations_id_add_message",
+    "name": "post_ci_add_message",
     "description": "**Scope:** `url:POST|/api/v1/conversations/:id/add_message` Add a message to an existing conversation. Response is similar to the GET/show action, except that only includes the latest message (i.e. what we just sent) An array of user ids. Defaults to all of the current conversation recipients. To explicitly send a message to no other recipients, this array should consist of the logged-in user id. An array of message ids from this conversation to send to recipients of the new message. Recipien...",
     "inputSchema": {
       "type": "object",
@@ -294,7 +294,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_conversations_id_remove_messages",
+    "name": "post_ci_remove_messages",
     "description": "**Scope:** `url:POST|/api/v1/conversations/:id/remove_messages` Delete messages from this conversation. Note that this only affects this user's view of the conversation. If all messages are deleted, the conversation will be as well (equivalent to DELETE) ```js { \"id\": 2, \"subject\": \"conversations api example\", \"workflow_state\": \"read\", \"last_message\": \"sure thing, here's the file\", \"last_message_at\": \"2011-09-02T12:00:00-06:00\", \"message_count\": 1, \"subscribed\": true, \"private\": true, \"starre...",
     "inputSchema": {
       "type": "object",
@@ -336,7 +336,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_conversations_find_recipients",
+    "name": "get_c_find_recipients",
     "description": "**Scope:** `url:GET|/api/v1/conversations/find_recipients` Deprecated, see the [Find recipients endpoint](search.md#method.search.recipients) in the Search API [ConversationsController#unread\\_count](https://github.com/instructure/canvas-lms/blob/master/app/controllers/conversations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -349,7 +349,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_conversations_unread_count",
+    "name": "get_c_unread_count",
     "description": "**Scope:** `url:GET|/api/v1/conversations/unread_count` Get the number of unread conversations for the current user ```js {'unread_count': '7'} ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn m...",
     "inputSchema": {
       "type": "object",
@@ -370,7 +370,7 @@ const handlers = {
   post_conversations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/conversations", args);
   },
-  get_conversations_batches: async (client, args) => {
+  get_c_batches: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/conversations/batches", args);
   },
   get_conversations_id: async (client, args) => {
@@ -379,28 +379,28 @@ const handlers = {
   put_conversations_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/conversations/:id", args);
   },
-  post_conversations_mark_all_as_read: async (client, args) => {
+  post_c_mark_all_as_read: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/conversations/mark_all_as_read", args);
   },
   delete_conversations_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/conversations/:id", args);
   },
-  post_conversations_id_add_recipients: async (client, args) => {
+  post_ci_add_recipients: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/conversations/:id/add_recipients", args);
   },
-  post_conversations_id_add_message: async (client, args) => {
+  post_ci_add_message: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/conversations/:id/add_message", args);
   },
-  post_conversations_id_remove_messages: async (client, args) => {
+  post_ci_remove_messages: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/conversations/:id/remove_messages", args);
   },
   put_conversations: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/conversations", args);
   },
-  get_conversations_find_recipients: async (client, args) => {
+  get_c_find_recipients: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/conversations/find_recipients", args);
   },
-  get_conversations_unread_count: async (client, args) => {
+  get_c_unread_count: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/conversations/unread_count", args);
   }
 };

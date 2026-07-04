@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const quiz_submission_filesModule = require("../tools/quiz_submission_files");
 
-test("post_courses_course_id_quizzes_quiz_id_submissions_self_files calls correct endpoint", async () => {
+test("post_ccqqss_files calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = quiz_submission_filesModule.handlers.post_courses_course_id_quizzes_quiz_id_submissions_self_files;
-  assert.ok(handler, "Handler post_courses_course_id_quizzes_quiz_id_submissions_self_files should be defined");
+  const handler = quiz_submission_filesModule.handlers.post_ccqqss_files;
+  assert.ok(handler, "Handler post_ccqqss_files should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_id": "test_quiz_id", "name": "test_val"});
 

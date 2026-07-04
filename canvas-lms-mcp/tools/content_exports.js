@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_content_exports",
+    "name": "get_cc_content_exports",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_exports`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_content_exports",
+    "name": "get_gg_content_exports",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/content_exports`",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_exports",
+    "name": "get_uu_content_exports",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_exports` A paginated list of the past and pending content export jobs for a course, group, or user. Exports are returned newest first. Returns a list of [ContentExport](#contentexport) objects. [ContentExportsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_exports_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -65,7 +65,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_content_exports_id",
+    "name": "get_cc_content_exports_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/content_exports/:id`",
     "inputSchema": {
       "type": "object",
@@ -90,7 +90,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_content_exports_id",
+    "name": "get_gg_content_exports_id",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/content_exports/:id`",
     "inputSchema": {
       "type": "object",
@@ -115,7 +115,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_exports_id",
+    "name": "get_uu_content_exports_id",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_exports/:id` Get information about a single content export. Returns a [ContentExport](#contentexport) object. [ContentExportsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_exports_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -140,7 +140,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_content_exports",
+    "name": "post_cc_content_exports",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/content_exports`",
     "inputSchema": {
       "type": "object",
@@ -156,7 +156,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_content_exports",
+    "name": "post_gg_content_exports",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/content_exports`",
     "inputSchema": {
       "type": "object",
@@ -172,7 +172,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_user_id_content_exports",
+    "name": "post_uu_content_exports",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/content_exports` Begin a content export job for a course, group, or user. You can use the [Progress API](progress.md#method.progress.show) to track the progress of the export. The migration's progress is linked to with the *progress\\_url* value. When the export completes, use the [Show content export](#method.content_exports_api.show) endpoint to retrieve a download URL for the exported content. Returns a [ContentExport](#contentexport) object. *** ...",
     "inputSchema": {
       "type": "object",
@@ -203,31 +203,31 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_content_exports: async (client, args) => {
+  get_cc_content_exports: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_exports", args);
   },
-  get_groups_group_id_content_exports: async (client, args) => {
+  get_gg_content_exports: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/content_exports", args);
   },
-  get_users_user_id_content_exports: async (client, args) => {
+  get_uu_content_exports: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_exports", args);
   },
-  get_courses_course_id_content_exports_id: async (client, args) => {
+  get_cc_content_exports_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/content_exports/:id", args);
   },
-  get_groups_group_id_content_exports_id: async (client, args) => {
+  get_gg_content_exports_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/content_exports/:id", args);
   },
-  get_users_user_id_content_exports_id: async (client, args) => {
+  get_uu_content_exports_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_exports/:id", args);
   },
-  post_courses_course_id_content_exports: async (client, args) => {
+  post_cc_content_exports: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/content_exports", args);
   },
-  post_groups_group_id_content_exports: async (client, args) => {
+  post_gg_content_exports: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/content_exports", args);
   },
-  post_users_user_id_content_exports: async (client, args) => {
+  post_uu_content_exports: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/content_exports", args);
   }
 };

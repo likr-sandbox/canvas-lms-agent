@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const announcement_external_feedsModule = require("../tools/announcement_external_feeds");
 
-test("get_courses_course_id_external_feeds calls correct endpoint", async () => {
+test("get_cc_external_feeds calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = announcement_external_feedsModule.handlers.get_courses_course_id_external_feeds;
-  assert.ok(handler, "Handler get_courses_course_id_external_feeds should be defined");
+  const handler = announcement_external_feedsModule.handlers.get_cc_external_feeds;
+  assert.ok(handler, "Handler get_cc_external_feeds should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_external_feeds calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_external_feeds calls correct endpoint", async () => {
+test("get_gg_external_feeds calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = announcement_external_feedsModule.handlers.get_groups_group_id_external_feeds;
-  assert.ok(handler, "Handler get_groups_group_id_external_feeds should be defined");
+  const handler = announcement_external_feedsModule.handlers.get_gg_external_feeds;
+  assert.ok(handler, "Handler get_gg_external_feeds should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -41,15 +41,15 @@ test("get_groups_group_id_external_feeds calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_courses_course_id_external_feeds calls correct endpoint", async () => {
+test("post_cc_external_feeds calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = announcement_external_feedsModule.handlers.post_courses_course_id_external_feeds;
-  assert.ok(handler, "Handler post_courses_course_id_external_feeds should be defined");
+  const handler = announcement_external_feedsModule.handlers.post_cc_external_feeds;
+  assert.ok(handler, "Handler post_cc_external_feeds should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -59,15 +59,15 @@ test("post_courses_course_id_external_feeds calls correct endpoint", async () =>
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_groups_group_id_external_feeds calls correct endpoint", async () => {
+test("post_gg_external_feeds calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = announcement_external_feedsModule.handlers.post_groups_group_id_external_feeds;
-  assert.ok(handler, "Handler post_groups_group_id_external_feeds should be defined");
+  const handler = announcement_external_feedsModule.handlers.post_gg_external_feeds;
+  assert.ok(handler, "Handler post_gg_external_feeds should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "url": "test_val"});
 
@@ -77,15 +77,15 @@ test("post_groups_group_id_external_feeds calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_courses_course_id_external_feeds_external_feed_id calls correct endpoint", async () => {
+test("delete_cc_external_feeds_external_feed_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = announcement_external_feedsModule.handlers.delete_courses_course_id_external_feeds_external_feed_id;
-  assert.ok(handler, "Handler delete_courses_course_id_external_feeds_external_feed_id should be defined");
+  const handler = announcement_external_feedsModule.handlers.delete_cc_external_feeds_external_feed_id;
+  assert.ok(handler, "Handler delete_cc_external_feeds_external_feed_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "external_feed_id": "test_external_feed_id"});
 
@@ -95,15 +95,15 @@ test("delete_courses_course_id_external_feeds_external_feed_id calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_groups_group_id_external_feeds_external_feed_id calls correct endpoint", async () => {
+test("delete_gg_external_feeds_external_feed_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = announcement_external_feedsModule.handlers.delete_groups_group_id_external_feeds_external_feed_id;
-  assert.ok(handler, "Handler delete_groups_group_id_external_feeds_external_feed_id should be defined");
+  const handler = announcement_external_feedsModule.handlers.delete_gg_external_feeds_external_feed_id;
+  assert.ok(handler, "Handler delete_gg_external_feeds_external_feed_id should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "external_feed_id": "test_external_feed_id"});
 

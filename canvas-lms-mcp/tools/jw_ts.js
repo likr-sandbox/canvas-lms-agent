@@ -34,7 +34,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_jwts_refresh",
+    "name": "post_j_refresh",
     "description": "**Scope:** `url:POST|/api/v1/jwts/refresh` Refresh a JWT for use with other canvas services Generates a different JWT each time it's called, each one expires after a short window (1 hour). ```bash curl 'https:///api/v1/jwts/refresh' \\ -X POST \\ -H \"Accept: application/json\" \\ -H 'Authorization: Bearer ' -d 'jwt=' ``` Returns a [JWT](#jwt) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- ...",
     "inputSchema": {
       "type": "object",
@@ -55,7 +55,7 @@ const handlers = {
   post_jwts: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/jwts", args);
   },
-  post_jwts_refresh: async (client, args) => {
+  post_j_refresh: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/jwts/refresh", args);
   }
 };

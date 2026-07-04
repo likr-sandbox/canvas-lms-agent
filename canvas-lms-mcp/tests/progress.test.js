@@ -23,15 +23,15 @@ test("get_progress_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_progress_id_cancel calls correct endpoint", async () => {
+test("post_pi_cancel calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = progressModule.handlers.post_progress_id_cancel;
-  assert.ok(handler, "Handler post_progress_id_cancel should be defined");
+  const handler = progressModule.handlers.post_pi_cancel;
+  assert.ok(handler, "Handler post_pi_cancel should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -41,15 +41,15 @@ test("post_progress_id_cancel calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_progress_id calls correct endpoint", async () => {
+test("get_cc_progress_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = progressModule.handlers.get_courses_course_id_progress_id;
-  assert.ok(handler, "Handler get_courses_course_id_progress_id should be defined");
+  const handler = progressModule.handlers.get_cc_progress_id;
+  assert.ok(handler, "Handler get_cc_progress_id should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "id": "test_id"});
 

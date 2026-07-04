@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const media_objectsModule = require("../tools/media_objects");
 
-test("get_media_objects_media_object_id_media_tracks calls correct endpoint", async () => {
+test("get_mom_media_tracks calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = media_objectsModule.handlers.get_media_objects_media_object_id_media_tracks;
-  assert.ok(handler, "Handler get_media_objects_media_object_id_media_tracks should be defined");
+  const handler = media_objectsModule.handlers.get_mom_media_tracks;
+  assert.ok(handler, "Handler get_mom_media_tracks should be defined");
 
   const result = await handler(mockClient, {"media_object_id": "test_media_object_id"});
 
@@ -23,15 +23,15 @@ test("get_media_objects_media_object_id_media_tracks calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_media_attachments_attachment_id_media_tracks calls correct endpoint", async () => {
+test("get_maa_media_tracks calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = media_objectsModule.handlers.get_media_attachments_attachment_id_media_tracks;
-  assert.ok(handler, "Handler get_media_attachments_attachment_id_media_tracks should be defined");
+  const handler = media_objectsModule.handlers.get_maa_media_tracks;
+  assert.ok(handler, "Handler get_maa_media_tracks should be defined");
 
   const result = await handler(mockClient, {"attachment_id": "test_attachment_id", "include[]": "test_val"});
 
@@ -41,15 +41,15 @@ test("get_media_attachments_attachment_id_media_tracks calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_media_objects_media_object_id_media_tracks calls correct endpoint", async () => {
+test("put_mom_media_tracks calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = media_objectsModule.handlers.put_media_objects_media_object_id_media_tracks;
-  assert.ok(handler, "Handler put_media_objects_media_object_id_media_tracks should be defined");
+  const handler = media_objectsModule.handlers.put_mom_media_tracks;
+  assert.ok(handler, "Handler put_mom_media_tracks should be defined");
 
   const result = await handler(mockClient, {"media_object_id": "test_media_object_id"});
 
@@ -59,15 +59,15 @@ test("put_media_objects_media_object_id_media_tracks calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_media_attachments_attachment_id_media_tracks calls correct endpoint", async () => {
+test("put_maa_media_tracks calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = media_objectsModule.handlers.put_media_attachments_attachment_id_media_tracks;
-  assert.ok(handler, "Handler put_media_attachments_attachment_id_media_tracks should be defined");
+  const handler = media_objectsModule.handlers.put_maa_media_tracks;
+  assert.ok(handler, "Handler put_maa_media_tracks should be defined");
 
   const result = await handler(mockClient, {"attachment_id": "test_attachment_id", "include[]": "test_val"});
 
@@ -95,15 +95,15 @@ test("get_media_objects calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_media_objects calls correct endpoint", async () => {
+test("get_cc_media_objects calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = media_objectsModule.handlers.get_courses_course_id_media_objects;
-  assert.ok(handler, "Handler get_courses_course_id_media_objects should be defined");
+  const handler = media_objectsModule.handlers.get_cc_media_objects;
+  assert.ok(handler, "Handler get_cc_media_objects should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -113,15 +113,15 @@ test("get_courses_course_id_media_objects calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_media_objects calls correct endpoint", async () => {
+test("get_gg_media_objects calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = media_objectsModule.handlers.get_groups_group_id_media_objects;
-  assert.ok(handler, "Handler get_groups_group_id_media_objects should be defined");
+  const handler = media_objectsModule.handlers.get_gg_media_objects;
+  assert.ok(handler, "Handler get_gg_media_objects should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 
@@ -149,15 +149,15 @@ test("get_media_attachments calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_media_attachments calls correct endpoint", async () => {
+test("get_cc_media_attachments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = media_objectsModule.handlers.get_courses_course_id_media_attachments;
-  assert.ok(handler, "Handler get_courses_course_id_media_attachments should be defined");
+  const handler = media_objectsModule.handlers.get_cc_media_attachments;
+  assert.ok(handler, "Handler get_cc_media_attachments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -167,15 +167,15 @@ test("get_courses_course_id_media_attachments calls correct endpoint", async () 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_media_attachments calls correct endpoint", async () => {
+test("get_gg_media_attachments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = media_objectsModule.handlers.get_groups_group_id_media_attachments;
-  assert.ok(handler, "Handler get_groups_group_id_media_attachments should be defined");
+  const handler = media_objectsModule.handlers.get_gg_media_attachments;
+  assert.ok(handler, "Handler get_gg_media_attachments should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id", "sort": "test_val"});
 

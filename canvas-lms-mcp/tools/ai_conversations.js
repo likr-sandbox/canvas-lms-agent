@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_ai_experiences_ai_experience_id_conversations_id",
+    "name": "get_ccaea_conversations_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id` Get a specific conversation by ID (for teachers viewing student conversations) [AiConversationsController#active\\_conversation](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_conversations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -35,7 +35,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_ai_experiences_ai_experience_id_conversations",
+    "name": "get_ccaea_conversations",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations` Get the active conversation for the current user and AI experience [AiConversationsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_conversations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -60,7 +60,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_ai_experiences_ai_experience_id_conversations",
+    "name": "post_ccaea_conversations",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations` Initialize a new conversation with the AI experience [AiConversationsController#post\\_message](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_conversations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -81,7 +81,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages",
+    "name": "post_ccaeaci_messages",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/messages` Send a message to an existing conversation and get the AI response [AiConversationsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_conversations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -112,7 +112,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id",
+    "name": "delete_ccaea_conversations_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id` End the current conversation session [AiConversationsController#evaluation](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_conversations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -138,7 +138,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_ai_experiences_ai_experience_id_conversations_id_evaluation",
+    "name": "get_ccaeaci_evaluation",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/evaluation` Fetch the latest stored evaluation for a conversation from the llm-conversation service. Reads only \u2014 does not run the LLM and is not rate-limited. `evaluation` is null when none has been generated yet (llma returns 200 + null, never 404, so this is distinguishable from an outage). `stale` is true when the AI experience was edited after the stored evaluation was generated. [AiConversa...",
     "inputSchema": {
       "type": "object",
@@ -168,7 +168,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_evaluation",
+    "name": "post_ccaeaci_evaluation",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/evaluation` Run the LLM to (re)generate an evaluation for a conversation and persist it in the llm-conversation service. Rate-limited. Also the Reset path \u2014 a fresh run replaces any prior stored evaluation. [AiConversationsController#create\\_feedback](https://github.com/instructure/canvas-lms/blob/master/app/controllers/ai_conversations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -194,7 +194,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages_message_id_feedback",
+    "name": "post_ccaeacimm_feedback",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/messages/:message_id/feedback` Submit a like or dislike vote on an AI-generated message. Ownership: load\\_conversation gates this action \u2014 only the conversation owner or a course manager reaches here. Sub-resource (message\\_id within the conversation) scoping is delegated to llma. [AiConversationsController#delete\\_feedback](https://github.com/instructure/canvas-lms/blob/master/app/controllers/a...",
     "inputSchema": {
       "type": "object",
@@ -234,7 +234,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages_message_id_feedback_feedback_id",
+    "name": "delete_ccaeacimm_feedback_feedback_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/messages/:message_id/feedback/:feedback_id` Remove a previously submitted vote (toggling off like/dislike). Ownership: load\\_conversation gates this action \u2014 only the conversation owner or a course manager reaches here. Sub-resource (message\\_id, feedback\\_id within the conversation) scoping is delegated to llma. *** This documentation is generated directly from the Canvas LMS source code, ava...",
     "inputSchema": {
       "type": "object",
@@ -272,31 +272,31 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_ai_experiences_ai_experience_id_conversations_id: async (client, args) => {
+  get_ccaea_conversations_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id", args);
   },
-  get_courses_course_id_ai_experiences_ai_experience_id_conversations: async (client, args) => {
+  get_ccaea_conversations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations", args);
   },
-  post_courses_course_id_ai_experiences_ai_experience_id_conversations: async (client, args) => {
+  post_ccaea_conversations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations", args);
   },
-  post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages: async (client, args) => {
+  post_ccaeaci_messages: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/messages", args);
   },
-  delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id: async (client, args) => {
+  delete_ccaea_conversations_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id", args);
   },
-  get_courses_course_id_ai_experiences_ai_experience_id_conversations_id_evaluation: async (client, args) => {
+  get_ccaeaci_evaluation: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/evaluation", args);
   },
-  post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_evaluation: async (client, args) => {
+  post_ccaeaci_evaluation: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/evaluation", args);
   },
-  post_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages_message_id_feedback: async (client, args) => {
+  post_ccaeacimm_feedback: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/messages/:message_id/feedback", args);
   },
-  delete_courses_course_id_ai_experiences_ai_experience_id_conversations_id_messages_message_id_feedback_feedback_id: async (client, args) => {
+  delete_ccaeacimm_feedback_feedback_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/ai_experiences/:ai_experience_id/conversations/:id/messages/:message_id/feedback/:feedback_id", args);
   }
 };

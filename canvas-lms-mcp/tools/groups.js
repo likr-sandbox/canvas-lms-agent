@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_users_self_groups",
+    "name": "get_us_groups",
     "description": "**Scope:** `url:GET|/api/v1/users/self/groups` Returns a paginated list of active groups for the current user. ```bash curl https:///api/v1/users/self/groups?context_type=Account \\ -H 'Authorization: Bearer ' ``` Returns a list of [Group](#group) objects. [GroupsController#context\\_index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -26,7 +26,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_groups",
+    "name": "get_aa_groups",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/groups`",
     "inputSchema": {
       "type": "object",
@@ -46,7 +46,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_groups",
+    "name": "get_cc_groups",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/groups` Returns the paginated list of active groups in the given context that are visible to user. ```bash curl https:///api/v1/courses/1/groups \\ -H 'Authorization: Bearer ' ``` Returns a list of [Group](#group) objects. [GroupsController#bulk\\_user\\_tags](https://github.com/instructure/canvas-lms/blob/master/app/controllers/groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -78,7 +78,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_bulk_user_tags",
+    "name": "get_cc_bulk_user_tags",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/bulk_user_tags` Returns a mapping of user IDs to arrays of non-collaborative group (tag) IDs for each user in the given course. ```bash curl \"https:///api/v1/courses/1/bulk_user_tags?user_ids[]=35&user_ids[]=79\" \\ -H 'Authorization: Bearer ' ``` [GroupsController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -134,7 +134,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_group_categories_group_category_id_groups",
+    "name": "post_gcg_groups",
     "description": "**Scope:** `url:POST|/api/v1/group_categories/:group_category_id/groups` Creates a new group. Groups created using the \"/api/v1/groups/\" endpoint will be community groups. ```bash curl https:///api/v1/groups \\ -F 'name=Math Teachers' \\ -F 'description=A place to gather resources for our classes.' \\ -F 'is_public=true' \\ -F 'join_level=parent_context_auto_join' \\ -H 'Authorization: Bearer ' ``` Returns a [Group](#group) object. [GroupsController#update](https://github.com/instructure/canvas-lm...",
     "inputSchema": {
       "type": "object",
@@ -242,7 +242,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_invite",
+    "name": "post_gg_invite",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/invite` Sends an invitation to all supplied email addresses which will allow the receivers to join the group. ```bash curl https:///api/v1/groups//invite \\ -F 'invitees[]=leonard@example.com' \\ -F 'invitees[]=sheldon@example.com' \\ -H 'Authorization: Bearer ' ``` [GroupsController#users](https://github.com/instructure/canvas-lms/blob/master/app/controllers/groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -263,7 +263,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_users",
+    "name": "get_gg_users",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/users` Returns a paginated list of users in the group. ```bash curl https:///api/v1/groups/1/users \\ -H 'Authorization: Bearer ' ``` Returns a list of [User](users.md#user) objects. [GroupsController#create\\_file](https://github.com/instructure/canvas-lms/blob/master/app/controllers/groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -295,7 +295,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_files",
+    "name": "post_gg_files",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/files` Upload a file to the group. This API endpoint is the first step in uploading a file to a group. See the [File Upload Documentation](../basics/file.file_uploads.md) for details on the file upload workflow. Only those with the \"Manage Files\" permission on a group can upload files to the group. By default, this is anybody participating in the group, or any admin over the group. [GroupsController#preview\\_html](https://github.com/instructure/ca...",
     "inputSchema": {
       "type": "object",
@@ -311,7 +311,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_preview_html",
+    "name": "post_gg_preview_html",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/preview_html` Preview html content processed for this group ```bash curl https:///api/v1/groups//preview_html \\ -F 'html=processed html' \\ -H 'Authorization: Bearer ' ``` ```js { \"html\": \"processed html\" } ``` [GroupsController#activity\\_stream](https://github.com/instructure/canvas-lms/blob/master/app/controllers/groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -331,7 +331,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_activity_stream",
+    "name": "get_gg_activity_stream",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/activity_stream` Returns the current user's group-specific activity stream, paginated. For full documentation, see the API documentation for the user activity stream, in the user api. [GroupsController#activity\\_stream\\_summary](https://github.com/instructure/canvas-lms/blob/master/app/controllers/groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -351,7 +351,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_activity_stream_summary",
+    "name": "get_ggas_summary",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/activity_stream/summary` Returns a summary of the current user's group-specific activity stream. For full documentation, see the API documentation for the user activity stream summary, in the user api. [GroupsController#permissions](https://github.com/instructure/canvas-lms/blob/master/app/controllers/groups_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -371,7 +371,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_permissions",
+    "name": "get_gg_permissions",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/permissions` Returns permission information for the calling user in the given group. See also the [Account](accounts.md#method.accounts.permissions) and [Course](courses.md#method.courses.permissions) counterparts. ```bash curl https:///api/v1/groups//permissions \\ -H 'Authorization: Bearer ' \\ -d 'permissions[]=read_roster' -d 'permissions[]=send_messages_all' ``` ```js {'read_roster': 'true', 'send_messages_all': 'false'} ``` [GroupMembershipsCon...",
     "inputSchema": {
       "type": "object",
@@ -395,7 +395,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_memberships",
+    "name": "get_gg_memberships",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/memberships` A paginated list of the members of a group. ```bash curl https:///api/v1/groups//memberships \\ -F 'filter_states[]=invited&filter_states[]=requested' \\ -H 'Authorization: Bearer ' ``` Returns a list of [GroupMembership](#groupmembership) objects. [GroupMembershipsController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/group_memberships_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -419,7 +419,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_memberships_membership_id",
+    "name": "get_gg_memberships_membership_id",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/memberships/:membership_id`",
     "inputSchema": {
       "type": "object",
@@ -444,7 +444,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_users_user_id",
+    "name": "get_gg_users_user_id",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/users/:user_id` Returns the group membership with the given membership id or user id. ```bash curl https:///api/v1/groups//memberships/ \\ -H 'Authorization: Bearer ' ``` ```bash curl https:///api/v1/groups//users/ \\ -H 'Authorization: Bearer ' ``` Returns a [GroupMembership](#groupmembership) object. [GroupMembershipsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/group_memberships_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -469,7 +469,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_memberships",
+    "name": "post_gg_memberships",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/memberships` Join, or request to join, a group, depending on the join\\_level of the group. If the membership or join request already exists, then it is simply returned. For differentiation tags, you can bulk add users using one of two methods: 1. Provide an array of user IDs via the `members[]` parameter. 2. Use the course-wide option with the following parameters: * `all_in_group_course` \\[Boolean]: If set to true, the endpoint will add every cur...",
     "inputSchema": {
       "type": "object",
@@ -501,7 +501,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_memberships_membership_id",
+    "name": "put_gg_memberships_membership_id",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/memberships/:membership_id`",
     "inputSchema": {
       "type": "object",
@@ -522,7 +522,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_users_user_id",
+    "name": "put_gg_users_user_id",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/users/:user_id` Accept a membership request, or add/remove moderator rights. ```bash curl https:///api/v1/groups//memberships/ \\ -F 'moderator=true' -H 'Authorization: Bearer ' ``` ```bash curl https:///api/v1/groups//users/ \\ -F 'moderator=true' -H 'Authorization: Bearer ' ``` Returns a [GroupMembership](#groupmembership) object. [GroupMembershipsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/group_member...",
     "inputSchema": {
       "type": "object",
@@ -551,7 +551,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_memberships_membership_id",
+    "name": "delete_gg_memberships_membership_id",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/memberships/:membership_id`",
     "inputSchema": {
       "type": "object",
@@ -572,7 +572,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_users_user_id",
+    "name": "delete_gg_users_user_id",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/users/:user_id` Leave a group if you are allowed to leave (some groups, such as sets of course groups created by teachers, cannot be left). You may also use 'self' in place of a membership\\_id. ```bash curl https:///api/v1/groups//memberships/ \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` ```bash curl https:///api/v1/groups//users/ \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Bulk deletes memberships by providing an array of user IDs.]\\(#method...",
     "inputSchema": {
       "type": "object",
@@ -593,7 +593,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_users",
+    "name": "delete_gg_users",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/users` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com. If you need additional information that is not directly available in this...",
     "inputSchema": {
       "type": "object",
@@ -611,16 +611,16 @@ const definitions = [
 ];
 
 const handlers = {
-  get_users_self_groups: async (client, args) => {
+  get_us_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/groups", args);
   },
-  get_accounts_account_id_groups: async (client, args) => {
+  get_aa_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/groups", args);
   },
-  get_courses_course_id_groups: async (client, args) => {
+  get_cc_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/groups", args);
   },
-  get_courses_course_id_bulk_user_tags: async (client, args) => {
+  get_cc_bulk_user_tags: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/bulk_user_tags", args);
   },
   get_groups_group_id: async (client, args) => {
@@ -629,7 +629,7 @@ const handlers = {
   post_groups: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups", args);
   },
-  post_group_categories_group_category_id_groups: async (client, args) => {
+  post_gcg_groups: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/group_categories/:group_category_id/groups", args);
   },
   put_groups_group_id: async (client, args) => {
@@ -638,52 +638,52 @@ const handlers = {
   delete_groups_group_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id", args);
   },
-  post_groups_group_id_invite: async (client, args) => {
+  post_gg_invite: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/invite", args);
   },
-  get_groups_group_id_users: async (client, args) => {
+  get_gg_users: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/users", args);
   },
-  post_groups_group_id_files: async (client, args) => {
+  post_gg_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/files", args);
   },
-  post_groups_group_id_preview_html: async (client, args) => {
+  post_gg_preview_html: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/preview_html", args);
   },
-  get_groups_group_id_activity_stream: async (client, args) => {
+  get_gg_activity_stream: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/activity_stream", args);
   },
-  get_groups_group_id_activity_stream_summary: async (client, args) => {
+  get_ggas_summary: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/activity_stream/summary", args);
   },
-  get_groups_group_id_permissions: async (client, args) => {
+  get_gg_permissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/permissions", args);
   },
-  get_groups_group_id_memberships: async (client, args) => {
+  get_gg_memberships: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/memberships", args);
   },
-  get_groups_group_id_memberships_membership_id: async (client, args) => {
+  get_gg_memberships_membership_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/memberships/:membership_id", args);
   },
-  get_groups_group_id_users_user_id: async (client, args) => {
+  get_gg_users_user_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/users/:user_id", args);
   },
-  post_groups_group_id_memberships: async (client, args) => {
+  post_gg_memberships: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/memberships", args);
   },
-  put_groups_group_id_memberships_membership_id: async (client, args) => {
+  put_gg_memberships_membership_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/memberships/:membership_id", args);
   },
-  put_groups_group_id_users_user_id: async (client, args) => {
+  put_gg_users_user_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/users/:user_id", args);
   },
-  delete_groups_group_id_memberships_membership_id: async (client, args) => {
+  delete_gg_memberships_membership_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/memberships/:membership_id", args);
   },
-  delete_groups_group_id_users_user_id: async (client, args) => {
+  delete_gg_users_user_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/users/:user_id", args);
   },
-  delete_groups_group_id_users: async (client, args) => {
+  delete_gg_users: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/users", args);
   }
 };

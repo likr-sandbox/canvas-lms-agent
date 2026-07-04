@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const public_jwkModule = require("../tools/public_jwk");
 
-test("put_developer_key_update_public_jwk calls correct endpoint", async () => {
+test("put_dk_update_public_jwk calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = public_jwkModule.handlers.put_developer_key_update_public_jwk;
-  assert.ok(handler, "Handler put_developer_key_update_public_jwk should be defined");
+  const handler = public_jwkModule.handlers.put_dk_update_public_jwk;
+  assert.ok(handler, "Handler put_dk_update_public_jwk should be defined");
 
   const result = await handler(mockClient, {"public_jwk": "test_val"});
 

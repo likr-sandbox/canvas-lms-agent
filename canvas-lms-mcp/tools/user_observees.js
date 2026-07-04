@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_users_user_id_observees",
+    "name": "get_uu_observees",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/observees` A paginated list of users that the given user is observing. This endpoint returns users linked to the observer at the account level (such that the observer is automatically enrolled in observees' courses); it doesn't return one-off observer enrollments from individual courses. *Note:* all users are allowed to list their own observees. Administrators can list other users' observees. The returned observees will include an attribute \"observat...",
     "inputSchema": {
       "type": "object",
@@ -29,7 +29,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_observers",
+    "name": "get_uu_observers",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/observers` A paginated list of observers linked to a given user. *Note:* all users are allowed to list their own observers. Administrators can list other users' observers. The returned observers will include an attribute \"observation\\_link\\_root\\_account\\_ids\", a list of ids for the root accounts the observer and observee are linked on. The observer will only be able to observe in courses associated with these root accounts. ```bash curl https:///api...",
     "inputSchema": {
       "type": "object",
@@ -53,7 +53,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_user_id_observees",
+    "name": "post_uu_observees",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/observees` Register the given user to observe another user, given the observee's credentials. *Note:* all users are allowed to add their own observees, given the observee's credentials or access token are provided. Administrators can add observees given credentials, access token or the [observee's id](#method.user_observees.update). ```bash curl https:///api/v1/users//observees \\ -X POST \\ -H 'Authorization: Bearer ' \\ -F 'observee[unique_id]=UNIQUE...",
     "inputSchema": {
       "type": "object",
@@ -89,7 +89,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_observees_observee_id",
+    "name": "get_uu_observees_observee_id",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/observees/:observee_id` Gets information about an observed user. *Note:* all users are allowed to view their own observees. ```bash curl https:///api/v1/users//observees/ \\ -X GET \\ -H 'Authorization: Bearer ' ``` Returns an [User](users.md#user) object. [UserObserveesController#show\\_observer](https://github.com/instructure/canvas-lms/blob/master/app/controllers/user_observees_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -114,7 +114,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_observers_observer_id",
+    "name": "get_uu_observers_observer_id",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/observers/:observer_id` Gets information about an observer. *Note:* all users are allowed to view their own observers. ```bash curl https:///api/v1/users//observers/ \\ -X GET \\ -H 'Authorization: Bearer ' ``` Returns an [User](users.md#user) object. [UserObserveesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/user_observees_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -139,7 +139,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_user_id_observees_observee_id",
+    "name": "put_uu_observees_observee_id",
     "description": "**Scope:** `url:PUT|/api/v1/users/:user_id/observees/:observee_id` Registers a user as being observed by the given user. ```bash curl https:///api/v1/users//observees/ \\ -X PUT \\ -H 'Authorization: Bearer ' ``` Returns an [User](users.md#user) object. [UserObserveesController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/user_observees_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -164,7 +164,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_user_id_observees_observee_id",
+    "name": "delete_uu_observees_observee_id",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:user_id/observees/:observee_id` Unregisters a user as being observed by the given user. ```bash curl https:///api/v1/users//observees/ \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Returns an [User](users.md#user) object. [ObserverPairingCodesApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/observer_pairing_codes_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -189,7 +189,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_user_id_observer_pairing_codes",
+    "name": "post_uu_observer_pairing_codes",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/observer_pairing_codes` If the user is a student, will generate a code to be used with self registration or observees APIs to link another user to this student. Returns a [PairingCode](#pairingcode) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so th...",
     "inputSchema": {
       "type": "object",
@@ -207,28 +207,28 @@ const definitions = [
 ];
 
 const handlers = {
-  get_users_user_id_observees: async (client, args) => {
+  get_uu_observees: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/observees", args);
   },
-  get_users_user_id_observers: async (client, args) => {
+  get_uu_observers: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/observers", args);
   },
-  post_users_user_id_observees: async (client, args) => {
+  post_uu_observees: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/observees", args);
   },
-  get_users_user_id_observees_observee_id: async (client, args) => {
+  get_uu_observees_observee_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/observees/:observee_id", args);
   },
-  get_users_user_id_observers_observer_id: async (client, args) => {
+  get_uu_observers_observer_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/observers/:observer_id", args);
   },
-  put_users_user_id_observees_observee_id: async (client, args) => {
+  put_uu_observees_observee_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:user_id/observees/:observee_id", args);
   },
-  delete_users_user_id_observees_observee_id: async (client, args) => {
+  delete_uu_observees_observee_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/observees/:observee_id", args);
   },
-  post_users_user_id_observer_pairing_codes: async (client, args) => {
+  post_uu_observer_pairing_codes: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/observer_pairing_codes", args);
   }
 };

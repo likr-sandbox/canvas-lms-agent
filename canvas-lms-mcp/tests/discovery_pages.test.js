@@ -41,15 +41,15 @@ test("put_discovery_pages calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_discovery_pages_token calls correct endpoint", async () => {
+test("post_dp_token calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = discovery_pagesModule.handlers.post_discovery_pages_token;
-  assert.ok(handler, "Handler post_discovery_pages_token should be defined");
+  const handler = discovery_pagesModule.handlers.post_dp_token;
+  assert.ok(handler, "Handler post_dp_token should be defined");
 
   const result = await handler(mockClient, {"discovery_page[primary][][authentication_provider_id]": 123});
 

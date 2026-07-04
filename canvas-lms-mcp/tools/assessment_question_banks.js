@@ -58,7 +58,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_question_banks_id_questions",
+    "name": "get_qbi_questions",
     "description": "**Scope:** `url:GET|/api/v1/question_banks/:id/questions` Returns the paginated list of assessment questions in this bank. ```bash curl 'https:///api/v1/question_banks/:id/questions' \\ -H 'Authorization: Bearer ' ``` Returns a list of [AssessmentQuestion](#assessmentquestion) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the do...",
     "inputSchema": {
       "type": "object",
@@ -86,7 +86,7 @@ const handlers = {
   get_question_banks_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/question_banks/:id", args);
   },
-  get_question_banks_id_questions: async (client, args) => {
+  get_qbi_questions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/question_banks/:id/questions", args);
   }
 };

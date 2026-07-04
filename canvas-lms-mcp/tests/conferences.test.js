@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const conferencesModule = require("../tools/conferences");
 
-test("get_courses_course_id_conferences calls correct endpoint", async () => {
+test("get_cc_conferences calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = conferencesModule.handlers.get_courses_course_id_conferences;
-  assert.ok(handler, "Handler get_courses_course_id_conferences should be defined");
+  const handler = conferencesModule.handlers.get_cc_conferences;
+  assert.ok(handler, "Handler get_cc_conferences should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_conferences calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_groups_group_id_conferences calls correct endpoint", async () => {
+test("get_gg_conferences calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = conferencesModule.handlers.get_groups_group_id_conferences;
-  assert.ok(handler, "Handler get_groups_group_id_conferences should be defined");
+  const handler = conferencesModule.handlers.get_gg_conferences;
+  assert.ok(handler, "Handler get_gg_conferences should be defined");
 
   const result = await handler(mockClient, {"group_id": "test_group_id"});
 

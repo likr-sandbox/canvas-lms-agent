@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const notification_preferencesModule = require("../tools/notification_preferences");
 
-test("get_users_user_id_communication_channels_communication_channel_id_notification_preferences calls correct endpoint", async () => {
+test("get_uuccc_notification_preferences calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = notification_preferencesModule.handlers.get_users_user_id_communication_channels_communication_channel_id_notification_preferences;
-  assert.ok(handler, "Handler get_users_user_id_communication_channels_communication_channel_id_notification_preferences should be defined");
+  const handler = notification_preferencesModule.handlers.get_uuccc_notification_preferences;
+  assert.ok(handler, "Handler get_uuccc_notification_preferences should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "communication_channel_id": "test_communication_channel_id"});
 
@@ -23,15 +23,15 @@ test("get_users_user_id_communication_channels_communication_channel_id_notifica
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_communication_channels_type_address_notification_preferences calls correct endpoint", async () => {
+test("get_uuccta_notification_preferences calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = notification_preferencesModule.handlers.get_users_user_id_communication_channels_type_address_notification_preferences;
-  assert.ok(handler, "Handler get_users_user_id_communication_channels_type_address_notification_preferences should be defined");
+  const handler = notification_preferencesModule.handlers.get_uuccta_notification_preferences;
+  assert.ok(handler, "Handler get_uuccta_notification_preferences should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "type": "test_type", "address": "test_address"});
 
@@ -41,15 +41,15 @@ test("get_users_user_id_communication_channels_type_address_notification_prefere
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_communication_channels_communication_channel_id_notification_preference_categories calls correct endpoint", async () => {
+test("get_uuccc_notification_preference_categories calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = notification_preferencesModule.handlers.get_users_user_id_communication_channels_communication_channel_id_notification_preference_categories;
-  assert.ok(handler, "Handler get_users_user_id_communication_channels_communication_channel_id_notification_preference_categories should be defined");
+  const handler = notification_preferencesModule.handlers.get_uuccc_notification_preference_categories;
+  assert.ok(handler, "Handler get_uuccc_notification_preference_categories should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "communication_channel_id": "test_communication_channel_id"});
 
@@ -59,15 +59,15 @@ test("get_users_user_id_communication_channels_communication_channel_id_notifica
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_communication_channels_communication_channel_id_notification_preferences_notification calls correct endpoint", async () => {
+test("get_uuccc_notification_preferences_notification calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = notification_preferencesModule.handlers.get_users_user_id_communication_channels_communication_channel_id_notification_preferences_notification;
-  assert.ok(handler, "Handler get_users_user_id_communication_channels_communication_channel_id_notification_preferences_notification should be defined");
+  const handler = notification_preferencesModule.handlers.get_uuccc_notification_preferences_notification;
+  assert.ok(handler, "Handler get_uuccc_notification_preferences_notification should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "communication_channel_id": "test_communication_channel_id", "notification": "test_notification"});
 
@@ -77,15 +77,15 @@ test("get_users_user_id_communication_channels_communication_channel_id_notifica
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_user_id_communication_channels_type_address_notification_preferences_notification calls correct endpoint", async () => {
+test("get_uuccta_notification_preferences_notification calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = notification_preferencesModule.handlers.get_users_user_id_communication_channels_type_address_notification_preferences_notification;
-  assert.ok(handler, "Handler get_users_user_id_communication_channels_type_address_notification_preferences_notification should be defined");
+  const handler = notification_preferencesModule.handlers.get_uuccta_notification_preferences_notification;
+  assert.ok(handler, "Handler get_uuccta_notification_preferences_notification should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "type": "test_type", "address": "test_address", "notification": "test_notification"});
 
@@ -95,15 +95,15 @@ test("get_users_user_id_communication_channels_type_address_notification_prefere
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_self_communication_channels_communication_channel_id_notification_preferences_notification calls correct endpoint", async () => {
+test("put_usccc_notification_preferences_notification calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = notification_preferencesModule.handlers.put_users_self_communication_channels_communication_channel_id_notification_preferences_notification;
-  assert.ok(handler, "Handler put_users_self_communication_channels_communication_channel_id_notification_preferences_notification should be defined");
+  const handler = notification_preferencesModule.handlers.put_usccc_notification_preferences_notification;
+  assert.ok(handler, "Handler put_usccc_notification_preferences_notification should be defined");
 
   const result = await handler(mockClient, {"communication_channel_id": "test_communication_channel_id", "notification": "test_notification"});
 
@@ -113,15 +113,15 @@ test("put_users_self_communication_channels_communication_channel_id_notificatio
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_self_communication_channels_type_address_notification_preferences_notification calls correct endpoint", async () => {
+test("put_usccta_notification_preferences_notification calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = notification_preferencesModule.handlers.put_users_self_communication_channels_type_address_notification_preferences_notification;
-  assert.ok(handler, "Handler put_users_self_communication_channels_type_address_notification_preferences_notification should be defined");
+  const handler = notification_preferencesModule.handlers.put_usccta_notification_preferences_notification;
+  assert.ok(handler, "Handler put_usccta_notification_preferences_notification should be defined");
 
   const result = await handler(mockClient, {"type": "test_type", "address": "test_address", "notification": "test_notification", "notification_preferences[frequency]": "test_val"});
 
@@ -131,15 +131,15 @@ test("put_users_self_communication_channels_type_address_notification_preference
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_self_communication_channels_communication_channel_id_notification_preference_categories_category calls correct endpoint", async () => {
+test("put_usccc_notification_preference_categories_category calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = notification_preferencesModule.handlers.put_users_self_communication_channels_communication_channel_id_notification_preference_categories_category;
-  assert.ok(handler, "Handler put_users_self_communication_channels_communication_channel_id_notification_preference_categories_category should be defined");
+  const handler = notification_preferencesModule.handlers.put_usccc_notification_preference_categories_category;
+  assert.ok(handler, "Handler put_usccc_notification_preference_categories_category should be defined");
 
   const result = await handler(mockClient, {"communication_channel_id": "test_communication_channel_id", "category": "test_category", "notification_preferences[frequency]": "test_val"});
 
@@ -149,15 +149,15 @@ test("put_users_self_communication_channels_communication_channel_id_notificatio
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_self_communication_channels_communication_channel_id_notification_preferences calls correct endpoint", async () => {
+test("put_usccc_notification_preferences calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = notification_preferencesModule.handlers.put_users_self_communication_channels_communication_channel_id_notification_preferences;
-  assert.ok(handler, "Handler put_users_self_communication_channels_communication_channel_id_notification_preferences should be defined");
+  const handler = notification_preferencesModule.handlers.put_usccc_notification_preferences;
+  assert.ok(handler, "Handler put_usccc_notification_preferences should be defined");
 
   const result = await handler(mockClient, {"communication_channel_id": "test_communication_channel_id"});
 
@@ -167,15 +167,15 @@ test("put_users_self_communication_channels_communication_channel_id_notificatio
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_self_communication_channels_type_address_notification_preferences calls correct endpoint", async () => {
+test("put_usccta_notification_preferences calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = notification_preferencesModule.handlers.put_users_self_communication_channels_type_address_notification_preferences;
-  assert.ok(handler, "Handler put_users_self_communication_channels_type_address_notification_preferences should be defined");
+  const handler = notification_preferencesModule.handlers.put_usccta_notification_preferences;
+  assert.ok(handler, "Handler put_usccta_notification_preferences should be defined");
 
   const result = await handler(mockClient, {"type": "test_type", "address": "test_address", "notification_preferences[<X>][frequency]": "test_val"});
 

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_courses_course_id_rubrics",
+    "name": "post_cc_rubrics",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/rubrics` Returns the rubric with the given id. Unfortunately this endpoint does not return a standard Rubric object, instead it returns a hash that looks like { 'rubric': Rubric, 'rubric\\_association': RubricAssociation } This may eventually be deprecated in favor of a more standardized return value, but that is not currently planned. [RubricsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubrics_control...",
     "inputSchema": {
       "type": "object",
@@ -61,7 +61,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_rubrics_id",
+    "name": "put_cc_rubrics_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/rubrics/:id` Returns the rubric with the given id. Unfortunately this endpoint does not return a standard Rubric object, instead it returns a hash that looks like { 'rubric': Rubric, 'rubric\\_association': RubricAssociation } This may eventually be deprecated in favor of a more standardized return value, but that is not currently planned. [RubricsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubrics_con...",
     "inputSchema": {
       "type": "object",
@@ -122,7 +122,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_rubrics_id",
+    "name": "delete_cc_rubrics_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/rubrics/:id` Deletes a Rubric and removes all RubricAssociations. Returns a [Rubric](#rubric) object. [RubricsApiController#index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubrics_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -143,7 +143,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_rubrics",
+    "name": "get_aa_rubrics",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/rubrics`",
     "inputSchema": {
       "type": "object",
@@ -163,7 +163,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_rubrics",
+    "name": "get_cc_rubrics",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/rubrics` Returns the paginated list of active rubrics for the current context. [RubricsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubrics_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -183,7 +183,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_rubrics_id",
+    "name": "get_aa_rubrics_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/rubrics/:id`",
     "inputSchema": {
       "type": "object",
@@ -208,7 +208,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_rubrics_id",
+    "name": "get_cc_rubrics_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/rubrics/:id` Returns the rubric with the given id. Returns a [Rubric](#rubric) object. [RubricsApiController#used\\_locations](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubrics_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -241,7 +241,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_rubrics_id_used_locations",
+    "name": "get_ccri_used_locations",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/rubrics/:id/used_locations`",
     "inputSchema": {
       "type": "object",
@@ -266,7 +266,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_rubrics_id_used_locations",
+    "name": "get_aari_used_locations",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/rubrics/:id/used_locations` Returns the courses and assignments where a rubric is being used [RubricsApiController#upload](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubrics_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -291,7 +291,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_rubrics_upload",
+    "name": "post_ccr_upload",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/rubrics/upload`",
     "inputSchema": {
       "type": "object",
@@ -307,7 +307,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_rubrics_upload",
+    "name": "post_aar_upload",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/rubrics/upload` Returns the rubric import object that was created [RubricsApiController#upload\\_template](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubrics_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -323,7 +323,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_rubrics_upload_template",
+    "name": "get_r_upload_template",
     "description": "**Scope:** `url:GET|/api/v1/rubrics/upload_template` Returns a CSV template file that can be used to import rubrics into Canvas. [RubricsApiController#upload\\_status](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubrics_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -336,7 +336,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_rubrics_upload_id",
+    "name": "get_ccr_upload_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/rubrics/upload/:id`",
     "inputSchema": {
       "type": "object",
@@ -361,7 +361,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_rubrics_upload_id",
+    "name": "get_aar_upload_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/rubrics/upload/:id` Can return the latest rubric import for an account or course, or a specific import by id [RubricAssessmentsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubric_assessments_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -386,7 +386,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments",
+    "name": "post_ccrar_rubric_assessments",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/rubric_associations/:rubric_association_id/rubric_assessments` Returns the rubric assessment with the given id. The returned object also provides the information of :ratings, :assessor\\_name, :related\\_group\\_submissions\\_and\\_assessments, :artifact [RubricAssessmentsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubric_assessments_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -423,7 +423,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments_id",
+    "name": "put_ccrar_rubric_assessments_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/rubric_associations/:rubric_association_id/rubric_assessments/:id` Returns the rubric assessment with the given id. The returned object also provides the information of :ratings, :assessor\\_name, :related\\_group\\_submissions\\_and\\_assessments, :artifact [RubricAssessmentsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubric_assessments_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -465,7 +465,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments_id",
+    "name": "delete_ccrar_rubric_assessments_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/rubric_associations/:rubric_association_id/rubric_assessments/:id` Deletes a rubric assessment Returns a [RubricAssessment](#rubricassessment) object. [RubricAssociationsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubric_associations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -491,7 +491,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_rubric_associations",
+    "name": "post_cc_rubric_associations",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/rubric_associations` Returns the rubric with the given id. Returns a [RubricAssociation](#rubricassociation) object. [RubricAssociationsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubric_associations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -539,7 +539,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_rubric_associations_id",
+    "name": "put_cc_rubric_associations_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/rubric_associations/:id` Returns the rubric with the given id. Returns a [RubricAssociation](#rubricassociation) object. [RubricAssociationsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/rubric_associations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -592,7 +592,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_rubric_associations_id",
+    "name": "delete_cc_rubric_associations_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/rubric_associations/:id` Delete the RubricAssociation with the given ID Returns a [RubricAssociation](#rubricassociation) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over techni...",
     "inputSchema": {
       "type": "object",
@@ -615,64 +615,64 @@ const definitions = [
 ];
 
 const handlers = {
-  post_courses_course_id_rubrics: async (client, args) => {
+  post_cc_rubrics: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/rubrics", args);
   },
-  put_courses_course_id_rubrics_id: async (client, args) => {
+  put_cc_rubrics_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/rubrics/:id", args);
   },
-  delete_courses_course_id_rubrics_id: async (client, args) => {
+  delete_cc_rubrics_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/rubrics/:id", args);
   },
-  get_accounts_account_id_rubrics: async (client, args) => {
+  get_aa_rubrics: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/rubrics", args);
   },
-  get_courses_course_id_rubrics: async (client, args) => {
+  get_cc_rubrics: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/rubrics", args);
   },
-  get_accounts_account_id_rubrics_id: async (client, args) => {
+  get_aa_rubrics_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/rubrics/:id", args);
   },
-  get_courses_course_id_rubrics_id: async (client, args) => {
+  get_cc_rubrics_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/rubrics/:id", args);
   },
-  get_courses_course_id_rubrics_id_used_locations: async (client, args) => {
+  get_ccri_used_locations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/rubrics/:id/used_locations", args);
   },
-  get_accounts_account_id_rubrics_id_used_locations: async (client, args) => {
+  get_aari_used_locations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/rubrics/:id/used_locations", args);
   },
-  post_courses_course_id_rubrics_upload: async (client, args) => {
+  post_ccr_upload: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/rubrics/upload", args);
   },
-  post_accounts_account_id_rubrics_upload: async (client, args) => {
+  post_aar_upload: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/rubrics/upload", args);
   },
-  get_rubrics_upload_template: async (client, args) => {
+  get_r_upload_template: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/rubrics/upload_template", args);
   },
-  get_courses_course_id_rubrics_upload_id: async (client, args) => {
+  get_ccr_upload_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/rubrics/upload/:id", args);
   },
-  get_accounts_account_id_rubrics_upload_id: async (client, args) => {
+  get_aar_upload_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/rubrics/upload/:id", args);
   },
-  post_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments: async (client, args) => {
+  post_ccrar_rubric_assessments: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/rubric_associations/:rubric_association_id/rubric_assessments", args);
   },
-  put_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments_id: async (client, args) => {
+  put_ccrar_rubric_assessments_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/rubric_associations/:rubric_association_id/rubric_assessments/:id", args);
   },
-  delete_courses_course_id_rubric_associations_rubric_association_id_rubric_assessments_id: async (client, args) => {
+  delete_ccrar_rubric_assessments_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/rubric_associations/:rubric_association_id/rubric_assessments/:id", args);
   },
-  post_courses_course_id_rubric_associations: async (client, args) => {
+  post_cc_rubric_associations: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/rubric_associations", args);
   },
-  put_courses_course_id_rubric_associations_id: async (client, args) => {
+  put_cc_rubric_associations_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/rubric_associations/:id", args);
   },
-  delete_courses_course_id_rubric_associations_id: async (client, args) => {
+  delete_cc_rubric_associations_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/rubric_associations/:id", args);
   }
 };

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_external_feeds",
+    "name": "get_cc_external_feeds",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/external_feeds`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_external_feeds",
+    "name": "get_gg_external_feeds",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/external_feeds` Returns the paginated list of External Feeds this course or group. ```bash curl https:///api/v1/courses//external_feeds \\ -H 'Authorization: Bearer ' ``` Returns a list of [ExternalFeed](#externalfeed) objects. [ExternalFeedsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/external_feeds_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_external_feeds",
+    "name": "post_cc_external_feeds",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/external_feeds`",
     "inputSchema": {
       "type": "object",
@@ -61,7 +61,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_external_feeds",
+    "name": "post_gg_external_feeds",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/external_feeds` Create a new external feed for the course or group. ```bash curl https:///api/v1/courses//external_feeds \\ -F url='http://example.com/rss.xml' \\ -F header_match='news flash!' \\ -F verbosity='full' \\ -H 'Authorization: Bearer ' ``` Returns an [ExternalFeed](#externalfeed) object. [ExternalFeedsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/external_feeds_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -90,7 +90,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_external_feeds_external_feed_id",
+    "name": "delete_cc_external_feeds_external_feed_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/external_feeds/:external_feed_id`",
     "inputSchema": {
       "type": "object",
@@ -111,7 +111,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_external_feeds_external_feed_id",
+    "name": "delete_gg_external_feeds_external_feed_id",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/external_feeds/:external_feed_id` Deletes the external feed. ```bash curl -X DELETE https:///api/v1/courses//external_feeds/ \\ -H 'Authorization: Bearer ' ``` Returns an [ExternalFeed](#externalfeed) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed ...",
     "inputSchema": {
       "type": "object",
@@ -134,22 +134,22 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_external_feeds: async (client, args) => {
+  get_cc_external_feeds: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/external_feeds", args);
   },
-  get_groups_group_id_external_feeds: async (client, args) => {
+  get_gg_external_feeds: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/external_feeds", args);
   },
-  post_courses_course_id_external_feeds: async (client, args) => {
+  post_cc_external_feeds: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/external_feeds", args);
   },
-  post_groups_group_id_external_feeds: async (client, args) => {
+  post_gg_external_feeds: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/external_feeds", args);
   },
-  delete_courses_course_id_external_feeds_external_feed_id: async (client, args) => {
+  delete_cc_external_feeds_external_feed_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/external_feeds/:external_feed_id", args);
   },
-  delete_groups_group_id_external_feeds_external_feed_id: async (client, args) => {
+  delete_gg_external_feeds_external_feed_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/external_feeds/:external_feed_id", args);
   }
 };

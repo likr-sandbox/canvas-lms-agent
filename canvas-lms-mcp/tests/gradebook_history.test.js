@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const gradebook_historyModule = require("../tools/gradebook_history");
 
-test("get_courses_course_id_gradebook_history_days calls correct endpoint", async () => {
+test("get_ccgh_days calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = gradebook_historyModule.handlers.get_courses_course_id_gradebook_history_days;
-  assert.ok(handler, "Handler get_courses_course_id_gradebook_history_days should be defined");
+  const handler = gradebook_historyModule.handlers.get_ccgh_days;
+  assert.ok(handler, "Handler get_ccgh_days should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_gradebook_history_days calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_gradebook_history_date calls correct endpoint", async () => {
+test("get_cc_gradebook_history_date calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = gradebook_historyModule.handlers.get_courses_course_id_gradebook_history_date;
-  assert.ok(handler, "Handler get_courses_course_id_gradebook_history_date should be defined");
+  const handler = gradebook_historyModule.handlers.get_cc_gradebook_history_date;
+  assert.ok(handler, "Handler get_cc_gradebook_history_date should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "date": "test_date"});
 
@@ -41,15 +41,15 @@ test("get_courses_course_id_gradebook_history_date calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_gradebook_history_date_graders_grader_id_assignments_assignment_id_submissions calls correct endpoint", async () => {
+test("get_ccghdggaa_submissions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = gradebook_historyModule.handlers.get_courses_course_id_gradebook_history_date_graders_grader_id_assignments_assignment_id_submissions;
-  assert.ok(handler, "Handler get_courses_course_id_gradebook_history_date_graders_grader_id_assignments_assignment_id_submissions should be defined");
+  const handler = gradebook_historyModule.handlers.get_ccghdggaa_submissions;
+  assert.ok(handler, "Handler get_ccghdggaa_submissions should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "date": "test_date", "grader_id": "test_grader_id", "assignment_id": "test_assignment_id"});
 
@@ -59,15 +59,15 @@ test("get_courses_course_id_gradebook_history_date_graders_grader_id_assignments
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_gradebook_history_feed calls correct endpoint", async () => {
+test("get_ccgh_feed calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = gradebook_historyModule.handlers.get_courses_course_id_gradebook_history_feed;
-  assert.ok(handler, "Handler get_courses_course_id_gradebook_history_feed should be defined");
+  const handler = gradebook_historyModule.handlers.get_ccgh_feed;
+  assert.ok(handler, "Handler get_ccgh_feed should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "assignment_id": 123});
 

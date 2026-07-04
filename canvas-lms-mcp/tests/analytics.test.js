@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const analyticsModule = require("../tools/analytics");
 
-test("get_accounts_account_id_analytics_terms_term_id_activity calls correct endpoint", async () => {
+test("get_aaatt_activity calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_terms_term_id_activity;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_terms_term_id_activity should be defined");
+  const handler = analyticsModule.handlers.get_aaatt_activity;
+  assert.ok(handler, "Handler get_aaatt_activity should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "term_id": "test_term_id"});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_analytics_terms_term_id_activity calls correct end
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_current_activity calls correct endpoint", async () => {
+test("get_aaacur_activity calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_current_activity;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_current_activity should be defined");
+  const handler = analyticsModule.handlers.get_aaacur_activity;
+  assert.ok(handler, "Handler get_aaacur_activity should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_analytics_current_activity calls correct endpoint"
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_completed_activity calls correct endpoint", async () => {
+test("get_aaacmp_activity calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_completed_activity;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_completed_activity should be defined");
+  const handler = analyticsModule.handlers.get_aaacmp_activity;
+  assert.ok(handler, "Handler get_aaacmp_activity should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -59,15 +59,15 @@ test("get_accounts_account_id_analytics_completed_activity calls correct endpoin
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_terms_term_id_grades calls correct endpoint", async () => {
+test("get_aaatt_grades calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_terms_term_id_grades;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_terms_term_id_grades should be defined");
+  const handler = analyticsModule.handlers.get_aaatt_grades;
+  assert.ok(handler, "Handler get_aaatt_grades should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "term_id": "test_term_id"});
 
@@ -77,15 +77,15 @@ test("get_accounts_account_id_analytics_terms_term_id_grades calls correct endpo
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_current_grades calls correct endpoint", async () => {
+test("get_aaacur_grades calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_current_grades;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_current_grades should be defined");
+  const handler = analyticsModule.handlers.get_aaacur_grades;
+  assert.ok(handler, "Handler get_aaacur_grades should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -95,15 +95,15 @@ test("get_accounts_account_id_analytics_current_grades calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_completed_grades calls correct endpoint", async () => {
+test("get_aaacmp_grades calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_completed_grades;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_completed_grades should be defined");
+  const handler = analyticsModule.handlers.get_aaacmp_grades;
+  assert.ok(handler, "Handler get_aaacmp_grades should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -113,15 +113,15 @@ test("get_accounts_account_id_analytics_completed_grades calls correct endpoint"
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_terms_term_id_statistics calls correct endpoint", async () => {
+test("get_aaatt_statistics calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_terms_term_id_statistics;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_terms_term_id_statistics should be defined");
+  const handler = analyticsModule.handlers.get_aaatt_statistics;
+  assert.ok(handler, "Handler get_aaatt_statistics should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "term_id": "test_term_id"});
 
@@ -131,15 +131,15 @@ test("get_accounts_account_id_analytics_terms_term_id_statistics calls correct e
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_current_statistics calls correct endpoint", async () => {
+test("get_aaacur_statistics calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_current_statistics;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_current_statistics should be defined");
+  const handler = analyticsModule.handlers.get_aaacur_statistics;
+  assert.ok(handler, "Handler get_aaacur_statistics should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -149,15 +149,15 @@ test("get_accounts_account_id_analytics_current_statistics calls correct endpoin
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_completed_statistics calls correct endpoint", async () => {
+test("get_aaacmp_statistics calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_completed_statistics;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_completed_statistics should be defined");
+  const handler = analyticsModule.handlers.get_aaacmp_statistics;
+  assert.ok(handler, "Handler get_aaacmp_statistics should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -167,15 +167,15 @@ test("get_accounts_account_id_analytics_completed_statistics calls correct endpo
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_terms_term_id_statistics_by_subaccount calls correct endpoint", async () => {
+test("get_aaatt_statistics_by_subaccount calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_terms_term_id_statistics_by_subaccount;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_terms_term_id_statistics_by_subaccount should be defined");
+  const handler = analyticsModule.handlers.get_aaatt_statistics_by_subaccount;
+  assert.ok(handler, "Handler get_aaatt_statistics_by_subaccount should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "term_id": "test_term_id"});
 
@@ -185,15 +185,15 @@ test("get_accounts_account_id_analytics_terms_term_id_statistics_by_subaccount c
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_current_statistics_by_subaccount calls correct endpoint", async () => {
+test("get_aaacur_statistics_by_subaccount calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_current_statistics_by_subaccount;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_current_statistics_by_subaccount should be defined");
+  const handler = analyticsModule.handlers.get_aaacur_statistics_by_subaccount;
+  assert.ok(handler, "Handler get_aaacur_statistics_by_subaccount should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -203,15 +203,15 @@ test("get_accounts_account_id_analytics_current_statistics_by_subaccount calls c
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_analytics_completed_statistics_by_subaccount calls correct endpoint", async () => {
+test("get_aaacmp_statistics_by_subaccount calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_accounts_account_id_analytics_completed_statistics_by_subaccount;
-  assert.ok(handler, "Handler get_accounts_account_id_analytics_completed_statistics_by_subaccount should be defined");
+  const handler = analyticsModule.handlers.get_aaacmp_statistics_by_subaccount;
+  assert.ok(handler, "Handler get_aaacmp_statistics_by_subaccount should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -221,15 +221,15 @@ test("get_accounts_account_id_analytics_completed_statistics_by_subaccount calls
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_analytics_activity calls correct endpoint", async () => {
+test("get_cca_activity calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_courses_course_id_analytics_activity;
-  assert.ok(handler, "Handler get_courses_course_id_analytics_activity should be defined");
+  const handler = analyticsModule.handlers.get_cca_activity;
+  assert.ok(handler, "Handler get_cca_activity should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -239,15 +239,15 @@ test("get_courses_course_id_analytics_activity calls correct endpoint", async ()
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_analytics_assignments calls correct endpoint", async () => {
+test("get_cca_assignments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_courses_course_id_analytics_assignments;
-  assert.ok(handler, "Handler get_courses_course_id_analytics_assignments should be defined");
+  const handler = analyticsModule.handlers.get_cca_assignments;
+  assert.ok(handler, "Handler get_cca_assignments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "async": true});
 
@@ -257,15 +257,15 @@ test("get_courses_course_id_analytics_assignments calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_analytics_student_summaries calls correct endpoint", async () => {
+test("get_cca_student_summaries calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_courses_course_id_analytics_student_summaries;
-  assert.ok(handler, "Handler get_courses_course_id_analytics_student_summaries should be defined");
+  const handler = analyticsModule.handlers.get_cca_student_summaries;
+  assert.ok(handler, "Handler get_cca_student_summaries should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "sort_column": "test_val"});
 
@@ -275,15 +275,15 @@ test("get_courses_course_id_analytics_student_summaries calls correct endpoint",
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_analytics_users_student_id_activity calls correct endpoint", async () => {
+test("get_ccaus_activity calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_courses_course_id_analytics_users_student_id_activity;
-  assert.ok(handler, "Handler get_courses_course_id_analytics_users_student_id_activity should be defined");
+  const handler = analyticsModule.handlers.get_ccaus_activity;
+  assert.ok(handler, "Handler get_ccaus_activity should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "student_id": "test_student_id"});
 
@@ -293,15 +293,15 @@ test("get_courses_course_id_analytics_users_student_id_activity calls correct en
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_analytics_users_student_id_assignments calls correct endpoint", async () => {
+test("get_ccaus_assignments calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_courses_course_id_analytics_users_student_id_assignments;
-  assert.ok(handler, "Handler get_courses_course_id_analytics_users_student_id_assignments should be defined");
+  const handler = analyticsModule.handlers.get_ccaus_assignments;
+  assert.ok(handler, "Handler get_ccaus_assignments should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "student_id": "test_student_id"});
 
@@ -311,15 +311,15 @@ test("get_courses_course_id_analytics_users_student_id_assignments calls correct
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_analytics_users_student_id_communication calls correct endpoint", async () => {
+test("get_ccaus_communication calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = analyticsModule.handlers.get_courses_course_id_analytics_users_student_id_communication;
-  assert.ok(handler, "Handler get_courses_course_id_analytics_users_student_id_communication should be defined");
+  const handler = analyticsModule.handlers.get_ccaus_communication;
+  assert.ok(handler, "Handler get_ccaus_communication should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "student_id": "test_student_id"});
 

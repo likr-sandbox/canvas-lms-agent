@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const grading_period_setsModule = require("../tools/grading_period_sets");
 
-test("get_accounts_account_id_grading_period_sets calls correct endpoint", async () => {
+test("get_aa_grading_period_sets calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_period_setsModule.handlers.get_accounts_account_id_grading_period_sets;
-  assert.ok(handler, "Handler get_accounts_account_id_grading_period_sets should be defined");
+  const handler = grading_period_setsModule.handlers.get_aa_grading_period_sets;
+  assert.ok(handler, "Handler get_aa_grading_period_sets should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_grading_period_sets calls correct endpoint", async
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_grading_period_sets calls correct endpoint", async () => {
+test("post_aa_grading_period_sets calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_period_setsModule.handlers.post_accounts_account_id_grading_period_sets;
-  assert.ok(handler, "Handler post_accounts_account_id_grading_period_sets should be defined");
+  const handler = grading_period_setsModule.handlers.post_aa_grading_period_sets;
+  assert.ok(handler, "Handler post_aa_grading_period_sets should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "enrollment_term_ids[]": ["test_val"]});
 
@@ -41,15 +41,15 @@ test("post_accounts_account_id_grading_period_sets calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_grading_period_sets_id calls correct endpoint", async () => {
+test("delete_aa_grading_period_sets_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = grading_period_setsModule.handlers.delete_accounts_account_id_grading_period_sets_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_grading_period_sets_id should be defined");
+  const handler = grading_period_setsModule.handlers.delete_aa_grading_period_sets_id;
+  assert.ok(handler, "Handler delete_aa_grading_period_sets_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 

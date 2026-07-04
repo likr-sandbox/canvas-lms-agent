@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_assignments_assignment_id_submissions_submission_id_originality_report",
+    "name": "post_aass_originality_report",
     "description": "**Scope:** `url:POST|/api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report` Create a new OriginalityReport for the specified file Returns an [OriginalityReport](#originalityreport) object. [Lti::OriginalityReportsApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/originality_reports_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -63,7 +63,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_assignments_assignment_id_submissions_submission_id_originality_report_id",
+    "name": "put_aass_originality_report_id",
     "description": "**Scope:** `url:PUT|/api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report/:id`",
     "inputSchema": {
       "type": "object",
@@ -89,7 +89,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_assignments_assignment_id_files_file_id_originality_report",
+    "name": "put_aaff_originality_report",
     "description": "**Scope:** `url:PUT|/api/lti/assignments/:assignment_id/files/:file_id/originality_report` Modify an existing originality report. An alternative to this endpoint is to POST the same parameters listed below to the CREATE endpoint. Returns an [OriginalityReport](#originalityreport) object. [Lti::OriginalityReportsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/lti/originality_reports_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -138,7 +138,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_assignments_assignment_id_submissions_submission_id_originality_report_id",
+    "name": "get_aass_originality_report_id",
     "description": "**Scope:** `url:GET|/api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report/:id`",
     "inputSchema": {
       "type": "object",
@@ -168,7 +168,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_assignments_assignment_id_files_file_id_originality_report",
+    "name": "get_aaff_originality_report",
     "description": "**Scope:** `url:GET|/api/lti/assignments/:assignment_id/files/:file_id/originality_report` Get a single originality report Returns an [OriginalityReport](#originalityreport) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over tech...",
     "inputSchema": {
       "type": "object",
@@ -195,19 +195,19 @@ const definitions = [
 ];
 
 const handlers = {
-  post_assignments_assignment_id_submissions_submission_id_originality_report: async (client, args) => {
+  post_aass_originality_report: async (client, args) => {
     return genericHandler(client, "POST", "/api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report", args);
   },
-  put_assignments_assignment_id_submissions_submission_id_originality_report_id: async (client, args) => {
+  put_aass_originality_report_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report/:id", args);
   },
-  put_assignments_assignment_id_files_file_id_originality_report: async (client, args) => {
+  put_aaff_originality_report: async (client, args) => {
     return genericHandler(client, "PUT", "/api/lti/assignments/:assignment_id/files/:file_id/originality_report", args);
   },
-  get_assignments_assignment_id_submissions_submission_id_originality_report_id: async (client, args) => {
+  get_aass_originality_report_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/lti/assignments/:assignment_id/submissions/:submission_id/originality_report/:id", args);
   },
-  get_assignments_assignment_id_files_file_id_originality_report: async (client, args) => {
+  get_aaff_originality_report: async (client, args) => {
     return genericHandler(client, "GET", "/api/lti/assignments/:assignment_id/files/:file_id/originality_report", args);
   }
 };

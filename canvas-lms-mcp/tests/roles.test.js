@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const rolesModule = require("../tools/roles");
 
-test("get_accounts_account_id_roles calls correct endpoint", async () => {
+test("get_aa_roles calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rolesModule.handlers.get_accounts_account_id_roles;
-  assert.ok(handler, "Handler get_accounts_account_id_roles should be defined");
+  const handler = rolesModule.handlers.get_aa_roles;
+  assert.ok(handler, "Handler get_aa_roles should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "state[]": "test_val"});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_roles calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_roles_id calls correct endpoint", async () => {
+test("get_aa_roles_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rolesModule.handlers.get_accounts_account_id_roles_id;
-  assert.ok(handler, "Handler get_accounts_account_id_roles_id should be defined");
+  const handler = rolesModule.handlers.get_aa_roles_id;
+  assert.ok(handler, "Handler get_aa_roles_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "role_id": 123});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_roles_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_roles calls correct endpoint", async () => {
+test("post_aa_roles calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rolesModule.handlers.post_accounts_account_id_roles;
-  assert.ok(handler, "Handler post_accounts_account_id_roles should be defined");
+  const handler = rolesModule.handlers.post_aa_roles;
+  assert.ok(handler, "Handler post_aa_roles should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "label": "test_val"});
 
@@ -59,15 +59,15 @@ test("post_accounts_account_id_roles calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_roles_id calls correct endpoint", async () => {
+test("delete_aa_roles_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rolesModule.handlers.delete_accounts_account_id_roles_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_roles_id should be defined");
+  const handler = rolesModule.handlers.delete_aa_roles_id;
+  assert.ok(handler, "Handler delete_aa_roles_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "role_id": 123});
 
@@ -77,15 +77,15 @@ test("delete_accounts_account_id_roles_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_roles_id_activate calls correct endpoint", async () => {
+test("post_aari_activate calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rolesModule.handlers.post_accounts_account_id_roles_id_activate;
-  assert.ok(handler, "Handler post_accounts_account_id_roles_id_activate should be defined");
+  const handler = rolesModule.handlers.post_aari_activate;
+  assert.ok(handler, "Handler post_aari_activate should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "role_id": 123});
 
@@ -95,15 +95,15 @@ test("post_accounts_account_id_roles_id_activate calls correct endpoint", async 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_roles_id calls correct endpoint", async () => {
+test("put_aa_roles_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rolesModule.handlers.put_accounts_account_id_roles_id;
-  assert.ok(handler, "Handler put_accounts_account_id_roles_id should be defined");
+  const handler = rolesModule.handlers.put_aa_roles_id;
+  assert.ok(handler, "Handler put_aa_roles_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "label": "test_val"});
 
@@ -113,15 +113,15 @@ test("put_accounts_account_id_roles_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_roles_permissions calls correct endpoint", async () => {
+test("get_aar_permissions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rolesModule.handlers.get_accounts_account_id_roles_permissions;
-  assert.ok(handler, "Handler get_accounts_account_id_roles_permissions should be defined");
+  const handler = rolesModule.handlers.get_aar_permissions;
+  assert.ok(handler, "Handler get_aar_permissions should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "search_term": "test_val"});
 
@@ -131,15 +131,15 @@ test("get_accounts_account_id_roles_permissions calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_permissions_context_type_permission_help calls correct endpoint", async () => {
+test("get_pcp_help calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rolesModule.handlers.get_permissions_context_type_permission_help;
-  assert.ok(handler, "Handler get_permissions_context_type_permission_help should be defined");
+  const handler = rolesModule.handlers.get_pcp_help;
+  assert.ok(handler, "Handler get_pcp_help should be defined");
 
   const result = await handler(mockClient, {"context_type": "test_context_type", "permission": "test_permission"});
 
@@ -149,15 +149,15 @@ test("get_permissions_context_type_permission_help calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_permissions_groups calls correct endpoint", async () => {
+test("get_p_groups calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = rolesModule.handlers.get_permissions_groups;
-  assert.ok(handler, "Handler get_permissions_groups should be defined");
+  const handler = rolesModule.handlers.get_p_groups;
+  assert.ok(handler, "Handler get_p_groups should be defined");
 
   const result = await handler(mockClient, {});
 

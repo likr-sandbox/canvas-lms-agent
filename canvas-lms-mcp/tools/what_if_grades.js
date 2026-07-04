@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "put_submissions_id_what_if_grades",
+    "name": "put_si_what_if_grades",
     "description": "**Scope:** `url:PUT|/api/v1/submissions/:id/what_if_grades` Enter a what if score for a submission and receive the calculated grades Grade calculation is a costly operation, so this API should be used sparingly ```js { \"grades\": [ { \"current\": { \"grade\": 120.0, \"total\": 24.0, \"possible\": 20.0, \"dropped\": [] }, \"current_groups\": { \"1\": { \"id\": 1, \"global_id\": 10000000000001, \"score\": 20.0, \"possible\": 10.0, \"weight\": 0.0, \"grade\": 200.0, \"dropped\": [] }, \"3\": { \"id\": 3, \"global_id\": 1000000000...",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_what_if_grades_reset",
+    "name": "put_ccwig_reset",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/what_if_grades/reset` Resets all what-if scores for a student in a course and recalculates grades. Returns a list of [Grades](#grades) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason ...",
     "inputSchema": {
       "type": "object",
@@ -43,10 +43,10 @@ const definitions = [
 ];
 
 const handlers = {
-  put_submissions_id_what_if_grades: async (client, args) => {
+  put_si_what_if_grades: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/submissions/:id/what_if_grades", args);
   },
-  put_courses_course_id_what_if_grades_reset: async (client, args) => {
+  put_ccwig_reset: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/what_if_grades/reset", args);
   }
 };

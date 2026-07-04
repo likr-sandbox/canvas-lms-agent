@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_users_user_id_content_shares",
+    "name": "post_uu_content_shares",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/content_shares` Share content directly between two or more users ```bash curl 'https:///api/v1/users/self/content_shares \\ -d 'content_type=assignment' \\ -d 'content_id=1' \\ -H 'Authorization: Bearer ' \\ -X POST ``` Returns a [ContentShare](#contentshare) object. [ContentSharesController#index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_shares_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -36,7 +36,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_shares_sent",
+    "name": "get_uucs_sent",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_shares/sent`",
     "inputSchema": {
       "type": "object",
@@ -56,7 +56,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_shares_received",
+    "name": "get_uucs_received",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_shares/received` Return a paginated list of content shares a user has sent or received. Use +self+ as the user\\_id to retrieve your own content shares. Only linked observers and administrators may view other users' content shares. ```bash curl 'https:///api/v1/users/self/content_shares/received' ``` Returns a list of [ContentShare](#contentshare) objects. [ContentSharesController#unread\\_count](https://github.com/instructure/canvas-lms/blob/m...",
     "inputSchema": {
       "type": "object",
@@ -76,7 +76,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_shares_unread_count",
+    "name": "get_uucs_unread_count",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_shares/unread_count` Return the number of content shares a user has received that have not yet been read. Use +self+ as the user\\_id to retrieve your own content shares. Only linked observers and administrators may view other users' content shares. ```bash curl 'https:///api/v1/users/self/content_shares/unread_count' ``` [ContentSharesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_shares_control...",
     "inputSchema": {
       "type": "object",
@@ -96,7 +96,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_content_shares_id",
+    "name": "get_uu_content_shares_id",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/content_shares/:id` Return information about a single content share. You may use +self+ as the user\\_id to retrieve your own content share. ```bash curl 'https:///api/v1/users/self/content_shares/123' ``` Returns a [ContentShare](#contentshare) object. [ContentSharesController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_shares_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -121,7 +121,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_user_id_content_shares_id",
+    "name": "delete_uu_content_shares_id",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:user_id/content_shares/:id` Remove a content share from your list. Use +self+ as the user\\_id. Note that this endpoint does not delete other users' copies of the content share. ```bash curl -X DELETE 'https:///api/v1/users/self/content_shares/123' ``` [ContentSharesController#add\\_users](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_shares_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -142,7 +142,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_user_id_content_shares_id_add_users",
+    "name": "post_uucsi_add_users",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/content_shares/:id/add_users` Send a previously created content share to additional users ```bash curl -X POST 'https:///api/v1/users/self/content_shares/123/add_users?receiver_ids[]=789' ``` Returns a [ContentShare](#contentshare) object. [ContentSharesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/content_shares_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -167,7 +167,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_user_id_content_shares_id",
+    "name": "put_uu_content_shares_id",
     "description": "**Scope:** `url:PUT|/api/v1/users/:user_id/content_shares/:id` Mark a content share read or unread ```bash curl -X PUT 'https:///api/v1/users/self/content_shares/123?read_state=read' ``` Returns a [ContentShare](#contentshare) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans a...",
     "inputSchema": {
       "type": "object",
@@ -194,28 +194,28 @@ const definitions = [
 ];
 
 const handlers = {
-  post_users_user_id_content_shares: async (client, args) => {
+  post_uu_content_shares: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/content_shares", args);
   },
-  get_users_user_id_content_shares_sent: async (client, args) => {
+  get_uucs_sent: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_shares/sent", args);
   },
-  get_users_user_id_content_shares_received: async (client, args) => {
+  get_uucs_received: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_shares/received", args);
   },
-  get_users_user_id_content_shares_unread_count: async (client, args) => {
+  get_uucs_unread_count: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_shares/unread_count", args);
   },
-  get_users_user_id_content_shares_id: async (client, args) => {
+  get_uu_content_shares_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/content_shares/:id", args);
   },
-  delete_users_user_id_content_shares_id: async (client, args) => {
+  delete_uu_content_shares_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/content_shares/:id", args);
   },
-  post_users_user_id_content_shares_id_add_users: async (client, args) => {
+  post_uucsi_add_users: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/content_shares/:id/add_users", args);
   },
-  put_users_user_id_content_shares_id: async (client, args) => {
+  put_uu_content_shares_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:user_id/content_shares/:id", args);
   }
 };

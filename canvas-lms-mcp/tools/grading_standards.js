@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_accounts_account_id_grading_standards",
+    "name": "post_aa_grading_standards",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/grading_standards`",
     "inputSchema": {
       "type": "object",
@@ -21,7 +21,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_grading_standards",
+    "name": "post_cc_grading_standards",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/grading_standards` Create a new grading standard ```bash curl https:///api/v1/courses//grading_standards \\ -X POST \\ -H 'Authorization: Bearer ' \\ -d 'title=New standard name' \\ -d 'points_based=false' \\ -d 'scaling_factor=1.0' \\ -d 'grading_scheme_entry[][name]=A' \\ -d 'grading_scheme_entry[][value]=94' \\ -d 'grading_scheme_entry[][name]=A-' \\ -d 'grading_scheme_entry[][value]=90' \\ -d 'grading_scheme_entry[][name]=B+' \\ -d 'grading_scheme_entr...",
     "inputSchema": {
       "type": "object",
@@ -60,7 +60,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_grading_standards",
+    "name": "get_cc_grading_standards",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/grading_standards`",
     "inputSchema": {
       "type": "object",
@@ -80,7 +80,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_grading_standards",
+    "name": "get_aa_grading_standards",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/grading_standards` Returns the paginated list of grading standards for the given context that are visible to the user. ```bash curl https:///api/v1/courses/1/grading_standards \\ -H 'Authorization: Bearer ' ``` Returns a list of [GradingStandard](#gradingstandard) objects. [GradingStandardsApiController#context\\_show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grading_standards_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -100,7 +100,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_grading_standards_grading_standard_id",
+    "name": "get_cc_grading_standards_grading_standard_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/grading_standards/:grading_standard_id`",
     "inputSchema": {
       "type": "object",
@@ -125,7 +125,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_grading_standards_grading_standard_id",
+    "name": "get_aa_grading_standards_grading_standard_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/grading_standards/:grading_standard_id` Returns a grading standard for the given context that is visible to the user. ```bash curl https:///api/v1/courses/1/grading_standards/5 \\ -H 'Authorization: Bearer ' ``` Returns a [GradingStandard](#gradingstandard) object. [GradingStandardsApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/grading_standards_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -150,7 +150,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_grading_standards_grading_standard_id",
+    "name": "put_cc_grading_standards_grading_standard_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/grading_standards/:grading_standard_id`",
     "inputSchema": {
       "type": "object",
@@ -171,7 +171,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_grading_standards_grading_standard_id",
+    "name": "put_aa_grading_standards_grading_standard_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/grading_standards/:grading_standard_id` Updates the grading standard with the given id If the grading standard has been used for grading, only the title can be updated. The data, points\\_based, and scaling\\_factor cannot be modified once the grading standard has been used to grade assignments. ```bash curl https:///api/v1/courses/1/grading_standards/5 \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -d 'title=Updated+Grading+Standard' -d 'points_based=...",
     "inputSchema": {
       "type": "object",
@@ -213,7 +213,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_grading_standards_grading_standard_id",
+    "name": "delete_cc_grading_standards_grading_standard_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/grading_standards/:grading_standard_id`",
     "inputSchema": {
       "type": "object",
@@ -234,7 +234,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_grading_standards_grading_standard_id",
+    "name": "delete_aa_grading_standards_grading_standard_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/grading_standards/:grading_standard_id` Deletes the grading standard with the given id ```bash curl https:///api/v1/courses/1/grading_standards/5 \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Returns a [GradingStandard](#gradingstandard) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBo...",
     "inputSchema": {
       "type": "object",
@@ -257,34 +257,34 @@ const definitions = [
 ];
 
 const handlers = {
-  post_accounts_account_id_grading_standards: async (client, args) => {
+  post_aa_grading_standards: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/grading_standards", args);
   },
-  post_courses_course_id_grading_standards: async (client, args) => {
+  post_cc_grading_standards: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/grading_standards", args);
   },
-  get_courses_course_id_grading_standards: async (client, args) => {
+  get_cc_grading_standards: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/grading_standards", args);
   },
-  get_accounts_account_id_grading_standards: async (client, args) => {
+  get_aa_grading_standards: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/grading_standards", args);
   },
-  get_courses_course_id_grading_standards_grading_standard_id: async (client, args) => {
+  get_cc_grading_standards_grading_standard_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/grading_standards/:grading_standard_id", args);
   },
-  get_accounts_account_id_grading_standards_grading_standard_id: async (client, args) => {
+  get_aa_grading_standards_grading_standard_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/grading_standards/:grading_standard_id", args);
   },
-  put_courses_course_id_grading_standards_grading_standard_id: async (client, args) => {
+  put_cc_grading_standards_grading_standard_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/grading_standards/:grading_standard_id", args);
   },
-  put_accounts_account_id_grading_standards_grading_standard_id: async (client, args) => {
+  put_aa_grading_standards_grading_standard_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/grading_standards/:grading_standard_id", args);
   },
-  delete_courses_course_id_grading_standards_grading_standard_id: async (client, args) => {
+  delete_cc_grading_standards_grading_standard_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/grading_standards/:grading_standard_id", args);
   },
-  delete_accounts_account_id_grading_standards_grading_standard_id: async (client, args) => {
+  delete_aa_grading_standards_grading_standard_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/grading_standards/:grading_standard_id", args);
   }
 };

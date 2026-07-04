@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_polls_poll_id_poll_sessions_poll_session_id_poll_submissions_id",
+    "name": "get_pppsp_poll_submissions_id",
     "description": "**Scope:** `url:GET|/api/v1/polls/:poll_id/poll_sessions/:poll_session_id/poll_submissions/:id` Returns the poll submission with the given id ```js { \"poll_submissions\": [PollSubmission] } ``` [Polling::PollSubmissionsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/polling/poll_submissions_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -35,7 +35,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_polls_poll_id_poll_sessions_poll_session_id_poll_submissions",
+    "name": "post_pppsp_poll_submissions",
     "description": "**Scope:** `url:POST|/api/v1/polls/:poll_id/poll_sessions/:poll_session_id/poll_submissions` Create a new poll submission for this poll session ```js { \"poll_submissions\": [PollSubmission] } ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and rea...",
     "inputSchema": {
       "type": "object",
@@ -63,10 +63,10 @@ const definitions = [
 ];
 
 const handlers = {
-  get_polls_poll_id_poll_sessions_poll_session_id_poll_submissions_id: async (client, args) => {
+  get_pppsp_poll_submissions_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/polls/:poll_id/poll_sessions/:poll_session_id/poll_submissions/:id", args);
   },
-  post_polls_poll_id_poll_sessions_poll_session_id_poll_submissions: async (client, args) => {
+  post_pppsp_poll_submissions: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/polls/:poll_id/poll_sessions/:poll_session_id/poll_submissions", args);
   }
 };

@@ -59,15 +59,15 @@ test("put_account_calendars_account_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_account_calendars calls correct endpoint", async () => {
+test("put_aa_account_calendars calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_calendarsModule.handlers.put_accounts_account_id_account_calendars;
-  assert.ok(handler, "Handler put_accounts_account_id_account_calendars should be defined");
+  const handler = account_calendarsModule.handlers.put_aa_account_calendars;
+  assert.ok(handler, "Handler put_aa_account_calendars should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -77,15 +77,15 @@ test("put_accounts_account_id_account_calendars calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_account_calendars calls correct endpoint", async () => {
+test("get_aa_account_calendars calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_calendarsModule.handlers.get_accounts_account_id_account_calendars;
-  assert.ok(handler, "Handler get_accounts_account_id_account_calendars should be defined");
+  const handler = account_calendarsModule.handlers.get_aa_account_calendars;
+  assert.ok(handler, "Handler get_aa_account_calendars should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "search_term": "test_val"});
 
@@ -95,15 +95,15 @@ test("get_accounts_account_id_account_calendars calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_visible_calendars_count calls correct endpoint", async () => {
+test("get_aa_visible_calendars_count calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_calendarsModule.handlers.get_accounts_account_id_visible_calendars_count;
-  assert.ok(handler, "Handler get_accounts_account_id_visible_calendars_count should be defined");
+  const handler = account_calendarsModule.handlers.get_aa_visible_calendars_count;
+  assert.ok(handler, "Handler get_aa_visible_calendars_count should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_blackout_dates",
+    "name": "get_cc_blackout_dates",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blackout_dates`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_blackout_dates",
+    "name": "get_aa_blackout_dates",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/blackout_dates` Returns the list of blackout dates for the current context. Returns a list of [BlackoutDate](#blackoutdate) objects. [BlackoutDatesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/blackout_dates_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blackout_dates_id",
+    "name": "get_cc_blackout_dates_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blackout_dates/:id`",
     "inputSchema": {
       "type": "object",
@@ -70,7 +70,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_blackout_dates_id",
+    "name": "get_aa_blackout_dates_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/blackout_dates/:id` Returns the blackout date with the given id. Returns a [BlackoutDate](#blackoutdate) object. [BlackoutDatesController#new](https://github.com/instructure/canvas-lms/blob/master/app/controllers/blackout_dates_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -95,7 +95,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_blackout_dates_new",
+    "name": "get_ccbd_new",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/blackout_dates/new`",
     "inputSchema": {
       "type": "object",
@@ -115,7 +115,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_blackout_dates_new",
+    "name": "get_aabd_new",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/blackout_dates/new` Initialize an unsaved Blackout Date for the given context. Returns a [BlackoutDate](#blackoutdate) object. [BlackoutDatesController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/blackout_dates_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -135,7 +135,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_blackout_dates",
+    "name": "post_cc_blackout_dates",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/blackout_dates`",
     "inputSchema": {
       "type": "object",
@@ -151,7 +151,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_blackout_dates",
+    "name": "post_aa_blackout_dates",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/blackout_dates` Create a blackout date for the given context. Returns a [BlackoutDate](#blackoutdate) object. [BlackoutDatesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/blackout_dates_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -179,7 +179,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_blackout_dates_id",
+    "name": "put_cc_blackout_dates_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/blackout_dates/:id`",
     "inputSchema": {
       "type": "object",
@@ -200,7 +200,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_blackout_dates_id",
+    "name": "put_aa_blackout_dates_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/blackout_dates/:id` Update a blackout date for the given context. Returns a [BlackoutDate](#blackoutdate) object. [BlackoutDatesController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/blackout_dates_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -233,7 +233,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_blackout_dates_id",
+    "name": "delete_cc_blackout_dates_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/blackout_dates/:id`",
     "inputSchema": {
       "type": "object",
@@ -254,7 +254,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_blackout_dates_id",
+    "name": "delete_aa_blackout_dates_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/blackout_dates/:id` Delete a blackout date for the given context. Returns a [BlackoutDate](#blackoutdate) object. [BlackoutDatesController#bulk\\_update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/blackout_dates_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -275,7 +275,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_blackout_dates",
+    "name": "put_cc_blackout_dates",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/blackout_dates` Create, update, and delete blackout dates to sync the db with the incoming data. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more ...",
     "inputSchema": {
       "type": "object",
@@ -297,43 +297,43 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_blackout_dates: async (client, args) => {
+  get_cc_blackout_dates: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blackout_dates", args);
   },
-  get_accounts_account_id_blackout_dates: async (client, args) => {
+  get_aa_blackout_dates: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/blackout_dates", args);
   },
-  get_courses_course_id_blackout_dates_id: async (client, args) => {
+  get_cc_blackout_dates_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blackout_dates/:id", args);
   },
-  get_accounts_account_id_blackout_dates_id: async (client, args) => {
+  get_aa_blackout_dates_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/blackout_dates/:id", args);
   },
-  get_courses_course_id_blackout_dates_new: async (client, args) => {
+  get_ccbd_new: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/blackout_dates/new", args);
   },
-  get_accounts_account_id_blackout_dates_new: async (client, args) => {
+  get_aabd_new: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/blackout_dates/new", args);
   },
-  post_courses_course_id_blackout_dates: async (client, args) => {
+  post_cc_blackout_dates: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/blackout_dates", args);
   },
-  post_accounts_account_id_blackout_dates: async (client, args) => {
+  post_aa_blackout_dates: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/blackout_dates", args);
   },
-  put_courses_course_id_blackout_dates_id: async (client, args) => {
+  put_cc_blackout_dates_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/blackout_dates/:id", args);
   },
-  put_accounts_account_id_blackout_dates_id: async (client, args) => {
+  put_aa_blackout_dates_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/blackout_dates/:id", args);
   },
-  delete_courses_course_id_blackout_dates_id: async (client, args) => {
+  delete_cc_blackout_dates_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/blackout_dates/:id", args);
   },
-  delete_accounts_account_id_blackout_dates_id: async (client, args) => {
+  delete_aa_blackout_dates_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/blackout_dates/:id", args);
   },
-  put_courses_course_id_blackout_dates: async (client, args) => {
+  put_cc_blackout_dates: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/blackout_dates", args);
   }
 };

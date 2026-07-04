@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const course_quiz_extensionsModule = require("../tools/course_quiz_extensions");
 
-test("post_courses_course_id_quiz_extensions calls correct endpoint", async () => {
+test("post_cc_quiz_extensions calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = course_quiz_extensionsModule.handlers.post_courses_course_id_quiz_extensions;
-  assert.ok(handler, "Handler post_courses_course_id_quiz_extensions should be defined");
+  const handler = course_quiz_extensionsModule.handlers.post_cc_quiz_extensions;
+  assert.ok(handler, "Handler post_cc_quiz_extensions should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "user_id": 123});
 

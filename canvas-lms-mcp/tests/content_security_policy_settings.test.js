@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const content_security_policy_settingsModule = require("../tools/content_security_policy_settings");
 
-test("get_courses_course_id_csp_settings calls correct endpoint", async () => {
+test("get_cc_csp_settings calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_security_policy_settingsModule.handlers.get_courses_course_id_csp_settings;
-  assert.ok(handler, "Handler get_courses_course_id_csp_settings should be defined");
+  const handler = content_security_policy_settingsModule.handlers.get_cc_csp_settings;
+  assert.ok(handler, "Handler get_cc_csp_settings should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_csp_settings calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_csp_settings calls correct endpoint", async () => {
+test("get_aa_csp_settings calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_security_policy_settingsModule.handlers.get_accounts_account_id_csp_settings;
-  assert.ok(handler, "Handler get_accounts_account_id_csp_settings should be defined");
+  const handler = content_security_policy_settingsModule.handlers.get_aa_csp_settings;
+  assert.ok(handler, "Handler get_aa_csp_settings should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_csp_settings calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_courses_course_id_csp_settings calls correct endpoint", async () => {
+test("put_cc_csp_settings calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_security_policy_settingsModule.handlers.put_courses_course_id_csp_settings;
-  assert.ok(handler, "Handler put_courses_course_id_csp_settings should be defined");
+  const handler = content_security_policy_settingsModule.handlers.put_cc_csp_settings;
+  assert.ok(handler, "Handler put_cc_csp_settings should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id"});
 
@@ -59,15 +59,15 @@ test("put_courses_course_id_csp_settings calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_csp_settings calls correct endpoint", async () => {
+test("put_aa_csp_settings calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_security_policy_settingsModule.handlers.put_accounts_account_id_csp_settings;
-  assert.ok(handler, "Handler put_accounts_account_id_csp_settings should be defined");
+  const handler = content_security_policy_settingsModule.handlers.put_aa_csp_settings;
+  assert.ok(handler, "Handler put_aa_csp_settings should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "status": "test_val"});
 
@@ -77,15 +77,15 @@ test("put_accounts_account_id_csp_settings calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_csp_settings_lock calls correct endpoint", async () => {
+test("put_aacs_lock calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_security_policy_settingsModule.handlers.put_accounts_account_id_csp_settings_lock;
-  assert.ok(handler, "Handler put_accounts_account_id_csp_settings_lock should be defined");
+  const handler = content_security_policy_settingsModule.handlers.put_aacs_lock;
+  assert.ok(handler, "Handler put_aacs_lock should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "settings_locked": true});
 
@@ -95,15 +95,15 @@ test("put_accounts_account_id_csp_settings_lock calls correct endpoint", async (
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_csp_settings_domains calls correct endpoint", async () => {
+test("post_aacs_domains calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_security_policy_settingsModule.handlers.post_accounts_account_id_csp_settings_domains;
-  assert.ok(handler, "Handler post_accounts_account_id_csp_settings_domains should be defined");
+  const handler = content_security_policy_settingsModule.handlers.post_aacs_domains;
+  assert.ok(handler, "Handler post_aacs_domains should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "domain": "test_val"});
 
@@ -113,15 +113,15 @@ test("post_accounts_account_id_csp_settings_domains calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_csp_settings_domains_batch_create calls correct endpoint", async () => {
+test("post_aacsd_batch_create calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_security_policy_settingsModule.handlers.post_accounts_account_id_csp_settings_domains_batch_create;
-  assert.ok(handler, "Handler post_accounts_account_id_csp_settings_domains_batch_create should be defined");
+  const handler = content_security_policy_settingsModule.handlers.post_aacsd_batch_create;
+  assert.ok(handler, "Handler post_aacsd_batch_create should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "domains": ["test_val"]});
 
@@ -131,15 +131,15 @@ test("post_accounts_account_id_csp_settings_domains_batch_create calls correct e
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_csp_settings_domains calls correct endpoint", async () => {
+test("delete_aacs_domains calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = content_security_policy_settingsModule.handlers.delete_accounts_account_id_csp_settings_domains;
-  assert.ok(handler, "Handler delete_accounts_account_id_csp_settings_domains should be defined");
+  const handler = content_security_policy_settingsModule.handlers.delete_aacs_domains;
+  assert.ok(handler, "Handler delete_aacs_domains should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "domain": "test_val"});
 

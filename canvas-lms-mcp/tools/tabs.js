@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_tabs",
+    "name": "get_aa_tabs",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/tabs`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_tabs",
+    "name": "get_cc_tabs",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/tabs`",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_tabs",
+    "name": "get_gg_tabs",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/tabs`",
     "inputSchema": {
       "type": "object",
@@ -65,7 +65,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_tabs",
+    "name": "get_uu_tabs",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/tabs` Returns a paginated list of navigation tabs available in the current context. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/groups//tabs\" ``` ```js [ { \"html_url\": \"/courses/1\", \"id\": \"home\", \"label\": \"Home\", \"position\": 1, \"visibility\": \"public\", \"type\": \"internal\" }, { \"html_url\": \"/courses/1/external_tools/4\", \"id\": \"context_external_tool_4\", \"label\": \"WordPress\", \"hidden\": true, \"visibility\": \"public\", \"position\": 2, \"type\": \"e...",
     "inputSchema": {
       "type": "object",
@@ -89,7 +89,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_tabs_tab_id",
+    "name": "put_cc_tabs_tab_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/tabs/:tab_id` Home and Settings tabs are not manageable, and can't be hidden or moved Returns a tab object ```bash curl https:///api/v1/courses//tabs/tab_id \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -d 'hidden=true' \\ -d 'position=2' // 1 based ``` Returns a [Tab](#tab) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is pu...",
     "inputSchema": {
       "type": "object",
@@ -120,19 +120,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_tabs: async (client, args) => {
+  get_aa_tabs: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/tabs", args);
   },
-  get_courses_course_id_tabs: async (client, args) => {
+  get_cc_tabs: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/tabs", args);
   },
-  get_groups_group_id_tabs: async (client, args) => {
+  get_gg_tabs: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/tabs", args);
   },
-  get_users_user_id_tabs: async (client, args) => {
+  get_uu_tabs: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/tabs", args);
   },
-  put_courses_course_id_tabs_tab_id: async (client, args) => {
+  put_cc_tabs_tab_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/tabs/:tab_id", args);
   }
 };

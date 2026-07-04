@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const quiz_assignment_overridesModule = require("../tools/quiz_assignment_overrides");
 
-test("get_courses_course_id_quizzes_assignment_overrides calls correct endpoint", async () => {
+test("get_ccq_assignment_overrides calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = quiz_assignment_overridesModule.handlers.get_courses_course_id_quizzes_assignment_overrides;
-  assert.ok(handler, "Handler get_courses_course_id_quizzes_assignment_overrides should be defined");
+  const handler = quiz_assignment_overridesModule.handlers.get_ccq_assignment_overrides;
+  assert.ok(handler, "Handler get_ccq_assignment_overrides should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_assignment_overrides[][quiz_ids][]": 123});
 
@@ -23,15 +23,15 @@ test("get_courses_course_id_quizzes_assignment_overrides calls correct endpoint"
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_courses_course_id_new_quizzes_assignment_overrides calls correct endpoint", async () => {
+test("get_ccnq_assignment_overrides calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = quiz_assignment_overridesModule.handlers.get_courses_course_id_new_quizzes_assignment_overrides;
-  assert.ok(handler, "Handler get_courses_course_id_new_quizzes_assignment_overrides should be defined");
+  const handler = quiz_assignment_overridesModule.handlers.get_ccnq_assignment_overrides;
+  assert.ok(handler, "Handler get_ccnq_assignment_overrides should be defined");
 
   const result = await handler(mockClient, {"course_id": "test_course_id", "quiz_assignment_overrides[][quiz_ids][]": 123});
 

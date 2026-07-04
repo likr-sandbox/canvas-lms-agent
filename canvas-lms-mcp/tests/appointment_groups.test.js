@@ -95,15 +95,15 @@ test("delete_appointment_groups_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_appointment_groups_id_users calls correct endpoint", async () => {
+test("get_agi_users calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = appointment_groupsModule.handlers.get_appointment_groups_id_users;
-  assert.ok(handler, "Handler get_appointment_groups_id_users should be defined");
+  const handler = appointment_groupsModule.handlers.get_agi_users;
+  assert.ok(handler, "Handler get_agi_users should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "registration_status": "test_val"});
 
@@ -113,15 +113,15 @@ test("get_appointment_groups_id_users calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_appointment_groups_id_groups calls correct endpoint", async () => {
+test("get_agi_groups calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = appointment_groupsModule.handlers.get_appointment_groups_id_groups;
-  assert.ok(handler, "Handler get_appointment_groups_id_groups should be defined");
+  const handler = appointment_groupsModule.handlers.get_agi_groups;
+  assert.ok(handler, "Handler get_agi_groups should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "registration_status": "test_val"});
 
@@ -131,15 +131,15 @@ test("get_appointment_groups_id_groups calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_appointment_groups_next_appointment calls correct endpoint", async () => {
+test("get_ag_next_appointment calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = appointment_groupsModule.handlers.get_appointment_groups_next_appointment;
-  assert.ok(handler, "Handler get_appointment_groups_next_appointment should be defined");
+  const handler = appointment_groupsModule.handlers.get_ag_next_appointment;
+  assert.ok(handler, "Handler get_ag_next_appointment should be defined");
 
   const result = await handler(mockClient, {"appointment_group_ids[]": "test_val"});
 

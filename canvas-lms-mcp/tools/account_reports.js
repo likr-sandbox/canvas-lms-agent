@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_reports",
+    "name": "get_aa_reports",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/reports` Returns a paginated list of reports for the current context. * name The name of the report. * parameters The parameters will vary for each report * last\\_run \\[Report] The last run of the report. This will be null if the report has never been run. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/accounts//reports/ ``` ```js [ { \"report\":\"student_assignment_outcome_map_csv\", \"title\":\"Student Competency\", \"parameters\":null, \"la...",
     "inputSchema": {
       "type": "object",
@@ -29,7 +29,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_reports_report",
+    "name": "post_aa_reports_report",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/reports/:report` Generates a report instance for the account. Note that \"report\" in the request must match one of the available report names. To fetch a list of available report names and parameters for each report (including whether or not those parameters are required), see [List Available Reports](#method.account_reports.available_reports). ```bash curl -X POST \\ https:///api/v1/accounts/1/reports/provisioning_csv \\ -H 'Authorization: Beare...",
     "inputSchema": {
       "type": "object",
@@ -66,7 +66,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_reports_report",
+    "name": "get_aa_reports_report",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/reports/:report` Shows all reports that have been run for the account of a specific type. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/accounts//reports/ ``` Returns a list of [Report](course_reports.md#report) objects. [AccountReportsController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/account_reports_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -91,7 +91,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_reports_report_id",
+    "name": "get_aa_reports_report_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/reports/:report/:id` Returns the status of a report. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/accounts//reports// ``` Returns a [Report](course_reports.md#report) object. [AccountReportsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/account_reports_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -121,7 +121,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_reports_report_id",
+    "name": "delete_aa_reports_report_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/reports/:report/:id` Deletes a generated report instance. ```bash curl -H 'Authorization: Bearer ' \\ -X DELETE \\ https:///api/v1/accounts//reports// ``` Returns a [Report](course_reports.md#report) object. [AccountReportsController#abort](https://github.com/instructure/canvas-lms/blob/master/app/controllers/account_reports_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -147,7 +147,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_reports_report_id_abort",
+    "name": "put_aarri_abort",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/reports/:report/:id/abort` Abort a report in progress ```bash curl -H 'Authorization: Bearer ' \\ -X PUT \\ https:///api/v1/accounts//reports///abort ``` Returns a [Report](course_reports.md#report) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so...",
     "inputSchema": {
       "type": "object",
@@ -175,22 +175,22 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_reports: async (client, args) => {
+  get_aa_reports: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/reports", args);
   },
-  post_accounts_account_id_reports_report: async (client, args) => {
+  post_aa_reports_report: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/reports/:report", args);
   },
-  get_accounts_account_id_reports_report: async (client, args) => {
+  get_aa_reports_report: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/reports/:report", args);
   },
-  get_accounts_account_id_reports_report_id: async (client, args) => {
+  get_aa_reports_report_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/reports/:report/:id", args);
   },
-  delete_accounts_account_id_reports_report_id: async (client, args) => {
+  delete_aa_reports_report_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/reports/:report/:id", args);
   },
-  put_accounts_account_id_reports_report_id_abort: async (client, args) => {
+  put_aarri_abort: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/reports/:report/:id/abort", args);
   }
 };

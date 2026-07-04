@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const e_portfoliosModule = require("../tools/e_portfolios");
 
-test("get_users_user_id_eportfolios calls correct endpoint", async () => {
+test("get_uu_eportfolios calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = e_portfoliosModule.handlers.get_users_user_id_eportfolios;
-  assert.ok(handler, "Handler get_users_user_id_eportfolios should be defined");
+  const handler = e_portfoliosModule.handlers.get_uu_eportfolios;
+  assert.ok(handler, "Handler get_uu_eportfolios should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "include[]": "test_val"});
 
@@ -59,15 +59,15 @@ test("delete_eportfolios_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_eportfolios_eportfolio_id_pages calls correct endpoint", async () => {
+test("get_ee_pages calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = e_portfoliosModule.handlers.get_eportfolios_eportfolio_id_pages;
-  assert.ok(handler, "Handler get_eportfolios_eportfolio_id_pages should be defined");
+  const handler = e_portfoliosModule.handlers.get_ee_pages;
+  assert.ok(handler, "Handler get_ee_pages should be defined");
 
   const result = await handler(mockClient, {"eportfolio_id": "test_eportfolio_id"});
 
@@ -77,15 +77,15 @@ test("get_eportfolios_eportfolio_id_pages calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_eportfolios_eportfolio_id_moderate calls correct endpoint", async () => {
+test("put_ee_moderate calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = e_portfoliosModule.handlers.put_eportfolios_eportfolio_id_moderate;
-  assert.ok(handler, "Handler put_eportfolios_eportfolio_id_moderate should be defined");
+  const handler = e_portfoliosModule.handlers.put_ee_moderate;
+  assert.ok(handler, "Handler put_ee_moderate should be defined");
 
   const result = await handler(mockClient, {"eportfolio_id": "test_eportfolio_id", "spam_status": "test_val"});
 
@@ -95,15 +95,15 @@ test("put_eportfolios_eportfolio_id_moderate calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_user_id_eportfolios calls correct endpoint", async () => {
+test("put_uu_eportfolios calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = e_portfoliosModule.handlers.put_users_user_id_eportfolios;
-  assert.ok(handler, "Handler put_users_user_id_eportfolios should be defined");
+  const handler = e_portfoliosModule.handlers.put_uu_eportfolios;
+  assert.ok(handler, "Handler put_uu_eportfolios should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id", "spam_status": "test_val"});
 
@@ -113,15 +113,15 @@ test("put_users_user_id_eportfolios calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_eportfolios_eportfolio_id_restore calls correct endpoint", async () => {
+test("put_ee_restore calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = e_portfoliosModule.handlers.put_eportfolios_eportfolio_id_restore;
-  assert.ok(handler, "Handler put_eportfolios_eportfolio_id_restore should be defined");
+  const handler = e_portfoliosModule.handlers.put_ee_restore;
+  assert.ok(handler, "Handler put_ee_restore should be defined");
 
   const result = await handler(mockClient, {"eportfolio_id": "test_eportfolio_id"});
 

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_accounts_account_id_outcome_imports_group_learning_outcome_group_id",
+    "name": "post_aaoi_group_learning_outcome_group_id",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/outcome_imports(/group/:learning_outcome_group_id)`",
     "inputSchema": {
       "type": "object",
@@ -26,7 +26,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_outcome_imports_group_learning_outcome_group_id",
+    "name": "post_ccoi_group_learning_outcome_group_id",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/outcome_imports(/group/:learning_outcome_group_id)` Import outcomes into Canvas. For more information on the format that's expected here, please see the \"Outcomes CSV\" section in the API docs. Returns an [OutcomeImport](#outcomeimport) object. [OutcomeImportsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/outcome_imports_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -59,7 +59,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_outcome_imports_id",
+    "name": "get_aa_outcome_imports_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/outcome_imports/:id`",
     "inputSchema": {
       "type": "object",
@@ -84,7 +84,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_imports_id",
+    "name": "get_cc_outcome_imports_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_imports/:id` Get the status of an already created Outcome import. Pass 'latest' for the outcome import id for the latest import. Examples: curl 'https\\://\\/api/v1/accounts/\\/outcome\\_imports/\\'\\ -H \"Authorization: Bearer \\\" curl 'https\\://\\/api/v1/courses/\\/outcome\\_imports/\\'\\ -H \"Authorization: Bearer \\\" Returns an [OutcomeImport](#outcomeimport) object. [OutcomeImportsApiController#created\\_group\\_ids](https://github.com/instructure/ca...",
     "inputSchema": {
       "type": "object",
@@ -109,7 +109,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_outcome_imports_id_created_group_ids",
+    "name": "get_aaoii_created_group_ids",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/outcome_imports/:id/created_group_ids`",
     "inputSchema": {
       "type": "object",
@@ -134,7 +134,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_imports_id_created_group_ids",
+    "name": "get_ccoii_created_group_ids",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_imports/:id/created_group_ids` Get the IDs of the outcome groups created after a successful import. Pass 'latest' for the outcome import id for the latest import. Examples: curl 'https\\://\\/api/v1/accounts/\\/outcome\\_imports/outcomes\\_group\\_ids/\\'\\ -H \"Authorization: Bearer \\\" curl 'https\\://\\/api/v1/courses/\\/outcome\\_imports/outcome\\_group\\_ids/\\'\\ -H \"Authorization: Bearer \\\" *** This documentation is generated directly from the Canva...",
     "inputSchema": {
       "type": "object",
@@ -161,22 +161,22 @@ const definitions = [
 ];
 
 const handlers = {
-  post_accounts_account_id_outcome_imports_group_learning_outcome_group_id: async (client, args) => {
+  post_aaoi_group_learning_outcome_group_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/outcome_imports(/group/:learning_outcome_group_id)", args);
   },
-  post_courses_course_id_outcome_imports_group_learning_outcome_group_id: async (client, args) => {
+  post_ccoi_group_learning_outcome_group_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/outcome_imports(/group/:learning_outcome_group_id)", args);
   },
-  get_accounts_account_id_outcome_imports_id: async (client, args) => {
+  get_aa_outcome_imports_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/outcome_imports/:id", args);
   },
-  get_courses_course_id_outcome_imports_id: async (client, args) => {
+  get_cc_outcome_imports_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_imports/:id", args);
   },
-  get_accounts_account_id_outcome_imports_id_created_group_ids: async (client, args) => {
+  get_aaoii_created_group_ids: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/outcome_imports/:id/created_group_ids", args);
   },
-  get_courses_course_id_outcome_imports_id_created_group_ids: async (client, args) => {
+  get_ccoii_created_group_ids: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_imports/:id/created_group_ids", args);
   }
 };

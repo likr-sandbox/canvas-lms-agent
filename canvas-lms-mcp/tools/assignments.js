@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "delete_courses_course_id_assignments_id",
+    "name": "delete_cc_assignments_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/assignments/:id` Delete the given assignment. ```bash curl https:///api/v1/courses//assignments/ \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Returns an [Assignment](#assignment) object. [AssignmentsApiController#index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -26,7 +26,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments",
+    "name": "get_cc_assignments",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments`",
     "inputSchema": {
       "type": "object",
@@ -46,7 +46,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignment_groups_assignment_group_id_assignments",
+    "name": "get_ccaga_assignments",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignment_groups/:assignment_group_id/assignments` Returns the paginated list of assignments for the current course or assignment group. Returns a list of [Assignment](#assignment) objects. [AssignmentsApiController#user\\_index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -107,7 +107,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_courses_course_id_assignments",
+    "name": "get_uucc_assignments",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/courses/:course_id/assignments` Returns the paginated list of assignments for the specified user if the current user has rights to view. See [List assignments](#method.assignments_api.index) for valid arguments. [AssignmentsApiController#duplicate](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -132,7 +132,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments_assignment_id_duplicate",
+    "name": "post_ccaa_duplicate",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/:assignment_id/duplicate` Duplicate an assignment and return a json based on result\\_type argument. ```bash curl -X POST -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/assignments/123/duplicate ``` ```bash curl -X POST -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/assignments/123/duplicate?result_type=Quiz ``` Returns an [Assignment](#assignment) object. [AssignmentsApiController#student\\_group\\_members](https:...",
     "inputSchema": {
       "type": "object",
@@ -157,7 +157,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_users_user_id_group_members",
+    "name": "get_ccaauu_group_members",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/users/:user_id/group_members` Returns student ids and names for the group. ```bash curl https:///api/v1/courses/1/assignments/1/users/1/group_members ``` Returns a list of [BasicUser](#basicuser) objects. [AssignmentsApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -187,7 +187,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_id",
+    "name": "get_cc_assignments_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:id` Returns the assignment with the given id. Returns an [Assignment](#assignment) object. [AssignmentsApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -228,7 +228,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments",
+    "name": "post_cc_assignments",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments` Create a new assignment for this course. The assignment is created in the active state. Returns an [Assignment](#assignment) object. [AssignmentsApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -425,7 +425,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_id",
+    "name": "put_cc_assignments_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:id` Modify an existing assignment. Returns an [Assignment](#assignment) object. [AssignmentsApiController#bulk\\_update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignments_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -630,7 +630,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_bulk_update",
+    "name": "put_cca_bulk_update",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/bulk_update` Update due dates and availability dates for multiple assignments in a course. Accepts a JSON array of objects containing two keys each: +id+, the assignment id, and +all\\_dates+, an array of +AssignmentDate+ structures containing the base and/or override dates for the assignment, as returned from the [List assignments](#method.assignments_api.index) endpoint with +include\\[]=all\\_dates+. This endpoint cannot create or des...",
     "inputSchema": {
       "type": "object",
@@ -646,7 +646,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_overrides",
+    "name": "get_ccaa_overrides",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/overrides` Returns the paginated list of overrides for this assignment that target sections/groups/students visible to the current user. Returns a list of [AssignmentOverride](#assignmentoverride) objects. [AssignmentOverridesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignment_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -671,7 +671,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_assignment_id_overrides_id",
+    "name": "get_ccaa_overrides_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id` Returns details of the the override with the given id. Returns an [AssignmentOverride](#assignmentoverride) object. [AssignmentOverridesController#group\\_alias](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignment_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -701,7 +701,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_assignments_assignment_id_override",
+    "name": "get_ggaa_override",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/assignments/:assignment_id/override` Responds with a redirect to the override for the given group, if any (404 otherwise). [AssignmentOverridesController#section\\_alias](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignment_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -726,7 +726,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_sections_course_section_id_assignments_assignment_id_override",
+    "name": "get_scaa_override",
     "description": "**Scope:** `url:GET|/api/v1/sections/:course_section_id/assignments/:assignment_id/override` Responds with a redirect to the override for the given section, if any (404 otherwise). [AssignmentOverridesController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignment_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -751,7 +751,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments_assignment_id_overrides",
+    "name": "post_ccaa_overrides",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/:assignment_id/overrides` One of student\\_ids, group\\_id, or course\\_section\\_id must be present. At most one should be present; if multiple are present only the most specific (student\\_ids first, then group\\_id, then course\\_section\\_id) is used and any others are ignored. ```bash curl 'https:///api/v1/courses/1/assignments/2/overrides.json' \\ -X POST \\ -F 'assignment_override[student_ids][]=8' \\ -F 'assignment_override[title]=Fred ...",
     "inputSchema": {
       "type": "object",
@@ -800,7 +800,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_assignment_id_overrides_id",
+    "name": "put_ccaa_overrides_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id` All current overridden values must be supplied if they are to be retained; e.g. if due\\_at was overridden, but this PUT omits a value for due\\_at, due\\_at will no longer be overridden. If the override is adhoc and student\\_ids is not supplied, the target override set is unchanged. Target override sets cannot be changed for group or section overrides. ```bash curl 'https:///api/v1/courses/1/assignments/2/o...",
     "inputSchema": {
       "type": "object",
@@ -846,7 +846,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_assignments_assignment_id_overrides_id",
+    "name": "delete_ccaa_overrides_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id` Deletes an override and returns its former details. ```bash curl 'https:///api/v1/courses/1/assignments/2/overrides/3.json' \\ -X DELETE \\ -H \"Authorization: Bearer \" ``` Returns an [AssignmentOverride](#assignmentoverride) object. [AssignmentOverridesController#batch\\_retrieve](https://github.com/instructure/canvas-lms/blob/master/app/controllers/assignment_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -872,7 +872,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_assignments_overrides",
+    "name": "get_cca_overrides",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/assignments/overrides` Returns a list of specified overrides in this course, providing they target sections/groups/students visible to the current user. Returns null elements in the list for requests that were not found. ```bash curl 'https:///api/v1/courses/12/assignments/overrides.json?assignment_overrides[][id]=109&assignment_overrides[][assignment_id]=122&assignment_overrides[][id]=99&assignment_overrides[][assignment_id]=111' \\ -H \"Authoriza...",
     "inputSchema": {
       "type": "object",
@@ -902,7 +902,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_assignments_overrides",
+    "name": "post_cca_overrides",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/assignments/overrides` Creates the specified overrides for each assignment. Handles creation in a transaction, so all records are created or none are. One of student\\_ids, group\\_id, or course\\_section\\_id must be present. At most one should be present; if multiple are present only the most specific (student\\_ids first, then group\\_id, then course\\_section\\_id) is used and any others are ignored. Errors are reported in an errors attribute, an ar...",
     "inputSchema": {
       "type": "object",
@@ -923,7 +923,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_assignments_overrides",
+    "name": "put_cca_overrides",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/assignments/overrides` Updates a list of specified overrides for each assignment. Handles overrides in a transaction, so either all updates are applied or none. See [Update an assignment override](#method.assignment_overrides.update) for available attributes. All current overridden values must be supplied if they are to be retained; e.g. if due\\_at was overridden, but this PUT omits a value for due\\_at, due\\_at will no longer be overridden. If th...",
     "inputSchema": {
       "type": "object",
@@ -946,64 +946,64 @@ const definitions = [
 ];
 
 const handlers = {
-  delete_courses_course_id_assignments_id: async (client, args) => {
+  delete_cc_assignments_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/assignments/:id", args);
   },
-  get_courses_course_id_assignments: async (client, args) => {
+  get_cc_assignments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments", args);
   },
-  get_courses_course_id_assignment_groups_assignment_group_id_assignments: async (client, args) => {
+  get_ccaga_assignments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignment_groups/:assignment_group_id/assignments", args);
   },
-  get_users_user_id_courses_course_id_assignments: async (client, args) => {
+  get_uucc_assignments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/courses/:course_id/assignments", args);
   },
-  post_courses_course_id_assignments_assignment_id_duplicate: async (client, args) => {
+  post_ccaa_duplicate: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/duplicate", args);
   },
-  get_courses_course_id_assignments_assignment_id_users_user_id_group_members: async (client, args) => {
+  get_ccaauu_group_members: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/users/:user_id/group_members", args);
   },
-  get_courses_course_id_assignments_id: async (client, args) => {
+  get_cc_assignments_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:id", args);
   },
-  post_courses_course_id_assignments: async (client, args) => {
+  post_cc_assignments: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments", args);
   },
-  put_courses_course_id_assignments_id: async (client, args) => {
+  put_cc_assignments_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:id", args);
   },
-  put_courses_course_id_assignments_bulk_update: async (client, args) => {
+  put_cca_bulk_update: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/bulk_update", args);
   },
-  get_courses_course_id_assignments_assignment_id_overrides: async (client, args) => {
+  get_ccaa_overrides: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/overrides", args);
   },
-  get_courses_course_id_assignments_assignment_id_overrides_id: async (client, args) => {
+  get_ccaa_overrides_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id", args);
   },
-  get_groups_group_id_assignments_assignment_id_override: async (client, args) => {
+  get_ggaa_override: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/assignments/:assignment_id/override", args);
   },
-  get_sections_course_section_id_assignments_assignment_id_override: async (client, args) => {
+  get_scaa_override: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/sections/:course_section_id/assignments/:assignment_id/override", args);
   },
-  post_courses_course_id_assignments_assignment_id_overrides: async (client, args) => {
+  post_ccaa_overrides: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/:assignment_id/overrides", args);
   },
-  put_courses_course_id_assignments_assignment_id_overrides_id: async (client, args) => {
+  put_ccaa_overrides_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id", args);
   },
-  delete_courses_course_id_assignments_assignment_id_overrides_id: async (client, args) => {
+  delete_ccaa_overrides_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/assignments/:assignment_id/overrides/:id", args);
   },
-  get_courses_course_id_assignments_overrides: async (client, args) => {
+  get_cca_overrides: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/assignments/overrides", args);
   },
-  post_courses_course_id_assignments_overrides: async (client, args) => {
+  post_cca_overrides: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/assignments/overrides", args);
   },
-  put_courses_course_id_assignments_overrides: async (client, args) => {
+  put_cca_overrides: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/assignments/overrides", args);
   }
 };

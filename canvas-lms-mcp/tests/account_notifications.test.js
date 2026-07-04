@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const account_notificationsModule = require("../tools/account_notifications");
 
-test("get_accounts_account_id_account_notifications calls correct endpoint", async () => {
+test("get_aa_account_notifications calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_notificationsModule.handlers.get_accounts_account_id_account_notifications;
-  assert.ok(handler, "Handler get_accounts_account_id_account_notifications should be defined");
+  const handler = account_notificationsModule.handlers.get_aa_account_notifications;
+  assert.ok(handler, "Handler get_aa_account_notifications should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "include_past": true});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_account_notifications calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_account_notifications_id calls correct endpoint", async () => {
+test("get_aa_account_notifications_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_notificationsModule.handlers.get_accounts_account_id_account_notifications_id;
-  assert.ok(handler, "Handler get_accounts_account_id_account_notifications_id should be defined");
+  const handler = account_notificationsModule.handlers.get_aa_account_notifications_id;
+  assert.ok(handler, "Handler get_aa_account_notifications_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_account_notifications_id calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_account_notifications calls correct endpoint", async () => {
+test("post_aa_account_notifications calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_notificationsModule.handlers.post_accounts_account_id_account_notifications;
-  assert.ok(handler, "Handler post_accounts_account_id_account_notifications should be defined");
+  const handler = account_notificationsModule.handlers.post_aa_account_notifications;
+  assert.ok(handler, "Handler post_aa_account_notifications should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "account_notification[subject]": "test_val"});
 
@@ -59,15 +59,15 @@ test("post_accounts_account_id_account_notifications calls correct endpoint", as
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_account_notifications_id calls correct endpoint", async () => {
+test("put_aa_account_notifications_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_notificationsModule.handlers.put_accounts_account_id_account_notifications_id;
-  assert.ok(handler, "Handler put_accounts_account_id_account_notifications_id should be defined");
+  const handler = account_notificationsModule.handlers.put_aa_account_notifications_id;
+  assert.ok(handler, "Handler put_aa_account_notifications_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "account_notification[subject]": "test_val"});
 
@@ -77,15 +77,15 @@ test("put_accounts_account_id_account_notifications_id calls correct endpoint", 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_account_notifications_id calls correct endpoint", async () => {
+test("delete_aa_account_notifications_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = account_notificationsModule.handlers.delete_accounts_account_id_account_notifications_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_account_notifications_id should be defined");
+  const handler = account_notificationsModule.handlers.delete_aa_account_notifications_id;
+  assert.ok(handler, "Handler delete_aa_account_notifications_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "remove": true});
 

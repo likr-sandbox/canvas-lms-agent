@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_discussion_topics",
+    "name": "get_cc_discussion_topics",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/discussion_topics`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_discussion_topics",
+    "name": "get_gg_discussion_topics",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/discussion_topics` Returns the paginated list of discussion topics for this course or group. ```bash curl https:///api/v1/courses//discussion_topics \\ -H 'Authorization: Bearer ' ``` Returns a list of [DiscussionTopic](#discussiontopic) objects. [DiscussionTopicsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_topics_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -73,7 +73,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_discussion_topics",
+    "name": "post_cc_discussion_topics",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/discussion_topics`",
     "inputSchema": {
       "type": "object",
@@ -89,7 +89,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_discussion_topics",
+    "name": "post_gg_discussion_topics",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/discussion_topics` Create an new discussion topic for the course or group. ```bash curl https:///api/v1/courses//discussion_topics \\ -F title='my topic' \\ -F message='initial message' \\ -F podcast_enabled=1 \\ -H 'Authorization: Bearer ' -F 'attachment=@' \\ ``` ```bash curl https:///api/v1/courses//discussion_topics \\ -F title='my assignment topic' \\ -F message='initial message' \\ -F assignment[points_possible]=15 \\ -H 'Authorization: Bearer ' ``` ...",
     "inputSchema": {
       "type": "object",
@@ -201,7 +201,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_discussion_topics_topic_id",
+    "name": "put_cc_discussion_topics_topic_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/discussion_topics/:topic_id`",
     "inputSchema": {
       "type": "object",
@@ -222,7 +222,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_discussion_topics_topic_id",
+    "name": "put_gg_discussion_topics_topic_id",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/discussion_topics/:topic_id` Update an existing discussion topic for the course or group. ```bash curl https:///api/v1/courses//discussion_topics/ \\ -F title='This will be positioned after Topic #1234' \\ -F position_after=1234 \\ -H 'Authorization: Bearer ' ``` [DiscussionTopicsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_topics_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -335,7 +335,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_discussion_topics_topic_id",
+    "name": "delete_cc_discussion_topics_topic_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/discussion_topics/:topic_id`",
     "inputSchema": {
       "type": "object",
@@ -356,7 +356,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_discussion_topics_topic_id",
+    "name": "delete_gg_discussion_topics_topic_id",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/discussion_topics/:topic_id` Deletes the discussion topic. This will also delete the assignment, if it's an assignment discussion. ```bash curl -X DELETE https:///api/v1/courses//discussion_topics/ \\ -H 'Authorization: Bearer ' ``` [DiscussionTopicsController#reorder](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_topics_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -377,7 +377,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_discussion_topics_reorder",
+    "name": "post_ccdt_reorder",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/discussion_topics/reorder`",
     "inputSchema": {
       "type": "object",
@@ -393,7 +393,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_discussion_topics_reorder",
+    "name": "post_ggdt_reorder",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/discussion_topics/reorder` Puts the pinned discussion topics in the specified order. All pinned topics should be included. [DiscussionEntriesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_entries_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -414,7 +414,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_discussion_topics_topic_id_entries_id",
+    "name": "put_ccdtt_entries_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:id`",
     "inputSchema": {
       "type": "object",
@@ -440,7 +440,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_discussion_topics_topic_id_entries_id",
+    "name": "put_ggdtt_entries_id",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:id` Update an existing discussion entry. The entry must have been created by the current user, or the current user must have admin rights to the discussion. If the edit is not allowed, a 401 will be returned. ```bash curl -X PUT 'https:///api/v1/courses//discussion_topics//entries/' \\ -F 'message=' \\ -H \"Authorization: Bearer \" ``` [DiscussionEntriesController#destroy](https://github.com/instructure/canvas-lms/b...",
     "inputSchema": {
       "type": "object",
@@ -470,7 +470,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_discussion_topics_topic_id_entries_id",
+    "name": "delete_ccdtt_entries_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:id`",
     "inputSchema": {
       "type": "object",
@@ -496,7 +496,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_discussion_topics_topic_id_entries_id",
+    "name": "delete_ggdtt_entries_id",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:id` Delete a discussion entry. The entry must have been created by the current user, or the current user must have admin rights to the discussion. If the delete is not allowed, a 401 will be returned. The discussion will be marked deleted, and the user\\_id and message will be cleared out. ```bash curl -X DELETE 'https:///api/v1/courses//discussion_topics//entries/' \\ -H \"Authorization: Bearer \" ``` [Discussio...",
     "inputSchema": {
       "type": "object",
@@ -522,7 +522,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_discussion_topics_topic_id",
+    "name": "get_cc_discussion_topics_topic_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/discussion_topics/:topic_id`",
     "inputSchema": {
       "type": "object",
@@ -547,7 +547,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_discussion_topics_topic_id",
+    "name": "get_gg_discussion_topics_topic_id",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/discussion_topics/:topic_id` Returns data on an individual discussion topic. See the List action for the response formatting. ```bash curl https:///api/v1/courses//discussion_topics/ \\ -H 'Authorization: Bearer ' ``` [DiscussionTopicsApiController#find\\_summary](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_topics_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -576,7 +576,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_discussion_topics_topic_id_summaries",
+    "name": "get_ccdtt_summaries",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/discussion_topics/:topic_id/summaries`",
     "inputSchema": {
       "type": "object",
@@ -601,7 +601,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_discussion_topics_topic_id_summaries",
+    "name": "get_ggdtt_summaries",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/discussion_topics/:topic_id/summaries` Returns: (1) last userInput (what current user had keyed in to produce the last discussion summary), (2) last discussion summary generated by the current user for current discussion topic, based on userInput, (3) and some usage information. ```bash curl https:///api/v1/courses//discussion_topics//summaries \\ -H 'Authorization: Bearer ' ``` ```js { \"id\": 1, \"userInput\": \"Give me a brief summary of the discussio...",
     "inputSchema": {
       "type": "object",
@@ -626,7 +626,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_discussion_topics_topic_id_summaries",
+    "name": "post_ccdtt_summaries",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/discussion_topics/:topic_id/summaries`",
     "inputSchema": {
       "type": "object",
@@ -647,7 +647,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_discussion_topics_topic_id_summaries",
+    "name": "post_ggdtt_summaries",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/discussion_topics/:topic_id/summaries` Generates a summary for a discussion topic. Returns the summary text and usage information. ```bash curl https:///api/v1/courses//discussion_topics//summaries \\ -X POST \\ -H 'Authorization: Bearer ' ``` ```js { \"id\": 1, \"text\": \"This is a summary of the discussion topic.\", \"usage\": { \"currentCount\": 1, \"limit\": 5 } } ``` [DiscussionTopicsApiController#disable\\_summary](https://github.com/instructure/canvas-lm...",
     "inputSchema": {
       "type": "object",
@@ -672,7 +672,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_discussion_topics_topic_id_summaries_disable",
+    "name": "put_ccdtts_disable",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/discussion_topics/:topic_id/summaries/disable`",
     "inputSchema": {
       "type": "object",
@@ -693,7 +693,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_discussion_topics_topic_id_summaries_disable",
+    "name": "put_ggdtts_disable",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/discussion_topics/:topic_id/summaries/disable` Deprecated, to remove after VICE-5047 gets merged Disables the summary for a discussion topic. ```bash curl -X PUT https:///api/v1/courses//discussion_topics//disable_summary \\ ``` ```js { \"success\": true } ``` [DiscussionTopicsApiController#summary\\_feedback](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_topics_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -714,7 +714,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_discussion_topics_topic_id_summaries_summary_id_feedback",
+    "name": "post_ccdttss_feedback",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/discussion_topics/:topic_id/summaries/:summary_id/feedback`",
     "inputSchema": {
       "type": "object",
@@ -740,7 +740,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_discussion_topics_topic_id_summaries_summary_id_feedback",
+    "name": "post_ggdttss_feedback",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/discussion_topics/:topic_id/summaries/:summary_id/feedback` Persists feedback on a discussion topic summary. ```bash curl -X POST https:///api/v1/courses//discussion_topics//summaries//feedback \\ -F '_action=like' \\ -H \"Authorization: Bearer ``` ```js { \"liked\": true, \"disliked\": false } ``` [DiscussionTopicsApiController#view](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_topics_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -774,7 +774,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_discussion_topics_topic_id_view",
+    "name": "get_ccdtt_view",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/discussion_topics/:topic_id/view`",
     "inputSchema": {
       "type": "object",
@@ -799,7 +799,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_discussion_topics_topic_id_view",
+    "name": "get_ggdtt_view",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/discussion_topics/:topic_id/view` Return a cached structure of the discussion topic, containing all entries, their authors, and their message bodies. May require (depending on the topic) that the user has posted in the topic. If it is required, and the user has not posted, will respond with a 403 Forbidden status and the body 'require\\_initial\\_post'. In some rare situations, this cached structure may not be available yet. In that case, the server ...",
     "inputSchema": {
       "type": "object",
@@ -824,7 +824,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_discussion_topics_topic_id_entries",
+    "name": "post_ccdtt_entries",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/discussion_topics/:topic_id/entries`",
     "inputSchema": {
       "type": "object",
@@ -845,7 +845,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_discussion_topics_topic_id_entries",
+    "name": "post_ggdtt_entries",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/discussion_topics/:topic_id/entries` Create a new entry in a discussion topic. Returns a json representation of the created entry (see documentation for 'entries' method) on success. ```bash curl 'https:///api/v1/courses//discussion_topics//entries.json' \\ -F 'message=' \\ -F 'attachment=@' \\ -H \"Authorization: Bearer \" ``` [DiscussionTopicsApiController#duplicate](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_top...",
     "inputSchema": {
       "type": "object",
@@ -874,7 +874,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_discussion_topics_topic_id_duplicate",
+    "name": "post_ccdtt_duplicate",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/discussion_topics/:topic_id/duplicate`",
     "inputSchema": {
       "type": "object",
@@ -895,7 +895,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_discussion_topics_topic_id_duplicate",
+    "name": "post_ggdtt_duplicate",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/discussion_topics/:topic_id/duplicate` Duplicate a discussion topic according to context (Course/Group) ```bash curl -X POST -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/discussion_topics/123/duplicate curl -X POST -H 'Authorization: Bearer ' \\ https:///api/v1/group/456/discussion_topics/456/duplicate ``` Returns a [DiscussionTopic](#discussiontopic) object. [DiscussionTopicsApiController#entries](https://github.com/instructure/canvas...",
     "inputSchema": {
       "type": "object",
@@ -916,7 +916,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_discussion_topics_topic_id_entries",
+    "name": "get_ccdtt_entries",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/discussion_topics/:topic_id/entries`",
     "inputSchema": {
       "type": "object",
@@ -941,7 +941,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_discussion_topics_topic_id_entries",
+    "name": "get_ggdtt_entries",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/discussion_topics/:topic_id/entries` Retrieve the (paginated) top-level entries in a discussion topic. May require (depending on the topic) that the user has posted in the topic. If it is required, and the user has not posted, will respond with a 403 Forbidden status and the body 'require\\_initial\\_post'. Will include the 10 most recent replies, if any, for each entry returned. If the topic is a root topic with children corresponding to groups of a...",
     "inputSchema": {
       "type": "object",
@@ -966,7 +966,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies",
+    "name": "post_ccdttee_replies",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/replies`",
     "inputSchema": {
       "type": "object",
@@ -992,7 +992,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies",
+    "name": "post_ggdttee_replies",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/replies` Add a reply to an entry in a discussion topic. Returns a json representation of the created reply (see documentation for 'replies' method) on success. May require (depending on the topic) that the user has posted in the topic. If it is required, and the user has not posted, will respond with a 403 Forbidden status and the body 'require\\_initial\\_post'. ```bash curl 'https:///api/v1/courses//di...",
     "inputSchema": {
       "type": "object",
@@ -1026,7 +1026,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies",
+    "name": "get_ccdttee_replies",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/replies`",
     "inputSchema": {
       "type": "object",
@@ -1056,7 +1056,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies",
+    "name": "get_ggdttee_replies",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/replies` Retrieve the (paginated) replies to a top-level entry in a discussion topic. May require (depending on the topic) that the user has posted in the topic. If it is required, and the user has not posted, will respond with a 403 Forbidden status and the body 'require\\_initial\\_post'. Ordering of returned entries is newest-first by creation timestamp. * id The unique identifier for the reply. * user...",
     "inputSchema": {
       "type": "object",
@@ -1086,7 +1086,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_discussion_topics_topic_id_entry_list",
+    "name": "get_ccdtt_entry_list",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/discussion_topics/:topic_id/entry_list`",
     "inputSchema": {
       "type": "object",
@@ -1111,7 +1111,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_discussion_topics_topic_id_entry_list",
+    "name": "get_ggdtt_entry_list",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/discussion_topics/:topic_id/entry_list` Retrieve a paginated list of discussion entries, given a list of ids. May require (depending on the topic) that the user has posted in the topic. If it is required, and the user has not posted, will respond with a 403 Forbidden status and the body 'require\\_initial\\_post'. * id The unique identifier for the reply. * user\\_id The unique identifier for the author of the reply. * user\\_name The author's display ...",
     "inputSchema": {
       "type": "object",
@@ -1140,7 +1140,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_discussion_topics_topic_id_read",
+    "name": "put_ccdtt_read",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/discussion_topics/:topic_id/read`",
     "inputSchema": {
       "type": "object",
@@ -1161,7 +1161,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_discussion_topics_topic_id_read",
+    "name": "put_ggdtt_read",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/discussion_topics/:topic_id/read` Mark the initial text of the discussion topic as read. No request fields are necessary. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//discussion_topics//read.json' \\ -X PUT \\ -H \"Authorization: Bearer \" \\ -H \"Content-Length: 0\" ``` [DiscussionTopicsApiController#mark\\_all\\_topic\\_read](https://github.com/instructure/canvas-lms/blob/master/app/controllers/...",
     "inputSchema": {
       "type": "object",
@@ -1182,7 +1182,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_discussion_topics_read_all",
+    "name": "put_ccdt_read_all",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/discussion_topics/read_all`",
     "inputSchema": {
       "type": "object",
@@ -1198,7 +1198,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_discussion_topics_read_all",
+    "name": "put_ggdt_read_all",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/discussion_topics/read_all` Mark the initial text of all the discussion topics as read in the context. No request fields are necessary. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//discussion_topics/read_all' \\ -X POST \\ -H \"Authorization: Bearer \" \\ -H \"Content-Length: 0\" ``` [DiscussionTopicsApiController#mark\\_topic\\_unread](https://github.com/instructure/canvas-lms/blob/master/app/co...",
     "inputSchema": {
       "type": "object",
@@ -1214,7 +1214,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_discussion_topics_topic_id_read",
+    "name": "delete_ccdtt_read",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/discussion_topics/:topic_id/read`",
     "inputSchema": {
       "type": "object",
@@ -1235,7 +1235,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_discussion_topics_topic_id_read",
+    "name": "delete_ggdtt_read",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/discussion_topics/:topic_id/read` Mark the initial text of the discussion topic as unread. No request fields are necessary. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//discussion_topics//read.json' \\ -X DELETE \\ -H \"Authorization: Bearer \" ``` [DiscussionTopicsApiController#mark\\_all\\_read](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_topics_api_co...",
     "inputSchema": {
       "type": "object",
@@ -1256,7 +1256,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_discussion_topics_topic_id_read_all",
+    "name": "put_ccdtt_read_all",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/discussion_topics/:topic_id/read_all`",
     "inputSchema": {
       "type": "object",
@@ -1277,7 +1277,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_discussion_topics_topic_id_read_all",
+    "name": "put_ggdtt_read_all",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/discussion_topics/:topic_id/read_all` Mark the discussion topic and all its entries as read. No request fields are necessary. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//discussion_topics//read_all.json' \\ -X PUT \\ -H \"Authorization: Bearer \" \\ -H \"Content-Length: 0\" ``` [DiscussionTopicsApiController#mark\\_all\\_unread](https://github.com/instructure/canvas-lms/blob/master/app/controlle...",
     "inputSchema": {
       "type": "object",
@@ -1302,7 +1302,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_discussion_topics_topic_id_read_all",
+    "name": "delete_ccdtt_read_all",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/discussion_topics/:topic_id/read_all`",
     "inputSchema": {
       "type": "object",
@@ -1323,7 +1323,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_discussion_topics_topic_id_read_all",
+    "name": "delete_ggdtt_read_all",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/discussion_topics/:topic_id/read_all` Mark the discussion topic and all its entries as unread. No request fields are necessary. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//discussion_topics//read_all.json' \\ -X DELETE \\ -H \"Authorization: Bearer \" ``` [DiscussionTopicsApiController#mark\\_entry\\_read](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_top...",
     "inputSchema": {
       "type": "object",
@@ -1348,7 +1348,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_discussion_topics_topic_id_entries_entry_id_read",
+    "name": "put_ccdttee_read",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/read`",
     "inputSchema": {
       "type": "object",
@@ -1374,7 +1374,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_discussion_topics_topic_id_entries_entry_id_read",
+    "name": "put_ggdttee_read",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/read` Mark a discussion entry as read. No request fields are necessary. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//discussion_topics//entries//read.json' \\ -X PUT \\ -H \"Authorization: Bearer \"\\ -H \"Content-Length: 0\" ``` [DiscussionTopicsApiController#mark\\_entry\\_unread](https://github.com/instructure/canvas-lms/blob/master/app/controllers...",
     "inputSchema": {
       "type": "object",
@@ -1404,7 +1404,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_discussion_topics_topic_id_entries_entry_id_read",
+    "name": "delete_ccdttee_read",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/read`",
     "inputSchema": {
       "type": "object",
@@ -1430,7 +1430,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_discussion_topics_topic_id_entries_entry_id_read",
+    "name": "delete_ggdttee_read",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/read` Mark a discussion entry as unread. No request fields are necessary. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//discussion_topics//entries//read.json' \\ -X DELETE \\ -H \"Authorization: Bearer \" ``` [DiscussionTopicsApiController#rate\\_entry](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_topics_api_c...",
     "inputSchema": {
       "type": "object",
@@ -1460,7 +1460,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_discussion_topics_topic_id_entries_entry_id_rating",
+    "name": "post_ccdttee_rating",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/rating`",
     "inputSchema": {
       "type": "object",
@@ -1486,7 +1486,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_discussion_topics_topic_id_entries_entry_id_rating",
+    "name": "post_ggdttee_rating",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/rating` Rate a discussion entry. On success, the response will be 204 No Content with an empty body. ```bash curl 'https:///api/v1/courses//discussion_topics//entries//rating.json' \\ -X POST \\ -H \"Authorization: Bearer \" ``` [DiscussionTopicsApiController#subscribe\\_topic](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_topics_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -1516,7 +1516,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_discussion_topics_topic_id_subscribed",
+    "name": "put_ccdtt_subscribed",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/discussion_topics/:topic_id/subscribed`",
     "inputSchema": {
       "type": "object",
@@ -1537,7 +1537,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_discussion_topics_topic_id_subscribed",
+    "name": "put_ggdtt_subscribed",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/discussion_topics/:topic_id/subscribed` Subscribe to a topic to receive notifications about new entries On success, the response will be 204 No Content with an empty body ```bash curl 'https:///api/v1/courses//discussion_topics//subscribed.json' \\ -X PUT \\ -H \"Authorization: Bearer \" \\ -H \"Content-Length: 0\" ``` [DiscussionTopicsApiController#unsubscribe\\_topic](https://github.com/instructure/canvas-lms/blob/master/app/controllers/discussion_topics...",
     "inputSchema": {
       "type": "object",
@@ -1558,7 +1558,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_discussion_topics_topic_id_subscribed",
+    "name": "delete_ccdtt_subscribed",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/discussion_topics/:topic_id/subscribed`",
     "inputSchema": {
       "type": "object",
@@ -1579,7 +1579,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_discussion_topics_topic_id_subscribed",
+    "name": "delete_ggdtt_subscribed",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/discussion_topics/:topic_id/subscribed` Unsubscribe from a topic to stop receiving notifications about new entries On success, the response will be 204 No Content with an empty body ```bash curl 'https:///api/v1/courses//discussion_topics//subscribed.json' \\ -X DELETE \\ -H \"Authorization: Bearer \" ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --...",
     "inputSchema": {
       "type": "object",
@@ -1602,178 +1602,178 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_discussion_topics: async (client, args) => {
+  get_cc_discussion_topics: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics", args);
   },
-  get_groups_group_id_discussion_topics: async (client, args) => {
+  get_gg_discussion_topics: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics", args);
   },
-  post_courses_course_id_discussion_topics: async (client, args) => {
+  post_cc_discussion_topics: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics", args);
   },
-  post_groups_group_id_discussion_topics: async (client, args) => {
+  post_gg_discussion_topics: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics", args);
   },
-  put_courses_course_id_discussion_topics_topic_id: async (client, args) => {
+  put_cc_discussion_topics_topic_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/:topic_id", args);
   },
-  put_groups_group_id_discussion_topics_topic_id: async (client, args) => {
+  put_gg_discussion_topics_topic_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/discussion_topics/:topic_id", args);
   },
-  delete_courses_course_id_discussion_topics_topic_id: async (client, args) => {
+  delete_cc_discussion_topics_topic_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/discussion_topics/:topic_id", args);
   },
-  delete_groups_group_id_discussion_topics_topic_id: async (client, args) => {
+  delete_gg_discussion_topics_topic_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/discussion_topics/:topic_id", args);
   },
-  post_courses_course_id_discussion_topics_reorder: async (client, args) => {
+  post_ccdt_reorder: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics/reorder", args);
   },
-  post_groups_group_id_discussion_topics_reorder: async (client, args) => {
+  post_ggdt_reorder: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/reorder", args);
   },
-  put_courses_course_id_discussion_topics_topic_id_entries_id: async (client, args) => {
+  put_ccdtt_entries_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:id", args);
   },
-  put_groups_group_id_discussion_topics_topic_id_entries_id: async (client, args) => {
+  put_ggdtt_entries_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:id", args);
   },
-  delete_courses_course_id_discussion_topics_topic_id_entries_id: async (client, args) => {
+  delete_ccdtt_entries_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:id", args);
   },
-  delete_groups_group_id_discussion_topics_topic_id_entries_id: async (client, args) => {
+  delete_ggdtt_entries_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:id", args);
   },
-  get_courses_course_id_discussion_topics_topic_id: async (client, args) => {
+  get_cc_discussion_topics_topic_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:topic_id", args);
   },
-  get_groups_group_id_discussion_topics_topic_id: async (client, args) => {
+  get_gg_discussion_topics_topic_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics/:topic_id", args);
   },
-  get_courses_course_id_discussion_topics_topic_id_summaries: async (client, args) => {
+  get_ccdtt_summaries: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:topic_id/summaries", args);
   },
-  get_groups_group_id_discussion_topics_topic_id_summaries: async (client, args) => {
+  get_ggdtt_summaries: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics/:topic_id/summaries", args);
   },
-  post_courses_course_id_discussion_topics_topic_id_summaries: async (client, args) => {
+  post_ccdtt_summaries: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics/:topic_id/summaries", args);
   },
-  post_groups_group_id_discussion_topics_topic_id_summaries: async (client, args) => {
+  post_ggdtt_summaries: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/:topic_id/summaries", args);
   },
-  put_courses_course_id_discussion_topics_topic_id_summaries_disable: async (client, args) => {
+  put_ccdtts_disable: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/:topic_id/summaries/disable", args);
   },
-  put_groups_group_id_discussion_topics_topic_id_summaries_disable: async (client, args) => {
+  put_ggdtts_disable: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/discussion_topics/:topic_id/summaries/disable", args);
   },
-  post_courses_course_id_discussion_topics_topic_id_summaries_summary_id_feedback: async (client, args) => {
+  post_ccdttss_feedback: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics/:topic_id/summaries/:summary_id/feedback", args);
   },
-  post_groups_group_id_discussion_topics_topic_id_summaries_summary_id_feedback: async (client, args) => {
+  post_ggdttss_feedback: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/:topic_id/summaries/:summary_id/feedback", args);
   },
-  get_courses_course_id_discussion_topics_topic_id_view: async (client, args) => {
+  get_ccdtt_view: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:topic_id/view", args);
   },
-  get_groups_group_id_discussion_topics_topic_id_view: async (client, args) => {
+  get_ggdtt_view: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics/:topic_id/view", args);
   },
-  post_courses_course_id_discussion_topics_topic_id_entries: async (client, args) => {
+  post_ccdtt_entries: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entries", args);
   },
-  post_groups_group_id_discussion_topics_topic_id_entries: async (client, args) => {
+  post_ggdtt_entries: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entries", args);
   },
-  post_courses_course_id_discussion_topics_topic_id_duplicate: async (client, args) => {
+  post_ccdtt_duplicate: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics/:topic_id/duplicate", args);
   },
-  post_groups_group_id_discussion_topics_topic_id_duplicate: async (client, args) => {
+  post_ggdtt_duplicate: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/:topic_id/duplicate", args);
   },
-  get_courses_course_id_discussion_topics_topic_id_entries: async (client, args) => {
+  get_ccdtt_entries: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entries", args);
   },
-  get_groups_group_id_discussion_topics_topic_id_entries: async (client, args) => {
+  get_ggdtt_entries: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entries", args);
   },
-  post_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies: async (client, args) => {
+  post_ccdttee_replies: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/replies", args);
   },
-  post_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies: async (client, args) => {
+  post_ggdttee_replies: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/replies", args);
   },
-  get_courses_course_id_discussion_topics_topic_id_entries_entry_id_replies: async (client, args) => {
+  get_ccdttee_replies: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/replies", args);
   },
-  get_groups_group_id_discussion_topics_topic_id_entries_entry_id_replies: async (client, args) => {
+  get_ggdttee_replies: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/replies", args);
   },
-  get_courses_course_id_discussion_topics_topic_id_entry_list: async (client, args) => {
+  get_ccdtt_entry_list: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entry_list", args);
   },
-  get_groups_group_id_discussion_topics_topic_id_entry_list: async (client, args) => {
+  get_ggdtt_entry_list: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entry_list", args);
   },
-  put_courses_course_id_discussion_topics_topic_id_read: async (client, args) => {
+  put_ccdtt_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/:topic_id/read", args);
   },
-  put_groups_group_id_discussion_topics_topic_id_read: async (client, args) => {
+  put_ggdtt_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/discussion_topics/:topic_id/read", args);
   },
-  put_courses_course_id_discussion_topics_read_all: async (client, args) => {
+  put_ccdt_read_all: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/read_all", args);
   },
-  put_groups_group_id_discussion_topics_read_all: async (client, args) => {
+  put_ggdt_read_all: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/discussion_topics/read_all", args);
   },
-  delete_courses_course_id_discussion_topics_topic_id_read: async (client, args) => {
+  delete_ccdtt_read: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/discussion_topics/:topic_id/read", args);
   },
-  delete_groups_group_id_discussion_topics_topic_id_read: async (client, args) => {
+  delete_ggdtt_read: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/discussion_topics/:topic_id/read", args);
   },
-  put_courses_course_id_discussion_topics_topic_id_read_all: async (client, args) => {
+  put_ccdtt_read_all: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/:topic_id/read_all", args);
   },
-  put_groups_group_id_discussion_topics_topic_id_read_all: async (client, args) => {
+  put_ggdtt_read_all: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/discussion_topics/:topic_id/read_all", args);
   },
-  delete_courses_course_id_discussion_topics_topic_id_read_all: async (client, args) => {
+  delete_ccdtt_read_all: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/discussion_topics/:topic_id/read_all", args);
   },
-  delete_groups_group_id_discussion_topics_topic_id_read_all: async (client, args) => {
+  delete_ggdtt_read_all: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/discussion_topics/:topic_id/read_all", args);
   },
-  put_courses_course_id_discussion_topics_topic_id_entries_entry_id_read: async (client, args) => {
+  put_ccdttee_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/read", args);
   },
-  put_groups_group_id_discussion_topics_topic_id_entries_entry_id_read: async (client, args) => {
+  put_ggdttee_read: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/read", args);
   },
-  delete_courses_course_id_discussion_topics_topic_id_entries_entry_id_read: async (client, args) => {
+  delete_ccdttee_read: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/read", args);
   },
-  delete_groups_group_id_discussion_topics_topic_id_entries_entry_id_read: async (client, args) => {
+  delete_ggdttee_read: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/read", args);
   },
-  post_courses_course_id_discussion_topics_topic_id_entries_entry_id_rating: async (client, args) => {
+  post_ccdttee_rating: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/discussion_topics/:topic_id/entries/:entry_id/rating", args);
   },
-  post_groups_group_id_discussion_topics_topic_id_entries_entry_id_rating: async (client, args) => {
+  post_ggdttee_rating: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/discussion_topics/:topic_id/entries/:entry_id/rating", args);
   },
-  put_courses_course_id_discussion_topics_topic_id_subscribed: async (client, args) => {
+  put_ccdtt_subscribed: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/discussion_topics/:topic_id/subscribed", args);
   },
-  put_groups_group_id_discussion_topics_topic_id_subscribed: async (client, args) => {
+  put_ggdtt_subscribed: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/discussion_topics/:topic_id/subscribed", args);
   },
-  delete_courses_course_id_discussion_topics_topic_id_subscribed: async (client, args) => {
+  delete_ccdtt_subscribed: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/discussion_topics/:topic_id/subscribed", args);
   },
-  delete_groups_group_id_discussion_topics_topic_id_subscribed: async (client, args) => {
+  delete_ggdtt_subscribed: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/discussion_topics/:topic_id/subscribed", args);
   }
 };

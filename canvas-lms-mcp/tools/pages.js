@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_front_page",
+    "name": "get_cc_front_page",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/front_page`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_front_page",
+    "name": "get_gg_front_page",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/front_page` Retrieve the content of the front page ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/front_page ``` Returns a [Page](#page) object. [WikiPagesApiController#duplicate](https://github.com/instructure/canvas-lms/blob/master/app/controllers/wiki_pages_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_pages_url_or_id_duplicate",
+    "name": "post_ccpu_duplicate",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/pages/:url_or_id/duplicate` Duplicate a wiki page ```bash curl -X POST -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/pages/14/duplicate ``` Returns a [Page](#page) object. [WikiPagesApiController#update\\_front\\_page](https://github.com/instructure/canvas-lms/blob/master/app/controllers/wiki_pages_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -66,7 +66,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_front_page",
+    "name": "put_cc_front_page",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/front_page`",
     "inputSchema": {
       "type": "object",
@@ -82,7 +82,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_front_page",
+    "name": "put_gg_front_page",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/front_page` Update the title or contents of the front page ```bash curl -X PUT -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/front_page \\ -d wiki_page[body]=Updated+body+text ``` Returns a [Page](#page) object. [WikiPagesApiController#index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/wiki_pages_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -118,7 +118,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_pages",
+    "name": "get_cc_pages",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/pages`",
     "inputSchema": {
       "type": "object",
@@ -138,7 +138,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_pages",
+    "name": "get_gg_pages",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/pages` A paginated list of the wiki pages associated with a course or group ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/pages?sort=title&order=asc ``` Returns a list of [Page](#page) objects. [WikiPagesApiController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/wiki_pages_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -178,7 +178,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_pages",
+    "name": "post_cc_pages",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/pages`",
     "inputSchema": {
       "type": "object",
@@ -194,7 +194,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_pages",
+    "name": "post_gg_pages",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/pages` Create a new wiki page ```bash curl -X POST -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/pages \\ -d wiki_page[title]=New+page -d wiki_page[body]=New+body+text ``` Returns a [Page](#page) object. [WikiPagesApiController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/wiki_pages_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -239,7 +239,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_pages_url_or_id",
+    "name": "get_cc_pages_url_or_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/pages/:url_or_id`",
     "inputSchema": {
       "type": "object",
@@ -264,7 +264,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_pages_url_or_id",
+    "name": "get_gg_pages_url_or_id",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/pages/:url_or_id` Retrieve the content of a wiki page ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/pages/the-page-identifier ``` Returns a [Page](#page) object. [WikiPagesApiController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/wiki_pages_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -289,7 +289,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_pages_url_or_id",
+    "name": "put_cc_pages_url_or_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/pages/:url_or_id`",
     "inputSchema": {
       "type": "object",
@@ -310,7 +310,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_groups_group_id_pages_url_or_id",
+    "name": "put_gg_pages_url_or_id",
     "description": "**Scope:** `url:PUT|/api/v1/groups/:group_id/pages/:url_or_id` Update the title or contents of a wiki page NOTE: You cannot specify the ID when creating a page. If you pass a numeric value as the page identifier and that does not represent a page ID that already exists, it will be interpreted as a URL. ```bash curl -X PUT -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/pages/the-page-identifier \\ -d 'wiki_page[body]=Updated+body+text' ``` Returns a [Page](#page) object. [WikiPagesAp...",
     "inputSchema": {
       "type": "object",
@@ -359,7 +359,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_pages_url_or_id",
+    "name": "delete_cc_pages_url_or_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/pages/:url_or_id`",
     "inputSchema": {
       "type": "object",
@@ -380,7 +380,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_groups_group_id_pages_url_or_id",
+    "name": "delete_gg_pages_url_or_id",
     "description": "**Scope:** `url:DELETE|/api/v1/groups/:group_id/pages/:url_or_id` Delete a wiki page ```bash curl -X DELETE -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/pages/the-page-identifier ``` Returns a [Page](#page) object. [WikiPagesApiController#revisions](https://github.com/instructure/canvas-lms/blob/master/app/controllers/wiki_pages_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -401,7 +401,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_pages_url_or_id_revisions",
+    "name": "get_ccpu_revisions",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/pages/:url_or_id/revisions`",
     "inputSchema": {
       "type": "object",
@@ -426,7 +426,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_pages_url_or_id_revisions",
+    "name": "get_ggpu_revisions",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/pages/:url_or_id/revisions` A paginated list of the revisions of a page. Callers must have update rights on the page in order to see page history. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/pages/the-page-identifier/revisions ``` Returns a list of [PageRevision](#pagerevision) objects. [WikiPagesApiController#show\\_revision](https://github.com/instructure/canvas-lms/blob/master/app/controllers/wiki_pages_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -451,7 +451,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_pages_url_or_id_revisions_latest",
+    "name": "get_ccpur_latest",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/pages/:url_or_id/revisions/latest`",
     "inputSchema": {
       "type": "object",
@@ -476,7 +476,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_pages_url_or_id_revisions_latest",
+    "name": "get_ggpur_latest",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/pages/:url_or_id/revisions/latest`",
     "inputSchema": {
       "type": "object",
@@ -501,7 +501,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_pages_url_or_id_revisions_revision_id",
+    "name": "get_ccpu_revisions_revision_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/pages/:url_or_id/revisions/:revision_id`",
     "inputSchema": {
       "type": "object",
@@ -531,7 +531,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_pages_url_or_id_revisions_revision_id",
+    "name": "get_ggpu_revisions_revision_id",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/pages/:url_or_id/revisions/:revision_id` Retrieve the metadata and optionally content of a revision of the page. Note that retrieving historic versions of pages requires edit rights. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/pages/the-page-identifier/revisions/latest ``` ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/pages/the-page-identifier/revisions/4 ``` Returns a [PageRevision](#pagerevision...",
     "inputSchema": {
       "type": "object",
@@ -565,7 +565,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_pages_url_or_id_revisions_revision_id",
+    "name": "post_ccpu_revisions_revision_id",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/pages/:url_or_id/revisions/:revision_id`",
     "inputSchema": {
       "type": "object",
@@ -591,7 +591,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_groups_group_id_pages_url_or_id_revisions_revision_id",
+    "name": "post_ggpu_revisions_revision_id",
     "description": "**Scope:** `url:POST|/api/v1/groups/:group_id/pages/:url_or_id/revisions/:revision_id` Revert a page to a prior revision. ```bash curl -X POST -H 'Authorization: Bearer ' \\ https:///api/v1/courses/123/pages/the-page-identifier/revisions/6 ``` Returns a [PageRevision](#pagerevision) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is t...",
     "inputSchema": {
       "type": "object",
@@ -619,73 +619,73 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_front_page: async (client, args) => {
+  get_cc_front_page: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/front_page", args);
   },
-  get_groups_group_id_front_page: async (client, args) => {
+  get_gg_front_page: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/front_page", args);
   },
-  post_courses_course_id_pages_url_or_id_duplicate: async (client, args) => {
+  post_ccpu_duplicate: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/pages/:url_or_id/duplicate", args);
   },
-  put_courses_course_id_front_page: async (client, args) => {
+  put_cc_front_page: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/front_page", args);
   },
-  put_groups_group_id_front_page: async (client, args) => {
+  put_gg_front_page: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/front_page", args);
   },
-  get_courses_course_id_pages: async (client, args) => {
+  get_cc_pages: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/pages", args);
   },
-  get_groups_group_id_pages: async (client, args) => {
+  get_gg_pages: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/pages", args);
   },
-  post_courses_course_id_pages: async (client, args) => {
+  post_cc_pages: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/pages", args);
   },
-  post_groups_group_id_pages: async (client, args) => {
+  post_gg_pages: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/pages", args);
   },
-  get_courses_course_id_pages_url_or_id: async (client, args) => {
+  get_cc_pages_url_or_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/pages/:url_or_id", args);
   },
-  get_groups_group_id_pages_url_or_id: async (client, args) => {
+  get_gg_pages_url_or_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/pages/:url_or_id", args);
   },
-  put_courses_course_id_pages_url_or_id: async (client, args) => {
+  put_cc_pages_url_or_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/pages/:url_or_id", args);
   },
-  put_groups_group_id_pages_url_or_id: async (client, args) => {
+  put_gg_pages_url_or_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/groups/:group_id/pages/:url_or_id", args);
   },
-  delete_courses_course_id_pages_url_or_id: async (client, args) => {
+  delete_cc_pages_url_or_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/pages/:url_or_id", args);
   },
-  delete_groups_group_id_pages_url_or_id: async (client, args) => {
+  delete_gg_pages_url_or_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/groups/:group_id/pages/:url_or_id", args);
   },
-  get_courses_course_id_pages_url_or_id_revisions: async (client, args) => {
+  get_ccpu_revisions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/pages/:url_or_id/revisions", args);
   },
-  get_groups_group_id_pages_url_or_id_revisions: async (client, args) => {
+  get_ggpu_revisions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/pages/:url_or_id/revisions", args);
   },
-  get_courses_course_id_pages_url_or_id_revisions_latest: async (client, args) => {
+  get_ccpur_latest: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/pages/:url_or_id/revisions/latest", args);
   },
-  get_groups_group_id_pages_url_or_id_revisions_latest: async (client, args) => {
+  get_ggpur_latest: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/pages/:url_or_id/revisions/latest", args);
   },
-  get_courses_course_id_pages_url_or_id_revisions_revision_id: async (client, args) => {
+  get_ccpu_revisions_revision_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/pages/:url_or_id/revisions/:revision_id", args);
   },
-  get_groups_group_id_pages_url_or_id_revisions_revision_id: async (client, args) => {
+  get_ggpu_revisions_revision_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/pages/:url_or_id/revisions/:revision_id", args);
   },
-  post_courses_course_id_pages_url_or_id_revisions_revision_id: async (client, args) => {
+  post_ccpu_revisions_revision_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/pages/:url_or_id/revisions/:revision_id", args);
   },
-  post_groups_group_id_pages_url_or_id_revisions_revision_id: async (client, args) => {
+  post_ggpu_revisions_revision_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/groups/:group_id/pages/:url_or_id/revisions/:revision_id", args);
   }
 };

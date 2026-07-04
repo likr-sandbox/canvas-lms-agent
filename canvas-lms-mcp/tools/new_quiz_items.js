@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_quiz_v1_courses_course_id_quizzes_assignment_id_items_item_id",
+    "name": "get_qvccqa_items_item_id",
     "description": "**Scope:** `url:GET|/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items/:item_id` Get details about a single item in a new quiz. ```bash curl 'https:///api/quiz/v1/courses/1/quizzes/12/items/123' \\ -H 'Authorization: Bearer ' ``` Returns a [QuizItem](#quizitem) object.",
     "inputSchema": {
       "type": "object",
@@ -35,7 +35,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_quiz_v1_courses_course_id_quizzes_assignment_id_items",
+    "name": "get_qvccqa_items",
     "description": "**Scope:** `url:GET|/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items` Get a list of items in a new quiz. ```bash curl 'https:///api/quiz/v1/courses/1/quizzes/1/items' \\ -H 'Authorization Bearer ' ``` Returns a list of [QuizItem](#quizitem) objects.",
     "inputSchema": {
       "type": "object",
@@ -60,7 +60,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_quiz_v1_courses_course_id_quizzes_assignment_id_items",
+    "name": "post_qvccqa_items",
     "description": "**Scope:** `url:POST|/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items` Create a quiz item in a new quiz. Only +QuestionItem+ types can be created. ```bash curl 'https:///api/quiz/v1/courses/1/quizzes/12/items' \\ -X POST \\ -H 'Authorization Bearer ' \\ -d 'item[position]=1' \\ -d 'item[points_possible]=25.0' \\ -d 'item[properties]={}' \\ -d 'item[entry_type]=Item' \\ -d 'item[entry][title]=Question 1' \\ -d 'item[entry][feedback][correct]=good job!' \\ -d 'item[entry][calculator_type]=no...",
     "inputSchema": {
       "type": "object",
@@ -147,7 +147,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_quiz_v1_courses_course_id_quizzes_assignment_id_items_item_id",
+    "name": "delete_qvccqa_items_item_id",
     "description": "**Scope:** `url:DELETE|/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items/:item_id` Delete a single quiz item in a new quiz. ```bash curl 'https:///api/quiz/v1/courses/1/quizzes/12/items/123' \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Returns a [QuizItem](#quizitem) object.",
     "inputSchema": {
       "type": "object",
@@ -173,7 +173,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_quiz_v1_courses_course_id_quizzes_assignment_id_items_media_upload_url",
+    "name": "get_qvccqai_media_upload_url",
     "description": "**Scope:** `url:GET|/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items/media_upload_url` Get a url for uploading media for use in hot-spot question types. See the hot-spot question type in the [Appendix: Question Types](#Question+Types-appendix) for more details about using this endpoint. ```bash curl 'https:///api/quiz/v1/courses/1/quizzes/1/items/media_upload_url' \\ -H 'Authorization Bearer ' ``` ```js { \"url\": \"http://s3_upload_url\" } ``` The quiz items API retrieves and manages ...",
     "inputSchema": {
       "type": "object",
@@ -200,19 +200,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_quiz_v1_courses_course_id_quizzes_assignment_id_items_item_id: async (client, args) => {
+  get_qvccqa_items_item_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items/:item_id", args);
   },
-  get_quiz_v1_courses_course_id_quizzes_assignment_id_items: async (client, args) => {
+  get_qvccqa_items: async (client, args) => {
     return genericHandler(client, "GET", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items", args);
   },
-  post_quiz_v1_courses_course_id_quizzes_assignment_id_items: async (client, args) => {
+  post_qvccqa_items: async (client, args) => {
     return genericHandler(client, "POST", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items", args);
   },
-  delete_quiz_v1_courses_course_id_quizzes_assignment_id_items_item_id: async (client, args) => {
+  delete_qvccqa_items_item_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items/:item_id", args);
   },
-  get_quiz_v1_courses_course_id_quizzes_assignment_id_items_media_upload_url: async (client, args) => {
+  get_qvccqai_media_upload_url: async (client, args) => {
     return genericHandler(client, "GET", "/api/quiz/v1/courses/:course_id/quizzes/:assignment_id/items/media_upload_url", args);
   }
 };

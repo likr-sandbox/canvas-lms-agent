@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_courses_course_id_quizzes_quiz_id_submissions_self_files",
+    "name": "post_ccqqss_files",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/self/files` Associate a new quiz submission file This API endpoint is the first step in uploading a quiz submission file. See the [File Upload Documentation](../basics/file.file_uploads.md) for details on the file upload workflow as these parameters are interpreted as per the documentation there. ```js { \"attachments\": [ { \"upload_url\": \"https://some-bucket.s3.amazonaws.com/\", \"upload_params\": { \"key\": \"/users/1234/f...",
     "inputSchema": {
       "type": "object",
@@ -36,7 +36,7 @@ const definitions = [
 ];
 
 const handlers = {
-  post_courses_course_id_quizzes_quiz_id_submissions_self_files: async (client, args) => {
+  post_ccqqss_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/submissions/self/files", args);
   }
 };

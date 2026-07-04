@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const lti_context_controlsModule = require("../tools/lti_context_controls");
 
-test("get_accounts_account_id_lti_registrations_registration_id_controls calls correct endpoint", async () => {
+test("get_aalrr_controls calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_context_controlsModule.handlers.get_accounts_account_id_lti_registrations_registration_id_controls;
-  assert.ok(handler, "Handler get_accounts_account_id_lti_registrations_registration_id_controls should be defined");
+  const handler = lti_context_controlsModule.handlers.get_aalrr_controls;
+  assert.ok(handler, "Handler get_aalrr_controls should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "registration_id": "test_registration_id"});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_lti_registrations_registration_id_controls calls c
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_lti_registrations_registration_id_controls_id calls correct endpoint", async () => {
+test("get_aalrr_controls_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_context_controlsModule.handlers.get_accounts_account_id_lti_registrations_registration_id_controls_id;
-  assert.ok(handler, "Handler get_accounts_account_id_lti_registrations_registration_id_controls_id should be defined");
+  const handler = lti_context_controlsModule.handlers.get_aalrr_controls_id;
+  assert.ok(handler, "Handler get_aalrr_controls_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "registration_id": "test_registration_id", "id": "test_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_lti_registrations_registration_id_controls_id call
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_current_account_id_lti_registrations_registration_id_controls calls correct endpoint", async () => {
+test("post_aclrr_controls calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_context_controlsModule.handlers.post_accounts_current_account_id_lti_registrations_registration_id_controls;
-  assert.ok(handler, "Handler post_accounts_current_account_id_lti_registrations_registration_id_controls should be defined");
+  const handler = lti_context_controlsModule.handlers.post_aclrr_controls;
+  assert.ok(handler, "Handler post_aclrr_controls should be defined");
 
   const result = await handler(mockClient, {"current_account_id": "test_current_account_id", "registration_id": "test_registration_id", "account_id": 123});
 
@@ -59,15 +59,15 @@ test("post_accounts_current_account_id_lti_registrations_registration_id_control
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_lti_registrations_registration_id_controls_bulk calls correct endpoint", async () => {
+test("post_aalrrc_bulk calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_context_controlsModule.handlers.post_accounts_account_id_lti_registrations_registration_id_controls_bulk;
-  assert.ok(handler, "Handler post_accounts_account_id_lti_registrations_registration_id_controls_bulk should be defined");
+  const handler = lti_context_controlsModule.handlers.post_aalrrc_bulk;
+  assert.ok(handler, "Handler post_aalrrc_bulk should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "registration_id": "test_registration_id", "comment": "test_val"});
 
@@ -77,15 +77,15 @@ test("post_accounts_account_id_lti_registrations_registration_id_controls_bulk c
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_lti_registrations_registration_id_controls_id calls correct endpoint", async () => {
+test("put_aalrr_controls_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_context_controlsModule.handlers.put_accounts_account_id_lti_registrations_registration_id_controls_id;
-  assert.ok(handler, "Handler put_accounts_account_id_lti_registrations_registration_id_controls_id should be defined");
+  const handler = lti_context_controlsModule.handlers.put_aalrr_controls_id;
+  assert.ok(handler, "Handler put_aalrr_controls_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "registration_id": "test_registration_id", "id": "test_id", "available": true});
 
@@ -95,15 +95,15 @@ test("put_accounts_account_id_lti_registrations_registration_id_controls_id call
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_accounts_account_id_lti_registrations_registration_id_controls_id calls correct endpoint", async () => {
+test("delete_aalrr_controls_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = lti_context_controlsModule.handlers.delete_accounts_account_id_lti_registrations_registration_id_controls_id;
-  assert.ok(handler, "Handler delete_accounts_account_id_lti_registrations_registration_id_controls_id should be defined");
+  const handler = lti_context_controlsModule.handlers.delete_aalrr_controls_id;
+  assert.ok(handler, "Handler delete_aalrr_controls_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "registration_id": "test_registration_id", "id": "test_id"});
 

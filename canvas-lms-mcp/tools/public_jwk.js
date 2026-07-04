@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "put_developer_key_update_public_jwk",
+    "name": "put_dk_update_public_jwk",
     "description": "**Scope:** `url:PUT|/api/lti/developer_key/update_public_jwk` Rotate the public key in jwk format when using lti services Returns a [DeveloperKey](developer_keys.md#developerkey) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over...",
     "inputSchema": {
       "type": "object",
@@ -23,7 +23,7 @@ const definitions = [
 ];
 
 const handlers = {
-  put_developer_key_update_public_jwk: async (client, args) => {
+  put_dk_update_public_jwk: async (client, args) => {
     return genericHandler(client, "PUT", "/api/lti/developer_key/update_public_jwk", args);
   }
 };

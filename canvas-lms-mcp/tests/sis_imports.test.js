@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const sis_importsModule = require("../tools/sis_imports");
 
-test("get_accounts_account_id_sis_imports calls correct endpoint", async () => {
+test("get_aa_sis_imports calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_importsModule.handlers.get_accounts_account_id_sis_imports;
-  assert.ok(handler, "Handler get_accounts_account_id_sis_imports should be defined");
+  const handler = sis_importsModule.handlers.get_aa_sis_imports;
+  assert.ok(handler, "Handler get_aa_sis_imports should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "created_since": "test_val"});
 
@@ -23,15 +23,15 @@ test("get_accounts_account_id_sis_imports calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_sis_imports_importing calls correct endpoint", async () => {
+test("get_aasi_importing calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_importsModule.handlers.get_accounts_account_id_sis_imports_importing;
-  assert.ok(handler, "Handler get_accounts_account_id_sis_imports_importing should be defined");
+  const handler = sis_importsModule.handlers.get_aasi_importing;
+  assert.ok(handler, "Handler get_aasi_importing should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 
@@ -41,15 +41,15 @@ test("get_accounts_account_id_sis_imports_importing calls correct endpoint", asy
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_accounts_account_id_sis_imports calls correct endpoint", async () => {
+test("post_aa_sis_imports calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_importsModule.handlers.post_accounts_account_id_sis_imports;
-  assert.ok(handler, "Handler post_accounts_account_id_sis_imports should be defined");
+  const handler = sis_importsModule.handlers.post_aa_sis_imports;
+  assert.ok(handler, "Handler post_aa_sis_imports should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "import_type": "test_val"});
 
@@ -59,15 +59,15 @@ test("post_accounts_account_id_sis_imports calls correct endpoint", async () => 
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_accounts_account_id_sis_imports_id calls correct endpoint", async () => {
+test("get_aa_sis_imports_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_importsModule.handlers.get_accounts_account_id_sis_imports_id;
-  assert.ok(handler, "Handler get_accounts_account_id_sis_imports_id should be defined");
+  const handler = sis_importsModule.handlers.get_aa_sis_imports_id;
+  assert.ok(handler, "Handler get_aa_sis_imports_id should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -77,15 +77,15 @@ test("get_accounts_account_id_sis_imports_id calls correct endpoint", async () =
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_sis_imports_id_restore_states calls correct endpoint", async () => {
+test("put_aasii_restore_states calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_importsModule.handlers.put_accounts_account_id_sis_imports_id_restore_states;
-  assert.ok(handler, "Handler put_accounts_account_id_sis_imports_id_restore_states should be defined");
+  const handler = sis_importsModule.handlers.put_aasii_restore_states;
+  assert.ok(handler, "Handler put_aasii_restore_states should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id", "batch_mode": true});
 
@@ -95,15 +95,15 @@ test("put_accounts_account_id_sis_imports_id_restore_states calls correct endpoi
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_sis_imports_id_abort calls correct endpoint", async () => {
+test("put_aasii_abort calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_importsModule.handlers.put_accounts_account_id_sis_imports_id_abort;
-  assert.ok(handler, "Handler put_accounts_account_id_sis_imports_id_abort should be defined");
+  const handler = sis_importsModule.handlers.put_aasii_abort;
+  assert.ok(handler, "Handler put_aasii_abort should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id", "id": "test_id"});
 
@@ -113,15 +113,15 @@ test("put_accounts_account_id_sis_imports_id_abort calls correct endpoint", asyn
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_accounts_account_id_sis_imports_abort_all_pending calls correct endpoint", async () => {
+test("put_aasi_abort_all_pending calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = sis_importsModule.handlers.put_accounts_account_id_sis_imports_abort_all_pending;
-  assert.ok(handler, "Handler put_accounts_account_id_sis_imports_abort_all_pending should be defined");
+  const handler = sis_importsModule.handlers.put_aasi_abort_all_pending;
+  assert.ok(handler, "Handler put_aasi_abort_all_pending should be defined");
 
   const result = await handler(mockClient, {"account_id": "test_account_id"});
 

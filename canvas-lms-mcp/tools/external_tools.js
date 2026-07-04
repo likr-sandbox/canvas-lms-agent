@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_external_tools",
+    "name": "get_cc_external_tools",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/external_tools`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_external_tools",
+    "name": "get_aa_external_tools",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/external_tools`",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_external_tools",
+    "name": "get_gg_external_tools",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/external_tools` Returns the paginated list of external tools for the current context. See the get request docs for a single tool for a list of properties on an external tool. ```bash curl 'https:///api/v1/courses//external_tools?include_parents=true&placement=editor_button' \\ -H \"Authorization: Bearer \" ``` Returns a list of [ContextExternalTool](#contextexternaltool) objects. [ExternalToolsController#generate\\_sessionless\\_launch](https://github.c...",
     "inputSchema": {
       "type": "object",
@@ -81,7 +81,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_external_tools_sessionless_launch",
+    "name": "get_ccet_sessionless_launch",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/external_tools/sessionless_launch`",
     "inputSchema": {
       "type": "object",
@@ -101,7 +101,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_external_tools_sessionless_launch",
+    "name": "get_aaet_sessionless_launch",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/external_tools/sessionless_launch` Returns a sessionless launch url for an external tool. Prefers the resource\\_link\\_lookup\\_uuid, but defaults to the other passed parameters id, url, and launch\\_type NOTE: Either the resource\\_link\\_lookup\\_uuid, id, or url must be provided unless launch\\_type is assessment or module\\_item. * id The id for the external tool to be launched. * name The name of the external tool to be launched. * url The url to ...",
     "inputSchema": {
       "type": "object",
@@ -145,7 +145,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_external_tools_external_tool_id",
+    "name": "get_cc_external_tools_external_tool_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/external_tools/:external_tool_id`",
     "inputSchema": {
       "type": "object",
@@ -170,7 +170,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_external_tools_external_tool_id",
+    "name": "get_aa_external_tools_external_tool_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/external_tools/:external_tool_id` Returns the specified external tool. Returns a [ContextExternalTool](#contextexternaltool) object. [ExternalToolsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/external_tools_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -195,7 +195,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_external_tools",
+    "name": "post_cc_external_tools",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/external_tools`",
     "inputSchema": {
       "type": "object",
@@ -211,7 +211,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_external_tools",
+    "name": "post_aa_external_tools",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/external_tools` Create an external tool in the specified course/account. The created tool will be returned, see the \"show\" endpoint for an example. If a client ID is supplied canvas will attempt to create a context external tool using the LTI 1.3 standard. See the \\Placements Documentation\\ for more information on what placements are available, the possible fields, and their accepted values. ```bash This would create a tool on this course with...",
     "inputSchema": {
       "type": "object",
@@ -308,7 +308,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_courses_course_id_external_tools_external_tool_id",
+    "name": "put_cc_external_tools_external_tool_id",
     "description": "**Scope:** `url:PUT|/api/v1/courses/:course_id/external_tools/:external_tool_id`",
     "inputSchema": {
       "type": "object",
@@ -329,7 +329,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_external_tools_external_tool_id",
+    "name": "put_aa_external_tools_external_tool_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/external_tools/:external_tool_id` Update the specified external tool. Uses same parameters as create. Returns the updated tool. NOTE: Any updates made to LTI 1.3 tools with this API will be overridden if any changes are made to the tool's associated LTI Registration/Developer Key configuration. In almost all cases, changes should be made to the tool's associated LTI Registration configuration, not individual tools. ```bash This would update the...",
     "inputSchema": {
       "type": "object",
@@ -350,7 +350,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_external_tools_external_tool_id",
+    "name": "delete_cc_external_tools_external_tool_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/external_tools/:external_tool_id`",
     "inputSchema": {
       "type": "object",
@@ -371,7 +371,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_external_tools_external_tool_id",
+    "name": "delete_aa_external_tools_external_tool_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/external_tools/:external_tool_id` Remove the specified external tool ```bash This would delete the specified external tool curl -X DELETE 'https:///api/v1/courses//external_tools/' \\ -H \"Authorization: Bearer \" ``` Returns a [ContextExternalTool](#contextexternaltool) object. [ExternalToolsController#mark\\_rce\\_favorite](https://github.com/instructure/canvas-lms/blob/master/app/controllers/external_tools_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -392,7 +392,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_external_tools_rce_favorites_id",
+    "name": "post_aaet_rce_favorites_id",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/external_tools/rce_favorites/:id` Mark the specified editor\\_button external tool as a favorite in the RCE editor for courses in the given account and its subaccounts (if the subaccounts haven't set their own RCE Favorites). This places the tool in a preferred location in the RCE. Cannot mark more than 2 tools as RCE Favorites. ```bash curl -X POST 'https:///api/v1/accounts//external_tools/rce_favorites/' \\ -H \"Authorization: Bearer \" ``` [Ext...",
     "inputSchema": {
       "type": "object",
@@ -413,7 +413,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_external_tools_rce_favorites_id",
+    "name": "delete_aaet_rce_favorites_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/external_tools/rce_favorites/:id` Unmark the specified external tool as a favorite in the RCE editor for the given account. The tool will remain available but will no longer appear in the preferred favorites location. ```bash curl -X DELETE 'https:///api/v1/accounts//external_tools/rce_favorites/' \\ -H \"Authorization: Bearer \" ``` [ExternalToolsController#add\\_top\\_nav\\_favorite](https://github.com/instructure/canvas-lms/blob/master/app/cont...",
     "inputSchema": {
       "type": "object",
@@ -434,7 +434,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_external_tools_top_nav_favorites_id",
+    "name": "post_aaet_top_nav_favorites_id",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/external_tools/top_nav_favorites/:id` Adds a dedicated button in Top Navigation for the specified tool for the given account. Cannot set more than 2 top\\_navigation Favorites. ```bash curl -X POST 'https:///api/v1/accounts//external_tools/top_nav_favorites/' \\ -H \"Authorization: Bearer \" ``` [ExternalToolsController#remove\\_top\\_nav\\_favorite](https://github.com/instructure/canvas-lms/blob/master/app/controllers/external_tools_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -455,7 +455,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_external_tools_top_nav_favorites_id",
+    "name": "delete_aaet_top_nav_favorites_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/external_tools/top_nav_favorites/:id` Removes the dedicated button in Top Navigation for the specified tool for the given account. ```bash curl -X DELETE 'https:///api/v1/accounts//external_tools/top_nav_favorites/' \\ -H \"Authorization: Bearer \" ``` [ExternalToolsController#all\\_visible\\_nav\\_tools](https://github.com/instructure/canvas-lms/blob/master/app/controllers/external_tools_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -476,7 +476,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_external_tools_visible_course_nav_tools",
+    "name": "get_et_visible_course_nav_tools",
     "description": "**Scope:** `url:GET|/api/v1/external_tools/visible_course_nav_tools` Get a list of external tools with the course\\_navigation placement that have not been hidden in course settings and whose visibility settings apply to the requesting user. These tools are the same that appear in the course navigation. The response format is the same as for List external tools, but with additional context\\_id and context\\_name fields on each element in the array. * context\\_id The unique identifier of the ass...",
     "inputSchema": {
       "type": "object",
@@ -496,7 +496,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_external_tools_visible_course_nav_tools",
+    "name": "get_ccet_visible_course_nav_tools",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/external_tools/visible_course_nav_tools` Get a list of external tools with the course\\_navigation placement that have not been hidden in course settings and whose visibility settings apply to the requesting user. These tools are the same that appear in the course navigation. The response format is the same as Get visible course navigation tools. ```bash curl 'https:///api/v1/courses//external_tools/visible_course_nav_tools' \\ -H \"Authorization: B...",
     "inputSchema": {
       "type": "object",
@@ -518,61 +518,61 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_external_tools: async (client, args) => {
+  get_cc_external_tools: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/external_tools", args);
   },
-  get_accounts_account_id_external_tools: async (client, args) => {
+  get_aa_external_tools: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/external_tools", args);
   },
-  get_groups_group_id_external_tools: async (client, args) => {
+  get_gg_external_tools: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/external_tools", args);
   },
-  get_courses_course_id_external_tools_sessionless_launch: async (client, args) => {
+  get_ccet_sessionless_launch: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/external_tools/sessionless_launch", args);
   },
-  get_accounts_account_id_external_tools_sessionless_launch: async (client, args) => {
+  get_aaet_sessionless_launch: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/external_tools/sessionless_launch", args);
   },
-  get_courses_course_id_external_tools_external_tool_id: async (client, args) => {
+  get_cc_external_tools_external_tool_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/external_tools/:external_tool_id", args);
   },
-  get_accounts_account_id_external_tools_external_tool_id: async (client, args) => {
+  get_aa_external_tools_external_tool_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/external_tools/:external_tool_id", args);
   },
-  post_courses_course_id_external_tools: async (client, args) => {
+  post_cc_external_tools: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/external_tools", args);
   },
-  post_accounts_account_id_external_tools: async (client, args) => {
+  post_aa_external_tools: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/external_tools", args);
   },
-  put_courses_course_id_external_tools_external_tool_id: async (client, args) => {
+  put_cc_external_tools_external_tool_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/courses/:course_id/external_tools/:external_tool_id", args);
   },
-  put_accounts_account_id_external_tools_external_tool_id: async (client, args) => {
+  put_aa_external_tools_external_tool_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/external_tools/:external_tool_id", args);
   },
-  delete_courses_course_id_external_tools_external_tool_id: async (client, args) => {
+  delete_cc_external_tools_external_tool_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/external_tools/:external_tool_id", args);
   },
-  delete_accounts_account_id_external_tools_external_tool_id: async (client, args) => {
+  delete_aa_external_tools_external_tool_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/external_tools/:external_tool_id", args);
   },
-  post_accounts_account_id_external_tools_rce_favorites_id: async (client, args) => {
+  post_aaet_rce_favorites_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/external_tools/rce_favorites/:id", args);
   },
-  delete_accounts_account_id_external_tools_rce_favorites_id: async (client, args) => {
+  delete_aaet_rce_favorites_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/external_tools/rce_favorites/:id", args);
   },
-  post_accounts_account_id_external_tools_top_nav_favorites_id: async (client, args) => {
+  post_aaet_top_nav_favorites_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/external_tools/top_nav_favorites/:id", args);
   },
-  delete_accounts_account_id_external_tools_top_nav_favorites_id: async (client, args) => {
+  delete_aaet_top_nav_favorites_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/external_tools/top_nav_favorites/:id", args);
   },
-  get_external_tools_visible_course_nav_tools: async (client, args) => {
+  get_et_visible_course_nav_tools: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/external_tools/visible_course_nav_tools", args);
   },
-  get_courses_course_id_external_tools_visible_course_nav_tools: async (client, args) => {
+  get_ccet_visible_course_nav_tools: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/external_tools/visible_course_nav_tools", args);
   }
 };

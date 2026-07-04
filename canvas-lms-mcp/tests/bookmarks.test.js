@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const bookmarksModule = require("../tools/bookmarks");
 
-test("get_users_self_bookmarks calls correct endpoint", async () => {
+test("get_us_bookmarks calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = bookmarksModule.handlers.get_users_self_bookmarks;
-  assert.ok(handler, "Handler get_users_self_bookmarks should be defined");
+  const handler = bookmarksModule.handlers.get_us_bookmarks;
+  assert.ok(handler, "Handler get_us_bookmarks should be defined");
 
   const result = await handler(mockClient, {});
 
@@ -23,15 +23,15 @@ test("get_users_self_bookmarks calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("post_users_self_bookmarks calls correct endpoint", async () => {
+test("post_us_bookmarks calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = bookmarksModule.handlers.post_users_self_bookmarks;
-  assert.ok(handler, "Handler post_users_self_bookmarks should be defined");
+  const handler = bookmarksModule.handlers.post_us_bookmarks;
+  assert.ok(handler, "Handler post_us_bookmarks should be defined");
 
   const result = await handler(mockClient, {"name": "test_val"});
 
@@ -41,15 +41,15 @@ test("post_users_self_bookmarks calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("get_users_self_bookmarks_id calls correct endpoint", async () => {
+test("get_us_bookmarks_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = bookmarksModule.handlers.get_users_self_bookmarks_id;
-  assert.ok(handler, "Handler get_users_self_bookmarks_id should be defined");
+  const handler = bookmarksModule.handlers.get_us_bookmarks_id;
+  assert.ok(handler, "Handler get_us_bookmarks_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 
@@ -59,15 +59,15 @@ test("get_users_self_bookmarks_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("put_users_self_bookmarks_id calls correct endpoint", async () => {
+test("put_us_bookmarks_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = bookmarksModule.handlers.put_users_self_bookmarks_id;
-  assert.ok(handler, "Handler put_users_self_bookmarks_id should be defined");
+  const handler = bookmarksModule.handlers.put_us_bookmarks_id;
+  assert.ok(handler, "Handler put_us_bookmarks_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id", "name": "test_val"});
 
@@ -77,15 +77,15 @@ test("put_users_self_bookmarks_id calls correct endpoint", async () => {
   assert.deepStrictEqual(result, { success: true });
 });
 
-test("delete_users_self_bookmarks_id calls correct endpoint", async () => {
+test("delete_us_bookmarks_id calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = bookmarksModule.handlers.delete_users_self_bookmarks_id;
-  assert.ok(handler, "Handler delete_users_self_bookmarks_id should be defined");
+  const handler = bookmarksModule.handlers.delete_us_bookmarks_id;
+  assert.ok(handler, "Handler delete_us_bookmarks_id should be defined");
 
   const result = await handler(mockClient, {"id": "test_id"});
 

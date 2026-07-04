@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_users_user_id_history",
+    "name": "get_uu_history",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/history` Return a paginated list of the user's recent history. History entries are returned in descending order, newest to oldest. You may list history entries for yourself (use +self+ as the user\\_id), for a student you observe, or for a user you manage as an administrator. Note that the +per\\_page+ pagination argument is not supported and the number of history entries returned per page will vary. Returns a list of [HistoryEntry](#historyentry) obje...",
     "inputSchema": {
       "type": "object",
@@ -27,7 +27,7 @@ const definitions = [
 ];
 
 const handlers = {
-  get_users_user_id_history: async (client, args) => {
+  get_uu_history: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/history", args);
   }
 };

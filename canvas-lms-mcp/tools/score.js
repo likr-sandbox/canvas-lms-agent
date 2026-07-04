@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_courses_course_id_line_items_line_item_id_scores",
+    "name": "post_cclil_scores",
     "description": "**Scope:** `url:POST|/api/lti/courses/:course_id/line_items/:line_item_id/scores` Create a new Result from the score params. If this is for the first created line\\_item for a resourceLinkId, or it is a line item that is not attached to a resourceLinkId, then a submission record will be created for the associated assignment when gradingProgress is set to FullyGraded or PendingManual. The submission score will also be updated when a score object is sent with either of those two values for gradi...",
     "inputSchema": {
       "type": "object",
@@ -66,7 +66,7 @@ const definitions = [
           "type": "boolean",
           "description": "(EXTENSION field) flag to prevent a request from clearing an existing grade for a submission. Defaults to false."
         },
-        "https://canvas.instructure.com/lti/submission[prioritize_non_tool_grade]": {
+        "h_prioritize_non_tool_grade": {
           "type": "boolean",
           "description": "(EXTENSION field) flag to prevent a request from overwriting an existing grade for a submission. Defaults to false."
         },
@@ -100,8 +100,13 @@ const definitions = [
 ];
 
 const handlers = {
-  post_courses_course_id_line_items_line_item_id_scores: async (client, args) => {
-    return genericHandler(client, "POST", "/api/lti/courses/:course_id/line_items/:line_item_id/scores", args);
+  post_cclil_scores: async (client, args) => {
+    const mappedArgs = { ...args };
+    if ("h_prioritize_non_tool_grade" in mappedArgs) {
+      mappedArgs["https://canvas.instructure.com/lti/submission[prioritize_non_tool_grade]"] = mappedArgs["h_prioritize_non_tool_grade"];
+      delete mappedArgs["h_prioritize_non_tool_grade"];
+    }
+    return genericHandler(client, "POST", "/api/lti/courses/:course_id/line_items/:line_item_id/scores", mappedArgs);
   }
 };
 

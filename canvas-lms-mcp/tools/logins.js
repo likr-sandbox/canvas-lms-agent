@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_logins",
+    "name": "get_aa_logins",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/logins`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_logins",
+    "name": "get_uu_logins",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/logins` Given a user ID, return a paginated list of that user's logins for the given account. * account\\_id The ID of the login's account. * id The unique, numeric ID for the login. * sis\\_user\\_id The login's unique SIS ID. * integration\\_id The login's unique integration ID. * unique\\_id The unique ID for the login. * user\\_id The unique ID of the login's user. * authentication\\_provider\\_id The ID of the authentication provider that this login is ...",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_reset_password",
+    "name": "post_u_reset_password",
     "description": "**Scope:** `url:POST|/api/v1/users/reset_password` Given a user email, generate a nonce and email it to the user * requested The recovery request status ```js { \"requested\": true } ``` [PseudonymsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/pseudonyms_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -53,7 +53,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_logins",
+    "name": "post_aa_logins",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/logins` Create a new login for an existing user in the given account. ```bash curl 'https:///api/v1/accounts//logins' \\ -F 'user[id]=123' \\ -F 'login[unique_id]=112233445566' \\ -F 'login[authentication_provider_id]=facebook' \\ -H 'Authorization: Bearer ' ``` ```bash curl 'https:///api/v1/accounts//logins' \\ -F 'user[existing_user_sis_id]=SIS42' \\ -F 'user[trusted_account]=canvas.example.edu' \\ -F 'login[unique_id]=112233445566' \\ -H 'Authoriza...",
     "inputSchema": {
       "type": "object",
@@ -119,7 +119,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_logins_id",
+    "name": "put_aa_logins_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/logins/:id` Update an existing login for a user in the given account. ```bash curl https:///api/v1/accounts/:account_id/logins/:login_id \\ -H \"Authorization: Bearer \" \\ -X PUT ``` ```js { \"id\": 1, \"user_id\": 2, \"account_id\": 3, \"unique_id\": \"bieber@example.com\", \"created_at\": \"2020-01-29T19:33:35Z\", \"sis_user_id\": null, \"integration_id\": null, \"authentication_provider_id\": null, \"workflow_state\": \"active\", \"declared_user_type\": \"teacher\", \"must...",
     "inputSchema": {
       "type": "object",
@@ -180,7 +180,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_user_id_logins_id",
+    "name": "delete_uu_logins_id",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:user_id/logins/:id` Delete an existing login. ```bash curl https:///api/v1/users/:user_id/logins/:login_id \\ -H \"Authorization: Bearer \" \\ -X DELETE ``` ```js { \"unique_id\": \"bieber@example.com\", \"sis_user_id\": null, \"account_id\": 1, \"id\": 12345, \"user_id\": 2 } ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook....",
     "inputSchema": {
       "type": "object",
@@ -203,22 +203,22 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_logins: async (client, args) => {
+  get_aa_logins: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/logins", args);
   },
-  get_users_user_id_logins: async (client, args) => {
+  get_uu_logins: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/logins", args);
   },
-  post_users_reset_password: async (client, args) => {
+  post_u_reset_password: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/reset_password", args);
   },
-  post_accounts_account_id_logins: async (client, args) => {
+  post_aa_logins: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/logins", args);
   },
-  put_accounts_account_id_logins_id: async (client, args) => {
+  put_aa_logins_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/logins/:id", args);
   },
-  delete_users_user_id_logins_id: async (client, args) => {
+  delete_uu_logins_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/logins/:id", args);
   }
 };

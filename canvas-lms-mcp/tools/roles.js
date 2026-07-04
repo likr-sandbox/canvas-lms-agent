@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_roles",
+    "name": "get_aa_roles",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/roles` A paginated list of the roles available to an account. Returns a list of [Role](#role) objects. [RoleOverridesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/role_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -33,7 +33,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_roles_id",
+    "name": "get_aa_roles_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/roles/:id` Retrieve information about a single role Returns a [Role](#role) object. [RoleOverridesController#add\\_role](https://github.com/instructure/canvas-lms/blob/master/app/controllers/role_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -67,7 +67,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_roles",
+    "name": "post_aa_roles",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/roles` Create a new course-level or account-level role. ```bash curl 'https:///api/v1/accounts//roles.json' \\ -H \"Authorization: Bearer \" \\ -F 'label=New Role' \\ -F 'permissions[read_course_content][explicit]=1' \\ -F 'permissions[read_course_content][enabled]=1' \\ -F 'permissions[read_course_list][locked]=1' \\ -F 'permissions[read_question_banks][explicit]=1' \\ -F 'permissions[read_question_banks][enabled]=0' \\ -F 'permissions[read_question_ba...",
     "inputSchema": {
       "type": "object",
@@ -116,7 +116,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_roles_id",
+    "name": "delete_aa_roles_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/roles/:id` Deactivates a custom role. This hides it in the user interface and prevents it from being assigned to new users. Existing users assigned to the role will continue to function with the same permissions they had previously. Built-in roles cannot be deactivated. Returns a [Role](#role) object. [RoleOverridesController#activate\\_role](https://github.com/instructure/canvas-lms/blob/master/app/controllers/role_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -146,7 +146,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_roles_id_activate",
+    "name": "post_aari_activate",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/roles/:id/activate` Re-activates an inactive role (allowing it to be assigned to new users) Returns a [Role](#role) object. [RoleOverridesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/role_overrides_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -176,7 +176,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_roles_id",
+    "name": "put_aa_roles_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/roles/:id` Update permissions for an existing role. Recognized roles are: * TeacherEnrollment * StudentEnrollment * TaEnrollment * ObserverEnrollment * DesignerEnrollment * AccountAdmin * Any previously created custom role ```bash curl https:///api/v1/accounts/:account_id/roles/2 \\ -X PUT \\ -H 'Authorization: Bearer ' \\ -F 'label=New Role Name' \\ -F 'permissions[manage_groups][explicit]=1' \\ -F 'permissions[manage_groups][enabled]=1' \\ -F 'perm...",
     "inputSchema": {
       "type": "object",
@@ -217,7 +217,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_roles_permissions",
+    "name": "get_aar_permissions",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/roles/permissions` List all permissions that can be granted to roles in the given account. This returns largely the same information documented on the [Permissions list page](../permissions/file.permissions.md), with a few caveats: * Permission labels and group labels returned by this API are localized (the same text visible in the web UI). * This API includes permissions added by plugins. * This API excludes permissions that are disabled in or...",
     "inputSchema": {
       "type": "object",
@@ -241,7 +241,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_permissions_context_type_permission_help",
+    "name": "get_pcp_help",
     "description": "**Scope:** `url:GET|/api/v1/permissions/:context_type/:permission/help` these actions access only static (but localized) information about permissions, but require a logged-in user to mitigate possible abuse Retrieve information about what Canvas permissions do and considerations for their use. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/permissions/account/view_user_logins/help ``` Returns a [PermissionHelpText](#permissionhelptext) object. [PermissionsHelpController#groups](h...",
     "inputSchema": {
       "type": "object",
@@ -266,7 +266,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_permissions_groups",
+    "name": "get_p_groups",
     "description": "**Scope:** `url:GET|/api/v1/permissions/groups` Retrieve information about groups of granular permissions The return value is a dictionary of permission group keys to objects containing +label+ and +subtitle+ keys. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can rea...",
     "inputSchema": {
       "type": "object",
@@ -281,31 +281,31 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_roles: async (client, args) => {
+  get_aa_roles: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/roles", args);
   },
-  get_accounts_account_id_roles_id: async (client, args) => {
+  get_aa_roles_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/roles/:id", args);
   },
-  post_accounts_account_id_roles: async (client, args) => {
+  post_aa_roles: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/roles", args);
   },
-  delete_accounts_account_id_roles_id: async (client, args) => {
+  delete_aa_roles_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/roles/:id", args);
   },
-  post_accounts_account_id_roles_id_activate: async (client, args) => {
+  post_aari_activate: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/roles/:id/activate", args);
   },
-  put_accounts_account_id_roles_id: async (client, args) => {
+  put_aa_roles_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/roles/:id", args);
   },
-  get_accounts_account_id_roles_permissions: async (client, args) => {
+  get_aar_permissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/roles/permissions", args);
   },
-  get_permissions_context_type_permission_help: async (client, args) => {
+  get_pcp_help: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/permissions/:context_type/:permission/help", args);
   },
-  get_permissions_groups: async (client, args) => {
+  get_p_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/permissions/groups", args);
   }
 };

@@ -18,7 +18,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_epub_exports",
+    "name": "post_cc_epub_exports",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/epub_exports` Begin an ePub export for a course. You can use the [Progress API](progress.md#method.progress.show) to track the progress of the export. The export's progress is linked to with the *progress\\_url* value. When the export completes, use the [Show content export](#method.epub_exports.show) endpoint to retrieve a download URL for the exported content. Returns an [EpubExport](#epubexport) object. [EpubExportsController#show](https://git...",
     "inputSchema": {
       "type": "object",
@@ -34,7 +34,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_epub_exports_id",
+    "name": "get_cc_epub_exports_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/epub_exports/:id` Get information about a single ePub export. Returns an [EpubExport](#epubexport) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. L...",
     "inputSchema": {
       "type": "object",
@@ -64,10 +64,10 @@ const handlers = {
   get_epub_exports: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/epub_exports", args);
   },
-  post_courses_course_id_epub_exports: async (client, args) => {
+  post_cc_epub_exports: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/epub_exports", args);
   },
-  get_courses_course_id_epub_exports_id: async (client, args) => {
+  get_cc_epub_exports_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/epub_exports/:id", args);
   }
 };

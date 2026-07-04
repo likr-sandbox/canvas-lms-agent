@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_collaborations",
+    "name": "get_cc_collaborations",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/collaborations`",
     "inputSchema": {
       "type": "object",
@@ -25,7 +25,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_collaborations",
+    "name": "get_gg_collaborations",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/collaborations` A paginated list of collaborations the current user has access to in the context of the course provided in the url. NOTE: this only returns ExternalToolCollaboration type collaborations. curl https\\://\\/api/v1/courses/1/collaborations/ Returns a list of [Collaboration](#collaboration) objects. [CollaborationsController#members](https://github.com/instructure/canvas-lms/blob/master/app/controllers/collaborations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_collaborations_id_members",
+    "name": "get_ci_members",
     "description": "**Scope:** `url:GET|/api/v1/collaborations/:id/members` A paginated list of the collaborators of a given collaboration ```bash curl https:///api/v1/courses/1/collaborations/1/members ``` Returns a list of [Collaborator](#collaborator) objects. [CollaborationsController#potential\\_collaborators](https://github.com/instructure/canvas-lms/blob/master/app/controllers/collaborations_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -69,7 +69,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_potential_collaborators",
+    "name": "get_cc_potential_collaborators",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/potential_collaborators`",
     "inputSchema": {
       "type": "object",
@@ -89,7 +89,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_groups_group_id_potential_collaborators",
+    "name": "get_gg_potential_collaborators",
     "description": "**Scope:** `url:GET|/api/v1/groups/:group_id/potential_collaborators` A paginated list of the users who can potentially be added to a collaboration in the given context. For courses, this consists of all enrolled users. For groups, it is comprised of the group members plus the admins of the course containing the group. Returns a list of [User](users.md#user) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instruct...",
     "inputSchema": {
       "type": "object",
@@ -111,19 +111,19 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_collaborations: async (client, args) => {
+  get_cc_collaborations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/collaborations", args);
   },
-  get_groups_group_id_collaborations: async (client, args) => {
+  get_gg_collaborations: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/collaborations", args);
   },
-  get_collaborations_id_members: async (client, args) => {
+  get_ci_members: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/collaborations/:id/members", args);
   },
-  get_courses_course_id_potential_collaborators: async (client, args) => {
+  get_cc_potential_collaborators: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/potential_collaborators", args);
   },
-  get_groups_group_id_potential_collaborators: async (client, args) => {
+  get_gg_potential_collaborators: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/groups/:group_id/potential_collaborators", args);
   }
 };

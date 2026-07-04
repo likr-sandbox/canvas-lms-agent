@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_accounts_account_id_shared_brand_configs",
+    "name": "post_aa_shared_brand_configs",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/shared_brand_configs` Create a SharedBrandConfig, which will give the given brand\\_config a name and make it available to other users of this account. ```bash curl 'https:///api/v1/accounts//shared_brand_configs' \\ -X POST \\ -F 'shared_brand_config[name]=Crimson and Gold Theme' \\ -F 'shared_brand_config[brand_config_md5]=a1f113321fa024e7a14cb0948597a2a4' \\ -H \"Authorization: Bearer \" ``` Returns a [SharedBrandConfig](#sharedbrandconfig) object...",
     "inputSchema": {
       "type": "object",
@@ -31,7 +31,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_shared_brand_configs_id",
+    "name": "put_aa_shared_brand_configs_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/shared_brand_configs/:id` Update the specified shared\\_brand\\_config with a new name or to point to a new brand\\_config. Uses same parameters as create. ```bash curl -X PUT 'https:///api/v1/accounts//shared_brand_configs/' \\ -H \"Authorization: Bearer \" \\ -F 'shared_brand_config[name]=New Name' \\ -F 'shared_brand_config[brand_config_md5]=a1f113321fa024e7a14cb0948597a2a4' ``` Returns a [SharedBrandConfig](#sharedbrandconfig) object. [SharedBrandC...",
     "inputSchema": {
       "type": "object",
@@ -70,10 +70,10 @@ const definitions = [
 ];
 
 const handlers = {
-  post_accounts_account_id_shared_brand_configs: async (client, args) => {
+  post_aa_shared_brand_configs: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/shared_brand_configs", args);
   },
-  put_accounts_account_id_shared_brand_configs_id: async (client, args) => {
+  put_aa_shared_brand_configs_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/shared_brand_configs/:id", args);
   },
   delete_shared_brand_configs_id: async (client, args) => {

@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_accounts_account_id_outcome_proficiency",
+    "name": "post_aa_outcome_proficiency",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/outcome_proficiency`",
     "inputSchema": {
       "type": "object",
@@ -21,7 +21,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_outcome_proficiency",
+    "name": "post_cc_outcome_proficiency",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/outcome_proficiency` Create or update account-level proficiency ratings. These ratings will apply to all sub-accounts, unless they have their own account-level proficiency ratings defined. ```bash curl 'https:///api/v1/accounts//outcome_proficiency' \\ -X POST \\ -F 'ratings[][description]=Exceeds Mastery' \\ -F 'ratings[][points]=4' \\ -F 'ratings[][color]=02672D' \\ -F 'ratings[][mastery]=false' \\ -F 'ratings[][description]=Mastery' \\ -F 'ratings[]...",
     "inputSchema": {
       "type": "object",
@@ -53,7 +53,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_outcome_proficiency",
+    "name": "get_aa_outcome_proficiency",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/outcome_proficiency`",
     "inputSchema": {
       "type": "object",
@@ -73,7 +73,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_proficiency",
+    "name": "get_cc_outcome_proficiency",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_proficiency` Get account-level proficiency ratings. If not defined for this account, it will return proficiency ratings for the nearest super-account with ratings defined. Will return 404 if none found. Examples: curl https\\://\\/api/v1/accounts/\\/outcome\\_proficiency\\ -H 'Authorization: Bearer \\' Returns a [Proficiency](#proficiency) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github...",
     "inputSchema": {
       "type": "object",
@@ -95,16 +95,16 @@ const definitions = [
 ];
 
 const handlers = {
-  post_accounts_account_id_outcome_proficiency: async (client, args) => {
+  post_aa_outcome_proficiency: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/outcome_proficiency", args);
   },
-  post_courses_course_id_outcome_proficiency: async (client, args) => {
+  post_cc_outcome_proficiency: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/outcome_proficiency", args);
   },
-  get_accounts_account_id_outcome_proficiency: async (client, args) => {
+  get_aa_outcome_proficiency: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/outcome_proficiency", args);
   },
-  get_courses_course_id_outcome_proficiency: async (client, args) => {
+  get_cc_outcome_proficiency: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_proficiency", args);
   }
 };

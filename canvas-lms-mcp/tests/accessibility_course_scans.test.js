@@ -5,15 +5,15 @@ const test = require("node:test");
 const assert = require("node:assert");
 const accessibility_course_scansModule = require("../tools/accessibility_course_scans");
 
-test("post_users_user_id_educator_accessibility_course_scan calls correct endpoint", async () => {
+test("post_uu_educator_accessibility_course_scan calls correct endpoint", async () => {
   let calledConfig = null;
   const mockClient = async (config) => {
     calledConfig = config;
     return { data: { success: true } };
   };
 
-  const handler = accessibility_course_scansModule.handlers.post_users_user_id_educator_accessibility_course_scan;
-  assert.ok(handler, "Handler post_users_user_id_educator_accessibility_course_scan should be defined");
+  const handler = accessibility_course_scansModule.handlers.post_uu_educator_accessibility_course_scan;
+  assert.ok(handler, "Handler post_uu_educator_accessibility_course_scan should be defined");
 
   const result = await handler(mockClient, {"user_id": "test_user_id"});
 

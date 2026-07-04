@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "post_accounts_account_id_terms",
+    "name": "post_aa_terms",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/terms` Create a new enrollment term for the specified account. Returns an [EnrollmentTerm](#enrollmentterm) object. [TermsController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/terms_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -45,7 +45,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_accounts_account_id_terms_id",
+    "name": "put_aa_terms_id",
     "description": "**Scope:** `url:PUT|/api/v1/accounts/:account_id/terms/:id` Update an existing enrollment term for the specified account. Returns an [EnrollmentTerm](#enrollmentterm) object. [TermsController#destroy](https://github.com/instructure/canvas-lms/blob/master/app/controllers/terms_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -94,7 +94,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_accounts_account_id_terms_id",
+    "name": "delete_aa_terms_id",
     "description": "**Scope:** `url:DELETE|/api/v1/accounts/:account_id/terms/:id` Delete the specified enrollment term. Returns an [EnrollmentTerm](#enrollmentterm) object. [TermsApiController#index](https://github.com/instructure/canvas-lms/blob/master/app/controllers/terms_api_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -115,7 +115,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_terms",
+    "name": "get_aa_terms",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/terms` An object with a paginated list of all of the terms in the account. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/accounts/1/terms?include[]=overrides ``` ```js { \"enrollment_terms\": [ { \"id\": 1, \"name\": \"Fall 20X6\" \"start_at\": \"2026-08-31T20:00:00Z\", \"end_at\": \"2026-12-20T20:00:00Z\", \"created_at\": \"2025-01-02T03:43:11Z\", \"workflow_state\": \"active\", \"grading_period_group_id\": 1, \"sis_term_id\": null, \"overrides\": { \"StudentEn...",
     "inputSchema": {
       "type": "object",
@@ -147,7 +147,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_accounts_account_id_terms_id",
+    "name": "get_aa_terms_id",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/terms/:id` Retrieves the details for an enrollment term in the account. Includes overrides by default. ```bash curl -H 'Authorization: Bearer ' \\ https:///api/v1/accounts/1/terms/2 ``` Returns an [EnrollmentTerm](#enrollmentterm) object. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the d...",
     "inputSchema": {
       "type": "object",
@@ -174,19 +174,19 @@ const definitions = [
 ];
 
 const handlers = {
-  post_accounts_account_id_terms: async (client, args) => {
+  post_aa_terms: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/terms", args);
   },
-  put_accounts_account_id_terms_id: async (client, args) => {
+  put_aa_terms_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/accounts/:account_id/terms/:id", args);
   },
-  delete_accounts_account_id_terms_id: async (client, args) => {
+  delete_aa_terms_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/accounts/:account_id/terms/:id", args);
   },
-  get_accounts_account_id_terms: async (client, args) => {
+  get_aa_terms: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/terms", args);
   },
-  get_accounts_account_id_terms_id: async (client, args) => {
+  get_aa_terms_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/terms/:id", args);
   }
 };

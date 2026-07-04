@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_users_self_favorites_courses",
+    "name": "get_usf_courses",
     "description": "**Scope:** `url:GET|/api/v1/users/self/favorites/courses` Retrieve the paginated list of favorite courses for the current user. If the user has not chosen any favorites, then a selection of currently enrolled courses will be returned. See the [List courses API](courses.md#method.courses.index) for details on accepted include\\[] parameters. ```bash curl https:///api/v1/users/self/favorites/courses \\ -H 'Authorization: Bearer ' ``` Returns a list of [Course](courses.md#course) objects. [Favorit...",
     "inputSchema": {
       "type": "object",
@@ -22,7 +22,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_self_favorites_groups",
+    "name": "get_usf_groups",
     "description": "**Scope:** `url:GET|/api/v1/users/self/favorites/groups` Retrieve the paginated list of favorite groups for the current user. If the user has not chosen any favorites, then a selection of groups that the user is a member of will be returned. ```bash curl https:///api/v1/users/self/favorites/groups \\ -H 'Authorization: Bearer ' ``` Returns a list of [Group](groups.md#group) objects. [FavoritesController#add\\_favorite\\_course](https://github.com/instructure/canvas-lms/blob/master/app/controller...",
     "inputSchema": {
       "type": "object",
@@ -35,7 +35,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_self_favorites_courses_id",
+    "name": "post_usf_courses_id",
     "description": "**Scope:** `url:POST|/api/v1/users/self/favorites/courses/:id` Add a course to the current user's favorites. If the course is already in the user's favorites, nothing happens. Canvas for Elementary subject and homeroom courses can be added to favorites, but this has no effect in the UI. ```bash curl https:///api/v1/users/self/favorites/courses/1170 \\ -X POST \\ -H 'Authorization: Bearer ' \\ -H 'Content-Length: 0' ``` Returns a [Favorite](#favorite) object. [FavoritesController#add\\_favorite\\_g...",
     "inputSchema": {
       "type": "object",
@@ -51,7 +51,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_self_favorites_groups_id",
+    "name": "post_usf_groups_id",
     "description": "**Scope:** `url:POST|/api/v1/users/self/favorites/groups/:id` Add a group to the current user's favorites. If the group is already in the user's favorites, nothing happens. ```bash curl https:///api/v1/users/self/favorites/group/1170 \\ -X POST \\ -H 'Authorization: Bearer ' \\ -H 'Content-Length: 0' ``` Returns a [Favorite](#favorite) object. [FavoritesController#remove\\_favorite\\_course](https://github.com/instructure/canvas-lms/blob/master/app/controllers/favorites_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -67,7 +67,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_self_favorites_courses_id",
+    "name": "delete_usf_courses_id",
     "description": "**Scope:** `url:DELETE|/api/v1/users/self/favorites/courses/:id` Remove a course from the current user's favorites. ```bash curl https:///api/v1/users/self/favorites/courses/1170 \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Returns a [Favorite](#favorite) object. [FavoritesController#remove\\_favorite\\_groups](https://github.com/instructure/canvas-lms/blob/master/app/controllers/favorites_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -83,7 +83,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_self_favorites_groups_id",
+    "name": "delete_usf_groups_id",
     "description": "**Scope:** `url:DELETE|/api/v1/users/self/favorites/groups/:id` Remove a group from the current user's favorites. ```bash curl https:///api/v1/users/self/favorites/groups/1170 \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Returns a [Favorite](#favorite) object. [FavoritesController#reset\\_course\\_favorites](https://github.com/instructure/canvas-lms/blob/master/app/controllers/favorites_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -99,7 +99,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_self_favorites_courses",
+    "name": "delete_usf_courses",
     "description": "**Scope:** `url:DELETE|/api/v1/users/self/favorites/courses` Reset the current user's course favorites to the default automatically generated list of enrolled courses ```bash curl https:///api/v1/users/self/favorites/courses \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` [FavoritesController#reset\\_groups\\_favorites](https://github.com/instructure/canvas-lms/blob/master/app/controllers/favorites_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -107,7 +107,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_self_favorites_groups",
+    "name": "delete_usf_groups",
     "description": "**Scope:** `url:DELETE|/api/v1/users/self/favorites/groups` Reset the current user's group favorites to the default automatically generated list of enrolled group ```bash curl https:///api/v1/users/self/favorites/group \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform ...",
     "inputSchema": {
       "type": "object",
@@ -117,28 +117,28 @@ const definitions = [
 ];
 
 const handlers = {
-  get_users_self_favorites_courses: async (client, args) => {
+  get_usf_courses: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/favorites/courses", args);
   },
-  get_users_self_favorites_groups: async (client, args) => {
+  get_usf_groups: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/favorites/groups", args);
   },
-  post_users_self_favorites_courses_id: async (client, args) => {
+  post_usf_courses_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/self/favorites/courses/:id", args);
   },
-  post_users_self_favorites_groups_id: async (client, args) => {
+  post_usf_groups_id: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/self/favorites/groups/:id", args);
   },
-  delete_users_self_favorites_courses_id: async (client, args) => {
+  delete_usf_courses_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/favorites/courses/:id", args);
   },
-  delete_users_self_favorites_groups_id: async (client, args) => {
+  delete_usf_groups_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/favorites/groups/:id", args);
   },
-  delete_users_self_favorites_courses: async (client, args) => {
+  delete_usf_courses: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/favorites/courses", args);
   },
-  delete_users_self_favorites_groups: async (client, args) => {
+  delete_usf_groups: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/favorites/groups", args);
   }
 };

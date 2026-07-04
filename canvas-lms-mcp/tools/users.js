@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_accounts_account_id_users",
+    "name": "get_aa_users",
     "description": "**Scope:** `url:GET|/api/v1/accounts/:account_id/users` A paginated list of users associated with this account. @example\\_request curl https\\://\\/api/v1/accounts/self/users?search\\_term=\\\\ -X GET\\ -H 'Authorization: Bearer \\' Returns a list of [User](#user) objects. [UsersController#activity\\_stream](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -49,7 +49,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_self_activity_stream",
+    "name": "get_us_activity_stream",
     "description": "**Scope:** `url:GET|/api/v1/users/self/activity_stream`",
     "inputSchema": {
       "type": "object",
@@ -62,7 +62,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_activity_stream",
+    "name": "get_u_activity_stream",
     "description": "**Scope:** `url:GET|/api/v1/users/activity_stream` Returns the current user's global activity stream, paginated. There are many types of objects that can be returned in the activity stream. All object types have the same basic set of shared attributes: !!!javascript { 'created\\_at': '2011-07-13T09:12:00Z', 'updated\\_at': '2011-07-25T08:52:41Z', 'id': 1234, 'title': 'Stream Item Subject', 'message': 'This is the body text of the activity stream item. It is plain-text, and can be multiple parag...",
     "inputSchema": {
       "type": "object",
@@ -79,7 +79,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_self_activity_stream_summary",
+    "name": "get_usas_summary",
     "description": "**Scope:** `url:GET|/api/v1/users/self/activity_stream/summary` Returns a summary of the current user's global activity stream. ```js [ { \"type\": \"DiscussionTopic\", \"unread_count\": 2, \"count\": 7 }, { \"type\": \"Conversation\", \"unread_count\": 0, \"count\": 3 } ] ``` [UsersController#todo\\_items](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -96,7 +96,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_self_todo",
+    "name": "get_us_todo",
     "description": "**Scope:** `url:GET|/api/v1/users/self/todo` A paginated list of the current user's list of todo items. There is a limit to the number of items returned. The `ignore` and `ignore_permanently` URLs can be used to update the user's preferences on what items will be displayed. Performing a DELETE request against the `ignore` URL will hide that item from future todo item requests, until the item changes. Performing a DELETE request against the `ignore_permanently` URL will hide that item forever....",
     "inputSchema": {
       "type": "object",
@@ -117,7 +117,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_self_todo_item_count",
+    "name": "get_us_todo_item_count",
     "description": "**Scope:** `url:GET|/api/v1/users/self/todo_item_count` Counts of different todo items such as the number of assignments needing grading as well as the number of assignments needing submitting. There is a limit to the number of todo items this endpoint will count. It will only look at the first 100 todo items for the user. If the user has more than 100 todo items this count may not be reliable. The largest reliable number for both counts is 100. ```js { needs_grading_count: 32, assignments_ne...",
     "inputSchema": {
       "type": "object",
@@ -134,7 +134,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_self_upcoming_events",
+    "name": "get_us_upcoming_events",
     "description": "**Scope:** `url:GET|/api/v1/users/self/upcoming_events` A paginated list of the current user's upcoming events. ```js [ { \"id\"=>597, \"title\"=>\"Upcoming Course Event\", \"description\"=>\"Attendance is correlated with passing!\", \"start_at\"=>\"2013-04-27T14:33:14Z\", \"end_at\"=>\"2013-04-27T14:33:14Z\", \"location_name\"=>\"Red brick house\", \"location_address\"=>\"110 Top of the Hill Dr.\", \"all_day\"=>false, \"all_day_date\"=>nil, \"created_at\"=>\"2013-04-26T14:33:14Z\", \"updated_at\"=>\"2013-04-26T14:33:14Z\", \"work...",
     "inputSchema": {
       "type": "object",
@@ -147,7 +147,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_missing_submissions",
+    "name": "get_uu_missing_submissions",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/missing_submissions` A paginated list of past-due assignments for which the student does not have a submission. The user sending the request must either be the student, an admin or a parent observer using the parent app Returns a list of [Assignment](assignments.md#assignment) objects. [UsersController#ignore\\_stream\\_item](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -183,7 +183,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_self_activity_stream_id",
+    "name": "delete_us_activity_stream_id",
     "description": "**Scope:** `url:DELETE|/api/v1/users/self/activity_stream/:id` Hide the given stream item. ```bash curl https:///api/v1/users/self/activity_stream/ \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` ```js { \"hidden\": true } ``` [UsersController#ignore\\_all\\_stream\\_items](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -199,7 +199,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_self_activity_stream",
+    "name": "delete_us_activity_stream",
     "description": "**Scope:** `url:DELETE|/api/v1/users/self/activity_stream` Hide all stream items for the user ```bash curl https:///api/v1/users/self/activity_stream \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` ```js { \"hidden\": true } ``` [UsersController#create\\_file](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -207,7 +207,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_user_id_files",
+    "name": "post_uu_files",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/files` Upload a file to the user's personal files section. This API endpoint is the first step in uploading a file to a user's files. See the [File Upload Documentation](../basics/file.file_uploads.md) for details on the file upload workflow. Note that typically users will only be able to upload files to their own files section. Passing a user\\_id of +self+ is an easy shortcut to specify the current user. [UsersController#api\\_show](https://github.c...",
     "inputSchema": {
       "type": "object",
@@ -247,7 +247,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_users",
+    "name": "post_aa_users",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/users` Create and return a new user and pseudonym for an account. \\[DEPRECATED (for self-registration only)] If you don't have the \"Modify login details for users\" permission, but self-registration is enabled on the account, you can still use this endpoint to register new users. Certain fields will be required, and others will be ignored (see below). Returns an [User](#user) object. [UsersController#create\\_self\\_registered\\_user](https://gith...",
     "inputSchema": {
       "type": "object",
@@ -356,7 +356,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_accounts_account_id_self_registration",
+    "name": "post_aa_self_registration",
     "description": "**Scope:** `url:POST|/api/v1/accounts/:account_id/self_registration` Self register and return a new user and pseudonym for an account. If self-registration is enabled on the account, you can use this endpoint to self register new users. Returns an [User](#user) object. [UsersController#settings](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -411,7 +411,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_id_settings",
+    "name": "get_ui_settings",
     "description": "**Scope:** `url:GET|/api/v1/users/:id/settings`",
     "inputSchema": {
       "type": "object",
@@ -431,7 +431,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_id_settings",
+    "name": "put_ui_settings",
     "description": "**Scope:** `url:PUT|/api/v1/users/:id/settings` Update an existing user's settings. ```bash curl 'https:///api/v1/users//settings \\ -X PUT \\ -F 'manual_mark_as_read=true' -H 'Authorization: Bearer ' ``` [UsersController#get\\_custom\\_colors](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -483,7 +483,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_id_colors",
+    "name": "get_ui_colors",
     "description": "**Scope:** `url:GET|/api/v1/users/:id/colors` Returns all custom colors that have been saved for a user. ```bash curl 'https:///api/v1/users//colors/ \\ -X GET \\ -H 'Authorization: Bearer ' ``` ```js { \"custom_colors\": { \"course_42\": \"#abc123\", \"course_88\": \"#123abc\" } } ``` [UsersController#get\\_custom\\_color](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -503,7 +503,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_id_colors_asset_string",
+    "name": "get_ui_colors_asset_string",
     "description": "**Scope:** `url:GET|/api/v1/users/:id/colors/:asset_string` Returns the custom colors that have been saved for a user for a given context. The asset\\_string parameter should be in the format 'context\\_id', for example 'course\\_42'. ```bash curl 'https:///api/v1/users//colors/ \\ -X GET \\ -H 'Authorization: Bearer ' ``` ```js { \"hexcode\": \"#abc123\" } ``` [UsersController#set\\_custom\\_color](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -528,7 +528,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_id_colors_asset_string",
+    "name": "put_ui_colors_asset_string",
     "description": "**Scope:** `url:PUT|/api/v1/users/:id/colors/:asset_string` Updates a custom color for a user for a given context. This allows colors for the calendar and elsewhere to be customized on a user basis. The asset string parameter should be in the format 'context\\_id', for example 'course\\_42' ```bash curl 'https:///api/v1/users//colors/ \\ -X PUT \\ -F 'hexcode=fffeee' -H 'Authorization: Bearer ' ``` ```js { \"hexcode\": \"#abc123\" } ``` [UsersController#set\\_text\\_editor\\_preference](https://github.c...",
     "inputSchema": {
       "type": "object",
@@ -553,7 +553,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_id_text_editor_preference",
+    "name": "put_ui_text_editor_preference",
     "description": "**Scope:** `url:PUT|/api/v1/users/:id/text_editor_preference` Updates a user's default choice for text editor. This allows the Choose an Editor propmts to preload the user's preference. ```bash curl 'https:///api/v1/users//prefered_editor \\ -X PUT \\ -F 'text_editor_preference=rce' -H 'Authorization: Bearer ' ``` ```js { \"text_editor_preference\": \"rce\" } ``` [UsersController#set\\_files\\_ui\\_version\\_preference](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_control...",
     "inputSchema": {
       "type": "object",
@@ -573,7 +573,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_id_files_ui_version_preference",
+    "name": "put_ui_files_ui_version_preference",
     "description": "**Scope:** `url:PUT|/api/v1/users/:id/files_ui_version_preference` Updates a user's default choice for files UI version. This allows the files UI to preload the user's preference. ```bash curl 'https:///api/v1/users//files_ui_version_preference \\ -X PUT \\ -F 'files_ui_version=v2' -H 'Authorization: Bearer ' ``` ```js { \"files_ui_version\": \"v2\" } ``` [UsersController#get\\_dashboard\\_positions](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -593,7 +593,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_id_dashboard_positions",
+    "name": "get_ui_dashboard_positions",
     "description": "**Scope:** `url:GET|/api/v1/users/:id/dashboard_positions` Returns all dashboard positions that have been saved for a user. ```bash curl 'https:///api/v1/users//dashboard_positions/ \\ -X GET \\ -H 'Authorization: Bearer ' ``` ```js { \"dashboard_positions\": { \"course_42\": 2, \"course_88\": 1 } } ``` [UsersController#set\\_dashboard\\_positions](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -613,7 +613,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_id_dashboard_positions",
+    "name": "put_ui_dashboard_positions",
     "description": "**Scope:** `url:PUT|/api/v1/users/:id/dashboard_positions` Updates the dashboard positions for a user for a given context. This allows positions for the dashboard cards and elsewhere to be customized on a per user basis. The asset string parameter should be in the format 'context\\_id', for example 'course\\_42' ```bash curl 'https:///api/v1/users//dashboard_positions/ \\ -X PUT \\ -F 'dashboard_positions[course_42]=1' \\ -F 'dashboard_positions[course_53]=2' \\ -F 'dashboard_positions[course_10]=3...",
     "inputSchema": {
       "type": "object",
@@ -705,7 +705,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_id_sessions",
+    "name": "delete_ui_sessions",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:id/sessions` Terminates all sessions for a user. This includes all browser-based sessions and all access tokens, including manually generated ones. The user can immediately re-authenticate to access Canvas again if they have the current credentials. All integrations will need to be re-authorized. [UsersController#expire\\_mobile\\_sessions](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -721,7 +721,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_mobile_sessions",
+    "name": "delete_u_mobile_sessions",
     "description": "**Scope:** `url:DELETE|/api/v1/users/mobile_sessions`",
     "inputSchema": {
       "type": "object",
@@ -729,7 +729,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_id_mobile_sessions",
+    "name": "delete_ui_mobile_sessions",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:id/mobile_sessions` Permanently expires any active mobile sessions, forcing them to re-authorize. The route that takes a user id will expire mobile sessions for that user. The route that doesn't take a user id will expire mobile sessions for *all* users in the institution (except for account administrators if +skip\\_admins+ is given). [UsersController#merge\\_into](https://github.com/instructure/canvas-lms/blob/master/app/controllers/users_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -749,7 +749,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_id_merge_into_destination_user_id",
+    "name": "put_ui_merge_into_destination_user_id",
     "description": "**Scope:** `url:PUT|/api/v1/users/:id/merge_into/:destination_user_id`",
     "inputSchema": {
       "type": "object",
@@ -770,7 +770,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_id_merge_into_accounts_destination_account_id_users_destination_user_id",
+    "name": "put_uimiad_users_destination_user_id",
     "description": "**Scope:** `url:PUT|/api/v1/users/:id/merge_into/accounts/:destination_account_id/users/:destination_user_id` Merge a user into another user. To merge users, the caller must have permissions to manage both users. This should be considered irreversible. This will delete the user and move all the data into the destination user. User merge details and caveats: The from\\_user is the user that was deleted in the user\\_merge process. The destination\\_user is the user that remains, that is being spl...",
     "inputSchema": {
       "type": "object",
@@ -796,7 +796,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_id_split",
+    "name": "post_ui_split",
     "description": "**Scope:** `url:POST|/api/v1/users/:id/split` Merged users cannot be fully restored to their previous state, but this will attempt to split as much as possible to the previous state. To split a merged user, the caller must have permissions to manage all of the users logins. If there are multiple users that have been merged into one user it will split each merge into a separate user. A split can only happen within 180 days of a user merge. A user merge deletes the previous user and may be perm...",
     "inputSchema": {
       "type": "object",
@@ -812,7 +812,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_self_pandata_events_token",
+    "name": "post_us_pandata_events_token",
     "description": "**Scope:** `url:POST|/api/v1/users/self/pandata_events_token` Returns a jwt auth and props token that can be used to send events to Pandata. NOTE: This is currently only available to the mobile developer keys. ```bash curl https:///api/v1/users/self/pandata_events_token \\ -X POST \\ -H 'Authorization: Bearer ' -F 'app_key=MOBILE_APPS_KEY' \\ ``` ```js { \"url\": \"https://example.com/pandata/events\" \"auth_token\": \"wek23klsdnsoieioeoi3of9deeo8r8eo8fdn\", \"props_token\": \"paowinefopwienpfiownepfiownep...",
     "inputSchema": {
       "type": "object",
@@ -825,7 +825,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_id_graded_submissions",
+    "name": "get_ui_graded_submissions",
     "description": "**Scope:** `url:GET|/api/v1/users/:id/graded_submissions` Returns a list of the user's most recently graded submissions. ```bash curl https:///api/v1/users//graded_submissions \\ -X POST \\ -H 'Authorization: Bearer ' ``` Returns a list of [Submission](what_if_grades.md#submission) objects. [ProfileController#settings](https://github.com/instructure/canvas-lms/blob/master/app/controllers/profile_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -857,7 +857,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_profile",
+    "name": "get_uu_profile",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/profile` Returns user profile data, including user id, name, and profile pic. When requesting the profile for the user accessing the API, the user's calendar feed URL and LTI user id will be returned as well. Returns a [Profile](#profile) object. [ProfileController#profile\\_pics](https://github.com/instructure/canvas-lms/blob/master/app/controllers/profile_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -881,7 +881,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_avatars",
+    "name": "get_uu_avatars",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/avatars` A paginated list of the possible user avatar options that can be set with the user update endpoint. The response will be an array of avatar records. If the 'type' field is 'attachment', the record will include all the normal attachment json fields; otherwise it will include only the 'url' and 'display\\_name' fields. Additionally, all records will include a 'type' field and a 'token' field. The following explains each field in more detail typ...",
     "inputSchema": {
       "type": "object",
@@ -901,7 +901,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_page_views",
+    "name": "get_uu_page_views",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/page_views` Return a paginated list of the user's page view history in json format, similar to the available CSV download. Page views are returned in descending order, newest to oldest. {% hint style=\"info\" %} **Disclaimer**: The data is a best effort attempt, and is not guaranteed to be complete or wholly accurate. This data is meant to be used for rollups and analysis in the aggregate, not in isolation for auditing, or other high-stakes analysis in...",
     "inputSchema": {
       "type": "object",
@@ -929,7 +929,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_user_id_page_views_query",
+    "name": "post_uupv_query",
     "description": "**Scope:** `url:POST|/api/v1/users/:user_id/page_views/query` Initiates an asynchronous query for user page views data within a specified date range. This method enqueues a background job to process the page views query and returns a polling URL that can be used to check the query status and retrieve results when ready. As this is a beta endpoint, it is subject to change or removal at any time without the standard notice periods outlined in the API policy. ```bash curl https:///api/v1/users/:...",
     "inputSchema": {
       "type": "object",
@@ -957,7 +957,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_page_views_query_query_id",
+    "name": "get_uupv_query_query_id",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/page_views/query/:query_id` Checks the status of a previously initiated page views query. Returns the current processing status and provides a result URL when the query is complete. The query may fail with status \"failed\" and error\\_code \"RESULT\\_SIZE\\_LIMIT\\_EXCEEDED\" if the result exceeds 500 MB. If this happens, narrow the date range or query smaller time intervals. As this is a beta endpoint, it is subject to change or removal at any time without...",
     "inputSchema": {
       "type": "object",
@@ -982,7 +982,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_page_views_query_query_id_results",
+    "name": "get_uupvqq_results",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/page_views/query/:query_id/results` Retrieves the results of a completed page views query. Returns the data in the format specified when the query was initiated (CSV or JSON). The response may be compressed with gzip encoding. As this is a beta endpoint, it is subject to change or removal at any time without the standard notice periods outlined in the API policy. Note: PageView payloads use two types of identifiers: globalId and localId. Global ident...",
     "inputSchema": {
       "type": "object",
@@ -1007,7 +1007,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_users_page_views_query",
+    "name": "post_upv_query",
     "description": "**Scope:** `url:POST|/api/v1/users/page_views/query` Initiates an asynchronous query for page views data across multiple users. This method enqueues a background job to process the batch page views query and returns a polling URL that can be used to check the query status and retrieve results when ready. As this is a beta endpoint, it is subject to change or removal at any time without the standard notice periods outlined in the API policy. ```bash curl https:///api/v1/users/page_views/query ...",
     "inputSchema": {
       "type": "object",
@@ -1032,7 +1032,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_page_views_query_query_id",
+    "name": "get_upv_query_query_id",
     "description": "**Scope:** `url:GET|/api/v1/users/page_views/query/:query_id` Checks the status of a previously initiated batch page views query. Returns the current processing status and provides a result URL when the query is complete. As this is a beta endpoint, it is subject to change or removal at any time without the standard notice periods outlined in the API policy. ```bash curl https:///api/v1/users/page_views/query/:query_id \\ -H 'Authorization: Bearer ' ``` ```js 200 { \"query_id\": \"550e8400-e29b-4...",
     "inputSchema": {
       "type": "object",
@@ -1052,7 +1052,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_page_views_query_query_id_results",
+    "name": "get_upvqq_results",
     "description": "**Scope:** `url:GET|/api/v1/users/page_views/query/:query_id/results` Retrieves the results of a completed batch page views query. Returns the data in the format specified when the query was initiated (CSV or JSON). The response may be compressed with gzip encoding. As this is a beta endpoint, it is subject to change or removal at any time without the standard notice periods outlined in the API policy. {% hint style=\"info\" %} **Disclaimer**: The data is a best effort attempt, and is not guara...",
     "inputSchema": {
       "type": "object",
@@ -1072,7 +1072,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_user_id_custom_data_scope",
+    "name": "put_uu_custom_data_scope",
     "description": "**Scope:** `url:PUT|/api/v1/users/:user_id/custom_data(/*scope)` Store arbitrary user data as JSON. Arbitrary JSON data can be stored for a User. A typical scenario would be an external site/service that registers users in Canvas and wants to capture additional info about them. The part of the URL that follows +/custom\\_data/+ defines the scope of the request, and it reflects the structure of the JSON data to be stored or retrieved. The value +self+ may be used for +user\\_id+ to store data as...",
     "inputSchema": {
       "type": "object",
@@ -1103,7 +1103,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_user_id_custom_data_scope",
+    "name": "get_uu_custom_data_scope",
     "description": "**Scope:** `url:GET|/api/v1/users/:user_id/custom_data(/*scope)` Load custom user data. Arbitrary JSON data can be stored for a User. This API call retrieves that data for a (optional) given scope. See [Store Custom Data](#method.users.set_custom_data) for details and examples. On success, this endpoint returns an object containing the data that was requested. Responds with status code 400 if the namespace parameter, +ns+, is missing or invalid, or if the specified scope does not contain any ...",
     "inputSchema": {
       "type": "object",
@@ -1133,7 +1133,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_user_id_custom_data_scope",
+    "name": "delete_uu_custom_data_scope",
     "description": "**Scope:** `url:DELETE|/api/v1/users/:user_id/custom_data(/*scope)` Delete custom user data. Arbitrary JSON data can be stored for a User. This API call deletes that data for a given scope. Without a scope, all custom\\_data is deleted. See [Store Custom Data](#method.users.set_custom_data) for details and examples of storage and retrieval. As an example, we'll store some data, then delete a subset of it. Example [PUT](#method.users.set_custom_data) with valid JSON data: curl 'https\\://\\/api/v...",
     "inputSchema": {
       "type": "object",
@@ -1159,7 +1159,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_self_course_nicknames",
+    "name": "get_us_course_nicknames",
     "description": "**Scope:** `url:GET|/api/v1/users/self/course_nicknames` Returns all course nicknames you have set. ```bash curl 'https:///api/v1/users/self/course_nicknames \\ -H 'Authorization: Bearer ' ``` Returns a list of [CourseNickname](#coursenickname) objects. [CourseNicknamesController#show](https://github.com/instructure/canvas-lms/blob/master/app/controllers/course_nicknames_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -1172,7 +1172,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_users_self_course_nicknames_course_id",
+    "name": "get_us_course_nicknames_course_id",
     "description": "**Scope:** `url:GET|/api/v1/users/self/course_nicknames/:course_id` Returns the nickname for a specific course. ```bash curl 'https:///api/v1/users/self/course_nicknames/ \\ -H 'Authorization: Bearer ' ``` Returns a [CourseNickname](#coursenickname) object. [CourseNicknamesController#update](https://github.com/instructure/canvas-lms/blob/master/app/controllers/course_nicknames_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -1192,7 +1192,7 @@ const definitions = [
     }
   },
   {
-    "name": "put_users_self_course_nicknames_course_id",
+    "name": "put_us_course_nicknames_course_id",
     "description": "**Scope:** `url:PUT|/api/v1/users/self/course_nicknames/:course_id` Set a nickname for the given course. This will replace the course's name in output of API calls you make subsequently, as well as in selected places in the Canvas web user interface. ```bash curl 'https:///api/v1/users/self/course_nicknames/ \\ -X PUT \\ -F 'nickname=Physics' \\ -H 'Authorization: Bearer ' ``` Returns a [CourseNickname](#coursenickname) object. [CourseNicknamesController#delete](https://github.com/instructure/ca...",
     "inputSchema": {
       "type": "object",
@@ -1213,7 +1213,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_self_course_nicknames_course_id",
+    "name": "delete_us_course_nicknames_course_id",
     "description": "**Scope:** `url:DELETE|/api/v1/users/self/course_nicknames/:course_id` Remove the nickname for the given course. Subsequent course API calls will return the actual name for the course. ```bash curl 'https:///api/v1/users/self/course_nicknames/ \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` Returns a [CourseNickname](#coursenickname) object. [CourseNicknamesController#clear](https://github.com/instructure/canvas-lms/blob/master/app/controllers/course_nicknames_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -1229,7 +1229,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_users_self_course_nicknames",
+    "name": "delete_us_course_nicknames",
     "description": "**Scope:** `url:DELETE|/api/v1/users/self/course_nicknames` Remove all stored course nicknames. ```bash curl 'https:///api/v1/users/self/course_nicknames \\ -X DELETE \\ -H 'Authorization: Bearer ' ``` *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, an...",
     "inputSchema": {
       "type": "object",
@@ -1239,151 +1239,151 @@ const definitions = [
 ];
 
 const handlers = {
-  get_accounts_account_id_users: async (client, args) => {
+  get_aa_users: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/accounts/:account_id/users", args);
   },
-  get_users_self_activity_stream: async (client, args) => {
+  get_us_activity_stream: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/activity_stream", args);
   },
-  get_users_activity_stream: async (client, args) => {
+  get_u_activity_stream: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/activity_stream", args);
   },
-  get_users_self_activity_stream_summary: async (client, args) => {
+  get_usas_summary: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/activity_stream/summary", args);
   },
-  get_users_self_todo: async (client, args) => {
+  get_us_todo: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/todo", args);
   },
-  get_users_self_todo_item_count: async (client, args) => {
+  get_us_todo_item_count: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/todo_item_count", args);
   },
-  get_users_self_upcoming_events: async (client, args) => {
+  get_us_upcoming_events: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/upcoming_events", args);
   },
-  get_users_user_id_missing_submissions: async (client, args) => {
+  get_uu_missing_submissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/missing_submissions", args);
   },
-  delete_users_self_activity_stream_id: async (client, args) => {
+  delete_us_activity_stream_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/activity_stream/:id", args);
   },
-  delete_users_self_activity_stream: async (client, args) => {
+  delete_us_activity_stream: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/activity_stream", args);
   },
-  post_users_user_id_files: async (client, args) => {
+  post_uu_files: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/files", args);
   },
   get_users_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:id", args);
   },
-  post_accounts_account_id_users: async (client, args) => {
+  post_aa_users: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/users", args);
   },
-  post_accounts_account_id_self_registration: async (client, args) => {
+  post_aa_self_registration: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/accounts/:account_id/self_registration", args);
   },
-  get_users_id_settings: async (client, args) => {
+  get_ui_settings: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:id/settings", args);
   },
-  put_users_id_settings: async (client, args) => {
+  put_ui_settings: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:id/settings", args);
   },
-  get_users_id_colors: async (client, args) => {
+  get_ui_colors: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:id/colors", args);
   },
-  get_users_id_colors_asset_string: async (client, args) => {
+  get_ui_colors_asset_string: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:id/colors/:asset_string", args);
   },
-  put_users_id_colors_asset_string: async (client, args) => {
+  put_ui_colors_asset_string: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:id/colors/:asset_string", args);
   },
-  put_users_id_text_editor_preference: async (client, args) => {
+  put_ui_text_editor_preference: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:id/text_editor_preference", args);
   },
-  put_users_id_files_ui_version_preference: async (client, args) => {
+  put_ui_files_ui_version_preference: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:id/files_ui_version_preference", args);
   },
-  get_users_id_dashboard_positions: async (client, args) => {
+  get_ui_dashboard_positions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:id/dashboard_positions", args);
   },
-  put_users_id_dashboard_positions: async (client, args) => {
+  put_ui_dashboard_positions: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:id/dashboard_positions", args);
   },
   put_users_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:id", args);
   },
-  delete_users_id_sessions: async (client, args) => {
+  delete_ui_sessions: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:id/sessions", args);
   },
-  delete_users_mobile_sessions: async (client, args) => {
+  delete_u_mobile_sessions: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/mobile_sessions", args);
   },
-  delete_users_id_mobile_sessions: async (client, args) => {
+  delete_ui_mobile_sessions: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:id/mobile_sessions", args);
   },
-  put_users_id_merge_into_destination_user_id: async (client, args) => {
+  put_ui_merge_into_destination_user_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:id/merge_into/:destination_user_id", args);
   },
-  put_users_id_merge_into_accounts_destination_account_id_users_destination_user_id: async (client, args) => {
+  put_uimiad_users_destination_user_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:id/merge_into/accounts/:destination_account_id/users/:destination_user_id", args);
   },
-  post_users_id_split: async (client, args) => {
+  post_ui_split: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:id/split", args);
   },
-  post_users_self_pandata_events_token: async (client, args) => {
+  post_us_pandata_events_token: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/self/pandata_events_token", args);
   },
-  get_users_id_graded_submissions: async (client, args) => {
+  get_ui_graded_submissions: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:id/graded_submissions", args);
   },
-  get_users_user_id_profile: async (client, args) => {
+  get_uu_profile: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/profile", args);
   },
-  get_users_user_id_avatars: async (client, args) => {
+  get_uu_avatars: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/avatars", args);
   },
-  get_users_user_id_page_views: async (client, args) => {
+  get_uu_page_views: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/page_views", args);
   },
-  post_users_user_id_page_views_query: async (client, args) => {
+  post_uupv_query: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/:user_id/page_views/query", args);
   },
-  get_users_user_id_page_views_query_query_id: async (client, args) => {
+  get_uupv_query_query_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/page_views/query/:query_id", args);
   },
-  get_users_user_id_page_views_query_query_id_results: async (client, args) => {
+  get_uupvqq_results: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/page_views/query/:query_id/results", args);
   },
-  post_users_page_views_query: async (client, args) => {
+  post_upv_query: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/users/page_views/query", args);
   },
-  get_users_page_views_query_query_id: async (client, args) => {
+  get_upv_query_query_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/page_views/query/:query_id", args);
   },
-  get_users_page_views_query_query_id_results: async (client, args) => {
+  get_upvqq_results: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/page_views/query/:query_id/results", args);
   },
-  put_users_user_id_custom_data_scope: async (client, args) => {
+  put_uu_custom_data_scope: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/:user_id/custom_data(/*scope)", args);
   },
-  get_users_user_id_custom_data_scope: async (client, args) => {
+  get_uu_custom_data_scope: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/:user_id/custom_data(/*scope)", args);
   },
-  delete_users_user_id_custom_data_scope: async (client, args) => {
+  delete_uu_custom_data_scope: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/:user_id/custom_data(/*scope)", args);
   },
-  get_users_self_course_nicknames: async (client, args) => {
+  get_us_course_nicknames: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/course_nicknames", args);
   },
-  get_users_self_course_nicknames_course_id: async (client, args) => {
+  get_us_course_nicknames_course_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/users/self/course_nicknames/:course_id", args);
   },
-  put_users_self_course_nicknames_course_id: async (client, args) => {
+  put_us_course_nicknames_course_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/users/self/course_nicknames/:course_id", args);
   },
-  delete_users_self_course_nicknames_course_id: async (client, args) => {
+  delete_us_course_nicknames_course_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/course_nicknames/:course_id", args);
   },
-  delete_users_self_course_nicknames: async (client, args) => {
+  delete_us_course_nicknames: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/users/self/course_nicknames", args);
   }
 };

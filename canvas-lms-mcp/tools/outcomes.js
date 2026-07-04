@@ -85,7 +85,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_outcome_alignments",
+    "name": "get_cc_outcome_alignments",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/outcome_alignments` Returns outcome alignments for a student or assignment in a course. Returns a list of [OutcomeAlignment](#outcomealignment) objects. *** This documentation is generated directly from the Canvas LMS source code, available [on Github](https://github.com/instructure/canvas-lms). --- This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, an...",
     "inputSchema": {
       "type": "object",
@@ -121,7 +121,7 @@ const handlers = {
   put_outcomes_id: async (client, args) => {
     return genericHandler(client, "PUT", "/api/v1/outcomes/:id", args);
   },
-  get_courses_course_id_outcome_alignments: async (client, args) => {
+  get_cc_outcome_alignments: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/outcome_alignments", args);
   }
 };

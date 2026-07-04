@@ -5,7 +5,7 @@ const { genericHandler } = require("./helper");
 
 const definitions = [
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_reports",
+    "name": "get_ccqq_reports",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/reports` Returns a list of all available reports. Returns a list of [QuizReport](#quizreport) objects. [Quizzes::QuizReportsController#create](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_reports_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -34,7 +34,7 @@ const definitions = [
     }
   },
   {
-    "name": "post_courses_course_id_quizzes_quiz_id_reports",
+    "name": "post_ccqq_reports",
     "description": "**Scope:** `url:POST|/api/v1/courses/:course_id/quizzes/:quiz_id/reports` Create and return a new report for this quiz. If a previously generated report matches the arguments and is still current (i.e. there have been no new submissions), it will be returned. *Responses* * \\400 Bad Request\\ if the specified report type is invalid * \\409 Conflict\\ if a quiz report of the specified type is already being generated Returns a [QuizReport](#quizreport) object. [Quizzes::QuizReportsController#show](...",
     "inputSchema": {
       "type": "object",
@@ -68,7 +68,7 @@ const definitions = [
     }
   },
   {
-    "name": "get_courses_course_id_quizzes_quiz_id_reports_id",
+    "name": "get_ccqq_reports_id",
     "description": "**Scope:** `url:GET|/api/v1/courses/:course_id/quizzes/:quiz_id/reports/:id` Returns the data for a single quiz report. Returns a [QuizReport](#quizreport) object. [Quizzes::QuizReportsController#abort](https://github.com/instructure/canvas-lms/blob/master/app/controllers/quizzes/quiz_reports_controller.rb)",
     "inputSchema": {
       "type": "object",
@@ -102,7 +102,7 @@ const definitions = [
     }
   },
   {
-    "name": "delete_courses_course_id_quizzes_quiz_id_reports_id",
+    "name": "delete_ccqq_reports_id",
     "description": "**Scope:** `url:DELETE|/api/v1/courses/:course_id/quizzes/:quiz_id/reports/:id` This API allows you to cancel a previous request you issued for a report to be generated. Or in the case of an already generated report, you'd like to remove it, perhaps to generate it another time with an updated version that provides new features. You must check the report's generation status before attempting to use this interface. See the \"workflow\\_state\" property of the QuizReport's Progress object for more ...",
     "inputSchema": {
       "type": "object",
@@ -130,16 +130,16 @@ const definitions = [
 ];
 
 const handlers = {
-  get_courses_course_id_quizzes_quiz_id_reports: async (client, args) => {
+  get_ccqq_reports: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/reports", args);
   },
-  post_courses_course_id_quizzes_quiz_id_reports: async (client, args) => {
+  post_ccqq_reports: async (client, args) => {
     return genericHandler(client, "POST", "/api/v1/courses/:course_id/quizzes/:quiz_id/reports", args);
   },
-  get_courses_course_id_quizzes_quiz_id_reports_id: async (client, args) => {
+  get_ccqq_reports_id: async (client, args) => {
     return genericHandler(client, "GET", "/api/v1/courses/:course_id/quizzes/:quiz_id/reports/:id", args);
   },
-  delete_courses_course_id_quizzes_quiz_id_reports_id: async (client, args) => {
+  delete_ccqq_reports_id: async (client, args) => {
     return genericHandler(client, "DELETE", "/api/v1/courses/:course_id/quizzes/:quiz_id/reports/:id", args);
   }
 };
