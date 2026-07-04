@@ -65,21 +65,4 @@ When a Canvas LMS task is requested, perform operations in the following logical
 
 ## Unimplemented APIs (Backlog)
 
-The following major resource areas from the Canvas LMS API documentation (`docs/services/canvas/resources/`) are currently unimplemented in the MCP server. Consider implementing these when new tasks require them:
-
-- **Analytics & Reporting**:
-  - Analytics (`analytics.md`)
-  - Account Reports (`account_reports.md`)
-  - Course Reports (`course_reports.md`)
-- **Developer & Authentication**:
-  - Access Tokens (`access_tokens.md`)
-  - Developer Keys (`developer_keys.md`)
-  - Authentication Providers (`authentication_providers.md`)
-- **Advanced Course Administration**:
-  - Blueprint Courses (`blueprint_courses.md`)
-  - Course Pace (`course_pace.md`)
-  - Content Migrations (`content_migrations.md`)
-- **Student Engagement & Customization**:
-  - Appointment Groups / Scheduling (`appointment_groups.md`)
-  - Feature Flags (`feature_flags.md`)
-  - Notification Preferences (`notification_preferences.md`)
+All backlog APIs from the Canvas LMS API documentation (`docs/services/canvas/resources/`) have been successfully implemented and tested in the MCP server. There are no remaining high-priority backlog items.
