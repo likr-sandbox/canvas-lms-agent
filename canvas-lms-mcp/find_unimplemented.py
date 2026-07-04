@@ -3,7 +3,7 @@ import re
 
 # 1. Get implemented endpoints from API_STATUS.md
 implemented_endpoints = set()
-api_status_path = "/home/likr/src/likr-sandbox/canvas-lms-agent/canvas-lms-mcp/API_STATUS.md"
+api_status_path = "/home/likr/work/likr/canvas-lms-agent/canvas-lms-mcp/API_STATUS.md"
 
 with open(api_status_path, "r", encoding="utf-8") as f:
     for line in f:
@@ -24,7 +24,7 @@ with open(api_status_path, "r", encoding="utf-8") as f:
 print(f"Implemented endpoints count: {len(implemented_endpoints)}")
 
 # 2. Get endpoints defined in docs/services/canvas/resources/*.md
-resources_dir = "/home/likr/src/likr-sandbox/canvas-lms-agent/docs/services/canvas/resources"
+resources_dir = "/home/likr/work/likr/canvas-lms-agent/docs/services/canvas/resources"
 all_doc_endpoints = {}
 
 # Regex for endpoint. e.g. #### `GET /api/v1/courses/:id`

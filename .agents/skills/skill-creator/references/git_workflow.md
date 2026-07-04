@@ -18,7 +18,7 @@ graph TD
 ---
 
 ## 1. Skill-Specific Evaluation
-Before proposing your skill changes for merge, you must execute the evaluation harness defined in the [Skill Creator Guide](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/skills/skill-creator/SKILL.md).
+Before proposing your skill changes for merge, you must execute the evaluation harness defined in the [Skill Creator Guide](file:///home/likr/work/likr/canvas-lms-agent/.agents/skills/skill-creator/SKILL.md).
 
 1. **Run Eval Tests**:
    Ensure all evaluation cases specified in `evals/evals.json` are executed.
@@ -43,10 +43,10 @@ Before proposing your skill changes for merge, you must execute the evaluation h
 During skill creation/modification, you may uncover reusable patterns, rules, tool behaviors, or constraints that should apply broadly to the workspace.
 
 ### Enforce Progressive Disclosure
-When updating [AGENTS.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/AGENTS.md):
+When updating [AGENTS.md](file:///home/likr/work/likr/canvas-lms-agent/.agents/AGENTS.md):
 1. **Keep AGENTS.md Clean**: Only add a concise, high-level summary of the rule or pattern.
 2. **Delegate Details**: Write code snippets, setup instructions, and complex guidelines in a dedicated Markdown file inside the respective skill's `references/` directory (or `.agents/references/`).
-3. **Link**: Provide a direct link in `AGENTS.md` to that reference file using absolute path notation (e.g., `[my-rule.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/skills/my-skill/references/my-rule.md)`).
+3. **Link**: Provide a direct link in `AGENTS.md` to that reference file using absolute path notation (e.g., `[my-rule.md](file:///home/likr/work/likr/canvas-lms-agent/.agents/skills/my-skill/references/my-rule.md)`).
 
 ---
 

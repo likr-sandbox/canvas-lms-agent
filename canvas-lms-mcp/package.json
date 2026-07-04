@@ -37,10 +37,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/likr-sandbox/canvas-lms-agent.git"
+    "url": "git+https://github.com/likr/canvas-lms-agent.git"
   },
   "bugs": {
-    "url": "https://github.com/likr-sandbox/canvas-lms-agent/issues"
+    "url": "https://github.com/likr/canvas-lms-agent/issues"
   },
-  "homepage": "https://github.com/likr-sandbox/canvas-lms-agent#readme"
+  "homepage": "https://github.com/likr/canvas-lms-agent#readme"
 }

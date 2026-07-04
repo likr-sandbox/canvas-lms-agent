@@ -30,8 +30,8 @@ Depending on the role of the user (e.g., student vs. teacher/staff) and the obje
 
 ### 1. Student Role tasks
 If the user is a student or the task involves student-specific operations (e.g., submitting assignments, taking quizzes, checking personal grades and feedback):
-- **Go to**: [student_guide.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/skills/canvas-lms/references/roles/student_guide.md)
+- **Go to**: [student_guide.md](file:///home/likr/work/likr/canvas-lms-agent/.agents/skills/canvas-lms/references/roles/student_guide.md)
 
 ### 2. Teacher / Staff / Admin Role tasks
 If the user is a teacher, TA, or administrator, or the task involves managing course structures, grading, creating assignments/quizzes, generating reports, or system administration:
-- **Go to**: [teacher_guide.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/skills/canvas-lms/references/roles/teacher_guide.md)
+- **Go to**: [teacher_guide.md](file:///home/likr/work/likr/canvas-lms-agent/.agents/skills/canvas-lms/references/roles/teacher_guide.md)

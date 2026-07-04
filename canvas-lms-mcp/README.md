@@ -91,7 +91,7 @@ This repository provides a dedicated `canvas-lms` skill for AI agents (supportin
 To install this skill in your agent workspace, run:
 
 ```bash
-npx skills add likr-sandbox/canvas-lms-agent@canvas-lms
+npx skills add likr/canvas-lms-agent@canvas-lms
 ```
 
 ---
@@ -111,7 +111,7 @@ If you wish to run the server locally for development:
 
 1. Clone the repository and navigate to the directory:
    ```bash
-   git clone https://github.com/likr-sandbox/canvas-lms-agent.git
+   git clone https://github.com/likr/canvas-lms-agent.git
    cd canvas-lms-agent/canvas-lms-mcp
    ```
 2. Install dependencies:

@@ -20,7 +20,7 @@
 ## Git Workflow & Branch Policy
 - **Branch Protection & Development Branch (`dev`)**: Direct pushes/commits to protected branches (e.g. `master` or main release branches) are restricted. Perform all future feature development, testing, and documentation edits on the `dev` branch.
 - **Pull Request Operation**: Merging changes from the `dev` branch into protected main branches must be handled through Pull Requests (PRs) rather than direct merges or pushes.
-- **Task Completion Workflow (Tests, Commits, & PRs)**: Upon completing any task, you must run all unit tests and create a Pull Request to merge your changes. Follow the detailed instructions in [git_workflow.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/references/git_workflow.md).
+- **Task Completion Workflow (Tests, Commits, & PRs)**: Upon completing any task, you must run all unit tests and create a Pull Request to merge your changes. Follow the detailed instructions in [git_workflow.md](file:///home/likr/work/likr/canvas-lms-agent/.agents/references/git_workflow.md).
 
 ## Rule Maintenance & Progressive Disclosure
 - **Concise AGENTS.md**: Keep this rules document simple, clean, and highly scannable. Avoid bloat.
