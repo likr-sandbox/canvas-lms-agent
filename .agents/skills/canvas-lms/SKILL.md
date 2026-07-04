@@ -1,11 +1,11 @@
 ---
 name: canvas-lms
-description: Use this skill when managing Canvas LMS tasks, such as checking course list, retrieving assignment details, or checking grades and submissions for users.
+description: Use this skill when managing any Canvas LMS tasks, including checking course list, retrieving assignment details, submitting assignments, checking/grading submissions, creating modules, managing discussions, or any operations using the Canvas LMS MCP server. Always consult this skill when the user asks to interact with Canvas LMS APIs.
 ---
 
 # Canvas LMS Skill Guide
 
-This skill manual guides the agent in using the Canvas LMS MCP Server tools to interact with Canvas APIs.
+This skill guide provides the entry point for utilizing the Canvas LMS MCP Server tools to interact with Canvas APIs.
 
 ## Setup / Initialization
 
@@ -24,45 +24,14 @@ Make sure the following environment variables are supplied:
 
 ---
 
-## Workflow & Guidelines
+## Task Delegation by Role (Progressive Disclosure)
 
-When a Canvas LMS task is requested, perform operations in the following logical sequence:
+Depending on the role of the user (e.g., student vs. teacher/staff) and the objective of the request, you must navigate to the appropriate role guide below:
 
-1. **Verify User / Connection**:
-   - Call `get_current_user` to test credentials and connectivity, ensuring that the token is valid and checking the current user's profile.
+### 1. Student Role tasks
+If the user is a student or the task involves student-specific operations (e.g., submitting assignments, taking quizzes, checking personal grades and feedback):
+- **Go to**: [student_guide.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/skills/canvas-lms/references/roles/student_guide.md)
 
-2. **Retrieve Courses**:
-   - Call `list_courses` to obtain the list of active courses, noting their corresponding course IDs.
-
-3. **Explore Course Content & Structured Flow**:
-   - **Announcements**: Call `list_announcements` to read recent updates or bulletins for the course.
-   - **Modules**: Call `list_modules` with `include_items: true` to get a structured view of the course syllabus, content modules, and items (like pages, quizzes, files, and assignments) in the correct learning sequence.
-   - **Wiki Pages**: Call `list_pages` to list course pages. If you need details of a page (e.g. syllabus details, reading materials), call `get_page` using the page URL or ID.
-   - **Uploaded Files**: Call `list_files` to locate PDFs, slides, or other course documents. Search by term if you are looking for a specific filename.
-   - **Quizzes**: Call `list_quizzes` to check for available online quizzes or surveys.
-   - **Calendar Events**: Call `list_calendar_events` to fetch dates and scheduled deadlines.
-   - **Rubrics**: Call `list_rubrics` to see assessment criteria and structures.
-
-4. **Retrieve Enrollments, Sections, and Users**:
-   - **Users**: Call `list_users` (optionally with `search_term`) to list or find students enrolled in the course. Useful for locating a student's Canvas ID.
-   - **Sections**: Call `list_sections` to check for different sections inside a course.
-   - **Enrollments**: Call `list_enrollments` (optionally filtered by `type`) to check who is enrolled and in which roles.
-
-5. **Retrieve Assignments**:
-   - For a given course ID, call `list_assignments` to fetch the list of assignments, noting assignment IDs and points possible.
-
-6. **Retrieve Grades / Submissions**:
-   - Call `get_user_grades` for the course ID.
-   - **Role-Based Behavior**:
-     - **For Teachers / TA / Staff**: If the user is enrolled as a teacher/staff in the course, the tool will automatically return submissions for **all** students in the course. You can check a specific student's grades by passing their `student_id` in arguments. Note the `user_id` field from the result to identify students.
-     - **For Students**: Omit the `student_id` argument to retrieve the calling student's own grades/submissions.
-
-7. **Grade / Modify Submissions**:
-   - **Grading and Feedback**: If you are a teacher/TA and need to grade or write a textual comment on a student's submission, call `grade_or_comment_submission` with `course_id`, `assignment_id`, `user_id` (student's user ID), and optional `posted_grade` (e.g. `A-`, `35`) or `text_comment`.
-   - **Student Submissions**: If you are a student and want to submit a text entry or URL assignment, call `submit_assignment` with `course_id`, `assignment_id`, `submission_type` (e.g. `online_text_entry`, `online_url`), and the appropriate `body` or `url` content.
-
----
-
-## Unimplemented APIs (Backlog)
-
-All backlog APIs from the Canvas LMS API documentation (`docs/services/canvas/resources/`) have been successfully implemented and tested in the MCP server. There are no remaining high-priority backlog items.
+### 2. Teacher / Staff / Admin Role tasks
+If the user is a teacher, TA, or administrator, or the task involves managing course structures, grading, creating assignments/quizzes, generating reports, or system administration:
+- **Go to**: [teacher_guide.md](file:///home/likr/src/likr-sandbox/canvas-lms-agent/.agents/skills/canvas-lms/references/roles/teacher_guide.md)
