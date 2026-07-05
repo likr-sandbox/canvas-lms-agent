@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Canvas LMS Agent - Presentation</title>
   <!-- Load Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&family=Dela+Gothic+One&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&family=Dela+Gothic+One&display=swap"
+    rel="stylesheet">
+
   <!-- Load Prism.js for Syntax Highlighting -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
@@ -19,10 +22,14 @@
   <style>
     :root {
       /* Core Theme Color System (4-Color Palette Principle) */
-      --hd-theme-background-color: #f8fafc; /* Sleek Slate 50 */
-      --hd-theme-text-color: #0f172a; /* Premium Slate 900 */
-      --hd-theme-main-color: #4f46e5; /* Tech Indigo 600 */
-      --hd-theme-accent-color: #e11d48; /* Vibrant Rose 600 */
+      --hd-theme-background-color: #f8fafc;
+      /* Sleek Slate 50 */
+      --hd-theme-text-color: #0f172a;
+      /* Premium Slate 900 */
+      --hd-theme-main-color: #4f46e5;
+      /* Tech Indigo 600 */
+      --hd-theme-accent-color: #e11d48;
+      /* Vibrant Rose 600 */
 
       /* Typography Settings */
       --hd-font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -30,7 +37,8 @@
       /* Base Layout Propagation */
       --hd-base-soft-background-color: var(--hd-theme-background-color);
       --hd-base-soft-text-color: var(--hd-theme-text-color);
-      --hd-base-solid-background-color: #f1f5f9; /* Slate 100 */
+      --hd-base-solid-background-color: #f1f5f9;
+      /* Slate 100 */
       --hd-base-solid-text-color: var(--hd-theme-text-color);
 
       /* Main Accent Propagation */
@@ -74,19 +82,25 @@
       --hd-list-item-margin-bottom: var(--hd-gap-1);
 
       /* Symmetrical Layout Spacing to prevent Header/Footer overlaps (Symmetry Principle) */
-      --hd-peripheral-offset: var(--hd-gap-3); /* 24px */
+      --hd-peripheral-offset: var(--hd-gap-3);
+      /* 24px */
       --hd-layout-heading-padding: 56px var(--hd-gap-4) 16px var(--hd-gap-4);
       --hd-layout-body-padding: 16px var(--hd-gap-4) 56px var(--hd-gap-4);
     }
 
     /* Headings & Text Impact Font */
-    h1, h2, h3, .huge-text, .joke-text {
+    h1,
+    h2,
+    h3,
+    .huge-text,
+    .joke-text {
       font-family: 'Dela Gothic One', 'Impact', 'Arial Black', sans-serif;
     }
 
     /* Custom slide helper classes for primary-color styles */
     .slide-joke {
-      --hd-slide-background-color: #fff1f2; /* Soft rose 50 warning tint */
+      --hd-slide-background-color: #fff1f2;
+      /* Soft rose 50 warning tint */
       --hd-slide-text-color: var(--hd-theme-accent-color);
     }
 
@@ -98,6 +112,46 @@
     .slide-black-white {
       --hd-slide-background-color: var(--hd-theme-text-color);
       --hd-slide-text-color: var(--hd-theme-background-color);
+    }
+
+    .slide-rainbow {
+      --hd-slide-background-color: linear-gradient(45deg, #ff007f, #ff7f00, #ffeb3b, #4caf50, #2196f3, #9c27b0);
+      --hd-slide-text-color: #ffffff;
+    }
+
+    .rainbow-goofy-text {
+      font-size: 72px;
+      font-family: 'Dela Gothic One', sans-serif;
+      color: #ffff00;
+      text-shadow: 4px 4px 0px #ff00ff, -4px -4px 0px #00ffff, 6px 6px 12px rgba(0, 0, 0, 0.8);
+      transform: rotate(-2deg);
+      text-align: center;
+      line-height: 1.4;
+      display: inline-block;
+      animation: bounce 0.4s infinite alternate;
+    }
+
+    .slide-no-padding {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    .full-page-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0;
+      display: block;
+    }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0) rotate(-2deg);
+      }
+
+      to {
+        transform: translateY(-10px) rotate(2deg);
+      }
     }
 
     /* Text blocks size & scaling */
@@ -136,15 +190,16 @@
     }
   </style>
 </head>
+
 <body>
   <hd-deck aspect-ratio="16:9" transition="fade">
-    
+
     <!-- Page 1: Warning Slide -->
     <hd-slide center class="slide-joke">
       <div class="joke-text hd-mb-6">
         <div>これはジョークツールです。</div>
         <div class="joke-subtext">
-          ジョーク以外の目的で使用した場合に発生した損害に関しては一切の責任を負いません。
+          ジョーク以外の目的で使用した場合に発生した<br />損害に関しては一切の責任を負いません。
         </div>
       </div>
     </hd-slide>
@@ -154,14 +209,22 @@
       <div class="huge-text">みなさんのアイデア…</div>
     </hd-slide>
 
+    <hd-slide center class="slide-rainbow">
+      <div class="rainbow-goofy-text">
+        🎉🙌 🤩 🙌🎉<br>
+        すごくいいね！！！！
+      </div>
+    </hd-slide>
+
     <!-- Page 3: Contrast Transition -->
-    <hd-slide center class="slide-white-black">
-      <div class="huge-text">でも</div>
+    <hd-slide center class="slide-black-white">
+      <div class="huge-text">でも…</div>
     </hd-slide>
 
     <!-- Page 4: Image Slide (Idea) -->
-    <hd-slide center class="slide-white-black">
-      <img src="https://stat.ameba.jp/user_images/20181209/09/orange-cosme/f3/10/j/o0322026214317686886.jpg" alt="Idea" class="centered-image">
+    <hd-slide class="slide-white-black slide-no-padding">
+      <img src="https://stat.ameba.jp/user_images/20181209/09/orange-cosme/f3/10/j/o0322026214317686886.jpg" alt="Idea"
+        class="full-page-image">
     </hd-slide>
 
     <!-- Page 5: Pain Point 1 -->
@@ -180,8 +243,8 @@
     </hd-slide>
 
     <!-- Page 8: Speeches Image (Robot & Human) -->
-    <hd-slide center class="slide-white-black">
-      <img src="./robot_homework_joke.png" alt="Robot homework joke" class="centered-image hd-mb-6">
+    <hd-slide center class="slide-white-black slide-no-padding">
+      <img src="./robot_homework_joke.png" alt="Robot homework joke" class="centered-image">
     </hd-slide>
 
     <!-- Page 9: Production Hook -->
@@ -193,9 +256,8 @@
     <hd-slide>
       <hd-layout-cover>
         <h1 slot="title" class="hd-text-weight-extrabold hd-highlight">Canvas LMS MCP</h1>
-        <p slot="subtitle" class="hd-muted hd-size-3">発表者：おのうえ</p>
         <div slot="meta" class="hd-text-weight-medium hd-size-5">
-          Google Antigravity SDK &amp; Canvas LMS API Integration
+          おのうえ
         </div>
       </hd-layout-cover>
     </hd-slide>
@@ -208,11 +270,12 @@
     <!-- Page 12: Agent Customization -->
     <hd-slide>
       <div slot="header" class="hd-text-weight-semibold hd-muted hd-size-6">エージェントカスタマイズ</div>
-      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP</div>
+      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP
+      </div>
       <hd-layout-split ratio="1:1">
         <h2 slot="heading">エージェントカスタマイズ</h2>
         <hd-box slot="left" variant="main">
-          <h3 slot="heading">MCPの概要</h3>
+          <h3 slot="heading">Model Context Protocol</h3>
           <div class="hd-p-3">
             <ul>
               <li class="hd-mb-2"><strong>オープン標準プロトコル:</strong> LLMがローカルまたはリモートのツールやデータにアクセスするための統一基準。</li>
@@ -222,7 +285,7 @@
           </div>
         </hd-box>
         <hd-box slot="right" variant="accent">
-          <h3 slot="heading">Agent Skillsの概要</h3>
+          <h3 slot="heading">Agent Skills</h3>
           <div class="hd-p-3">
             <ul>
               <li class="hd-mb-2"><strong>パッケージ化された指示:</strong> エージェントに必要な手順書（SKILL.md）、スクリプト、参照資料を格納。</li>
@@ -237,7 +300,8 @@
     <!-- Page 13: Canvas LMS API -->
     <hd-slide>
       <div slot="header" class="hd-text-weight-semibold hd-muted hd-size-6">Canvas LMS API</div>
-      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP</div>
+      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP
+      </div>
       <hd-layout>
         <h2 slot="heading">Canvas LMS API</h2>
         <div>
@@ -258,14 +322,16 @@
     <!-- Page 14: Technical Composition -->
     <hd-slide>
       <div slot="header" class="hd-text-weight-semibold hd-muted hd-size-6">技術構成</div>
-      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP</div>
+      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP
+      </div>
       <hd-layout-split ratio="1:1">
         <h2 slot="heading">技術構成</h2>
         <hd-box slot="left" variant="main">
           <h3 slot="heading">canvas-lms-mcp</h3>
           <div class="hd-p-3">
             <ul>
-              <li class="hd-mb-2"><strong>汎用ツール構成:</strong> <code class="hd-code">search-canvas-api</code> と <code class="hd-code">call-canvas-api</code> の2ツールに集約。</li>
+              <li class="hd-mb-2"><strong>汎用ツール構成:</strong> <code class="hd-code">search-canvas-api</code> と <code
+                  class="hd-code">call-canvas-api</code> の2ツールに集約。</li>
               <li class="hd-mb-2"><strong>1000超のAPI操作:</strong> エンドポイント一覧をAIに参照させ、無数の操作を動的かつ汎用的にカバーします。</li>
               <li class="hd-mb-2"><strong>メタデータの統合:</strong> 軽量でありながら網羅性の高いAPI呼び出し基盤を実現。</li>
             </ul>
@@ -287,7 +353,8 @@
     <!-- Page 15: Try Now -->
     <hd-slide>
       <div slot="header" class="hd-text-weight-semibold hd-muted hd-size-6">Try Now</div>
-      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP</div>
+      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP
+      </div>
       <hd-layout>
         <h2 slot="heading">Try Now</h2>
         <div>
@@ -296,8 +363,10 @@
           </p>
           <ul>
             <li class="hd-mb-2"><strong>簡単導入:</strong> MCP設定ファイルにサーバー定義を追加し、お持ちのアクセストークンを流し込むだけ。</li>
-            <li class="hd-mb-2"><strong>スキルの配置:</strong> プロジェクトの <code class="hd-code">.agents/skills/canvas-lms</code> を読み込ませてガイドラインを適用。</li>
-            <li class="hd-mb-2"><strong>マルチエージェント対応:</strong> Claude Desktop / VS Code Extension, Antigravity SDK, Codex などで動作。</li>
+            <li class="hd-mb-2"><strong>スキルの配置:</strong> プロジェクトの <code class="hd-code">.agents/skills/canvas-lms</code>
+              を読み込ませてガイドラインを適用。</li>
+            <li class="hd-mb-2"><strong>マルチエージェント対応:</strong> Claude Desktop / VS Code Extension, Antigravity SDK, Codex
+              などで動作。</li>
           </ul>
         </div>
       </hd-layout>
@@ -315,5 +384,5 @@
 
   </hd-deck>
 </body>
-</html>
 
+</html>
