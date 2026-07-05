@@ -1,6 +1,18 @@
 {
   "version": 1,
   "skills": {
+    "google-antigravity-sdk": {
+      "source": "google-antigravity/antigravity-sdk-python",
+      "sourceType": "github",
+      "skillPath": "skills/google-antigravity-sdk/SKILL.md",
+      "computedHash": "aea030336305d867866818ebdcc3c516bc37e10015eb3e28b878185a1602b29b"
+    },
+    "html-deck": {
+      "source": "likr/html-deck",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/html-deck/SKILL.md",
+      "computedHash": "563d5a2ffe3b43fa05a57e11e65e84ddc6ee6ed332befe87eafd63b1c0bd561f"
+    },
     "skill-creator": {
       "source": "anthropics/skills",
       "sourceType": "github",

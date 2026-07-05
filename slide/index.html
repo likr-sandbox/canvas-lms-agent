@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas LMS Agent - Presentation</title>
+  <!-- Load Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Load Prism.js for Syntax Highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+
+  <!-- Load html-deck Web Component -->
+  <script type="module" src="https://unpkg.com/html-deck@1.0.0-alpha.2"></script>
+
+  <style>
+    :root {
+      /* Core Theme Color System (4-Color Palette Principle) */
+      --hd-theme-background-color: #0b0f19; /* Deep Slate Blue */
+      --hd-theme-text-color: #f8fafc; /* Slate 50 */
+      --hd-theme-main-color: #10b981; /* Emerald Green */
+      --hd-theme-accent-color: #fb923c; /* Warm Orange */
+
+      /* Typography Settings */
+      --hd-font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+      /* Base Layout Propagation */
+      --hd-base-soft-background-color: var(--hd-theme-background-color);
+      --hd-base-soft-text-color: var(--hd-theme-text-color);
+      --hd-base-solid-background-color: #1e293b; /* Slate 800 */
+      --hd-base-solid-text-color: var(--hd-theme-text-color);
+
+      /* Main Accent Propagation */
+      --hd-main-soft-background-color: rgba(from var(--hd-theme-main-color) r g b / 0.1);
+      --hd-main-soft-text-color: #34d399; /* Emerald 300 */
+      --hd-main-solid-background-color: var(--hd-theme-main-color);
+      --hd-main-solid-text-color: #064e3b; /* Emerald 900 for dark contrast */
+
+      /* Secondary Accent Propagation */
+      --hd-accent-soft-background-color: rgba(from var(--hd-theme-accent-color) r g b / 0.1);
+      --hd-accent-soft-text-color: #fdba74; /* Orange 300 */
+      --hd-accent-solid-background-color: var(--hd-theme-accent-color);
+      --hd-accent-solid-text-color: #7c2d12; /* Orange 900 for dark contrast */
+
+      /* Highlight & Muted text colors */
+      --hd-text-highlight-color: var(--hd-theme-accent-color);
+      --hd-text-muted-color: rgba(from var(--hd-theme-text-color) r g b / 0.6);
+
+      /* Component Shadows & Borders */
+      --hd-card-box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --hd-box-box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --hd-border-color: rgba(255, 255, 255, 0.1);
+      --hd-card-border-width: 1px;
+      --hd-card-border-style: solid;
+      --hd-card-border-color: rgba(255, 255, 255, 0.1);
+      --hd-box-border-width: 1px;
+      --hd-box-border-style: solid;
+      --hd-box-border-color: rgba(255, 255, 255, 0.1);
+
+      /* Code block overrides */
+      --hd-codeblock-background-color: #05070f;
+      --hd-codeblock-border-color: rgba(255, 255, 255, 0.08);
+      --hd-codeblock-border-width: 1px;
+      --hd-codeblock-border-style: solid;
+      --hd-code-background-color: rgba(255, 255, 255, 0.06);
+      --hd-code-text-color: #f43f5e;
+      --hd-code-font-family: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      /* Lists styling */
+      --hd-list-color: var(--hd-theme-text-color);
+      --hd-list-item-margin-bottom: var(--hd-gap-1);
+
+      /* Symmetrical Layout Spacing to prevent Header/Footer overlaps */
+      --hd-peripheral-offset: var(--hd-gap-3); /* 24px */
+      --hd-layout-heading-padding: 32px var(--hd-gap-4) 16px var(--hd-gap-4);
+      --hd-layout-body-padding: 16px var(--hd-gap-4) 32px var(--hd-gap-4);
+    }
+  </style>
+</head>
+<body>
+  <hd-deck aspect-ratio="16:9" transition="fade">
+    
+    <!-- Slide 1: Cover Layout -->
+    <hd-slide>
+      <hd-layout-cover>
+        <h1 slot="title" class="hd-text-weight-extrabold hd-highlight">Canvas LMS Agent</h1>
+        <p slot="subtitle" class="hd-muted hd-size-3">Autonomous AI Agent Orchestration for Educational Management</p>
+        <div slot="meta" class="hd-text-weight-medium hd-size-5">
+          Powered by <span class="hd-highlight">Google Antigravity SDK</span> &amp; <span class="hd-highlight">Canvas LMS MCP</span>
+        </div>
+      </hd-layout-cover>
+    </hd-slide>
+
+    <!-- Slide 2: Project Overview -->
+    <hd-slide>
+      <div slot="header" class="hd-text-weight-semibold hd-muted hd-size-6">Canvas LMS Agent - Project Overview</div>
+      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP</div>
+      <hd-layout-split ratio="1:1">
+        <h2 slot="heading">System Overview</h2>
+        <div slot="left">
+          <p class="hd-mb-3">
+            The <span class="hd-highlight">Canvas LMS Agent</span> is an autonomous assistant enabling direct natural language interactions with the Canvas Learning Management System.
+          </p>
+          <ul>
+            <li class="hd-mb-2"><strong>Dual Interface:</strong> Supports a CLI script for fast verification and a React web wrapper dashboard.</li>
+            <li class="hd-mb-2"><strong>Smart Orchestration:</strong> Leverages the Google Antigravity SDK to configure and manage agent sessions safely.</li>
+            <li class="hd-mb-2"><strong>Full Capabilities:</strong> Covers course listings, grading submissions, assignments, discussion moderation, and calendar planning.</li>
+          </ul>
+        </div>
+        <hd-box slot="right" variant="main">
+          <h3 slot="heading">Architecture Components</h3>
+          <div class="hd-p-3">
+            <ul>
+              <li class="hd-mb-2"><strong>React + Vite UI:</strong> A sleek, responsive dashboard providing real-time chat and tool-tracking logs.</li>
+              <li class="hd-mb-2"><strong>FastAPI Backend Wrapper:</strong> Integrates the Antigravity Agent runtime and exposes session APIs.</li>
+              <li class="hd-mb-2"><strong>Node.js MCP Server:</strong> Connects to Canvas REST APIs and exposes tools dynamically.</li>
+            </ul>
+          </div>
+        </hd-box>
+      </hd-layout-split>
+    </hd-slide>
+
+    <!-- Slide 3: Model Context Protocol -->
+    <hd-slide>
+      <div slot="header" class="hd-text-weight-semibold hd-muted hd-size-6">Canvas LMS Agent - MCP Server</div>
+      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP</div>
+      <hd-layout-split ratio="1:1">
+        <h2 slot="heading">Canvas LMS MCP Server</h2>
+        <div slot="left">
+          <p class="hd-mb-3">
+            Located in <code class="hd-code">canvas-lms-mcp/</code>, this Node.js server implements the Model Context Protocol (MCP) to bridge LLMs with Canvas REST APIs.
+          </p>
+          <hd-card variant="base">
+            <h4 slot="heading">Core Features</h4>
+            <div class="hd-p-2">
+              <ul>
+                <li class="hd-mb-1"><strong>Course &amp; Sections:</strong> Inspect course and user section details.</li>
+                <li class="hd-mb-1"><strong>Grading:</strong> Execute role-adaptive grading workflows.</li>
+                <li class="hd-mb-1"><strong>Calendar:</strong> Access planners, calendar events, and deadlines.</li>
+              </ul>
+            </div>
+          </hd-card>
+        </div>
+        <hd-box slot="right" variant="accent">
+          <h3 slot="heading">Claude Desktop Configuration</h3>
+          <div class="hd-p-3">
+            <pre><code class="language-json">{
+  "mcpServers": {
+    "canvas-lms": {
+      "command": "npx",
+      "args": ["-y", "@likr/canvas-lms-mcp"],
+      "env": {
+        "CANVAS_BASE_URL": "https://canvas.instructure.com",
+        "CANVAS_API_TOKEN": "YOUR_TOKEN"
+      }
+    }
+  }
+}</code></pre>
+          </div>
+        </hd-box>
+      </hd-layout-split>
+    </hd-slide>
+
+    <!-- Slide 4: Antigravity SDK Orchestration -->
+    <hd-slide>
+      <div slot="header" class="hd-text-weight-semibold hd-muted hd-size-6">Canvas LMS Agent - Agent Orchestration</div>
+      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP</div>
+      <hd-layout-split ratio="1:1">
+        <h2 slot="heading">Antigravity SDK Integration</h2>
+        <div slot="left">
+          <p class="hd-mb-3">
+            The Python backend orchestrates the agent using the <span class="hd-highlight">Google Antigravity SDK</span>.
+          </p>
+          <ul>
+            <li class="hd-mb-2"><strong>LocalAgentConfig:</strong> Configures workspace roots, security policies, skills, and MCP servers.</li>
+            <li class="hd-mb-2"><strong>McpStdioServer:</strong> Spawns and communicates with the Node.js MCP server over standard input/output.</li>
+            <li class="hd-mb-2"><strong>Security Governance:</strong> Leverages strict policies (`policy.allow_all()`) to authorize tool execution.</li>
+          </ul>
+        </div>
+        <hd-box slot="right" variant="main">
+          <h3 slot="heading">Execution Hooks &amp; Database Logs</h3>
+          <div class="hd-p-3">
+            <p class="hd-mb-2">
+              Hooks dynamically track tool execution states to the database:
+            </p>
+            <ul>
+              <li class="hd-mb-2"><code class="hd-code">pre_tool_call_decide</code>: Logs incoming tool calls with a status of "running".</li>
+              <li class="hd-mb-2"><code class="hd-code">post_tool_call</code>: Updates the database record with completion status, execution time, and any error outcomes.</li>
+            </ul>
+          </div>
+        </hd-box>
+      </hd-layout-split>
+    </hd-slide>
+
+    <!-- Slide 5: Interactive Web UI -->
+    <hd-slide>
+      <div slot="header" class="hd-text-weight-semibold hd-muted hd-size-6">Canvas LMS Agent - Interactive UI</div>
+      <div slot="footer" class="hd-text-weight-normal hd-muted hd-size-6">Google Antigravity SDK &amp; Canvas LMS MCP</div>
+      <hd-layout-split ratio="1:1">
+        <h2 slot="heading">Web Dashboard Wrapper</h2>
+        <div slot="left">
+          <p class="hd-mb-3">
+            The React + Vite application (<code class="hd-code">agent-ui/</code>) provides a premium interface for interacting with the Canvas LMS Agent.
+          </p>
+          <ul>
+            <li class="hd-mb-2"><strong>Real-time Chat client:</strong> Initiates asynchronous agent chat sessions with uvicorn FastAPI backend.</li>
+            <li class="hd-mb-2"><strong>Live Tool Tracking:</strong> Side panel logs tools running in the background.</li>
+            <li class="hd-mb-2"><strong>Local Memos:</strong> Exposes database-backed tools (`write_memo`, `read_memo`, `list_memos`) for taking notes.</li>
+          </ul>
+        </div>
+        <hd-box slot="right" variant="accent">
+          <h3 slot="heading">Local Stack &amp; Development</h3>
+          <div class="hd-p-3">
+            <ul>
+              <li class="hd-mb-2"><strong>Vite Dev Server:</strong> Runs on port <code class="hd-code">5173</code> for the frontend.</li>
+              <li class="hd-mb-2"><strong>FastAPI API:</strong> Runs on port <code class="hd-code">8000</code> for backend routing.</li>
+              <li class="hd-mb-2"><strong>Persistent Database:</strong> SQL database for logs and memos.</li>
+            </ul>
+          </div>
+        </hd-box>
+      </hd-layout-split>
+    </hd-slide>
+
+    <!-- Slide 6: Summary & Highlights -->
+    <hd-slide center>
+      <hd-layout-cover>
+        <h2 slot="title" class="hd-highlight">Summary &amp; Benefits</h2>
+        <p slot="subtitle" class="hd-muted hd-size-3">A robust solution for AI-assisted educational LMS workflows</p>
+        <div slot="meta" class="hd-text-weight-medium hd-size-4">
+          <ul>
+            <li class="hd-mb-2">🚀 Bridges Generative AI capabilities with educational APIs.</li>
+            <li class="hd-mb-2">🔒 Maintains high security with strict standard and custom policies.</li>
+            <li class="hd-mb-2">🛠️ Built on open standards: Model Context Protocol &amp; Antigravity SDK.</li>
+          </ul>
+        </div>
+      </hd-layout-cover>
+    </hd-slide>
+
+  </hd-deck>
+</body>
+</html>

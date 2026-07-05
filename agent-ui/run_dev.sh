@@ -8,8 +8,8 @@ echo " Starting Antigravity Web Wrapper Application"
 echo "============================================="
 
 # Set database environment variables for local Docker container
-export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/canvas_agent_db"
-export GOOGLE_CLIENT_ID="" # Empty for dev bypass mode
+export DATABASE_URL="postgresql://canvas_lms_agent:G2P5W9TV7nFD6kqJqahX@35.187.197.185/canvas_lms_agent"
+export GOOGLE_CLIENT_ID="687186412701-04087u9tmtd5avel7ltuhva2nuv8koip.apps.googleusercontent.com"
 export CANVAS_BASE_URL="https://nu.instructure.com/"
 
 # Trap exits to kill background processes
